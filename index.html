@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F&V AI Group S.A. | Innovación Tecnológica y Automatización Corporativa con IA</title>
+    <title>F&V AI Group S.A. | Enterprise Automation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -14,219 +14,154 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        neonCyan: {
-                            light: '#CCFFFF',
-                            DEFAULT: '#00FFFF',
-                            bright: '#00CCFF',
-                            pale: '#80FFF9',
-                        },
-                        neonOrange: {
-                            DEFAULT: '#FF6600',
-                            gold: '#FFBF00',
-                            sunset: '#FF8C00',
-                            goldNeon: '#CC9900',
-                        },
                         corporate: {
-                            black: '#000000',
-                            deepBlue: '#003366',
-                            shadowBlue: '#0055A0',
-                        },
-                    },
-                    backgroundImage: {
-                        'neon-gradient-to-r': 'linear-gradient(to right, #00CCFF, #FF6600)',
-                        'neon-gradient-to-b': 'linear-gradient(to bottom, #00CCFF, #FF6600)',
-                    },
-                },
-            },
+                            charcoal: '#0a0a0c',  // Fondo base grafito muy oscuro
+                            graphite: '#121214',  // Fondo secundario para contraste sutil
+                            orange: '#FF6600',    // Acento exclusivo para CTAs y métricas
+                            cyanAccent: '#00CCFF', // Restringido solo a brillos atmosféricos imperceptibles
+                        }
+                    }
+                }
+            }
         }
     </script>
-    <style>
-        .text-neon-gradient {
-            background-image: linear-gradient(to right, #00CCFF, #FF6600);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .drop-shadow-neon-cyan {
-            filter: drop-shadow(0 0 8px #00CCFF);
-        }
-
-        .drop-shadow-neon-orange {
-            filter: drop-shadow(0 0 8px #FF6600);
-        }
-
-        .shadow-neon-cyan-lg {
-            box-shadow: 0 0 15px 5px #00FFFF33;
-        }
-
-        .shadow-neon-orange-lg {
-            box-shadow: 0 0 15px 5px #FF660033;
-        }
-
-        .card-neon-hover:hover {
-            border-color: #00CCFF;
-            box-shadow: 0 0 20px 0 #0055A066;
-            transform: translateY(-5px);
-        }
-
-        .hexagon-shape {
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-
-        .star-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2L13.1678 9.0822L20.25 10.25L13.1678 11.4178L12 18.5L10.8322 11.4178L3.75 10.25L10.8322 9.0822L12 2Z' fill='%23CCFFFF20'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-        }
-    </style>
 </head>
-<body class="bg-corporate-black text-white font-sans antialiased overflow-x-hidden">
+<body class="bg-corporate-charcoal text-slate-300 font-sans antialiased selection:bg-corporate-orange selection:text-white">
 
-    <!-- 1. Header/Nav -->
-    <header class="bg-corporate-black sticky top-0 z-50 border-b border-corporate-shadowBlue backdrop-blur-lg">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 text-2xl font-bold tracking-tight">
-                <span class="text-white drop-shadow-neon-cyan">F&V</span>
-                <span class="text-neon-gradient drop-shadow-neon-cyan">AI GROUP</span>
-                <span class="text-white">S.A.</span>
-            </a>
-            <div class="hidden md:flex items-center gap-10">
-                <a href="#" class="text-white hover:text-neonCyan-bright transition drop-shadow-neon-cyan text-sm font-medium">Inicio</a>
-                <a href="#servicios" class="text-white hover:text-neonCyan-bright transition drop-shadow-neon-cyan text-sm font-medium">Servicios</a>
-                <a href="#capacitacion" class="text-white hover:text-neonCyan-bright transition drop-shadow-neon-cyan text-sm font-medium">Capacitación</a>
-                <a href="#contacto" class="text-white hover:text-neonCyan-bright transition drop-shadow-neon-cyan text-sm font-medium">Nosotros</a>
-                <a href="mailto:contacto@fvaigroup.com" class="border border-neonOrange-sunset text-neonOrange-sunset px-5 py-2 rounded-lg text-sm font-semibold hover:bg-neonOrange-sunset hover:text-white hover:shadow-neon-orange-lg transition-all transition-duration-300">
-                    Contacto
-                </a>
+    <!-- 1. Header / Nav -->
+    <header class="fixed w-full top-0 z-50 bg-corporate-charcoal/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                        F&V AI GROUP <span class="text-xs font-medium px-2 py-1 bg-white/10 text-slate-400 rounded-md">S.A.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Inicio</a>
+                    <a href="#servicios" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Servicios</a>
+                    <a href="#capacitacion" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Capacitación</a>
+                    <a href="#contacto" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="flex md:hidden items-center">
+                    <button type="button" class="text-slate-400 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <!-- Mobile Menu -->
-            <button class="md:hidden text-white hover:text-neonCyan-bright transition drop-shadow-neon-cyan">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </nav>
+        </div>
     </header>
 
-    <!-- 2. Hero Section -->
-    <section id="inicio" class="relative bg-corporate-black text-white py-24 md:py-32 overflow-hidden star-pattern">
-        <!-- Abstract Hexagon Gradient Background -->
-        <div class="absolute inset-0 bg-corporate-black hexagon-shape opacity-20 -rotate-12 transform scale-150 blur-3xl pointer-events-none" style="background-image: linear-gradient(to right, #00CCFF, #FF6600);"></div>
+    <!-- 2. Hero Section (Layout Asimétrico & Enterprise SaaS UI) -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-corporate-charcoal">
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-            <div class="mb-10 w-32 h-32 md:w-40 md:h-40 rounded-full bg-corporate-deepBlue border-4 border-neonCyan flex items-center justify-center drop-shadow-neon-cyan relative hexagon-shape">
-                 <!-- abstract firefly graphic inside -->
-                 <div class="w-20 h-20 hexagon-shape bg-neonOrange opacity-80" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
-                 <div class="absolute bottom-1 right-2 w-10 h-10 hexagon-shape bg-neonCyan-pale opacity-100" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
-            </div>
+        <!-- Iluminación atmosférica de fondo (Sin restarle limpieza al UI) -->
+        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-corporate-cyanAccent/5 rounded-full blur-[120px] pointer-events-none transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-corporate-orange/5 rounded-full blur-[150px] pointer-events-none transform translate-x-1/3 translate-y-1/3"></div>
 
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neonCyan-bright to-neonOrange-goldNeon drop-shadow-neon-cyan leading-tight mb-8">
-                Arquitectura de Automatización Corporativa con Inteligencia Artificial
-            </h1>
-            
-            <p class="max-w-3xl text-lg md:text-xl text-slate-300 mb-12">
-                Impulsamos la eficiencia y competitividad de su negocio mediante soluciones avanzadas de IA, optimizando flujos de trabajo críticos y desbloqueando nuevas oportunidades de crecimiento.
-            </p>
-            
-            <a href="#servicios" class="bg-neonCyan-bright text-corporate-black px-12 py-4 rounded-xl font-bold text-lg hover:bg-white hover:shadow-neon-cyan-lg transition-all duration-300">
-                Optimizar mi empresa
-            </a>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Columna Izquierda: Copy & CTAs -->
+                <div class="text-left space-y-8">
+                    <!-- Badge / Pill Glassmórfico -->
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-corporate-orange animate-pulse shadow-[0_0_8px_#FF6600]"></span>
+                        <span class="text-xs font-semibold text-slate-300 tracking-wide uppercase">Enterprise SaaS & Automation</span>
+                    </div>
+                    
+                    <!-- H1 Limpio y de alto contraste -->
+                    <h1 class="text-5xl lg:text-[4rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 tracking-tight leading-[1.05]">
+                        Arquitectura de <br class="hidden lg:block" />
+                        Automatización <br class="hidden lg:block" />
+                        <span class="text-white">Corporativa con IA</span>
+                    </h1>
+                    
+                    <!-- Subtítulo amplio con buen interlineado -->
+                    <p class="text-lg text-slate-400 leading-relaxed max-w-xl font-light">
+                        Impulsamos la eficiencia de su negocio transformando la complejidad en rentabilidad. Integramos flujos de trabajo inteligentes y tecnologías No-Code para una toma de decisiones a escala.
+                    </p>
+                    
+                    <!-- Botones / Acciones de Conversión -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#contacto" class="inline-flex justify-center items-center px-8 py-4 bg-corporate-orange text-white font-semibold rounded-lg shadow-[0_0_24px_rgba(255,102,0,0.2)] hover:shadow-[0_0_32px_rgba(255,102,0,0.35)] hover:scale-[1.02] transition-all duration-300 tracking-wide">
+                            Agendar Consultoría
+                        </a>
+                        <a href="#servicios" class="inline-flex justify-center items-center px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-md">
+                            Explorar Soluciones
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: UI Mockup / Elementos Visuales de Datos -->
+                <div class="relative hidden lg:block h-[550px] w-full">
+                    <!-- Textura de cuadrícula muy sutil como fondo técnico -->
+                    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:32px_32px] rounded-3xl [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]"></div>
+
+                    <!-- Tarjeta Flotante 1: Métrica Principal -->
+                    <div class="absolute top-12 right-4 w-72 bg-corporate-graphite/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl transform hover:-translate-y-2 transition-transform duration-500 z-20">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
+                                <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <span class="text-[10px] font-semibold px-2 py-1 bg-green-500/10 text-green-400 rounded-full border border-green-500/20 uppercase tracking-wider">Activo</span>
+                        </div>
+                        <h3 class="text-xs text-slate-400 uppercase tracking-widest mb-1">Rendimiento de IA</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-extrabold text-white tracking-tighter">+87</span>
+                            <span class="text-lg font-medium text-slate-500">%</span>
+                        </div>
+                        
+                        <!-- Gráfico de barras minimalista -->
+                        <div class="mt-5 h-12 w-full flex items-end justify-between gap-1 opacity-80">
+                            <div class="w-full bg-white/5 h-1/4 rounded-sm"></div>
+                            <div class="w-full bg-white/5 h-2/4 rounded-sm"></div>
+                            <div class="w-full bg-white/10 h-3/4 rounded-sm"></div>
+                            <div class="w-full bg-white/10 h-2/3 rounded-sm"></div>
+                            <div class="w-full bg-corporate-orange/50 h-[85%] rounded-sm"></div>
+                            <div class="w-full bg-corporate-orange h-full rounded-sm shadow-[0_0_12px_rgba(255,102,0,0.5)]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Flotante 2: Integraciones (Glassmorphism sutil) -->
+                    <div class="absolute bottom-16 left-0 w-80 bg-corporate-charcoal/80 backdrop-blur-md border border-white/10 rounded-2xl p-5 shadow-2xl transform hover:-translate-y-2 transition-transform duration-500 z-30">
+                        <h3 class="text-xs text-slate-400 uppercase tracking-widest mb-4">Registro de Sincronización</h3>
+                        <div class="space-y-3">
+                            <!-- Item: ERP -->
+                            <div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-default">
+                                <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                    <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-slate-200">ERP Dynamics 365</p>
+                                    <p class="text-[11px] text-slate-500">Actualizado hace 2 seg</p>
+                                </div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-corporate-cyanAccent shadow-[0_0_6px_#00CCFF]"></div>
+                            </div>
+                            <!-- Item: Reportes -->
+                            <div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-default">
+                                <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                                    <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-slate-200">Generación de Reportes</p>
+                                    <p class="text-[11px] text-slate-500">Flujo IA Finalizado</p>
+                                </div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-corporate-orange shadow-[0_0_6px_#FF6600]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
-    <!-- 3. Sección de Servicios (Grid) -->
-    <section id="servicios" class="bg-corporate-deepBlue py-24 border-t border-corporate-shadowBlue">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 max-w-2xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neonCyan-bright to-neonOrange-goldNeon drop-shadow-neon-cyan mb-4 hexagon-shape inline-block p-4 bg-corporate-black border border-neonCyan">Nuestras Soluciones</h2>
-                <p class="text-lg text-slate-300">Integramos la tecnología que transforma industrias.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                <!-- Servicio 1 -->
-                <div class="bg-corporate-black p-10 rounded-2xl border border-corporate-shadowBlue card-neon-hover transition-all duration-300 group overflow-hidden">
-                    <div class="mb-10 w-20 h-20 rounded-full bg-corporate-shadowBlue border-2 border-neonCyan-pale flex items-center justify-center drop-shadow-neon-cyan group-hover:scale-110 group-hover:bg-neonCyan-bright group-hover:shadow-neon-cyan-lg transition-all transition-duration-300 relative hexagon-shape">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-6 text-white text-neon-gradient transition group-hover:text-neonOrange transition-duration-300">Implementaciones de Software</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Migre y optimice su gestión con implementaciones de plataformas ERP/CRM de primer nivel, incluyendo <strong class="text-white font-medium">Odoo, Saint, Profit Plus y Dynamics 365</strong>.
-                    </p>
-                </div>
-                
-                <!-- Servicio 2 -->
-                <div class="bg-corporate-black p-10 rounded-2xl border border-corporate-shadowBlue card-neon-hover transition-all duration-300 group overflow-hidden">
-                    <div class="mb-10 w-20 h-20 rounded-full bg-corporate-shadowBlue border-2 border-neonCyan-pale flex items-center justify-center drop-shadow-neon-cyan group-hover:scale-110 group-hover:bg-neonCyan-bright group-hover:shadow-neon-cyan-lg transition-all transition-duration-300 relative hexagon-shape">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-6 text-white text-neon-gradient transition group-hover:text-neonOrange transition-duration-300">Consultoría y Flujos de IA</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Automatice y optimice sus procesos corporativos. Diseñamos flujos de trabajo impulsados por IA y tecnologías No-Code/Low-Code para una eficiencia radical.
-                    </p>
-                </div>
-                
-                <!-- Servicio 3 -->
-                <div id="capacitacion" class="bg-corporate-black p-10 rounded-2xl border border-corporate-shadowBlue card-neon-hover transition-all duration-300 group overflow-hidden">
-                    <div class="mb-10 w-20 h-20 rounded-full bg-corporate-shadowBlue border-2 border-neonCyan-pale flex items-center justify-center drop-shadow-neon-cyan group-hover:scale-110 group-hover:bg-neonCyan-bright group-hover:shadow-neon-cyan-lg transition-all transition-duration-300 relative hexagon-shape">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v6.5"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-6 text-white text-neon-gradient transition group-hover:text-neonOrange transition-duration-300">Cursos y Capacitación</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Capacite a su equipo en las herramientas clave. Ofrecemos programas especializados, incluyendo nuestra formación exclusiva <strong class="text-white font-medium">'Finanzas con IA'</strong>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Call to Action Final -->
-    <section id="contacto" class="relative bg-corporate-black text-white py-24 star-pattern">
-        <!-- Blurred abstract hexagon details at the edge -->
-        <div class="absolute -bottom-10 -left-10 w-64 h-64 hexagon-shape opacity-20 transform -rotate-12 pointer-events-none" style="background-image: linear-gradient(to right, #00CCFF, #FF6600);"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-            <div class="border border-neonOrange-sunset rounded-3xl p-12 md:p-16 relative overflow-hidden bg-corporate-black shadow-neon-orange-lg">
-                <div class="absolute top-0 right-0 -mr-10 -mt-10 w-48 h-48 hexagon-shape bg-neonOrange opacity-40 blur-2xl"></div>
-                
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 drop-shadow-neon-orange">
-                    ¿Preparado para reinventar su negocio?
-                </h2>
-                
-                <p class="max-w-2xl text-lg text-slate-300 mb-12">
-                    Nuestros expertos están listos para analizar su proyecto y diseñar una estrategia de automatización corporativa con IA a medida. <br> Agenda una reunión estratégica o contáctanos por correo.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                    <a href="mailto:contacto@fvaigroup.com" class="border border-neonOrange-goldNeon text-neonOrange-goldNeon px-8 py-3 rounded-lg text-lg font-semibold hover:bg-neonOrange-goldNeon hover:text-white hover:shadow-neon-orange-lg transition-all duration-300">
-                        Agendar Reunión
-                    </a>
-                    <a href="mailto:contacto@fvaigroup.com" class="flex items-center gap-3 bg-neonCyan-pale text-corporate-black px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:shadow-neon-cyan-lg transition-all duration-300">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        contacto@fvaigroup.com
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Footer -->
-    <footer class="bg-corporate-black py-10 text-slate-500 border-t border-corporate-shadowBlue">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2 text-xl font-bold tracking-tight">
-                <span class="text-slate-500 drop-shadow-neon-cyan">F&V</span>
-                <span class="text-neon-gradient drop-shadow-neon-cyan">AI GROUP</span>
-                <span class="text-slate-500">S.A.</span>
-            </div>
-            
-            <div class="text-sm text-center md:text-right">
-                &copy; 2026 F&V AI Group S.A. Todos los derechos reservados.
-            </div>
-            
-            <div class="flex items-center gap-8 text-sm">
-                <a href="#" class="text-slate-500 hover:text-white transition drop-shadow-neon-cyan">Políticas de Privacidad</a>
-                <a href="#" class="text-slate-500 hover:text-white transition drop-shadow-neon-cyan">Términos de Servicio</a>
-            </div>
-        </div>
-    </footer>
 
 </body>
 </html>
