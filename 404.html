@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada | F&V AI Group</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          head: ['"Space Grotesk"', 'sans-serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          fv: {
+            black: '#000000', surface: '#0D0E12', border: '#1F232B',
+            cyan: '#00FFFF', cyanMid: '#00CCFF',
+            orange: '#FF8C00', orangeWarm: '#FF4500',
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { background: #000; } body { background: #000; }
+  .grain { background-image: radial-gradient(#ffffff08 1px, transparent 1px); background-size: 28px 28px; }
+  .btn-primary { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3); transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; }
+  .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); }
+  .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease; }
+  .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); }
+  @keyframes hexspin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
+  .hex-spin { animation: hexspin 40s linear infinite; }
+  @keyframes floaty { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+  .float { animation: floaty 6s ease-in-out infinite; }
+  .link-underline { background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
+  .link-underline:hover { background-size: 100% 1.5px; }
+</style>
+</head>
+<body class="bg-fv-black text-slate-300 font-sans antialiased min-h-screen flex items-center justify-center relative overflow-hidden px-6">
+
+  <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"></div>
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3"></div>
+  <div class="absolute bottom-0 right-0 w-[560px] h-[560px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4"></div>
+
+  <div class="relative z-10 max-w-lg text-center">
+    <div class="relative w-40 h-40 mx-auto mb-8">
+      <img src="assets/logo-hex.png" alt="" class="w-full h-full hex-spin opacity-80">
+      <img src="assets/logo-mark.png" alt="" class="absolute inset-0 m-auto w-16 h-16 float">
+    </div>
+
+    <p class="font-head text-sm text-slate-500 uppercase tracking-widest mb-3">Error 404</p>
+    <h1 class="font-sans text-3xl sm:text-4xl font-extrabold text-white mb-4">Esta página se perdió en el flujo</h1>
+    <p class="text-slate-400 leading-relaxed mb-10">La dirección no existe o cambió de lugar. Vuelva al inicio o cuéntenos qué buscaba.</p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="index.html" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Volver al inicio</a>
+      <a href="contacto.html" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">Contactar a F&amp;V</a>
+    </div>
+
+    <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center mt-8 text-sm text-slate-500 font-head">
+      <a href="servicios.html" class="link-underline hover:text-white transition-colors">Servicios</a>
+      <a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a>
+      <a href="nosotros.html" class="link-underline hover:text-white transition-colors">Nosotros</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -19,17 +19,17 @@
 <meta name="twitter:title" content="Nosotros | F&V AI Group">
 <meta name="twitter:description" content="Consultora especializada en implementación de software empresarial. Cómo trabajamos y por qué elegirnos frente a otra consultora.">
 <meta name="twitter:image" content="https://fvaigroup.com/assets/og-image.png">
-<link rel="apple-touch-icon" href="/assets/logo-mark.png">
-<link rel="icon" type="image/png" href="/assets/logo-mark.png">
+<link rel="apple-touch-icon" href="assets/logo-mark.png">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
   tailwind.config = {
     theme: {
       extend: {
         fontFamily: {
-          display: ['"Chakra Petch"', 'sans-serif'],
+          display: ['Inter', 'sans-serif'],
           head: ['"Space Grotesk"', 'sans-serif'],
           sans: ['Inter', 'sans-serif'],
         },
@@ -58,6 +58,46 @@
   @keyframes floaty { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
   .float { animation: floaty 6s ease-in-out infinite; }
   .scroll-mt { scroll-margin-top: 96px; }
+
+  /* ---- Botones interactivos: brillo + micro-interacción ---- */
+  .btn-primary {
+    background-color: #FF8C00; color: #000;
+    box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3);
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  }
+  .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-secondary {
+    background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
+    transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+  }
+  .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
+  .btn-secondary:active { transform: scale(0.97); }
+
+  /* ---- Wordmark con degradado cian-naranja y brillo ---- */
+  .brand-gradient {
+    background: linear-gradient(90deg, #00FFFF, #00CCFF 35%, #FF8C00 70%, #FF4500);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 8px rgba(0,204,255,0.35)) drop-shadow(0 0 12px rgba(255,140,0,0.25));
+  }
+
+  /* ---- Hover sutil en preguntas frecuentes ---- */
+  details > summary:hover { background-color: rgba(255,255,255,0.03); }
+
+  /* ---- Transición nativa entre páginas (navegadores Chromium; se ignora en el resto) ---- */
+  @view-transition { navigation: auto; }
+
+  .link-underline { background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
+  .link-underline:hover { background-size: 100% 1.5px; }
+
+  /* ---- Asistente Luci ---- */
+  .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
+  .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
+  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: all .2s ease; background: transparent; }
+  .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
+  #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
@@ -67,18 +107,19 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="index.html" class="flex items-center gap-3 shrink-0">
-        <img src="/assets/logo-full.png" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-display font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <img src="assets/logo-full.png" alt="F&V AI Group" class="h-11 w-auto">
+        <span class="font-sans font-semibold tracking-wide brand-gradient text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
       <nav class="hidden md:flex items-center gap-9 font-head text-sm">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
+        <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
         <a href="nosotros.html" class="text-white">Nosotros</a>
         <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
       </nav>
       <div class="hidden md:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="font-head text-sm font-medium px-4 py-2.5 rounded-lg border border-white/15 text-white hover:bg-white/5 transition-colors">Hablar por WhatsApp</a>
-        <a href="contacto.html" class="font-head text-sm font-semibold px-5 py-2.5 rounded-lg bg-fv-orange text-black hover:brightness-110 transition-all">Agendar auditoría</a>
+        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">Hablar por WhatsApp</a>
+        <a href="contacto.html" class="btn-primary font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
       </div>
       <button id="menu-btn" type="button" class="md:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -90,10 +131,11 @@
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-slate-300">Inicio</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
+      <a href="precios.html" class="text-slate-300">Precios</a>
       <a href="nosotros.html" class="text-white">Nosotros</a>
       <a href="contacto.html" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="mt-2 text-center px-4 py-2.5 rounded-lg border border-white/15 text-white">WhatsApp</a>
-      <a href="contacto.html" class="text-center px-4 py-2.5 rounded-lg bg-fv-orange text-black font-semibold">Agendar auditoría</a>
+      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
+      <a href="contacto.html" class="btn-primary text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
     </div>
   </div>
 </header>
@@ -106,12 +148,12 @@
   <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-fv-orange/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3"></div>
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
     <div>
-      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white leading-tight mb-6">Una consultora que se queda después de la implementación</h1>
+      <h1 class="font-sans text-4xl sm:text-5xl font-semibold text-white leading-tight mb-6">Una consultora que se queda después de la implementación</h1>
       <p class="text-lg text-slate-400 leading-relaxed font-light">F&amp;V AI Group es una consultora especializada en la implementación de software empresarial. Trabajamos con SAP, Odoo y Microsoft Dynamics 365, además de desarrollo a medida e integración de inteligencia artificial — acompañando cada proyecto desde la auditoría inicial hasta el soporte del día a día.</p>
     </div>
     <div class="relative h-72 hidden lg:flex items-center justify-center">
-      <img src="/assets/logo-hex.png" alt="" class="w-56 h-56 hex-spin opacity-90">
-      <img src="/assets/logo-mark.png" alt="F&V AI Group" class="absolute w-20 h-20 float">
+      <img src="assets/logo-hex.png" alt="" class="w-56 h-56 hex-spin opacity-90">
+      <img src="assets/logo-mark.png" alt="F&V AI Group" class="absolute w-20 h-20 float">
     </div>
   </div>
 </section>
@@ -120,32 +162,32 @@
 <section id="metodologia" class="scroll-mt relative py-28 border-b border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-16">
-      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white leading-tight">Cómo trabajamos</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Cómo trabajamos</h2>
       <p class="text-slate-400 mt-4 leading-relaxed">Un mismo equipo acompaña las cinco etapas, sin traspasos entre proveedores.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
       <div>
-        <span class="font-display text-fv-cyan/70 text-sm">01</span>
+        <span class="font-sans text-fv-cyan/70 text-sm">01</span>
         <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Asesoría Estratégica</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Diagnóstico de alto nivel y definición de la solución antes de ejecutar.</p>
       </div>
       <div>
-        <span class="font-display text-fv-cyan/70 text-sm">02</span>
+        <span class="font-sans text-fv-cyan/70 text-sm">02</span>
         <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Evaluación de Procesos</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Auditoría técnica y financiera de procesos y sistemas actuales.</p>
       </div>
       <div>
-        <span class="font-display text-fv-orange/80 text-sm">03</span>
+        <span class="font-sans text-fv-orange/80 text-sm">03</span>
         <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Despliegue y Ejecución</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Configuración, migración de datos e integración de IA cuando aplica.</p>
       </div>
       <div>
-        <span class="font-display text-fv-orange/80 text-sm">04</span>
+        <span class="font-sans text-fv-orange/80 text-sm">04</span>
         <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Habilitación de Equipos</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Formación práctica sobre el sistema real de cada equipo.</p>
       </div>
       <div>
-        <span class="font-display text-fv-gold/90 text-sm">05</span>
+        <span class="font-sans text-fv-gold/90 text-sm">05</span>
         <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Acompañamiento Continuo</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Mantenimiento evolutivo después del go-live.</p>
       </div>
@@ -157,7 +199,7 @@
 <section id="diferencial" class="scroll-mt relative py-28 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white leading-tight">Por qué elegir a F&amp;V</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Por qué elegir a F&amp;V</h2>
       <p class="text-slate-400 mt-4 leading-relaxed">No vendemos una licencia y desaparecemos. Estos son los criterios que guían cada proyecto.</p>
     </div>
 
@@ -189,9 +231,9 @@
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
       <div class="relative z-10">
-        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white mb-4">Hablemos de su próximo proyecto</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">Hablemos de su próximo proyecto</h2>
         <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Una conversación inicial basta para saber si podemos ayudar.</p>
-        <a href="contacto.html" class="inline-flex justify-center items-center px-8 py-4 bg-fv-orange text-black font-head font-semibold rounded-lg glow-orange hover:brightness-110 transition-all">Ir a Contacto</a>
+        <a href="contacto.html" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Ir a Contacto</a>
       </div>
     </div>
   </div>
@@ -205,8 +247,8 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="index.html" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="/assets/logo-mark.png" alt="" class="h-8 w-8">
-          <span class="font-display font-semibold tracking-wide text-white text-lg">F&amp;V AI GROUP</span>
+          <img src="assets/logo-mark.png" alt="" class="h-8 w-8">
+          <span class="font-sans font-semibold tracking-wide text-white text-lg">F&amp;V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
         <div class="flex items-center gap-3">
@@ -222,34 +264,35 @@
         </div>
       </div>
 
-      <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
         <div>
           <h4 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Servicios</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="servicios.html#asesoria" class="hover:text-white transition-colors">Asesoría Estratégica</a></li>
-            <li><a href="servicios.html#evaluacion" class="hover:text-white transition-colors">Evaluación de Procesos</a></li>
-            <li><a href="servicios.html#despliegue" class="hover:text-white transition-colors">Despliegue y Ejecución</a></li>
-            <li><a href="servicios.html#habilitacion" class="hover:text-white transition-colors">Habilitación de Equipos</a></li>
-            <li><a href="servicios.html#masterclasses" class="hover:text-white transition-colors">Masterclasses y Workshops</a></li>
-            <li><a href="servicios.html#acompanamiento" class="hover:text-white transition-colors">Acompañamiento Continuo</a></li>
+            <li><a href="servicios.html#asesoria" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="servicios.html#evaluacion" class="link-underline hover:text-white transition-colors">Evaluación de Procesos</a></li>
+            <li><a href="servicios.html#despliegue" class="link-underline hover:text-white transition-colors">Despliegue y Ejecución</a></li>
+            <li><a href="servicios.html#habilitacion" class="link-underline hover:text-white transition-colors">Habilitación de Equipos</a></li>
+            <li><a href="servicios.html#masterclasses" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
+            <li><a href="servicios.html#acompanamiento" class="link-underline hover:text-white transition-colors">Acompañamiento Continuo</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="nosotros.html#metodologia" class="hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="nosotros.html#diferencial" class="hover:text-white transition-colors">Por qué F&amp;V</a></li>
-            <li><a href="index.html#faq" class="hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a></li>
+            <li><a href="nosotros.html#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
+            <li><a href="nosotros.html#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&amp;V</a></li>
+            <li><a href="index.html#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="mailto:contacto@fvaigroup.com" class="hover:text-white transition-colors">contacto@fvaigroup.com</a></li>
-            <li><a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="hover:text-white transition-colors">+58 424 412 5386</a></li>
-            <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="hover:text-white transition-colors">@fvaigroup</a></li>
+            <li><a href="mailto:contacto@fvaigroup.com" class="link-underline hover:text-white transition-colors">contacto@fvaigroup.com</a></li>
+            <li><a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">+58 424 412 5386</a></li>
+            <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
             <li class="pt-1 text-slate-600">Valencia, Carabobo, Venezuela</li>
             <li class="text-slate-600">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
           </ul>
@@ -260,12 +303,44 @@
     <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-slate-600 text-sm">&copy; 2026 F&amp;V AI Group S.A. Todos los derechos reservados.</p>
       <div class="flex gap-6 text-sm text-slate-600">
-        <a href="#" class="hover:text-slate-300 transition-colors">Políticas de privacidad</a>
-        <a href="#" class="hover:text-slate-300 transition-colors">Términos de servicio</a>
+        <a href="privacidad.html" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
+        <a href="terminos.html" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
+<div id="luci-widget" class="fixed bottom-6 left-6 z-40">
+  <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+    <img src="assets/logo-mark.png" alt="Luci" class="w-8 h-8">
+  </button>
+
+  <div id="luci-panel" class="hidden absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+    <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
+      <div class="flex items-center gap-2.5">
+        <img src="assets/logo-mark.png" alt="" class="w-7 h-7">
+        <div>
+          <p class="font-head text-white text-sm leading-none">Luci</p>
+          <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente de preguntas frecuentes</p>
+        </div>
+      </div>
+      <button id="luci-close" aria-label="Cerrar" class="text-slate-500 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div id="luci-messages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 text-sm"></div>
+    <div id="luci-quick" class="px-4 pb-3 flex flex-wrap gap-2"></div>
+
+    <form id="luci-form" class="flex items-center gap-2 p-3 border-t border-white/5">
+      <input id="luci-input" type="text" placeholder="Escriba su pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-fv-cyan/50">
+      <button type="submit" aria-label="Enviar" class="w-9 h-9 rounded-lg bg-fv-orange text-black flex items-center justify-center shrink-0 hover:brightness-110 transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
 
 <button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-br from-fv-cyan to-fv-orange text-black flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
@@ -304,6 +379,98 @@
     });
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
+
+  // ---- Asistente Luci (respuestas por palabras clave, no es un modelo de IA) ----
+  (function () {
+    const toggle = document.getElementById('luci-toggle');
+    const panel = document.getElementById('luci-panel');
+    const closeBtn = document.getElementById('luci-close');
+    const messages = document.getElementById('luci-messages');
+    const quick = document.getElementById('luci-quick');
+    const form = document.getElementById('luci-form');
+    const input = document.getElementById('luci-input');
+    if (!toggle || !panel) return;
+
+    const faq = [
+      { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos su situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
+      { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con SAP, Odoo, Microsoft Dynamics 365 y desarrollo a medida. Somos independientes de proveedor: recomendamos según su caso.' },
+      { k: ['soporte','despues','mantenimiento','postventa','incidencia'], a: 'Sí. El Acompañamiento Continuo es uno de nuestros seis servicios: canal directo, ajustes de configuración y revisión periódica.' },
+      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Tenemos valores de referencia en la página de Precios, pero el número final depende del alcance real de su proyecto.' },
+      { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre su sistema real, no un entorno genérico de demostración.' },
+      { k: ['horario','atencion','hora','abren'], a: 'Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m., y respondemos en 24 a 48 horas hábiles.' },
+      { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp o completar el formulario en la página de Contacto.' },
+    ];
+
+    const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?'];
+
+    function addMessage(text, from) {
+      const bubble = document.createElement('div');
+      bubble.className = from === 'user' ? 'luci-bubble-user' : 'luci-bubble-bot';
+      bubble.textContent = text;
+      messages.appendChild(bubble);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function addQuick(list) {
+      quick.innerHTML = '';
+      list.forEach(text => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'luci-quick-btn';
+        btn.textContent = text;
+        btn.addEventListener('click', () => handleUserText(text));
+        quick.appendChild(btn);
+      });
+    }
+
+    function botReply(userText) {
+      const norm = userText.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const hit = faq.find(item => item.k.some(kw => norm.includes(kw)));
+      setTimeout(() => {
+        if (hit) {
+          addMessage(hit.a, 'bot');
+        } else {
+          addMessage('No tengo una respuesta preparada para eso todavía. ¿Le gustaría hablar directo con nuestro equipo por WhatsApp?', 'bot');
+          addQuick(['Sí, ir a WhatsApp']);
+        }
+      }, 350);
+    }
+
+    function handleUserText(text) {
+      if (text === 'Sí, ir a WhatsApp') {
+        addMessage(text, 'user');
+        quick.innerHTML = '';
+        setTimeout(() => { window.open('https://wa.me/584244125386', '_blank'); }, 200);
+        return;
+      }
+      addMessage(text, 'user');
+      quick.innerHTML = '';
+      botReply(text);
+    }
+
+    let started = false;
+    function openPanel() {
+      panel.classList.remove('hidden');
+      if (!started) {
+        started = true;
+        addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué le ayudo?', 'bot');
+        addQuick(quickReplies);
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      panel.classList.contains('hidden') ? openPanel() : panel.classList.add('hidden');
+    });
+    closeBtn.addEventListener('click', () => panel.classList.add('hidden'));
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!val) return;
+      input.value = '';
+      handleUserText(val);
+    });
+  })();
 </script>
 </body>
 </html>
