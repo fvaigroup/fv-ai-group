@@ -84,9 +84,12 @@
   .float { animation: floaty 6s ease-in-out infinite; }
 
   .tab-btn[aria-selected="true"] {
+    position: relative;
     color: #fff;
-    border-color: #FF8C00;
-    background: linear-gradient(180deg, rgba(255,140,0,0.12), transparent);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, #00FFFF, #FF8C00);
+    box-shadow: 0 0 10px rgba(0,255,255,0.45), 0 0 20px rgba(255,140,0,0.45);
   }
 
   details > summary { list-style: none; }
@@ -127,7 +130,7 @@
   /* ---- Transición nativa entre páginas (navegadores Chromium; se ignora en el resto) ---- */
   @view-transition { navigation: auto; }
 
-  /* ---- Texto con degradado animado + brillo interactivo con el mouse ---- */
+  /* ---- Texto con degradado animado (cian → naranja) ---- */
   .shimmer-text {
     position: relative;
     display: inline-block;
@@ -136,7 +139,13 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
     animation: shimmerMove 7s ease-in-out infinite;
   }
-  .shimmer-text::after {
+  @keyframes shimmerMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* ---- Brillo interactivo opcional: se agrega junto a .shimmer-text cuando se quiere que siga el mouse ---- */
+  .shimmer-interactive::after {
     content: '';
     position: absolute; inset: 0;
     background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.6), transparent 70%);
@@ -144,10 +153,45 @@
     pointer-events: none;
     opacity: 0; transition: opacity .3s ease;
   }
-  .shimmer-text:hover::after { opacity: 1; }
-  @keyframes shimmerMove {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  .shimmer-interactive:hover::after { opacity: 1; }
+
+  /* ---- Texto neón sólido (sin degradado) ---- */
+  .text-neon-orange { color: #FF8C00; text-shadow: 0 0 8px rgba(255,140,0,0.65), 0 0 18px rgba(255,69,0,0.45); }
+  .text-neon-cyan { color: #00FFFF; text-shadow: 0 0 8px rgba(0,255,255,0.65), 0 0 18px rgba(0,204,255,0.45); }
+
+  /* ---- Recuadros de plataformas: relleno cian/naranja alternado ---- */
+  .platform-cyan { background: rgba(0,255,255,0.07); border-color: rgba(0,255,255,0.35); }
+  .platform-cyan:hover { background: rgba(0,255,255,0.14); border-color: rgba(0,255,255,0.55); }
+  .platform-orange { background: rgba(255,140,0,0.07); border-color: rgba(255,140,0,0.35); }
+  .platform-orange:hover { background: rgba(255,140,0,0.14); border-color: rgba(255,140,0,0.55); }
+
+  /* ---- Borde con degradado cian-naranja + brillo interactivo (tarjetas de testimonios) ---- */
+  .card-glow-border {
+    position: relative;
+    border: 1px solid transparent;
+    background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
+  }
+  .card-glow-border::before {
+    content: '';
+    position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.45), transparent 70%);
+    mix-blend-mode: overlay;
+    opacity: 0; transition: opacity .3s ease;
+    pointer-events: none;
+  }
+  .card-glow-border:hover::before { opacity: 1; }
+
+  /* ---- Tarjetas de diferencial: color sólido en reposo, degradado al pasar el mouse ---- */
+  .diff-card-orange, .diff-card-cyan {
+    position: relative;
+    transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+  }
+  .diff-card-orange { border: 1px solid rgba(255,140,0,0.4); }
+  .diff-card-cyan { border: 1px solid rgba(0,255,255,0.4); }
+  .diff-card-orange:hover, .diff-card-cyan:hover {
+    border-color: transparent;
+    background: linear-gradient(#0D0E12,#0D0E12) padding-box, linear-gradient(135deg,#00FFFF,#FF8C00) border-box;
+    box-shadow: 0 0 18px rgba(0,255,255,0.2), 0 0 18px rgba(255,140,0,0.2);
   }
 
   /* ---- Animación de entrada del hero ---- */
@@ -251,7 +295,7 @@
 
       <div class="text-left space-y-8 hero-copy">
         <h1 class="font-sans text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.12]">
-          Sistemas empresariales que <span class="shimmer-text">por fin funcionan como deberían</span>
+          SISTEMAS EMPRESARIALES QUE <span class="shimmer-text">POR FIN FUNCIONAN COMO DEBERÍAN</span>
         </h1>
 
         <p class="text-lg text-slate-400 leading-relaxed max-w-xl font-light">
@@ -363,8 +407,8 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">¿Alguna de estas le suena familiar?</h2>
-      <p class="text-slate-400 mt-4 leading-relaxed">Son las razones más comunes por las que una empresa nos llama por primera vez.</p>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">¿Alguna de estas le suena <span class="shimmer-text shimmer-interactive">familiar</span>?</h2>
+      <p class="mt-4 leading-relaxed text-neon-orange">Son las razones más comunes por las que una empresa nos llama por primera vez.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -388,7 +432,7 @@
 <section id="servicios" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Todo el ciclo, en un solo equipo</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Todo el <span class="text-neon-orange">ciclo</span>, en <span class="shimmer-text">un solo equipo</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed">Desde el primer diagnóstico hasta el soporte del día a día. Sin pasar su proyecto de mano en mano entre proveedores distintos.</p>
     </div>
 
@@ -446,30 +490,34 @@
 <section class="relative py-24 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Plataformas con las que trabajamos</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Plataformas con las que <span class="shimmer-text">trabajamos</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed">Somos independientes de proveedor: recomendamos la plataforma que se ajusta a su operación, no la que más nos convenga vender.</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border text-center hover:border-fv-cyan/40 transition-colors">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan">
         <p class="font-head font-semibold text-white">SAP</p>
-        <p class="text-xs text-slate-500 mt-1">ERP corporativo</p>
+        <p class="text-xs text-slate-400 mt-1">ERP corporativo</p>
       </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border text-center hover:border-fv-orange/40 transition-colors">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange">
         <p class="font-head font-semibold text-white">Odoo</p>
-        <p class="text-xs text-slate-500 mt-1">Suite modular</p>
+        <p class="text-xs text-slate-400 mt-1">Suite modular</p>
       </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border text-center hover:border-fv-cyan/40 transition-colors">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan">
         <p class="font-head font-semibold text-white">Microsoft Dynamics 365</p>
-        <p class="text-xs text-slate-500 mt-1">ERP / CRM</p>
+        <p class="text-xs text-slate-400 mt-1">ERP / CRM</p>
       </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border text-center hover:border-fv-orange/40 transition-colors">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange">
         <p class="font-head font-semibold text-white">Desarrollo a medida</p>
-        <p class="text-xs text-slate-500 mt-1">Cuando nada estándar encaja</p>
+        <p class="text-xs text-slate-400 mt-1">Cuando nada estándar encaja</p>
       </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border text-center hover:border-fv-cyan/40 transition-colors">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan">
         <p class="font-head font-semibold text-white">Integración de IA</p>
-        <p class="text-xs text-slate-500 mt-1">Sobre flujos existentes</p>
+        <p class="text-xs text-slate-400 mt-1">Sobre flujos existentes</p>
+      </div>
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange">
+        <p class="font-head font-semibold text-white">Valery Software POS</p>
+        <p class="text-xs text-slate-400 mt-1">Punto de venta</p>
       </div>
     </div>
   </div>
@@ -479,11 +527,11 @@
 <section id="metodologia" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-16">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Cómo trabajamos</h2>
-      <p class="text-slate-400 mt-4 leading-relaxed">Un mismo equipo acompaña las cinco etapas, sin traspasos entre proveedores.</p>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Cómo <span class="shimmer-text">trabajamos</span></h2>
+      <p class="text-slate-400 mt-4 leading-relaxed">Un mismo equipo acompaña las seis etapas, sin traspasos entre proveedores.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
       <div class="relative pl-0 md:pl-0">
         <span class="font-sans text-fv-cyan/70 text-sm">01</span>
         <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Asesoría Estratégica</h3>
@@ -505,7 +553,12 @@
         <p class="text-sm text-slate-400 leading-relaxed">Formación práctica sobre el sistema real de cada equipo.</p>
       </div>
       <div class="relative">
-        <span class="font-sans text-fv-gold/90 text-sm">05</span>
+        <span class="font-sans text-fv-cyan/70 text-sm">05</span>
+        <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Masterclasses y Workshops</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Formación estructurada para escalar el conocimiento a más audiencia.</p>
+      </div>
+      <div class="relative">
+        <span class="font-sans text-fv-gold/90 text-sm">06</span>
         <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Acompañamiento Continuo</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Mantenimiento evolutivo después del go-live.</p>
       </div>
@@ -518,21 +571,22 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       <div class="reveal">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-6">Por qué elegir a F&amp;V</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-6">Por qué <span class="shimmer-text">elegir</span> a <span class="text-neon-orange">F&amp;V</span></h2>
         <p class="text-slate-400 leading-relaxed mb-4">No vendemos una licencia y desaparecemos. Diseñamos, implementamos, capacitamos y damos soporte con el mismo equipo, de principio a fin.</p>
         <p class="text-slate-400 leading-relaxed">Al no estar atados a un solo fabricante, la recomendación de plataforma responde a su operación — no a una comisión de venta.</p>
+        <img src="assets/logo-mark.png" alt="" class="w-16 h-16 float mt-8">
       </div>
 
       <div class="space-y-4">
-        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border">
+        <div class="p-6 rounded-2xl bg-fv-surface diff-card-orange">
           <h3 class="font-head font-semibold text-white mb-1.5">Independientes de proveedor</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Trabajamos con SAP, Odoo, Dynamics 365 y desarrollo a medida — recomendamos según el caso, no según el catálogo.</p>
         </div>
-        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border">
+        <div class="p-6 rounded-2xl bg-fv-surface diff-card-cyan">
           <h3 class="font-head font-semibold text-white mb-1.5">Ciclo completo, un solo equipo</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Auditoría, implementación, capacitación y soporte no se subcontratan por separado.</p>
         </div>
-        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border">
+        <div class="p-6 rounded-2xl bg-fv-surface diff-card-orange">
           <h3 class="font-head font-semibold text-white mb-1.5">Supervisión humana, siempre</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Nuestros sistemas de automatización e inteligencia artificial operan como soporte operativo y analítico, manteniendo siempre la supervisión, el criterio ético y la decisión final bajo control de los profesionales de la organización.</p>
         </div>
@@ -545,12 +599,12 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Lo que dicen quienes ya trabajaron con nosotros</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Lo que dicen quienes <span class="text-neon-orange">ya</span> <span class="text-neon-cyan">trabajaron con nosotros</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed">Espacio reservado — pronto compartimos aquí los testimonios de nuestros clientes.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-7 rounded-2xl bg-fv-surface border border-dashed border-fv-border">
+      <div class="p-7 rounded-2xl card-glow-border">
         <div class="text-fv-gold/50 text-sm mb-4">★★★★★</div>
         <p class="text-slate-500 italic leading-relaxed mb-6">"Aquí va la cita del cliente sobre el resultado que obtuvo con el proyecto."</p>
         <div class="flex items-center gap-3">
@@ -561,7 +615,7 @@
           </div>
         </div>
       </div>
-      <div class="p-7 rounded-2xl bg-fv-surface border border-dashed border-fv-border">
+      <div class="p-7 rounded-2xl card-glow-border">
         <div class="text-fv-gold/50 text-sm mb-4">★★★★★</div>
         <p class="text-slate-500 italic leading-relaxed mb-6">"Aquí va la cita del cliente sobre el resultado que obtuvo con el proyecto."</p>
         <div class="flex items-center gap-3">
@@ -572,7 +626,7 @@
           </div>
         </div>
       </div>
-      <div class="p-7 rounded-2xl bg-fv-surface border border-dashed border-fv-border">
+      <div class="p-7 rounded-2xl card-glow-border">
         <div class="text-fv-gold/50 text-sm mb-4">★★★★★</div>
         <p class="text-slate-500 italic leading-relaxed mb-6">"Aquí va la cita del cliente sobre el resultado que obtuvo con el proyecto."</p>
         <div class="flex items-center gap-3">
@@ -590,15 +644,16 @@
 <!-- ============ FAQ ============ -->
 <section id="faq" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
-    <div class="reveal mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Preguntas frecuentes</h2>
+    <div class="reveal mb-12 flex items-center justify-between gap-6">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Preguntas <span class="shimmer-text">frecuentes</span></h2>
+      <img src="assets/signos.jpeg" alt="" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
     </div>
 
     <div class="space-y-3">
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
           <span>¿Cómo empieza un proyecto con F&amp;V?</span>
-          <svg class="chev w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <svg class="chev w-4 h-4 text-fv-cyan transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">Con una auditoría inicial de sus procesos y sistemas actuales. A partir de ahí armamos una propuesta de alcance y plataforma.</p>
       </details>
@@ -606,7 +661,7 @@
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
           <span>¿Trabajan con un solo ERP o con varios?</span>
-          <svg class="chev w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <svg class="chev w-4 h-4 text-fv-orange transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">Implementamos SAP, Odoo y Microsoft Dynamics 365, además de desarrollo a medida. La recomendación depende de su caso, no de un único producto que vendamos.</p>
       </details>
@@ -614,7 +669,7 @@
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
           <span>¿El soporte termina cuando el sistema entra en producción?</span>
-          <svg class="chev w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <svg class="chev w-4 h-4 text-fv-cyan transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">No. El acompañamiento post-implementación es parte del servicio: resolución de incidencias y ajustes a medida que el negocio cambia.</p>
       </details>
@@ -622,7 +677,7 @@
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
           <span>¿La capacitación es presencial o remota?</span>
-          <svg class="chev w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <svg class="chev w-4 h-4 text-fv-orange transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">Se adapta al equipo y al proyecto. Lo definimos junto a ustedes según la ubicación y la disponibilidad de cada área.</p>
       </details>
@@ -630,7 +685,7 @@
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
           <span>¿Qué control tenemos sobre las automatizaciones con IA?</span>
-          <svg class="chev w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <svg class="chev w-4 h-4 text-fv-cyan transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">Total. Nuestros sistemas de IA operan como soporte operativo y analítico; la decisión final siempre queda bajo el criterio de los profesionales de su organización.</p>
       </details>
@@ -770,9 +825,9 @@
 
 
 <script>
-  // Brillo interactivo del texto con degradado (sigue el mouse)
-  const shimmerEls = document.querySelectorAll('.shimmer-text');
-  shimmerEls.forEach(el => {
+  // Brillo interactivo que sigue el mouse (texto con .shimmer-interactive y tarjetas con .card-glow-border)
+  const interactiveGlowEls = document.querySelectorAll('.shimmer-interactive, .card-glow-border');
+  interactiveGlowEls.forEach(el => {
     el.addEventListener('mousemove', (e) => {
       const rect = el.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
