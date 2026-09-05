@@ -86,10 +86,9 @@
   .tab-btn[aria-selected="true"] {
     position: relative;
     color: #fff;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-    border: 1px solid transparent;
-    background: linear-gradient(135deg, #00FFFF 0%, #00F0FF 35%, #FF7A00 65%, #FF5A00 100%);
-    box-shadow: 0 0 16px rgba(0,255,255,0.75), 0 0 30px rgba(0,255,255,0.35), 0 0 16px rgba(255,122,0,0.75), 0 0 30px rgba(255,90,0,0.35);
+    border: 1px solid rgba(0,255,255,0.7);
+    background: transparent;
+    box-shadow: 0 0 8px rgba(0,255,255,0.6), 0 0 18px rgba(0,255,255,0.4), 0 0 30px rgba(0,255,255,0.2);
   }
 
   details > summary { list-style: none; }
@@ -198,9 +197,56 @@
   @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   .hero-copy > * { opacity: 0; animation: heroIn .7s ease forwards; }
   .hero-copy > *:nth-child(1) { animation-delay: .05s; }
-  .hero-copy > *:nth-child(2) { animation-delay: .18s; }
-  .hero-copy > *:nth-child(3) { animation-delay: .32s; }
-  .hero-copy > *:nth-child(4) { animation-delay: .46s; }
+  .hero-copy > *:nth-child(2) { animation-delay: .16s; }
+  .hero-copy > *:nth-child(3) { animation-delay: .28s; }
+  .hero-copy > *:nth-child(4) { animation-delay: .40s; }
+  .hero-copy > *:nth-child(5) { animation-delay: .52s; }
+
+  /* ---- Insignia tipo píldora con borde animado (chasing border) ---- */
+  .badge-glow {
+    border-radius: 9999px;
+    box-shadow: 0 0 16px rgba(0,255,255,0.22), 0 0 26px rgba(255,140,0,0.18);
+  }
+  .badge-border-spin {
+    position: relative;
+    display: inline-flex;
+    border-radius: 9999px;
+    padding: 2px; /* grosor del borde visible */
+    overflow: hidden;
+  }
+  .badge-border-spin::before {
+    content: '';
+    position: absolute;
+    inset: -60%;
+    background: conic-gradient(from 0deg, #00FFFF 0%, #FF8C00 50%, #00FFFF 100%);
+    animation: badgeSpin 4s linear infinite;
+  }
+  @keyframes badgeSpin { to { transform: rotate(360deg); } }
+  .badge-inner {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #020617;
+    border-radius: 9999px;
+    padding: 0.5rem 1.15rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    color: #e2e8f0;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.7), inset 0 -1px 2px rgba(255,255,255,0.05);
+  }
+  .badge-dot {
+    width: 7px; height: 7px; border-radius: 9999px; flex-shrink: 0;
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e, 0 0 10px rgba(34,197,94,0.6);
+    animation: badgePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes badgePulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.75); } }
+  @media (prefers-reduced-motion: reduce) {
+    .badge-border-spin::before { animation: none; }
+    .badge-dot { animation: none; }
+  }
   .hero-visual-in { opacity: 0; animation: heroIn .9s ease .3s forwards; }
   @media (prefers-reduced-motion: reduce) {
     .shimmer-text { animation: none; background-position: 30% 50%; }
@@ -213,7 +259,7 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
     mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   }
-  .marquee-track { display: flex; width: max-content; gap: 2.5rem; animation: marqueeScroll 32s linear infinite; }
+  .marquee-track { display: flex; width: max-content; gap: 2.5rem; animation: marqueeScroll 43s linear infinite; }
   .marquee:hover .marquee-track { animation-play-state: paused; }
   @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .brand-slot {
@@ -294,6 +340,15 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
       <div class="text-left space-y-8 hero-copy">
+        <div class="badge-glow inline-flex">
+          <div class="badge-border-spin">
+            <span class="badge-inner">
+              <span class="badge-dot"></span>
+              <span>⚡ Diseñando ecosistemas de IA con humanidad</span>
+            </span>
+          </div>
+        </div>
+
         <h1 class="font-sans text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.12]">
           SISTEMAS EMPRESARIALES QUE <span class="shimmer-text">POR FIN FUNCIONAN COMO DEBERÍAN</span>
         </h1>
@@ -311,9 +366,15 @@
           </a>
         </div>
 
-        <div class="flex flex-wrap gap-x-8 gap-y-2 pt-2 text-sm text-slate-500 font-head">
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-fv-cyan"></span>Diagnóstico sin compromiso</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-fv-orange"></span>Equipo multi-ERP, no atado a un solo proveedor</span>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-slate-300 font-head">
+            <span class="w-1.5 h-1.5 rounded-full bg-fv-cyan shadow-[0_0_6px_#00FFFF]"></span>
+            Diagnóstico sin compromiso
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-slate-300 font-head">
+            <span class="w-1.5 h-1.5 rounded-full bg-fv-orange shadow-[0_0_6px_#FF8C00]"></span>
+            Equipo multi-ERP, no atado a un solo proveedor
+          </span>
         </div>
       </div>
 
@@ -327,46 +388,40 @@
           <img src="assets/logo-mark.png" alt="" class="absolute inset-0 m-auto w-28 h-28 float">
         </div>
 
-        <!-- Tarjeta: cobertura de implementación -->
-        <div class="absolute top-6 right-0 w-72 bg-fv-surface/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl transform hover:-translate-y-1.5 transition-transform duration-500 z-20">
+        <!-- Tarjeta: métricas de impacto (glassmorphic, borde cian) -->
+        <div class="absolute top-6 right-0 w-72 bg-black/40 backdrop-blur-md border border-fv-cyan/40 rounded-2xl p-6 shadow-[0_0_24px_rgba(0,255,255,0.15)] transform hover:-translate-y-1.5 transition-transform duration-500 z-20">
           <div class="flex justify-between items-start mb-5">
             <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
-              <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M4 8h16M5 6h14a1 1 0 011 1v12a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg>
+              <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
             </div>
-            <span class="text-[10px] font-head font-semibold px-2 py-1 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/20">En curso</span>
+            <span class="text-[10px] font-head font-semibold px-2 py-1 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30">Proceso Optimizado</span>
           </div>
-          <h3 class="text-xs text-slate-400 font-head mb-3">Cobertura de implementación</h3>
-          <ul class="space-y-2.5 text-sm text-slate-200 font-head">
-            <li class="flex items-center justify-between"><span>SAP</span><span class="text-slate-500 text-xs">Módulos FI/CO</span></li>
-            <li class="flex items-center justify-between"><span>Odoo</span><span class="text-slate-500 text-xs">Full suite</span></li>
-            <li class="flex items-center justify-between"><span>Dynamics 365</span><span class="text-slate-500 text-xs">Business Central</span></li>
-          </ul>
+          <div class="mb-5">
+            <span class="text-3xl font-sans font-extrabold text-white tracking-tight">+45%</span>
+            <p class="text-xs text-slate-400 font-head mt-0.5">Eficiencia Operativa</p>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
+            <span class="w-2 h-2 rounded-full bg-fv-cyan animate-pulse shrink-0"></span>
+            <p class="text-xs text-slate-300 font-head">Módulo Financiero: <span class="text-fv-cyan font-semibold">Conectado</span></p>
+          </div>
         </div>
 
-        <!-- Tarjeta: bitácora de trabajo -->
-        <div class="absolute bottom-4 left-0 w-80 bg-black/80 backdrop-blur-md border border-white/10 rounded-2xl p-5 shadow-2xl transform hover:-translate-y-1.5 transition-transform duration-500 z-30">
-          <h3 class="text-xs text-slate-400 font-head mb-4">Bitácora del proyecto</h3>
-          <div class="space-y-3">
-            <div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/5">
-              <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                <svg class="w-4 h-4 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-head text-slate-200">Asesoría estratégica</p>
-                <p class="text-[11px] text-slate-500">Fase completada</p>
-              </div>
-              <div class="w-1.5 h-1.5 rounded-full bg-fv-orange"></div>
-            </div>
-            <div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/5">
-              <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                <svg class="w-4 h-4 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-head text-slate-200">Capacitación de equipo</p>
-                <p class="text-[11px] text-slate-500">En progreso</p>
-              </div>
-              <div class="w-1.5 h-1.5 rounded-full bg-fv-cyan"></div>
-            </div>
+        <!-- Tarjeta: pipeline de IA (glassmorphic, borde naranja) -->
+        <div class="absolute bottom-4 left-0 w-80 bg-black/40 backdrop-blur-md border border-fv-orange/40 rounded-2xl p-5 shadow-[0_0_24px_rgba(255,140,0,0.15)] transform hover:-translate-y-1.5 transition-transform duration-500 z-30">
+          <h3 class="text-xs text-slate-400 font-head mb-1">Tiempo de Respuesta</h3>
+          <p class="text-base font-sans font-bold text-white mb-4">De 48h <span class="text-slate-500 font-normal">a</span> <span class="text-fv-orange">3 min</span></p>
+
+          <div class="flex items-center gap-1 mb-4">
+            <span class="shrink-0 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] leading-none text-slate-300 font-head whitespace-nowrap">SAP / Odoo</span>
+            <svg class="w-3 h-3 text-slate-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="shrink-0 px-2 py-1 rounded-md bg-fv-orange/10 border border-fv-orange/30 text-[9px] leading-none text-fv-orange font-head font-semibold whitespace-nowrap">Motor IA F&amp;V</span>
+            <svg class="w-3 h-3 text-slate-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="shrink-0 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] leading-none text-slate-300 font-head whitespace-nowrap">Decisión Validada</span>
+          </div>
+
+          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
+            <span class="w-2 h-2 rounded-full bg-fv-orange animate-pulse shrink-0"></span>
+            <p class="text-xs text-slate-300 font-head">Supervisión Humana: <span class="text-fv-orange font-semibold">Activa</span></p>
           </div>
         </div>
       </div>
@@ -383,24 +438,30 @@
   <div class="marquee">
     <div class="marquee-track">
       <!-- Reemplazar cada .brand-slot por <img src="assets/clientes/nombre.png" class="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" alt="Nombre del cliente"> -->
-      <div class="brand-slot border-0 bg-white rounded-xl p-2 flex items-center justify-center"><img src="assets/clientes/licorway.jpeg" alt="Licorway" class="h-full w-auto object-contain rounded-md"></div>
-      <div class="brand-slot border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;">
-  <img src="assets/clientes/killjoy.jpeg" alt="Killjoy" class="h-full w-full object-contain rounded-md">
-</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><img src="assets/clientes/licorway.jpeg" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><img src="assets/clientes/killjoy.jpeg" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><img src="assets/clientes/licorway.jpeg" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><img src="assets/clientes/killjoy.jpeg" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;""><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
     </div>
   </div>
 </section>
@@ -790,7 +851,10 @@
 </footer>
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
-<div id="luci-widget" class="fixed bottom-6 left-6 z-40">
+<div id="luci-widget" class="fixed bottom-6 left-6 z-40 group">
+  <span class="absolute bottom-[calc(100%+10px)] left-0 whitespace-nowrap px-3 py-2 rounded-lg bg-black/90 border border-white/10 text-xs font-head text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none shadow-lg">
+    ¿Dudas? Habla con un especialista
+  </span>
   <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="assets/logo-mark.png" alt="Luci" class="w-8 h-8">
   </button>
