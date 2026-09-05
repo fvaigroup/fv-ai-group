@@ -86,10 +86,10 @@
   .tab-btn[aria-selected="true"] {
     position: relative;
     color: #fff;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
     border: 1px solid transparent;
-    background: linear-gradient(135deg, #00FFFF, #FF8C00);
-    box-shadow: 0 0 10px rgba(0,255,255,0.45), 0 0 20px rgba(255,140,0,0.45);
+    background: linear-gradient(135deg, #00FFFF 0%, #00F0FF 35%, #FF7A00 65%, #FF5A00 100%);
+    box-shadow: 0 0 16px rgba(0,255,255,0.75), 0 0 30px rgba(0,255,255,0.35), 0 0 16px rgba(255,122,0,0.75), 0 0 30px rgba(255,90,0,0.35);
   }
 
   details > summary { list-style: none; }
@@ -125,7 +125,7 @@
   }
 
   /* ---- Hover sutil en preguntas frecuentes ---- */
-  details > summary:hover { background-color: rgba(255,255,255,0.03); }
+  /* Sin efecto de hover en las preguntas frecuentes (quitado a pedido) */
 
   /* ---- Transición nativa entre páginas (navegadores Chromium; se ignora en el resto) ---- */
   @view-transition { navigation: auto; }
@@ -383,6 +383,7 @@
   <div class="marquee">
     <div class="marquee-track">
       <!-- Reemplazar cada .brand-slot por <img src="assets/clientes/nombre.png" class="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" alt="Nombre del cliente"> -->
+      <div class="brand-slot border-0 bg-white rounded-xl p-2 flex items-center justify-center"><img src="assets/clientes/licorway.jpeg" alt="Licorway" class="h-full w-auto object-contain rounded-md"></div>
       <div class="brand-slot">LOGO</div>
       <div class="brand-slot">LOGO</div>
       <div class="brand-slot">LOGO</div>
@@ -390,8 +391,7 @@
       <div class="brand-slot">LOGO</div>
       <div class="brand-slot">LOGO</div>
       <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
-      <div class="brand-slot">LOGO</div>
+      <div class="brand-slot border-0 bg-white rounded-xl p-2 flex items-center justify-center"><img src="assets/clientes/licorway.jpeg" alt="Licorway" class="h-full w-auto object-contain rounded-md"></div>
       <div class="brand-slot">LOGO</div>
       <div class="brand-slot">LOGO</div>
       <div class="brand-slot">LOGO</div>
@@ -407,7 +407,7 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">¿Alguna de estas le suena <span class="shimmer-text shimmer-interactive">familiar</span>?</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
       <p class="mt-4 leading-relaxed text-neon-orange">Son las razones más comunes por las que una empresa nos llama por primera vez.</p>
     </div>
 
