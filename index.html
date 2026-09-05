@@ -366,9 +366,15 @@
           </a>
         </div>
 
-        <div class="flex flex-wrap gap-x-8 gap-y-2 pt-2 text-sm text-slate-500 font-head">
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-fv-cyan"></span>Diagnóstico sin compromiso</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-fv-orange"></span>Equipo multi-ERP, no atado a un solo proveedor</span>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-slate-300 font-head">
+            <span class="w-1.5 h-1.5 rounded-full bg-fv-cyan shadow-[0_0_6px_#00FFFF]"></span>
+            Diagnóstico sin compromiso
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-slate-300 font-head">
+            <span class="w-1.5 h-1.5 rounded-full bg-fv-orange shadow-[0_0_6px_#FF8C00]"></span>
+            Equipo multi-ERP, no atado a un solo proveedor
+          </span>
         </div>
       </div>
 
@@ -382,46 +388,40 @@
           <img src="assets/logo-mark.png" alt="" class="absolute inset-0 m-auto w-28 h-28 float">
         </div>
 
-        <!-- Tarjeta: cobertura de implementación -->
-        <div class="absolute top-6 right-0 w-72 bg-fv-surface/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl transform hover:-translate-y-1.5 transition-transform duration-500 z-20">
+        <!-- Tarjeta: métricas de impacto (glassmorphic, borde cian) -->
+        <div class="absolute top-6 right-0 w-72 bg-black/40 backdrop-blur-md border border-fv-cyan/40 rounded-2xl p-6 shadow-[0_0_24px_rgba(0,255,255,0.15)] transform hover:-translate-y-1.5 transition-transform duration-500 z-20">
           <div class="flex justify-between items-start mb-5">
             <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
-              <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M4 8h16M5 6h14a1 1 0 011 1v12a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg>
+              <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
             </div>
-            <span class="text-[10px] font-head font-semibold px-2 py-1 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/20">En curso</span>
+            <span class="text-[10px] font-head font-semibold px-2 py-1 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30">Proceso Optimizado</span>
           </div>
-          <h3 class="text-xs text-slate-400 font-head mb-3">Cobertura de implementación</h3>
-          <ul class="space-y-2.5 text-sm text-slate-200 font-head">
-            <li class="flex items-center justify-between"><span>SAP</span><span class="text-slate-500 text-xs">Módulos FI/CO</span></li>
-            <li class="flex items-center justify-between"><span>Odoo</span><span class="text-slate-500 text-xs">Full suite</span></li>
-            <li class="flex items-center justify-between"><span>Dynamics 365</span><span class="text-slate-500 text-xs">Business Central</span></li>
-          </ul>
+          <div class="mb-5">
+            <span class="text-3xl font-sans font-extrabold text-white tracking-tight">+45%</span>
+            <p class="text-xs text-slate-400 font-head mt-0.5">Eficiencia Operativa</p>
+          </div>
+          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
+            <span class="w-2 h-2 rounded-full bg-fv-cyan animate-pulse shrink-0"></span>
+            <p class="text-xs text-slate-300 font-head">Módulo Financiero: <span class="text-fv-cyan font-semibold">Conectado</span></p>
+          </div>
         </div>
 
-        <!-- Tarjeta: bitácora de trabajo -->
-        <div class="absolute bottom-4 left-0 w-80 bg-black/80 backdrop-blur-md border border-white/10 rounded-2xl p-5 shadow-2xl transform hover:-translate-y-1.5 transition-transform duration-500 z-30">
-          <h3 class="text-xs text-slate-400 font-head mb-4">Bitácora del proyecto</h3>
-          <div class="space-y-3">
-            <div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/5">
-              <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                <svg class="w-4 h-4 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-head text-slate-200">Asesoría estratégica</p>
-                <p class="text-[11px] text-slate-500">Fase completada</p>
-              </div>
-              <div class="w-1.5 h-1.5 rounded-full bg-fv-orange"></div>
-            </div>
-            <div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/5">
-              <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                <svg class="w-4 h-4 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-head text-slate-200">Capacitación de equipo</p>
-                <p class="text-[11px] text-slate-500">En progreso</p>
-              </div>
-              <div class="w-1.5 h-1.5 rounded-full bg-fv-cyan"></div>
-            </div>
+        <!-- Tarjeta: pipeline de IA (glassmorphic, borde naranja) -->
+        <div class="absolute bottom-4 left-0 w-80 bg-black/40 backdrop-blur-md border border-fv-orange/40 rounded-2xl p-5 shadow-[0_0_24px_rgba(255,140,0,0.15)] transform hover:-translate-y-1.5 transition-transform duration-500 z-30">
+          <h3 class="text-xs text-slate-400 font-head mb-1">Tiempo de Respuesta</h3>
+          <p class="text-base font-sans font-bold text-white mb-4">De 48h <span class="text-slate-500 font-normal">a</span> <span class="text-fv-orange">3 min</span></p>
+
+          <div class="flex items-center gap-1 mb-4">
+            <span class="shrink-0 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] leading-none text-slate-300 font-head whitespace-nowrap">SAP / Odoo</span>
+            <svg class="w-3 h-3 text-slate-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="shrink-0 px-2 py-1 rounded-md bg-fv-orange/10 border border-fv-orange/30 text-[9px] leading-none text-fv-orange font-head font-semibold whitespace-nowrap">Motor IA F&amp;V</span>
+            <svg class="w-3 h-3 text-slate-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="shrink-0 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] leading-none text-slate-300 font-head whitespace-nowrap">Decisión Validada</span>
+          </div>
+
+          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
+            <span class="w-2 h-2 rounded-full bg-fv-orange animate-pulse shrink-0"></span>
+            <p class="text-xs text-slate-300 font-head">Supervisión Humana: <span class="text-fv-orange font-semibold">Activa</span></p>
           </div>
         </div>
       </div>
@@ -843,7 +843,10 @@
 </footer>
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
-<div id="luci-widget" class="fixed bottom-6 left-6 z-40">
+<div id="luci-widget" class="fixed bottom-6 left-6 z-40 group">
+  <span class="absolute bottom-[calc(100%+10px)] left-0 whitespace-nowrap px-3 py-2 rounded-lg bg-black/90 border border-white/10 text-xs font-head text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none shadow-lg">
+    ¿Dudas? Habla con un especialista
+  </span>
   <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="assets/logo-mark.png" alt="Luci" class="w-8 h-8">
   </button>
