@@ -113,6 +113,13 @@
   /* ---- Recuadros iluminados alternados ---- */
   .box-glow-cyan { border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 14px rgba(0,255,255,0.2); }
   .box-glow-orange { border: 1px solid rgba(255,140,0,0.4); box-shadow: 0 0 14px rgba(255,140,0,0.2); }
+
+  /* ---- Borde con degradado cian-naranja estático (recuadros destacados) ---- */
+  .box-gradient-border {
+    border: 1px solid transparent;
+    background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
+    box-shadow: 0 0 16px rgba(0,255,255,0.18), 0 0 16px rgba(255,140,0,0.18);
+  }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
@@ -222,19 +229,19 @@
       <p class="text-slate-400 leading-relaxed">De la mano con la asesoría estratégica, o inmediatamente después: entendemos cómo trabaja realmente su equipo hoy — con o sin sistema.</p>
     </div>
     <div class="lg:col-span-8 grid sm:grid-cols-2 gap-5">
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
         <p class="font-head text-white text-sm mb-1.5">Relevamiento por área</p>
         <p class="text-sm text-slate-500 leading-relaxed">Mapeamos procesos reales, no el organigrama.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
         <p class="font-head text-white text-sm mb-1.5">Uso real del sistema actual</p>
         <p class="text-sm text-slate-500 leading-relaxed">Cuánto de lo que ya pagan realmente usan.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
         <p class="font-head text-white text-sm mb-1.5">Candidatos a automatización</p>
         <p class="text-sm text-slate-500 leading-relaxed">Qué procesos son aptos para IA, y cuáles no.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
         <p class="font-head text-white text-sm mb-1.5">Radiografía técnica y financiera</p>
         <p class="text-sm text-slate-500 leading-relaxed">La base que justifica cada paso siguiente.</p>
       </div>
@@ -250,24 +257,28 @@
       <h2 class="font-sans text-3xl text-white mt-2 mb-4">Despliegue y <span class="text-neon-cyan">Ejecución</span></h2>
       <p class="text-slate-400 leading-relaxed">Una vez diagnosticado el problema y diseñada la estrategia, pasamos a la ejecución técnica de lo acordado.</p>
     </div>
-    <div class="lg:col-span-8 grid sm:grid-cols-2 gap-4">
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border">
-        <p class="font-head text-white font-semibold mb-1">SAP</p>
-        <p class="text-sm text-slate-500">Para operaciones que necesitan una columna vertebral corporativa robusta.</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border">
-        <p class="font-head text-white font-semibold mb-1">Odoo</p>
-        <p class="text-sm text-slate-500">Suite modular, flexible, para crecer módulo por módulo.</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border">
+    <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
         <p class="font-head text-white font-semibold mb-1">Microsoft Dynamics 365</p>
         <p class="text-sm text-slate-500">ERP y CRM integrados al ecosistema Microsoft.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
+        <p class="font-head text-white font-semibold mb-1">Odoo</p>
+        <p class="text-sm text-slate-500">Suite modular, flexible, para crecer módulo por módulo.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
+        <p class="font-head text-white font-semibold mb-1">Hexágono Software</p>
+        <p class="text-sm text-slate-500">Solución de gestión adaptada a operaciones locales.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
+        <p class="font-head text-white font-semibold mb-1">Agentes de IA</p>
+        <p class="text-sm text-slate-500">Automatizaciones que ejecutan tareas puntuales, con supervisión humana.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
         <p class="font-head text-white font-semibold mb-1">Desarrollo a medida</p>
         <p class="text-sm text-slate-500">Cuando ningún estándar cubre el proceso tal como es.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border sm:col-span-2">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
         <p class="font-head text-white font-semibold mb-1">Integración de IA</p>
         <p class="text-sm text-slate-500">Sobre flujos que ya existen — sin reconstruir lo que ya funciona.</p>
       </div>
@@ -285,15 +296,15 @@
     </div>
     <div class="lg:col-span-8">
       <ul class="space-y-4">
-        <li class="flex gap-4 p-5 rounded-xl bg-black border border-fv-border">
+        <li class="flex gap-4 p-5 rounded-xl bg-fv-surface box-glow-cyan">
           <svg class="w-5 h-5 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
           <p class="text-slate-300">Formación sobre el sistema real de la empresa, no un entorno de demostración genérico.</p>
         </li>
-        <li class="flex gap-4 p-5 rounded-xl bg-black border border-fv-border">
+        <li class="flex gap-4 p-5 rounded-xl bg-fv-surface box-glow-orange">
           <svg class="w-5 h-5 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
           <p class="text-slate-300">Sesiones separadas por rol, para que cada persona aprenda solo lo que su función necesita.</p>
         </li>
-        <li class="flex gap-4 p-5 rounded-xl bg-black border border-fv-border">
+        <li class="flex gap-4 p-5 rounded-xl bg-fv-surface box-glow-cyan">
           <svg class="w-5 h-5 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
           <p class="text-slate-300">Material de referencia que queda con el equipo después de cerrado el proyecto.</p>
         </li>
@@ -311,9 +322,9 @@
       <p class="text-slate-400 leading-relaxed">Productos formativos más estructurados y estandarizados, para escalar el conocimiento a audiencias más amplias.</p>
     </div>
     <div class="lg:col-span-8">
-      <div class="p-7 rounded-2xl bg-fv-surface border border-fv-border">
+      <div class="p-7 rounded-2xl bg-fv-surface box-gradient-border">
         <p class="text-slate-300 leading-relaxed mb-4">Programas en gestión empresarial e inteligencia artificial aplicada, con contenido práctico sobre casos reales — como complemento asíncrono a la habilitación directa, o como formación independiente.</p>
-        <a href="contacto.html" class="inline-flex items-center gap-2 font-head text-sm text-fv-orange link-underline pb-0.5">Consultar próximas fechas</a>
+        <a href="contacto.html" class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 font-head text-sm font-semibold rounded-lg">Consultar próximas fechas</a>
       </div>
     </div>
   </div>
@@ -328,19 +339,19 @@
       <p class="text-slate-400 leading-relaxed">Retención y continuidad a largo plazo, una vez todo lo anterior está en marcha.</p>
     </div>
     <div class="lg:col-span-8 grid sm:grid-cols-2 gap-5">
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
         <p class="font-head text-white text-sm mb-1.5">Canal directo</p>
         <p class="text-sm text-slate-500 leading-relaxed">Para reportar incidencias, sin pasar por un call center genérico.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
         <p class="font-head text-white text-sm mb-1.5">Mismo equipo</p>
         <p class="text-sm text-slate-500 leading-relaxed">Quien implementó el sistema es quien lo sostiene después.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
         <p class="font-head text-white text-sm mb-1.5">Mantenimiento evolutivo</p>
         <p class="text-sm text-slate-500 leading-relaxed">Ajustes de configuración a medida que el proceso de negocio cambia.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
         <p class="font-head text-white text-sm mb-1.5">Revisión periódica</p>
         <p class="text-sm text-slate-500 leading-relaxed">Para que el sistema no se estanque un año después del proyecto.</p>
       </div>
@@ -351,11 +362,11 @@
 <!-- ============ CTA FINAL ============ -->
 <section class="relative py-24">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
-    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-fv-surface to-black border border-fv-border p-10 sm:p-16 text-center">
+    <div class="relative rounded-3xl overflow-hidden p-10 sm:p-16 text-center" style="border:1px solid transparent; background: linear-gradient(135deg, #0D0E12, #000000) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box; box-shadow: 0 0 20px rgba(0,255,255,0.2), 0 0 20px rgba(255,140,0,0.2);">
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">¿Por dónde empezamos?</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">¿Por dónde <span class="text-neon-orange">empezamos?</span></h2>
         <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos qué servicio necesita y le respondemos con los próximos pasos.</p>
         <a href="contacto.html" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Ir a Contacto</a>
       </div>

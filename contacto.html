@@ -66,6 +66,32 @@
   .fv-error { font-size: 12px; color: #f87171; margin-top: 6px; }
   #form-status.is-success { background: rgba(0,255,255,0.08); border: 1px solid rgba(0,255,255,0.3); color: #7fe7e7; }
   #form-status.is-error { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.3); color: #f87171; }
+
+  /* ---- Texto con degradado animado (cian → naranja) ---- */
+  .shimmer-text {
+    position: relative; display: inline-block;
+    background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shimmerMove 7s ease-in-out infinite;
+  }
+  @keyframes shimmerMove { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @media (prefers-reduced-motion: reduce) { .shimmer-text { animation: none; background-position: 30% 50%; } }
+
+  /* ---- Texto neón sólido ---- */
+  .text-neon-orange { color: #FF8C00; text-shadow: 0 0 8px rgba(255,140,0,0.65), 0 0 18px rgba(255,69,0,0.45); }
+  .text-neon-cyan { color: #00FFFF; text-shadow: 0 0 8px rgba(0,255,255,0.65), 0 0 18px rgba(0,204,255,0.45); }
+
+  /* ---- Recuadros iluminados ---- */
+  .box-glow-cyan { border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 14px rgba(0,255,255,0.2); }
+  .box-glow-orange { border: 1px solid rgba(255,140,0,0.4); box-shadow: 0 0 14px rgba(255,140,0,0.2); }
+
+  /* ---- Borde con degradado cian-naranja estático ---- */
+  .box-gradient-border {
+    border: 1px solid transparent;
+    background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
+    box-shadow: 0 0 16px rgba(0,255,255,0.18), 0 0 16px rgba(255,140,0,0.18);
+  }
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
 
@@ -93,7 +119,7 @@
   }
 
   /* ---- Hover sutil en preguntas frecuentes ---- */
-  details > summary:hover { background-color: rgba(255,255,255,0.03); }
+  /* Sin efecto de hover en las preguntas frecuentes (quitado a pedido) */
 
   /* ---- Transición nativa entre páginas (navegadores Chromium; se ignora en el resto) ---- */
   @view-transition { navigation: auto; }
@@ -159,7 +185,7 @@
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="max-w-2xl mb-16 reveal">
-      <h1 class="font-sans text-4xl sm:text-5xl font-semibold text-white leading-tight mb-6">Hablemos de su próximo proyecto</h1>
+      <h1 class="font-sans text-4xl sm:text-5xl font-semibold text-white leading-tight mb-6">Hablemos de su <span class="text-neon-orange">próximo</span> <span class="shimmer-text">proyecto</span></h1>
       <p class="text-lg text-slate-400 leading-relaxed font-light">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo con los próximos pasos.</p>
     </div>
 
@@ -314,16 +340,16 @@
 <section class="relative py-20 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-      <div class="p-6 rounded-2xl bg-black border border-fv-border text-center">
-        <p class="font-head text-white text-sm mb-1.5">Independientes de proveedor</p>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan text-center">
+        <p class="font-head text-fv-orange text-sm mb-1.5">Independientes de proveedor</p>
         <p class="text-sm text-slate-500 leading-relaxed">SAP, Odoo, Dynamics 365 y desarrollo a medida.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border text-center">
-        <p class="font-head text-white text-sm mb-1.5">Ciclo completo</p>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange text-center">
+        <p class="font-head text-fv-cyan text-sm mb-1.5">Ciclo completo</p>
         <p class="text-sm text-slate-500 leading-relaxed">Un mismo equipo, de la asesoría al soporte.</p>
       </div>
-      <div class="p-6 rounded-2xl bg-black border border-fv-border text-center">
-        <p class="font-head text-white text-sm mb-1.5">Supervisión humana</p>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan text-center">
+        <p class="font-head text-fv-orange text-sm mb-1.5">Supervisión humana</p>
         <p class="text-sm text-slate-500 leading-relaxed">La decisión final siempre es de su equipo.</p>
       </div>
     </div>
@@ -333,8 +359,8 @@
 <!-- ============ AGENDAR LLAMADA ============ -->
 <section class="relative py-20 border-b border-white/5">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
-    <div class="rounded-3xl bg-fv-surface border border-fv-border p-10 sm:p-12 text-center">
-      <h2 class="font-sans text-2xl sm:text-3xl text-white mb-3">¿Prefiere hablar directamente?</h2>
+    <div class="rounded-3xl bg-fv-surface box-gradient-border p-10 sm:p-12 text-center">
+      <h2 class="font-sans text-2xl sm:text-3xl text-white mb-3">¿Prefiere <span class="text-neon-orange">hablar</span> <span class="shimmer-text">directamente</span>?</h2>
       <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Reserve una llamada breve con nuestro equipo para conversar su caso antes de escribirnos.</p>
       <!--
         Espacio listo para un calendario interactivo (Calendly, Cal.com, etc.).
@@ -353,19 +379,19 @@
 <!-- ============ FAQ CONTRATACIÓN ============ -->
 <section class="relative py-20">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
-    <h2 class="font-sans text-2xl sm:text-3xl text-white mb-8">Sobre el proceso de contratación</h2>
+    <h2 class="font-sans text-2xl sm:text-3xl text-white mb-8">Sobre el <span class="text-neon-cyan">proceso</span> de <span class="text-neon-orange">contratación</span></h2>
     <div class="space-y-3">
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
           <span>¿Cómo se cotiza un proyecto?</span>
-          <svg class="w-4 h-4 text-slate-400 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">Después de la asesoría estratégica inicial, enviamos una propuesta con alcance, tiempos y costo — antes de comprometer cualquier presupuesto de ejecución.</p>
       </details>
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
           <span>¿En cuánto tiempo responden a un primer contacto?</span>
-          <svg class="w-4 h-4 text-slate-400 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <svg class="w-4 h-4 text-fv-orange transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">En 24 a 48 horas hábiles por WhatsApp o correo. Nuestro horario de atención es de lunes a viernes, de 9:00 a.m. a 5:00 p.m.</p>
       </details>
