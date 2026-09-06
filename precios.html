@@ -62,14 +62,14 @@
     transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
   }
   .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
-  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:active { transform: scale(0.95); transition: transform .1s ease; }
 
   .btn-secondary {
     background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
     transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
   }
   .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
-  .btn-secondary:active { transform: scale(0.97); }
+  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
 
   /* ---- Wordmark con degradado cian-naranja y brillo ---- */
   .brand-gradient {
@@ -110,14 +110,45 @@
 
   /* ---- Asistente Luci ---- */
   .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
+  .luci-typing { display: inline-flex; gap: 4px; background: #121319; border: 1px solid #1F232B; border-radius: 12px 12px 12px 4px; padding: 10px 14px; }
+  .luci-typing span { width: 6px; height: 6px; border-radius: 50%; background: #64748b; animation: luciTypingBounce 1.2s infinite ease-in-out; }
+  .luci-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .luci-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes luciTypingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
   .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
   .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: all .2s ease; background: transparent; }
   .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
+
+  /* ---- Barra de progreso de scroll ---- */
+  #scroll-progress {
+    position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    z-index: 60; transition: width .08s linear;
+    box-shadow: 0 0 8px rgba(0,255,255,0.5);
+  }
+
+  /* ---- Spotlight que sigue el mouse ---- */
+  #mouse-spotlight {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0,204,255,0.06), transparent 40%);
+    transition: background .1s ease-out;
+  }
+
+  /* ---- Transición compartida del logo entre páginas (View Transitions API) ---- */
+  #site-header a[href="index.html"] img { view-transition-name: site-logo; }
+  @media (prefers-reduced-motion: reduce) { #site-header a[href="index.html"] img { view-transition-name: none; } }
+
+  /* ---- Fondo de constelación (canvas) ---- */
+  #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
+<canvas id="constellation-canvas"></canvas>
+
+<div id="mouse-spotlight"></div>
+
 
 <!-- ============ HEADER ============ -->
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
@@ -156,6 +187,8 @@
     </div>
   </div>
 </header>
+<div id="scroll-progress"></div>
+
 
 <main>
 
@@ -182,7 +215,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Asesoría Estratégica (destacada) -->
-      <div class="price-card is-featured p-7 flex flex-col reveal">
+      <div class="price-card tilt-card is-featured p-7 flex flex-col reveal">
         <span class="inline-block w-fit text-[11px] font-head font-semibold px-2.5 py-1 rounded-full bg-fv-orange/15 text-fv-orange border border-fv-orange/30 mb-4">Recomendado para empezar</span>
         <h3 class="font-head text-white text-lg font-semibold mb-1">Asesoría Estratégica</h3>
         <p class="text-sm text-slate-500 mb-5">Diagnóstico y hoja de ruta antes de ejecutar.</p>
@@ -200,7 +233,7 @@
       </div>
 
       <!-- Evaluación de Procesos -->
-      <div class="price-card p-7 flex flex-col reveal">
+      <div class="price-card tilt-card p-7 flex flex-col reveal">
         <h3 class="font-head text-white text-lg font-semibold mb-1">Evaluación de Procesos</h3>
         <p class="text-sm text-slate-500 mb-5">Auditoría técnica y financiera de lo que ya tiene.</p>
         <div class="mb-6">
@@ -217,7 +250,7 @@
       </div>
 
       <!-- Despliegue y Ejecución -->
-      <div class="price-card p-7 flex flex-col reveal">
+      <div class="price-card tilt-card p-7 flex flex-col reveal">
         <h3 class="font-head text-white text-lg font-semibold mb-1">Despliegue y Ejecución</h3>
         <p class="text-sm text-slate-500 mb-5">SAP, Odoo, Dynamics 365 o desarrollo a medida.</p>
         <div class="mb-6">
@@ -233,7 +266,7 @@
       </div>
 
       <!-- Habilitación de Equipos -->
-      <div class="price-card p-7 flex flex-col reveal">
+      <div class="price-card tilt-card p-7 flex flex-col reveal">
         <h3 class="font-head text-white text-lg font-semibold mb-1">Habilitación de Equipos</h3>
         <p class="text-sm text-slate-500 mb-5">Formación práctica sobre el sistema real.</p>
         <div class="mb-6">
@@ -249,7 +282,7 @@
       </div>
 
       <!-- Masterclasses y Workshops -->
-      <div class="price-card p-7 flex flex-col reveal">
+      <div class="price-card tilt-card p-7 flex flex-col reveal">
         <h3 class="font-head text-white text-lg font-semibold mb-1">Masterclasses y Workshops</h3>
         <p class="text-sm text-slate-500 mb-5">Formación estructurada para audiencias amplias.</p>
         <div class="mb-6">
@@ -265,7 +298,7 @@
       </div>
 
       <!-- Acompañamiento Continuo -->
-      <div class="price-card p-7 flex flex-col reveal">
+      <div class="price-card tilt-card p-7 flex flex-col reveal">
         <h3 class="font-head text-white text-lg font-semibold mb-1">Acompañamiento Continuo</h3>
         <p class="text-sm text-slate-500 mb-5">Retención y soporte después del go-live.</p>
         <div class="mb-6">
@@ -424,6 +457,29 @@
     mobileMenu.classList.add('hidden'); iconOpen.classList.remove('hidden'); iconClose.classList.add('hidden');
   }));
 
+  // ---- Tilt 3D en tarjetas (sigue al mouse) ----
+  (function () {
+    const tiltCards = document.querySelectorAll('.tilt-card');
+    if (!tiltCards.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    tiltCards.forEach(card => {
+      card.style.transformStyle = 'preserve-3d';
+      card.style.willChange = 'transform';
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        const rotateX = (py - 0.5) * -6;
+        const rotateY = (px - 0.5) * 6;
+        card.style.transition = 'transform .05s linear';
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform .5s ease';
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
+    });
+  })();
+
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
@@ -484,17 +540,29 @@
       });
     }
 
+    function showTyping() {
+      const typing = document.createElement('div');
+      typing.className = 'luci-typing';
+      typing.id = 'luci-typing-indicator';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      messages.appendChild(typing);
+      messages.scrollTop = messages.scrollHeight;
+      return typing;
+    }
+
     function botReply(userText) {
       const norm = userText.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       const hit = faq.find(item => item.k.some(kw => norm.includes(kw)));
+      const typing = showTyping();
       setTimeout(() => {
+        typing.remove();
         if (hit) {
           addMessage(hit.a, 'bot');
         } else {
           addMessage('No tengo una respuesta preparada para eso todavía. ¿Le gustaría hablar directo con nuestro equipo por WhatsApp?', 'bot');
           addQuick(['Sí, ir a WhatsApp']);
         }
-      }, 350);
+      }, 700);
     }
 
     function handleUserText(text) {
@@ -531,6 +599,109 @@
       input.value = '';
       handleUserText(val);
     });
+  })();
+
+  // ---- Barra de progreso de scroll ----
+  (function () {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  })();
+
+  // ---- Spotlight que sigue el mouse ----
+  (function () {
+    const spotlight = document.getElementById('mouse-spotlight');
+    if (!spotlight || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    window.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
+    }, { passive: true });
+  })();
+
+  // ---- Fondo de constelación interactivo (canvas, requestAnimationFrame) ----
+  (function () {
+    const canvas = document.getElementById('constellation-canvas');
+    if (!canvas) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
+
+    const ctx = canvas.getContext('2d');
+    let w, h, particles, mouse = { x: null, y: null };
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeParticles() {
+      const count = Math.min(70, Math.floor((w * h) / 22000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      const linkDist = 130;
+
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        // atracción muy sutil hacia el mouse
+        if (mouse.x !== null) {
+          const dx = mouse.x - p.x, dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160) {
+            p.x += dx * 0.0018;
+            p.y += dy * 0.0018;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,255,255,0.55)';
+        ctx.fill();
+      });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < linkDist) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(255,140,0,${0.12 * (1 - dist / linkDist)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+    window.addEventListener('resize', () => { resize(); makeParticles(); });
+
+    resize();
+    makeParticles();
+    tick();
   })();
 </script>
 </body>

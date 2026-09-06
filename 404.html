@@ -27,23 +27,127 @@
       }
     }
   }
+
+  // ---- Spotlight que sigue el mouse ----
+  (function () {
+    const spotlight = document.getElementById('mouse-spotlight');
+    if (!spotlight || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    window.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
+    }, { passive: true });
+  })();
+
+  // ---- Fondo de constelación interactivo (canvas, requestAnimationFrame) ----
+  (function () {
+    const canvas = document.getElementById('constellation-canvas');
+    if (!canvas) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
+
+    const ctx = canvas.getContext('2d');
+    let w, h, particles, mouse = { x: null, y: null };
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeParticles() {
+      const count = Math.min(70, Math.floor((w * h) / 22000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      const linkDist = 130;
+
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        // atracción muy sutil hacia el mouse
+        if (mouse.x !== null) {
+          const dx = mouse.x - p.x, dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160) {
+            p.x += dx * 0.0018;
+            p.y += dy * 0.0018;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,255,255,0.55)';
+        ctx.fill();
+      });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < linkDist) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(255,140,0,${0.12 * (1 - dist / linkDist)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+    window.addEventListener('resize', () => { resize(); makeParticles(); });
+
+    resize();
+    makeParticles();
+    tick();
+  })();
 </script>
 <style>
   html { background: #000; } body { background: #000; }
   .grain { background-image: radial-gradient(#ffffff08 1px, transparent 1px); background-size: 28px 28px; }
   .btn-primary { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3); transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; }
   .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); }
+  .btn-primary:active { transform: scale(0.95); filter: brightness(0.98); transition: transform .1s ease; }
   .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease; }
   .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); }
+  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
   @keyframes hexspin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
   .hex-spin { animation: hexspin 40s linear infinite; }
   @keyframes floaty { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
   .float { animation: floaty 6s ease-in-out infinite; }
   .link-underline { background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
   .link-underline:hover { background-size: 100% 1.5px; }
+
+  /* ---- Spotlight que sigue el mouse ---- */
+  #mouse-spotlight {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0,204,255,0.06), transparent 40%);
+    transition: background .1s ease-out;
+  }
+
+  /* ---- Fondo de constelación (canvas) ---- */
+  #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased min-h-screen flex items-center justify-center relative overflow-hidden px-6">
+<canvas id="constellation-canvas"></canvas>
+
+<div id="mouse-spotlight"></div>
+
 
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"></div>
   <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3"></div>

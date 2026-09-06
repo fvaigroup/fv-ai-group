@@ -107,14 +107,14 @@
     transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
   }
   .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
-  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:active { transform: scale(0.95); transition: transform .1s ease; }
 
   .btn-secondary {
     background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
     transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
   }
   .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
-  .btn-secondary:active { transform: scale(0.97); }
+  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
 
   /* ---- Wordmark con degradado cian-naranja y brillo ---- */
   .brand-gradient {
@@ -272,14 +272,45 @@
 
   /* ---- Asistente Luci ---- */
   .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
+  .luci-typing { display: inline-flex; gap: 4px; background: #121319; border: 1px solid #1F232B; border-radius: 12px 12px 12px 4px; padding: 10px 14px; }
+  .luci-typing span { width: 6px; height: 6px; border-radius: 50%; background: #64748b; animation: luciTypingBounce 1.2s infinite ease-in-out; }
+  .luci-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .luci-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes luciTypingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
   .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
   .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: all .2s ease; background: transparent; }
   .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
+
+  /* ---- Barra de progreso de scroll ---- */
+  #scroll-progress {
+    position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    z-index: 60; transition: width .08s linear;
+    box-shadow: 0 0 8px rgba(0,255,255,0.5);
+  }
+
+  /* ---- Spotlight que sigue el mouse ---- */
+  #mouse-spotlight {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0,204,255,0.06), transparent 40%);
+    transition: background .1s ease-out;
+  }
+
+  /* ---- Transición compartida del logo entre páginas (View Transitions API) ---- */
+  #site-header a[href="index.html"] img { view-transition-name: site-logo; }
+  @media (prefers-reduced-motion: reduce) { #site-header a[href="index.html"] img { view-transition-name: none; } }
+
+  /* ---- Fondo de constelación (canvas) ---- */
+  #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
+<canvas id="constellation-canvas"></canvas>
+
+<div id="mouse-spotlight"></div>
+
 
 <!-- ============ HEADER ============ -->
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
@@ -327,6 +358,8 @@
     </div>
   </div>
 </header>
+<div id="scroll-progress"></div>
+
 
 <main>
 
@@ -389,7 +422,7 @@
         </div>
 
         <!-- Tarjeta: métricas de impacto (glassmorphic, borde cian) -->
-        <div class="absolute top-6 right-0 w-72 bg-black/40 backdrop-blur-md border border-fv-cyan/40 rounded-2xl p-6 shadow-[0_0_24px_rgba(0,255,255,0.15)] transform hover:-translate-y-1.5 transition-transform duration-500 z-20">
+        <div class="tilt-card absolute top-6 right-0 w-72 bg-black/40 backdrop-blur-md border border-fv-cyan/40 rounded-2xl p-6 shadow-[0_0_24px_rgba(0,255,255,0.15)] z-20">
           <div class="flex justify-between items-start mb-5">
             <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
               <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
@@ -397,17 +430,17 @@
             <span class="text-[10px] font-head font-semibold px-2 py-1 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30">Proceso Optimizado</span>
           </div>
           <div class="mb-5">
-            <span class="text-3xl font-sans font-extrabold text-white tracking-tight">+45%</span>
+            <span class="text-3xl font-sans font-extrabold text-white tracking-tight"><span id="counter-eficiencia" data-target="45" data-prefix="+" data-suffix="%">+0%</span></span>
             <p class="text-xs text-slate-400 font-head mt-0.5">Eficiencia Operativa</p>
           </div>
           <div class="flex items-center gap-2 pt-4 border-t border-white/10">
-            <span class="w-2 h-2 rounded-full bg-fv-cyan animate-pulse shrink-0"></span>
-            <p class="text-xs text-slate-300 font-head">Módulo Financiero: <span class="text-fv-cyan font-semibold">Conectado</span></p>
+            <span id="live-status-dot" class="w-2 h-2 rounded-full bg-fv-cyan animate-pulse shrink-0"></span>
+            <p id="live-status-text" class="text-xs text-slate-300 font-head transition-opacity duration-300">Módulo Financiero: <span class="text-fv-cyan font-semibold">Conectado</span></p>
           </div>
         </div>
 
         <!-- Tarjeta: pipeline de IA (glassmorphic, borde naranja) -->
-        <div class="absolute bottom-4 left-0 w-80 bg-black/40 backdrop-blur-md border border-fv-orange/40 rounded-2xl p-5 shadow-[0_0_24px_rgba(255,140,0,0.15)] transform hover:-translate-y-1.5 transition-transform duration-500 z-30">
+        <div class="tilt-card absolute bottom-4 left-0 w-80 bg-black/40 backdrop-blur-md border border-fv-orange/40 rounded-2xl p-5 shadow-[0_0_24px_rgba(255,140,0,0.15)] z-30">
           <h3 class="text-xs text-slate-400 font-head mb-1">Tiempo de Respuesta</h3>
           <p class="text-base font-sans font-bold text-white mb-4">De 48h <span class="text-slate-500 font-normal">a</span> <span class="text-fv-orange">3 min</span></p>
 
@@ -589,41 +622,45 @@
 <!-- ============ METODOLOGÍA ============ -->
 <section id="metodologia" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="reveal max-w-2xl mb-16">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Cómo <span class="shimmer-text">trabajamos</span></h2>
-      <p class="text-slate-400 mt-4 leading-relaxed">Un mismo equipo acompaña las seis etapas, sin traspasos entre proveedores.</p>
-    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="reveal lg:sticky lg:top-32">
+          <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Cómo <span class="shimmer-text">trabajamos</span></h2>
+          <p class="text-slate-400 mt-4 leading-relaxed">Un mismo equipo acompaña las seis etapas, sin traspasos entre proveedores.</p>
+        </div>
+      </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-      <div class="relative pl-0 md:pl-0">
-        <span class="font-sans text-fv-cyan/70 text-sm">01</span>
-        <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Asesoría Estratégica</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Diagnóstico de alto nivel y definición de la solución antes de ejecutar.</p>
-      </div>
-      <div class="relative">
-        <span class="font-sans text-fv-cyan/70 text-sm">02</span>
-        <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Evaluación de Procesos</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Auditoría técnica y financiera de procesos y sistemas actuales.</p>
-      </div>
-      <div class="relative">
-        <span class="font-sans text-fv-orange/80 text-sm">03</span>
-        <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Despliegue y Ejecución</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Configuración, migración de datos e integración de IA cuando aplica.</p>
-      </div>
-      <div class="relative">
-        <span class="font-sans text-fv-orange/80 text-sm">04</span>
-        <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Habilitación de Equipos</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Formación práctica sobre el sistema real de cada equipo.</p>
-      </div>
-      <div class="relative">
-        <span class="font-sans text-fv-cyan/70 text-sm">05</span>
-        <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Masterclasses y Workshops</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Formación estructurada para escalar el conocimiento a más audiencia.</p>
-      </div>
-      <div class="relative">
-        <span class="font-sans text-fv-gold/90 text-sm">06</span>
-        <h3 class="font-head text-white font-semibold mt-2 mb-1.5">Acompañamiento Continuo</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Mantenimiento evolutivo después del go-live.</p>
+      <div class="lg:col-span-8 space-y-14">
+        <div class="relative pl-8 border-l-2 border-fv-cyan/30">
+          <span class="font-sans text-fv-cyan/70 text-sm">01</span>
+          <h3 class="font-head text-white font-semibold mt-2 mb-1.5 text-lg">Asesoría Estratégica</h3>
+          <p class="text-slate-400 leading-relaxed max-w-md">Diagnóstico de alto nivel y definición de la solución antes de ejecutar.</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-fv-cyan/30">
+          <span class="font-sans text-fv-cyan/70 text-sm">02</span>
+          <h3 class="font-head text-white font-semibold mt-2 mb-1.5 text-lg">Evaluación de Procesos</h3>
+          <p class="text-slate-400 leading-relaxed max-w-md">Auditoría técnica y financiera de procesos y sistemas actuales.</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-fv-orange/30">
+          <span class="font-sans text-fv-orange/80 text-sm">03</span>
+          <h3 class="font-head text-white font-semibold mt-2 mb-1.5 text-lg">Despliegue y Ejecución</h3>
+          <p class="text-slate-400 leading-relaxed max-w-md">Configuración, migración de datos e integración de IA cuando aplica.</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-fv-orange/30">
+          <span class="font-sans text-fv-orange/80 text-sm">04</span>
+          <h3 class="font-head text-white font-semibold mt-2 mb-1.5 text-lg">Habilitación de Equipos</h3>
+          <p class="text-slate-400 leading-relaxed max-w-md">Formación práctica sobre el sistema real de cada equipo.</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-fv-cyan/30">
+          <span class="font-sans text-fv-cyan/70 text-sm">05</span>
+          <h3 class="font-head text-white font-semibold mt-2 mb-1.5 text-lg">Masterclasses y Workshops</h3>
+          <p class="text-slate-400 leading-relaxed max-w-md">Formación estructurada para escalar el conocimiento a más audiencia.</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-fv-gold/30">
+          <span class="font-sans text-fv-gold/90 text-sm">06</span>
+          <h3 class="font-head text-white font-semibold mt-2 mb-1.5 text-lg">Acompañamiento Continuo</h3>
+          <p class="text-slate-400 leading-relaxed max-w-md">Mantenimiento evolutivo después del go-live.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -892,6 +929,91 @@
 
 <script>
   // Brillo interactivo que sigue el mouse (texto con .shimmer-interactive y tarjetas con .card-glow-border)
+  // ---- Datos en vivo simulados: el indicador de estado cicla cada ~9s ----
+  (function () {
+    const dot = document.getElementById('live-status-dot');
+    const text = document.getElementById('live-status-text');
+    if (!dot || !text || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const states = [
+      { html: 'Módulo Financiero: <span class="text-fv-cyan font-semibold">Conectado</span>', color: 'cyan' },
+      { html: 'Estado del sistema: <span class="text-fv-orange font-semibold">Sincronizando...</span>', color: 'orange' },
+      { html: 'Análisis del período: <span class="text-fv-cyan font-semibold">Reporte generado</span>', color: 'cyan' },
+    ];
+    let i = 0;
+
+    setInterval(() => {
+      text.style.opacity = '0';
+      setTimeout(() => {
+        i = (i + 1) % states.length;
+        const state = states[i];
+        dot.classList.remove('bg-fv-cyan', 'bg-fv-orange');
+        dot.classList.add(state.color === 'cyan' ? 'bg-fv-cyan' : 'bg-fv-orange');
+        text.innerHTML = state.html;
+        text.style.opacity = '1';
+      }, 300);
+    }, 9000);
+  })();
+
+  // ---- Tilt 3D en tarjetas flotantes (sigue al mouse) ----
+  (function () {
+    const tiltCards = document.querySelectorAll('.tilt-card');
+    if (!tiltCards.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    tiltCards.forEach(card => {
+      card.style.transformStyle = 'preserve-3d';
+      card.style.willChange = 'transform';
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        const rotateX = (py - 0.5) * -10;
+        const rotateY = (px - 0.5) * 10;
+        card.style.transition = 'transform .05s linear';
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform .5s ease';
+        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+      });
+    });
+  })();
+
+  // ---- Contadores animados (cuentan al entrar en el viewport) ----
+  (function () {
+    const counters = document.querySelectorAll('[data-target]');
+    if (!counters.length) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      if (reduceMotion) { el.textContent = prefix + target + suffix; return; }
+
+      const duration = 1400;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // ease-out cúbico
+        const value = Math.round(target * eased);
+        el.textContent = prefix + value + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => counterObserver.observe(el));
+  })();
+
   const interactiveGlowEls = document.querySelectorAll('.shimmer-interactive, .card-glow-border');
   interactiveGlowEls.forEach(el => {
     el.addEventListener('mousemove', (e) => {
@@ -1044,17 +1166,29 @@
       });
     }
 
+    function showTyping() {
+      const typing = document.createElement('div');
+      typing.className = 'luci-typing';
+      typing.id = 'luci-typing-indicator';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      messages.appendChild(typing);
+      messages.scrollTop = messages.scrollHeight;
+      return typing;
+    }
+
     function botReply(userText) {
       const norm = userText.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       const hit = faq.find(item => item.k.some(kw => norm.includes(kw)));
+      const typing = showTyping();
       setTimeout(() => {
+        typing.remove();
         if (hit) {
           addMessage(hit.a, 'bot');
         } else {
           addMessage('No tengo una respuesta preparada para eso todavía. ¿Le gustaría hablar directo con nuestro equipo por WhatsApp?', 'bot');
           addQuick(['Sí, ir a WhatsApp']);
         }
-      }, 350);
+      }, 700);
     }
 
     function handleUserText(text) {
@@ -1091,6 +1225,109 @@
       input.value = '';
       handleUserText(val);
     });
+  })();
+
+  // ---- Barra de progreso de scroll ----
+  (function () {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  })();
+
+  // ---- Spotlight que sigue el mouse ----
+  (function () {
+    const spotlight = document.getElementById('mouse-spotlight');
+    if (!spotlight || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    window.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
+    }, { passive: true });
+  })();
+
+  // ---- Fondo de constelación interactivo (canvas, requestAnimationFrame) ----
+  (function () {
+    const canvas = document.getElementById('constellation-canvas');
+    if (!canvas) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
+
+    const ctx = canvas.getContext('2d');
+    let w, h, particles, mouse = { x: null, y: null };
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeParticles() {
+      const count = Math.min(70, Math.floor((w * h) / 22000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      const linkDist = 130;
+
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        // atracción muy sutil hacia el mouse
+        if (mouse.x !== null) {
+          const dx = mouse.x - p.x, dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160) {
+            p.x += dx * 0.0018;
+            p.y += dy * 0.0018;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,255,255,0.55)';
+        ctx.fill();
+      });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < linkDist) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(255,140,0,${0.12 * (1 - dist / linkDist)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+    window.addEventListener('resize', () => { resize(); makeParticles(); });
+
+    resize();
+    makeParticles();
+    tick();
   })();
 </script>
 </body>
