@@ -64,8 +64,14 @@
   .fv-label { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #9aa3af; margin-bottom: 6px; display: block; }
   .fv-input.input-error { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.14); }
   .fv-error { font-size: 12px; color: #f87171; margin-top: 6px; }
+  /* ---- Pulso de éxito del formulario (anillos cian-naranja expandiéndose) ---- */
   #form-status.is-success { background: rgba(0,255,255,0.08); border: 1px solid rgba(0,255,255,0.3); color: #7fe7e7; }
   #form-status.is-error { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.3); color: #f87171; }
+
+  /* ---- Pulso de éxito del formulario (anillos cian-naranja expandiéndose) ---- */
+  @keyframes successPulseRing { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(2.4); opacity: 0; } }
+  .success-pulse-ring { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
+
 
   /* ---- Texto con degradado animado (cian → naranja) ---- */
   .shimmer-text {
@@ -161,9 +167,33 @@
 
   /* ---- Fondo de constelación (canvas) ---- */
   #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
+
+  /* ---- Rastro de partículas del cursor (estela luciérnaga) ---- */
+  .firefly-trail-dot {
+    position: fixed; top: 0; left: 0; z-index: 55; pointer-events: none;
+    border-radius: 9999px; will-change: transform, opacity;
+  }
+  #trail-cyan { width: 7px; height: 7px; background: #00FFFF; box-shadow: 0 0 8px #00FFFF, 0 0 14px rgba(0,255,255,0.6); }
+  #trail-orange { width: 5px; height: 5px; background: #FF8C00; box-shadow: 0 0 8px #FF8C00, 0 0 14px rgba(255,140,0,0.6); }
+
+  /* ---- FAQ con transición suave (anula el toggle abrupto nativo de <details>) ---- */
+  details > summary ~ p { display: block !important; overflow: hidden; }
+
+  /* ---- Barra de carga entre páginas (navegación simulada) ---- */
+  #page-load-bar {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    z-index: 100; box-shadow: 0 0 8px rgba(0,255,255,0.6);
+    transition: width .4s ease-out, opacity .2s ease .3s;
+  }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
+<div id="page-load-bar"></div>
+
+<div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
+<div id="trail-orange" class="firefly-trail-dot" style="opacity:0;"></div>
+
 <canvas id="constellation-canvas"></canvas>
 
 <div id="mouse-spotlight"></div>
@@ -214,7 +244,7 @@
 <!-- ============ HERO + FORM ============ -->
 <section class="relative pt-40 pb-28 overflow-hidden">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
-  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/4 -translate-y-1/3"></div>
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/4 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="max-w-2xl mb-16 reveal">
@@ -564,6 +594,20 @@
 
   // Envío vía mailto (sin backend). Reemplazar por un servicio de formularios
   // (Formspree, Web3Forms, etc.) cuando quieran envío silencioso sin abrir el cliente de correo.
+  // ---- Pulso de éxito: anillos cian y naranja expandiéndose desde el botón ----
+  function triggerSuccessPulse(button) {
+    if (!button || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (getComputedStyle(button).position === 'static') button.style.position = 'relative';
+    ['#00FFFF', '#FF8C00'].forEach((color, i) => {
+      const ring = document.createElement('span');
+      ring.className = 'success-pulse-ring';
+      ring.style.border = `2px solid ${color}`;
+      ring.style.animation = `successPulseRing .9s ease-out ${i * 0.15}s forwards`;
+      button.appendChild(ring);
+      ring.addEventListener('animationend', () => ring.remove());
+    });
+  }
+
   const formLoadedAt = Date.now();
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
@@ -649,6 +693,7 @@
     formStatus.textContent = 'Abriendo su cliente de correo con el mensaje listo para enviar…';
     formStatus.classList.remove('hidden');
     formStatus.classList.add('is-success');
+    triggerSuccessPulse(f.querySelector('button[type="submit"]'));
     window.location.href = `mailto:contacto@fvaigroup.com?subject=${subject}&body=${body}`;
   });
 
@@ -868,6 +913,194 @@
     resize();
     makeParticles();
     tick();
+  })();
+
+  // ---- Rastro de partículas del cursor (estela luciérnaga, lerp) ----
+  (function () {
+    const cyanDot = document.getElementById('trail-cyan');
+    const orangeDot = document.getElementById('trail-orange');
+    if (!cyanDot || !orangeDot || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return; // sin cursor real (touch), no aplica
+
+    let mouseX = -100, mouseY = -100;
+    let cyanX = -100, cyanY = -100;
+    let orangeX = -100, orangeY = -100;
+    let active = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      if (!active) { active = true; cyanDot.style.opacity = '0.9'; orangeDot.style.opacity = '0.6'; }
+    }, { passive: true });
+
+    function lerp(a, b, n) { return a + (b - a) * n; }
+
+    function animateTrail() {
+      cyanX = lerp(cyanX, mouseX, 0.35);
+      cyanY = lerp(cyanY, mouseY, 0.35);
+      orangeX = lerp(orangeX, mouseX, 0.15);
+      orangeY = lerp(orangeY, mouseY, 0.15);
+      cyanDot.style.transform = `translate(${cyanX - 3.5}px, ${cyanY - 3.5}px)`;
+      orangeDot.style.transform = `translate(${orangeX - 2.5}px, ${orangeY - 2.5}px)`;
+      requestAnimationFrame(animateTrail);
+    }
+    requestAnimationFrame(animateTrail);
+  })();
+
+  // ---- Botones magnéticos: se acercan levemente al cursor antes del hover real ----
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    const magneticEls = document.querySelectorAll('.btn-primary, .btn-secondary');
+    if (!magneticEls.length) return;
+    const radius = 70; // px de radio de atracción más allá del propio botón
+    magneticEls.forEach(btn => { btn.style.transition = 'transform .2s ease-out'; });
+
+    // Un solo listener para todos los botones (evita apilar N listeners idénticos)
+    document.addEventListener('mousemove', (e) => {
+      magneticEls.forEach(btn => {
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = Math.max(rect.width, rect.height) / 2 + radius;
+
+        if (dist < maxDist) {
+          const pull = (1 - dist / maxDist) * 0.35;
+          btn.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`;
+        } else {
+          btn.style.transform = 'translate(0, 0)';
+        }
+      });
+    }, { passive: true });
+  })();
+
+  // ---- FAQ con transición suave (height + opacity animados en vez del toggle nativo) ----
+  (function () {
+    const allDetails = document.querySelectorAll('details');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    allDetails.forEach(details => {
+      const summary = details.querySelector('summary');
+      const panel = summary ? summary.nextElementSibling : null;
+      if (!summary || !panel) return;
+
+      panel.style.overflow = 'hidden';
+      if (!reduceMotion) panel.style.transition = 'height .3s ease, opacity .25s ease';
+
+      if (!details.hasAttribute('open')) {
+        panel.style.height = '0px';
+        panel.style.opacity = '0';
+      }
+
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = details.hasAttribute('open');
+
+        if (reduceMotion) {
+          if (isOpen) { details.removeAttribute('open'); panel.style.height = '0px'; panel.style.opacity = '0'; }
+          else { details.setAttribute('open', ''); panel.style.height = 'auto'; panel.style.opacity = '1'; }
+          return;
+        }
+
+        if (isOpen) {
+          const h = panel.scrollHeight;
+          panel.style.height = h + 'px';
+          panel.offsetHeight; // forzar reflow
+          panel.style.height = '0px';
+          panel.style.opacity = '0';
+          panel.addEventListener('transitionend', function onEnd(ev) {
+            if (ev.propertyName !== 'height') return;
+            details.removeAttribute('open');
+            panel.removeEventListener('transitionend', onEnd);
+          });
+        } else {
+          details.setAttribute('open', '');
+          const h = panel.scrollHeight;
+          panel.style.height = '0px';
+          panel.style.opacity = '0';
+          panel.offsetHeight;
+          panel.style.height = h + 'px';
+          panel.style.opacity = '1';
+          panel.addEventListener('transitionend', function onEnd(ev) {
+            if (ev.propertyName !== 'height') return;
+            panel.style.height = 'auto';
+            panel.removeEventListener('transitionend', onEnd);
+          });
+        }
+      });
+    });
+  })();
+
+  // ---- Parallax en blobs de fondo (usa la propiedad CSS 'translate', independiente de 'transform',
+  // para no pisar las clases de posicionamiento -translate-x/y-* que ya tienen estos elementos) ----
+  (function () {
+    const blobs = document.querySelectorAll('.parallax-blob');
+    if (!blobs.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ticking = false;
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      blobs.forEach(blob => {
+        const speed = parseFloat(blob.dataset.speed || '0.1');
+        blob.style.translate = `0 ${scrollY * speed}px`;
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
+    }, { passive: true });
+    updateParallax();
+  })();
+
+  // ---- Barra de carga entre páginas (se anima al hacer clic en un link interno) ----
+  (function () {
+    const bar = document.getElementById('page-load-bar');
+    if (!bar) return;
+    const isInternalLink = (a) => {
+      if (!a.href || a.target === '_blank') return false;
+      try {
+        const url = new URL(a.href, window.location.href);
+        return url.origin === window.location.origin && !a.href.startsWith('mailto:') && !a.href.startsWith('tel:') && !a.hash;
+      } catch (e) { return false; }
+    };
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a || !isInternalLink(a)) return;
+      bar.style.opacity = '1';
+      requestAnimationFrame(() => { bar.style.width = '75%'; });
+      setTimeout(() => { bar.style.width = '92%'; }, 300);
+    });
+    window.addEventListener('pageshow', () => {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      bar.style.opacity = '1';
+      requestAnimationFrame(() => { bar.style.transition = ''; });
+    });
+  })();
+
+  // ---- Efecto de "dibujo" en subrayados degradados al entrar en pantalla ----
+  (function () {
+    const underlineEls = document.querySelectorAll('.link-underline');
+    if (!underlineEls.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const drawObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.style.transition = 'background-size 0.8s ease';
+        el.style.backgroundSize = '100% 1.5px';
+        setTimeout(() => {
+          el.style.backgroundSize = '';
+          el.style.transition = '';
+        }, 1100);
+        drawObserver.unobserve(el);
+      });
+    }, { threshold: 0.8 });
+
+    underlineEls.forEach(el => drawObserver.observe(el));
   })();
 </script>
 </body>
