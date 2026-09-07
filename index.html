@@ -260,7 +260,6 @@
     mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   }
   .marquee-track { display: flex; width: max-content; gap: 2.5rem; animation: marqueeScroll 43s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
   @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .brand-slot {
     width: 120px; height: 60px; border: 1px dashed #1F232B; border-radius: 0.75rem;
@@ -1518,28 +1517,6 @@
       bar.style.opacity = '1';
       requestAnimationFrame(() => { bar.style.transition = ''; });
     });
-  })();
-
-  // ---- Efecto de "dibujo" en subrayados degradados al entrar en pantalla ----
-  (function () {
-    const underlineEls = document.querySelectorAll('.link-underline');
-    if (!underlineEls.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const drawObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        el.style.transition = 'background-size 0.8s ease';
-        el.style.backgroundSize = '100% 1.5px';
-        setTimeout(() => {
-          el.style.backgroundSize = '';
-          el.style.transition = '';
-        }, 1100);
-        drawObserver.unobserve(el);
-      });
-    }, { threshold: 0.8 });
-
-    underlineEls.forEach(el => drawObserver.observe(el));
   })();
 </script>
 </body>
