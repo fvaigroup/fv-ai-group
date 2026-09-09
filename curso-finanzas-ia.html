@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Precios | F&V AI Group</title>
-<meta name="description" content="Valores de referencia por servicio: asesoría estratégica, evaluación de procesos, despliegue, habilitación de equipos, masterclasses y acompañamiento continuo.">
-<link rel="canonical" href="https://fvaigroup.com/precios">
+<title>Finanzas con IA — Curso presencial | F&V AI Group</title>
+<meta name="description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
+<link rel="canonical" href="https://fvaigroup.com/curso-finanzas-ia">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;V AI Group">
 <meta property="og:locale" content="es_VE">
-<meta property="og:title" content="Precios | F&V AI Group">
-<meta property="og:description" content="Valores de referencia por servicio: asesoría estratégica, evaluación de procesos, despliegue, habilitación de equipos, masterclasses y acompañamiento continuo.">
-<meta property="og:url" content="https://fvaigroup.com/precios">
+<meta property="og:title" content="Finanzas con IA — Curso presencial | F&V AI Group">
+<meta property="og:description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
+<meta property="og:url" content="https://fvaigroup.com/curso-finanzas-ia">
 <meta property="og:image" content="https://fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Precios | F&V AI Group">
-<meta name="twitter:description" content="Valores de referencia por servicio: asesoría estratégica, evaluación de procesos, despliegue, habilitación de equipos, masterclasses y acompañamiento continuo.">
+<meta name="twitter:title" content="Finanzas con IA — Curso presencial | F&V AI Group">
+<meta name="twitter:description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
 <meta name="twitter:image" content="https://fvaigroup.com/assets/og-image.png">
 <link rel="apple-touch-icon" href="assets/logo-mark.png">
 <link rel="icon" type="image/png" href="assets/logo-mark.png">
@@ -53,9 +53,33 @@
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.is-in { opacity: 1; transform: translateY(0); }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } * { animation: none !important; } }
-  .scroll-mt { scroll-margin-top: 96px; }
 
-  /* ---- Botones interactivos: brillo + micro-interacción ---- */
+  /* ---- Texto con degradado animado (cian → naranja) ---- */
+  .shimmer-text {
+    position: relative; display: inline-block;
+    background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shimmerMove 7s ease-in-out infinite;
+  }
+  @keyframes shimmerMove { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @media (prefers-reduced-motion: reduce) { .shimmer-text { animation: none; background-position: 30% 50%; } }
+
+  .text-neon-orange { color: #FF8C00; text-shadow: 0 0 8px rgba(255,140,0,0.65), 0 0 18px rgba(255,69,0,0.45); }
+  .text-neon-cyan { color: #00FFFF; text-shadow: 0 0 8px rgba(0,255,255,0.65), 0 0 18px rgba(0,204,255,0.45); }
+
+  .box-glow-cyan { border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 14px rgba(0,255,255,0.2); }
+  .box-glow-orange { border: 1px solid rgba(255,140,0,0.4); box-shadow: 0 0 14px rgba(255,140,0,0.2); }
+
+  .box-gradient-border {
+    border: 1px solid transparent;
+    background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
+    box-shadow: 0 0 16px rgba(0,255,255,0.18), 0 0 16px rgba(255,140,0,0.18);
+  }
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary ~ p { display: block !important; overflow: hidden; }
+
   .btn-primary {
     background-color: #FF8C00; color: #000;
     box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3);
@@ -71,42 +95,16 @@
   .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
   .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
 
-  /* ---- Wordmark con degradado cian-naranja y brillo ---- */
   .brand-gradient {
     background: linear-gradient(90deg, #00FFFF, #00CCFF 35%, #FF8C00 70%, #FF4500);
     -webkit-background-clip: text; background-clip: text; color: transparent;
     filter: drop-shadow(0 0 8px rgba(0,204,255,0.35)) drop-shadow(0 0 12px rgba(255,140,0,0.25));
   }
 
-  .link-underline { background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
-  .link-underline:hover { background-size: 100% 1.5px; }
-
   @view-transition { navigation: auto; }
 
-  /* ---- Tarjetas de precio ---- */
-  .price-card {
-    background: #0D0E12; border: 1px solid #1F232B; border-radius: 1.25rem;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-  }
-  .price-card:hover { transform: translateY(-4px); border-color: rgba(0,204,255,0.35); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
-  .price-card.is-featured {
-    border: 1px solid transparent;
-    background:
-      linear-gradient(#0D0E12, #0D0E12) padding-box,
-      linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
-  }
-  .price-card.is-featured:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(255,140,0,0.15); }
-
-  /* ---- Texto con degradado animado (cian → naranja) ---- */
-  .shimmer-text {
-    position: relative; display: inline-block;
-    background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%);
-    background-size: 300% 100%;
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    animation: shimmerMove 7s ease-in-out infinite;
-  }
-  @keyframes shimmerMove { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-  @media (prefers-reduced-motion: reduce) { .shimmer-text { animation: none; background-position: 30% 50%; } }
+  .link-underline { background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
+  .link-underline:hover { background-size: 100% 1.5px; }
 
   /* ---- Asistente Luci ---- */
   .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
@@ -121,55 +119,43 @@
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
 
-  /* ---- Barra de progreso de scroll ---- */
   #scroll-progress {
     position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
     background: linear-gradient(90deg, #00FFFF, #FF8C00);
     z-index: 60; transition: width .08s linear;
     box-shadow: 0 0 8px rgba(0,255,255,0.5);
   }
-
-  /* ---- Spotlight que sigue el mouse ---- */
   #mouse-spotlight {
     position: fixed; inset: 0; z-index: 1; pointer-events: none;
     background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0,204,255,0.06), transparent 40%);
     transition: background .1s ease-out;
   }
-
-  /* ---- Transición compartida del logo entre páginas (View Transitions API) ---- */
   #site-header a[href="index.html"] img { view-transition-name: site-logo; }
   @media (prefers-reduced-motion: reduce) { #site-header a[href="index.html"] img { view-transition-name: none; } }
-
-  /* ---- Fondo de constelación (canvas) ---- */
   #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
 
-  /* ---- Rastro de partículas del cursor (estela luciérnaga) ---- */
-  .firefly-trail-dot {
-    position: fixed; top: 0; left: 0; z-index: 55; pointer-events: none;
-    border-radius: 9999px; will-change: transform, opacity;
-  }
+  .firefly-trail-dot { position: fixed; top: 0; left: 0; z-index: 55; pointer-events: none; border-radius: 9999px; will-change: transform, opacity; }
   #trail-cyan { width: 7px; height: 7px; background: #00FFFF; box-shadow: 0 0 8px #00FFFF, 0 0 14px rgba(0,255,255,0.6); }
   #trail-orange { width: 5px; height: 5px; background: #FF8C00; box-shadow: 0 0 8px #FF8C00, 0 0 14px rgba(255,140,0,0.6); }
 
-  /* ---- Barra de carga entre páginas (navegación simulada) ---- */
   #page-load-bar {
     position: fixed; top: 0; left: 0; height: 3px; width: 0%;
     background: linear-gradient(90deg, #00FFFF, #FF8C00);
     z-index: 100; box-shadow: 0 0 8px rgba(0,255,255,0.6);
     transition: width .4s ease-out, opacity .2s ease .3s;
   }
+
+  /* ---- Contador regresivo ---- */
+  .cd-box { min-width: 74px; }
+  .cd-num { font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
 <div id="page-load-bar"></div>
-
 <div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
 <div id="trail-orange" class="firefly-trail-dot" style="opacity:0;"></div>
-
 <canvas id="constellation-canvas"></canvas>
-
 <div id="mouse-spotlight"></div>
-
 
 <!-- ============ HEADER ============ -->
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
@@ -182,13 +168,12 @@
       <nav class="hidden md:flex items-center gap-9 font-head text-sm">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
-        <a href="precios.html" class="text-white">Precios</a>
+        <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
         <a href="nosotros.html" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
       </nav>
       <div class="hidden md:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">Hablar por WhatsApp</a>
-        <a href="contacto.html" class="btn-primary font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Apartar mi cupo</a>
       </div>
       <button id="menu-btn" type="button" class="md:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -200,155 +185,255 @@
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-slate-300">Inicio</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
-      <a href="precios.html" class="text-white">Precios</a>
+      <a href="precios.html" class="text-slate-300">Precios</a>
       <a href="nosotros.html" class="text-slate-300">Nosotros</a>
       <a href="contacto.html" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="contacto.html" class="btn-primary text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
+      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary text-center px-4 py-2.5 rounded-lg font-semibold">Apartar mi cupo</a>
     </div>
   </div>
 </header>
 <div id="scroll-progress"></div>
 
-
 <main>
 
 <!-- ============ HERO ============ -->
-<section class="relative pt-40 pb-16 overflow-hidden border-b border-white/5">
+<section class="relative pt-40 pb-20 overflow-hidden border-b border-white/5">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-    <div class="max-w-2xl reveal">
-      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">Precios por <span class="shimmer-text">servicio</span></h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light">Una referencia de punto de partida para cada servicio. El valor final depende del alcance real de su proyecto.</p>
-    </div>
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3"></div>
+  <div class="absolute bottom-0 right-0 w-[560px] h-[560px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4"></div>
 
-    <div class="mt-8 flex items-start gap-3 p-4 rounded-xl bg-fv-orange/10 border border-fv-orange/30 max-w-2xl reveal">
-      <svg class="w-5 h-5 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
-      <p class="text-sm text-slate-300 leading-relaxed"><span class="font-head font-semibold text-white">Precios de referencia mientras terminamos de definir la lista final.</span> No son tarifas vigentes ni una cotización — escríbanos para un número exacto según su caso.</p>
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+    <div class="reveal">
+      <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-orange/10 text-fv-orange rounded-full border border-fv-orange/30 uppercase tracking-wider mb-6">Curso presencial · Cupos limitados a 6 personas</span>
+
+      <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-6">
+        Automatice la <span class="shimmer-text">conciliación de pagos</span> de su empresa
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10 font-light">
+        Capacite a su equipo en IA aplicada a finanzas. Menos horas cuadrando transferencias y cierres de caja entre plataformas — más tiempo tomando decisiones.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
+          Apartar uno de los 6 cupos
+        </a>
+        <a href="#contenido" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">
+          Ver el programa completo
+        </a>
+      </div>
+      <p class="text-xs text-slate-500 mt-4 font-head">$300 pago único · 3 sábados · Valencia, Carabobo</p>
     </div>
   </div>
 </section>
 
-<!-- ============ TARJETAS DE PRECIO ============ -->
-<section class="relative py-20 border-b border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- ============ EL DOLOR ============ -->
+<section class="relative py-24 border-b border-white/5">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <div class="reveal">
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6">¿Le suena familiar este cierre de mes?</h2>
+      <p class="text-lg text-slate-400 leading-relaxed mb-4">
+        Transferencias que no cuadran, capturas de pantalla de cinco plataformas de pago distintas, y horas enteras de su contador —o de usted mismo— tratando de armar el rompecabezas a mano.
+      </p>
+      <p class="text-lg text-slate-400 leading-relaxed">
+        Ese tiempo no se recupera. Y cada hora que su equipo pasa conciliando pagos es una hora que no está atendiendo clientes ni cerrando negocios.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <!-- Asesoría Estratégica (destacada) -->
-      <div class="price-card tilt-card is-featured p-7 flex flex-col reveal">
-        <span class="inline-block w-fit text-[11px] font-head font-semibold px-2.5 py-1 rounded-full bg-fv-orange/15 text-fv-orange border border-fv-orange/30 mb-4">Recomendado para empezar</span>
-        <h3 class="font-head text-white text-lg font-semibold mb-1">Asesoría Estratégica</h3>
-        <p class="text-sm text-slate-500 mb-5">Diagnóstico y hoja de ruta antes de ejecutar.</p>
-        <div class="mb-6">
-          <span class="text-4xl font-sans font-extrabold text-white">$150</span>
-          <span class="text-slate-500 text-sm"> / sesión inicial</span>
+<!-- ============ QUÉ ES EL PROGRAMA ============ -->
+<section id="contenido" class="scroll-mt relative py-24 border-b border-white/5 bg-fv-surface2/40">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="reveal text-center mb-14">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-4">Qué es <span class="shimmer-text">Finanzas con IA</span></h2>
+      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
+        Un programa presencial donde su equipo aprende a usar IA para automatizar la conciliación de pagos, cuentas y cierres — con ejercicios sobre casos reales, no teoría genérica.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="p-5 rounded-2xl bg-fv-surface box-glow-cyan text-center">
+        <p class="text-2xl font-sans font-extrabold text-white">3</p>
+        <p class="text-xs text-slate-500 font-head mt-1">Sábados</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-fv-surface box-glow-orange text-center">
+        <p class="text-2xl font-sans font-extrabold text-white">4h</p>
+        <p class="text-xs text-slate-500 font-head mt-1">Por clase</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-fv-surface box-glow-cyan text-center">
+        <p class="text-2xl font-sans font-extrabold text-fv-cyan">6</p>
+        <p class="text-xs text-slate-500 font-head mt-1">Cupos, sin excepción</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-fv-surface box-glow-orange text-center">
+        <p class="text-2xl font-sans font-extrabold text-white">100%</p>
+        <p class="text-xs text-slate-500 font-head mt-1">Presencial</p>
+      </div>
+    </div>
+    <p class="text-center text-sm text-slate-500 mt-6 max-w-xl mx-auto">Los cupos están limitados a propósito: para que cada participante salga con su propio flujo de automatización armado, no solo con apuntes.</p>
+  </div>
+</section>
+
+<!-- ============ PARA QUIÉN ES ============ -->
+<section class="relative py-24 border-b border-white/5">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <div class="reveal">
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6">¿Es este programa para usted?</h2>
+      <p class="text-lg text-slate-400 leading-relaxed">
+        Está diseñado para <span class="text-white font-semibold">dueños de negocio</span> que quieren dejar de perder tiempo en tareas operativas, <span class="text-white font-semibold">gerentes</span> que necesitan que su equipo cierre más rápido, o el <span class="text-white font-semibold">contador o analista de confianza</span> que hoy carga con la conciliación manual sobre sus hombros.
+      </p>
+      <p class="text-lg text-slate-400 leading-relaxed mt-4">Si su empresa mueve dinero por más de una plataforma de pago, este programa es para usted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTENIDO / PENSUM ============ -->
+<section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="reveal text-center mb-14">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Los 4 módulos del programa</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
+        <span class="font-sans text-fv-cyan/70 text-sm">Módulo 1</span>
+        <p class="text-white font-head font-semibold mt-2 leading-snug">Diagnóstico de su flujo de pagos actual y dónde la IA puede intervenir hoy mismo.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
+        <span class="font-sans text-fv-orange/80 text-sm">Módulo 2</span>
+        <p class="text-white font-head font-semibold mt-2 leading-snug">Automatización de la conciliación entre banco, plataformas de pago y su libro contable.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan">
+        <span class="font-sans text-fv-cyan/70 text-sm">Módulo 3</span>
+        <p class="text-white font-head font-semibold mt-2 leading-snug">IA aplicada a reportes financieros y cierres de caja, sin depender de Excel a mano.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange">
+        <span class="font-sans text-fv-orange/80 text-sm">Módulo 4</span>
+        <p class="text-white font-head font-semibold mt-2 leading-snug">Armado de su propio flujo de automatización, listo para usar desde el lunes siguiente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRECIO Y ENTREGABLES ============ -->
+<section class="relative py-24 border-b border-white/5">
+  <div class="max-w-2xl mx-auto px-6 lg:px-8">
+    <div class="reveal rounded-3xl bg-fv-surface box-gradient-border p-10 sm:p-12 text-center">
+      <p class="font-head text-xs text-slate-500 uppercase tracking-widest mb-3">Inversión</p>
+      <p class="text-5xl font-sans font-extrabold text-white mb-1">$300</p>
+      <p class="text-sm text-slate-500 mb-8">Pago único, por cupo</p>
+
+      <ul class="text-left space-y-3 max-w-sm mx-auto mb-10">
+        <li class="flex gap-3 text-slate-300"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Las 3 clases presenciales (12 horas en total)</li>
+        <li class="flex gap-3 text-slate-300"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Certificado de participación F&amp;V AI Group</li>
+        <li class="flex gap-3 text-slate-300"><svg class="w-5 h-5 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Diagnóstico gratuito de automatización para su empresa, al cierre del programa</span></li>
+      </ul>
+
+      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg w-full sm:w-auto">
+        Apartar mi cupo ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ URGENCIA / CONTADOR ============ -->
+<section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
+  <div class="max-w-2xl mx-auto px-6 lg:px-8 text-center">
+    <div class="reveal">
+      <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider mb-5">Cohorte en formación</span>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-3">Solo <span class="text-neon-orange">6 cupos</span> por cohorte</h2>
+      <p class="text-slate-400 mb-10">Así garantizamos atención real a cada participante — no es una clase masiva.</p>
+
+      <!-- Estado 1: cohorte activa, cuenta regresiva -->
+      <div id="countdown-active">
+        <p class="font-head text-sm text-slate-500 mb-4">La próxima clase empieza en:</p>
+        <div class="flex justify-center gap-3 sm:gap-4">
+          <div class="cd-box p-4 rounded-2xl bg-fv-surface box-glow-cyan">
+            <p id="cd-dias" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
+            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Días</p>
+          </div>
+          <div class="cd-box p-4 rounded-2xl bg-fv-surface box-glow-orange">
+            <p id="cd-horas" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
+            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Horas</p>
+          </div>
+          <div class="cd-box p-4 rounded-2xl bg-fv-surface box-glow-cyan">
+            <p id="cd-min" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
+            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Min</p>
+          </div>
+          <div class="cd-box p-4 rounded-2xl bg-fv-surface box-glow-orange">
+            <p id="cd-seg" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
+            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Seg</p>
+          </div>
         </div>
-        <ul class="space-y-2.5 text-sm text-slate-300 mb-8 flex-1">
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Diagnóstico ejecutivo</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Identificación de cuellos de botella</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Hoja de ruta priorizada</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Informe escrito incluido</li>
-        </ul>
-        <a href="contacto.html" class="btn-primary text-center py-3 rounded-lg font-head font-semibold">Agendar sesión</a>
       </div>
 
-      <!-- Evaluación de Procesos -->
-      <div class="price-card tilt-card p-7 flex flex-col reveal">
-        <h3 class="font-head text-white text-lg font-semibold mb-1">Evaluación de Procesos</h3>
-        <p class="text-sm text-slate-500 mb-5">Auditoría técnica y financiera de lo que ya tiene.</p>
-        <div class="mb-6">
-          <span class="text-4xl font-sans font-extrabold text-white">$400</span>
-          <span class="text-slate-500 text-sm"> / auditoría</span>
-        </div>
-        <ul class="space-y-2.5 text-sm text-slate-300 mb-8 flex-1">
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Relevamiento por área</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Radiografía técnica y financiera</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Candidatos a automatización</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Informe priorizado</li>
-        </ul>
-        <a href="contacto.html" class="btn-secondary text-center py-3 rounded-lg font-head font-medium">Solicitar cotización</a>
+      <!-- Estado 2: sin cohorte definida / fecha vencida -->
+      <div id="countdown-expired" class="hidden rounded-2xl bg-fv-surface box-gradient-border p-8">
+        <p class="text-white font-head font-semibold mb-2">La cohorte activa ya comenzó</p>
+        <p class="text-sm text-slate-400 mb-6">Escríbanos y le avisamos apenas abramos la próxima fecha.</p>
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20preguntar%20por%20la%20pr%C3%B3xima%20cohorte%20de%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
+          Pregunta por la próxima cohorte
+        </a>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Despliegue y Ejecución -->
-      <div class="price-card tilt-card p-7 flex flex-col reveal">
-        <h3 class="font-head text-white text-lg font-semibold mb-1">Despliegue y Ejecución</h3>
-        <p class="text-sm text-slate-500 mb-5">SAP, Odoo, Dynamics 365 o desarrollo a medida.</p>
-        <div class="mb-6">
-          <span class="text-3xl font-sans font-extrabold text-white">Personalizado</span>
-        </div>
-        <ul class="space-y-2.5 text-sm text-slate-300 mb-8 flex-1">
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Varía según plataforma y alcance</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Configuración y migración de datos</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Integración de IA sobre flujos existentes</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Cotización tras la evaluación de procesos</li>
-        </ul>
-        <a href="contacto.html" class="btn-secondary text-center py-3 rounded-lg font-head font-medium">Solicitar cotización</a>
-      </div>
+<!-- ============ FAQ ============ -->
+<section class="relative py-24 border-b border-white/5">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <div class="reveal mb-12 text-center">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Preguntas frecuentes</h2>
+    </div>
 
-      <!-- Habilitación de Equipos -->
-      <div class="price-card tilt-card p-7 flex flex-col reveal">
-        <h3 class="font-head text-white text-lg font-semibold mb-1">Habilitación de Equipos</h3>
-        <p class="text-sm text-slate-500 mb-5">Formación práctica sobre el sistema real.</p>
-        <div class="mb-6">
-          <span class="text-4xl font-sans font-extrabold text-white">$60</span>
-          <span class="text-slate-500 text-sm"> / persona</span>
-        </div>
-        <ul class="space-y-2.5 text-sm text-slate-300 mb-8 flex-1">
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Sesiones separadas por rol</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Material de referencia incluido</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Grupos desde 3 personas</li>
-        </ul>
-        <a href="contacto.html" class="btn-secondary text-center py-3 rounded-lg font-head font-medium">Solicitar cotización</a>
-      </div>
+    <div class="space-y-3">
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Necesito saber de IA para tomar el curso?</span>
+          <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">No. Partimos de cero técnico — lo único que necesita es conocer su propio proceso de pagos. Nosotros nos encargamos de la parte de IA.</p>
+      </details>
 
-      <!-- Masterclasses y Workshops -->
-      <div class="price-card tilt-card p-7 flex flex-col reveal">
-        <h3 class="font-head text-white text-lg font-semibold mb-1">Masterclasses y Workshops</h3>
-        <p class="text-sm text-slate-500 mb-5">Formación estructurada para audiencias amplias.</p>
-        <div class="mb-6">
-          <span class="text-4xl font-sans font-extrabold text-white">$100</span>
-          <span class="text-slate-500 text-sm"> / persona</span>
-        </div>
-        <ul class="space-y-2.5 text-sm text-slate-300 mb-8 flex-1">
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Contenido práctico, casos reales</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Formato individual o por cohorte</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Complemento asíncrono disponible</li>
-        </ul>
-        <a href="curso-finanzas-ia.html" class="btn-secondary text-center py-3 rounded-lg font-head font-medium">Ver próximas fechas</a>
-      </div>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Qué pasa si no puedo asistir un sábado?</span>
+          <svg class="w-4 h-4 text-fv-orange transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Le compartimos la grabación de la sesión y el material correspondiente, para que no pierda el hilo del programa.</p>
+      </details>
 
-      <!-- Acompañamiento Continuo -->
-      <div class="price-card tilt-card p-7 flex flex-col reveal">
-        <h3 class="font-head text-white text-lg font-semibold mb-1">Acompañamiento Continuo</h3>
-        <p class="text-sm text-slate-500 mb-5">Retención y soporte después del go-live.</p>
-        <div class="mb-6">
-          <span class="text-4xl font-sans font-extrabold text-white">$40</span>
-          <span class="text-slate-500 text-sm"> / mes</span>
-        </div>
-        <ul class="space-y-2.5 text-sm text-slate-300 mb-8 flex-1">
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Canal directo de soporte</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Ajustes de configuración incluidos</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Revisión periódica del sistema</li>
-          <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Cancela cuando quiera</li>
-        </ul>
-        <a href="contacto.html" class="btn-secondary text-center py-3 rounded-lg font-head font-medium">Solicitar cotización</a>
-      </div>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Cuáles son los métodos de pago?</span>
+          <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Aceptamos transferencia bancaria, Pagomóvil, Zelle y Binance USDT, entre otros. Escríbanos por WhatsApp y le confirmamos los datos exactos para su pago.</p>
+      </details>
 
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Dónde son las clases?</span>
+          <svg class="w-4 h-4 text-fv-orange transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">En Valencia, Carabobo. Le confirmamos la dirección exacta al momento de apartar su cupo.</p>
+      </details>
     </div>
   </div>
 </section>
 
 <!-- ============ CTA FINAL ============ -->
 <section class="relative py-24">
-  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-fv-surface to-black border border-fv-border p-10 sm:p-16 text-center">
-      <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] parallax-blob" data-speed="0.12"></div>
-      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] parallax-blob" data-speed="-0.08"></div>
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">¿Necesita un número exacto?</h2>
-        <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos su caso y le respondemos con una cotización basada en su alcance real, no en una tabla genérica.</p>
-        <a href="contacto.html" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Solicitar cotización</a>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">Quedan pocos cupos para esta cohorte</h2>
+        <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Escríbanos ahora por WhatsApp para apartar el suyo — respondemos al instante.</p>
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
+          Apartar mi cupo por WhatsApp
+        </a>
       </div>
     </div>
   </div>
@@ -461,7 +546,6 @@
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-
 <script>
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -477,29 +561,6 @@
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     mobileMenu.classList.add('hidden'); iconOpen.classList.remove('hidden'); iconClose.classList.add('hidden');
   }));
-
-  // ---- Tilt 3D en tarjetas (sigue al mouse) ----
-  (function () {
-    const tiltCards = document.querySelectorAll('.tilt-card');
-    if (!tiltCards.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    tiltCards.forEach(card => {
-      card.style.transformStyle = 'preserve-3d';
-      card.style.willChange = 'transform';
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width;
-        const py = (e.clientY - rect.top) / rect.height;
-        const rotateX = (py - 0.5) * -6;
-        const rotateY = (px - 0.5) * 6;
-        card.style.transition = 'transform .05s linear';
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transition = 'transform .5s ease';
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-      });
-    });
-  })();
 
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
@@ -530,16 +591,15 @@
     if (!toggle || !panel) return;
 
     const faq = [
-      { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos su situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
-      { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con SAP, Odoo, Microsoft Dynamics 365 y desarrollo a medida. Somos independientes de proveedor: recomendamos según su caso.' },
-      { k: ['soporte','despues','mantenimiento','postventa','incidencia'], a: 'Sí. El Acompañamiento Continuo es uno de nuestros seis servicios: canal directo, ajustes de configuración y revisión periódica.' },
-      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Tenemos valores de referencia en la página de Precios, pero el número final depende del alcance real de su proyecto.' },
-      { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre su sistema real, no un entorno genérico de demostración.' },
-      { k: ['horario','atencion','hora','abren'], a: 'Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m., y respondemos en 24 a 48 horas hábiles.' },
-      { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp o completar el formulario en la página de Contacto.' },
+      { k: ['cupo','cupos','disponible','quedan'], a: 'Los cupos son estrictamente 6 por cohorte. Escríbanos por WhatsApp y le confirmamos disponibilidad al instante.' },
+      { k: ['precio','costo','cuanto cuesta','vale','pago'], a: 'La inversión es de $300, pago único, e incluye las 3 clases, certificado y un diagnóstico gratuito de automatización para su empresa.' },
+      { k: ['fecha','cuando','empieza','horario'], a: 'La fecha de la próxima cohorte está en el contador de esta misma página. Si ya venció, escríbanos y le avisamos apenas abramos una nueva.' },
+      { k: ['ia','experiencia','tecnico','saber'], a: 'No necesita experiencia previa en IA — partimos de cero técnico. Solo necesita conocer su propio proceso de pagos.' },
+      { k: ['sabado','falta','asistir','perder'], a: 'Le compartimos la grabación y el material de cualquier sesión a la que no pueda asistir.' },
+      { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp para apartar su cupo o resolver cualquier duda.' },
     ];
 
-    const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?'];
+    const quickReplies = ['¿Quedan cupos?', '¿Cuánto cuesta?', '¿Cuándo empieza?', '¿Necesito saber de IA?'];
 
     function addMessage(text, from) {
       const bubble = document.createElement('div');
@@ -564,7 +624,6 @@
     function showTyping() {
       const typing = document.createElement('div');
       typing.className = 'luci-typing';
-      typing.id = 'luci-typing-indicator';
       typing.innerHTML = '<span></span><span></span><span></span>';
       messages.appendChild(typing);
       messages.scrollTop = messages.scrollHeight;
@@ -603,7 +662,7 @@
       panel.classList.remove('hidden');
       if (!started) {
         started = true;
-        addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué le ayudo?', 'bot');
+        addMessage('Hola, soy Luci. Puedo responder preguntas sobre Finanzas con IA. ¿En qué le ayudo?', 'bot');
         addQuick(quickReplies);
       }
     }
@@ -652,7 +711,7 @@
     const canvas = document.getElementById('constellation-canvas');
     if (!canvas) return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
+    if (reduceMotion) return;
 
     const ctx = canvas.getContext('2d');
     let w, h, particles, mouse = { x: null, y: null };
@@ -681,7 +740,6 @@
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
 
-        // atracción muy sutil hacia el mouse
         if (mouse.x !== null) {
           const dx = mouse.x - p.x, dy = mouse.y - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -730,7 +788,7 @@
     const cyanDot = document.getElementById('trail-cyan');
     const orangeDot = document.getElementById('trail-orange');
     if (!cyanDot || !orangeDot || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return; // sin cursor real (touch), no aplica
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
     let mouseX = -100, mouseY = -100;
     let cyanX = -100, cyanY = -100;
@@ -763,10 +821,9 @@
 
     const magneticEls = document.querySelectorAll('.btn-primary, .btn-secondary');
     if (!magneticEls.length) return;
-    const radius = 70; // px de radio de atracción más allá del propio botón
+    const radius = 70;
     magneticEls.forEach(btn => { btn.style.transition = 'transform .2s ease-out'; });
 
-    // Un solo listener para todos los botones (evita apilar N listeners idénticos)
     document.addEventListener('mousemove', (e) => {
       magneticEls.forEach(btn => {
         const rect = btn.getBoundingClientRect();
@@ -787,25 +844,61 @@
     }, { passive: true });
   })();
 
-  // ---- Parallax en blobs de fondo (usa la propiedad CSS 'translate', independiente de 'transform',
-  // para no pisar las clases de posicionamiento -translate-x/y-* que ya tienen estos elementos) ----
+  // ---- FAQ con transición suave (height + opacity animados en vez del toggle nativo) ----
   (function () {
-    const blobs = document.querySelectorAll('.parallax-blob');
-    if (!blobs.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const allDetails = document.querySelectorAll('details');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let ticking = false;
-    function updateParallax() {
-      const scrollY = window.scrollY;
-      blobs.forEach(blob => {
-        const speed = parseFloat(blob.dataset.speed || '0.1');
-        blob.style.translate = `0 ${scrollY * speed}px`;
+    allDetails.forEach(details => {
+      const summary = details.querySelector('summary');
+      const panel = summary ? summary.nextElementSibling : null;
+      if (!summary || !panel) return;
+
+      panel.style.overflow = 'hidden';
+      if (!reduceMotion) panel.style.transition = 'height .3s ease, opacity .25s ease';
+
+      if (!details.hasAttribute('open')) {
+        panel.style.height = '0px';
+        panel.style.opacity = '0';
+      }
+
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = details.hasAttribute('open');
+
+        if (reduceMotion) {
+          if (isOpen) { details.removeAttribute('open'); panel.style.height = '0px'; panel.style.opacity = '0'; }
+          else { details.setAttribute('open', ''); panel.style.height = 'auto'; panel.style.opacity = '1'; }
+          return;
+        }
+
+        if (isOpen) {
+          const h = panel.scrollHeight;
+          panel.style.height = h + 'px';
+          panel.offsetHeight;
+          panel.style.height = '0px';
+          panel.style.opacity = '0';
+          panel.addEventListener('transitionend', function onEnd(ev) {
+            if (ev.propertyName !== 'height') return;
+            details.removeAttribute('open');
+            panel.removeEventListener('transitionend', onEnd);
+          });
+        } else {
+          details.setAttribute('open', '');
+          const h = panel.scrollHeight;
+          panel.style.height = '0px';
+          panel.style.opacity = '0';
+          panel.offsetHeight;
+          panel.style.height = h + 'px';
+          panel.style.opacity = '1';
+          panel.addEventListener('transitionend', function onEnd(ev) {
+            if (ev.propertyName !== 'height') return;
+            panel.style.height = 'auto';
+            panel.removeEventListener('transitionend', onEnd);
+          });
+        }
       });
-      ticking = false;
-    }
-    window.addEventListener('scroll', () => {
-      if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
-    }, { passive: true });
-    updateParallax();
+    });
   })();
 
   // ---- Barra de carga entre páginas (se anima al hacer clic en un link interno) ----
@@ -832,6 +925,58 @@
       bar.style.opacity = '1';
       requestAnimationFrame(() => { bar.style.transition = ''; });
     });
+  })();
+
+  // ============================================================
+  // ---- CONTADOR REGRESIVO DE LA COHORTE (2 estados) ----
+  // Para configurar la próxima fecha: cambiá SOLO la línea de "fechaInicio" de abajo.
+  // Formato: "AAAA-MM-DDTHH:mm:ss" en hora de Venezuela (UTC-4).
+  // ============================================================
+  (function () {
+    const fechaInicio = new Date("2026-10-15T09:00:00-04:00"); // <-- ÚNICA línea a editar para la próxima cohorte
+
+    const activeEl = document.getElementById('countdown-active');
+    const expiredEl = document.getElementById('countdown-expired');
+    const dEl = document.getElementById('cd-dias');
+    const hEl = document.getElementById('cd-horas');
+    const mEl = document.getElementById('cd-min');
+    const sEl = document.getElementById('cd-seg');
+    if (!activeEl || !expiredEl) return;
+
+    let timer = null;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function showExpiredState() {
+      activeEl.classList.add('hidden');
+      expiredEl.classList.remove('hidden');
+      if (timer) clearInterval(timer);
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = fechaInicio - now;
+
+      // Estado 2: la fecha ya pasó (o no hay cohorte configurada) -> ocultar contador, mostrar CTA
+      if (diff <= 0) {
+        showExpiredState();
+        return;
+      }
+
+      // Estado 1: cohorte activa -> mostrar días/horas/min/seg restantes
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      dEl.textContent = pad(days);
+      hEl.textContent = pad(hours);
+      mEl.textContent = pad(mins);
+      sEl.textContent = pad(secs);
+    }
+
+    updateCountdown();
+    timer = setInterval(updateCountdown, 1000);
   })();
 </script>
 </body>
