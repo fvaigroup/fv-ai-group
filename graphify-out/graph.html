@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>graphify - graphify-out/graph.html</title>
+<script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"
+        integrity="sha384-Ux6phic9PEHJ38YtrijhkzyJ8yQlH8i/+buBR8s3mAZOJrP1gwyvAcIYl3GWtpX1"
+        crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; height: 100vh; overflow: hidden; }
+  #graph { flex: 1; }
+  #sidebar { width: 280px; background: #1a1a2e; border-left: 1px solid #2a2a4e; display: flex; flex-direction: column; overflow: hidden; }
+  #search-wrap { padding: 12px; border-bottom: 1px solid #2a2a4e; }
+  #search { width: 100%; background: #0f0f1a; border: 1px solid #3a3a5e; color: #e0e0e0; padding: 7px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  #search:focus { border-color: #4E79A7; }
+  #search-results { max-height: 140px; overflow-y: auto; padding: 4px 12px; border-bottom: 1px solid #2a2a4e; display: none; }
+  .search-item { padding: 4px 6px; cursor: pointer; border-radius: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .search-item:hover { background: #2a2a4e; }
+  #info-panel { padding: 14px; border-bottom: 1px solid #2a2a4e; min-height: 140px; }
+  #info-panel h3 { font-size: 13px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  #info-content { font-size: 13px; color: #ccc; line-height: 1.6; }
+  #info-content .field { margin-bottom: 5px; }
+  #info-content .field b { color: #e0e0e0; }
+  #info-content .empty { color: #555; font-style: italic; }
+  .neighbor-link { display: block; padding: 2px 6px; margin: 2px 0; border-radius: 3px; cursor: pointer; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid #333; }
+  .neighbor-link:hover { background: #2a2a4e; }
+  #neighbors-list { max-height: 160px; overflow-y: auto; margin-top: 4px; }
+  #legend-wrap { flex: 1; overflow-y: auto; padding: 12px; }
+  #legend-wrap h3 { font-size: 13px; color: #aaa; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; border-radius: 4px; font-size: 12px; }
+  .legend-item:hover { background: #2a2a4e; padding-left: 4px; }
+  .legend-item.dimmed { opacity: 0.35; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { color: #666; font-size: 11px; }
+  #stats { padding: 10px 14px; border-top: 1px solid #2a2a4e; font-size: 11px; color: #555; }
+  #legend-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 4px 0; }
+  #legend-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; color: #aaa; user-select: none; }
+  #legend-controls label:hover { color: #e0e0e0; }
+  .legend-cb, #select-all-cb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1.5px solid #3a3a5e; border-radius: 3px; background: #0f0f1a; cursor: pointer; position: relative; flex-shrink: 0; }
+  .legend-cb:checked, #select-all-cb:checked { background: #4E79A7; border-color: #4E79A7; }
+  .legend-cb:checked::after, #select-all-cb:checked::after { content: ''; position: absolute; left: 3.5px; top: 1px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #select-all-cb:indeterminate { background: #4E79A7; border-color: #4E79A7; }
+  #select-all-cb:indeterminate::after { content: ''; position: absolute; left: 2px; top: 5px; width: 8px; height: 2px; background: #fff; border: none; transform: none; }
+</style>
+</head>
+<body>
+<div id="graph"></div>
+<div id="sidebar">
+  <div id="search-wrap">
+    <input id="search" type="text" placeholder="Search nodes..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div id="info-panel">
+    <h3>Node Info</h3>
+    <div id="info-content"><span class="empty">Click a node to inspect it</span></div>
+  </div>
+  <div id="legend-wrap">
+    <h3>Communities</h3>
+    <div id="legend-controls">
+      <label><input type="checkbox" id="select-all-cb" checked onchange="toggleAllCommunities(!this.checked)">Select All</label>
+    </div>
+    <div id="legend"></div>
+  </div>
+  <div id="stats">74 nodes &middot; 85 edges &middot; 16 communities</div>
+</div>
+<script>
+const RAW_NODES = [{"id": "vercel", "label": "vercel.json", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "vercel.json", "community": 6, "community_name": "Vercel Configuration", "source_file": "vercel.json", "file_type": "code", "degree": 3}, {"id": "vercel_cleanurls", "label": "cleanUrls", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "cleanUrls", "community": 6, "community_name": "Vercel Configuration", "source_file": "vercel.json", "file_type": "code", "degree": 1}, {"id": "vercel_headers", "label": "headers", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "headers", "community": 6, "community_name": "Vercel Configuration", "source_file": "vercel.json", "file_type": "code", "degree": 1}, {"id": "vercel_trailingslash", "label": "trailingSlash", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "trailingSlash", "community": 6, "community_name": "Vercel Configuration", "source_file": "vercel.json", "file_type": "code", "degree": 1}, {"id": "acompanamiento_continuo_service", "label": "Acompa\u00f1amiento Continuo (Service)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "Acompa\u00f1amiento Continuo (Service)", "community": 0, "community_name": "Core Services Content", "source_file": "acompanamiento-continuo.html", "file_type": "concept", "degree": 3}, {"id": "asesoria_estrategica_service", "label": "Asesor\u00eda Estrat\u00e9gica (Service)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "Asesor\u00eda Estrat\u00e9gica (Service)", "community": 0, "community_name": "Core Services Content", "source_file": "asesoria-estrategica.html", "file_type": "concept", "degree": 3}, {"id": "contacto_contact_form", "label": "Contact Form (Contacto)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 37.3, "font": {"size": 12, "color": "#ffffff"}, "title": "Contact Form (Contacto)", "community": 0, "community_name": "Core Services Content", "source_file": "contacto.html", "file_type": "concept", "degree": 10}, {"id": "curso_finanzas_ia_course", "label": "Finanzas con IA (Course)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Finanzas con IA (Course)", "community": 0, "community_name": "Core Services Content", "source_file": "curso-finanzas-ia.html", "file_type": "concept", "degree": 2}, {"id": "evaluacion_procesos_service", "label": "Evaluaci\u00f3n de Procesos (Service)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "Evaluaci\u00f3n de Procesos (Service)", "community": 0, "community_name": "Core Services Content", "source_file": "evaluacion-procesos.html", "file_type": "concept", "degree": 3}, {"id": "habilitacion_equipos_service", "label": "Habilitaci\u00f3n de Equipos (Service)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 20.9, "font": {"size": 12, "color": "#ffffff"}, "title": "Habilitaci\u00f3n de Equipos (Service)", "community": 0, "community_name": "Core Services Content", "source_file": "habilitacion-equipos.html", "file_type": "concept", "degree": 4}, {"id": "index_luci_assistant", "label": "Luci Assistant Widget", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Luci Assistant Widget", "community": 0, "community_name": "Core Services Content", "source_file": "index.html", "file_type": "concept", "degree": 1}, {"id": "masterclasses_workshops_service", "label": "Masterclasses y Workshops (Service)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "Masterclasses y Workshops (Service)", "community": 0, "community_name": "Core Services Content", "source_file": "masterclasses-workshops.html", "file_type": "concept", "degree": 3}, {"id": "nosotros_metodologia", "label": "C\u00f3mo Trabajamos (Methodology Section)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 29.1, "font": {"size": 12, "color": "#ffffff"}, "title": "C\u00f3mo Trabajamos (Methodology Section)", "community": 0, "community_name": "Core Services Content", "source_file": "nosotros.html", "file_type": "concept", "degree": 7}, {"id": "curso_finanzas_ia_page", "label": "Finanzas con IA Course Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "Finanzas con IA Course Page", "community": 0, "community_name": "Core Services Content", "source_file": "curso-finanzas-ia.html", "file_type": "document", "degree": 3}, {"id": "cursos_page", "label": "Cursos Catalog Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Cursos Catalog Page", "community": 0, "community_name": "Core Services Content", "source_file": "cursos.html", "file_type": "document", "degree": 2}, {"id": "precios_page", "label": "Precios Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 31.8, "font": {"size": 12, "color": "#ffffff"}, "title": "Precios Page", "community": 0, "community_name": "Core Services Content", "source_file": "precios.html", "file_type": "document", "degree": 8}, {"id": "privacidad_page", "label": "Pol\u00edticas de Privacidad Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Pol\u00edticas de Privacidad Page", "community": 0, "community_name": "Core Services Content", "source_file": "privacidad.html", "file_type": "document", "degree": 1}, {"id": "terminos_page", "label": "T\u00e9rminos y Condiciones Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "T\u00e9rminos y Condiciones Page", "community": 0, "community_name": "Core Services Content", "source_file": "terminos.html", "file_type": "document", "degree": 1}, {"id": "despliegue_ejecucion_service", "label": "Despliegue y Ejecuci\u00f3n (Service)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 26.4, "font": {"size": 12, "color": "#ffffff"}, "title": "Despliegue y Ejecuci\u00f3n (Service)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "despliegue-ejecucion.html", "file_type": "concept", "degree": 6}, {"id": "index_dynamics365", "label": "Microsoft Dynamics 365 (Platform)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Microsoft Dynamics 365 (Platform)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "index.html", "file_type": "concept", "degree": 2}, {"id": "index_linea_hexagono", "label": "L\u00ednea Hex\u00e1gono (High-Ticket Business Line)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "L\u00ednea Hex\u00e1gono (High-Ticket Business Line)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "index.html", "file_type": "concept", "degree": 3}, {"id": "index_linea_triangulo", "label": "L\u00ednea Tri\u00e1ngulo (Mid-Ticket Business Line)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "L\u00ednea Tri\u00e1ngulo (Mid-Ticket Business Line)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "index.html", "file_type": "concept", "degree": 2}, {"id": "index_odoo", "label": "Odoo (Platform)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Odoo (Platform)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "index.html", "file_type": "concept", "degree": 2}, {"id": "index_sap", "label": "SAP (Platform)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "SAP (Platform)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "index.html", "file_type": "concept", "degree": 2}, {"id": "contacto_page", "label": "Contacto Page", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "Contacto Page", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "contacto.html", "file_type": "document", "degree": 3}, {"id": "index_page", "label": "Home Page (index)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 40.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Home Page (index)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "index.html", "file_type": "document", "degree": 11}, {"id": "nosotros_page", "label": "Nosotros Page", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "Nosotros Page", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "nosotros.html", "file_type": "document", "degree": 3}, {"id": "robots_txt", "label": "robots.txt", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "robots.txt", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "robots.txt", "file_type": "document", "degree": 1}, {"id": "nosotros_diferencial", "label": "Por Qu\u00e9 Elegir F&V (Differentiator Section)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Por Qu\u00e9 Elegir F&amp;V (Differentiator Section)", "community": 1, "community_name": "Homepage & Business Lines", "source_file": "nosotros.html", "file_type": "rationale", "degree": 2}, {"id": "concept_larva_mascot", "label": "Larva/Worm Mascot Motif", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Larva/Worm Mascot Motif", "community": 10, "community_name": "Larva Mascot Motif", "source_file": "assets/larva.jpg", "file_type": "concept", "degree": 1}, {"id": "concept_neon_glow_design", "label": "Neon Glow Visual Design Style", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Neon Glow Visual Design Style", "community": 10, "community_name": "Larva Mascot Motif", "source_file": "assets/larva.jpg", "file_type": "concept", "degree": 1}, {"id": "assets_larva", "label": "larva.jpg (Neon Glowing Larva/Worm Illustration)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "larva.jpg (Neon Glowing Larva/Worm Illustration)", "community": 10, "community_name": "Larva Mascot Motif", "source_file": "assets/larva.jpg", "file_type": "image", "degree": 2}, {"id": "concept_faq_section", "label": "FAQ / Questions Visual Motif", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "FAQ / Questions Visual Motif", "community": 11, "community_name": "FAQ Question Mark Icon", "source_file": "assets/signos.png", "file_type": "concept", "degree": 1}, {"id": "concept_spanish_inverted_question_mark", "label": "Spanish Inverted Question Mark (\u00bf)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Spanish Inverted Question Mark (\u00bf)", "community": 11, "community_name": "FAQ Question Mark Icon", "source_file": "assets/signos.png", "file_type": "concept", "degree": 1}, {"id": "assets_signos", "label": "signos.png (Neon Question Marks Graphic)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "signos.png (Neon Question Marks Graphic)", "community": 11, "community_name": "FAQ Question Mark Icon", "source_file": "assets/signos.png", "file_type": "image", "degree": 2}, {"id": "concept_neon_triangle_brand_motif", "label": "Neon Triangle Brand Motif", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Neon Triangle Brand Motif", "community": 12, "community_name": "Neon Triangle Logo", "source_file": "assets/logo_completo.jpg", "file_type": "concept", "degree": 1}, {"id": "assets_logo_completo", "label": "FV AI Group Logo (Complete)", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "FV AI Group Logo (Complete)", "community": 12, "community_name": "Neon Triangle Logo", "source_file": "assets/logo_completo.jpg", "file_type": "image", "degree": 1}, {"id": "fv_ai_group_brand_identity", "label": "FV AI Group Brand Identity", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "FV AI Group Brand Identity", "community": 13, "community_name": "Hexagon Logo Icon", "source_file": "assets/logo-hex.png", "file_type": "concept", "degree": 1}, {"id": "assets_logo_hex", "label": "Hexagon Logo (Blue-Orange Gradient)", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Hexagon Logo (Blue-Orange Gradient)", "community": 13, "community_name": "Hexagon Logo Icon", "source_file": "assets/logo-hex.png", "file_type": "image", "degree": 1}, {"id": "fv_ai_group_brand_visual_assets", "label": "fv-ai-group Brand Visual Assets", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "fv-ai-group Brand Visual Assets", "community": 14, "community_name": "Triangle Brand Graphic", "source_file": "assets/triangulo.jpg", "file_type": "concept", "degree": 1}, {"id": "assets_triangulo", "label": "Neon Triangle Graphic (triangulo.jpg)", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Neon Triangle Graphic (triangulo.jpg)", "community": 14, "community_name": "Triangle Brand Graphic", "source_file": "assets/triangulo.jpg", "file_type": "image", "degree": 1}, {"id": "404_page", "label": "404 Not Found Page", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "404 Not Found Page", "community": 15, "community_name": "404 Error Page", "source_file": "404.html", "file_type": "document", "degree": 0}, {"id": "acompanamiento_continuo_page", "label": "Acompa\u00f1amiento Continuo Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Acompa\u00f1amiento Continuo Page", "community": 2, "community_name": "Service Landing Pages", "source_file": "acompanamiento-continuo.html", "file_type": "document", "degree": 1}, {"id": "asesoria_estrategica_page", "label": "Asesor\u00eda Estrat\u00e9gica Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Asesor\u00eda Estrat\u00e9gica Page", "community": 2, "community_name": "Service Landing Pages", "source_file": "asesoria-estrategica.html", "file_type": "document", "degree": 1}, {"id": "despliegue_ejecucion_page", "label": "Despliegue y Ejecuci\u00f3n Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Despliegue y Ejecuci\u00f3n Page", "community": 2, "community_name": "Service Landing Pages", "source_file": "despliegue-ejecucion.html", "file_type": "document", "degree": 1}, {"id": "evaluacion_procesos_page", "label": "Evaluaci\u00f3n de Procesos Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Evaluaci\u00f3n de Procesos Page", "community": 2, "community_name": "Service Landing Pages", "source_file": "evaluacion-procesos.html", "file_type": "document", "degree": 1}, {"id": "habilitacion_equipos_page", "label": "Habilitaci\u00f3n de Equipos Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Habilitaci\u00f3n de Equipos Page", "community": 2, "community_name": "Service Landing Pages", "source_file": "habilitacion-equipos.html", "file_type": "document", "degree": 1}, {"id": "masterclasses_workshops_page", "label": "Masterclasses y Workshops Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Masterclasses y Workshops Page", "community": 2, "community_name": "Service Landing Pages", "source_file": "masterclasses-workshops.html", "file_type": "document", "degree": 1}, {"id": "servicios_page", "label": "Servicios Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 31.8, "font": {"size": 12, "color": "#ffffff"}, "title": "Servicios Page", "community": 2, "community_name": "Service Landing Pages", "source_file": "servicios.html", "file_type": "document", "degree": 8}, {"id": "dynamics_365_platform", "label": "Dynamics 365", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Dynamics 365", "community": 3, "community_name": "Brand & Platform Integrations", "source_file": "assets/og-image.png", "file_type": "concept", "degree": 2}, {"id": "fv_ai_group_brand", "label": "F&V AI Group (Brand/Company)", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 23.6, "font": {"size": 12, "color": "#ffffff"}, "title": "F&amp;V AI Group (Brand/Company)", "community": 3, "community_name": "Brand & Platform Integrations", "source_file": "assets/og-image.png", "file_type": "concept", "degree": 5}, {"id": "fv_ai_group_service_offering", "label": "Auditoria, implementacion y capacitacion de sistemas empresariales con IA", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 20.9, "font": {"size": 12, "color": "#ffffff"}, "title": "Auditoria, implementacion y capacitacion de sistemas empresariales con IA", "community": 3, "community_name": "Brand & Platform Integrations", "source_file": "assets/og-image.png", "file_type": "concept", "degree": 4}, {"id": "odoo_platform", "label": "Odoo", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Odoo", "community": 3, "community_name": "Brand & Platform Integrations", "source_file": "assets/og-image.png", "file_type": "concept", "degree": 2}, {"id": "sap_platform", "label": "SAP", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "SAP", "community": 3, "community_name": "Brand & Platform Integrations", "source_file": "assets/og-image.png", "file_type": "concept", "degree": 2}, {"id": "assets_og_image", "label": "F&V AI Group Open Graph Image", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "F&amp;V AI Group Open Graph Image", "community": 3, "community_name": "Brand & Platform Integrations", "source_file": "assets/og-image.png", "file_type": "image", "degree": 2}, {"id": "fv_ai_group_dragonfly_logo", "label": "Dragonfly Hexagon Logo Mark", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Dragonfly Hexagon Logo Mark", "community": 3, "community_name": "Brand & Platform Integrations", "source_file": "assets/og-image.png", "file_type": "image", "degree": 1}, {"id": "assets_clientes", "label": "Clientes (Clients Assets Folder)", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Clientes (Clients Assets Folder)", "community": 4, "community_name": "Client Logos (Killjoy/Licorway)", "source_file": "assets/clientes/killjoy.jpeg", "file_type": "concept", "degree": 2}, {"id": "assets_clientes_killjoy_brand", "label": "Killjoy (Client/Brand)", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Killjoy (Client/Brand)", "community": 4, "community_name": "Client Logos (Killjoy/Licorway)", "source_file": "assets/clientes/killjoy.jpeg", "file_type": "concept", "degree": 1}, {"id": "assets_clientes_licorway_client", "label": "Licorway (Client)", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Licorway (Client)", "community": 4, "community_name": "Client Logos (Killjoy/Licorway)", "source_file": "assets/clientes/licorway.jpeg", "file_type": "concept", "degree": 1}, {"id": "assets_clientes_killjoy", "label": "Killjoy Client Logo", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Killjoy Client Logo", "community": 4, "community_name": "Client Logos (Killjoy/Licorway)", "source_file": "assets/clientes/killjoy.jpeg", "file_type": "image", "degree": 2}, {"id": "assets_clientes_licorway", "label": "Licorway Logo", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Licorway Logo", "community": 4, "community_name": "Client Logos (Killjoy/Licorway)", "source_file": "assets/clientes/licorway.jpeg", "file_type": "image", "degree": 2}, {"id": "concept_brand_identity", "label": "FV AI Group Brand Identity", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "FV AI Group Brand Identity", "community": 5, "community_name": "Primary Logo Identity", "source_file": "assets/logo-full.png", "file_type": "concept", "degree": 3}, {"id": "concept_dragonfly_glyph", "label": "Dragonfly/Insect Glyph (AI Spark Symbol)", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Dragonfly/Insect Glyph (AI Spark Symbol)", "community": 5, "community_name": "Primary Logo Identity", "source_file": "assets/logo-full.png", "file_type": "concept", "degree": 2}, {"id": "concept_hexagon_motif", "label": "Hexagon Ring Motif (Cyan-to-Orange Gradient)", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Hexagon Ring Motif (Cyan-to-Orange Gradient)", "community": 5, "community_name": "Primary Logo Identity", "source_file": "assets/logo-full.png", "file_type": "concept", "degree": 2}, {"id": "assets_logo_full", "label": "logo-full.png (FV AI Group Logo)", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 18.2, "font": {"size": 12, "color": "#ffffff"}, "title": "logo-full.png (FV AI Group Logo)", "community": 5, "community_name": "Primary Logo Identity", "source_file": "assets/logo-full.png", "file_type": "image", "degree": 3}, {"id": "assets_logo_mark_concept_fv_ai_group_brand", "label": "FV AI Group Brand Identity", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "FV AI Group Brand Identity", "community": 7, "community_name": "Logo Mark & Casa del Mocho", "source_file": "assets/logo-mark.png", "file_type": "concept", "degree": 1}, {"id": "assets_casadelmocho_logo", "label": "Casa del Mocho Logo", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Casa del Mocho Logo", "community": 7, "community_name": "Logo Mark & Casa del Mocho", "source_file": "assets/Casadelmocho_logo.jpg", "file_type": "image", "degree": 1}, {"id": "assets_logo_mark", "label": "Logo Mark (Dragonfly/Firefly Icon)", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Logo Mark (Dragonfly/Firefly Icon)", "community": 7, "community_name": "Logo Mark & Casa del Mocho", "source_file": "assets/logo-mark.png", "file_type": "image", "degree": 2}, {"id": "assets_casadelmocho_logo_brand", "label": "Casa del Mocho Brand", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Casa del Mocho Brand", "community": 8, "community_name": "Casa del Mocho Brand", "source_file": "assets/Casadelmocho_logo.jpg", "file_type": "concept", "degree": 1}, {"id": "assets_casadelmocho_logo_bear_mascot", "label": "Bear Mascot Illustration", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Bear Mascot Illustration", "community": 8, "community_name": "Casa del Mocho Brand", "source_file": "assets/Casadelmocho_logo.jpg", "file_type": "image", "degree": 1}, {"id": "assets_casadelmocho_logo_logo", "label": "Casa del Mocho Logo", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Casa del Mocho Logo", "community": 8, "community_name": "Casa del Mocho Brand", "source_file": "assets/Casadelmocho_logo.jpg", "file_type": "image", "degree": 2}, {"id": "assets_clientes_dir", "label": "Clientes (Client Logos) Assets Directory", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Clientes (Client Logos) Assets Directory", "community": 9, "community_name": "Natural Sweet Client", "source_file": "assets/clientes/naturalsweet.png", "file_type": "concept", "degree": 1}, {"id": "assets_clientes_naturalsweet_client", "label": "Natural Sweet (Client)", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 12.7, "font": {"size": 0, "color": "#ffffff"}, "title": "Natural Sweet (Client)", "community": 9, "community_name": "Natural Sweet Client", "source_file": "assets/clientes/naturalsweet.png", "file_type": "concept", "degree": 1}, {"id": "assets_clientes_naturalsweet", "label": "Natural Sweet Logo", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 15.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Natural Sweet Logo", "community": 9, "community_name": "Natural Sweet Client", "source_file": "assets/clientes/naturalsweet.png", "file_type": "image", "degree": 2}];
+const RAW_EDGES = [{"from": "vercel", "to": "vercel_cleanurls", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vercel", "to": "vercel_trailingslash", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vercel", "to": "vercel_headers", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "acompanamiento_continuo_service", "to": "contacto_contact_form", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "acompanamiento_continuo_service", "to": "nosotros_metodologia", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "acompanamiento_continuo_service", "to": "precios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "asesoria_estrategica_service", "to": "contacto_contact_form", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "asesoria_estrategica_service", "to": "nosotros_metodologia", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "asesoria_estrategica_service", "to": "precios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "despliegue_ejecucion_service", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "evaluacion_procesos_service", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "habilitacion_equipos_service", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "masterclasses_workshops_service", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "privacidad_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "terminos_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "contacto_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_contact_form", "to": "index_luci_assistant", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "curso_finanzas_ia_course", "to": "curso_finanzas_ia_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "curso_finanzas_ia_course", "to": "habilitacion_equipos_service", "label": "semantically_similar_to", "title": "semantically_similar_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "evaluacion_procesos_service", "to": "nosotros_metodologia", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "evaluacion_procesos_service", "to": "precios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "habilitacion_equipos_service", "to": "nosotros_metodologia", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "habilitacion_equipos_service", "to": "precios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "masterclasses_workshops_service", "to": "nosotros_metodologia", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "masterclasses_workshops_service", "to": "precios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "nosotros_metodologia", "to": "despliegue_ejecucion_service", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "nosotros_metodologia", "to": "nosotros_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "curso_finanzas_ia_page", "to": "precios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "curso_finanzas_ia_page", "to": "cursos_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "cursos_page", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "precios_page", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "precios_page", "to": "despliegue_ejecucion_service", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "despliegue_ejecucion_service", "to": "index_dynamics365", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "despliegue_ejecucion_service", "to": "index_odoo", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "despliegue_ejecucion_service", "to": "index_sap", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_dynamics365", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_linea_hexagono", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_linea_hexagono", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_linea_hexagono", "to": "nosotros_diferencial", "label": "semantically_similar_to", "title": "semantically_similar_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "index_linea_triangulo", "to": "contacto_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_linea_triangulo", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_odoo", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_sap", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "contacto_page", "to": "index_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_page", "to": "robots_txt", "label": "references", "title": "references [AMBIGUOUS]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "AMBIGUOUS"}, {"from": "index_page", "to": "nosotros_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_page", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "nosotros_page", "to": "nosotros_diferencial", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "concept_larva_mascot", "to": "assets_larva", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "concept_neon_glow_design", "to": "assets_larva", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "concept_faq_section", "to": "assets_signos", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "concept_spanish_inverted_question_mark", "to": "assets_signos", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "concept_neon_triangle_brand_motif", "to": "assets_logo_completo", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "fv_ai_group_brand_identity", "to": "assets_logo_hex", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "fv_ai_group_brand_visual_assets", "to": "assets_triangulo", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "acompanamiento_continuo_page", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "asesoria_estrategica_page", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "despliegue_ejecucion_page", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "evaluacion_procesos_page", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "habilitacion_equipos_page", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "masterclasses_workshops_page", "to": "servicios_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "dynamics_365_platform", "to": "fv_ai_group_brand", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "dynamics_365_platform", "to": "fv_ai_group_service_offering", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "fv_ai_group_brand", "to": "assets_og_image", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "fv_ai_group_brand", "to": "fv_ai_group_service_offering", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "fv_ai_group_brand", "to": "odoo_platform", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "fv_ai_group_brand", "to": "sap_platform", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "fv_ai_group_service_offering", "to": "odoo_platform", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "fv_ai_group_service_offering", "to": "sap_platform", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "assets_og_image", "to": "fv_ai_group_dragonfly_logo", "label": "shares_data_with", "title": "shares_data_with [AMBIGUOUS]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "AMBIGUOUS"}, {"from": "assets_clientes", "to": "assets_clientes_licorway", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "assets_clientes", "to": "assets_clientes_killjoy", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "assets_clientes_killjoy_brand", "to": "assets_clientes_killjoy", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "assets_clientes_licorway_client", "to": "assets_clientes_licorway", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "concept_brand_identity", "to": "concept_dragonfly_glyph", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "concept_brand_identity", "to": "concept_hexagon_motif", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "concept_brand_identity", "to": "assets_logo_full", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "concept_dragonfly_glyph", "to": "assets_logo_full", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "concept_hexagon_motif", "to": "assets_logo_full", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "assets_logo_mark_concept_fv_ai_group_brand", "to": "assets_logo_mark", "label": "rationale_for", "title": "rationale_for [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "assets_casadelmocho_logo", "to": "assets_logo_mark", "label": "conceptually_related_to", "title": "conceptually_related_to [AMBIGUOUS]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "AMBIGUOUS"}, {"from": "assets_casadelmocho_logo_brand", "to": "assets_casadelmocho_logo_logo", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "assets_casadelmocho_logo_bear_mascot", "to": "assets_casadelmocho_logo_logo", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "assets_clientes_dir", "to": "assets_clientes_naturalsweet", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "assets_clientes_naturalsweet_client", "to": "assets_clientes_naturalsweet", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}];
+const LEGEND = [{"cid": 0, "color": "#4E79A7", "label": "Core Services Content", "count": 14}, {"cid": 1, "color": "#F28E2B", "label": "Homepage &amp; Business Lines", "count": 11}, {"cid": 2, "color": "#E15759", "label": "Service Landing Pages", "count": 7}, {"cid": 3, "color": "#76B7B2", "label": "Brand &amp; Platform Integrations", "count": 7}, {"cid": 4, "color": "#59A14F", "label": "Client Logos (Killjoy/Licorway)", "count": 5}, {"cid": 5, "color": "#EDC948", "label": "Primary Logo Identity", "count": 4}, {"cid": 6, "color": "#B07AA1", "label": "Vercel Configuration", "count": 4}, {"cid": 7, "color": "#FF9DA7", "label": "Logo Mark &amp; Casa del Mocho", "count": 3}, {"cid": 8, "color": "#9C755F", "label": "Casa del Mocho Brand", "count": 3}, {"cid": 9, "color": "#BAB0AC", "label": "Natural Sweet Client", "count": 3}, {"cid": 10, "color": "#4E79A7", "label": "Larva Mascot Motif", "count": 3}, {"cid": 11, "color": "#F28E2B", "label": "FAQ Question Mark Icon", "count": 3}, {"cid": 12, "color": "#E15759", "label": "Neon Triangle Logo", "count": 2}, {"cid": 13, "color": "#76B7B2", "label": "Hexagon Logo Icon", "count": 2}, {"cid": 14, "color": "#59A14F", "label": "Triangle Brand Graphic", "count": 2}, {"cid": 15, "color": "#EDC948", "label": "404 Error Page", "count": 1}];
+
+// HTML-escape helper — prevents XSS when injecting graph data into innerHTML
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Build vis datasets
+const nodesDS = new vis.DataSet(RAW_NODES.map(n => ({
+  id: n.id, label: n.label, color: n.color, size: n.size,
+  font: n.font, title: n.title,
+  _community: n.community, _community_name: n.community_name,
+  _source_file: n.source_file, _file_type: n.file_type, _degree: n.degree,
+})));
+
+const edgesDS = new vis.DataSet(RAW_EDGES.map((e, i) => ({
+  id: i, from: e.from, to: e.to,
+  label: '',
+  title: e.title,
+  dashes: e.dashes,
+  width: e.width,
+  color: e.color,
+  arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+})));
+
+const container = document.getElementById('graph');
+const network = new vis.Network(container, { nodes: nodesDS, edges: edgesDS }, {
+  physics: {
+    enabled: true,
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -60,
+      centralGravity: 0.005,
+      springLength: 120,
+      springConstant: 0.08,
+      damping: 0.4,
+      avoidOverlap: 0.8,
+    },
+    stabilization: { iterations: 200, fit: true },
+  },
+  interaction: {
+    hover: true,
+    tooltipDelay: 100,
+    hideEdgesOnDrag: true,
+    navigationButtons: false,
+    keyboard: false,
+  },
+  nodes: { shape: 'dot', borderWidth: 1.5 },
+  edges: { smooth: { type: 'continuous', roundness: 0.2 }, selectionWidth: 3 },
+});
+
+network.once('stabilizationIterationsDone', () => {
+  network.setOptions({ physics: { enabled: false } });
+});
+
+function showInfo(nodeId) {
+  const n = nodesDS.get(nodeId);
+  if (!n) return;
+  const neighborIds = network.getConnectedNodes(nodeId);
+  const neighborItems = neighborIds.map(nid => {
+    const nb = nodesDS.get(nid);
+    const color = nb ? nb.color.background : '#555';
+    return `<span class="neighbor-link" style="border-left-color:${esc(color)}" data-nid="${esc(nid)}">${esc(nb ? nb.label : nid)}</span>`;
+  }).join('');
+  document.getElementById('info-content').innerHTML = `
+    <div class="field"><b>${esc(n.label)}</b></div>
+    <div class="field">Type: ${esc(n._file_type || 'unknown')}</div>
+    <div class="field">Community: ${esc(n._community_name)}</div>
+    <div class="field">Source: ${esc(n._source_file || '-')}</div>
+    <div class="field">Degree: ${n._degree}</div>
+    ${neighborIds.length ? `<div class="field" style="margin-top:8px;color:#aaa;font-size:11px">Neighbors (${neighborIds.length})</div><div id="neighbors-list">${neighborItems}</div>` : ''}
+  `;
+}
+
+function focusNode(nodeId) {
+  network.focus(nodeId, { scale: 1.4, animation: true });
+  network.selectNodes([nodeId]);
+  showInfo(nodeId);
+}
+
+// Neighbor links use a data attribute + one delegated listener rather than an
+// inline onclick. A node id/label sourced from a document or a scraped URL
+// (graphify add) can contain a double-quote; dropping the stringified id
+// unescaped into a quoted onclick both broke every link and allowed a hostile
+// source to inject an event handler into the local report (stored XSS, #1838).
+// esc() on data-nid keeps the value inside the attribute; the listener reads it
+// back verbatim. Bound to document so it survives the innerHTML rebuild that
+// recreates #neighbors-list on each showInfo().
+document.addEventListener('click', e => {
+  const el = e.target.closest('.neighbor-link');
+  if (el && el.dataset.nid !== undefined) focusNode(el.dataset.nid);
+});
+
+// Track hovered node — hover detection is more reliable than click params
+let hoveredNodeId = null;
+network.on('hoverNode', params => {
+  hoveredNodeId = params.node;
+  container.style.cursor = 'pointer';
+});
+network.on('blurNode', () => {
+  hoveredNodeId = null;
+  container.style.cursor = 'default';
+});
+container.addEventListener('click', () => {
+  if (hoveredNodeId !== null) {
+    showInfo(hoveredNodeId);
+    network.selectNodes([hoveredNodeId]);
+  }
+});
+network.on('click', params => {
+  if (params.nodes.length > 0) {
+    showInfo(params.nodes[0]);
+  } else if (hoveredNodeId === null) {
+    document.getElementById('info-content').innerHTML = '<span class="empty">Click a node to inspect it</span>';
+  }
+});
+
+const searchInput = document.getElementById('search');
+const searchResults = document.getElementById('search-results');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  searchResults.innerHTML = '';
+  if (!q) { searchResults.style.display = 'none'; return; }
+  const matches = RAW_NODES.filter(n => n.label.toLowerCase().includes(q)).slice(0, 20);
+  if (!matches.length) { searchResults.style.display = 'none'; return; }
+  searchResults.style.display = 'block';
+  matches.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'search-item';
+    el.textContent = n.label;
+    el.style.borderLeft = `3px solid ${n.color.background}`;
+    el.style.paddingLeft = '8px';
+    el.onclick = () => {
+      network.focus(n.id, { scale: 1.5, animation: true });
+      network.selectNodes([n.id]);
+      showInfo(n.id);
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+    };
+    searchResults.appendChild(el);
+  });
+});
+document.addEventListener('click', e => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput)
+    searchResults.style.display = 'none';
+});
+
+const hiddenCommunities = new Set();
+
+const selectAllCb = document.getElementById('select-all-cb');
+
+function updateSelectAllState() {
+  const total = LEGEND.length;
+  const hidden = hiddenCommunities.size;
+  selectAllCb.checked = hidden === 0;
+  selectAllCb.indeterminate = hidden > 0 && hidden < total;
+}
+
+function toggleAllCommunities(hide) {
+  document.querySelectorAll('.legend-item').forEach(item => {
+    hide ? item.classList.add('dimmed') : item.classList.remove('dimmed');
+  });
+  document.querySelectorAll('.legend-cb').forEach(cb => {
+    cb.checked = !hide;
+  });
+  LEGEND.forEach(c => {
+    if (hide) hiddenCommunities.add(c.cid); else hiddenCommunities.delete(c.cid);
+  });
+  const updates = RAW_NODES.map(n => ({ id: n.id, hidden: hide }));
+  nodesDS.update(updates);
+  updateSelectAllState();
+}
+
+const legendEl = document.getElementById('legend');
+LEGEND.forEach(c => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'legend-cb';
+  cb.checked = true;
+  cb.addEventListener('change', (e) => {
+    e.stopPropagation();
+    if (cb.checked) {
+      hiddenCommunities.delete(c.cid);
+      item.classList.remove('dimmed');
+    } else {
+      hiddenCommunities.add(c.cid);
+      item.classList.add('dimmed');
+    }
+    const updates = RAW_NODES
+      .filter(n => n.community === c.cid)
+      .map(n => ({ id: n.id, hidden: !cb.checked }));
+    nodesDS.update(updates);
+    updateSelectAllState();
+  });
+  item.innerHTML = `<div class="legend-dot" style="background:${c.color}"></div>
+    <span class="legend-label">${c.label}</span>
+    <span class="legend-count">${c.count}</span>`;
+  item.prepend(cb);
+  item.onclick = (e) => {
+    if (e.target === cb) return;
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  };
+  legendEl.appendChild(item);
+});
+</script>
+<script>
+// Render hyperedges as shaded regions
+const hyperedges = [{"id": "contact_legal_consent_flow", "label": "Contact Form Legal Consent Flow", "nodes": ["contacto_contact_form", "privacidad_page", "terminos_page"], "relation": "participate_in", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "contacto.html"}, {"id": "six_stage_methodology", "label": "F&V Six-Stage Service Methodology", "nodes": ["asesoria_estrategica_service", "evaluacion_procesos_service", "despliegue_ejecucion_service", "habilitacion_equipos_service", "masterclasses_workshops_service", "acompanamiento_continuo_service"], "relation": "form", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "nosotros.html"}, {"id": "luci_assistant_widget_pattern", "label": "Luci FAQ Widget Shared Across Pages", "nodes": ["index_luci_assistant", "servicios_page", "nosotros_page", "precios_page", "contacto_page"], "relation": "implement", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "index.html"}];
+// afterDrawing passes ctx already transformed to network coordinate space.
+// Draw node positions raw — no manual pan/zoom/DPR math needed.
+
+// Andrew's monotone chain. Returns the hull in counter-clockwise order, which
+// is what the perimeter must be traced in. Collinear and duplicate points
+// collapse to the extremes, so degenerate member sets render as a segment
+// rather than a zero-area crossed path.
+function convexHull(pts) {
+    const p = pts.slice().sort((a, b) => (a.x - b.x) || (a.y - b.y));
+    if (p.length < 3) return p;
+    const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+    const build = seq => {
+        const out = [];
+        for (const q of seq) {
+            while (out.length >= 2 && cross(out[out.length - 2], out[out.length - 1], q) <= 0) out.pop();
+            out.push(q);
+        }
+        out.pop();
+        return out;
+    };
+    const hull = build(p).concat(build(p.slice().reverse()));
+    return hull.length >= 3 ? hull : p;
+}
+network.on('afterDrawing', function(ctx) {
+    hyperedges.forEach(h => {
+        const positions = h.nodes
+            .map(nid => network.getPositions([nid])[nid])
+            .filter(p => p !== undefined);
+        if (positions.length < 2) return;
+        ctx.save();
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = '#6366f1';
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        // Centroid and expanded hull in network coordinates.
+        // The perimeter must follow hull order, not h.nodes order: tracing the
+        // raw member order self-intersects whenever the layout does not happen
+        // to place members in angular order, filling as crossed wedges.
+        const cx = positions.reduce((s, p) => s + p.x, 0) / positions.length;
+        const cy = positions.reduce((s, p) => s + p.y, 0) / positions.length;
+        const hull = convexHull(positions);
+        const expanded = hull.map(p => ({
+            x: cx + (p.x - cx) * 1.15,
+            y: cy + (p.y - cy) * 1.15
+        }));
+        ctx.moveTo(expanded[0].x, expanded[0].y);
+        expanded.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 0.4;
+        ctx.stroke();
+        // Label
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = '#4f46e5';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(h.label, cx, cy - 5);
+        ctx.restore();
+    });
+});
+</script>
+</body>
+</html>

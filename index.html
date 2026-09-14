@@ -53,6 +53,11 @@
   }
 </script>
 <style>
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
   html { background: #000; }
   body { background: #000; }
 
@@ -68,7 +73,7 @@
   }
 
   /* reveal-on-scroll */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
   .reveal.is-in { opacity: 1; transform: translateY(0); }
 
   @media (prefers-reduced-motion: reduce) {
@@ -95,7 +100,7 @@
   details > summary::-webkit-details-marker { display: none; }
   details[open] .chev { transform: rotate(45deg); }
 
-  .link-underline { text-decoration: none !important; background-image: linear-gradient(#00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
+  .link-underline { text-decoration: none !important; background-image: linear-gradient(#00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }
   .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
 
   #hex-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -104,17 +109,21 @@
   .btn-primary {
     background-color: #FF8C00; color: #000;
     box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3);
-    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s var(--ease-out);
   }
-  .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
-  .btn-primary:active { transform: scale(0.95); transition: transform .1s ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
+  }
+  .btn-primary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
   .btn-secondary {
     background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
-    transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out), border-color .2s var(--ease-out);
   }
-  .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
-  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
+  }
+  .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
   /* ---- Wordmark con degradado cian-naranja y brillo ---- */
   .brand-gradient {
@@ -160,9 +169,11 @@
 
   /* ---- Recuadros de plataformas: relleno cian/naranja alternado ---- */
   .platform-cyan { background: rgba(0,255,255,0.07); border-color: rgba(0,255,255,0.35); }
-  .platform-cyan:hover { background: rgba(0,255,255,0.14); border-color: rgba(0,255,255,0.55); }
   .platform-orange { background: rgba(255,140,0,0.07); border-color: rgba(255,140,0,0.35); }
-  .platform-orange:hover { background: rgba(255,140,0,0.14); border-color: rgba(255,140,0,0.55); }
+  @media (hover: hover) and (pointer: fine) {
+    .platform-cyan:hover { background: rgba(0,255,255,0.14); border-color: rgba(0,255,255,0.55); }
+    .platform-orange:hover { background: rgba(255,140,0,0.14); border-color: rgba(255,140,0,0.55); }
+  }
 
   /* ---- Borde con degradado cian-naranja + brillo interactivo (tarjetas de testimonios) ---- */
   .card-glow-border {
@@ -175,27 +186,31 @@
     position: absolute; inset: 0; border-radius: inherit;
     background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.45), transparent 70%);
     mix-blend-mode: overlay;
-    opacity: 0; transition: opacity .3s ease;
+    opacity: 0; transition: opacity .25s var(--ease-out);
     pointer-events: none;
   }
-  .card-glow-border:hover::before { opacity: 1; }
+  @media (hover: hover) and (pointer: fine) {
+    .card-glow-border:hover::before { opacity: 1; }
+  }
 
   /* ---- Tarjetas de diferencial: color sólido en reposo, degradado al pasar el mouse ---- */
   .diff-card-orange, .diff-card-cyan {
     position: relative;
-    transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+    transition: border-color .25s var(--ease-out), box-shadow .25s var(--ease-out), background .25s var(--ease-out);
   }
   .diff-card-orange { border: 1px solid rgba(255,140,0,0.4); }
   .diff-card-cyan { border: 1px solid rgba(0,255,255,0.4); }
-  .diff-card-orange:hover, .diff-card-cyan:hover {
-    border-color: transparent;
-    background: linear-gradient(#0D0E12,#0D0E12) padding-box, linear-gradient(135deg,#00FFFF,#FF8C00) border-box;
-    box-shadow: 0 0 18px rgba(0,255,255,0.2), 0 0 18px rgba(255,140,0,0.2);
+  @media (hover: hover) and (pointer: fine) {
+    .diff-card-orange:hover, .diff-card-cyan:hover {
+      border-color: transparent;
+      background: linear-gradient(#0D0E12,#0D0E12) padding-box, linear-gradient(135deg,#00FFFF,#FF8C00) border-box;
+      box-shadow: 0 0 18px rgba(0,255,255,0.2), 0 0 18px rgba(255,140,0,0.2);
+    }
   }
 
   /* ---- Animación de entrada del hero ---- */
   @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-copy > * { opacity: 0; animation: heroIn .7s ease forwards; }
+  .hero-copy > * { opacity: 0; animation: heroIn .6s var(--ease-out) forwards; }
   .hero-copy > *:nth-child(1) { animation-delay: .05s; }
   .hero-copy > *:nth-child(2) { animation-delay: .16s; }
   .hero-copy > *:nth-child(3) { animation-delay: .28s; }
@@ -247,7 +262,7 @@
     .badge-border-spin::before { animation: none; }
     .badge-dot { animation: none; }
   }
-  .hero-visual-in { opacity: 0; animation: heroIn .9s ease .3s forwards; }
+  .hero-visual-in { opacity: 0; animation: heroIn .7s var(--ease-out) .3s forwards; }
   @media (prefers-reduced-motion: reduce) {
     .shimmer-text { animation: none; background-position: 30% 50%; }
     .hero-copy > *, .hero-visual-in { opacity: 1; animation: none; }
@@ -277,8 +292,10 @@
   .luci-typing span:nth-child(3) { animation-delay: 0.3s; }
   @keyframes luciTypingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
   .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
-  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: all .2s ease; background: transparent; }
-  .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: border-color .2s var(--ease-out), color .2s var(--ease-out); background: transparent; }
+  @media (hover: hover) and (pointer: fine) {
+    .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  }
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
 
@@ -581,59 +598,6 @@
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-400 tracking-wide">LOGO</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DOS LÍNEAS DE TRABAJO: HEXÁGONO / TRIÁNGULO ============ -->
-<section class="relative py-24 border-t border-white/5 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-    <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Dos formas de trabajar con <span class="shimmer-text">nosotros</span></h2>
-      <p class="text-slate-400 mt-4 leading-relaxed">Elija la línea que se ajusta al tamaño y urgencia de su proyecto — ambas con el mismo nivel de cuidado.</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-      <!-- Columna Izquierda: Línea Hexágono (High-Ticket) -->
-      <div class="relative p-8 rounded-3xl bg-fv-surface box-glow-cyan overflow-hidden">
-        <div class="absolute -top-16 -right-16 w-56 h-56 bg-fv-cyanMid/10 rounded-full blur-[90px] pointer-events-none"></div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-6">
-            <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider">High-Ticket · Ecosistemas Completos</span>
-            <img src="assets/logo-hex.png" width="500" height="500" alt="" class="w-12 h-12 opacity-80 hex-spin">
-          </div>
-          <h3 class="font-sans text-2xl sm:text-3xl font-bold text-white mb-3">Línea <span class="text-neon-cyan">Hexágono</span></h3>
-          <p class="text-slate-400 leading-relaxed mb-6">Es el estándar integral de F&amp;V: diagnóstico, despliegue completo de su ERP o CRM, integración de IA sobre los flujos reales de su negocio, habilitación de todo el equipo y acompañamiento continuo. Pensado para empresas que quieren resolver la operación completa con un solo proveedor, de principio a fin.</p>
-          <ul class="space-y-2 mb-8 text-sm text-slate-300">
-            <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Las seis etapas del servicio, integradas</li>
-            <li class="flex gap-2"><svg class="w-4 h-4 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance a la medida de toda la operación</li>
-            <li class="flex gap-2"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acompañamiento continuo incluido</li>
-          </ul>
-          <a href="servicios.html" class="btn-secondary inline-flex justify-center items-center px-6 py-3 font-head text-sm font-semibold rounded-lg">Conocer la Línea Hexágono</a>
-        </div>
-      </div>
-
-      <!-- Columna Derecha: Línea Triángulo (Mid-Ticket) -->
-      <div class="relative p-8 rounded-3xl bg-fv-surface border border-purple-500/40 shadow-[0_0_15px_rgba(168,85,247,0.4)] overflow-hidden">
-        <img src="assets/lineas/triangulo.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-[0.07] pointer-events-none">
-        <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-purple-500/10 rounded-full blur-[90px] pointer-events-none"></div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-6">
-            <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-green-400/10 text-green-400 rounded-full border border-green-400/30 uppercase tracking-wider">Mid-Ticket · Sprints Ágiles</span>
-            <img src="assets/lineas/triangulo.jpg" alt="Línea Triángulo" class="w-12 h-12 rounded-lg object-cover border border-purple-500/40">
-          </div>
-          <h3 class="font-sans text-2xl sm:text-3xl font-bold mb-3">Línea <span class="bg-gradient-to-r from-green-400 to-purple-500 bg-clip-text text-transparent">Triángulo</span></h3>
-          <p class="text-slate-400 leading-relaxed mb-6">Implementaciones ágiles y acotadas: un módulo puntual, una automatización específica o un proceso concreto resuelto en semanas, no meses. Mantenemos el mismo cuidado y estándar de calidad de F&amp;V, aplicado a una porción más pequeña de su operación y en un tiempo de ejecución más corto.</p>
-          <ul class="space-y-2 mb-8 text-sm text-slate-300">
-            <li class="flex gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance reducido, foco en un problema puntual</li>
-            <li class="flex gap-2"><svg class="w-4 h-4 text-purple-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tiempos de entrega en semanas</li>
-            <li class="flex gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Misma calidad F&amp;V, menor inversión</li>
-          </ul>
-          <a href="contacto.html" class="inline-flex justify-center items-center px-6 py-3 font-head text-sm font-semibold rounded-lg text-white border border-purple-500/50 bg-purple-500/10 hover:bg-purple-500/20 transition-colors">Consultar un sprint ágil</a>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
