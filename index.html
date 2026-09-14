@@ -64,7 +64,6 @@
   ::selection { background: #FF8C00; color: #000; }
 
   .glow-cyan { box-shadow: 0 0 10px #00FFFF, 0 0 25px #00CCFF, 0 0 50px rgba(0,204,255,0.25); }
-  .glow-orange { box-shadow: 0 0 10px #FF8C00, 0 0 30px #FF4500, 0 0 60px rgba(255,69,0,0.25); }
 
   /* ---- Glow de reposo para tarjetas grandes (Línea Hexágono) ---- */
   .box-glow-cyan { border: 1px solid rgba(0,255,255,0.25); box-shadow: 0 0 40px rgba(0,204,255,0.08), inset 0 1px 0 rgba(255,255,255,0.04); }
@@ -74,7 +73,6 @@
     border: 1px solid transparent;
     background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
   }
-  .text-glow-cyan { text-shadow: 0 0 20px rgba(0,255,255,0.35); }
 
   .grain {
     background-image: radial-gradient(#ffffff08 1px, transparent 1px);
@@ -160,17 +158,6 @@
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
-
-  /* ---- Brillo interactivo opcional: se agrega junto a .shimmer-text cuando se quiere que siga el mouse ---- */
-  .shimmer-interactive::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.6), transparent 70%);
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    opacity: 0; transition: opacity .3s ease;
-  }
-  .shimmer-interactive:hover::after { opacity: 1; }
 
   /* ---- Texto neón sólido (sin degradado) ---- */
   .text-neon-orange { color: #FF8C00 !important; text-shadow: 0 0 8px rgba(255,140,0,0.65), 0 0 18px rgba(255,69,0,0.45); }
@@ -1088,7 +1075,6 @@
 
 
 <script>
-  // Brillo interactivo que sigue el mouse (texto con .shimmer-interactive y tarjetas con .card-glow-border)
   // ---- Datos en vivo simulados: el indicador de estado cicla cada ~9s ----
   (function () {
     const dot = document.getElementById('live-status-dot');
@@ -1174,7 +1160,7 @@
     counters.forEach(el => counterObserver.observe(el));
   })();
 
-  const interactiveGlowEls = document.querySelectorAll('.shimmer-interactive, .card-glow-border');
+  const interactiveGlowEls = document.querySelectorAll('.card-glow-border');
   interactiveGlowEls.forEach(el => {
     el.addEventListener('mousemove', (e) => {
       const rect = el.getBoundingClientRect();
@@ -1225,30 +1211,31 @@
 
   // FAQ chevron already handled via CSS [open]
 
-  // Hexagon particle canvas in hero
-  (function () {
-    const canvas = document.getElementById('hex-canvas');
+  // ---- Motor compartido de partículas para los fondos decorativos (hex-canvas y constellation-canvas) ----
+  function createParticleField(canvas, opts) {
     if (!canvas) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion && opts.hideWhenReduced) return;
+
     const ctx = canvas.getContext('2d');
     let w, h, particles;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mouse = opts.mouseAttract ? { x: null, y: null } : null;
 
     function resize() {
-      const section = canvas.parentElement;
-      w = canvas.width = section.offsetWidth;
-      h = canvas.height = section.offsetHeight;
+      w = canvas.width = opts.sizeToWindow ? window.innerWidth : canvas.parentElement.offsetWidth;
+      h = canvas.height = opts.sizeToWindow ? window.innerHeight : canvas.parentElement.offsetHeight;
     }
 
     function makeParticles() {
-      const count = Math.min(60, Math.floor((w * h) / 26000));
+      const count = Math.min(opts.maxCount, Math.floor((w * h) / opts.density));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: Math.random() * 1.6 + 0.4,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
-        c: Math.random() > 0.5 ? '0,255,255' : '255,140,0',
-        a: Math.random() * 0.5 + 0.15,
+        r: opts.radius(),
+        vx: (Math.random() - 0.5) * opts.speed,
+        vy: (Math.random() - 0.5) * opts.speed,
+        c: opts.color(),
+        a: opts.alpha(),
       }));
     }
 
@@ -1258,19 +1245,61 @@
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
+        if (mouse && mouse.x !== null) {
+          const dx = mouse.x - p.x, dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160) { p.x += dx * 0.0018; p.y += dy * 0.0018; }
+        }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${p.c},${p.a})`;
         ctx.fill();
       });
+
+      if (opts.link) {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const a = particles[i], b = particles[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < opts.link.distance) {
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(${opts.link.color},${0.12 * (1 - dist / opts.link.distance)})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
       if (!reduceMotion) requestAnimationFrame(tick);
     }
+
+    if (mouse) {
+      window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+      window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+    }
+    window.addEventListener('resize', () => { resize(); makeParticles(); });
 
     resize();
     makeParticles();
     tick();
-    window.addEventListener('resize', () => { resize(); makeParticles(); });
-  })();
+  }
+
+  createParticleField(document.getElementById('hex-canvas'), {
+    sizeToWindow: false,
+    density: 26000,
+    maxCount: 60,
+    speed: 0.15,
+    radius: () => Math.random() * 1.6 + 0.4,
+    color: () => Math.random() > 0.5 ? '0,255,255' : '255,140,0',
+    alpha: () => Math.random() * 0.5 + 0.15,
+    mouseAttract: false,
+    link: null,
+    hideWhenReduced: false,
+  });
 
   const scrollTopBtn = document.getElementById('scroll-top');
   if (scrollTopBtn) {
@@ -1412,83 +1441,19 @@
     }, { passive: true });
   })();
 
-  // ---- Fondo de constelación interactivo (canvas, requestAnimationFrame) ----
-  (function () {
-    const canvas = document.getElementById('constellation-canvas');
-    if (!canvas) return;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
-
-    const ctx = canvas.getContext('2d');
-    let w, h, particles, mouse = { x: null, y: null };
-
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-
-    function makeParticles() {
-      const count = Math.min(70, Math.floor((w * h) / 22000));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-      }));
-    }
-
-    function tick() {
-      ctx.clearRect(0, 0, w, h);
-      const linkDist = 130;
-
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-
-        // atracción muy sutil hacia el mouse
-        if (mouse.x !== null) {
-          const dx = mouse.x - p.x, dy = mouse.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 160) {
-            p.x += dx * 0.0018;
-            p.y += dy * 0.0018;
-          }
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0,255,255,0.55)';
-        ctx.fill();
-      });
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i], b = particles[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < linkDist) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(255,140,0,${0.12 * (1 - dist / linkDist)})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(tick);
-    }
-
-    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
-    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
-    window.addEventListener('resize', () => { resize(); makeParticles(); });
-
-    resize();
-    makeParticles();
-    tick();
-  })();
+  // ---- Fondo de constelación interactivo (mismo motor que hex-canvas) ----
+  createParticleField(document.getElementById('constellation-canvas'), {
+    sizeToWindow: true,
+    density: 22000,
+    maxCount: 70,
+    speed: 0.25,
+    radius: () => 1.4,
+    color: () => '0,255,255',
+    alpha: () => 0.55,
+    mouseAttract: true,
+    link: { distance: 130, color: '255,140,0' },
+    hideWhenReduced: true,
+  });
 
   // ---- Rastro de partículas del cursor (estela luciérnaga, lerp) ----
   (function () {
