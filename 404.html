@@ -5,29 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Página no encontrada | F&V AI Group</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          head: ['"Space Grotesk"', 'sans-serif'],
-          sans: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          fv: {
-            black: '#000000', surface: '#0D0E12', border: '#1F232B',
-            cyan: '#00FFFF', cyanMid: '#00CCFF',
-            orange: '#FF8C00', orangeWarm: '#FF4500',
-          }
-        }
-      }
-    }
-  }
-
   // ---- Spotlight que sigue el mouse ----
   (function () {
     const spotlight = document.getElementById('mouse-spotlight');
@@ -147,37 +129,6 @@
     requestAnimationFrame(animateTrail);
   })();
 
-  // ---- Botones magnéticos: se acercan levemente al cursor antes del hover real ----
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-
-    const magneticEls = document.querySelectorAll('.btn-primary, .btn-secondary');
-    if (!magneticEls.length) return;
-    const radius = 70; // px de radio de atracción más allá del propio botón
-    magneticEls.forEach(btn => { btn.style.transition = 'transform .2s ease-out'; });
-
-    // Un solo listener para todos los botones (evita apilar N listeners idénticos)
-    document.addEventListener('mousemove', (e) => {
-      magneticEls.forEach(btn => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = Math.max(rect.width, rect.height) / 2 + radius;
-
-        if (dist < maxDist) {
-          const pull = (1 - dist / maxDist) * 0.35;
-          btn.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`;
-        } else {
-          btn.style.transform = 'translate(0, 0)';
-        }
-      });
-    }, { passive: true });
-  })();
-
   // ---- Parallax en blobs de fondo (usa la propiedad CSS 'translate', independiente de 'transform',
   // para no pisar las clases de posicionamiento -translate-x/y-* que ya tienen estos elementos) ----
   (function () {
@@ -292,14 +243,19 @@
   })();
 </script>
 <style>
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
   html { background: #000; } body { background: #000; }
   .grain { background-image: radial-gradient(#ffffff08 1px, transparent 1px); background-size: 28px 28px; }
-  .btn-primary { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3); transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; }
-  .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); }
-  .btn-primary:active { transform: scale(0.95); filter: brightness(0.98); transition: transform .1s ease; }
-  .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease; }
-  .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); }
-  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
+  .btn-primary { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3); transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); } }
+  .btn-primary:active { transform: scale(0.96); filter: brightness(0.98); transition: transform .1s var(--ease-out); }
+  .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out), border-color .2s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); } }
+  .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
   @keyframes hexspin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
   .hex-spin { animation: hexspin 40s linear infinite; }
   @keyframes floaty { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
@@ -396,8 +352,8 @@
 
   <div class="relative z-10 max-w-lg text-center">
     <div class="relative w-40 h-40 mx-auto mb-8">
-      <img src="assets/logo-hex.png" width="500" height="500" alt="" class="w-full h-full hex-spin opacity-80">
-      <img src="assets/logo-mark.png" width="500" height="500" alt="" class="absolute inset-0 m-auto w-16 h-16 float">
+      <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-full h-full hex-spin opacity-80">
+      <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="absolute inset-0 m-auto w-16 h-16 float">
     </div>
 
     <p class="font-head text-sm text-slate-500 uppercase tracking-widest mb-3">Error 404</p>

@@ -3,55 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>F&V AI Group | Auditoría, implementación y capacitación de sistemas empresariales</title>
-<meta name="description" content="Auditamos, implementamos y capacitamos equipos en SAP, Odoo, Microsoft Dynamics 365 e integraciones de IA a medida — con soporte continuo después del go-live.">
+<title>F&V AI Group | Auditoría e implementación de ERP e IA</title>
+<meta name="description" content="Auditamos, implementamos y capacitamos equipos en SAP, Odoo y Microsoft Dynamics 365, con integraciones de IA a medida y soporte continuo después del go-live.">
 <link rel="canonical" href="https://fvaigroup.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;V AI Group">
 <meta property="og:locale" content="es_VE">
-<meta property="og:title" content="F&V AI Group | Auditoría, implementación y capacitación de sistemas empresariales">
-<meta property="og:description" content="Auditamos, implementamos y capacitamos equipos en SAP, Odoo, Microsoft Dynamics 365 e integraciones de IA a medida — con soporte continuo después del go-live.">
+<meta property="og:title" content="F&V AI Group | Auditoría e implementación de ERP e IA">
+<meta property="og:description" content="Auditamos, implementamos y capacitamos equipos en SAP, Odoo y Microsoft Dynamics 365, con integraciones de IA a medida y soporte continuo después del go-live.">
 <meta property="og:url" content="https://fvaigroup.com/">
 <meta property="og:image" content="https://fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="F&V AI Group | Auditoría, implementación y capacitación de sistemas empresariales">
-<meta name="twitter:description" content="Auditamos, implementamos y capacitamos equipos en SAP, Odoo, Microsoft Dynamics 365 e integraciones de IA a medida — con soporte continuo después del go-live.">
+<meta name="twitter:title" content="F&V AI Group | Auditoría e implementación de ERP e IA">
+<meta name="twitter:description" content="Auditamos, implementamos y capacitamos equipos en SAP, Odoo y Microsoft Dynamics 365, con integraciones de IA a medida y soporte continuo después del go-live.">
 <meta name="twitter:image" content="https://fvaigroup.com/assets/og-image.png">
-<link rel="apple-touch-icon" href="assets/logo-mark.png">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
+<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['Inter', 'sans-serif'],
-          head: ['"Space Grotesk"', 'sans-serif'],
-          sans: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          fv: {
-            black: '#000000',
-            surface: '#0D0E12',
-            surface2: '#121319',
-            border: '#1F232B',
-            cyan: '#00FFFF',
-            cyanMid: '#00CCFF',
-            cyanDeep: '#0055A0',
-            cyanGlow: '#CCFFFF',
-            orange: '#FF8C00',
-            orangeWarm: '#FF4500',
-            gold: '#FFBF00',
-          }
-        }
-      }
-    }
-  }
-</script>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -86,6 +58,7 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     * { animation: none !important; }
+    #search-overlay, #search-panel, #mobile-menu, #luci-panel { transition: none !important; }
   }
 
   /* hex spin */
@@ -103,11 +76,23 @@
     box-shadow: 0 0 8px rgba(0,255,255,0.6), 0 0 18px rgba(0,255,255,0.4), 0 0 30px rgba(0,255,255,0.2);
   }
 
+  /* ---- Crossfade al cambiar de panel de servicio ---- */
+  .tab-panel {
+    transition: opacity .25s var(--ease-out), transform .25s var(--ease-out);
+  }
+  .tab-panel:not(.hidden) {
+    opacity: 1; transform: translateY(0);
+    @starting-style { opacity: 0; transform: translateY(6px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tab-panel { transition: none !important; }
+  }
+
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
   details[open] .chev { transform: rotate(45deg); }
 
-  .link-underline { text-decoration: none !important; background-image: linear-gradient(#00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }
+  .link-underline { text-decoration: none !important; background-image: linear-gradient(to right, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }
   .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
 
   #hex-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -132,11 +117,14 @@
   }
   .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
-  /* ---- Wordmark con degradado cian-naranja y brillo ---- */
-  .brand-gradient {
-    background: linear-gradient(90deg, #00FFFF, #00CCFF 35%, #FF8C00 70%, #FF4500);
+  /* ---- Degradados estáticos para "Hexágono" y "Triángulo" (sin animación) ---- */
+  .text-gradient-hex {
+    background: linear-gradient(90deg, #00FFFF, #FF8C00);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
-    filter: drop-shadow(0 0 8px rgba(0,204,255,0.35)) drop-shadow(0 0 12px rgba(255,140,0,0.25));
+  }
+  .text-gradient-tri {
+    background: linear-gradient(90deg, #4ade80, #a855f7);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
   }
 
   /* ---- Hover sutil en preguntas frecuentes ---- */
@@ -351,15 +339,41 @@
     padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);
   }
   #search-overlay {
-    position: fixed; inset: 0; z-index: 200; display: none;
+    position: fixed; inset: 0; z-index: 200; display: flex;
     background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
     align-items: flex-start; justify-content: center; padding: 12vh 1.5rem 2rem;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .2s var(--ease-out), visibility 0s linear .2s;
   }
-  #search-overlay.is-open { display: flex; }
+  #search-overlay.is-open {
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transition: opacity .2s var(--ease-out);
+  }
   #search-panel {
     width: 100%; max-width: 560px; background: #0D0E12; border: 1px solid #1F232B;
     border-radius: 16px; box-shadow: 0 0 0 1px rgba(0,255,255,0.08), 0 20px 60px rgba(0,0,0,0.6);
     overflow: hidden; max-height: 70vh; display: flex; flex-direction: column;
+    transform: scale(0.96); transition: transform .2s var(--ease-out);
+  }
+  #search-overlay.is-open #search-panel { transform: scale(1); }
+
+  /* ---- Menú móvil: slide-down + fade en vez de aparecer de golpe ---- */
+  #mobile-menu {
+    display: grid; grid-template-rows: 0fr; opacity: 0;
+    transition: grid-template-rows .25s var(--ease-out), opacity .2s var(--ease-out);
+  }
+  #mobile-menu > div { overflow: hidden; min-height: 0; }
+  #mobile-menu.is-open { grid-template-rows: 1fr; opacity: 1; }
+  @media (min-width: 768px) { #mobile-menu { display: none !important; } }
+
+  /* ---- Panel de Luci: slide-up + fade en vez de aparecer de golpe ---- */
+  #luci-panel {
+    opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(0.98);
+    transition: opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s;
+  }
+  #luci-panel.is-open {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1);
+    transition: opacity .2s var(--ease-out), transform .2s var(--ease-out);
   }
   #search-input-row { display: flex; align-items: center; gap: 10px; padding: 16px 18px; border-bottom: 1px solid #1F232B; }
   #search-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 15px; font-family: 'Inter', sans-serif; }
@@ -410,8 +424,8 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="#inicio" class="flex items-center gap-3 shrink-0">
-        <img src="assets/logo-full.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide brand-gradient text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
 
       <nav class="hidden md:flex items-center gap-9 font-head text-sm">
@@ -444,7 +458,7 @@
   </div>
 
   <!-- mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
+  <div id="mobile-menu" class="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-white">Inicio</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
@@ -516,8 +530,8 @@
 
         <!-- Emblema hexagonal animado: el momento memorable de la página -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] pointer-events-none">
-          <img src="assets/logo-hex.png" width="500" height="500" alt="" class="w-full h-full hex-spin opacity-90">
-          <img src="assets/logo-mark.png" width="500" height="500" alt="" class="absolute inset-0 m-auto w-28 h-28 float">
+          <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-full h-full hex-spin opacity-90">
+          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="absolute inset-0 m-auto w-28 h-28 float">
         </div>
 
         <!-- Tarjeta: métricas de impacto (glassmorphic, borde cian) -->
@@ -570,9 +584,9 @@
   <div class="marquee">
     <div class="marquee-track">
       <!-- Reemplazar cada .brand-slot por <img src="assets/clientes/nombre.png" class="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" alt="Nombre del cliente"> -->
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
-      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
@@ -583,9 +597,9 @@
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
-      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><span class="text-[11px] font-head text-slate-600 tracking-wide">LOGO</span></div>
@@ -613,10 +627,10 @@
       <!-- HEXÁGONO — High-Ticket -->
       <div class="reveal relative overflow-hidden rounded-3xl bg-fv-surface box-glow-cyan p-8 sm:p-10">
         <div class="flex items-center justify-between mb-6">
-          <img src="assets/logo-hex.png" width="500" height="500" alt="" class="w-12 h-12">
+          <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-12 h-12">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider">High-Ticket</span>
         </div>
-        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-neon-cyan">Hexágono</span></h3>
+        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-hex">Hexágono</span></h3>
         <p class="text-slate-400 leading-relaxed mb-6">Ecosistemas completos de principio a fin: asesoría, despliegue, habilitación y acompañamiento bajo un mismo equipo. Es el estándar integral de F&amp;V — para operaciones que necesitan que todo el sistema hable el mismo idioma.</p>
         <ul class="space-y-2.5 mb-8">
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance completo, sin fragmentar el proyecto</li>
@@ -627,12 +641,12 @@
       </div>
 
       <!-- TRIÁNGULO — Mid-Ticket (paleta verde/morado genérica: no existe en tailwind.config, por eso usa utilidades default de Tailwind) -->
-      <div class="reveal relative overflow-hidden rounded-3xl border border-purple-500/40 shadow-[0_0_15px_rgba(168,85,247,0.4)] p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/triangulo.jpg') center/cover no-repeat;">
+      <div class="reveal relative overflow-hidden rounded-3xl border border-purple-500/40 shadow-[0_0_15px_rgba(168,85,247,0.4)] p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
         <div class="flex items-center justify-between mb-6">
-          <img src="assets/logo_completo.jpg" alt="" class="w-12 h-12 rounded-lg object-cover border border-white/10">
+          <img src="assets/logo-mark-tri.png" alt="" class="w-12 h-12 rounded-lg object-cover border border-white/10">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/30 uppercase tracking-wider">Mid-Ticket</span>
         </div>
-        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-green-400">Triángulo</span></h3>
+        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-tri">Triángulo</span></h3>
         <p class="text-slate-300 leading-relaxed mb-6">Implementaciones ágiles y acotadas: un sprint enfocado en resolver un cuello de botella puntual, sin comprometerse con un ecosistema completo. Mantienen la misma calidad F&amp;V, en menor proporción de alcance y tiempo.</p>
         <ul class="space-y-2.5 mb-8">
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance reducido, enfocado en un problema puntual</li>
@@ -681,45 +695,45 @@
 
     <!-- Tabs -->
     <div role="tablist" class="flex flex-wrap gap-2 mb-10 font-head text-sm">
-      <button class="tab-btn" data-tab="asesoria" role="tab" aria-selected="true">Asesoría Estratégica</button>
-      <button class="tab-btn" data-tab="evaluacion" role="tab" aria-selected="false">Evaluación de Procesos</button>
-      <button class="tab-btn" data-tab="despliegue" role="tab" aria-selected="false">Despliegue y Ejecución</button>
-      <button class="tab-btn" data-tab="habilitacion" role="tab" aria-selected="false">Habilitación de Equipos</button>
-      <button class="tab-btn" data-tab="masterclasses" role="tab" aria-selected="false">Masterclasses y Workshops</button>
-      <button class="tab-btn" data-tab="acompanamiento" role="tab" aria-selected="false">Acompañamiento Continuo</button>
+      <button class="tab-btn" id="tab-asesoria" data-tab="asesoria" role="tab" aria-selected="true" aria-controls="panel-asesoria">Asesoría Estratégica</button>
+      <button class="tab-btn" id="tab-evaluacion" data-tab="evaluacion" role="tab" aria-selected="false" aria-controls="panel-evaluacion">Evaluación de Procesos</button>
+      <button class="tab-btn" id="tab-despliegue" data-tab="despliegue" role="tab" aria-selected="false" aria-controls="panel-despliegue">Despliegue y Ejecución</button>
+      <button class="tab-btn" id="tab-habilitacion" data-tab="habilitacion" role="tab" aria-selected="false" aria-controls="panel-habilitacion">Habilitación de Equipos</button>
+      <button class="tab-btn" id="tab-masterclasses" data-tab="masterclasses" role="tab" aria-selected="false" aria-controls="panel-masterclasses">Masterclasses y Workshops</button>
+      <button class="tab-btn" id="tab-acompanamiento" data-tab="acompanamiento" role="tab" aria-selected="false" aria-controls="panel-acompanamiento">Acompañamiento Continuo</button>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
-        <div data-panel="asesoria" class="tab-panel space-y-4">
+        <div data-panel="asesoria" id="panel-asesoria" role="tabpanel" aria-labelledby="tab-asesoria" class="tab-panel space-y-4">
           <h3 class="font-sans text-2xl text-white">Asesoría Estratégica</h3>
           <p class="text-slate-400 leading-relaxed">La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación real, identificamos cuellos de botella y prescribimos la solución exacta para su caso.</p>
         </div>
-        <div data-panel="evaluacion" class="tab-panel hidden space-y-4">
+        <div data-panel="evaluacion" id="panel-evaluacion" role="tabpanel" aria-labelledby="tab-evaluacion" class="tab-panel hidden space-y-4">
           <h3 class="font-sans text-2xl text-white">Evaluación de Procesos</h3>
           <p class="text-slate-400 leading-relaxed">Revisamos procesos, sistemas y datos existentes para entregar una radiografía técnica y financiera precisa — la base que justifica cada paso siguiente.</p>
         </div>
-        <div data-panel="despliegue" class="tab-panel hidden space-y-4">
+        <div data-panel="despliegue" id="panel-despliegue" role="tabpanel" aria-labelledby="tab-despliegue" class="tab-panel hidden space-y-4">
           <h3 class="font-sans text-2xl text-white">Despliegue y Ejecución</h3>
           <p class="text-slate-400 leading-relaxed">Configuramos e implementamos SAP, Odoo y Microsoft Dynamics 365, además de desarrollo a medida cuando ninguna solución estándar cubre el proceso. Incluye integración de IA sobre los flujos que ya existen.</p>
         </div>
-        <div data-panel="habilitacion" class="tab-panel hidden space-y-4">
+        <div data-panel="habilitacion" id="panel-habilitacion" role="tabpanel" aria-labelledby="tab-habilitacion" class="tab-panel hidden space-y-4">
           <h3 class="font-sans text-2xl text-white">Habilitación de Equipos</h3>
           <p class="text-slate-400 leading-relaxed">En paralelo o después del despliegue, formación práctica sobre el sistema real de su empresa para que cada área domine la herramienta desde el primer día.</p>
         </div>
-        <div data-panel="masterclasses" class="tab-panel hidden space-y-4">
+        <div data-panel="masterclasses" id="panel-masterclasses" role="tabpanel" aria-labelledby="tab-masterclasses" class="tab-panel hidden space-y-4">
           <h3 class="font-sans text-2xl text-white">Masterclasses y Workshops</h3>
           <p class="text-slate-400 leading-relaxed">Programas formativos más estructurados para escalar el conocimiento a audiencias más amplias, o como complemento asíncrono de la habilitación directa.</p>
         </div>
-        <div data-panel="acompanamiento" class="tab-panel hidden space-y-4">
+        <div data-panel="acompanamiento" id="panel-acompanamiento" role="tabpanel" aria-labelledby="tab-acompanamiento" class="tab-panel hidden space-y-4">
           <h3 class="font-sans text-2xl text-white">Acompañamiento Continuo</h3>
           <p class="text-slate-400 leading-relaxed">Retención y continuidad a largo plazo: mantenimiento evolutivo, resolución de incidencias y una relación comercial que sigue después del go-live.</p>
         </div>
       </div>
 
-      <div class="relative h-80 rounded-2xl bg-fv-surface border border-fv-border overflow-hidden flex items-center justify-center">
+      <div class="relative h-80 rounded-2xl bg-fv-surface card-glow-border overflow-hidden flex items-center justify-center">
         <div class="absolute inset-0 grain opacity-40"></div>
-        <img src="assets/logo-hex.png" width="500" height="500" alt="" class="w-40 h-40 opacity-80 relative z-10">
+        <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-40 h-40 opacity-80 relative z-10">
       </div>
     </div>
 
@@ -734,7 +748,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
       <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Plataformas con las que <span class="shimmer-text">trabajamos</span></h2>
-      <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange text-neon-orange">Somos independientes de proveedor: recomendamos la plataforma que se ajusta a su operación, no la que más nos convenga vender.</p>
+      <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Somos independientes de proveedor: recomendamos la plataforma que se ajusta a su operación, no la que más nos convenga vender.</p>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -821,7 +835,7 @@
         <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-6 uppercase">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
         <p class="text-slate-400 leading-relaxed mb-4">No vendemos una licencia y desaparecemos. Diseñamos, implementamos, capacitamos y damos soporte con el mismo equipo, de principio a fin.</p>
         <p class="text-slate-400 leading-relaxed">Al no estar atados a un solo fabricante, la recomendación de plataforma responde a su operación — no a una comisión de venta.</p>
-        <img src="assets/logo-mark.png" width="500" height="500" alt="" class="w-16 h-16 float mt-8">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-16 h-16 float mt-8">
       </div>
 
       <div class="space-y-4">
@@ -847,7 +861,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
       <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Lo que dicen quienes <span class="shimmer-text">ya trabajaron con nosotros</span></h2>
-      <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange text-neon-orange">Espacio reservado — pronto compartimos aquí los testimonios de nuestros clientes.</p>
+      <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Espacio reservado — pronto compartimos aquí los testimonios de nuestros clientes.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -893,7 +907,7 @@
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12 flex items-center justify-between gap-6">
       <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Preguntas <span class="shimmer-text">frecuentes</span></h2>
-      <img src="assets/signos.png" width="1024" height="1024" alt="" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
+      <img src="assets/signos-hex.png" width="1024" height="1024" alt="" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
     </div>
 
     <div class="space-y-3">
@@ -948,7 +962,7 @@
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
 
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">Empecemos con un diagnóstico de su operación</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase">Empecemos con un diagnóstico de su operación</h2>
         <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
@@ -971,7 +985,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="index.html" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark.png" width="500" height="500" alt="" class="h-8 w-8">
+          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="h-8 w-8">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&amp;V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-400 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
@@ -1040,13 +1054,13 @@
     ¿Dudas? Habla con un especialista
   </span>
   <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark.png" width="500" height="500" alt="Luci" class="w-8 h-8">
+    <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-8 h-8">
   </button>
 
-  <div id="luci-panel" class="hidden absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+  <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark.png" width="500" height="500" alt="" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-400 leading-none mt-1">Asistente de preguntas frecuentes</p>
@@ -1177,16 +1191,17 @@
   const iconOpen = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
   menuBtn.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.contains('hidden');
-    mobileMenu.classList.toggle('hidden');
+    const isOpening = !mobileMenu.classList.contains('is-open');
+    mobileMenu.classList.toggle('is-open');
     iconOpen.classList.toggle('hidden');
     iconClose.classList.toggle('hidden');
-    menuBtn.setAttribute('aria-expanded', String(isHidden));
+    menuBtn.setAttribute('aria-expanded', String(isOpening));
   });
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('is-open');
     iconOpen.classList.remove('hidden');
     iconClose.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded', 'false');
   }));
 
   // Reveal on scroll
@@ -1394,7 +1409,7 @@
 
     let started = false;
     function openPanel() {
-      panel.classList.remove('hidden');
+      panel.classList.add('is-open');
       if (!started) {
         started = true;
         addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué le ayudo?', 'bot');
@@ -1403,9 +1418,9 @@
     }
 
     toggle.addEventListener('click', () => {
-      panel.classList.contains('hidden') ? openPanel() : panel.classList.add('hidden');
+      panel.classList.contains('is-open') ? panel.classList.remove('is-open') : openPanel();
     });
-    closeBtn.addEventListener('click', () => panel.classList.add('hidden'));
+    closeBtn.addEventListener('click', () => panel.classList.remove('is-open'));
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -1484,37 +1499,6 @@
       requestAnimationFrame(animateTrail);
     }
     requestAnimationFrame(animateTrail);
-  })();
-
-  // ---- Botones magnéticos: se acercan levemente al cursor antes del hover real ----
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-
-    const magneticEls = document.querySelectorAll('.btn-primary, .btn-secondary');
-    if (!magneticEls.length) return;
-    const radius = 70; // px de radio de atracción más allá del propio botón
-    magneticEls.forEach(btn => { btn.style.transition = 'transform .2s ease-out'; });
-
-    // Un solo listener para todos los botones (evita apilar N listeners idénticos)
-    document.addEventListener('mousemove', (e) => {
-      magneticEls.forEach(btn => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = Math.max(rect.width, rect.height) / 2 + radius;
-
-        if (dist < maxDist) {
-          const pull = (1 - dist / maxDist) * 0.35;
-          btn.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`;
-        } else {
-          btn.style.transform = 'translate(0, 0)';
-        }
-      });
-    }, { passive: true });
   })();
 
   // ---- FAQ con transición suave (height + opacity animados en vez del toggle nativo) ----

@@ -1,2 +1,8 @@
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+
+# npm dependencies (installed via `npm install`, not committed)
+node_modules/
+
+# Tailwind CLI build output (generated via `npm run build`)
+assets/css/

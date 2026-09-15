@@ -7,42 +7,26 @@
 <meta name="description" content="Condiciones de uso del sitio web y de contratación de los servicios de F&V AI Group.">
 <link rel="canonical" href="https://fvaigroup.com/terminos">
 <meta name="robots" content="noindex">
-<link rel="apple-touch-icon" href="assets/logo-mark.png">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
+<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['Inter', 'sans-serif'],
-          head: ['"Space Grotesk"', 'sans-serif'],
-          sans: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          fv: {
-            black: '#000000', surface: '#0D0E12', surface2: '#121319', border: '#1F232B',
-            cyan: '#00FFFF', cyanMid: '#00CCFF', cyanDeep: '#0055A0', cyanGlow: '#CCFFFF',
-            orange: '#FF8C00', orangeWarm: '#FF4500', gold: '#FFBF00',
-          }
-        }
-      }
-    }
-  }
-</script>
 <style>
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
   html { background: #000; } body { background: #000; }
   ::selection { background: #FF8C00; color: #000; }
   .grain { background-image: radial-gradient(#ffffff08 1px, transparent 1px); background-size: 28px 28px; }
-  .btn-primary { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3); transition: transform .25s ease, box-shadow .25s ease, filter .25s ease; }
-  .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); }
-  .btn-primary:active { transform: scale(0.95); filter: brightness(0.98); transition: transform .1s ease; }
-  .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease; }
-  .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); }
-  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
-  .brand-gradient { background: linear-gradient(90deg, #00FFFF, #00CCFF 35%, #FF8C00 70%, #FF4500); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important; filter: drop-shadow(0 0 8px rgba(0,204,255,0.35)); }
+  .btn-primary { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3); transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); } }
+  .btn-primary:active { transform: scale(0.96); filter: brightness(0.98); transition: transform .1s var(--ease-out); }
+  .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out), border-color .2s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); } }
+  .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
   .link-underline { text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
   .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
   @view-transition { navigation: auto; }
@@ -163,8 +147,8 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="index.html" class="flex items-center gap-3 shrink-0">
-        <img src="assets/logo-full.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide brand-gradient text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
       <nav class="hidden md:flex items-center gap-9 font-head text-sm">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
@@ -252,7 +236,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <a href="index.html" class="flex items-center gap-2.5">
-        <img src="assets/logo-mark.png" width="500" height="500" alt="" class="h-7 w-7">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="h-7 w-7">
         <span class="font-sans font-semibold tracking-wide text-white text-sm">F&amp;V AI GROUP</span>
       </a>
       <p class="text-slate-600 text-sm">&copy; 2026 F&amp;V AI Group S.A. Todos los derechos reservados.</p>
@@ -412,37 +396,6 @@
       requestAnimationFrame(animateTrail);
     }
     requestAnimationFrame(animateTrail);
-  })();
-
-  // ---- Botones magnéticos: se acercan levemente al cursor antes del hover real ----
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-
-    const magneticEls = document.querySelectorAll('.btn-primary, .btn-secondary');
-    if (!magneticEls.length) return;
-    const radius = 70; // px de radio de atracción más allá del propio botón
-    magneticEls.forEach(btn => { btn.style.transition = 'transform .2s ease-out'; });
-
-    // Un solo listener para todos los botones (evita apilar N listeners idénticos)
-    document.addEventListener('mousemove', (e) => {
-      magneticEls.forEach(btn => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = Math.max(rect.width, rect.height) / 2 + radius;
-
-        if (dist < maxDist) {
-          const pull = (1 - dist / maxDist) * 0.35;
-          btn.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`;
-        } else {
-          btn.style.transform = 'translate(0, 0)';
-        }
-      });
-    }, { passive: true });
   })();
 
   // ---- Barra de carga entre páginas (se anima al hacer clic en un link interno) ----

@@ -19,38 +19,23 @@
 <meta name="twitter:title" content="Finanzas con IA — Curso presencial | F&V AI Group">
 <meta name="twitter:description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
 <meta name="twitter:image" content="https://fvaigroup.com/assets/og-image.png">
-<link rel="apple-touch-icon" href="assets/logo-mark.png">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
+<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['Inter', 'sans-serif'],
-          head: ['"Space Grotesk"', 'sans-serif'],
-          sans: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          fv: {
-            black: '#000000', surface: '#0D0E12', surface2: '#121319', border: '#1F232B',
-            cyan: '#00FFFF', cyanMid: '#00CCFF', cyanDeep: '#0055A0', cyanGlow: '#CCFFFF',
-            orange: '#FF8C00', orangeWarm: '#FF4500', gold: '#FFBF00',
-          }
-        }
-      }
-    }
-  }
-</script>
 <style>
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
   html { background: #000; } body { background: #000; }
   ::selection { background: #FF8C00; color: #000; }
   .glow-cyan { box-shadow: 0 0 10px #00FFFF, 0 0 25px #00CCFF, 0 0 50px rgba(0,204,255,0.25); }
   .glow-orange { box-shadow: 0 0 10px #FF8C00, 0 0 30px #FF4500, 0 0 60px rgba(255,69,0,0.25); }
   .grain { background-image: radial-gradient(#ffffff08 1px, transparent 1px); background-size: 28px 28px; }
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
   .reveal.is-in { opacity: 1; transform: translateY(0); }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } * { animation: none !important; } }
 
@@ -83,23 +68,22 @@
   .btn-primary {
     background-color: #FF8C00; color: #000;
     box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3);
-    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s var(--ease-out);
   }
-  .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
-  .btn-primary:active { transform: scale(0.95); transition: transform .1s ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
+  }
+  .btn-primary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
   .btn-secondary {
     background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
-    transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out), border-color .2s var(--ease-out);
   }
-  .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
-  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
+  }
+  .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
-  .brand-gradient {
-    background: linear-gradient(90deg, #00FFFF, #00CCFF 35%, #FF8C00 70%, #FF4500);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
-    filter: drop-shadow(0 0 8px rgba(0,204,255,0.35)) drop-shadow(0 0 12px rgba(255,140,0,0.25));
-  }
 
   @view-transition { navigation: auto; }
 
@@ -114,8 +98,10 @@
   .luci-typing span:nth-child(3) { animation-delay: 0.3s; }
   @keyframes luciTypingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
   .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
-  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: all .2s ease; background: transparent; }
-  .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: border-color .2s var(--ease-out), color .2s var(--ease-out); background: transparent; }
+  @media (hover: hover) and (pointer: fine) {
+    .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  }
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
 
@@ -217,8 +203,8 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="index.html" class="flex items-center gap-3 shrink-0">
-        <img src="assets/logo-full.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide brand-gradient text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
       <nav class="hidden md:flex items-center gap-9 font-head text-sm">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
@@ -292,7 +278,7 @@
 <section class="relative py-24 border-b border-white/5">
   <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
     <div class="reveal">
-      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6">¿Le suena familiar este cierre de mes?</h2>
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6 uppercase">¿Le suena familiar este cierre de mes?</h2>
       <p class="text-lg text-slate-400 leading-relaxed mb-4">
         Transferencias que no cuadran, capturas de pantalla de cinco plataformas de pago distintas, y horas enteras de su contador —o de usted mismo— tratando de armar el rompecabezas a mano.
       </p>
@@ -307,7 +293,7 @@
 <section id="contenido" class="scroll-mt relative py-24 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-4xl mx-auto px-6 lg:px-8">
     <div class="reveal text-center mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-4">Qué es <span class="shimmer-text">Finanzas con IA</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-4 uppercase">Qué es <span class="shimmer-text">Finanzas con IA</span></h2>
       <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
         Un programa presencial donde su equipo aprende a usar IA para automatizar la conciliación de pagos, cuentas y cierres — con ejercicios sobre casos reales, no teoría genérica.
       </p>
@@ -339,7 +325,7 @@
 <section class="relative py-24 border-b border-white/5">
   <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
     <div class="reveal">
-      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6">¿Es este programa para usted?</h2>
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6 uppercase">¿Es este programa para usted?</h2>
       <p class="text-lg text-slate-400 leading-relaxed">
         Está diseñado para <span class="text-white font-semibold">dueños de negocio</span> que quieren dejar de perder tiempo en tareas operativas, <span class="text-white font-semibold">gerentes</span> que necesitan que su equipo cierre más rápido, o el <span class="text-white font-semibold">contador o analista de confianza</span> que hoy carga con la conciliación manual sobre sus hombros.
       </p>
@@ -352,7 +338,7 @@
 <section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-4xl mx-auto px-6 lg:px-8">
     <div class="reveal text-center mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Los 4 módulos del programa</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Los 4 módulos del programa</h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -406,7 +392,7 @@
   <div class="max-w-2xl mx-auto px-6 lg:px-8 text-center">
     <div class="reveal">
       <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider mb-5">Cohorte en formación</span>
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-3">Solo <span class="text-neon-orange">6 cupos</span> por cohorte</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-3 uppercase">Solo <span class="text-neon-orange">6 cupos</span> por cohorte</h2>
       <p class="text-slate-400 mb-10">Así garantizamos atención real a cada participante — no es una clase masiva.</p>
 
       <!-- Estado 1: cohorte activa, cuenta regresiva -->
@@ -448,7 +434,7 @@
 <section class="relative py-24 border-b border-white/5">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12 text-center">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Preguntas frecuentes</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Preguntas frecuentes</h2>
     </div>
 
     <div class="space-y-3">
@@ -494,7 +480,7 @@
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">Quedan pocos cupos para esta cohorte</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase">Quedan pocos cupos para esta cohorte</h2>
         <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Escríbanos ahora por WhatsApp para apartar el suyo — respondemos al instante.</p>
         <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
           Apartar mi cupo por WhatsApp
@@ -512,7 +498,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="index.html" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark.png" width="500" height="500" alt="" class="h-8 w-8">
+          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="h-8 w-8">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&amp;V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
@@ -578,13 +564,13 @@
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40">
   <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark.png" width="500" height="500" alt="Luci" class="w-8 h-8">
+    <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-8 h-8">
   </button>
 
   <div id="luci-panel" class="hidden absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark.png" width="500" height="500" alt="" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente de preguntas frecuentes</p>
@@ -877,36 +863,6 @@
       requestAnimationFrame(animateTrail);
     }
     requestAnimationFrame(animateTrail);
-  })();
-
-  // ---- Botones magnéticos: se acercan levemente al cursor antes del hover real ----
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-
-    const magneticEls = document.querySelectorAll('.btn-primary, .btn-secondary');
-    if (!magneticEls.length) return;
-    const radius = 70;
-    magneticEls.forEach(btn => { btn.style.transition = 'transform .2s ease-out'; });
-
-    document.addEventListener('mousemove', (e) => {
-      magneticEls.forEach(btn => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = Math.max(rect.width, rect.height) / 2 + radius;
-
-        if (dist < maxDist) {
-          const pull = (1 - dist / maxDist) * 0.35;
-          btn.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`;
-        } else {
-          btn.style.transform = 'translate(0, 0)';
-        }
-      });
-    }, { passive: true });
   })();
 
   // ---- FAQ con transición suave (height + opacity animados en vez del toggle nativo) ----

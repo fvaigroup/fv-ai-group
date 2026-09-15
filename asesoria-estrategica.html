@@ -4,53 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Asesoría Estratégica | F&V AI Group</title>
-<meta name="description" content="La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación y prescribimos la solución exacta, no la que nos conve">
+<meta name="description" content="La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación y prescribimos la solución exacta, no la que nos convenga vender.">
 <link rel="canonical" href="https://fvaigroup.com/asesoria-estrategica">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="Asesoría Estratégica | F&V AI Group">
-<meta property="og:description" content="La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación y prescribimos la solución exacta, no la que nos conve">
+<meta property="og:description" content="La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación y prescribimos la solución exacta, no la que nos convenga vender.">
 <meta property="og:url" content="https://fvaigroup.com/asesoria-estrategica">
 <meta property="og:image" content="https://fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Asesoría Estratégica | F&V AI Group">
-<meta name="twitter:description" content="La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación y prescribimos la solución exacta, no la que nos conve">
+<meta name="twitter:description" content="La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación y prescribimos la solución exacta, no la que nos convenga vender.">
 <meta name="twitter:image" content="https://fvaigroup.com/assets/og-image.png">
-<link rel="apple-touch-icon" href="assets/logo-mark.png">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
+<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['Inter', 'sans-serif'],
-          head: ['"Space Grotesk"', 'sans-serif'],
-          sans: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          fv: {
-            black: '#000000', surface: '#0D0E12', surface2: '#121319', border: '#1F232B',
-            cyan: '#00FFFF', cyanMid: '#00CCFF', cyanDeep: '#0055A0', cyanGlow: '#CCFFFF',
-            orange: '#FF8C00', orangeWarm: '#FF4500', gold: '#FFBF00',
-          }
-        }
-      }
-    }
-  }
-</script>
 <style>
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
   html { background: #000; } body { background: #000; }
   ::selection { background: #FF8C00; color: #000; }
   .glow-cyan { box-shadow: 0 0 10px #00FFFF, 0 0 25px #00CCFF, 0 0 50px rgba(0,204,255,0.25); }
   .glow-orange { box-shadow: 0 0 10px #FF8C00, 0 0 30px #FF4500, 0 0 60px rgba(255,69,0,0.25); }
   .grain { background-image: radial-gradient(#ffffff08 1px, transparent 1px); background-size: 28px 28px; }
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
   .reveal.is-in { opacity: 1; transform: translateY(0); }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } * { animation: none !important; } }
 
@@ -81,28 +66,27 @@
   .btn-primary {
     background-color: #FF8C00; color: #000;
     box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3);
-    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s var(--ease-out);
   }
-  .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
-  .btn-primary:active { transform: scale(0.95); transition: transform .1s ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover { filter: brightness(1.1); transform: scale(1.04); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
+  }
+  .btn-primary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
   .btn-secondary {
     background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
-    transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out), border-color .2s var(--ease-out);
   }
-  .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
-  .btn-secondary:active { transform: scale(0.95); transition: transform .1s ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); transform: scale(1.04); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
+  }
+  .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
   .btn-disabled {
     background-color: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #64748b;
     cursor: default;
   }
 
-  .brand-gradient {
-    background: linear-gradient(90deg, #00FFFF, #00CCFF 35%, #FF8C00 70%, #FF4500);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
-    filter: drop-shadow(0 0 8px rgba(0,204,255,0.35)) drop-shadow(0 0 12px rgba(255,140,0,0.25));
-  }
 
   @view-transition { navigation: auto; }
 
@@ -116,8 +100,10 @@
   .luci-typing span:nth-child(3) { animation-delay: 0.3s; }
   @keyframes luciTypingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
   .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
-  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: all .2s ease; background: transparent; }
-  .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: border-color .2s var(--ease-out), color .2s var(--ease-out); background: transparent; }
+  @media (hover: hover) and (pointer: fine) {
+    .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  }
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
 
@@ -218,8 +204,8 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="index.html" class="flex items-center gap-3 shrink-0">
-        <img src="assets/logo-full.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide brand-gradient text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
       <nav class="hidden md:flex items-center gap-9 font-head text-sm">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
@@ -283,7 +269,7 @@
 <section class="relative py-20 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal">
-      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white mb-4">¿Cuándo conviene esta etapa?</h2>
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white mb-4 uppercase">¿Cuándo conviene esta etapa?</h2>
       <p class="text-lg text-slate-400 leading-relaxed">Cuando sabe que algo no está funcionando en su operación, pero todavía no tiene claro qué sistema, qué alcance ni qué inversión requiere resolverlo.</p>
     </div>
   </div>
@@ -293,7 +279,7 @@
 <section class="relative py-24 border-b border-white/5">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight">Qué incluye</h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Qué incluye</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -344,7 +330,7 @@
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4">¿Le sirve esta etapa para su caso?</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase">¿Le sirve esta etapa para su caso?</h2>
         <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Cuéntenos su situación y le confirmamos si Asesoría Estratégica es el punto de partida correcto — o cuál lo es.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="contacto.html" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Solicitar diagnóstico</a>
@@ -363,7 +349,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="index.html" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark.png" width="500" height="500" alt="" class="h-8 w-8">
+          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="h-8 w-8">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&amp;V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
@@ -388,7 +374,7 @@
             <li><a href="evaluacion-procesos.html" class="link-underline hover:text-white transition-colors">Evaluación de Procesos</a></li>
             <li><a href="despliegue-ejecucion.html" class="link-underline hover:text-white transition-colors">Despliegue y Ejecución</a></li>
             <li><a href="habilitacion-equipos.html" class="link-underline hover:text-white transition-colors">Habilitación de Equipos</a></li>
-            <li><a href="cursos.html" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
+            <li><a href="masterclasses-workshops.html" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
             <li><a href="acompanamiento-continuo.html" class="link-underline hover:text-white transition-colors">Acompañamiento Continuo</a></li>
           </ul>
         </div>
@@ -429,13 +415,13 @@
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40">
   <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark.png" width="500" height="500" alt="Luci" class="w-8 h-8">
+    <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-8 h-8">
   </button>
 
   <div id="luci-panel" class="hidden absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark.png" width="500" height="500" alt="" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente de preguntas frecuentes</p>
@@ -727,36 +713,6 @@
       requestAnimationFrame(animateTrail);
     }
     requestAnimationFrame(animateTrail);
-  })();
-
-  // ---- Botones magnéticos: se acercan levemente al cursor antes del hover real ----
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-
-    const magneticEls = document.querySelectorAll('.btn-primary, .btn-secondary');
-    if (!magneticEls.length) return;
-    const radius = 70;
-    magneticEls.forEach(btn => { btn.style.transition = 'transform .2s ease-out'; });
-
-    document.addEventListener('mousemove', (e) => {
-      magneticEls.forEach(btn => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = Math.max(rect.width, rect.height) / 2 + radius;
-
-        if (dist < maxDist) {
-          const pull = (1 - dist / maxDist) * 0.35;
-          btn.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`;
-        } else {
-          btn.style.transform = 'translate(0, 0)';
-        }
-      });
-    }, { passive: true });
   })();
 
   // ---- Barra de carga entre páginas (se anima al hacer clic en un link interno) ----
