@@ -266,6 +266,26 @@
     .card-hover-hex, .card-hover-tri { transition: none; }
   }
 
+  /* ---- Momento autoral: el contenido de las tarjetas Hexágono/Triángulo se revela con la silueta de su propio emblema.
+     El clip-path vive en un wrapper interno (no en la tarjeta observada por IntersectionObserver): un elemento no puede
+     reportar su propia intersección de forma fiable mientras su área visible ya está recortada a una silueta pequeña. ---- */
+  .reveal.card-hover-hex, .reveal.card-hover-tri {
+    opacity: 1;
+    transform: none;
+  }
+  .geo-reveal-hex, .geo-reveal-tri { transition: clip-path .65s var(--ease-out); }
+  .geo-reveal-hex { clip-path: polygon(42% 42%, 58% 42%, 68% 50%, 58% 58%, 42% 58%, 32% 50%); }
+  .card-hover-hex.is-in .geo-reveal-hex { clip-path: polygon(25% -50%, 75% -50%, 150% 50%, 75% 150%, 25% 150%, -50% 50%); }
+  .geo-reveal-tri { clip-path: polygon(50% 42%, 60% 58%, 40% 58%); transition-delay: .12s; }
+  .card-hover-tri.is-in .geo-reveal-tri { clip-path: polygon(50% -80%, 200% 130%, -100% 130%); }
+  @media (prefers-reduced-motion: reduce) {
+    .geo-reveal-hex, .geo-reveal-tri,
+    .card-hover-hex.is-in .geo-reveal-hex, .card-hover-tri.is-in .geo-reveal-tri {
+      clip-path: none !important;
+      transition: none !important;
+    }
+  }
+
   /* ---- Animación de entrada del hero ---- */
   @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   .hero-copy > * { opacity: 0; animation: heroIn .6s var(--ease-out) forwards; }
@@ -696,6 +716,7 @@
 
       <!-- HEXÁGONO — High-Ticket -->
       <div class="reveal card-hover-hex relative overflow-hidden rounded-3xl bg-fv-surface box-glow-cyan p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-hex-hex.png') center/cover no-repeat;">
+       <div class="geo-reveal-hex">
         <div class="flex items-center justify-between mb-6">
           <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-12 h-12 hex-spin">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider">High-Ticket</span>
@@ -708,10 +729,12 @@
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Un solo equipo, de la estrategia al soporte</li>
         </ul>
         <a href="servicios.html" class="btn-secondary inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg">Ver Servicios Hexágono</a>
+       </div>
       </div>
 
       <!-- TRIÁNGULO — Mid-Ticket (segundo par de acento formal: fv-triGreen/fv-triPurple en tailwind.config.js) -->
       <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-fv-triPurple/40 p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
+       <div class="geo-reveal-tri">
         <div class="flex items-center justify-between mb-6">
           <div class="w-12 h-12 rounded-lg overflow-hidden border border-white/10">
             <img src="assets/logo-tri-tri.png" alt="" class="w-full h-full object-cover hex-spin">
@@ -726,6 +749,7 @@
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Puerta de entrada antes de un ecosistema completo</li>
         </ul>
         <a href="contacto.html" class="inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 transition-colors">Consultar Sprint Triángulo</a>
+       </div>
       </div>
 
     </div>
