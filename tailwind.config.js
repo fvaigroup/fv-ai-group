@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Inter', 'sans-serif'],
+        display: ['Geist', 'sans-serif'],
         head: ['"Space Grotesk"', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Geist', 'sans-serif'],
       },
       colors: {
         fv: {
