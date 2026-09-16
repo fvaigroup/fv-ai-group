@@ -468,9 +468,19 @@
   #search-empty { padding: 28px 18px; text-align: center; color: #94a3b8; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #94a3b8; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+
+  /* ---- Enlace "saltar al contenido" para navegación por teclado ---- */
+  .skip-link {
+    position: fixed; top: -100px; left: 1rem; z-index: 300;
+    background: #0D0E12; color: #fff; border: 1px solid rgba(0,255,255,0.5);
+    padding: 0.75rem 1.25rem; border-radius: 0.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
+    transition: top .2s var(--ease-out);
+  }
+  .skip-link:focus { top: 1rem; }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 <div id="search-overlay">
   <div id="search-panel">
     <div id="search-input-row">
@@ -551,7 +561,7 @@
 <div id="scroll-progress"></div>
 
 
-<main>
+<main id="main-content">
 
 <!-- ============ HERO ============ -->
 <section id="inicio" class="relative lg:min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
@@ -568,7 +578,7 @@
           <span>⚡ Diseñando ecosistemas de IA con humanidad</span>
         </div>
 
-        <h1 class="font-sans text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.12]">
+        <h1 class="font-sans text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.12] text-balance">
           SISTEMAS EMPRESARIALES QUE <span class="shimmer-text">POR FIN FUNCIONAN COMO DEBERÍAN</span>
         </h1>
 
@@ -642,7 +652,7 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Dos líneas, <span class="shimmer-text">un mismo estándar</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Dos líneas, <span class="shimmer-text">un mismo estándar</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Elija la escala que necesita su operación hoy — ambas con el mismo compromiso F&amp;V detrás.</p>
     </div>
 
@@ -690,7 +700,7 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
       <p class="mt-4 leading-relaxed text-slate-300">Son las razones más comunes por las que una empresa nos llama por primera vez.</p>
     </div>
 
@@ -715,7 +725,7 @@
 <section id="servicios" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Todo el ciclo, en <span class="shimmer-text">un solo equipo</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Todo el ciclo, en <span class="shimmer-text">un solo equipo</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-cyan">Desde el primer diagnóstico hasta el soporte del día a día. Sin pasar su proyecto de mano en mano entre proveedores distintos.</p>
     </div>
 
@@ -788,7 +798,7 @@
 <section class="relative py-24 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Plataformas con las que <span class="shimmer-text">trabajamos</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Plataformas con las que <span class="shimmer-text">trabajamos</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Somos independientes de proveedor: recomendamos la plataforma que se ajusta a su operación, no la que más nos convenga vender.</p>
     </div>
 
@@ -827,7 +837,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
       <div class="lg:col-span-4">
         <div class="reveal lg:sticky lg:top-32">
-          <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Cómo <span class="shimmer-text">trabajamos</span></h2>
+          <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Cómo <span class="shimmer-text">trabajamos</span></h2>
           <p class="text-slate-400 mt-4 leading-relaxed text-fv-cyan">Un mismo equipo acompaña las seis etapas, sin traspasos entre proveedores.</p>
         </div>
       </div>
@@ -873,7 +883,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       <div class="reveal">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-6 uppercase">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-6 uppercase text-balance">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
         <p class="text-slate-400 leading-relaxed mb-4 text-fv-cyan">No vendemos una licencia y desaparecemos. Diseñamos, implementamos, capacitamos y damos soporte con el mismo equipo, de principio a fin.</p>
         <p class="text-slate-400 leading-relaxed text-fv-cyan">Al no estar atados a un solo fabricante, la recomendación de plataforma responde a su operación — no a una comisión de venta.</p>
         <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-16 h-16 float mt-8">
@@ -947,7 +957,7 @@
 <section id="faq" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12 flex items-center justify-between gap-6">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Preguntas <span class="shimmer-text">frecuentes</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Preguntas <span class="shimmer-text">frecuentes</span></h2>
       <img src="assets/signos-hex.png" width="1024" height="1024" alt="" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
     </div>
 
@@ -1003,7 +1013,7 @@
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
 
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase">Empecemos con un diagnóstico de su operación</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase text-balance">Empecemos con un diagnóstico de su operación</h2>
         <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-primary btn-grow inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
