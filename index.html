@@ -44,7 +44,18 @@
   .box-gradient-border {
     border: 1px solid transparent;
     background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
+    transition: box-shadow .3s var(--ease-out);
   }
+  @media (hover: hover) and (pointer: fine) {
+    .box-gradient-border:hover { box-shadow: 0 0 30px rgba(0,255,255,0.25), 0 0 40px rgba(255,140,0,0.2); }
+  }
+
+  /* ---- Botón que crece ligeramente al pasar el mouse (CTA WhatsApp) ---- */
+  .btn-grow { transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-grow:hover { transform: scale(1.05); }
+  }
+  .btn-grow:active { transform: scale(0.96); }
 
   .grain {
     background-image: radial-gradient(#ffffff08 1px, transparent 1px);
@@ -203,6 +214,26 @@
     }
   }
 
+  /* ---- Tarjetas Hexágono / Triángulo: elevación + borde iluminado al pasar el mouse ---- */
+  .card-hover-hex, .card-hover-tri {
+    transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .card-hover-hex:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,255,255,0.7);
+      box-shadow: 0 0 26px rgba(0,255,255,0.3), 0 0 32px rgba(255,140,0,0.25);
+    }
+    .card-hover-tri:hover {
+      transform: translateY(-6px);
+      border-color: rgba(74,222,128,0.7);
+      box-shadow: 0 0 26px rgba(74,222,128,0.3), 0 0 32px rgba(168,85,247,0.3);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-hover-hex, .card-hover-tri { transition: none; }
+  }
+
   /* ---- Animación de entrada del hero ---- */
   @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   .hero-copy > * { opacity: 0; animation: heroIn .6s var(--ease-out) forwards; }
@@ -223,15 +254,24 @@
     border-radius: 9999px;
     padding: 2px; /* grosor del borde visible */
     overflow: hidden;
+    background: linear-gradient(135deg, #00FFFF, #FF8C00);
   }
   .badge-border-spin::before {
     content: '';
     position: absolute;
-    inset: -60%;
-    background: conic-gradient(from 0deg, #00FFFF 0%, #FF8C00 50%, #00FFFF 100%);
-    animation: badgeSpin 4s linear infinite;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.95) 50%, transparent 70%);
+    background-size: 250% 100%;
+    background-position: -150% 0;
+    animation: badgeShine 5s ease-in-out infinite;
+    mix-blend-mode: overlay;
   }
-  @keyframes badgeSpin { to { transform: rotate(360deg); } }
+  @keyframes badgeShine {
+    0% { background-position: -150% 0; }
+    35% { background-position: 150% 0; }
+    100% { background-position: 150% 0; }
+  }
   .badge-inner {
     position: relative;
     z-index: 1;
@@ -254,7 +294,7 @@
   }
   @keyframes badgePulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.75); } }
   @media (prefers-reduced-motion: reduce) {
-    .badge-border-spin::before { animation: none; }
+    .badge-border-spin::before { animation: none; background-position: 150% 0; }
     .badge-dot { animation: none; }
   }
   .hero-visual-in { opacity: 0; animation: heroIn .7s var(--ease-out) .3s forwards; }
@@ -523,16 +563,6 @@
           </a>
         </div>
 
-        <div class="flex flex-wrap gap-3 pt-2">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-slate-300 font-head">
-            <span class="w-1.5 h-1.5 rounded-full bg-fv-cyan shadow-[0_0_6px_#00FFFF]"></span>
-            Diagnóstico sin compromiso
-          </span>
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-slate-300 font-head">
-            <span class="w-1.5 h-1.5 rounded-full bg-fv-orange shadow-[0_0_6px_#FF8C00]"></span>
-            Equipo multi-ERP, no atado a un solo proveedor
-          </span>
-        </div>
       </div>
 
       <!-- Columna visual -->
@@ -540,46 +570,9 @@
         <div class="absolute inset-0 grain rounded-3xl [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_72%)]"></div>
 
         <!-- Emblema hexagonal animado: el momento memorable de la página -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none">
           <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-full h-full hex-spin opacity-90">
-          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="absolute inset-0 m-auto w-28 h-28 float">
-        </div>
-
-        <!-- Tarjeta: métricas de impacto (glassmorphic, borde cian) -->
-        <div class="tilt-card absolute top-6 right-0 w-72 bg-black/40 backdrop-blur-md border border-fv-cyan/40 rounded-2xl p-6 shadow-[0_0_24px_rgba(0,255,255,0.15)] z-20">
-          <div class="flex justify-between items-start mb-5">
-            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
-              <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-            </div>
-            <span class="text-[10px] font-head font-semibold px-2 py-1 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30">Proceso Optimizado</span>
-          </div>
-          <div class="mb-5">
-            <span class="text-3xl font-sans font-extrabold text-white tracking-tight"><span id="counter-eficiencia" data-target="45" data-prefix="+" data-suffix="%">+0%</span></span>
-            <p class="text-xs text-slate-400 font-head mt-0.5">Eficiencia Operativa</p>
-          </div>
-          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
-            <span id="live-status-dot" class="w-2 h-2 rounded-full bg-fv-cyan animate-pulse shrink-0"></span>
-            <p id="live-status-text" class="text-xs text-slate-300 font-head transition-opacity duration-300">Módulo Financiero: <span class="text-fv-cyan font-semibold">Conectado</span></p>
-          </div>
-        </div>
-
-        <!-- Tarjeta: pipeline de IA (glassmorphic, borde naranja) -->
-        <div class="tilt-card absolute bottom-4 left-0 w-80 bg-black/40 backdrop-blur-md border border-fv-orange/40 rounded-2xl p-5 shadow-[0_0_24px_rgba(255,140,0,0.15)] z-30">
-          <p class="text-xs text-slate-400 font-head mb-1">Tiempo de Respuesta</p>
-          <p class="text-base font-sans font-bold text-white mb-4">De 48h <span class="text-slate-400 font-normal">a</span> <span class="text-fv-orange">3 min</span></p>
-
-          <div class="flex items-center gap-1 mb-4">
-            <span class="shrink-0 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] leading-none text-slate-300 font-head whitespace-nowrap">SAP / Odoo</span>
-            <svg class="w-3 h-3 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            <span class="shrink-0 px-2 py-1 rounded-md bg-fv-orange/10 border border-fv-orange/30 text-[9px] leading-none text-fv-orange font-head font-semibold whitespace-nowrap">Motor IA F&amp;V</span>
-            <svg class="w-3 h-3 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            <span class="shrink-0 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[9px] leading-none text-slate-300 font-head whitespace-nowrap">Decisión Validada</span>
-          </div>
-
-          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
-            <span class="w-2 h-2 rounded-full bg-fv-orange animate-pulse shrink-0"></span>
-            <p class="text-xs text-slate-300 font-head">Supervisión Humana: <span class="text-fv-orange font-semibold">Activa</span></p>
-          </div>
+          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="absolute inset-0 m-auto w-56 h-56 float">
         </div>
       </div>
 
@@ -634,13 +627,13 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
       <!-- HEXÁGONO — High-Ticket -->
-      <div class="reveal relative overflow-hidden rounded-3xl bg-fv-surface box-glow-cyan p-8 sm:p-10">
+      <div class="reveal card-hover-hex relative overflow-hidden rounded-3xl bg-fv-surface box-glow-cyan p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-hex-hex.png') center/cover no-repeat;">
         <div class="flex items-center justify-between mb-6">
-          <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-12 h-12">
+          <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-12 h-12 hex-spin">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider">High-Ticket</span>
         </div>
         <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-hex">Hexágono</span></h3>
-        <p class="text-slate-400 leading-relaxed mb-6">Ecosistemas completos de principio a fin: asesoría, despliegue, habilitación y acompañamiento bajo un mismo equipo. Es el estándar integral de F&amp;V — para operaciones que necesitan que todo el sistema hable el mismo idioma.</p>
+        <p class="text-slate-300 leading-relaxed mb-6">Ecosistemas completos de principio a fin: asesoría, despliegue, habilitación y acompañamiento bajo un mismo equipo. Es el estándar integral de F&amp;V — para operaciones que necesitan que todo el sistema hable el mismo idioma.</p>
         <ul class="space-y-2.5 mb-8">
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance completo, sin fragmentar el proyecto</li>
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acompañamiento continuo incluido</li>
@@ -650,9 +643,11 @@
       </div>
 
       <!-- TRIÁNGULO — Mid-Ticket (paleta verde/morado genérica: no existe en tailwind.config, por eso usa utilidades default de Tailwind) -->
-      <div class="reveal relative overflow-hidden rounded-3xl border border-purple-500/40 shadow-[0_0_15px_rgba(168,85,247,0.4)] p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
+      <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-purple-500/40 p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
         <div class="flex items-center justify-between mb-6">
-          <img src="assets/logo-mark-tri.png" alt="" class="w-12 h-12 rounded-lg object-cover border border-white/10">
+          <div class="w-12 h-12 rounded-lg overflow-hidden border border-white/10">
+            <img src="assets/logo-tri-tri.png" alt="" class="w-full h-full object-cover hex-spin">
+          </div>
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/30 uppercase tracking-wider">Mid-Ticket</span>
         </div>
         <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-tri">Triángulo</span></h3>
@@ -674,7 +669,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
       <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
-      <p class="mt-4 leading-relaxed text-neon-orange">Son las razones más comunes por las que una empresa nos llama por primera vez.</p>
+      <p class="mt-4 leading-relaxed text-slate-300">Son las razones más comunes por las que una empresa nos llama por primera vez.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -974,7 +969,7 @@
         <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase">Empecemos con un diagnóstico de su operación</h2>
         <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
+          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-primary btn-grow inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
             Escribir por WhatsApp
           </a>
           <a href="mailto:contacto@fvaigroup.com" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">
