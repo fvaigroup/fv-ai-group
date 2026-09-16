@@ -254,24 +254,16 @@
     border-radius: 9999px;
     padding: 2px; /* grosor del borde visible */
     overflow: hidden;
-    background: linear-gradient(135deg, #00FFFF, #FF8C00);
+    background: rgba(255,255,255,0.12);
   }
   .badge-border-spin::before {
     content: '';
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.95) 50%, transparent 70%);
-    background-size: 250% 100%;
-    background-position: -150% 0;
-    animation: badgeShine 5s ease-in-out infinite;
-    mix-blend-mode: overlay;
+    inset: -60%;
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 345deg, #00FFFF 351deg, #FF8C00 357deg, transparent 360deg);
+    animation: badgeRadar 3.5s linear infinite;
   }
-  @keyframes badgeShine {
-    0% { background-position: -150% 0; }
-    35% { background-position: 150% 0; }
-    100% { background-position: 150% 0; }
-  }
+  @keyframes badgeRadar { to { transform: rotate(360deg); } }
   .badge-inner {
     position: relative;
     z-index: 1;
@@ -294,7 +286,7 @@
   }
   @keyframes badgePulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.75); } }
   @media (prefers-reduced-motion: reduce) {
-    .badge-border-spin::before { animation: none; background-position: 150% 0; }
+    .badge-border-spin::before { animation: none; }
     .badge-dot { animation: none; }
   }
   .hero-visual-in { opacity: 0; animation: heroIn .7s var(--ease-out) .3s forwards; }
