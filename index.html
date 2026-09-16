@@ -80,6 +80,13 @@
     #luci-widget.avoid-footer, #scroll-top.avoid-footer { bottom: 150px; }
   }
 
+  /* ---- Stagger de entrada para grids de tarjetas (Pain Points, Plataformas) ---- */
+  .stagger-grid > .reveal:nth-child(2) { transition-delay: .06s; }
+  .stagger-grid > .reveal:nth-child(3) { transition-delay: .12s; }
+  .stagger-grid > .reveal:nth-child(4) { transition-delay: .18s; }
+  .stagger-grid > .reveal:nth-child(5) { transition-delay: .24s; }
+  .stagger-grid > .reveal:nth-child(6) { transition-delay: .30s; }
+
   /* ---- Línea de tiempo "Cómo trabajamos": una sola línea continua en vez de 6 tramos sueltos ---- */
   .timeline-spine::before {
     content: '';
@@ -682,17 +689,17 @@
       <p class="mt-4 leading-relaxed text-slate-300">Son las razones más comunes por las que una empresa nos llama por primera vez.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 stagger-grid">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
         <p class="text-lg text-slate-200 font-head leading-snug">"Pagamos por un ERP completo y solo usamos el 20% de lo que ofrece."</p>
       </div>
-      <div class="p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
         <p class="text-lg text-slate-200 font-head leading-snug">"Cada área terminó armando su propio Excel paralelo al sistema oficial."</p>
       </div>
-      <div class="p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
         <p class="text-lg text-slate-200 font-head leading-snug">"Capacitamos al equipo una vez, y el conocimiento se perdió con la rotación de personal."</p>
       </div>
-      <div class="p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
         <p class="text-lg text-slate-200 font-head leading-snug">"No sabemos si nuestros procesos son candidatos reales para automatizar con IA."</p>
       </div>
     </div>
@@ -780,28 +787,28 @@
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Somos independientes de proveedor: recomendamos la plataforma que se ajusta a su operación, no la que más nos convenga vender.</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 stagger-grid">
+      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
         <p class="font-head font-semibold text-white">SAP</p>
         <p class="text-xs text-slate-400 mt-1">ERP corporativo</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Odoo</p>
         <p class="text-xs text-slate-400 mt-1">Suite modular</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Microsoft Dynamics 365</p>
         <p class="text-xs text-slate-400 mt-1">ERP / CRM</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Desarrollo a medida</p>
         <p class="text-xs text-slate-400 mt-1">Cuando nada estándar encaja</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Integración de IA</p>
         <p class="text-xs text-slate-400 mt-1">Sobre flujos existentes</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Valery Software POS</p>
         <p class="text-xs text-slate-400 mt-1">Punto de venta</p>
       </div>
