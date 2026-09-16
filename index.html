@@ -358,6 +358,42 @@
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; transition: transform .1s var(--ease-out); }
   #luci-toggle:active { transform: scale(0.94); }
 
+  /* ---- Aviso de descubribilidad de Luci: aparece una sola vez, en la primera visita, junto al botón (reemplaza la dependencia del tooltip hover-only, invisible en táctil) ---- */
+  .luci-hint {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 0;
+    width: 220px;
+    max-width: 72vw;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: #0D0E12;
+    border: 1px solid rgba(0,255,255,0.35);
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+    pointer-events: none;
+    transition: opacity .3s var(--ease-out), transform .3s var(--ease-out);
+  }
+  .luci-hint.is-visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  .luci-hint-text {
+    flex: 1; text-align: left; background: none; border: none; padding: 0;
+    color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; line-height: 1.4; cursor: pointer;
+  }
+  .luci-hint-dismiss {
+    flex-shrink: 0; background: none; border: none; color: #64748b; font-size: 16px; line-height: 1; cursor: pointer; padding: 0 2px;
+    transition: color .2s var(--ease-out);
+  }
+  .luci-hint-dismiss:hover { color: #fff; }
+  /* mientras el aviso está visible, no dupliques con el tooltip hover-only */
+  #luci-widget:has(.luci-hint.is-visible) > span { opacity: 0 !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .luci-hint, .luci-hint.is-visible { transition: opacity .2s ease; transform: none; }
+  }
+
   /* ---- Barra de progreso de scroll ---- */
   #scroll-progress {
     position: fixed; top: 76px; left: 0; height: 2px; width: 100%;
@@ -1104,6 +1140,10 @@
   <span class="absolute bottom-[calc(100%+10px)] left-0 whitespace-nowrap px-3 py-2 rounded-lg bg-black/90 border border-white/10 text-xs font-head text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none shadow-lg">
     ¿Dudas? Habla con un especialista
   </span>
+  <div id="luci-hint" class="luci-hint" role="status">
+    <button type="button" id="luci-hint-open" class="luci-hint-text">¿Tiene preguntas? Pregúntele a Luci.</button>
+    <button type="button" id="luci-hint-dismiss" aria-label="Cerrar aviso" class="luci-hint-dismiss">&times;</button>
+  </div>
   <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-7 h-7 md:w-8 md:h-8">
   </button>
@@ -1379,12 +1419,52 @@
   }
 
   // ---- Luci en móvil: se revela solo tras pasar el hero, para no tapar el CTA "Ver servicios" ----
+  // ---- + aviso de descubribilidad de primer uso: aparece una sola vez cuando el widget se vuelve visible ----
   const luciWidget = document.getElementById('luci-widget');
   if (luciWidget) {
     const mobileQuery = window.matchMedia('(max-width: 767px)');
+    const luciHint = document.getElementById('luci-hint');
+    const luciHintOpen = document.getElementById('luci-hint-open');
+    const luciHintDismiss = document.getElementById('luci-hint-dismiss');
+    const luciToggleBtn = document.getElementById('luci-toggle');
+    const LUCI_HINT_KEY = 'fv-luci-hint-seen';
+    let luciHintTimer = null;
+
+    function luciHintSeen() { try { return !!localStorage.getItem(LUCI_HINT_KEY); } catch (e) { return false; } }
+    function markLuciHintSeen() { try { localStorage.setItem(LUCI_HINT_KEY, '1'); } catch (e) {} }
+
+    function hideLuciHint() {
+      if (!luciHint) return;
+      luciHint.classList.remove('is-visible');
+      clearTimeout(luciHintTimer);
+    }
+
+    function showLuciHintOnce() {
+      if (!luciHint || luciHintSeen()) return;
+      markLuciHintSeen();
+      luciHint.classList.add('is-visible');
+      luciHintTimer = setTimeout(hideLuciHint, 6000);
+    }
+
+    if (luciHintOpen && luciToggleBtn) {
+      luciHintOpen.addEventListener('click', () => { hideLuciHint(); luciToggleBtn.click(); });
+    }
+    if (luciHintDismiss) luciHintDismiss.addEventListener('click', hideLuciHint);
+    if (luciToggleBtn) luciToggleBtn.addEventListener('click', hideLuciHint);
+
+    let luciHintArmed = false;
     window.addEventListener('scroll', () => {
-      if (!mobileQuery.matches) return;
-      luciWidget.classList.toggle('is-visible', window.scrollY > 400);
+      if (mobileQuery.matches) {
+        const wasVisible = luciWidget.classList.contains('is-visible');
+        const nowVisible = window.scrollY > 400;
+        luciWidget.classList.toggle('is-visible', nowVisible);
+      }
+      // el aviso espera a que el visitante pase el hero, en escritorio y móvil por igual,
+      // para no competir visualmente con los CTA del hero en pantallas de poca altura.
+      if (!luciHintArmed && window.scrollY > 400) {
+        luciHintArmed = true;
+        setTimeout(showLuciHintOnce, 1200);
+      }
     });
   }
 
