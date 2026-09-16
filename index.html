@@ -116,11 +116,12 @@
     color: #94a3b8;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.1);
-    transition: color .2s var(--ease-out), border-color .2s var(--ease-out), background-color .2s var(--ease-out);
+    transition: color .2s var(--ease-out), border-color .2s var(--ease-out), background-color .2s var(--ease-out), transform .1s var(--ease-out);
   }
   @media (hover: hover) and (pointer: fine) {
     .tab-btn:hover { color: #fff; border-color: rgba(0,255,255,0.35); background: rgba(0,255,255,0.05); }
   }
+  .tab-btn:active { transform: scale(0.96); }
   .tab-btn[aria-selected="true"] {
     position: relative;
     color: #fff;
@@ -348,12 +349,14 @@
   .luci-typing span:nth-child(3) { animation-delay: 0.3s; }
   @keyframes luciTypingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
   .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
-  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: border-color .2s var(--ease-out), color .2s var(--ease-out); background: transparent; }
+  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: border-color .2s var(--ease-out), color .2s var(--ease-out), transform .1s var(--ease-out); background: transparent; }
   @media (hover: hover) and (pointer: fine) {
     .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
   }
+  .luci-quick-btn:active { transform: scale(0.96); }
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
-  #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
+  #luci-toggle { animation: luciPulse 3s ease-in-out infinite; transition: transform .1s var(--ease-out); }
+  #luci-toggle:active { transform: scale(0.94); }
 
   /* ---- Barra de progreso de scroll ---- */
   #scroll-progress {
@@ -403,9 +406,11 @@
     display: flex; align-items: center; gap: 6px;
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
     color: #94a3b8; padding: 6px 10px; border-radius: 8px; font-size: 12px;
-    transition: border-color .2s ease, color .2s ease;
+    transition: border-color .2s ease, color .2s ease, transform .1s var(--ease-out);
   }
   #search-trigger:hover { border-color: rgba(0,255,255,0.4); color: #cbd5e1; }
+  #menu-btn { transition: transform .1s var(--ease-out); }
+  #search-trigger:active, #menu-btn:active { transform: scale(0.94); }
   #search-trigger kbd {
     font-family: 'Space Grotesk', sans-serif; font-size: 10px; background: rgba(255,255,255,0.08);
     padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);
