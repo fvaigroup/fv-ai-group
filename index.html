@@ -67,10 +67,26 @@
   .reveal.is-in { opacity: 1; transform: translateY(0); }
 
   /* ---- Widget de Luci: en móvil se oculta hasta pasar el hero, para no tapar el CTA "Ver servicios" ---- */
-  #luci-widget { transition: opacity .3s var(--ease-out), transform .3s var(--ease-out); }
+  #luci-widget { transition: opacity .3s var(--ease-out), transform .3s var(--ease-out), bottom .3s var(--ease-out); }
   @media (max-width: 767px) {
     #luci-widget { opacity: 0; pointer-events: none; transform: translateY(12px); }
     #luci-widget.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  }
+
+  /* ---- Luci y "volver arriba": suben cuando el footer entra en vista, para no tapar el copyright ---- */
+  #luci-widget.avoid-footer, #scroll-top.avoid-footer { bottom: 96px; }
+  @media (max-width: 767px) {
+    /* En móvil el footer se apila y es más alto, así que necesitan subir más */
+    #luci-widget.avoid-footer, #scroll-top.avoid-footer { bottom: 150px; }
+  }
+
+  /* ---- Línea de tiempo "Cómo trabajamos": una sola línea continua en vez de 6 tramos sueltos ---- */
+  .timeline-spine::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.35rem; bottom: 0.35rem;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(0,255,255,0.35), rgba(255,140,0,0.35), rgba(0,255,255,0.35));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -413,7 +429,7 @@
   }
   #mobile-menu > div { overflow: hidden; min-height: 0; }
   #mobile-menu.is-open { grid-template-rows: 1fr; opacity: 1; }
-  @media (min-width: 768px) { #mobile-menu { display: none !important; } }
+  @media (min-width: 1024px) { #mobile-menu { display: none !important; } }
 
   /* ---- Panel de Luci: slide-up + fade en vez de aparecer de golpe ---- */
   #luci-panel {
@@ -477,7 +493,7 @@
         <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-9 font-head text-sm">
+      <nav class="hidden lg:flex items-center gap-9 font-head text-sm">
         <a href="index.html" class="text-white transition-colors">Inicio</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
         <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
@@ -490,7 +506,7 @@
         </button>
       </nav>
 
-      <div class="hidden md:flex items-center gap-3">
+      <div class="hidden lg:flex items-center gap-3">
         <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">
           Hablar por WhatsApp
         </a>
@@ -499,7 +515,7 @@
         </a>
       </div>
 
-      <button id="menu-btn" type="button" class="md:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
+      <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
@@ -507,7 +523,7 @@
   </div>
 
   <!-- mobile menu -->
-  <div id="mobile-menu" class="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
+  <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-white">Inicio</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
@@ -526,7 +542,7 @@
 <main>
 
 <!-- ============ HERO ============ -->
-<section id="inicio" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+<section id="inicio" class="relative lg:min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
   <canvas id="hex-canvas" class="opacity-70"></canvas>
   <div class="absolute top-0 left-0 w-[560px] h-[560px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
   <div class="absolute bottom-0 right-0 w-[620px] h-[620px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4 parallax-blob" data-speed="-0.05"></div>
@@ -716,7 +732,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       <div>
         <div data-panel="asesoria" id="panel-asesoria" role="tabpanel" aria-labelledby="tab-asesoria" class="tab-panel space-y-4">
           <h3 class="font-sans text-2xl text-white">Asesoría Estratégica</h3>
@@ -765,27 +781,27 @@
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
         <p class="font-head font-semibold text-white">SAP</p>
         <p class="text-xs text-slate-400 mt-1">ERP corporativo</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Odoo</p>
         <p class="text-xs text-slate-400 mt-1">Suite modular</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Microsoft Dynamics 365</p>
         <p class="text-xs text-slate-400 mt-1">ERP / CRM</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Desarrollo a medida</p>
         <p class="text-xs text-slate-400 mt-1">Cuando nada estándar encaja</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Integración de IA</p>
         <p class="text-xs text-slate-400 mt-1">Sobre flujos existentes</p>
       </div>
-      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange">
+      <div class="p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Valery Software POS</p>
         <p class="text-xs text-slate-400 mt-1">Punto de venta</p>
       </div>
@@ -804,34 +820,34 @@
         </div>
       </div>
 
-      <div class="lg:col-span-8 space-y-14">
-        <div class="relative pl-8 border-l-2 border-fv-cyan/30">
+      <div class="lg:col-span-8 space-y-14 relative timeline-spine">
+        <div class="relative pl-8">
           <span class="font-sans text-fv-cyan/70 text-sm">01</span>
           <h3 class="font-sans text-white font-semibold mt-2 mb-1.5 text-lg">Asesoría Estratégica</h3>
           <p class="text-slate-400 leading-relaxed max-w-md">Diagnóstico de alto nivel y definición de la solución antes de ejecutar.</p>
         </div>
-        <div class="relative pl-8 border-l-2 border-fv-cyan/30">
+        <div class="relative pl-8">
           <span class="font-sans text-fv-cyan/70 text-sm">02</span>
           <h3 class="font-sans text-white font-semibold mt-2 mb-1.5 text-lg">Evaluación de Procesos</h3>
           <p class="text-slate-400 leading-relaxed max-w-md">Auditoría técnica y financiera de procesos y sistemas actuales.</p>
         </div>
-        <div class="relative pl-8 border-l-2 border-fv-orange/30">
+        <div class="relative pl-8">
           <span class="font-sans text-fv-orange/80 text-sm">03</span>
           <h3 class="font-sans text-white font-semibold mt-2 mb-1.5 text-lg">Despliegue y Ejecución</h3>
           <p class="text-slate-400 leading-relaxed max-w-md">Configuración, migración de datos e integración de IA cuando aplica.</p>
         </div>
-        <div class="relative pl-8 border-l-2 border-fv-orange/30">
+        <div class="relative pl-8">
           <span class="font-sans text-fv-orange/80 text-sm">04</span>
           <h3 class="font-sans text-white font-semibold mt-2 mb-1.5 text-lg">Habilitación de Equipos</h3>
           <p class="text-slate-400 leading-relaxed max-w-md">Formación práctica sobre el sistema real de cada equipo.</p>
         </div>
-        <div class="relative pl-8 border-l-2 border-fv-cyan/30">
+        <div class="relative pl-8">
           <span class="font-sans text-fv-cyan/70 text-sm">05</span>
           <h3 class="font-sans text-white font-semibold mt-2 mb-1.5 text-lg">Masterclasses y Workshops</h3>
           <p class="text-slate-400 leading-relaxed max-w-md">Formación estructurada para escalar el conocimiento a más audiencia.</p>
         </div>
-        <div class="relative pl-8 border-l-2 border-fv-gold/30">
-          <span class="font-sans text-fv-gold/90 text-sm">06</span>
+        <div class="relative pl-8">
+          <span class="font-sans text-fv-cyan/70 text-sm">06</span>
           <h3 class="font-sans text-white font-semibold mt-2 mb-1.5 text-lg">Acompañamiento Continuo</h3>
           <p class="text-slate-400 leading-relaxed max-w-md">Mantenimiento evolutivo después del go-live.</p>
         </div>
@@ -862,7 +878,7 @@
         </div>
         <div class="p-6 rounded-2xl bg-fv-surface diff-card-orange">
           <h3 class="font-sans font-semibold text-white mb-1.5">Supervisión humana, siempre</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">Nuestros sistemas de automatización e inteligencia artificial operan como soporte operativo y analítico, manteniendo siempre la supervisión, el criterio ético y la decisión final bajo control de los profesionales de la organización.</p>
+          <p class="text-sm text-slate-400 leading-relaxed">Nuestra IA opera como soporte operativo y analítico — la decisión final siempre queda en manos de su equipo.</p>
         </div>
       </div>
     </div>
@@ -1348,6 +1364,18 @@
       if (!mobileQuery.matches) return;
       luciWidget.classList.toggle('is-visible', window.scrollY > 400);
     });
+  }
+
+  // ---- Luci y "volver arriba" suben cuando el footer entra en vista, para no tapar el copyright ----
+  const siteFooter = document.querySelector('footer');
+  if (siteFooter && (luciWidget || scrollTopBtn)) {
+    const footerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        luciWidget && luciWidget.classList.toggle('avoid-footer', entry.isIntersecting);
+        scrollTopBtn && scrollTopBtn.classList.toggle('avoid-footer', entry.isIntersecting);
+      });
+    });
+    footerObserver.observe(siteFooter);
   }
 
   // ---- Asistente Luci (respuestas por palabras clave, no es un modelo de IA) ----
