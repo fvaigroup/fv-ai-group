@@ -21,6 +21,11 @@ module.exports = {
           orange: '#FF8C00',
           orangeWarm: '#FF4500',
           gold: '#FFBF00',
+          // Segundo par de acento, exclusivo de la línea Triángulo (Mid-Ticket):
+          // la distingue visualmente de la línea Hexágono (cian/naranja) sin
+          // romper el sistema — es una paleta secundaria formal, no un ad hoc.
+          triGreen: '#4ade80',
+          triPurple: '#a855f7',
         }
       }
     }

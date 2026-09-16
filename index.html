@@ -66,9 +66,17 @@
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
   .reveal.is-in { opacity: 1; transform: translateY(0); }
 
+  /* ---- Widget de Luci: en móvil se oculta hasta pasar el hero, para no tapar el CTA "Ver servicios" ---- */
+  #luci-widget { transition: opacity .3s var(--ease-out), transform .3s var(--ease-out); }
+  @media (max-width: 767px) {
+    #luci-widget { opacity: 0; pointer-events: none; transform: translateY(12px); }
+    #luci-widget.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     * { animation: none !important; }
+    #luci-widget { opacity: 1 !important; pointer-events: auto !important; transform: none !important; }
     #search-overlay, #search-panel, #mobile-menu, #luci-panel { transition: none !important; }
   }
 
@@ -159,7 +167,7 @@
   .shimmer-text {
     position: relative;
     display: inline-block;
-    background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%);
+    background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 18%, #F0FBFF 36%, #FF8C00 58%, #FF4500 78%, #00FFFF 100%);
     background-size: 300% 100%;
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
     animation: shimmerMove 7s ease-in-out infinite;
@@ -628,22 +636,22 @@
         <a href="servicios.html" class="btn-secondary inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg">Ver Servicios Hexágono</a>
       </div>
 
-      <!-- TRIÁNGULO — Mid-Ticket (paleta verde/morado genérica: no existe en tailwind.config, por eso usa utilidades default de Tailwind) -->
-      <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-purple-500/40 p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
+      <!-- TRIÁNGULO — Mid-Ticket (segundo par de acento formal: fv-triGreen/fv-triPurple en tailwind.config.js) -->
+      <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-fv-triPurple/40 p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
         <div class="flex items-center justify-between mb-6">
           <div class="w-12 h-12 rounded-lg overflow-hidden border border-white/10">
             <img src="assets/logo-tri-tri.png" alt="" class="w-full h-full object-cover hex-spin">
           </div>
-          <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/30 uppercase tracking-wider">Mid-Ticket</span>
+          <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-triPurple/10 text-fv-triPurple rounded-full border border-fv-triPurple/30 uppercase tracking-wider">Mid-Ticket</span>
         </div>
         <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-tri">Triángulo</span></h3>
         <p class="text-slate-300 leading-relaxed mb-6">Implementaciones ágiles y acotadas: un sprint enfocado en resolver un cuello de botella puntual, sin comprometerse con un ecosistema completo. Mantienen la misma calidad F&amp;V, en menor proporción de alcance y tiempo.</p>
         <ul class="space-y-2.5 mb-8">
-          <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance reducido, enfocado en un problema puntual</li>
-          <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tiempos de entrega cortos, tipo sprint</li>
-          <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Puerta de entrada antes de un ecosistema completo</li>
+          <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance reducido, enfocado en un problema puntual</li>
+          <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tiempos de entrega cortos, tipo sprint</li>
+          <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Puerta de entrada antes de un ecosistema completo</li>
         </ul>
-        <a href="contacto.html" class="inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg border border-purple-500/50 text-white hover:bg-purple-500/10 transition-colors">Consultar Sprint Triángulo</a>
+        <a href="contacto.html" class="inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 transition-colors">Consultar Sprint Triángulo</a>
       </div>
 
     </div>
@@ -683,14 +691,29 @@
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-cyan">Desde el primer diagnóstico hasta el soporte del día a día. Sin pasar su proyecto de mano en mano entre proveedores distintos.</p>
     </div>
 
-    <!-- Tabs -->
-    <div role="tablist" class="flex flex-wrap gap-2 mb-10 font-head text-sm">
-      <button class="tab-btn" id="tab-asesoria" data-tab="asesoria" role="tab" aria-selected="true" aria-controls="panel-asesoria">Asesoría Estratégica</button>
-      <button class="tab-btn" id="tab-evaluacion" data-tab="evaluacion" role="tab" aria-selected="false" aria-controls="panel-evaluacion">Evaluación de Procesos</button>
-      <button class="tab-btn" id="tab-despliegue" data-tab="despliegue" role="tab" aria-selected="false" aria-controls="panel-despliegue">Despliegue y Ejecución</button>
-      <button class="tab-btn" id="tab-habilitacion" data-tab="habilitacion" role="tab" aria-selected="false" aria-controls="panel-habilitacion">Habilitación de Equipos</button>
-      <button class="tab-btn" id="tab-masterclasses" data-tab="masterclasses" role="tab" aria-selected="false" aria-controls="panel-masterclasses">Masterclasses y Workshops</button>
-      <button class="tab-btn" id="tab-acompanamiento" data-tab="acompanamiento" role="tab" aria-selected="false" aria-controls="panel-acompanamiento">Acompañamiento Continuo</button>
+    <!-- Tabs: agrupadas en 3 fases (Antes/Durante/Después) en vez de 6 opciones sueltas -->
+    <div role="tablist" aria-label="Fases del servicio" class="flex flex-wrap gap-x-8 gap-y-4 mb-10 font-head text-sm">
+      <div role="group" aria-label="Antes" class="flex flex-col gap-2">
+        <span class="text-[10px] font-head uppercase tracking-wider text-slate-500">Antes</span>
+        <div class="flex flex-wrap gap-2">
+          <button class="tab-btn" id="tab-asesoria" data-tab="asesoria" role="tab" aria-selected="true" aria-controls="panel-asesoria">Asesoría Estratégica</button>
+          <button class="tab-btn" id="tab-evaluacion" data-tab="evaluacion" role="tab" aria-selected="false" aria-controls="panel-evaluacion">Evaluación de Procesos</button>
+        </div>
+      </div>
+      <div role="group" aria-label="Durante" class="flex flex-col gap-2">
+        <span class="text-[10px] font-head uppercase tracking-wider text-slate-500">Durante</span>
+        <div class="flex flex-wrap gap-2">
+          <button class="tab-btn" id="tab-despliegue" data-tab="despliegue" role="tab" aria-selected="false" aria-controls="panel-despliegue">Despliegue y Ejecución</button>
+          <button class="tab-btn" id="tab-habilitacion" data-tab="habilitacion" role="tab" aria-selected="false" aria-controls="panel-habilitacion">Habilitación de Equipos</button>
+        </div>
+      </div>
+      <div role="group" aria-label="Después" class="flex flex-col gap-2">
+        <span class="text-[10px] font-head uppercase tracking-wider text-slate-500">Después</span>
+        <div class="flex flex-wrap gap-2">
+          <button class="tab-btn" id="tab-masterclasses" data-tab="masterclasses" role="tab" aria-selected="false" aria-controls="panel-masterclasses">Masterclasses y Workshops</button>
+          <button class="tab-btn" id="tab-acompanamiento" data-tab="acompanamiento" role="tab" aria-selected="false" aria-controls="panel-acompanamiento">Acompañamiento Continuo</button>
+        </div>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -1043,8 +1066,8 @@
   <span class="absolute bottom-[calc(100%+10px)] left-0 whitespace-nowrap px-3 py-2 rounded-lg bg-black/90 border border-white/10 text-xs font-head text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none shadow-lg">
     ¿Dudas? Habla con un especialista
   </span>
-  <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-8 h-8">
+  <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+    <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-7 h-7 md:w-8 md:h-8">
   </button>
 
   <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
@@ -1315,6 +1338,16 @@
       scrollTopBtn.classList.toggle('translate-y-3', !show);
     });
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // ---- Luci en móvil: se revela solo tras pasar el hero, para no tapar el CTA "Ver servicios" ----
+  const luciWidget = document.getElementById('luci-widget');
+  if (luciWidget) {
+    const mobileQuery = window.matchMedia('(max-width: 767px)');
+    window.addEventListener('scroll', () => {
+      if (!mobileQuery.matches) return;
+      luciWidget.classList.toggle('is-visible', window.scrollY > 400);
+    });
   }
 
   // ---- Asistente Luci (respuestas por palabras clave, no es un modelo de IA) ----
