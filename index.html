@@ -28,6 +28,7 @@
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   html { background: #000; }
@@ -161,6 +162,23 @@
     .btn-primary:hover { filter: brightness(1.1); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
   }
   .btn-primary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
+
+  /* ---- CTA "Agendar auditoría": brillo y crecimiento solo al hover, rebote al soltar el clic ---- */
+  .btn-glow-on-hover {
+    box-shadow: none;
+    transition: transform .35s var(--ease-bounce), box-shadow .25s var(--ease-out), filter .25s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-glow-on-hover:hover {
+      transform: scale(1.06);
+      filter: brightness(1.1);
+      box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45);
+    }
+  }
+  .btn-glow-on-hover:active {
+    transform: scale(0.93);
+    transition: transform .1s var(--ease-out);
+  }
 
   .btn-secondary {
     background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
@@ -588,7 +606,7 @@
         <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">
           Hablar por WhatsApp
         </a>
-        <a href="contacto.html" class="btn-primary font-head text-sm font-semibold px-5 py-2.5 rounded-lg">
+        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">
           Agendar auditoría
         </a>
       </div>
@@ -610,7 +628,7 @@
       <a href="nosotros.html" class="text-slate-300">Nosotros</a>
       <a href="contacto.html" class="text-slate-300">Contacto</a>
       <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="contacto.html" class="btn-primary text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
+      <a href="contacto.html" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
     </div>
   </div>
 </header>
@@ -643,7 +661,7 @@
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 pt-2">
-          <a href="contacto.html" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
+          <a href="contacto.html" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
             Agendar auditoría inicial
           </a>
           <a href="servicios.html" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg backdrop-blur-md">
