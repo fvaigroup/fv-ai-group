@@ -249,19 +249,19 @@
     .card-glow-border:hover::before { opacity: 1; }
   }
 
-  /* ---- Tarjetas de diferencial: color sólido en reposo, degradado al pasar el mouse ---- */
-  .diff-card-orange, .diff-card-cyan {
-    position: relative;
-    transition: border-color .25s var(--ease-out), box-shadow .25s var(--ease-out), background .25s var(--ease-out);
+  /* ---- Tarjetas Pain Points / Diferencial: borde gris en reposo, elevación + brillo cian al hover ---- */
+  .card-lift-cyan {
+    transition: transform .3s var(--ease-out), border-color .3s var(--ease-out), box-shadow .3s var(--ease-out);
   }
-  .diff-card-orange { border: 1px solid rgba(255,140,0,0.4); }
-  .diff-card-cyan { border: 1px solid rgba(0,255,255,0.4); }
   @media (hover: hover) and (pointer: fine) {
-    .diff-card-orange:hover, .diff-card-cyan:hover {
-      border-color: transparent;
-      background: linear-gradient(#0D0E12,#0D0E12) padding-box, linear-gradient(135deg,#00FFFF,#FF8C00) border-box;
-      box-shadow: 0 0 18px rgba(0,255,255,0.2), 0 0 18px rgba(255,140,0,0.2);
+    .card-lift-cyan:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,255,255,0.6);
+      box-shadow: 0 0 26px rgba(0,204,255,0.25);
     }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-lift-cyan { transition: none; }
   }
 
   /* ---- Tarjetas Hexágono / Triángulo: elevación + borde iluminado al pasar el mouse ---- */
@@ -735,16 +735,16 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 stagger-grid">
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"Pagamos por un ERP completo y solo usamos el 20% de lo que ofrece."</p>
       </div>
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"Cada área terminó armando su propio Excel paralelo al sistema oficial."</p>
       </div>
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"Capacitamos al equipo una vez, y el conocimiento se perdió con la rotación de personal."</p>
       </div>
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
+      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"No sabemos si nuestros procesos son candidatos reales para automatizar con IA."</p>
       </div>
     </div>
@@ -763,15 +763,15 @@
       </div>
 
       <div class="space-y-4">
-        <div class="p-6 rounded-2xl bg-fv-surface diff-card-orange">
+        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
           <h3 class="font-sans font-semibold text-white mb-1.5">Independientes de proveedor</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Trabajamos con SAP, Odoo, Dynamics 365 y desarrollo a medida — recomendamos según el caso, no según el catálogo.</p>
         </div>
-        <div class="p-6 rounded-2xl bg-fv-surface diff-card-cyan">
+        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
           <h3 class="font-sans font-semibold text-white mb-1.5">Ciclo completo, un solo equipo</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Auditoría, implementación, capacitación y soporte no se subcontratan por separado.</p>
         </div>
-        <div class="p-6 rounded-2xl bg-fv-surface diff-card-orange">
+        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
           <h3 class="font-sans font-semibold text-white mb-1.5">Supervisión humana, siempre</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Nuestra IA opera como soporte operativo y analítico — la decisión final siempre queda en manos de su equipo.</p>
         </div>
@@ -791,7 +791,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
       <!-- HEXÁGONO — High-Ticket -->
-      <div class="reveal card-hover-hex relative overflow-hidden rounded-3xl bg-fv-surface box-glow-cyan p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-hex-hex.png') center/cover no-repeat;">
+      <div class="reveal card-hover-hex relative overflow-hidden rounded-3xl bg-fv-surface border border-fv-border p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-hex-hex.png') center/cover no-repeat;">
        <div class="geo-reveal-hex">
         <div class="flex items-center justify-between mb-6">
           <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-12 h-12 hex-spin">
@@ -809,7 +809,7 @@
       </div>
 
       <!-- TRIÁNGULO — Mid-Ticket (segundo par de acento formal: fv-triGreen/fv-triPurple en tailwind.config.js) -->
-      <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-fv-triPurple/40 p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
+      <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-fv-border p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
        <div class="geo-reveal-tri">
         <div class="flex items-center justify-between mb-6">
           <div class="w-12 h-12 rounded-lg overflow-hidden border border-white/10">
