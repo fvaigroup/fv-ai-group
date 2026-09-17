@@ -8,11 +8,11 @@ web
 
 ## Users
 
-Empresas medianas en Venezuela que evalúan o ya usan SAP, Odoo o Microsoft Dynamics 365, buscando auditoría, implementación, capacitación y soporte continuo, con integración de IA sobre sus flujos existentes.
+Empresas medianas en Venezuela que evalúan o ya usan Odoo Community o Dynamics 365 Sales/Customer Service, buscando auditoría, implementación, capacitación y soporte continuo, con integración de IA sobre sus flujos existentes.
 
 ## Product Purpose
 
-F&V AI Group audita procesos, implementa SAP/Odoo/Dynamics 365, integra IA en flujos ya existentes, y capacita equipos para que la inversión en el ERP no quede subutilizada.
+F&V AI Group audita procesos, implementa Odoo Community y Dynamics 365 Sales/Customer Service, integra IA en flujos ya existentes, y capacita equipos para que la inversión no quede subutilizada.
 
 ## Positioning
 
@@ -25,6 +25,8 @@ Dos líneas de servicio: Hexágono (High-Ticket, ecosistema completo) y Triángu
 ## Capabilities and Constraints
 
 Sitio estático (HTML/CSS/JS + Tailwind CLI vía `npm run build`, sin framework), desplegado en Vercel. El asistente "Luci" es un bot de respuestas por palabras clave (no un modelo de IA real) — ya rotulado honestamente como "Asistente de preguntas frecuentes" en su propio panel.
+
+**Restricción temporal (partnership pendiente):** mientras el usuario tramita el partnership gratuito con Odoo, Zoho, Microsoft, Google, Salesforce y monday.com, el sitio solo puede mencionar como tecnologías/servicios que F&V implementa un listado acotado (sin SAP, sin "Business Central" específicamente, y con Odoo/Dynamics 365 acotados a "Odoo Community"/"Dynamics 365 Sales/Customer Service"). No reintroducir SAP ni otras marcas fuera de ese listado hasta que el usuario confirme que ya tiene el partnership correspondiente.
 
 ## Brand Commitments
 
