@@ -45,10 +45,13 @@
   .box-gradient-border {
     border: 1px solid transparent;
     background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
-    transition: box-shadow .3s var(--ease-out);
+    transition: box-shadow .3s var(--ease-out), transform .3s var(--ease-out);
   }
   @media (hover: hover) and (pointer: fine) {
-    .box-gradient-border:hover { box-shadow: 0 0 30px rgba(0,255,255,0.25), 0 0 40px rgba(255,140,0,0.2); }
+    .box-gradient-border:hover { box-shadow: 0 0 30px rgba(0,255,255,0.25), 0 0 40px rgba(255,140,0,0.2); transform: translateY(-6px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .box-gradient-border { transition: none; }
   }
 
   /* ---- Botón que crece ligeramente al pasar el mouse (CTA WhatsApp) ---- */
@@ -269,12 +272,12 @@
     transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s var(--ease-out);
   }
   @media (hover: hover) and (pointer: fine) {
-    .card-hover-hex:hover {
+    .reveal.card-hover-hex:hover {
       transform: translateY(-6px);
       border-color: rgba(0,255,255,0.7);
       box-shadow: 0 0 26px rgba(0,255,255,0.3), 0 0 32px rgba(255,140,0,0.25);
     }
-    .card-hover-tri:hover {
+    .reveal.card-hover-tri:hover {
       transform: translateY(-6px);
       border-color: rgba(74,222,128,0.7);
       box-shadow: 0 0 26px rgba(74,222,128,0.3), 0 0 32px rgba(168,85,247,0.3);
@@ -754,7 +757,6 @@
         <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-6 uppercase text-balance">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
         <p class="text-slate-400 leading-relaxed mb-4 text-fv-cyan">No somos un ERP con licencia ni un revendedor de software. Somos la consultoría que audita, implementa, capacita y da soporte con el mismo equipo — de principio a fin.</p>
         <p class="text-slate-400 leading-relaxed text-fv-cyan">Al no estar atados a un solo fabricante, la recomendación de plataforma responde a su operación — no a una comisión de venta.</p>
-        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-16 h-16 float mt-8">
       </div>
 
       <div class="space-y-4">
@@ -792,14 +794,14 @@
           <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-12 h-12 hex-spin">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider">High-Ticket</span>
         </div>
-        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-hex">Hexágono</span></h3>
+        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-hex">Hexagonal</span></h3>
         <p class="text-slate-300 leading-relaxed mb-6">Ecosistemas completos de principio a fin: asesoría, despliegue, habilitación y acompañamiento bajo un mismo equipo. Es el estándar integral de F&amp;V — para operaciones que necesitan que todo el sistema hable el mismo idioma.</p>
         <ul class="space-y-2.5 mb-8">
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance completo, sin fragmentar el proyecto</li>
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acompañamiento continuo incluido</li>
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Un solo equipo, de la estrategia al soporte</li>
         </ul>
-        <a href="servicios.html" class="btn-secondary inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg">Ver Servicios Hexágono</a>
+        <a href="servicios.html" class="btn-secondary inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg">Ver Servicios Línea Hexagonal</a>
        </div>
       </div>
 
@@ -807,19 +809,17 @@
       <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-fv-border p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
        <div class="geo-reveal-tri">
         <div class="flex items-center justify-between mb-6">
-          <div class="w-12 h-12 rounded-lg overflow-hidden border border-white/10">
-            <img src="assets/logo-tri-tri.png" alt="" class="w-full h-full object-cover hex-spin">
-          </div>
+          <img src="assets/logo-tri-tri.png" width="500" height="500" alt="" class="w-12 h-12 hex-spin">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-triPurple/10 text-fv-triPurple rounded-full border border-fv-triPurple/30 uppercase tracking-wider">Mid-Ticket</span>
         </div>
-        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-tri">Triángulo</span></h3>
+        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-tri">Triangular</span></h3>
         <p class="text-slate-300 leading-relaxed mb-6">Implementaciones ágiles y acotadas: un sprint enfocado en resolver un cuello de botella puntual, sin comprometerse con un ecosistema completo. Mantienen la misma calidad F&amp;V, en menor proporción de alcance y tiempo.</p>
         <ul class="space-y-2.5 mb-8">
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance reducido, enfocado en un problema puntual</li>
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tiempos de entrega cortos, tipo sprint</li>
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Puerta de entrada antes de un ecosistema completo</li>
         </ul>
-        <a href="contacto.html" class="inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 transition-colors">Consultar Sprint Triángulo</a>
+        <a href="contacto.html" class="inline-flex justify-center items-center px-6 py-3 font-head text-sm font-medium rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 transition-colors">Consultar Sprint Línea Triangular</a>
        </div>
       </div>
 
@@ -914,31 +914,31 @@
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 stagger-grid">
-      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">n8n</p>
         <p class="text-xs text-slate-400 mt-1">Automatización de flujos</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-cyan/80 mt-2">Automatización IA</p>
       </div>
-      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Odoo Community</p>
         <p class="text-xs text-slate-400 mt-1">Suite modular</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-orange/80 mt-2">CRM / ERP</p>
       </div>
-      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Dynamics 365 Sales/Customer Service</p>
         <p class="text-xs text-slate-400 mt-1">CRM de ventas y soporte</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-orange/80 mt-2">CRM / ERP</p>
       </div>
-      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Desarrollo a medida</p>
         <p class="text-xs text-slate-400 mt-1">Cuando nada estándar encaja</p>
       </div>
-      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-cyan flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Integración de IA</p>
         <p class="text-xs text-slate-400 mt-1">Sobre flujos existentes</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-cyan/80 mt-2">Automatización IA</p>
       </div>
-      <div class="reveal p-6 rounded-2xl border text-center transition-colors platform-orange flex flex-col justify-between">
+      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">WhatsApp Business API</p>
         <p class="text-xs text-slate-400 mt-1">Mensajería con clientes</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-cyan/80 mt-2">Automatización IA</p>
