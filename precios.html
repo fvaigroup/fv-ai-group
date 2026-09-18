@@ -23,12 +23,16 @@
 <link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet">
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* ---- Estándar de transición: color, fondo y borde cambian juntos en el mismo tiempo/curva,
+       nunca por separado, para que un hover se sienta como un solo cambio de estado. Referenciar
+       esta variable (o replicar los mismos tres tramos) en cualquier regla nueva de hover/focus. ---- */
+    --transition-base: color .3s var(--ease-out), background-color .3s var(--ease-out), border-color .3s var(--ease-out);
   }
 
   html { background: #000; } body { background: #000; }
@@ -78,7 +82,7 @@
   }
   .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
-  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
+  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }
   .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
 
   @view-transition { navigation: auto; }
@@ -209,7 +213,7 @@
     transition: opacity .2s var(--ease-out), transform .2s var(--ease-out);
   }
   #search-input-row { display: flex; align-items: center; gap: 10px; padding: 16px 18px; border-bottom: 1px solid #1F232B; }
-  #search-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 15px; font-family: 'Inter', sans-serif; }
+  #search-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 15px; font-family: 'Geist', sans-serif; }
   #search-input::placeholder { color: #475569; }
   #search-results { overflow-y: auto; padding: 8px; }
   .search-result { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-decoration: none; }
