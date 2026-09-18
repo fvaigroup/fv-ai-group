@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto | F&V AI Group</title>
-<meta name="description" content="Escríbanos por WhatsApp, correo o el formulario. Respondemos con los próximos pasos para su proyecto.">
-<link rel="canonical" href="https://fvaigroup.com/contacto">
+<title>Calculadora de ROI | F&V AI Group</title>
+<meta name="description" content="Estime en minutos cuántas horas y cuánto dinero puede ahorrar automatizando procesos, atención por WhatsApp o integrando su ERP/CRM.">
+<link rel="canonical" href="https://fvaigroup.com/calculadora-roi">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;V AI Group">
 <meta property="og:locale" content="es_VE">
-<meta property="og:title" content="Contacto | F&V AI Group">
-<meta property="og:description" content="Escríbanos por WhatsApp, correo o el formulario. Respondemos con los próximos pasos para su proyecto.">
-<meta property="og:url" content="https://fvaigroup.com/contacto">
+<meta property="og:title" content="Calculadora de ROI | F&V AI Group">
+<meta property="og:description" content="Estime en minutos cuántas horas y cuánto dinero puede ahorrar automatizando procesos, atención por WhatsApp o integrando su ERP/CRM.">
+<meta property="og:url" content="https://fvaigroup.com/calculadora-roi">
 <meta property="og:image" content="https://fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contacto | F&V AI Group">
-<meta name="twitter:description" content="Escríbanos por WhatsApp, correo o el formulario. Respondemos con los próximos pasos para su proyecto.">
+<meta name="twitter:title" content="Calculadora de ROI | F&V AI Group">
+<meta name="twitter:description" content="Estime en minutos cuántas horas y cuánto dinero puede ahorrar automatizando procesos, atención por WhatsApp o integrando su ERP/CRM.">
 <meta name="twitter:image" content="https://fvaigroup.com/assets/og-image.png">
 <link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
 <link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
@@ -41,26 +41,6 @@
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } * { animation: none !important; } }
   @media (prefers-reduced-motion: reduce) { #search-overlay, #search-panel, #mobile-menu, #luci-panel { transition: none !important; } }
 
-  .fv-input {
-    width: 100%; background: #0D0E12; border: 1px solid #1F232B; border-radius: 10px;
-    padding: 12px 14px; color: #fff; font-family: Inter, sans-serif; font-size: 14px;
-    transition: border-color .2s ease;
-  }
-  .fv-input:focus { outline: none; border-color: #00CCFF; box-shadow: 0 0 0 3px rgba(0,204,255,0.12); }
-  .fv-input::placeholder { color: #5b6472; }
-  .fv-label { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #9aa3af; margin-bottom: 6px; display: block; }
-  .fv-input.input-error { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.14); }
-  .fv-error { font-size: 12px; color: #f87171; margin-top: 6px; }
-  /* ---- Pulso de éxito del formulario (anillos cian-naranja expandiéndose) ---- */
-  #form-status.is-success { background: rgba(0,255,255,0.08); border: 1px solid rgba(0,255,255,0.3); color: #7fe7e7; }
-  #form-status.is-error { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.3); color: #f87171; }
-
-  /* ---- Pulso de éxito del formulario (anillos cian-naranja expandiéndose) ---- */
-  @keyframes successPulseRing { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(2.4); opacity: 0; } }
-  .success-pulse-ring { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
-
-
-  /* ---- Texto con degradado animado (cian → naranja) ---- */
   .shimmer-text {
     position: relative; display: inline-block;
     background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%);
@@ -71,15 +51,12 @@
   @keyframes shimmerMove { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
   @media (prefers-reduced-motion: reduce) { .shimmer-text { animation: none; background-position: 30% 50%; } }
 
-  /* ---- Texto neón sólido ---- */
   .text-neon-orange { color: #FF8C00 !important; text-shadow: 0 0 8px rgba(255,140,0,0.65), 0 0 18px rgba(255,69,0,0.45); }
   .text-neon-cyan { color: #00FFFF !important; text-shadow: 0 0 8px rgba(0,255,255,0.65), 0 0 18px rgba(0,204,255,0.45); }
 
-  /* ---- Recuadros iluminados ---- */
   .box-glow-cyan { border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 14px rgba(0,255,255,0.2); }
   .box-glow-orange { border: 1px solid rgba(255,140,0,0.4); box-shadow: 0 0 14px rgba(255,140,0,0.2); }
 
-  /* ---- Borde con degradado cian-naranja estático ---- */
   .box-gradient-border {
     border: 1px solid transparent;
     background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
@@ -88,7 +65,6 @@
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
 
-  /* ---- Botones interactivos: brillo + micro-interacción ---- */
   .btn-primary {
     background-color: #FF8C00; color: #000;
     box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3);
@@ -124,16 +100,17 @@
   }
   .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
-  /* ---- Hover sutil en preguntas frecuentes ---- */
-  /* Sin efecto de hover en las preguntas frecuentes (quitado a pedido) */
+  .btn-disabled {
+    background-color: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #64748b;
+    cursor: default;
+  }
 
-  /* ---- Transición nativa entre páginas (navegadores Chromium; se ignora en el resto) ---- */
+
   @view-transition { navigation: auto; }
 
   .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .3s ease; }
   .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
 
-  /* ---- Asistente Luci ---- */
   .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
   .luci-typing { display: inline-flex; gap: 4px; background: #121319; border: 1px solid #1F232B; border-radius: 12px 12px 12px 4px; padding: 10px 14px; }
   .luci-typing span { width: 6px; height: 6px; border-radius: 50%; background: #64748b; animation: luciTypingBounce 1.2s infinite ease-in-out; }
@@ -148,46 +125,34 @@
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
 
-  /* ---- Barra de progreso de scroll ---- */
   #scroll-progress {
     position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
     background: linear-gradient(90deg, #00FFFF, #FF8C00);
     z-index: 60; transition: width .08s linear;
     box-shadow: 0 0 8px rgba(0,255,255,0.5);
   }
-
-  /* ---- Spotlight que sigue el mouse ---- */
   #mouse-spotlight {
     position: fixed; inset: 0; z-index: 1; pointer-events: none;
     background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0,204,255,0.06), transparent 40%);
     transition: background .1s ease-out;
   }
-
-  /* ---- Transición compartida del logo entre páginas (View Transitions API) ---- */
   #site-header a[href="index.html"] img { view-transition-name: site-logo; }
   @media (prefers-reduced-motion: reduce) { #site-header a[href="index.html"] img { view-transition-name: none; } }
-
-  /* ---- Fondo de constelación (canvas) ---- */
   #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
 
-  /* ---- Rastro de partículas del cursor (estela luciérnaga) ---- */
-  .firefly-trail-dot {
-    position: fixed; top: 0; left: 0; z-index: 55; pointer-events: none;
-    border-radius: 9999px; will-change: transform, opacity;
-  }
+  .firefly-trail-dot { position: fixed; top: 0; left: 0; z-index: 55; pointer-events: none; border-radius: 9999px; will-change: transform, opacity; }
   #trail-cyan { width: 7px; height: 7px; background: #00FFFF; box-shadow: 0 0 8px #00FFFF, 0 0 14px rgba(0,255,255,0.6); }
   #trail-orange { width: 5px; height: 5px; background: #FF8C00; box-shadow: 0 0 8px #FF8C00, 0 0 14px rgba(255,140,0,0.6); }
 
-  /* ---- FAQ con transición suave (anula el toggle abrupto nativo de <details>) ---- */
-  details > summary ~ p { display: block !important; overflow: hidden; }
-
-  /* ---- Barra de carga entre páginas (navegación simulada) ---- */
   #page-load-bar {
     position: fixed; top: 0; left: 0; height: 3px; width: 0%;
     background: linear-gradient(90deg, #00FFFF, #FF8C00);
     z-index: 100; box-shadow: 0 0 8px rgba(0,255,255,0.6);
     transition: width .4s ease-out, opacity .2s ease .3s;
   }
+
+  .course-card { transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .course-card:hover { transform: translateY(-4px); }
 
   /* ---- Búsqueda global (Cmd+K / Ctrl+K) ---- */
   #search-trigger {
@@ -252,6 +217,53 @@
   #search-empty { padding: 28px 18px; text-align: center; color: #64748b; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #475569; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+
+  /* ---- Calculadora de ROI ---- */
+  .roi-progress-track { position: relative; height: 3px; background: #1F232B; border-radius: 999px; overflow: hidden; }
+  .roi-progress-fill { position: absolute; inset: 0 auto 0 0; width: 25%; background: linear-gradient(90deg, #00FFFF, #FF8C00); transition: width .4s var(--ease-out); }
+  .roi-step-label { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: #64748b; }
+  .roi-step-label.is-active { color: #00FFFF; }
+
+  .roi-chip {
+    display: flex; align-items: center; gap: 10px; text-align: left;
+    padding: 14px 16px; border-radius: 10px; border: 1px solid #1F232B; background: #0D0E12;
+    color: #cbd5e1; font-size: 14px; cursor: pointer;
+    transition: border-color .2s var(--ease-out), background-color .2s var(--ease-out), box-shadow .2s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .roi-chip:hover { border-color: rgba(0,255,255,0.35); }
+  }
+  .roi-chip .roi-chip-dot { width: 16px; height: 16px; border-radius: 999px; border: 1.5px solid #334155; flex-shrink: 0; position: relative; transition: border-color .2s var(--ease-out); }
+  .roi-chip[data-shape="square"] .roi-chip-dot { border-radius: 5px; }
+  .roi-chip .roi-chip-dot::after { content: ''; position: absolute; inset: 3px; border-radius: inherit; background: #00FFFF; opacity: 0; transition: opacity .15s var(--ease-out); }
+  .roi-chip.is-selected { border-color: rgba(0,255,255,0.6); background: rgba(0,204,255,0.06); color: #fff; box-shadow: 0 0 16px rgba(0,204,255,0.15); }
+  .roi-chip.is-selected .roi-chip-dot { border-color: #00FFFF; }
+  .roi-chip.is-selected .roi-chip-dot::after { opacity: 1; }
+
+  .roi-field-label { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: #94a3b8; margin-bottom: 6px; display: block; }
+  .roi-input {
+    width: 100%; background: #0D0E12; border: 1px solid #1F232B; border-radius: 8px;
+    padding: 10px 12px; color: #fff; font-size: 14px;
+    transition: border-color .2s var(--ease-out);
+  }
+  .roi-input:focus { outline: none; border-color: rgba(0,255,255,0.5); }
+  .roi-input::placeholder { color: #475569; }
+
+  .roi-cost-toggle { display: inline-flex; border: 1px solid #1F232B; border-radius: 999px; padding: 3px; gap: 3px; }
+  .roi-cost-toggle button {
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; padding: 6px 14px; border-radius: 999px;
+    color: #64748b; background: transparent; transition: background-color .2s var(--ease-out), color .2s var(--ease-out);
+  }
+  .roi-cost-toggle button.is-active { background: #00FFFF; color: #000; }
+
+  .roi-process-card { border: 1px solid #1F232B; border-radius: 14px; padding: 20px; background: #0D0E12; }
+
+  .roi-step { display: none; }
+  .roi-step.is-active { display: block; }
+
+  .roi-result-stat { font-family: 'Space Grotesk', sans-serif; }
+  .roi-breakdown-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid #1F232B; gap: 12px; }
+  .roi-breakdown-row:last-child { border-bottom: none; }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
@@ -271,14 +283,10 @@
 </div>
 
 <div id="page-load-bar"></div>
-
 <div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
 <div id="trail-orange" class="firefly-trail-dot" style="opacity:0;"></div>
-
 <canvas id="constellation-canvas"></canvas>
-
 <div id="mouse-spotlight"></div>
-
 
 <!-- ============ HEADER ============ -->
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
@@ -294,7 +302,7 @@
         <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
         <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
         <a href="nosotros.html" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
-        <a href="contacto.html" class="text-white">Contacto</a>
+        <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
           <kbd>Ctrl K</kbd>
@@ -302,7 +310,7 @@
       </nav>
       <div class="hidden lg:flex items-center gap-3">
         <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">Hablar por WhatsApp</a>
-        <a href="#formulario" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
+        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -317,240 +325,150 @@
       <a href="cursos.html" class="text-slate-300">Cursos</a>
       <a href="precios.html" class="text-slate-300">Precios</a>
       <a href="nosotros.html" class="text-slate-300">Nosotros</a>
-      <a href="contacto.html" class="text-white">Contacto</a>
+      <a href="contacto.html" class="text-slate-300">Contacto</a>
       <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="#formulario" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
+      <a href="contacto.html" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
     </div>
   </div>
 </header>
 <div id="scroll-progress"></div>
 
-
 <main>
 
-<!-- ============ HERO + FORM ============ -->
-<section class="relative pt-40 pb-28 overflow-hidden">
+<!-- ============ HERO ============ -->
+<section class="relative pt-40 pb-12 overflow-hidden border-b border-white/5">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
-  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/4 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3"></div>
 
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-    <div class="max-w-2xl mb-16 reveal">
-      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">Hablemos de su <span class="text-neon-orange">próximo</span> <span class="shimmer-text">proyecto</span></h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo con los próximos pasos.</p>
-      <p class="text-sm text-slate-500 mt-3">¿Prefiere ver números antes de escribir? <a href="precios.html" class="link-underline text-fv-cyan">Consulte nuestros precios de referencia</a>.</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
-
-      <!-- Canales directos -->
-      <div class="lg:col-span-2 space-y-4">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="flex items-center gap-4 p-6 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <div>
-            <p class="font-head text-white text-sm">WhatsApp</p>
-            <p class="text-sm text-slate-500">+58 424 412 5386</p>
-          </div>
-        </a>
-
-        <a href="mailto:contacto@fvaigroup.com" class="flex items-center gap-4 p-6 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <div>
-            <p class="font-head text-white text-sm">Correo</p>
-            <p class="text-sm text-slate-500">contacto@fvaigroup.com</p>
-          </div>
-        </a>
-
-        <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="flex items-center gap-4 p-6 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 16V8a5 5 0 015-5h8a5 5 0 015 5v8a5 5 0 01-5 5H8a5 5 0 01-5-5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
-          </div>
-          <div>
-            <p class="font-head text-white text-sm">Instagram</p>
-            <p class="text-sm text-slate-500">@fvaigroup</p>
-          </div>
-        </a>
-
-        <a href="#mapa" class="flex items-center gap-4 p-6 rounded-2xl bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <div>
-            <p class="font-head text-white text-sm">Oficina</p>
-            <p class="text-sm text-slate-500">Av. La Rosario, Edif. Torre Trébol, Urb. Lomas del Este — Valencia, Carabobo, Venezuela</p>
-          </div>
-        </a>
-
-        <div class="p-6 rounded-2xl bg-black border border-fv-border">
-          <p class="font-head text-white text-sm mb-1.5">Horario y tiempo de respuesta</p>
-          <p class="text-sm text-slate-500 leading-relaxed">Lunes a viernes, de 9:00 a.m. a 5:00 p.m. Respondemos WhatsApp y correo en 24 a 48 horas hábiles; para algo urgente, WhatsApp es el canal más rápido.</p>
-        </div>
-      </div>
-
-      <!-- Formulario -->
-      <div id="formulario" class="lg:col-span-3">
-        <form id="contact-form" class="p-8 rounded-2xl bg-fv-surface border border-fv-border space-y-5">
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label class="fv-label" for="nombre">Nombre completo</label>
-              <input class="fv-input" type="text" id="nombre" name="nombre" placeholder="Su nombre completo" required>
-              <p id="err-nombre" class="fv-error hidden"></p>
-            </div>
-            <div>
-              <label class="fv-label" for="empresa">Empresa <span class="text-slate-600">(opcional)</span></label>
-              <input class="fv-input" type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa">
-            </div>
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label class="fv-label" for="email">Correo principal o corporativo</label>
-              <input class="fv-input" type="email" id="email" name="email" placeholder="correo@empresa.com" required>
-              <p id="err-email" class="fv-error hidden"></p>
-            </div>
-            <div>
-              <label class="fv-label" for="telefono">Teléfono / WhatsApp</label>
-              <input class="fv-input" type="tel" id="telefono" name="telefono" placeholder="+58 000 000 0000" required>
-              <p id="err-telefono" class="fv-error hidden"></p>
-            </div>
-          </div>
-
-          <div>
-            <label class="fv-label" for="servicio">Servicio de interés</label>
-            <select class="fv-input" id="servicio" name="servicio">
-              <option>Asesoría Estratégica</option>
-              <option>Evaluación de Procesos</option>
-              <option>Despliegue y Ejecución</option>
-              <option>Habilitación de Equipos</option>
-              <option>Masterclasses y Workshops</option>
-              <option>Acompañamiento Continuo</option>
-              <option>Aún no estoy seguro</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="fv-label" for="mensaje">Cuéntenos brevemente su caso</label>
-            <textarea class="fv-input" id="mensaje" name="mensaje" rows="4" placeholder="Qué sistema usan hoy, y qué le está costando más trabajo" required></textarea>
-            <p id="err-mensaje" class="fv-error hidden"></p>
-          </div>
-
-          <!-- Honeypot anti-spam: invisible para personas, casi siempre completado por bots -->
-          <div class="absolute -left-[9999px] opacity-0" aria-hidden="true">
-            <label for="sitio-web">No completar este campo</label>
-            <input type="text" id="sitio-web" name="sitio-web" tabindex="-1" autocomplete="off">
-          </div>
-
-          <!--
-            Cloudflare Turnstile (recomendado: ya usan Cloudflare para el DNS).
-            1) Crear un sitekey gratis en https://dash.cloudflare.com/?to=/:account/turnstile
-            2) Descomentar el script de abajo y este div, y reemplazar YOUR_SITE_KEY.
-          <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY" data-theme="dark"></div>
-          -->
-
-          <div>
-            <label class="flex items-start gap-3 text-xs text-slate-500 leading-relaxed">
-              <input type="checkbox" id="acepto" name="acepto" required class="mt-0.5 accent-fv-orange">
-              <span>He leído y acepto la <a href="privacidad.html" target="_blank" class="link-underline text-fv-cyan hover:text-white transition-colors">Política de Privacidad</a> y los <a href="terminos.html" target="_blank" class="link-underline text-fv-cyan hover:text-white transition-colors">Términos y Condiciones</a>.</span>
-            </label>
-            <p id="err-acepto" class="fv-error hidden">Debe aceptar la Política de Privacidad y los Términos y Condiciones para continuar.</p>
-          </div>
-
-          <div id="form-status" class="hidden text-sm rounded-lg px-4 py-3"></div>
-
-          <button type="submit" class="btn-primary w-full inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
-            Enviar mensaje
-          </button>
-          <p class="text-xs text-slate-500 text-center">Al enviar se abrirá su cliente de correo con el mensaje ya redactado, listo para confirmar el envío.</p>
-        </form>
-      </div>
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+    <div class="reveal">
+      <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-orange/10 text-fv-orange rounded-full border border-fv-orange/30 uppercase tracking-wider mb-6">4 pasos · sin registrarse</span>
+      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5">Calculadora de <span class="shimmer-text">ROI</span></h1>
+      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">Responda unas preguntas sobre su operación y vea de inmediato cuántas horas y cuánto dinero podría ahorrar al año. Sin dejar su correo.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ MAPA ============ -->
-<section id="mapa" class="scroll-mt relative border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-    <h2 class="font-sans text-2xl text-white mb-1 uppercase">Cómo llegar</h2>
-    <p class="text-sm text-slate-500 mb-6">Edificio Torre Trébol, Av. La Rosario, Urb. Lomas del Este — Valencia 2001, Carabobo, Venezuela · <a href="https://maps.app.goo.gl/P9tT39XcgRCV7rVeA" target="_blank" rel="noopener" class="text-fv-cyan hover:underline">Ver en Google Maps</a></p>
-  </div>
-  <div class="w-full h-[380px] border-y border-fv-border grayscale-[0.3] opacity-90">
-    <iframe
-      title="Ubicación de F&V AI Group"
-      src="https://maps.google.com/maps?q=Trebol%2C%20Av.%20La%20Rosario%2C%20Edif.%20Torre%20Trebol%2C%20Urb.%20Lomas%20del%20Este%2C%20Valencia%202001%2C%20Carabobo%2C%20Venezuela&t=&z=17&ie=UTF8&iwloc=&output=embed"
-      class="w-full h-full border-0"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</section>
-
-<!-- ============ CONFIANZA ============ -->
-<section class="relative py-20 border-b border-white/5 bg-fv-surface2/40">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan text-center">
-        <p class="font-head text-fv-orange text-sm mb-1.5">Independientes de proveedor</p>
-        <p class="text-sm text-slate-500 leading-relaxed">Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida.</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-fv-surface box-glow-orange text-center">
-        <p class="font-head text-fv-cyan text-sm mb-1.5">Ciclo completo</p>
-        <p class="text-sm text-slate-500 leading-relaxed">Un mismo equipo, de la asesoría al soporte.</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-fv-surface box-glow-cyan text-center">
-        <p class="font-head text-fv-orange text-sm mb-1.5">Supervisión humana</p>
-        <p class="text-sm text-slate-500 leading-relaxed">La decisión final siempre es de su equipo.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AGENDAR LLAMADA ============ -->
-<section id="agendar-llamada" class="relative py-20 border-b border-white/5 scroll-mt-24">
-  <div class="max-w-5xl mx-auto px-6 lg:px-8">
-    <div class="relative overflow-hidden rounded-3xl bg-fv-surface box-gradient-border p-10 sm:p-12 text-center">
-      <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="relative z-10">
-      <h2 class="font-sans text-2xl sm:text-3xl text-white mb-3 uppercase">¿Prefiere <span class="text-neon-orange">hablar</span> <span class="shimmer-text">directamente</span>?</h2>
-      <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Reserve una llamada breve con nuestro equipo para conversar su caso antes de escribirnos.</p>
-      <div class="rounded-2xl overflow-hidden border border-fv-border bg-black">
-        <iframe src="https://cal.com/f-v-ai-group/contacto" width="100%" height="630" style="border:0;" loading="lazy" title="Agendar una llamada con F&V AI Group"></iframe>
-      </div>
-      <p class="text-slate-500 text-sm mt-6">¿Prefiere no usar el calendario? <a href="https://wa.me/584244125386?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada" target="_blank" rel="noopener" class="link-underline text-fv-cyan">Agende por WhatsApp</a> en su lugar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAQ CONTRATACIÓN ============ -->
-<section class="relative py-20">
+<!-- ============ CALCULADORA ============ -->
+<section class="relative py-16">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
-    <h2 class="font-sans text-2xl sm:text-3xl text-white mb-8 uppercase">Sobre el <span class="text-neon-cyan">proceso</span> de <span class="text-neon-orange">contratación</span></h2>
-    <div class="space-y-3">
-      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
-        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿Cómo se cotiza un proyecto?</span>
-          <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Después de la asesoría estratégica inicial, enviamos una propuesta con alcance, tiempos y costo — antes de comprometer cualquier presupuesto de ejecución.</p>
-      </details>
-      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
-        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿En cuánto tiempo responden a un primer contacto?</span>
-          <svg class="w-4 h-4 text-fv-orange transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">En 24 a 48 horas hábiles por WhatsApp o correo. Nuestro horario de atención es de lunes a viernes, de 9:00 a.m. a 5:00 p.m.</p>
-      </details>
+
+    <div class="reveal mb-10">
+      <div class="flex justify-between mb-3">
+        <span class="roi-step-label" data-step-label="1">Su empresa</span>
+        <span class="roi-step-label" data-step-label="2">Proceso</span>
+        <span class="roi-step-label" data-step-label="3">Impacto</span>
+        <span class="roi-step-label" data-step-label="4">Resultado</span>
+      </div>
+      <div class="roi-progress-track"><div id="roi-progress-fill" class="roi-progress-fill"></div></div>
     </div>
+
+    <div class="reveal">
+      <form id="roi-form" novalidate>
+
+        <!-- PASO 1 -->
+        <div class="roi-step is-active" data-step="1">
+          <h2 class="font-sans text-2xl text-white font-semibold mb-2 uppercase">Paso 1 · Su empresa</h2>
+          <p class="text-sm text-slate-500 mb-6">Esto nos da contexto — no afecta el cálculo de ahorro.</p>
+
+          <div class="space-y-7">
+            <div>
+              <span class="roi-field-label">Tamaño de empresa</span>
+              <div class="grid grid-cols-2 gap-3" data-group="tamano" data-required="true">
+                <button type="button" class="roi-chip" data-value="1-10"><span class="roi-chip-dot"></span>1–10 empleados</button>
+                <button type="button" class="roi-chip" data-value="11-50"><span class="roi-chip-dot"></span>11–50 empleados</button>
+                <button type="button" class="roi-chip" data-value="51-150"><span class="roi-chip-dot"></span>51–150 empleados</button>
+                <button type="button" class="roi-chip" data-value="150+"><span class="roi-chip-dot"></span>150+ empleados</button>
+              </div>
+            </div>
+
+            <div>
+              <span class="roi-field-label">Sector</span>
+              <div class="grid grid-cols-2 gap-3" data-group="sector" data-required="true">
+                <button type="button" class="roi-chip" data-value="Manufactura"><span class="roi-chip-dot"></span>Manufactura</button>
+                <button type="button" class="roi-chip" data-value="Retail-comercio"><span class="roi-chip-dot"></span>Retail / comercio</button>
+                <button type="button" class="roi-chip" data-value="Distribución"><span class="roi-chip-dot"></span>Distribución</button>
+                <button type="button" class="roi-chip" data-value="Servicios profesionales"><span class="roi-chip-dot"></span>Servicios profesionales</button>
+                <button type="button" class="roi-chip" data-value="Otro"><span class="roi-chip-dot"></span>Otro</button>
+              </div>
+            </div>
+
+            <div>
+              <span class="roi-field-label">Sistema actual</span>
+              <div class="grid grid-cols-2 gap-3" data-group="sistema" data-required="true">
+                <button type="button" class="roi-chip" data-value="Excel/hojas de cálculo"><span class="roi-chip-dot"></span>Excel / hojas de cálculo</button>
+                <button type="button" class="roi-chip" data-value="ERP antiguo"><span class="roi-chip-dot"></span>ERP antiguo</button>
+                <button type="button" class="roi-chip" data-value="Otro ERP en la nube"><span class="roi-chip-dot"></span>Otro ERP en la nube</button>
+                <button type="button" class="roi-chip" data-value="Ningún sistema"><span class="roi-chip-dot"></span>Ningún sistema</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="roi-step" data-step="2">
+          <h2 class="font-sans text-2xl text-white font-semibold mb-2 uppercase">Paso 2 · Proceso a automatizar</h2>
+          <p class="text-sm text-slate-500 mb-6">Puede marcar más de uno.</p>
+
+          <div class="space-y-3" data-group="procesos" data-required="true">
+            <button type="button" class="roi-chip" data-shape="square" data-value="automatizacion" data-process="1">
+              <span class="roi-chip-dot"></span>
+              <span>
+                <span class="block text-white">Facturación, conciliación o reportes administrativos</span>
+                <span class="block text-xs text-slate-500 mt-0.5">→ Automatización de procesos</span>
+              </span>
+            </button>
+            <button type="button" class="roi-chip" data-shape="square" data-value="ia-conversacional" data-process="1">
+              <span class="roi-chip-dot"></span>
+              <span>
+                <span class="block text-white">Atención al cliente o ventas por WhatsApp</span>
+                <span class="block text-xs text-slate-500 mt-0.5">→ Agentes de IA conversacional</span>
+              </span>
+            </button>
+            <button type="button" class="roi-chip" data-shape="square" data-value="integracion-erp" data-process="1">
+              <span class="roi-chip-dot"></span>
+              <span>
+                <span class="block text-white">Inventario, compras o doble captura de datos entre sistemas</span>
+                <span class="block text-xs text-slate-500 mt-0.5">→ Integración ERP/CRM</span>
+              </span>
+            </button>
+            <button type="button" class="roi-chip" data-shape="square" data-value="auditoria" data-process="0">
+              <span class="roi-chip-dot"></span>
+              <span>
+                <span class="block text-white">No estoy seguro de qué automatizar</span>
+                <span class="block text-xs text-slate-500 mt-0.5">→ Le recomendamos una auditoría de procesos</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="roi-step" data-step="3">
+          <h2 class="font-sans text-2xl text-white font-semibold mb-2 uppercase">Paso 3 · Impacto actual</h2>
+          <p class="text-sm text-slate-500 mb-6">Una tarjeta por cada proceso que marcó en el paso anterior.</p>
+          <div id="roi-process-cards" class="space-y-6"></div>
+        </div>
+
+        <!-- PASO 4 · RESULTADO -->
+        <div class="roi-step" data-step="4">
+          <div id="roi-result"></div>
+        </div>
+
+        <p id="roi-error" class="text-sm text-fv-orange mt-4" hidden>Complete los campos antes de continuar.</p>
+
+        <div class="flex justify-between items-center mt-10">
+          <button type="button" id="roi-back" class="btn-secondary px-6 py-3 rounded-lg font-head font-medium" hidden>Atrás</button>
+          <button type="button" id="roi-next" class="btn-primary btn-glow-on-hover px-6 py-3 rounded-lg font-head font-semibold ml-auto">Continuar</button>
+        </div>
+      </form>
+    </div>
+
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
 </main>
 
+<!-- ============ FOOTER ============ -->
 <footer class="bg-black border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -656,7 +574,6 @@
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-
 <script>
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -682,111 +599,6 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // Envío vía mailto (sin backend). Reemplazar por un servicio de formularios
-  // (Formspree, Web3Forms, etc.) cuando quieran envío silencioso sin abrir el cliente de correo.
-  // ---- Pulso de éxito: anillos cian y naranja expandiéndose desde el botón ----
-  function triggerSuccessPulse(button) {
-    if (!button || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (getComputedStyle(button).position === 'static') button.style.position = 'relative';
-    ['#00FFFF', '#FF8C00'].forEach((color, i) => {
-      const ring = document.createElement('span');
-      ring.className = 'success-pulse-ring';
-      ring.style.border = `2px solid ${color}`;
-      ring.style.animation = `successPulseRing .9s ease-out ${i * 0.15}s forwards`;
-      button.appendChild(ring);
-      ring.addEventListener('animationend', () => ring.remove());
-    });
-  }
-
-  const formLoadedAt = Date.now();
-  const contactForm = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
-
-  const validatedFields = [
-    { name: 'nombre', errId: 'err-nombre', msg: 'Ingrese su nombre completo.' },
-    { name: 'email', errId: 'err-email', msg: 'Ingrese un correo válido (ej. nombre@empresa.com).' },
-    { name: 'telefono', errId: 'err-telefono', msg: 'Ingrese un teléfono o WhatsApp de contacto.' },
-    { name: 'mensaje', errId: 'err-mensaje', msg: 'Cuéntenos brevemente su caso.' },
-  ];
-
-  function clearFieldError(field) {
-    field.classList.remove('input-error');
-    const errEl = document.getElementById('err-' + field.name);
-    if (errEl) errEl.classList.add('hidden');
-  }
-
-  validatedFields.forEach(({ name }) => {
-    const el = contactForm[name];
-    el.addEventListener('input', () => clearFieldError(el));
-  });
-  contactForm.acepto.addEventListener('change', () => {
-    document.getElementById('err-acepto').classList.add('hidden');
-  });
-
-  function validateContactForm(f) {
-    let firstInvalid = null;
-    let allValid = true;
-
-    validatedFields.forEach(({ name, errId, msg }) => {
-      const el = f[name];
-      const errEl = document.getElementById(errId);
-      if (!el.checkValidity() || el.value.trim() === '') {
-        el.classList.add('input-error');
-        if (errEl) { errEl.textContent = msg; errEl.classList.remove('hidden'); }
-        allValid = false;
-        if (!firstInvalid) firstInvalid = el;
-      } else {
-        clearFieldError(el);
-      }
-    });
-
-    const aceptoErr = document.getElementById('err-acepto');
-    if (!f.acepto.checked) {
-      aceptoErr.classList.remove('hidden');
-      allValid = false;
-      if (!firstInvalid) firstInvalid = f.acepto;
-    } else {
-      aceptoErr.classList.add('hidden');
-    }
-
-    if (firstInvalid) firstInvalid.focus();
-    return allValid;
-  }
-
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const f = e.target;
-    formStatus.classList.add('hidden');
-    formStatus.classList.remove('is-success', 'is-error');
-
-    // Anti-spam: honeypot (campo invisible que un bot sí llena) y tiempo mínimo de llenado.
-    // Fallan en silencio (sin mensaje) porque están pensados para bots, no para personas.
-    if (f['sitio-web'] && f['sitio-web'].value) { return; }
-    if (Date.now() - formLoadedAt < 2500) { return; }
-
-    if (!validateContactForm(f)) {
-      formStatus.textContent = 'Revise los campos marcados en rojo antes de continuar.';
-      formStatus.classList.remove('hidden');
-      formStatus.classList.add('is-error');
-      return;
-    }
-
-    const subject = encodeURIComponent(`Contacto desde el sitio — ${f.servicio.value}`);
-    const body = encodeURIComponent(
-      `Nombre: ${f.nombre.value}\n` +
-      `Empresa: ${f.empresa.value}\n` +
-      `Correo: ${f.email.value}\n` +
-      `Teléfono: ${f.telefono.value}\n` +
-      `Servicio de interés: ${f.servicio.value}\n\n` +
-      `Mensaje:\n${f.mensaje.value}`
-    );
-    formStatus.textContent = 'Abriendo su cliente de correo con el mensaje listo para enviar…';
-    formStatus.classList.remove('hidden');
-    formStatus.classList.add('is-success');
-    triggerSuccessPulse(f.querySelector('button[type="submit"]'));
-    window.location.href = `mailto:contacto@fvaigroup.com?subject=${subject}&body=${body}`;
-  });
-
   const scrollTopBtn = document.getElementById('scroll-top');
   if (scrollTopBtn) {
     window.addEventListener('scroll', () => {
@@ -810,16 +622,14 @@
     if (!toggle || !panel) return;
 
     const faq = [
-      { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos su situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
-      { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida. Somos independientes de proveedor: recomendamos según su caso.' },
-      { k: ['soporte','despues','mantenimiento','postventa','incidencia'], a: 'Sí. El Acompañamiento Continuo es uno de nuestros seis servicios: canal directo, ajustes de configuración y revisión periódica.' },
-      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Tenemos valores de referencia en la página de Precios, pero el número final depende del alcance real de su proyecto.' },
-      { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre su sistema real, no un entorno genérico de demostración.' },
-      { k: ['horario','atencion','hora','abren'], a: 'Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m., y respondemos en 24 a 48 horas hábiles.' },
+      { k: ['finanzas','conciliacion','pagos'], a: 'Finanzas con IA es nuestro curso presencial de 3 sábados sobre automatización de conciliación de pagos. Puede ver todos los detalles en su página.' },
+      { k: ['precio','costo','cuanto cuesta','vale'], a: 'Cada curso tiene su propio precio — revise la tarjeta correspondiente o escríbanos por WhatsApp para confirmar valores.' },
+      { k: ['proximo','nuevo','otro curso','cuando'], a: 'Estamos preparando nuevos programas. Déjenos sus datos por WhatsApp o el formulario de Contacto y le avisamos apenas se abran.' },
+      { k: ['a medida','personalizado','mi equipo'], a: 'Sí, armamos capacitaciones a medida para su equipo — es parte de nuestro servicio de Habilitación de Equipos.' },
       { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp o completar el formulario en la página de Contacto.' },
     ];
 
-    const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?'];
+    const quickReplies = ['¿Qué cursos hay?', '¿Cuándo abre uno nuevo?', '¿Hacen capacitación a medida?'];
 
     function addMessage(text, from) {
       const bubble = document.createElement('div');
@@ -844,7 +654,6 @@
     function showTyping() {
       const typing = document.createElement('div');
       typing.className = 'luci-typing';
-      typing.id = 'luci-typing-indicator';
       typing.innerHTML = '<span></span><span></span><span></span>';
       messages.appendChild(typing);
       messages.scrollTop = messages.scrollHeight;
@@ -883,7 +692,7 @@
       panel.classList.add('is-open');
       if (!started) {
         started = true;
-        addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué le ayudo?', 'bot');
+        addMessage('Hola, soy Luci. Puedo responder preguntas sobre nuestros servicios. ¿En qué le ayudo?', 'bot');
         addQuick(quickReplies);
       }
     }
@@ -932,7 +741,7 @@
     const canvas = document.getElementById('constellation-canvas');
     if (!canvas) return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
+    if (reduceMotion) return;
 
     const ctx = canvas.getContext('2d');
     let w, h, particles, mouse = { x: null, y: null };
@@ -961,7 +770,6 @@
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
 
-        // atracción muy sutil hacia el mouse
         if (mouse.x !== null) {
           const dx = mouse.x - p.x, dy = mouse.y - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -1010,7 +818,7 @@
     const cyanDot = document.getElementById('trail-cyan');
     const orangeDot = document.getElementById('trail-orange');
     if (!cyanDot || !orangeDot || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return; // sin cursor real (touch), no aplica
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
     let mouseX = -100, mouseY = -100;
     let cyanX = -100, cyanY = -100;
@@ -1034,84 +842,6 @@
       requestAnimationFrame(animateTrail);
     }
     requestAnimationFrame(animateTrail);
-  })();
-
-  // ---- FAQ con transición suave (height + opacity animados en vez del toggle nativo) ----
-  (function () {
-    const allDetails = document.querySelectorAll('details');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    allDetails.forEach(details => {
-      const summary = details.querySelector('summary');
-      const panel = summary ? summary.nextElementSibling : null;
-      if (!summary || !panel) return;
-
-      panel.style.overflow = 'hidden';
-      if (!reduceMotion) panel.style.transition = 'height .3s ease, opacity .25s ease';
-
-      if (!details.hasAttribute('open')) {
-        panel.style.height = '0px';
-        panel.style.opacity = '0';
-      }
-
-      summary.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isOpen = details.hasAttribute('open');
-
-        if (reduceMotion) {
-          if (isOpen) { details.removeAttribute('open'); panel.style.height = '0px'; panel.style.opacity = '0'; }
-          else { details.setAttribute('open', ''); panel.style.height = 'auto'; panel.style.opacity = '1'; }
-          return;
-        }
-
-        if (isOpen) {
-          const h = panel.scrollHeight;
-          panel.style.height = h + 'px';
-          panel.offsetHeight; // forzar reflow
-          panel.style.height = '0px';
-          panel.style.opacity = '0';
-          panel.addEventListener('transitionend', function onEnd(ev) {
-            if (ev.propertyName !== 'height') return;
-            details.removeAttribute('open');
-            panel.removeEventListener('transitionend', onEnd);
-          });
-        } else {
-          details.setAttribute('open', '');
-          const h = panel.scrollHeight;
-          panel.style.height = '0px';
-          panel.style.opacity = '0';
-          panel.offsetHeight;
-          panel.style.height = h + 'px';
-          panel.style.opacity = '1';
-          panel.addEventListener('transitionend', function onEnd(ev) {
-            if (ev.propertyName !== 'height') return;
-            panel.style.height = 'auto';
-            panel.removeEventListener('transitionend', onEnd);
-          });
-        }
-      });
-    });
-  })();
-
-  // ---- Parallax en blobs de fondo (usa la propiedad CSS 'translate', independiente de 'transform',
-  // para no pisar las clases de posicionamiento -translate-x/y-* que ya tienen estos elementos) ----
-  (function () {
-    const blobs = document.querySelectorAll('.parallax-blob');
-    if (!blobs.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let ticking = false;
-    function updateParallax() {
-      const scrollY = window.scrollY;
-      blobs.forEach(blob => {
-        const speed = parseFloat(blob.dataset.speed || '0.1');
-        blob.style.translate = `0 ${scrollY * speed}px`;
-      });
-      ticking = false;
-    }
-    window.addEventListener('scroll', () => {
-      if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
-    }, { passive: true });
-    updateParallax();
   })();
 
   // ---- Barra de carga entre páginas (se anima al hacer clic en un link interno) ----
@@ -1231,6 +961,274 @@
 
     const trigger = document.getElementById('search-trigger');
     if (trigger) trigger.addEventListener('click', openSearch);
+  })();
+
+  // ---- Calculadora de ROI (wizard de 4 pasos, 100% client-side) ----
+  (function () {
+    const form = document.getElementById('roi-form');
+    if (!form) return;
+
+    const PROCESS_META = {
+      'automatizacion': { label: 'Facturación, conciliación o reportes administrativos', service: 'Automatización de procesos', rate: 0.60 },
+      'ia-conversacional': { label: 'Atención al cliente o ventas por WhatsApp', service: 'Agentes de IA conversacional', rate: 0.55 },
+      'integracion-erp': { label: 'Inventario, compras o doble captura de datos entre sistemas', service: 'Integración ERP/CRM', rate: 0.40 },
+    };
+
+    const state = {
+      tamano: null, sector: null, sistema: null,
+      procesos: [],
+      impacts: {}, // { [processKey]: { horas, personas, costoMode: 'hora'|'salario', costo } }
+    };
+
+    let stepIndex = 0;
+
+    function effectiveSteps() {
+      return state.procesos.includes('auditoria') ? [1, 2, 4] : [1, 2, 3, 4];
+    }
+
+    const progressFill = document.getElementById('roi-progress-fill');
+    const stepLabels = document.querySelectorAll('.roi-step-label');
+    const stepEls = document.querySelectorAll('.roi-step');
+    const backBtn = document.getElementById('roi-back');
+    const nextBtn = document.getElementById('roi-next');
+    const errorEl = document.getElementById('roi-error');
+    const cardsWrap = document.getElementById('roi-process-cards');
+    const resultWrap = document.getElementById('roi-result');
+
+    // ---- Paso 1: chips de selección única ----
+    form.querySelectorAll('[data-group="tamano"], [data-group="sector"], [data-group="sistema"]').forEach(group => {
+      group.addEventListener('click', (e) => {
+        const btn = e.target.closest('.roi-chip');
+        if (!btn) return;
+        group.querySelectorAll('.roi-chip').forEach(c => c.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+        state[group.dataset.group] = btn.dataset.value;
+        errorEl.hidden = true;
+      });
+    });
+
+    // ---- Paso 2: selección múltiple, "auditoría" es excluyente ----
+    const procesosGroup = form.querySelector('[data-group="procesos"]');
+    procesosGroup.addEventListener('click', (e) => {
+      const btn = e.target.closest('.roi-chip');
+      if (!btn) return;
+      const value = btn.dataset.value;
+      if (value === 'auditoria') {
+        const willSelect = !btn.classList.contains('is-selected');
+        procesosGroup.querySelectorAll('.roi-chip').forEach(c => c.classList.remove('is-selected'));
+        state.procesos = willSelect ? ['auditoria'] : [];
+        if (willSelect) btn.classList.add('is-selected');
+      } else {
+        procesosGroup.querySelector('[data-value="auditoria"]').classList.remove('is-selected');
+        btn.classList.toggle('is-selected');
+        state.procesos = Array.from(procesosGroup.querySelectorAll('.roi-chip.is-selected')).map(c => c.dataset.value);
+      }
+      errorEl.hidden = true;
+    });
+
+    // ---- Paso 3: una tarjeta de impacto por proceso marcado ----
+    function buildProcessCards() {
+      cardsWrap.innerHTML = state.procesos.map(key => {
+        const meta = PROCESS_META[key];
+        const impact = state.impacts[key] || { horas: '', personas: '', costoMode: 'hora', costo: '' };
+        state.impacts[key] = impact;
+        return `
+          <div class="roi-process-card" data-process-card="${key}">
+            <h3 class="font-sans text-white font-semibold mb-1">${meta.label}</h3>
+            <p class="text-xs text-slate-500 mb-4">${meta.service} — estimamos ${Math.round(meta.rate * 100)}% de reducción del tiempo manual.</p>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="roi-field-label">Horas por semana dedicadas</label>
+                <input type="number" min="0" step="0.5" class="roi-input" data-field="horas" placeholder="Ej. 20" value="${impact.horas}">
+              </div>
+              <div>
+                <label class="roi-field-label">Personas que participan</label>
+                <input type="number" min="0" step="1" class="roi-input" data-field="personas" placeholder="Ej. 3" value="${impact.personas}">
+              </div>
+            </div>
+            <div class="mt-4">
+              <label class="roi-field-label">Costo del equipo</label>
+              <div class="roi-cost-toggle mb-3" data-cost-toggle>
+                <button type="button" data-cost-mode="hora" class="${impact.costoMode === 'hora' ? 'is-active' : ''}">Costo por hora</button>
+                <button type="button" data-cost-mode="salario" class="${impact.costoMode === 'salario' ? 'is-active' : ''}">Salario mensual</button>
+              </div>
+              <input type="number" min="0" step="1" class="roi-input" data-field="costo" placeholder="${impact.costoMode === 'salario' ? 'Ej. 500 (USD/mes, equipo)' : 'Ej. 8 (USD/hora)'}" value="${impact.costo}">
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      cardsWrap.querySelectorAll('[data-process-card]').forEach(card => {
+        const key = card.dataset.processCard;
+        card.querySelectorAll('input[data-field]').forEach(input => {
+          input.addEventListener('input', () => {
+            state.impacts[key][input.dataset.field] = input.value;
+            errorEl.hidden = true;
+          });
+        });
+        const toggle = card.querySelector('[data-cost-toggle]');
+        const costoInput = card.querySelector('input[data-field="costo"]');
+        toggle.querySelectorAll('button').forEach(b => {
+          b.addEventListener('click', () => {
+            toggle.querySelectorAll('button').forEach(x => x.classList.remove('is-active'));
+            b.classList.add('is-active');
+            state.impacts[key].costoMode = b.dataset.costMode;
+            costoInput.placeholder = b.dataset.costMode === 'salario' ? 'Ej. 500 (USD/mes, equipo)' : 'Ej. 8 (USD/hora)';
+          });
+        });
+      });
+    }
+
+    // ---- Cálculo de ahorro (ver plan: rangos de mercado, no datos de clientes) ----
+    function calculate() {
+      const rows = state.procesos.map(key => {
+        const meta = PROCESS_META[key];
+        const impact = state.impacts[key];
+        const horas = parseFloat(impact.horas) || 0;
+        const costoPorHora = impact.costoMode === 'salario'
+          ? (parseFloat(impact.costo) || 0) / 160
+          : (parseFloat(impact.costo) || 0);
+        const horasAño = horas * 52 * meta.rate;
+        const ahorroAño = horasAño * costoPorHora;
+        return { key, label: meta.label, service: meta.service, horasAño, ahorroAño };
+      });
+      return {
+        rows,
+        totalHoras: rows.reduce((s, r) => s + r.horasAño, 0),
+        totalAhorro: rows.reduce((s, r) => s + r.ahorroAño, 0),
+      };
+    }
+
+    // ---- Render del resultado ----
+    function renderResult() {
+      const onlyAudit = state.procesos.includes('auditoria');
+      const recommendAudit = onlyAudit || state.procesos.length >= 2;
+      const waMsg = encodeURIComponent('Hola, hice la calculadora de ROI y quiero una auditoría de mis procesos');
+      const ctaButtons = `
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://wa.me/584244125386?text=${waMsg}" target="_blank" rel="noopener" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Escribir por WhatsApp</a>
+          <a href="contacto.html#agendar-llamada" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">Agendar una llamada</a>
+        </div>
+      `;
+
+      if (onlyAudit) {
+        resultWrap.innerHTML = `
+          <div>
+            <h2 class="font-sans text-2xl text-white font-semibold mb-2 uppercase">Le recomendamos empezar por aquí</h2>
+            <p class="text-slate-400 leading-relaxed mb-8">Sin un proceso definido todavía no hay una cifra que calcular — pero eso es justo lo que resuelve nuestra <a href="evaluacion-procesos.html" class="link-underline text-fv-cyan">Evaluación de Procesos</a>: una auditoría técnica y financiera que le dice, con datos reales de su operación, qué automatizar primero y cuánto podría ahorrar.</p>
+            ${ctaButtons}
+          </div>
+        `;
+        return;
+      }
+
+      const { rows, totalHoras, totalAhorro } = calculate();
+      const fmtUSD = (n) => '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      const fmtHoras = (n) => Math.round(n).toLocaleString('en-US');
+
+      resultWrap.innerHTML = `
+        <div>
+          <h2 class="font-sans text-2xl text-white font-semibold mb-2 uppercase">Su ahorro estimado</h2>
+          <p class="text-slate-500 text-sm mb-8">Basado en lo que nos contó — no en una tabla genérica.</p>
+
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="roi-process-card text-center">
+              <p class="roi-result-stat text-3xl sm:text-4xl font-extrabold text-fv-cyan mb-1">${fmtUSD(totalAhorro)}</p>
+              <p class="text-xs text-slate-500 uppercase tracking-wide">Ahorro anual estimado</p>
+            </div>
+            <div class="roi-process-card text-center">
+              <p class="roi-result-stat text-3xl sm:text-4xl font-extrabold text-fv-orange mb-1">${fmtHoras(totalHoras)}</p>
+              <p class="text-xs text-slate-500 uppercase tracking-wide">Horas anuales liberadas</p>
+            </div>
+          </div>
+
+          <div class="roi-process-card mb-6">
+            <p class="roi-field-label mb-1">Desglose por proceso</p>
+            ${rows.map(r => `
+              <div class="roi-breakdown-row">
+                <div>
+                  <p class="text-sm text-white">${r.label}</p>
+                  <p class="text-xs text-slate-500">${r.service}</p>
+                </div>
+                <div class="text-right shrink-0">
+                  <p class="text-sm text-fv-cyan font-head">${fmtUSD(r.ahorroAño)}/año</p>
+                  <p class="text-xs text-slate-500">${fmtHoras(r.horasAño)} h/año</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <p class="text-xs text-slate-500 leading-relaxed mb-8">Estimación basada en rangos promedio del sector. El ahorro real depende del diagnóstico de su operación.</p>
+
+          ${recommendAudit ? `
+            <div class="roi-process-card mb-8" style="border-color: rgba(255,140,0,0.3);">
+              <p class="text-sm text-white"><span class="text-fv-orange font-head font-semibold">Con 2 o más procesos candidatos</span>, lo más eficiente suele ser empezar con una <a href="evaluacion-procesos.html" class="link-underline text-fv-cyan">auditoría de procesos</a> — así prioriza cuál automatizar primero en lugar de repartir presupuesto a la vez.</p>
+            </div>
+          ` : ''}
+
+          ${ctaButtons}
+        </div>
+      `;
+    }
+
+    // ---- Navegación entre pasos ----
+    function showStep(stepNum) {
+      stepEls.forEach(el => el.classList.toggle('is-active', Number(el.dataset.step) === stepNum));
+      stepLabels.forEach(el => el.classList.toggle('is-active', Number(el.dataset.stepLabel) <= stepNum));
+      const steps = effectiveSteps();
+      const idx = steps.indexOf(stepNum);
+      progressFill.style.width = ((idx + 1) / steps.length * 100) + '%';
+      backBtn.hidden = idx === 0;
+      nextBtn.textContent = stepNum === 4 ? 'Volver a empezar' : 'Continuar';
+      errorEl.hidden = true;
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function validateStep(stepNum) {
+      if (stepNum === 1) return !!(state.tamano && state.sector && state.sistema);
+      if (stepNum === 2) return state.procesos.length > 0;
+      if (stepNum === 3) {
+        return state.procesos.every(key => {
+          const impact = state.impacts[key];
+          return impact && parseFloat(impact.horas) > 0 && parseFloat(impact.costo) > 0;
+        });
+      }
+      return true;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const steps = effectiveSteps();
+      const currentStepNum = steps[stepIndex];
+
+      if (currentStepNum === 4) {
+        state.tamano = null; state.sector = null; state.sistema = null;
+        state.procesos = []; state.impacts = {};
+        form.querySelectorAll('.roi-chip').forEach(c => c.classList.remove('is-selected'));
+        stepIndex = 0;
+        showStep(1);
+        return;
+      }
+
+      if (!validateStep(currentStepNum)) {
+        errorEl.hidden = false;
+        return;
+      }
+
+      const nextStepNum = effectiveSteps()[stepIndex + 1];
+      if (nextStepNum === 3) buildProcessCards();
+      if (nextStepNum === 4) renderResult();
+
+      stepIndex++;
+      showStep(nextStepNum);
+    });
+
+    backBtn.addEventListener('click', () => {
+      if (stepIndex === 0) return;
+      stepIndex--;
+      showStep(effectiveSteps()[stepIndex]);
+    });
+
+    showStep(1);
   })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
