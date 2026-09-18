@@ -28,6 +28,7 @@
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   html { background: #000; } body { background: #000; }
@@ -51,6 +52,22 @@
     .btn-primary:hover { filter: brightness(1.1); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
   }
   .btn-primary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
+
+  .btn-glow-on-hover {
+    box-shadow: none;
+    transition: transform .35s var(--ease-bounce), box-shadow .25s var(--ease-out), filter .25s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-glow-on-hover:hover {
+      transform: scale(1.06);
+      filter: brightness(1.1);
+      box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45);
+    }
+  }
+  .btn-glow-on-hover:active {
+    transform: scale(0.93);
+    transition: transform .1s var(--ease-out);
+  }
 
   .btn-secondary {
     background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
@@ -181,7 +198,7 @@
   }
   #mobile-menu > div { overflow: hidden; min-height: 0; }
   #mobile-menu.is-open { grid-template-rows: 1fr; opacity: 1; }
-  @media (min-width: 768px) { #mobile-menu { display: none !important; } }
+  @media (min-width: 1024px) { #mobile-menu { display: none !important; } }
   /* ---- Panel de Luci: slide-up + fade en vez de aparecer de golpe ---- */
   #luci-panel {
     opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(0.98);
@@ -243,7 +260,7 @@
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
         <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
-      <nav class="hidden md:flex items-center gap-9 font-head text-sm">
+      <nav class="hidden lg:flex items-center gap-9 font-head text-sm">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
         <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
@@ -255,17 +272,17 @@
           <kbd>Ctrl K</kbd>
         </button>
       </nav>
-      <div class="hidden md:flex items-center gap-3">
+      <div class="hidden lg:flex items-center gap-3">
         <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">Hablar por WhatsApp</a>
-        <a href="contacto.html" class="btn-primary font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
+        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
       </div>
-      <button id="menu-btn" type="button" class="md:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
+      <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
+  <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-slate-300">Inicio</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
@@ -274,7 +291,7 @@
       <a href="nosotros.html" class="text-slate-300">Nosotros</a>
       <a href="contacto.html" class="text-slate-300">Contacto</a>
       <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="contacto.html" class="btn-primary text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
+      <a href="contacto.html" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
     </div>
   </div>
 </header>
