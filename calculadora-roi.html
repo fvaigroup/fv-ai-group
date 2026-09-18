@@ -136,8 +136,8 @@
     background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0,204,255,0.06), transparent 40%);
     transition: background .1s ease-out;
   }
-  #site-header a[href="index.html"] img { view-transition-name: site-logo; }
-  @media (prefers-reduced-motion: reduce) { #site-header a[href="index.html"] img { view-transition-name: none; } }
+  #site-header a.site-logo-link { view-transition-name: site-logo; }
+  @media (prefers-reduced-motion: reduce) { #site-header a.site-logo-link { view-transition-name: none; } }
   #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
 
   .firefly-trail-dot { position: fixed; top: 0; left: 0; z-index: 55; pointer-events: none; border-radius: 9999px; will-change: transform, opacity; }
@@ -292,7 +292,7 @@
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
-      <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <a href="index.html" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
         <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
       </a>
