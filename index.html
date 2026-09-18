@@ -28,6 +28,8 @@
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    /* ---- Reservado al CTA principal ("Agendar auditoría"): el rebote es la firma de ESE botón,
+       no un efecto genérico. No reutilizar en botones secundarios, tarjetas u otros elementos. ---- */
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
     /* ---- Estándar de transición: color, fondo y borde cambian juntos en el mismo tiempo/curva,
        nunca por separado, para que un hover se sienta como un solo cambio de estado. Referenciar
@@ -737,16 +739,16 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 stagger-grid">
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-7 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"Pagamos por un ERP completo y solo usamos el 20% de lo que ofrece."</p>
       </div>
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-7 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"Cada área terminó armando su propio Excel paralelo al sistema oficial."</p>
       </div>
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-7 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"Capacitamos al equipo una vez, y el conocimiento se perdió con la rotación de personal."</p>
       </div>
-      <div class="reveal p-7 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-7 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <p class="text-lg text-slate-200 font-head leading-snug">"No sabemos si nuestros procesos son candidatos reales para automatizar con IA."</p>
       </div>
     </div>
@@ -764,15 +766,15 @@
       </div>
 
       <div class="space-y-4">
-        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+        <div class="p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
           <h3 class="font-sans font-semibold text-white mb-1.5">Independientes de proveedor</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Trabajamos con Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida — recomendamos según el caso, no según el catálogo.</p>
         </div>
-        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+        <div class="p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
           <h3 class="font-sans font-semibold text-white mb-1.5">Ciclo completo, un solo equipo</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Auditoría, implementación, capacitación y soporte no se subcontratan por separado.</p>
         </div>
-        <div class="p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+        <div class="p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
           <h3 class="font-sans font-semibold text-white mb-1.5">Supervisión humana, siempre</h3>
           <p class="text-sm text-slate-400 leading-relaxed">Nuestra IA opera como soporte operativo y analítico — la decisión final siempre queda en manos de su equipo.</p>
         </div>
@@ -792,7 +794,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
       <!-- HEXÁGONO — High-Ticket -->
-      <div class="reveal card-hover-hex relative overflow-hidden rounded-3xl bg-fv-surface border border-fv-border p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-hex-hex.png') center/cover no-repeat;">
+      <div class="reveal card-hover-hex relative overflow-hidden rounded-xl bg-fv-surface border border-fv-border p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-hex-hex.png') center/cover no-repeat;">
        <div class="geo-reveal-hex">
         <div class="flex items-center justify-between mb-6">
           <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-[63px] h-[63px] -mt-[7.6px] hex-spin">
@@ -810,7 +812,7 @@
       </div>
 
       <!-- TRIÁNGULO — Mid-Ticket (segundo par de acento formal: fv-triGreen/fv-triPurple en tailwind.config.js) -->
-      <div class="reveal card-hover-tri relative overflow-hidden rounded-3xl border border-fv-border p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
+      <div class="reveal card-hover-tri relative overflow-hidden rounded-xl border border-fv-border p-8 sm:p-10" style="background: linear-gradient(rgba(10,10,12,0.88), rgba(10,10,12,0.94)), url('assets/logo-tri-tri.png') center/cover no-repeat;">
        <div class="geo-reveal-tri">
         <div class="flex items-center justify-between mb-6">
           <img src="assets/logo-tri-tri.png" width="677" height="369" alt="" class="h-12 w-auto object-contain hex-spin">
@@ -892,7 +894,7 @@
         </div>
       </div>
 
-      <div class="relative h-80 rounded-2xl bg-fv-surface card-glow-border overflow-hidden flex items-center justify-center">
+      <div class="relative h-80 rounded-lg bg-fv-surface card-glow-border overflow-hidden flex items-center justify-center">
         <div class="absolute inset-0 grain opacity-40"></div>
         <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-40 h-40 opacity-80 relative z-10">
       </div>
@@ -918,31 +920,31 @@
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 stagger-grid">
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">n8n</p>
         <p class="text-xs text-slate-400 mt-1">Automatización de flujos</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-cyan/80 mt-2">Automatización IA</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Odoo Community</p>
         <p class="text-xs text-slate-400 mt-1">Suite modular</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-orange/80 mt-2">CRM / ERP</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Dynamics 365 Sales/Customer Service</p>
         <p class="text-xs text-slate-400 mt-1">CRM de ventas y soporte</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-orange/80 mt-2">CRM / ERP</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Desarrollo a medida</p>
         <p class="text-xs text-slate-400 mt-1">Cuando nada estándar encaja</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">Integración de IA</p>
         <p class="text-xs text-slate-400 mt-1">Sobre flujos existentes</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-cyan/80 mt-2">Automatización IA</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan text-center flex flex-col justify-between">
         <p class="font-head font-semibold text-white">WhatsApp Business API</p>
         <p class="text-xs text-slate-400 mt-1">Mensajería con clientes</p>
         <p class="text-[9px] font-head font-semibold uppercase tracking-wider text-fv-cyan/80 mt-2">Automatización IA</p>
@@ -960,25 +962,25 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger-grid">
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <h3 class="font-sans font-semibold text-white mb-1.5">n8n y agentes de IA</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Flujos que conectan sus sistemas actuales y ejecutan tareas repetitivas sin reconstruir nada desde cero.</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <h3 class="font-sans font-semibold text-white mb-1.5">Claude / OpenAI API</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Modelos de lenguaje integrados a su operación para tareas puntuales: redacción, clasificación, análisis de datos.</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <h3 class="font-sans font-semibold text-white mb-1.5">MCP a medida</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Servidores Model Context Protocol que conectan un modelo de IA con sus herramientas internas de forma segura y controlada.</p>
       </div>
-      <div class="reveal p-6 rounded-2xl bg-fv-surface border border-fv-border card-lift-cyan">
+      <div class="reveal p-6 rounded-lg bg-fv-surface border border-fv-border card-lift-cyan">
         <h3 class="font-sans font-semibold text-white mb-1.5">WhatsApp Business API</h3>
         <p class="text-sm text-slate-400 leading-relaxed">Atención y automatización de conversaciones con clientes, sobre el canal que ya usan.</p>
       </div>
     </div>
 
-    <div class="reveal mt-8 rounded-2xl bg-fv-surface border border-fv-border overflow-hidden">
+    <div class="reveal mt-8 rounded-lg bg-fv-surface border border-fv-border overflow-hidden">
       <div class="flex items-center gap-2 px-4 py-3 border-b border-fv-border bg-fv-surface2/60">
         <span class="w-2.5 h-2.5 rounded-full bg-red-500/60"></span>
         <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></span>
@@ -1054,7 +1056,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-7 rounded-2xl border border-dashed border-fv-border">
+      <div class="p-7 rounded-lg border border-dashed border-fv-border">
         <span class="inline-block text-[10px] font-head uppercase tracking-widest text-slate-500 border border-dashed border-fv-border rounded-full px-2.5 py-1 mb-5">Próximamente</span>
         <p class="text-slate-500 leading-relaxed mb-6">Este espacio se llenará con la cita textual de un cliente real sobre el resultado de su proyecto.</p>
         <div class="flex items-center gap-3">
@@ -1065,7 +1067,7 @@
           </div>
         </div>
       </div>
-      <div class="p-7 rounded-2xl border border-dashed border-fv-border">
+      <div class="p-7 rounded-lg border border-dashed border-fv-border">
         <span class="inline-block text-[10px] font-head uppercase tracking-widest text-slate-500 border border-dashed border-fv-border rounded-full px-2.5 py-1 mb-5">Próximamente</span>
         <p class="text-slate-500 leading-relaxed mb-6">Este espacio se llenará con la cita textual de un cliente real sobre el resultado de su proyecto.</p>
         <div class="flex items-center gap-3">
@@ -1076,7 +1078,7 @@
           </div>
         </div>
       </div>
-      <div class="p-7 rounded-2xl border border-dashed border-fv-border">
+      <div class="p-7 rounded-lg border border-dashed border-fv-border">
         <span class="inline-block text-[10px] font-head uppercase tracking-widest text-slate-500 border border-dashed border-fv-border rounded-full px-2.5 py-1 mb-5">Próximamente</span>
         <p class="text-slate-500 leading-relaxed mb-6">Este espacio se llenará con la cita textual de un cliente real sobre el resultado de su proyecto.</p>
         <div class="flex items-center gap-3">
@@ -1154,7 +1156,7 @@
 <!-- ============ CTA FINAL ============ -->
 <section id="cta-final" class="relative py-24 border-t border-white/5">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
-    <div class="relative rounded-3xl overflow-hidden bg-fv-surface box-gradient-border p-10 sm:p-16 text-center">
+    <div class="relative rounded-xl overflow-hidden bg-fv-surface box-gradient-border p-10 sm:p-16 text-center">
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
 
