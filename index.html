@@ -29,6 +29,10 @@
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* ---- Estándar de transición: color, fondo y borde cambian juntos en el mismo tiempo/curva,
+       nunca por separado, para que un hover se sienta como un solo cambio de estado. Referenciar
+       esta variable (o replicar los mismos tres tramos) en cualquier regla nueva de hover/focus. ---- */
+    --transition-base: color .3s var(--ease-out), background-color .3s var(--ease-out), border-color .3s var(--ease-out);
   }
 
   html { background: #000; }
@@ -120,7 +124,7 @@
     color: #94a3b8;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.1);
-    transition: color .2s var(--ease-out), border-color .2s var(--ease-out), background-color .2s var(--ease-out), transform .1s var(--ease-out);
+    transition: var(--transition-base), transform .1s var(--ease-out);
   }
   @media (hover: hover) and (pointer: fine) {
     .tab-btn:hover { color: #fff; border-color: rgba(0,255,255,0.35); background: rgba(0,255,255,0.05); }
@@ -728,7 +732,7 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
       <p class="mt-4 leading-relaxed text-slate-300">Son las razones más comunes por las que una empresa mediana de Valencia y Carabobo nos llama por primera vez — y cada vez más, desde otras ciudades del país.</p>
     </div>
 
@@ -754,7 +758,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       <div class="reveal">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-6 uppercase text-balance">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight mb-6 uppercase text-balance">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
         <p class="text-slate-400 leading-relaxed mb-4 text-fv-cyan">No somos un ERP con licencia ni un revendedor de software. Somos la consultoría que audita, implementa, capacita y da soporte con el mismo equipo — de principio a fin.</p>
         <p class="text-slate-400 leading-relaxed text-fv-cyan">Al no estar atados a un solo fabricante, la recomendación de plataforma responde a su operación — no a una comisión de venta.</p>
       </div>
@@ -781,7 +785,7 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Dos líneas, <span class="shimmer-text">un mismo estándar</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Dos líneas, <span class="shimmer-text">un mismo estándar</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Elija la escala que necesita su operación hoy — ambas con el mismo compromiso F&amp;V detrás.</p>
     </div>
 
@@ -831,7 +835,7 @@
 <section id="servicios" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Todo el ciclo, en <span class="shimmer-text">un solo equipo</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Todo el ciclo, en <span class="shimmer-text">un solo equipo</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-cyan">Desde el primer diagnóstico hasta el soporte del día a día. Sin pasar su proyecto de mano en mano entre proveedores distintos.</p>
     </div>
 
@@ -909,7 +913,7 @@
 <section class="relative py-24 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Cómo elegimos <span class="shimmer-text">su tecnología</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Cómo elegimos <span class="shimmer-text">su tecnología</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Somos independientes de proveedor: evaluamos su operación primero, y solo después recomendamos la plataforma que se ajusta a ella — nunca la que más nos convenga vender.</p>
     </div>
 
@@ -951,7 +955,7 @@
 <section class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">IA y automatización que <span class="shimmer-text">no esperan un año</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">IA y automatización que <span class="shimmer-text">no esperan un año</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed">Un ERP tradicional puede tardar meses en mostrar resultados. Un flujo de automatización bien diseñado —con n8n, un agente de IA o una integración de WhatsApp Business— puede resolver un cuello de botella específico en mucho menos tiempo, sin comprometerse con un ecosistema completo.</p>
     </div>
 
@@ -973,6 +977,24 @@
         <p class="text-sm text-slate-400 leading-relaxed">Atención y automatización de conversaciones con clientes, sobre el canal que ya usan.</p>
       </div>
     </div>
+
+    <div class="reveal mt-8 rounded-2xl bg-fv-surface border border-fv-border overflow-hidden">
+      <div class="flex items-center gap-2 px-4 py-3 border-b border-fv-border bg-fv-surface2/60">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500/60"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-green-500/60"></span>
+        <span class="ml-3 text-[11px] font-head text-slate-500 uppercase tracking-wider">Terminal — Claude Code</span>
+      </div>
+      <div class="px-5 py-6 font-mono text-[13px] leading-relaxed overflow-x-auto">
+        <p><span class="text-fv-cyan">$</span> <span class="text-slate-200">claude</span></p>
+        <p class="text-slate-300 mt-1">&gt; Conecta el CRM y crea un lead desde el último mensaje de WhatsApp</p>
+        <p class="text-slate-500 mt-3">⏺ mcp__crm__create_lead(source: "whatsapp", nombre: "María G.", interes: "Plan anual")</p>
+        <p class="text-fv-cyan mt-1">⏺ Lead #4521 creado en Odoo Community</p>
+        <p class="text-fv-cyan">⏺ Notificación enviada al equipo comercial por Slack</p>
+        <p class="text-slate-300 mt-3">Listo — el lead ya está en el pipeline. <span class="text-fv-orange">0 clics, 0 copiar y pegar.</span></p>
+      </div>
+    </div>
+    <p class="text-xs text-slate-500 mt-3">Ejemplo ilustrativo de una automatización con MCP — no es la salida de un sistema real.</p>
   </div>
 </section>
 
@@ -982,7 +1004,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
       <div class="lg:col-span-4">
         <div class="reveal lg:sticky lg:top-32">
-          <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Cómo <span class="shimmer-text">trabajamos</span></h2>
+          <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Cómo <span class="shimmer-text">trabajamos</span></h2>
           <p class="text-slate-400 mt-4 leading-relaxed text-fv-cyan">Un mismo equipo acompaña las seis etapas, sin traspasos entre proveedores.</p>
         </div>
       </div>
@@ -1027,7 +1049,7 @@
 <section class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase">Lo que dicen quienes <span class="shimmer-text">ya trabajaron con nosotros</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase">Lo que dicen quienes <span class="shimmer-text">ya trabajaron con nosotros</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Espacio reservado — pronto compartimos aquí los testimonios de nuestros clientes.</p>
     </div>
 
@@ -1073,7 +1095,7 @@
 <section id="faq" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12 flex items-center justify-between gap-6">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase text-balance">Preguntas <span class="shimmer-text">frecuentes</span></h2>
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Preguntas <span class="shimmer-text">frecuentes</span></h2>
       <img src="assets/signos-hex.png" width="1024" height="1024" alt="" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
     </div>
 
@@ -1137,7 +1159,7 @@
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
 
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase text-balance">Empecemos con un diagnóstico de su operación</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase tracking-tight text-balance">Empecemos con un diagnóstico de su operación</h2>
         <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-primary btn-grow inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
