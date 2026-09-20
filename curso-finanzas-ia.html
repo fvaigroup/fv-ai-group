@@ -24,6 +24,16 @@
 <link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet">
+<script>
+  // ==== CONFIGURACIÓN DE LA PRÓXIMA COHORTE — editar solo estos valores en cada nueva apertura de curso ====
+  window.PROXIMA_COHORTE = {
+    ubicacion: 'Valencia, Venezuela.',
+    fechas: 'Sábados 10, 17 y 24 de octubre.',
+    aforo: 6,
+    cuposDisponibles: 6,
+    requisito: 'Solo necesitas llevar tu laptop. Todo incluido en el acceso.',
+  };
+</script>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -291,7 +301,7 @@
 
 <main>
 
-<!-- ============ HERO ============ -->
+<!-- ============ 1. HERO ============ -->
 <section class="relative pt-40 pb-20 overflow-hidden border-b border-white/5">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
   <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3"></div>
@@ -299,241 +309,105 @@
 
   <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
     <div class="reveal">
-      <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-orange/10 text-fv-orange rounded-full border border-fv-orange/30 uppercase tracking-wider mb-6">Curso presencial · Cupos limitados a 6 personas</span>
+      <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-cyan mb-5">F&amp;V AI Group — Línea Triangular</p>
 
-      <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
-        Automatice la <span class="shimmer-text">conciliación de pagos</span> de su empresa
+      <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight uppercase">
+        <span class="shimmer-text">Finanzas con IA</span>
       </h1>
 
       <p class="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-        Capacite a su equipo en IA aplicada a finanzas. Menos horas cuadrando transferencias y cierres de caja entre plataformas — más tiempo tomando decisiones.
+        El 99% usa la IA para pedir poemas o resúmenes. El 1% la usa para blindar su dinero. Aprende a hacerlo desde cero.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
-          Apartar uno de los 6 cupos
-        </a>
-        <a href="#contenido" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">
-          Ver el programa completo
-        </a>
-      </div>
-      <p class="text-xs text-slate-500 mt-4 font-head">$300 pago único · 3 sábados · Valencia, Carabobo</p>
+      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20asegurar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
+        Asegurar mi cupo (Quedan <span id="hero-cupos">6</span> sillas)
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ EL DOLOR ============ -->
+<!-- ============ 2. ROMPIMIENTO DE OBJECIONES ============ -->
 <section class="relative py-24 border-b border-white/5">
   <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
     <div class="reveal">
-      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6 uppercase">¿Le suena familiar este cierre de mes?</h2>
-      <p class="text-lg text-slate-400 leading-relaxed mb-4">
-        Transferencias que no cuadran, capturas de pantalla de cinco plataformas de pago distintas, y horas enteras de su contador —o de usted mismo— tratando de armar el rompecabezas a mano.
-      </p>
-      <p class="text-lg text-slate-400 leading-relaxed">
-        Ese tiempo no se recupera. Y cada hora que su equipo pasa conciliando pagos es una hora que no está atendiendo clientes ni cerrando negocios.
-      </p>
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6 uppercase tracking-tight">¿Crees que necesitas saber programación o contabilidad pesada?</h2>
+      <p class="text-lg text-slate-400 leading-relaxed"><strong class="text-white">Error.</strong> Te enseñamos a usar LLMs y Herramientas AI como si fueras un operador con superpoderes, aunque hoy no sepas ni abrir una terminal. No necesitas experiencia previa técnica ni financiera; nosotros te llevamos de la mano para que domines el verdadero potencial de la inteligencia artificial aplicada a tus finanzas.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ QUÉ ES EL PROGRAMA ============ -->
-<section id="contenido" class="scroll-mt relative py-24 border-b border-white/5 bg-fv-surface2/40">
-  <div class="max-w-4xl mx-auto px-6 lg:px-8">
-    <div class="reveal text-center mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-4 uppercase tracking-tight">Qué es <span class="shimmer-text">Finanzas con IA</span></h2>
-      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
-        Un programa presencial donde su equipo aprende a usar IA para automatizar la conciliación de pagos, cuentas y cierres — con ejercicios sobre casos reales, no teoría genérica.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <div class="p-5 rounded-lg bg-fv-surface box-glow-cyan text-center">
-        <p class="text-2xl font-sans font-extrabold text-white">3</p>
-        <p class="text-xs text-slate-500 font-head mt-1">Sábados</p>
-      </div>
-      <div class="p-5 rounded-lg bg-fv-surface box-glow-orange text-center">
-        <p class="text-2xl font-sans font-extrabold text-white">4h</p>
-        <p class="text-xs text-slate-500 font-head mt-1">Por clase</p>
-      </div>
-      <div class="p-5 rounded-lg bg-fv-surface box-glow-cyan text-center">
-        <p class="text-2xl font-sans font-extrabold text-fv-cyan">6</p>
-        <p class="text-xs text-slate-500 font-head mt-1">Cupos, sin excepción</p>
-      </div>
-      <div class="p-5 rounded-lg bg-fv-surface box-glow-orange text-center">
-        <p class="text-2xl font-sans font-extrabold text-white">100%</p>
-        <p class="text-xs text-slate-500 font-head mt-1">Presencial</p>
-      </div>
-    </div>
-    <p class="text-center text-sm text-slate-500 mt-6 max-w-xl mx-auto">Los cupos están limitados a propósito: para que cada participante salga con su propio flujo de automatización armado, no solo con apuntes.</p>
-  </div>
-</section>
-
-<!-- ============ PARA QUIÉN ES ============ -->
-<section class="relative py-24 border-b border-white/5">
-  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-    <div class="reveal">
-      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6 uppercase">¿Es este programa para usted?</h2>
-      <p class="text-lg text-slate-400 leading-relaxed">
-        Está diseñado para <span class="text-white font-semibold">dueños de negocio</span> que quieren dejar de perder tiempo en tareas operativas, <span class="text-white font-semibold">gerentes</span> que necesitan que su equipo cierre más rápido, o el <span class="text-white font-semibold">contador o analista de confianza</span> que hoy carga con la conciliación manual sobre sus hombros.
-      </p>
-      <p class="text-lg text-slate-400 leading-relaxed mt-4">Si su empresa mueve dinero por más de una plataforma de pago, este programa es para usted.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTENIDO / PENSUM ============ -->
+<!-- ============ 3. LOGÍSTICA Y FORMATO (PRÓXIMA COHORTE) — valores editables en window.PROXIMA_COHORTE, arriba del <head> ============ -->
 <section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-4xl mx-auto px-6 lg:px-8">
-    <div class="reveal text-center mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight">Los 4 módulos del programa</h2>
+    <div class="reveal text-center mb-12">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-4 uppercase tracking-tight">Próxima <span class="shimmer-text">Cohorte Abierta</span></h2>
+      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">Nuestras aperturas son limitadas y por grupos reducidos. Este es el detalle de la fecha más próxima:</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div class="p-6 rounded-lg bg-fv-surface box-glow-cyan">
-        <span class="font-sans text-fv-cyan/70 text-sm">Módulo 1</span>
-        <p class="text-white font-head font-semibold mt-2 leading-snug">Diagnóstico de su flujo de pagos actual y dónde la IA puede intervenir hoy mismo.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 stagger-grid">
+      <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-cyan flex gap-4 items-start">
+        <span class="text-2xl leading-none" aria-hidden="true">📍</span>
+        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Ubicación:</span> <span id="cohorte-ubicacion">Valencia, Venezuela.</span></p>
       </div>
-      <div class="p-6 rounded-lg bg-fv-surface box-glow-orange">
-        <span class="font-sans text-fv-orange/80 text-sm">Módulo 2</span>
-        <p class="text-white font-head font-semibold mt-2 leading-snug">Automatización de la conciliación entre banco, plataformas de pago y su libro contable.</p>
+      <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-orange flex gap-4 items-start">
+        <span class="text-2xl leading-none" aria-hidden="true">📅</span>
+        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Fechas:</span> <span id="cohorte-fechas">Sábados 10, 17 y 24 de octubre.</span></p>
       </div>
-      <div class="p-6 rounded-lg bg-fv-surface box-glow-cyan">
-        <span class="font-sans text-fv-cyan/70 text-sm">Módulo 3</span>
-        <p class="text-white font-head font-semibold mt-2 leading-snug">IA aplicada a reportes financieros y cierres de caja, sin depender de Excel a mano.</p>
+      <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-cyan flex gap-4 items-start">
+        <span class="text-2xl leading-none" aria-hidden="true">🛑</span>
+        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Aforo:</span> <span id="cohorte-aforo">6</span> sillas. Cero excepciones.</p>
       </div>
-      <div class="p-6 rounded-lg bg-fv-surface box-glow-orange">
-        <span class="font-sans text-fv-orange/80 text-sm">Módulo 4</span>
-        <p class="text-white font-head font-semibold mt-2 leading-snug">Armado de su propio flujo de automatización, listo para usar desde el lunes siguiente.</p>
+      <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-orange flex gap-4 items-start">
+        <span class="text-2xl leading-none" aria-hidden="true">💻</span>
+        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Requisito único:</span> <span id="cohorte-requisito">Solo necesitas llevar tu laptop. Todo incluido en el acceso.</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PRECIO Y ENTREGABLES ============ -->
+<!-- ============ 4. INVERSIÓN Y MÉTODOS DE PAGO ============ -->
 <section class="relative py-24 border-b border-white/5">
   <div class="max-w-2xl mx-auto px-6 lg:px-8">
-    <div class="reveal relative overflow-hidden rounded-xl bg-fv-surface box-gradient-border p-10 sm:p-12 text-center">
+    <div class="reveal text-center mb-10">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight">Inversión y <span class="shimmer-text">Opciones de Pago</span></h2>
+    </div>
+    <div class="reveal relative overflow-hidden rounded-xl bg-fv-surface box-gradient-border p-8 sm:p-10">
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="relative z-10">
-      <p class="font-head text-xs text-slate-500 uppercase tracking-widest mb-3">Inversión</p>
-      <p class="text-5xl font-sans font-extrabold text-white mb-1">$300</p>
-      <p class="text-sm text-slate-500 mb-8">Pago único, por cupo</p>
-
-      <ul class="text-left space-y-3 max-w-sm mx-auto mb-10">
-        <li class="flex gap-3 text-slate-300"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Las 3 clases presenciales (12 horas en total)</li>
-        <li class="flex gap-3 text-slate-300"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Certificado de participación F&amp;V AI Group</li>
-        <li class="flex gap-3 text-slate-300"><svg class="w-5 h-5 text-fv-orange shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Diagnóstico gratuito de automatización para su empresa, al cierre del programa</span></li>
+      <ul class="relative z-10 space-y-4 text-slate-300 leading-relaxed">
+        <li>Inversión Regular: <strong class="text-white">$300 USD</strong>.</li>
+        <li>En moneda nacional: pagaderos en bolívares calculados estrictamente a la tasa oficial del BCV del día de la transacción.</li>
+        <li>Facilidad de pago: puedes asegurar tu cupo abonando el 50% de reserva ($150 USD).</li>
+        <li>🔥 Beneficio por Pago de Contado (Efectivo / USDT): si pagas en dólares en efectivo o USDT vía Binance, obtienes un descuento directo de $35 USD (11.67% de descuento sobre el monto total).</li>
+        <li>Inversión final con descuento: solo <strong class="text-fv-orange text-lg">$265 USD</strong>.</li>
       </ul>
-
-      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg w-full sm:w-auto">
-        Apartar mi cupo ahora
-      </a>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ URGENCIA / CONTADOR ============ -->
+<!-- ============ 5. HERRAMIENTAS DE IA Y SOPORTE ============ -->
 <section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
-  <div class="max-w-2xl mx-auto px-6 lg:px-8 text-center">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
     <div class="reveal">
-      <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider mb-5">Cohorte en formación</span>
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-3 uppercase tracking-tight">Solo <span class="text-neon-orange">6 cupos</span> por cohorte</h2>
-      <p class="text-slate-400 mb-10">Así garantizamos atención real a cada participante — no es una clase masiva.</p>
-
-      <!-- Estado 1: cohorte activa, cuenta regresiva -->
-      <div id="countdown-active">
-        <p class="font-head text-sm text-slate-500 mb-4">La próxima clase empieza en:</p>
-        <div class="flex justify-center gap-3 sm:gap-4">
-          <div class="cd-box p-4 rounded-lg bg-fv-surface box-glow-cyan">
-            <p id="cd-dias" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
-            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Días</p>
-          </div>
-          <div class="cd-box p-4 rounded-lg bg-fv-surface box-glow-orange">
-            <p id="cd-horas" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
-            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Horas</p>
-          </div>
-          <div class="cd-box p-4 rounded-lg bg-fv-surface box-glow-cyan">
-            <p id="cd-min" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
-            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Min</p>
-          </div>
-          <div class="cd-box p-4 rounded-lg bg-fv-surface box-glow-orange">
-            <p id="cd-seg" class="cd-num text-3xl sm:text-4xl font-sans font-extrabold text-white">00</p>
-            <p class="text-[11px] text-slate-500 font-head uppercase tracking-wide mt-1">Seg</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Estado 2: sin cohorte definida / fecha vencida -->
-      <div id="countdown-expired" class="hidden rounded-lg bg-fv-surface box-gradient-border p-8">
-        <p class="text-white font-head font-semibold mb-2">La cohorte activa ya comenzó</p>
-        <p class="text-sm text-slate-400 mb-6">Escríbanos y le avisamos apenas abramos la próxima fecha.</p>
-        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20preguntar%20por%20la%20pr%C3%B3xima%20cohorte%20de%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
-          Pregunta por la próxima cohorte
-        </a>
-      </div>
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-2 uppercase tracking-tight">¿Qué herramientas utilizaremos?</h2>
+      <p class="font-head text-sm text-slate-500 uppercase tracking-wider mb-6">(Versiones Gratuitas y Pagas)</p>
+      <p class="text-lg text-slate-400 leading-relaxed mb-4">Durante el entrenamiento utilizaremos una combinación de herramientas de IA que cuentan con versiones gratuitas muy potentes, así como opciones de pago avanzadas para exprimir al 100% su potencial. ¿Necesitas ayuda con las herramientas de pago? Si deseas utilizar las versiones pagas y no sabes cómo realizar la contratación o el pago de las mismas, te guiaremos paso a paso.</p>
+      <p class="text-sm text-slate-500 leading-relaxed">⚠️ Importante a tener en cuenta: esta guía personalizada se realiza únicamente después de haber pagado la totalidad del costo del curso y con total anticipación antes de la primera clase. Esto nos permite asegurar que llegues 100% preparado y con todo configurado, evitando interrumpir el flujo, el ritmo y el tiempo de aprovechamiento de las sesiones presenciales.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="relative py-24 border-b border-white/5">
-  <div class="max-w-3xl mx-auto px-6 lg:px-8">
-    <div class="reveal mb-12 text-center">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight">Preguntas frecuentes</h2>
-    </div>
-
-    <div class="space-y-3">
-      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
-        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿Necesito saber de IA para tomar el curso?</span>
-          <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">No. Partimos de cero técnico — lo único que necesita es conocer su propio proceso de pagos. Nosotros nos encargamos de la parte de IA.</p>
-      </details>
-
-      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
-        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿Qué pasa si no puedo asistir un sábado?</span>
-          <svg class="w-4 h-4 text-fv-orange transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Le compartimos la grabación de la sesión y el material correspondiente, para que no pierda el hilo del programa.</p>
-      </details>
-
-      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
-        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿Cuáles son los métodos de pago?</span>
-          <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Aceptamos transferencia bancaria, Pagomóvil, Zelle y Binance USDT, entre otros. Escríbanos por WhatsApp y le confirmamos los datos exactos para su pago.</p>
-      </details>
-
-      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
-        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿Dónde son las clases?</span>
-          <svg class="w-4 h-4 text-fv-orange transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">En Valencia, Carabobo. Le confirmamos la dirección exacta al momento de apartar su cupo.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CTA FINAL ============ -->
+<!-- ============ 6. CIERRE Y CTA FINAL ============ -->
 <section class="relative py-24">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="relative rounded-xl overflow-hidden bg-gradient-to-br from-fv-surface to-black border border-fv-border p-10 sm:p-16 text-center">
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase tracking-tight">Quedan pocos cupos para esta cohorte</h2>
-        <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Escríbanos ahora por WhatsApp para apartar el suyo — respondemos al instante.</p>
-        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20apartar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
-          Apartar mi cupo por WhatsApp
+        <p class="text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed text-lg">Los cupos están estrictamente limitados a <span class="text-white font-semibold">6 personas</span> por cohorte para garantizar un aprendizaje de alto impacto y atención individualizada. No te quedes fuera de la siguiente apertura.</p>
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20inscribirme%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
+          Inscribirme Ahora y Blindar mis Finanzas
         </a>
-        <p class="text-slate-500 text-sm mt-6">¿Su necesidad es más grande que un curso? <a href="contacto.html" class="link-underline text-fv-cyan">Hablemos de un proyecto de automatización</a> con el mismo equipo.</p>
       </div>
     </div>
   </div>
@@ -697,7 +571,7 @@
     const faq = [
       { k: ['cupo','cupos','disponible','quedan'], a: 'Los cupos son estrictamente 6 por cohorte. Escríbanos por WhatsApp y le confirmamos disponibilidad al instante.' },
       { k: ['precio','costo','cuanto cuesta','vale','pago'], a: 'La inversión es de $300, pago único, e incluye las 3 clases, certificado y un diagnóstico gratuito de automatización para su empresa.' },
-      { k: ['fecha','cuando','empieza','horario'], a: 'La fecha de la próxima cohorte está en el contador de esta misma página. Si ya venció, escríbanos y le avisamos apenas abramos una nueva.' },
+      { k: ['fecha','cuando','empieza','horario'], a: 'La fecha de la próxima cohorte está en la sección "Próxima Cohorte Abierta" de esta misma página. Si ya venció, escríbanos y le avisamos apenas abramos una nueva.' },
       { k: ['ia','experiencia','tecnico','saber'], a: 'No necesita experiencia previa en IA — partimos de cero técnico. Solo necesita conocer su propio proceso de pagos.' },
       { k: ['sabado','falta','asistir','perder'], a: 'Le compartimos la grabación y el material de cualquier sesión a la que no pueda asistir.' },
       { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp para apartar su cupo o resolver cualquier duda.' },
@@ -1002,55 +876,20 @@
   })();
 
   // ============================================================
-  // ---- CONTADOR REGRESIVO DE LA COHORTE (2 estados) ----
-  // Para configurar la próxima fecha: cambiá SOLO la línea de "fechaInicio" de abajo.
-  // Formato: "AAAA-MM-DDTHH:mm:ss" en hora de Venezuela (UTC-4).
+  // ---- RENDERIZA LOS DATOS DE LA PRÓXIMA COHORTE ----
+  // Lee de window.PROXIMA_COHORTE (definido en el <head>) y los vuelca en la
+  // sección "Próxima Cohorte Abierta". Para abrir una nueva cohorte, edite
+  // solo ese objeto de configuración — no hace falta tocar el HTML.
   // ============================================================
   (function () {
-    const fechaInicio = new Date("2026-10-15T09:00:00-04:00"); // <-- ÚNICA línea a editar para la próxima cohorte
-
-    const activeEl = document.getElementById('countdown-active');
-    const expiredEl = document.getElementById('countdown-expired');
-    const dEl = document.getElementById('cd-dias');
-    const hEl = document.getElementById('cd-horas');
-    const mEl = document.getElementById('cd-min');
-    const sEl = document.getElementById('cd-seg');
-    if (!activeEl || !expiredEl) return;
-
-    let timer = null;
-
-    function pad(n) { return String(n).padStart(2, '0'); }
-
-    function showExpiredState() {
-      activeEl.classList.add('hidden');
-      expiredEl.classList.remove('hidden');
-      if (timer) clearInterval(timer);
-    }
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = fechaInicio - now;
-
-      // Estado 2: la fecha ya pasó (o no hay cohorte configurada) -> ocultar contador, mostrar CTA
-      if (diff <= 0) {
-        showExpiredState();
-        return;
-      }
-
-      // Estado 1: cohorte activa -> mostrar días/horas/min/seg restantes
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const mins = Math.floor((diff / (1000 * 60)) % 60);
-      const secs = Math.floor((diff / 1000) % 60);
-
-      dEl.textContent = pad(days);
-      hEl.textContent = pad(hours);
-      mEl.textContent = pad(mins);
-      sEl.textContent = pad(secs);
-    }
-
-    updateCountdown();
-    timer = setInterval(updateCountdown, 1000);
+    const c = window.PROXIMA_COHORTE;
+    if (!c) return;
+    const set = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.textContent = val; };
+    set('cohorte-ubicacion', c.ubicacion);
+    set('cohorte-fechas', c.fechas);
+    set('cohorte-aforo', c.aforo);
+    set('cohorte-requisito', c.requisito);
+    set('hero-cupos', c.cuposDisponibles);
   })();
 
   // ---- Búsqueda global (Cmd+K / Ctrl+K) ----
