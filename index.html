@@ -198,16 +198,6 @@
   }
   .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
 
-  /* ---- Degradados estáticos para "Hexágono" y "Triángulo" (sin animación) ---- */
-  .text-gradient-hex {
-    background: linear-gradient(90deg, #00FFFF, #FF8C00);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
-  }
-  .text-gradient-tri {
-    background: linear-gradient(90deg, #4ade80, #a855f7);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
-  }
-
   /* ---- Hover sutil en preguntas frecuentes ---- */
   /* Sin efecto de hover en las preguntas frecuentes (quitado a pedido) */
 
@@ -285,21 +275,16 @@
     }
     .reveal.card-hover-tri:hover {
       transform: translateY(-6px);
-      border-color: rgba(74,222,128,0.7);
-      box-shadow: 0 0 26px rgba(74,222,128,0.3), 0 0 32px rgba(168,85,247,0.3);
+      border-color: rgba(168,85,247,0.7);
+      box-shadow: 0 0 26px rgba(168,85,247,0.3), 0 0 32px rgba(168,85,247,0.25);
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .card-hover-hex, .card-hover-tri { transition: none; }
   }
 
-  /* ---- Momento autoral: el contenido de las tarjetas Hexágono/Triángulo se revela con la silueta de su propio emblema.
-     El clip-path vive en un wrapper interno (no en la tarjeta observada por IntersectionObserver): un elemento no puede
-     reportar su propia intersección de forma fiable mientras su área visible ya está recortada a una silueta pequeña. ---- */
-  .reveal.card-hover-hex, .reveal.card-hover-tri {
-    opacity: 1;
-    transform: none;
-  }
+  /* ---- Momento autoral: el contenido de las tarjetas Hexágono/Triángulo se revela con la silueta de su propio emblema,
+     mientras la tarjeta en sí entra con el mismo fundido + desplazamiento que el resto del sitio (.reveal/.is-in). ---- */
   .geo-reveal-hex, .geo-reveal-tri { transition: clip-path .65s var(--ease-out); }
   .geo-reveal-hex { clip-path: polygon(42% 42%, 58% 42%, 68% 50%, 58% 58%, 42% 58%, 32% 50%); }
   .card-hover-hex.is-in .geo-reveal-hex { clip-path: polygon(25% -50%, 75% -50%, 150% 50%, 75% 150%, 25% 150%, -50% 50%); }
@@ -662,7 +647,7 @@
         </div>
 
         <h1 class="font-sans text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white tracking-tight leading-[1.12] text-balance">
-          IA Y AUTOMATIZACIÓN <span class="shimmer-text">QUE GENERAN RESULTADOS</span>
+          AUTOMATIZACIÓN <span class="shimmer-text">QUE GENERA RESULTADOS</span>
         </h1>
 
         <p class="text-lg text-slate-400 leading-relaxed max-w-xl font-light">
@@ -870,7 +855,7 @@
           <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-[63px] h-[63px] -mt-[7.6px] hex-spin">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider">High-Ticket</span>
         </div>
-        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-hex">Hexagonal</span></h3>
+        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="shimmer-text">Hexagonal</span></h3>
         <p class="text-slate-300 leading-relaxed mb-6">Ecosistemas completos de principio a fin: asesoría, despliegue, habilitación y acompañamiento bajo un mismo equipo. Es el estándar integral de F&amp;V — para operaciones que necesitan que todo el sistema hable el mismo idioma.</p>
         <ul class="space-y-2.5 mb-8">
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance completo, sin fragmentar el proyecto</li>
@@ -888,7 +873,7 @@
           <img src="assets/logo-tri-tri.png" width="677" height="369" alt="" class="h-12 w-auto object-contain hex-spin">
           <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-triPurple/10 text-fv-triPurple rounded-full border border-fv-triPurple/30 uppercase tracking-wider">Mid-Ticket</span>
         </div>
-        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="text-gradient-tri">Triangular</span></h3>
+        <h3 class="font-sans text-2xl font-bold text-white mb-3">Línea <span class="shimmer-text">Triangular</span></h3>
         <p class="text-slate-300 leading-relaxed mb-6">Implementaciones ágiles y acotadas: un sprint enfocado en resolver un cuello de botella puntual, sin comprometerse con un ecosistema completo. Mantienen la misma calidad F&amp;V, en menor proporción de alcance y tiempo.</p>
         <ul class="space-y-2.5 mb-8">
           <li class="flex gap-2 text-sm text-slate-300"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alcance reducido, enfocado en un problema puntual</li>
@@ -899,84 +884,6 @@
        </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ============ SERVICIOS ============ -->
-<section id="servicios" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Todo el ciclo, en <span class="shimmer-text">un solo equipo</span></h2>
-      <p class="text-slate-400 mt-4 leading-relaxed text-fv-cyan">Desde el primer diagnóstico hasta el soporte del día a día. Sin pasar su proyecto de mano en mano entre proveedores distintos.</p>
-    </div>
-
-    <!-- Tabs: agrupadas en 3 fases (Antes/Durante/Después) en vez de 6 opciones sueltas -->
-    <div role="tablist" aria-label="Fases del servicio" class="flex flex-wrap gap-x-8 gap-y-4 mb-10 font-head text-sm">
-      <div role="group" aria-label="Antes" class="flex flex-col gap-2">
-        <span class="text-[10px] font-head uppercase tracking-wider text-slate-500">Antes</span>
-        <div class="flex flex-wrap gap-2">
-          <button class="tab-btn inline-flex items-center gap-1.5" id="tab-asesoria" data-tab="asesoria" role="tab" aria-selected="true" aria-controls="panel-asesoria"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 10.5h7.5m-7.5 3h4.5m4.5-9.75H5.25A2.25 2.25 0 0 0 3 5.25v9a2.25 2.25 0 0 0 2.25 2.25h.75v3l3.75-3h7.5A2.25 2.25 0 0 0 21 14.25v-9A2.25 2.25 0 0 0 18.75 3Z"/></svg>Asesoría Estratégica</button>
-          <button class="tab-btn inline-flex items-center gap-1.5" id="tab-evaluacion" data-tab="evaluacion" role="tab" aria-selected="false" aria-controls="panel-evaluacion"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 1 1 4 10.5a6.5 6.5 0 0 1 13 0z"/></svg>Evaluación de Procesos</button>
-        </div>
-      </div>
-      <div role="group" aria-label="Durante" class="flex flex-col gap-2">
-        <span class="text-[10px] font-head uppercase tracking-wider text-slate-500">Durante</span>
-        <div class="flex flex-wrap gap-2">
-          <button class="tab-btn inline-flex items-center gap-1.5" id="tab-despliegue" data-tab="despliegue" role="tab" aria-selected="false" aria-controls="panel-despliegue"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.63 8.41m5.96 5.96a14.93 14.93 0 0 1-5.84 2.58m-.12-8.54a6 6 0 0 0-7.38 5.84h4.8"/><circle cx="16.5" cy="9" r="1.5" stroke-width="1.5"/></svg>Despliegue y Ejecución</button>
-          <button class="tab-btn inline-flex items-center gap-1.5" id="tab-habilitacion" data-tab="habilitacion" role="tab" aria-selected="false" aria-controls="panel-habilitacion"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M22 10 12 5 2 10l10 5 10-5Z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Habilitación de Equipos</button>
-        </div>
-      </div>
-      <div role="group" aria-label="Después" class="flex flex-col gap-2">
-        <span class="text-[10px] font-head uppercase tracking-wider text-slate-500">Después</span>
-        <div class="flex flex-wrap gap-2">
-          <button class="tab-btn inline-flex items-center gap-1.5" id="tab-masterclasses" data-tab="masterclasses" role="tab" aria-selected="false" aria-controls="panel-masterclasses"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 20h8M12 16v4"/></svg>Masterclasses y Workshops</button>
-          <button class="tab-btn inline-flex items-center gap-1.5" id="tab-acompanamiento" data-tab="acompanamiento" role="tab" aria-selected="false" aria-controls="panel-acompanamiento"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7.5 7.5 2.6 2.6M16.5 7.5l-2.6 2.6M7.5 16.5l2.6-2.6M16.5 16.5l-2.6-2.6"/></svg>Acompañamiento Continuo</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-      <div>
-        <div data-panel="asesoria" id="panel-asesoria" role="tabpanel" aria-labelledby="tab-asesoria" class="tab-panel space-y-4">
-          <h3 class="font-sans text-2xl text-white">Asesoría Estratégica</h3>
-          <p class="text-slate-400 leading-relaxed">La puerta de entrada antes de comprometer presupuesto en ejecución: diagnosticamos su situación real, identificamos cuellos de botella y prescribimos la solución exacta para su caso.</p>
-        </div>
-        <div data-panel="evaluacion" id="panel-evaluacion" role="tabpanel" aria-labelledby="tab-evaluacion" class="tab-panel hidden space-y-4">
-          <h3 class="font-sans text-2xl text-white">Evaluación de Procesos</h3>
-          <p class="text-slate-400 leading-relaxed">Revisamos procesos, sistemas y datos existentes para entregar una radiografía técnica y financiera precisa — la base que justifica cada paso siguiente.</p>
-        </div>
-        <div data-panel="despliegue" id="panel-despliegue" role="tabpanel" aria-labelledby="tab-despliegue" class="tab-panel hidden space-y-4">
-          <h3 class="font-sans text-2xl text-white">Despliegue y Ejecución</h3>
-          <p class="text-slate-400 leading-relaxed">Configuramos e implementamos Odoo Community y Dynamics 365 Sales/Customer Service, además de desarrollo a medida cuando ninguna solución estándar cubre el proceso. Incluye integración de IA sobre los flujos que ya existen.</p>
-        </div>
-        <div data-panel="habilitacion" id="panel-habilitacion" role="tabpanel" aria-labelledby="tab-habilitacion" class="tab-panel hidden space-y-4">
-          <h3 class="font-sans text-2xl text-white">Habilitación de Equipos</h3>
-          <p class="text-slate-400 leading-relaxed">En paralelo o después del despliegue, formación práctica sobre el sistema real de su empresa para que cada área domine la herramienta desde el primer día.</p>
-        </div>
-        <div data-panel="masterclasses" id="panel-masterclasses" role="tabpanel" aria-labelledby="tab-masterclasses" class="tab-panel hidden space-y-4">
-          <h3 class="font-sans text-2xl text-white">Masterclasses y Workshops</h3>
-          <p class="text-slate-400 leading-relaxed">Programas formativos más estructurados para escalar el conocimiento a audiencias más amplias, o como complemento asíncrono de la habilitación directa.</p>
-        </div>
-        <div data-panel="acompanamiento" id="panel-acompanamiento" role="tabpanel" aria-labelledby="tab-acompanamiento" class="tab-panel hidden space-y-4">
-          <h3 class="font-sans text-2xl text-white">Acompañamiento Continuo</h3>
-          <p class="text-slate-400 leading-relaxed">Retención y continuidad a largo plazo: mantenimiento evolutivo, resolución de incidencias y una relación comercial que sigue después del go-live.</p>
-        </div>
-      </div>
-
-      <div class="relative h-80 rounded-lg bg-fv-surface card-glow-border overflow-hidden flex items-center justify-center">
-        <div class="absolute inset-0 grain opacity-40"></div>
-        <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-40 h-40 opacity-80 relative z-10">
-      </div>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mt-10">
-      <a href="servicios.html" class="inline-flex items-center gap-2 font-head text-sm text-fv-cyan link-underline pb-0.5">
-        Ver el detalle completo de cada servicio
-      </a>
-      <a href="precios.html" class="inline-flex items-center gap-2 font-head text-sm text-fv-orange link-underline pb-0.5">
-        Ver precios de referencia desde $150 — sin agendar una llamada
-      </a>
     </div>
   </div>
 </section>
@@ -1147,52 +1054,6 @@
           <span class="font-sans text-fv-cyan/70 text-sm">06</span>
           <h3 class="font-sans text-white font-semibold mt-2 mb-1.5 text-lg">Acompañamiento Continuo</h3>
           <p class="text-slate-400 leading-relaxed max-w-md">Mantenimiento evolutivo después del go-live.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TESTIMONIOS (placeholder — reemplazar con citas reales de clientes) ============ -->
-<section class="relative py-28 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase">Lo que dicen quienes <span class="shimmer-text">ya trabajaron con nosotros</span></h2>
-      <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Espacio reservado — pronto compartimos aquí los testimonios de nuestros clientes.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-7 rounded-lg border border-dashed border-fv-border">
-        <span class="inline-block text-[10px] font-head uppercase tracking-widest text-slate-500 border border-dashed border-fv-border rounded-full px-2.5 py-1 mb-5">Próximamente</span>
-        <p class="text-slate-500 leading-relaxed mb-6">Este espacio se llenará con la cita textual de un cliente real sobre el resultado de su proyecto.</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-white/5 border border-dashed border-fv-border shrink-0"></div>
-          <div>
-            <p class="font-head text-slate-500 text-sm">Nombre del cliente</p>
-            <p class="text-xs text-slate-500">Cargo, Empresa</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-7 rounded-lg border border-dashed border-fv-border">
-        <span class="inline-block text-[10px] font-head uppercase tracking-widest text-slate-500 border border-dashed border-fv-border rounded-full px-2.5 py-1 mb-5">Próximamente</span>
-        <p class="text-slate-500 leading-relaxed mb-6">Este espacio se llenará con la cita textual de un cliente real sobre el resultado de su proyecto.</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-white/5 border border-dashed border-fv-border shrink-0"></div>
-          <div>
-            <p class="font-head text-slate-500 text-sm">Nombre del cliente</p>
-            <p class="text-xs text-slate-500">Cargo, Empresa</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-7 rounded-lg border border-dashed border-fv-border">
-        <span class="inline-block text-[10px] font-head uppercase tracking-widest text-slate-500 border border-dashed border-fv-border rounded-full px-2.5 py-1 mb-5">Próximamente</span>
-        <p class="text-slate-500 leading-relaxed mb-6">Este espacio se llenará con la cita textual de un cliente real sobre el resultado de su proyecto.</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-white/5 border border-dashed border-fv-border shrink-0"></div>
-          <div>
-            <p class="font-head text-slate-500 text-sm">Nombre del cliente</p>
-            <p class="text-xs text-slate-500">Cargo, Empresa</p>
-          </div>
         </div>
       </div>
     </div>
