@@ -28,19 +28,22 @@
 <meta property="og:title" content="Finanzas con IA — Curso presencial | F&V AI Group">
 <meta property="og:description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
 <meta property="og:url" content="https://www.fvaigroup.com/curso-finanzas-ia">
-<meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
+<meta property="og:image" content="https://www.fvaigroup.com/assets/og-curso-finanzas-ia.png">
+<meta property="og:image:alt" content="Finanzas con IA — curso presencial de 3 sábados en Valencia, cupos limitados a 6 personas">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Finanzas con IA — Curso presencial | F&V AI Group">
 <meta name="twitter:description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
-<meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
+<meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-curso-finanzas-ia.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Finanzas con IA",
   "description": "Curso presencial de automatización de conciliación de pagos con IA. 3 sábados, cupos limitados a 6 personas.",
+  "url": "https://www.fvaigroup.com/curso-finanzas-ia",
+  "inLanguage": "es",
   "provider": {
     "@type": "Organization",
     "name": "F&V AI Group",
@@ -51,7 +54,34 @@
     "category": "Paid",
     "price": "300",
     "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock"
+    "url": "https://www.fvaigroup.com/curso-finanzas-ia",
+    "availability": "https://schema.org/InStock",
+    "validThrough": "2026-10-10"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "Onsite",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-24",
+    "courseSchedule": {
+      "@type": "Schedule",
+      "repeatFrequency": "P1W",
+      "repeatCount": 3,
+      "byDay": "https://schema.org/Saturday",
+      "startTime": "08:00",
+      "endTime": "12:00",
+      "scheduleTimezone": "America/Caracas"
+    },
+    "location": {
+      "@type": "Place",
+      "name": "F&V AI Group",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Valencia",
+        "addressRegion": "Carabobo",
+        "addressCountry": "VE"
+      }
+    }
   }
 }
 </script>
@@ -65,9 +95,12 @@
   window.PROXIMA_COHORTE = {
     ubicacion: 'Valencia, Venezuela.',
     fechas: 'Sábados 10, 17 y 24 de octubre.',
+    horario: '8:00 a.m. a 12:00 p.m.',
+    inicioISO: '2026-10-10T08:00:00-04:00', // arranque de la primera sesión (hora de Venezuela); el contador se oculta solo al pasar
+    // OJO: el JSON-LD de arriba (hasCourseInstance) tiene las fechas fijas; actualizarlas junto con este objeto.
     aforo: 6,
     cuposDisponibles: 6,
-    requisito: 'Solo necesitas llevar tu laptop. Todo incluido en el acceso.',
+    requisito: 'Solo necesita llevar su laptop. Todo incluido en el acceso.',
   };
 </script>
 <style>
@@ -115,6 +148,7 @@
   }
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
+  details[open] .chev { transform: rotate(45deg); }
   details > summary ~ p { display: block !important; overflow: hidden; }
 
   .btn-primary {
@@ -351,12 +385,15 @@
         <span class="shimmer-text">Finanzas con IA</span>
       </h1>
 
-      <p class="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10 font-light">
-        El 99% usa la IA para pedir poemas o resúmenes. El 1% la usa para blindar su dinero. Aprende a hacerlo desde cero.
+      <p class="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto mb-4 font-light">
+        El 99% usa la IA para pedir poemas o resúmenes. El 1% la usa para blindar su dinero. Aprenda a hacerlo desde cero.
+      </p>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
+        En 3 sábados presenciales, automatice la <strong class="text-white font-semibold">conciliación de los pagos de su empresa</strong>: deje de cruzar comprobantes y estados de cuenta a mano.
       </p>
 
-      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20asegurar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
-        Asegurar mi cupo (Quedan <span id="hero-cupos">6</span> sillas)
+      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20asegurar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" data-cta="hero" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
+        Asegurar mi cupo (Quedan <span data-cupos>6</span> sillas)
       </a>
     </div>
   </div>
@@ -366,14 +403,56 @@
 <section class="relative py-24 border-b border-white/5">
   <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
     <div class="reveal">
-      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6 uppercase tracking-tight">¿Crees que necesitas saber programación o contabilidad pesada?</h2>
-      <p class="text-lg text-slate-400 leading-relaxed"><strong class="text-white">Error.</strong> Te enseñamos a usar LLMs y Herramientas AI como si fueras un operador con superpoderes, aunque hoy no sepas ni abrir una terminal. No necesitas experiencia previa técnica ni financiera; nosotros te llevamos de la mano para que domines el verdadero potencial de la inteligencia artificial aplicada a tus finanzas.</p>
+      <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-6 uppercase tracking-tight">¿Cree que necesita saber programación o contabilidad pesada?</h2>
+      <p class="text-lg text-slate-400 leading-relaxed"><strong class="text-white">Error.</strong> Le enseñamos a usar LLMs y Herramientas AI como si fuera un operador con superpoderes, aunque hoy no sepa ni abrir una terminal. No necesita experiencia previa técnica ni financiera; nosotros lo llevamos de la mano para que domine el verdadero potencial de la inteligencia artificial aplicada a sus finanzas.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ 3. LOGÍSTICA Y FORMATO (PRÓXIMA COHORTE) — valores editables en window.PROXIMA_COHORTE, arriba del <head> ============ -->
+<!-- ============ 3. TEMARIO Y QUÉ INCLUYE ============ -->
+<!-- TODO AUDITAR: el contenido de cada sábado fue redactado como propuesta; confirmar o corregir contra el programa real del curso. -->
 <section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="reveal text-center mb-12">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-4 uppercase tracking-tight">Qué hará en <span class="shimmer-text">cada sábado</span></h2>
+      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">Tres sesiones prácticas, con sus propios datos de pagos, para que salga con un proceso funcionando y no solo con teoría.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="reveal p-7 rounded-lg bg-fv-surface box-glow-cyan flex flex-col">
+        <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-cyan mb-3">Sábado 1</p>
+        <h3 class="font-head text-xl font-semibold text-white leading-snug mb-3">Fundamentos y diagnóstico</h3>
+        <p class="text-slate-400 leading-relaxed mb-5 flex-1">Aprenda a usar los LLMs como operador y mapee cómo concilia hoy sus pagos: bancos, comprobantes, referencias y tasa del día.</p>
+        <p class="text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4"><span class="font-head font-semibold text-fv-cyan">Al terminar:</span> tendrá su proceso documentado y sus primeros prompts funcionando.</p>
+      </div>
+      <div class="reveal p-7 rounded-lg bg-fv-surface box-glow-orange flex flex-col">
+        <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-orange mb-3">Sábado 2</p>
+        <h3 class="font-head text-xl font-semibold text-white leading-snug mb-3">Construcción del flujo</h3>
+        <p class="text-slate-400 leading-relaxed mb-5 flex-1">Extraiga datos de capturas, PDF y estados de cuenta, y cruce cada pago con su factura o pedido usando IA y hojas de cálculo.</p>
+        <p class="text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4"><span class="font-head font-semibold text-fv-orange">Al terminar:</span> tendrá un flujo de conciliación corriendo con datos reales.</p>
+      </div>
+      <div class="reveal p-7 rounded-lg bg-fv-surface box-glow-cyan flex flex-col">
+        <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-cyan mb-3">Sábado 3</p>
+        <h3 class="font-head text-xl font-semibold text-white leading-snug mb-3">Control y puesta en marcha</h3>
+        <p class="text-slate-400 leading-relaxed mb-5 flex-1">Agregue validaciones para detectar duplicados y diferencias, genere el reporte para gerencia y aplique buenas prácticas de privacidad.</p>
+        <p class="text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-4"><span class="font-head font-semibold text-fv-cyan">Al terminar:</span> saldrá con el flujo listo para usar el lunes y un plan de mejora.</p>
+      </div>
+    </div>
+
+    <div class="reveal mt-12 text-center">
+      <h3 class="font-head text-sm font-semibold uppercase tracking-[0.2em] text-slate-300 mb-5">Qué incluye</h3>
+      <ul class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-x-6 text-slate-300">
+        <li class="flex items-center gap-2.5 justify-center"><svg class="w-5 h-5 text-fv-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Las 3 clases presenciales</li>
+        <li class="flex items-center gap-2.5 justify-center"><svg class="w-5 h-5 text-fv-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Certificado</li>
+        <li class="flex items-center gap-2.5 justify-center"><svg class="w-5 h-5 text-fv-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Diagnóstico gratuito de automatización para su empresa</li>
+        <li class="flex items-center gap-2.5 justify-center"><svg class="w-5 h-5 text-fv-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Resumen y material de cada sesión</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. LOGÍSTICA Y FORMATO (PRÓXIMA COHORTE) — valores editables en window.PROXIMA_COHORTE, arriba del <head> ============ -->
+<section class="relative py-24 border-b border-white/5">
   <div class="max-w-4xl mx-auto px-6 lg:px-8">
     <div class="reveal text-center mb-12">
       <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight mb-4 uppercase tracking-tight">Próxima <span class="shimmer-text">Cohorte Abierta</span></h2>
@@ -382,65 +461,153 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 stagger-grid">
       <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-cyan flex gap-4 items-start">
-        <span class="text-2xl leading-none" aria-hidden="true">📍</span>
+        <svg class="w-7 h-7 shrink-0 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5" stroke-width="1.5"/></svg>
         <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Ubicación:</span> <span id="cohorte-ubicacion">Valencia, Venezuela.</span></p>
       </div>
       <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-orange flex gap-4 items-start">
-        <span class="text-2xl leading-none" aria-hidden="true">📅</span>
-        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Fechas:</span> <span id="cohorte-fechas">Sábados 10, 17 y 24 de octubre.</span></p>
+        <svg class="w-7 h-7 shrink-0 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Fechas:</span> <span id="cohorte-fechas">Sábados 10, 17 y 24 de octubre.</span><br><span class="text-white font-head font-semibold">Horario:</span> <span id="cohorte-horario">8:00 a.m. a 12:00 p.m.</span></p>
       </div>
       <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-cyan flex gap-4 items-start">
-        <span class="text-2xl leading-none" aria-hidden="true">🛑</span>
+        <svg class="w-7 h-7 shrink-0 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20v-1a4 4 0 00-4-4H7a4 4 0 00-4 4v1M21 20v-1a4 4 0 00-3-3.87M16 4.13a3.5 3.5 0 010 6.74"/><circle cx="10" cy="8" r="3.5" stroke-width="1.5"/></svg>
         <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Aforo:</span> <span id="cohorte-aforo">6</span> sillas. Cero excepciones.</p>
       </div>
       <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-orange flex gap-4 items-start">
-        <span class="text-2xl leading-none" aria-hidden="true">💻</span>
-        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Requisito único:</span> <span id="cohorte-requisito">Solo necesitas llevar tu laptop. Todo incluido en el acceso.</span></p>
+        <svg class="w-7 h-7 shrink-0 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.5" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M2 20h20"/></svg>
+        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Requisito único:</span> <span id="cohorte-requisito">Solo necesita llevar su laptop. Todo incluido en el acceso.</span></p>
+      </div>
+    </div>
+
+    <!-- Contador regresivo: se muestra solo si window.PROXIMA_COHORTE.inicioISO está en el futuro -->
+    <div id="countdown" class="reveal mt-12 text-center" hidden>
+      <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-cyan mb-4">La cohorte inicia en</p>
+      <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-sm mx-auto" role="timer" aria-live="off">
+        <div class="cd-box !min-w-0 rounded-lg bg-fv-surface box-glow-cyan px-2 py-4"><div class="cd-num font-head text-3xl sm:text-4xl font-bold text-white" data-cd="d">00</div><div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Días</div></div>
+        <div class="cd-box !min-w-0 rounded-lg bg-fv-surface box-glow-cyan px-2 py-4"><div class="cd-num font-head text-3xl sm:text-4xl font-bold text-white" data-cd="h">00</div><div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Horas</div></div>
+        <div class="cd-box !min-w-0 rounded-lg bg-fv-surface box-glow-cyan px-2 py-4"><div class="cd-num font-head text-3xl sm:text-4xl font-bold text-white" data-cd="m">00</div><div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Min</div></div>
+        <div class="cd-box !min-w-0 rounded-lg bg-fv-surface box-glow-orange px-2 py-4"><div class="cd-num font-head text-3xl sm:text-4xl font-bold text-fv-orange" data-cd="s">00</div><div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Seg</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 4. INVERSIÓN Y MÉTODOS DE PAGO ============ -->
-<section class="relative py-24 border-b border-white/5">
-  <div class="max-w-2xl mx-auto px-6 lg:px-8">
+<!-- ============ 5. INVERSIÓN Y MÉTODOS DE PAGO ============ -->
+<section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal text-center mb-10">
       <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight">Inversión y <span class="shimmer-text">Opciones de Pago</span></h2>
     </div>
-    <div class="reveal relative overflow-hidden rounded-xl bg-fv-surface box-gradient-border p-8 sm:p-10">
-      <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <ul class="relative z-10 space-y-4 text-slate-300 leading-relaxed">
-        <li>Inversión Regular: <strong class="text-white">$300 USD</strong>.</li>
-        <li>En moneda nacional: pagaderos en bolívares calculados estrictamente a la tasa oficial del BCV del día de la transacción.</li>
-        <li>🔥 Beneficio por Pago en Efectivo / USDT: si pagas en dólares en efectivo o USDT vía Binance, obtienes un descuento directo de $35 USD (-11.67% sobre el monto total).</li>
-        <li>Inversión final con descuento: <strong class="text-fv-orange text-lg">$265 USD</strong>.</li>
-      </ul>
+    <div class="grid grid-cols-1 sm:grid-cols-5 gap-5 items-stretch">
+      <div class="reveal sm:col-span-3 relative overflow-hidden rounded-xl bg-fv-surface box-gradient-border p-8 sm:p-10 text-center sm:text-left">
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="relative z-10">
+          <p class="inline-block font-head text-xs font-semibold uppercase tracking-[0.2em] text-black bg-fv-orange rounded-full px-3 py-1 mb-5">Mejor precio</p>
+          <p class="font-head text-6xl sm:text-7xl font-bold text-fv-orange leading-none mb-3">$265 <span class="text-2xl font-semibold text-slate-400">USD</span></p>
+          <p class="text-white font-head font-semibold mb-2">Pago en efectivo o USDT (Binance)</p>
+          <p class="text-slate-400 leading-relaxed">Ahorre $35 USD (-11.67%) sobre el precio regular.</p>
+        </div>
+      </div>
+      <div class="reveal sm:col-span-2 rounded-xl bg-fv-surface border border-fv-border p-8 text-center sm:text-left">
+        <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 mb-5">Precio regular</p>
+        <p class="font-head text-4xl font-bold text-white leading-none mb-3">$300 <span class="text-lg font-semibold text-slate-400">USD</span></p>
+        <p class="text-slate-400 leading-relaxed text-sm">Pagadero en bolívares, calculado estrictamente a la tasa oficial del BCV del día de la transacción.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 5. HERRAMIENTAS DE IA Y SOPORTE ============ -->
+<!-- ============ 6. CÓMO INSCRIBIRSE ============ -->
+<section class="relative py-24 border-b border-white/5">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="reveal text-center mb-12">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight">Cómo <span class="shimmer-text">inscribirse</span></h2>
+    </div>
+    <ol class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <li class="reveal p-6 rounded-lg bg-fv-surface box-glow-cyan">
+        <span class="font-head text-3xl font-bold text-fv-cyan leading-none">1</span>
+        <p class="text-slate-300 leading-relaxed mt-3">Escríbanos por WhatsApp y confirme que hay cupo disponible.</p>
+      </li>
+      <li class="reveal p-6 rounded-lg bg-fv-surface box-glow-orange">
+        <span class="font-head text-3xl font-bold text-fv-orange leading-none">2</span>
+        <p class="text-slate-300 leading-relaxed mt-3">Realice el pago (efectivo, USDT o bolívares) y reciba su confirmación.</p>
+      </li>
+      <li class="reveal p-6 rounded-lg bg-fv-surface box-glow-cyan">
+        <span class="font-head text-3xl font-bold text-fv-cyan leading-none">3</span>
+        <p class="text-slate-300 leading-relaxed mt-3">Le guiamos con la configuración de sus herramientas antes del primer sábado.</p>
+      </li>
+    </ol>
+    <div class="reveal text-center mt-10">
+      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20inscribirme%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" data-cta="pasos" class="btn-secondary inline-flex justify-center items-center px-6 py-3 font-head font-semibold rounded-lg">Empezar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. HERRAMIENTAS DE IA Y SOPORTE ============ -->
+<!-- TODO AUDITAR: la lista de herramientas es una propuesta; confirmar cuáles se usan realmente en el curso. -->
 <section class="relative py-24 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
     <div class="reveal">
       <h2 class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight mb-2 uppercase tracking-tight">¿Qué herramientas utilizaremos?</h2>
-      <p class="font-head text-sm text-slate-500 uppercase tracking-wider mb-6">(Versiones Gratuitas y Pagas)</p>
-      <p class="text-lg text-slate-400 leading-relaxed mb-4">Durante el entrenamiento utilizaremos una combinación de herramientas de IA que cuentan con versiones gratuitas muy potentes, así como opciones de pago avanzadas para exprimir al 100% su potencial. ¿Necesitas ayuda con las herramientas de pago? Si deseas utilizar las versiones pagas y no sabes cómo realizar la contratación o el pago de las mismas, te guiaremos paso a paso.</p>
-      <p class="text-sm text-slate-500 leading-relaxed">⚠️ Importante a tener en cuenta: esta guía personalizada se realiza únicamente después de haber pagado la totalidad del costo del curso y con total anticipación antes de la primera clase. Esto nos permite asegurar que llegues 100% preparado y con todo configurado, evitando interrumpir el flujo, el ritmo y el tiempo de aprovechamiento de las sesiones presenciales.</p>
+      <p class="font-head text-sm text-slate-400 uppercase tracking-wider mb-6">(Versiones Gratuitas y Pagas)</p>
+      <ul class="flex flex-wrap justify-center gap-2.5 mb-6">
+        <li class="font-head text-sm text-slate-200 bg-white/5 border border-white/15 rounded-full px-4 py-1.5">ChatGPT</li>
+        <li class="font-head text-sm text-slate-200 bg-white/5 border border-white/15 rounded-full px-4 py-1.5">Claude</li>
+        <li class="font-head text-sm text-slate-200 bg-white/5 border border-white/15 rounded-full px-4 py-1.5">Gemini</li>
+        <li class="font-head text-sm text-slate-200 bg-white/5 border border-white/15 rounded-full px-4 py-1.5">NotebookLM</li>
+        <li class="font-head text-sm text-slate-200 bg-white/5 border border-white/15 rounded-full px-4 py-1.5">Excel / Google Sheets</li>
+      </ul>
+      <p class="text-lg text-slate-400 leading-relaxed mb-4">Todas cuentan con versiones gratuitas muy potentes, así como opciones de pago avanzadas para exprimir al 100% su potencial. ¿Necesita ayuda con las herramientas de pago? Si desea utilizar las versiones pagas y no sabe cómo realizar la contratación o el pago de las mismas, le guiaremos paso a paso.</p>
+      <p class="flex items-start gap-3 text-left text-base text-slate-300 leading-relaxed bg-fv-surface border border-fv-border rounded-lg p-4">
+        <svg class="w-5 h-5 shrink-0 mt-0.5 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 3l10 18H2L12 3zM12 10v5M12 18h.01"/></svg>
+        <span><strong class="text-white">Importante:</strong> esta guía personalizada se realiza únicamente después de haber pagado la totalidad del costo del curso y con total anticipación antes de la primera clase. Esto nos permite asegurar que llegue 100% preparado y con todo configurado, evitando interrumpir el flujo, el ritmo y el tiempo de aprovechamiento de las sesiones presenciales.</span>
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ============ 6. CIERRE Y CTA FINAL ============ -->
+<!-- ============ 8. PREGUNTAS FRECUENTES ============ -->
+<!-- TODO AUDITAR: las políticas de reembolso, grupo incompleto y factura son propuestas; confirmar que reflejan lo que F&V realmente ofrece. -->
+<section class="relative py-24 border-b border-white/5">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <div class="reveal text-center mb-10">
+      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight">Preguntas <span class="shimmer-text">frecuentes</span></h2>
+    </div>
+    <div class="reveal space-y-3">
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Hay reembolso?</span>
+          <svg class="chev w-4 h-4 text-fv-cyan transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Si cancela hasta 5 días antes del primer sábado, le devolvemos el 100% de lo pagado. Pasada esa fecha no hay reembolso, pero puede ceder su cupo a otra persona avisándonos con anticipación.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Qué pasa si no se llena el grupo?</span>
+          <svg class="chev w-4 h-4 text-fv-orange transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">El grupo es de 6 personas como máximo. Si no se alcanza el mínimo necesario para dictar la cohorte en la fecha anunciada, la reprogramamos o le devolvemos el 100% de lo pagado, a su elección.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Emiten factura?</span>
+          <svg class="chev w-4 h-4 text-fv-cyan transition-transform shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Sí. Emitimos factura a nombre de la persona o empresa que la solicite al momento del pago.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. CIERRE Y CTA FINAL ============ -->
 <section class="relative py-24">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="relative rounded-xl overflow-hidden bg-gradient-to-br from-fv-surface to-black border border-fv-border p-10 sm:p-16 text-center">
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
       <div class="relative z-10">
-        <p class="text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed text-lg">Los cupos están estrictamente limitados a <span class="text-white font-semibold">6 personas</span> por cohorte para garantizar un aprendizaje de alto impacto y atención individualizada. No te quedes fuera de la siguiente apertura.</p>
-        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20inscribirme%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
+        <p class="text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed text-lg">Los cupos están estrictamente limitados a <span class="text-white font-semibold">6 personas</span> por cohorte para garantizar un aprendizaje de alto impacto y atención individualizada. No se quede fuera de la siguiente apertura.</p>
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20inscribirme%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" data-cta="cierre" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
           Inscribirme Ahora y Blindar mis Finanzas
         </a>
       </div>
@@ -450,8 +617,15 @@
 
 </main>
 
+<!-- CTA fijo en móvil: aparece al bajar del hero -->
+<div id="sticky-cta" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-black/90 backdrop-blur-md border-t border-white/10 px-4 py-3 translate-y-full transition-transform duration-300">
+  <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20asegurar%20mi%20cupo%20en%20Finanzas%20con%20IA" target="_blank" rel="noopener" data-cta="sticky" class="btn-primary flex justify-center items-center w-full px-4 py-3 font-head font-semibold rounded-lg">
+    Asegurar mi cupo (Quedan <span data-cupos>6</span> sillas)
+  </a>
+</div>
+
 <!-- ============ FOOTER ============ -->
-<footer class="bg-black border-t border-white/5">
+<footer class="bg-black border-t border-white/5 pb-20 lg:pb-0">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
@@ -521,7 +695,7 @@
 </footer>
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
-<div id="luci-widget" class="fixed bottom-6 left-6 z-40">
+<div id="luci-widget" class="fixed bottom-24 lg:bottom-6 left-6 z-40">
   <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-8 h-8">
   </button>
@@ -552,7 +726,7 @@
   </div>
 </div>
 
-<button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-br from-fv-cyan to-fv-orange text-black flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
+<button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-24 lg:bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-br from-fv-cyan to-fv-orange text-black flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
@@ -608,7 +782,7 @@
       { k: ['precio','costo','cuanto cuesta','vale','pago'], a: 'La inversión es de $300, pago único, e incluye las 3 clases, certificado y un diagnóstico gratuito de automatización para su empresa.' },
       { k: ['fecha','cuando','empieza','horario'], a: 'La fecha de la próxima cohorte está en la sección "Próxima Cohorte Abierta" de esta misma página. Si ya venció, escríbanos y le avisamos apenas abramos una nueva.' },
       { k: ['ia','experiencia','tecnico','saber'], a: 'No necesita experiencia previa en IA — partimos de cero técnico. Solo necesita conocer su propio proceso de pagos.' },
-      { k: ['sabado','falta','asistir','perder'], a: 'Le compartimos la grabación y el material de cualquier sesión a la que no pueda asistir.' },
+      { k: ['sabado','falta','asistir','perder'], a: 'Le compartimos un resumen y el material de cualquier sesión a la que no pueda asistir.' },
       { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp para apartar su cupo o resolver cualquier duda.' },
     ];
 
@@ -662,6 +836,7 @@
       if (text === 'Sí, ir a WhatsApp') {
         addMessage(text, 'user');
         quick.innerHTML = '';
+        trackWhatsApp('luci');
         setTimeout(() => { window.open('https://wa.me/584244125386', '_blank'); }, 200);
         return;
       }
@@ -922,10 +1097,51 @@
     const set = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.textContent = val; };
     set('cohorte-ubicacion', c.ubicacion);
     set('cohorte-fechas', c.fechas);
+    set('cohorte-horario', c.horario);
     set('cohorte-aforo', c.aforo);
     set('cohorte-requisito', c.requisito);
-    set('hero-cupos', c.cuposDisponibles);
+    if (c.cuposDisponibles !== undefined) document.querySelectorAll('[data-cupos]').forEach(el => { el.textContent = c.cuposDisponibles; });
+
+    // ---- Contador regresivo hasta el inicio de la cohorte ----
+    const box = document.getElementById('countdown');
+    const start = c.inicioISO ? new Date(c.inicioISO).getTime() : NaN;
+    if (!box || isNaN(start) || start <= Date.now()) return;
+    const cells = { d: box.querySelector('[data-cd="d"]'), h: box.querySelector('[data-cd="h"]'), m: box.querySelector('[data-cd="m"]'), s: box.querySelector('[data-cd="s"]') };
+    const pad = (n) => String(n).padStart(2, '0');
+    let timer;
+    function tick() {
+      const diff = start - Date.now();
+      if (diff <= 0) { clearInterval(timer); box.hidden = true; return; }
+      cells.d.textContent = pad(Math.floor(diff / 86400000));
+      cells.h.textContent = pad(Math.floor(diff / 3600000) % 24);
+      cells.m.textContent = pad(Math.floor(diff / 60000) % 60);
+      cells.s.textContent = pad(Math.floor(diff / 1000) % 60);
+    }
+    tick();
+    box.hidden = false;
+    timer = setInterval(tick, 1000);
   })();
+
+  // ---- CTA fijo en móvil: aparece al pasar el hero ----
+  (function () {
+    const bar = document.getElementById('sticky-cta');
+    if (!bar) return;
+    const toggleBar = () => bar.classList.toggle('translate-y-full', window.scrollY < 500);
+    window.addEventListener('scroll', toggleBar, { passive: true });
+    toggleBar();
+  })();
+
+  // ---- Medición: clics a WhatsApp -> evento GA4 'whatsapp_click' con la ubicación del botón ----
+  function trackWhatsApp(location) {
+    if (typeof gtag !== 'function') return;
+    gtag('event', 'whatsapp_click', { cta_location: location, page: 'curso-finanzas-ia' });
+  }
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href*="wa.me"]');
+    if (!a) return;
+    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
+    trackWhatsApp(loc);
+  });
 
   // ---- Búsqueda global (Cmd+K / Ctrl+K) ----
   (function () {
