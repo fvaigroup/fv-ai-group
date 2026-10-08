@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Componentes compartidos por todas las páginas (los estilos propios de cada página siguen en su <style>). */
+@layer components {
+  /* ---- Línea Triangular: CTA principal (verde de la línea). Cumple el papel de .btn-primary
+     dentro de la página Express y de los bloques de la Línea Triangular; fuera de ellos el CTA
+     principal sigue siendo el naranja. ---- */
+  .btn-tri {
+    background-color: #4ade80; color: #000;
+    box-shadow: 0 0 10px rgba(74,222,128,0.55), 0 0 26px rgba(74,222,128,0.22);
+    transition: transform .2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .2s cubic-bezier(0.23, 1, 0.32, 1), filter .2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-tri:hover { filter: brightness(1.08); box-shadow: 0 0 14px rgba(74,222,128,0.7), 0 0 36px rgba(168,85,247,0.35); }
+  }
+  .btn-tri:active { transform: scale(0.96); transition: transform .1s cubic-bezier(0.23, 1, 0.32, 1); }
+
+  /* ---- Texto con el degradado estático de la Línea Triangular (verde → violeta) ---- */
+  .text-gradient-tri {
+    background: linear-gradient(90deg, #4ade80, #a855f7);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+
+  /* ---- Menú móvil: cerrado ocupa 0 px (antes dejaba 40 px y el header medía 118 px en lugar de 78),
+     botón de 44 px y enlaces con área táctil de 44 px. Solo bajo el breakpoint lg. ---- */
+  @media (max-width: 1023px) {
+    #mobile-menu:not(.is-open) > div { padding-top: 0; padding-bottom: 0; }
+    #menu-btn { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; margin-right: -10px; }
+    #mobile-menu > div { gap: 0.25rem; }
+    #mobile-menu a:not(.btn-primary):not(.btn-secondary) { display: block; padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    #mobile-menu a.btn-secondary { margin-top: 0.5rem; }
+  }
+
+  /* ---- Enlace "saltar al contenido" para navegación por teclado ---- */
+  .skip-link {
+    position: fixed; top: -100px; left: 1rem; z-index: 300;
+    background: #0D0E12; color: #fff; border: 1px solid rgba(0,255,255,0.5);
+    padding: 0.75rem 1.25rem; border-radius: 0.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
+    transition: top .2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .skip-link:focus { top: 1rem; }
+}

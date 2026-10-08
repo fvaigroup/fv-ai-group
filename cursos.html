@@ -20,20 +20,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cursos | F&V AI Group</title>
-<meta name="description" content="Masterclasses y workshops presenciales de F&V AI Group para llevar la IA aplicada directo a su equipo.">
+<meta name="description" content="Curso presencial Finanzas con IA, clases individuales 1:1 y workshops de F&V AI Group para llevar la IA aplicada a su trabajo.">
 <link rel="canonical" href="https://www.fvaigroup.com/cursos">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="Cursos | F&V AI Group">
-<meta property="og:description" content="Masterclasses y workshops presenciales de F&V AI Group para llevar la IA aplicada directo a su equipo.">
+<meta property="og:description" content="Curso presencial Finanzas con IA, clases individuales 1:1 y workshops de F&V AI Group para llevar la IA aplicada a su trabajo.">
 <meta property="og:url" content="https://www.fvaigroup.com/cursos">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cursos | F&V AI Group">
-<meta name="twitter:description" content="Masterclasses y workshops presenciales de F&V AI Group para llevar la IA aplicada directo a su equipo.">
+<meta name="twitter:description" content="Curso presencial Finanzas con IA, clases individuales 1:1 y workshops de F&V AI Group para llevar la IA aplicada a su trabajo.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
 <link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
@@ -76,6 +76,11 @@
 
   .box-glow-cyan { border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 14px rgba(0,255,255,0.2); }
   .box-glow-orange { border: 1px solid rgba(255,140,0,0.4); box-shadow: 0 0 14px rgba(255,140,0,0.2); }
+  /* ---- Tarjeta de la Línea Triangular (Express): glow verde en reposo, borde violeta al pasar el mouse ---- */
+  .box-glow-tri { border: 1px solid rgba(74,222,128,0.4); box-shadow: 0 0 14px rgba(74,222,128,0.2); }
+  @media (hover: hover) and (pointer: fine) {
+    .box-glow-tri:hover { border-color: rgba(168,85,247,0.55); box-shadow: 0 0 18px rgba(168,85,247,0.22), 0 0 14px rgba(74,222,128,0.12); }
+  }
 
   .box-gradient-border {
     border: 1px solid transparent;
@@ -125,6 +130,8 @@
     cursor: default;
   }
 
+
+  a:focus-visible, button:focus-visible { outline: 2px solid #4ade80; outline-offset: 3px; }
 
   @view-transition { navigation: auto; }
 
@@ -234,12 +241,14 @@
   .sr-tag.cat-Curso { background: rgba(255,140,0,0.12); color: #FF8C00; }
   .sr-tag.cat-Pagina { background: rgba(255,255,255,0.08); color: #94a3b8; }
   .sr-tag.cat-Legal { background: rgba(255,255,255,0.06); color: #64748b; }
+  .sr-tag.cat-Producto { background: rgba(74,222,128,0.12); color: #4ade80; }
   #search-empty { padding: 28px 18px; text-align: center; color: #64748b; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #475569; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 <div id="search-overlay">
   <div id="search-panel">
     <div id="search-input-row">
@@ -267,10 +276,11 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="index.html" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&amp;V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-9 font-head text-sm">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
+        <a href="express.html" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
         <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
         <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
@@ -278,12 +288,12 @@
         <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-          <kbd>Ctrl K</kbd>
+          <kbd class="hidden xl:inline">Ctrl K</kbd>
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">Hablar por WhatsApp</a>
-        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
+        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Hablar por </span>WhatsApp</a>
+        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -294,6 +304,7 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-slate-300">Inicio</a>
+      <a href="express.html" class="text-fv-triGreen">Express</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
       <a href="cursos.html" class="text-slate-300">Cursos</a>
       <a href="precios.html" class="text-slate-300">Precios</a>
@@ -306,7 +317,7 @@
 </header>
 <div id="scroll-progress"></div>
 
-<main>
+<main id="main-content">
 
 <!-- ============ HERO ============ -->
 <section class="relative pt-40 pb-16 overflow-hidden border-b border-white/5">
@@ -315,9 +326,9 @@
 
   <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
     <div class="reveal">
-      <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider mb-6">Masterclasses y Workshops</span>
+      <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider mb-6">Cursos y clases</span>
       <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5 tracking-tight">Catálogo de <span class="shimmer-text">Cursos</span></h1>
-      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">Programas presenciales para llevar la IA aplicada directo a su equipo — formación estructurada, no teoría genérica.</p>
+      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">Programas presenciales y clases individuales para llevar la IA aplicada a su trabajo — formación estructurada, no teoría genérica.</p>
     </div>
   </div>
 </section>
@@ -334,17 +345,25 @@
         </div>
         <h2 class="font-sans text-white text-lg font-semibold mb-2">Finanzas con IA</h2>
         <p class="text-sm text-slate-400 leading-relaxed mb-6 flex-1">Automatice la conciliación de pagos de su empresa. 3 sábados presenciales, cupos limitados a 6 personas.</p>
+        <p class="font-head text-sm font-medium text-fv-orange mb-4">$300 · $265 en efectivo o USDT</p>
         <a href="curso-finanzas-ia.html" class="btn-secondary text-center py-3 rounded-lg font-head font-medium">Ver detalles</a>
       </div>
 
-      <!-- Placeholder: próximo curso -->
-      <div class="course-card p-7 rounded-lg bg-fv-surface border border-dashed border-fv-border flex flex-col reveal">
-        <div class="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <!-- Clase 1:1 de IA (Línea Triangular, tú) -->
+      <div id="clase-ia" class="course-card p-7 rounded-lg bg-fv-surface border border-fv-triGreen/20 flex flex-col reveal">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <div class="w-14 h-14 rounded-xl bg-fv-triGreen/10 border border-fv-triGreen/30 flex items-center justify-center">
+            <svg class="w-7 h-7 text-fv-triGreen" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM4 21a8 8 0 0116 0"/></svg>
+          </div>
+          <span class="text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-triGreen/10 text-fv-triGreen rounded-full border border-fv-triGreen/30 uppercase tracking-wider">Clase individual</span>
         </div>
-        <h2 class="font-sans text-slate-300 text-lg font-semibold mb-2">Próximo curso en preparación</h2>
-        <p class="text-sm text-slate-500 leading-relaxed mb-6 flex-1">Estamos diseñando el siguiente programa. Escríbanos y le avisamos apenas se abra la fecha.</p>
-        <a href="contacto.html" class="btn-secondary text-center py-3 rounded-lg font-head font-medium">Avisarme cuando esté listo</a>
+        <h2 class="font-sans text-white text-lg font-semibold mb-2">Clase 1:1 de IA</h2>
+        <p class="text-sm text-slate-400 leading-relaxed mb-4">Aprende a usar IA con tus propios archivos y tareas, en una clase individual de 90 minutos.</p>
+        <p class="font-head text-white leading-none mb-1"><span class="text-3xl font-bold">$25</span> <span class="text-sm font-medium text-slate-400">por 90 minutos</span></p>
+        <p class="text-sm text-fv-triGreen font-head font-medium mb-4">3 clases por $60</p>
+        <p class="text-sm text-slate-400 leading-relaxed mb-6 flex-1">Ideal para administradores, contadores, profesionales y estudiantes.</p>
+        <a href="https://wa.me/584244125386?text=Quiero%20la%20Clase%201%3A1%20de%20IA" target="_blank" rel="noopener" data-product="clase-ia" data-cta="cursos_tarjeta" class="btn-tri inline-flex items-center justify-center gap-2 text-center py-3 px-4 rounded-lg font-head font-semibold"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>Quiero la Clase 1:1 de IA</a>
+        <a href="express.html#clase-ia" class="mt-3 text-center text-sm font-head font-medium text-slate-300 hover:text-white link-underline self-center py-2">Ver detalles</a>
       </div>
 
       <!-- Placeholder: próximo curso -->
@@ -417,6 +436,7 @@
         <div>
           <h4 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
+            <li><a href="express.html" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a></li>
             <li><a href="nosotros.html#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
             <li><a href="nosotros.html#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&amp;V</a></li>
@@ -433,6 +453,7 @@
             <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
             <li class="pt-1 text-slate-600">Valencia, Carabobo, Venezuela</li>
             <li class="text-slate-600">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
+            <li class="text-slate-600">Te respondemos el mismo día</li>
           </ul>
         </div>
       </div>
@@ -532,6 +553,8 @@
     if (!toggle || !panel) return;
 
     const faq = [
+      { k: ['clase','1:1','individual','particular'], a: 'La Clase 1:1 de IA cuesta $25 por 90 minutos, o 3 clases por $60, y se trabaja con sus propios archivos y tareas. Puede pedirla por WhatsApp.' },
+      { k: ['express','maps','catalogo','bcv','caja clara','cuadre','bodegon','emprend','negocio pequeno','pequeno negocio','mi negocio','asistente ia','finanzas claras','clase 1:1','clase de ia','clase particular','redes al dia'], a: 'Para negocios tenemos productos Express con precio fijo, listos en 48 a 72 horas desde $35: Negocio Visible (Google Maps y WhatsApp Business), Catálogo Express con precios en Bs a tasa BCV, Caja Clara para el cuadre diario y más. Los encuentra todos en la página Express, en el menú de arriba.' },
       { k: ['finanzas','conciliacion','pagos'], a: 'Finanzas con IA es nuestro curso presencial de 3 sábados sobre automatización de conciliación de pagos. Puede ver todos los detalles en su página.' },
       { k: ['precio','costo','cuanto cuesta','vale'], a: 'Cada curso tiene su propio precio — revise la tarjeta correspondiente o escríbanos por WhatsApp para confirmar valores.' },
       { k: ['proximo','nuevo','otro curso','cuando'], a: 'Estamos preparando nuevos programas. Déjenos sus datos por WhatsApp o el formulario de Contacto y le avisamos apenas se abran.' },
@@ -793,12 +816,20 @@
       { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
       { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
       { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Valores de referencia por servicio.', url: 'precios.html', cat: 'Pagina' },
+      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
       { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'Escríbanos por WhatsApp o el formulario.', url: 'contacto.html', cat: 'Pagina' },
+      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
       { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
       { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
       { title: 'Calculadora de ROI', desc: 'Estime cuánto puede ahorrar automatizando sus procesos.', url: 'calculadora-roi.html', cat: 'Pagina' },
+      { title: 'Express', desc: 'Productos para negocios desde $35, listos en 48 a 72 horas.', url: 'express.html', cat: 'Producto' },
+      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
+      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
+      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
+      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
+      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
+      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
+      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
     ];
 
     const overlay = document.getElementById('search-overlay');
@@ -872,6 +903,19 @@
     const trigger = document.getElementById('search-trigger');
     if (trigger) trigger.addEventListener('click', openSearch);
   })();
+</script>
+<script>
+  // ---- Medición (GA4): clics a WhatsApp -> 'whatsapp_click' con ubicación y producto; elementos con data-track -> su propio evento ----
+  document.addEventListener('click', (e) => {
+    if (typeof gtag !== 'function') return;
+    const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
+    const tracked = e.target.closest('[data-track]');
+    if (tracked) gtag('event', tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
+    const a = e.target.closest('a[href*="wa.me"]');
+    if (!a) return;
+    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
+    gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
+  });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

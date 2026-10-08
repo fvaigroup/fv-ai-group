@@ -20,20 +20,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>F&V AI Group | Auditoría e implementación de ERP e IA</title>
-<meta name="description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365 Sales/Customer Service, con integraciones de IA a medida y soporte continuo después del go-live.">
+<meta name="description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.">
 <link rel="canonical" href="https://www.fvaigroup.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="F&V AI Group | Auditoría e implementación de ERP e IA">
-<meta property="og:description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365 Sales/Customer Service, con integraciones de IA a medida y soporte continuo después del go-live.">
+<meta property="og:description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.">
 <meta property="og:url" content="https://www.fvaigroup.com/">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="F&V AI Group | Auditoría e implementación de ERP e IA">
-<meta name="twitter:description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365 Sales/Customer Service, con integraciones de IA a medida y soporte continuo después del go-live.">
+<meta name="twitter:description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <script type="application/ld+json">
 {
@@ -42,7 +42,7 @@
   "name": "F&V AI Group",
   "url": "https://www.fvaigroup.com/",
   "logo": "https://www.fvaigroup.com/assets/logo-mark-hex.png",
-  "description": "Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365 Sales/Customer Service, con integraciones de IA a medida y soporte continuo después del go-live.",
+  "description": "Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.",
   "email": "contacto@fvaigroup.com",
   "sameAs": [
     "https://instagram.com/fvaigroup"
@@ -114,9 +114,9 @@
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
   .reveal.is-in { opacity: 1; transform: translateY(0); }
 
-  /* ---- Widget de Luci: en móvil se oculta hasta pasar el hero, para no tapar el CTA "Ver servicios" ---- */
+  /* ---- Widget de Luci: por debajo de 1280 px se oculta hasta pasar el hero, para no tapar el CTA "Ver servicios" ---- */
   #luci-widget { transition: opacity .3s var(--ease-out), transform .3s var(--ease-out), bottom .3s var(--ease-out); }
-  @media (max-width: 767px) {
+  @media (max-width: 1279px) {
     #luci-widget { opacity: 0; pointer-events: none; transform: translateY(12px); }
     #luci-widget.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
   }
@@ -568,6 +568,7 @@
     transition: grid-template-rows .25s var(--ease-out), opacity .2s var(--ease-out);
   }
   #mobile-menu > div { overflow: hidden; min-height: 0; }
+  #mobile-menu:not(.is-open) > div { padding-top: 0; padding-bottom: 0; } /* cerrado = 0 px de alto (antes dejaba 40 px y el header medía 118 px en móvil) */
   #mobile-menu.is-open { grid-template-rows: 1fr; opacity: 1; }
   @media (min-width: 1024px) { #mobile-menu { display: none !important; } }
 
@@ -593,6 +594,7 @@
   .sr-tag.cat-Curso { background: rgba(255,140,0,0.12); color: #FF8C00; }
   .sr-tag.cat-Pagina { background: rgba(255,255,255,0.08); color: #94a3b8; }
   .sr-tag.cat-Legal { background: rgba(255,255,255,0.06); color: #94a3b8; }
+  .sr-tag.cat-Producto { background: rgba(74,222,128,0.12); color: #4ade80; }
   #search-empty { padding: 28px 18px; text-align: center; color: #94a3b8; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #94a3b8; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
@@ -613,7 +615,7 @@
   <div id="search-panel">
     <div id="search-input-row">
       <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-      <input id="search-input" type="text" placeholder="Buscar servicios, cursos, páginas..." autocomplete="off">
+      <input id="search-input" type="text" aria-label="Buscar en el sitio" placeholder="Buscar servicios, cursos, páginas..." autocomplete="off">
     </div>
     <div id="search-results"></div>
     <div id="search-hint-row">
@@ -640,11 +642,12 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="#inicio" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&amp;V AI GROUP</span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-9 font-head text-sm">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
         <a href="index.html" class="text-white transition-colors">Inicio</a>
+        <a href="express.html" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
         <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
         <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
@@ -652,20 +655,20 @@
         <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-          <kbd>Ctrl K</kbd>
+          <kbd class="hidden xl:inline">Ctrl K</kbd>
         </button>
       </nav>
 
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">
-          Hablar por WhatsApp
+        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap">
+          <span class="hidden xl:inline">Hablar por </span>WhatsApp
         </a>
-        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">
+        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">
           Agendar auditoría
         </a>
       </div>
 
-      <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
+      <button id="menu-btn" type="button" class="lg:hidden text-slate-300 p-2.5 -mr-2.5" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
@@ -674,14 +677,15 @@
 
   <!-- mobile menu -->
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
-    <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
-      <a href="index.html" class="text-white">Inicio</a>
-      <a href="servicios.html" class="text-slate-300">Servicios</a>
-      <a href="cursos.html" class="text-slate-300">Cursos</a>
-      <a href="precios.html" class="text-slate-300">Precios</a>
-      <a href="nosotros.html" class="text-slate-300">Nosotros</a>
-      <a href="contacto.html" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
+    <div class="px-6 py-5 flex flex-col gap-1 font-head text-sm">
+      <a href="index.html" class="text-white py-3">Inicio</a>
+      <a href="express.html" class="text-fv-triGreen py-3">Express</a>
+      <a href="servicios.html" class="text-slate-300 py-3">Servicios</a>
+      <a href="cursos.html" class="text-slate-300 py-3">Cursos</a>
+      <a href="precios.html" class="text-slate-300 py-3">Precios</a>
+      <a href="nosotros.html" class="text-slate-300 py-3">Nosotros</a>
+      <a href="contacto.html" class="text-slate-300 py-3">Contacto</a>
+      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-3 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
       <a href="contacto.html" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
     </div>
   </div>
@@ -691,8 +695,22 @@
 
 <main id="main-content">
 
+<!-- ============ FRANJA EXPRESS (negocios pequeños; el resto de la portada es para empresas medianas) ============ -->
+<aside aria-label="Productos Express para negocios" class="relative mt-[76px] bg-fv-surface2/60 border-y border-transparent" style="border-image: linear-gradient(90deg, rgba(74,222,128,.45), rgba(168,85,247,.45)) 1;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+    <p class="flex items-start sm:items-center gap-3 text-sm text-slate-300 leading-snug">
+      <span class="relative flex h-2 w-2 shrink-0 mt-1.5 sm:mt-0" aria-hidden="true"><span class="absolute inline-flex h-full w-full rounded-full bg-fv-triGreen opacity-60 motion-safe:animate-ping"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-fv-triGreen"></span></span>
+      <span><strong class="font-semibold text-white">¿Tienes un negocio?</strong> Google Maps, catálogo con tasa BCV y control de caja, listos en 48 a 72 horas <strong class="font-semibold text-fv-triGreen">desde $35</strong></span>
+    </p>
+    <a href="express.html" data-track="express_franja_click" data-cta="franja_portada" class="btn-tri inline-flex justify-center items-center gap-2 font-head text-sm font-semibold px-4 py-2.5 rounded-lg whitespace-nowrap sm:shrink-0">
+      Ver productos
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</aside>
+
 <!-- ============ HERO ============ -->
-<section id="inicio" class="relative lg:min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+<section id="inicio" class="relative lg:min-h-[calc(100vh-140px)] flex items-center pt-12 lg:pt-16 pb-20 overflow-hidden">
   <canvas id="hex-canvas" class="opacity-70"></canvas>
   <div class="absolute top-0 left-0 w-[560px] h-[560px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
   <div class="absolute bottom-0 right-0 w-[620px] h-[620px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4 parallax-blob" data-speed="-0.05"></div>
@@ -740,17 +758,17 @@
   </div>
 </section>
 
-<!-- ============ CARRUSEL DE MARCAS (placeholder — reemplazar por logos reales de clientes) ============ -->
+<!-- ============ CARRUSEL DE MARCAS (logos reales de clientes) ============ -->
 <section class="relative py-12 border-t border-white/5 bg-fv-surface2/20">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-6">
-    <p class="text-center text-xs font-head uppercase tracking-widest text-slate-400">Espacio reservado para empresas que confían en nosotros</p>
+    <p class="text-center text-xs font-head uppercase tracking-widest text-slate-400">Empresas que confían en nosotros</p>
   </div>
   <div class="marquee">
     <div class="marquee-track">
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" alt="Sweetery" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" alt="Rujano Raw" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" alt="Surtidora 9° Los Andes" class="h-full w-full object-contain rounded-md"></div>
@@ -758,7 +776,7 @@
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" alt="Sweetery" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" alt="Rujano Raw" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" alt="Surtidora 9° Los Andes" class="h-full w-full object-contain rounded-md"></div>
@@ -766,7 +784,7 @@
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" alt="Sweetery" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" alt="Rujano Raw" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" alt="Surtidora 9° Los Andes" class="h-full w-full object-contain rounded-md"></div>
@@ -774,7 +792,7 @@
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" alt="Licorway" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" alt="Killjoy" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" alt="Natural Sweet" class="h-[85%] w-[85%] object-contain rounded-md"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" alt="Casa del Mocho" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" alt="Sweetery" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" alt="Rujano Raw" class="h-full w-full object-contain rounded-md"></div>
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" alt="Surtidora 9° Los Andes" class="h-full w-full object-contain rounded-md"></div>
@@ -784,10 +802,10 @@
 </section>
 
 <!-- ============ PAIN POINTS ============ -->
-<section class="relative py-28 border-t border-white/5">
+<section aria-labelledby="h-sec-1" class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-14">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
+      <h2 id="h-sec-1" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">¿Alguna de estas le suena <span class="shimmer-text">familiar?</span></h2>
       <p class="mt-4 leading-relaxed text-slate-300">Son las razones más comunes por las que una empresa mediana de Valencia y Carabobo nos llama por primera vez — y cada vez más, desde otras ciudades del país.</p>
     </div>
 
@@ -837,11 +855,11 @@
 </section>
 
 <!-- ============ DIFERENCIAL ============ -->
-<section id="diferencial" class="relative py-28 border-t border-white/5">
+<section aria-labelledby="h-sec-2" id="diferencial" class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       <div class="reveal">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight mb-6 uppercase text-balance">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
+        <h2 id="h-sec-2" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight mb-6 uppercase text-balance">Por qué <span class="shimmer-text">elegir a F&amp;V</span></h2>
         <p class="text-slate-400 leading-relaxed mb-4 text-fv-cyan">No vendemos una licencia ni recomendamos un catálogo. Somos el equipo que audita su operación, implementa lo que realmente necesita, capacita a su gente y se queda dando soporte — de principio a fin, sin subcontratar cada etapa a alguien distinto.</p>
         <p class="text-slate-400 leading-relaxed mb-4 text-fv-cyan">Al no estar atados a un solo fabricante, cada recomendación responde a cómo trabaja su empresa, no a la comisión que nos paga un proveedor.</p>
         <p class="font-head font-semibold text-fv-cyan mb-4">Así se ve la diferencia en la práctica:</p>
@@ -899,10 +917,10 @@
 </section>
 
 <!-- ============ DOS LÍNEAS DE NEGOCIO: HEXÁGONO / TRIÁNGULO ============ -->
-<section class="relative py-28 border-t border-white/5">
+<section aria-labelledby="h-sec-3" class="relative py-28 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Dos líneas, <span class="shimmer-text">un mismo estándar</span></h2>
+      <h2 id="h-sec-3" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Dos líneas, <span class="shimmer-text">un mismo estándar</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Elija la escala que necesita su operación hoy — ambas con el mismo compromiso F&amp;V detrás.</p>
     </div>
 
@@ -951,10 +969,10 @@
 </section>
 
 <!-- ============ SOFTWARE QUE IMPLEMENTAMOS ============ -->
-<section class="relative py-24 border-t border-white/5">
+<section aria-labelledby="h-sec-4" class="relative py-24 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Cómo elegimos <span class="shimmer-text">su tecnología</span></h2>
+      <h2 id="h-sec-4" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Cómo elegimos <span class="shimmer-text">su tecnología</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed text-fv-orange">Somos independientes de proveedor: evaluamos su operación primero, y solo después recomendamos la plataforma que se ajusta a ella — nunca la que más nos convenga vender.</p>
     </div>
 
@@ -1011,10 +1029,10 @@
 </section>
 
 <!-- ============ AUTOMATIZACIÓN RÁPIDA ============ -->
-<section class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
+<section aria-labelledby="h-sec-5" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">IA y automatización que <span class="shimmer-text">no esperan un año</span></h2>
+      <h2 id="h-sec-5" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">IA y automatización que <span class="shimmer-text">no esperan un año</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed">Un ERP tradicional puede tardar meses en mostrar resultados. Un flujo de automatización bien diseñado —con n8n, un agente de IA o una integración de WhatsApp Business— puede resolver un cuello de botella específico en mucho menos tiempo, sin comprometerse con un ecosistema completo.</p>
     </div>
 
@@ -1070,12 +1088,12 @@
 </section>
 
 <!-- ============ METODOLOGÍA ============ -->
-<section id="metodologia" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
+<section aria-labelledby="h-sec-6" id="metodologia" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
       <div class="lg:col-span-4">
         <div class="reveal lg:sticky lg:top-32">
-          <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Cómo <span class="shimmer-text">trabajamos</span></h2>
+          <h2 id="h-sec-6" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Cómo <span class="shimmer-text">trabajamos</span></h2>
           <p class="text-slate-400 mt-4 leading-relaxed text-fv-cyan">Un mismo equipo acompaña las seis etapas, sin traspasos entre proveedores.</p>
         </div>
       </div>
@@ -1123,10 +1141,10 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faq" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
+<section aria-labelledby="h-sec-7" id="faq" class="relative py-28 border-t border-white/5 bg-fv-surface2/40">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12 flex items-center justify-between gap-6">
-      <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Preguntas <span class="shimmer-text">frecuentes</span></h2>
+      <h2 id="h-sec-7" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Preguntas <span class="shimmer-text">frecuentes</span></h2>
       <img src="assets/signos-hex.png" width="1024" height="1024" alt="" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
     </div>
 
@@ -1183,17 +1201,17 @@
 </section>
 
 <!-- ============ CTA FINAL ============ -->
-<section id="cta-final" class="relative py-24 border-t border-white/5">
+<section aria-labelledby="h-sec-8" id="cta-final" class="relative py-24 border-t border-white/5">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
     <div class="relative rounded-xl overflow-hidden bg-fv-surface box-gradient-border p-10 sm:p-16 text-center">
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
 
       <div class="relative z-10">
-        <h2 class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase tracking-tight text-balance">Empecemos con un diagnóstico de su operación</h2>
-        <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo.</p>
+        <h2 id="h-sec-8" class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase tracking-tight text-balance">Empecemos con un diagnóstico de su operación</h2>
+        <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos el mismo día por WhatsApp.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-primary btn-grow inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
+          <a href="https://wa.me/584244125386" data-cta="cierre" target="_blank" rel="noopener" class="btn-primary btn-grow inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
             Escribir por WhatsApp
           </a>
           <a href="mailto:contacto@fvaigroup.com" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">
@@ -1246,6 +1264,7 @@
         <div>
           <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h3>
           <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="express.html" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a></li>
             <li><a href="nosotros.html#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
             <li><a href="nosotros.html#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&amp;V</a></li>
@@ -1262,6 +1281,7 @@
             <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
             <li class="pt-1 text-slate-400">Valencia, Carabobo, Venezuela</li>
             <li class="text-slate-400">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
+            <li class="text-slate-400">Te respondemos el mismo día</li>
           </ul>
         </div>
       </div>
@@ -1308,7 +1328,7 @@
     <div id="luci-quick" class="px-4 pb-3 flex flex-wrap gap-2"></div>
 
     <form id="luci-form" class="flex items-center gap-2 p-3 border-t border-white/5">
-      <input id="luci-input" type="text" placeholder="Escriba su pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:border-fv-cyan/50">
+      <input id="luci-input" type="text" aria-label="Pregunta para Luci" placeholder="Escriba su pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:border-fv-cyan/50">
       <button type="submit" aria-label="Enviar" class="w-9 h-9 rounded-lg bg-fv-orange text-black flex items-center justify-center shrink-0 hover:brightness-110 transition-all">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
       </button>
@@ -1564,7 +1584,7 @@
   // ---- + aviso de descubribilidad de primer uso: aparece una sola vez cuando el widget se vuelve visible ----
   const luciWidget = document.getElementById('luci-widget');
   if (luciWidget) {
-    const mobileQuery = window.matchMedia('(max-width: 767px)');
+    const mobileQuery = window.matchMedia('(max-width: 1279px)');
     const luciHint = document.getElementById('luci-hint');
     const luciHintOpen = document.getElementById('luci-hint-open');
     const luciHintDismiss = document.getElementById('luci-hint-dismiss');
@@ -1634,18 +1654,19 @@
     if (!toggle || !panel) return;
 
     const faq = [
+      { k: ['express','maps','catalogo','bcv','caja clara','cuadre','bodegon','emprend','negocio pequeno','pequeno negocio','mi negocio','asistente ia','finanzas claras','clase 1:1','clase de ia','clase particular','redes al dia'], a: 'Para negocios tenemos productos Express con precio fijo, listos en 48 a 72 horas desde $35: Negocio Visible (Google Maps y WhatsApp Business), Catálogo Express con precios en Bs a tasa BCV, Caja Clara para el cuadre diario y más. Los encuentra todos en la página Express, en el menú de arriba.' },
       { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos su situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
       { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida. Somos independientes de proveedor: recomendamos según su caso.' },
       { k: ['soporte','despues','mantenimiento','postventa','incidencia'], a: 'Sí. El Acompañamiento Continuo es uno de nuestros seis servicios: canal directo, ajustes de configuración y revisión periódica.' },
-      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Nuestros precios de referencia van desde $150 (Asesoría Estratégica) hasta $400 (Evaluación de Procesos) — puede verlos todos en la página de Precios. El número final depende del alcance real de su proyecto.' },
+      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Publicamos todos nuestros precios en la página de Precios: los productos Express van desde $10 y los servicios para empresas desde $40 al mes. Los proyectos de implementación se cotizan según su alcance.' },
       { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre su sistema real, no un entorno genérico de demostración.' },
       { k: ['curso','cursos','aprender','estudiar'], a: 'Sí, también tenemos cursos independientes para formar a su equipo sin comprometerse todavía con un proyecto completo. Puede verlos en la página de Cursos.' },
-      { k: ['horario','atencion','hora','abren'], a: 'Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m., y respondemos en 24 a 48 horas hábiles.' },
+      { k: ['horario','atencion','hora','abren'], a: 'Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m., y te respondemos el mismo día.' },
       { k: ['valencia','carabobo','ubicacion','zona','ciudad','donde'], a: 'Estamos en Valencia, Carabobo, y trabajamos con empresas de toda Venezuela — la mayoría de nuestros proyectos hoy son en Carabobo.' },
       { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp o completar el formulario en la página de Contacto.' },
     ];
 
-    const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?'];
+    const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?', '¿Tienen algo para mi negocio?'];
 
     function addMessage(text, from) {
       const bubble = document.createElement('div');
@@ -1915,12 +1936,20 @@
       { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
       { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
       { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Valores de referencia por servicio.', url: 'precios.html', cat: 'Pagina' },
+      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
       { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'Escríbanos por WhatsApp o el formulario.', url: 'contacto.html', cat: 'Pagina' },
+      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
       { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
       { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
       { title: 'Calculadora de ROI', desc: 'Estime cuánto puede ahorrar automatizando sus procesos.', url: 'calculadora-roi.html', cat: 'Pagina' },
+      { title: 'Express', desc: 'Productos para negocios desde $35, listos en 48 a 72 horas.', url: 'express.html', cat: 'Producto' },
+      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
+      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
+      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
+      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
+      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
+      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
+      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
     ];
 
     const overlay = document.getElementById('search-overlay');
@@ -1994,6 +2023,19 @@
     const trigger = document.getElementById('search-trigger');
     if (trigger) trigger.addEventListener('click', openSearch);
   })();
+</script>
+<script>
+  // ---- Medición (GA4): clics a WhatsApp -> 'whatsapp_click' con ubicación y producto; elementos con data-track -> su propio evento ----
+  document.addEventListener('click', (e) => {
+    if (typeof gtag !== 'function') return;
+    const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
+    const tracked = e.target.closest('[data-track]');
+    if (tracked) gtag('event', tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
+    const a = e.target.closest('a[href*="wa.me"]');
+    if (!a) return;
+    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
+    gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
+  });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

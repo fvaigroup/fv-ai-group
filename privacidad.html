@@ -151,12 +151,14 @@
   .sr-tag.cat-Curso { background: rgba(255,140,0,0.12); color: #FF8C00; }
   .sr-tag.cat-Pagina { background: rgba(255,255,255,0.08); color: #94a3b8; }
   .sr-tag.cat-Legal { background: rgba(255,255,255,0.06); color: #64748b; }
+  .sr-tag.cat-Producto { background: rgba(74,222,128,0.12); color: #4ade80; }
   #search-empty { padding: 28px 18px; text-align: center; color: #64748b; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #475569; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 <div id="search-overlay">
   <div id="search-panel">
     <div id="search-input-row">
@@ -188,10 +190,11 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="index.html" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&amp;V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-9 font-head text-sm">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
+        <a href="express.html" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
         <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
         <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
@@ -199,12 +202,12 @@
         <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-          <kbd>Ctrl K</kbd>
+          <kbd class="hidden xl:inline">Ctrl K</kbd>
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">Hablar por WhatsApp</a>
-        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
+        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Hablar por </span>WhatsApp</a>
+        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -215,6 +218,7 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-slate-300">Inicio</a>
+      <a href="express.html" class="text-fv-triGreen">Express</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
       <a href="cursos.html" class="text-slate-300">Cursos</a>
       <a href="precios.html" class="text-slate-300">Precios</a>
@@ -228,7 +232,7 @@
 <div id="scroll-progress"></div>
 
 
-<main>
+<main id="main-content">
 <section class="relative pt-40 pb-24 overflow-hidden">
   <div class="absolute inset-0 grain opacity-30 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
   <div class="max-w-3xl mx-auto px-6 lg:px-8 relative z-10">
@@ -239,14 +243,14 @@
       <p>F&amp;V AI Group S.A. ("F&amp;V", "nosotros") respeta su privacidad. Este documento explica qué información recopilamos a través de <a href="https://www.fvaigroup.com">fvaigroup.com</a>, cómo la usamos y qué opciones tiene al respecto.</p>
 
       <h2>1. Información que recopilamos</h2>
-      <p>Recopilamos la información que usted nos entrega directamente al completar el formulario de contacto o al escribirnos por WhatsApp, correo o redes sociales:</p>
+      <p>Recopilamos la información que usted nos entrega directamente al escribirnos por WhatsApp, correo o redes sociales. El formulario de contacto del sitio no envía sus datos a nuestros servidores: compone un mensaje de WhatsApp ya redactado con lo que usted escribió, y solo nos llega si usted lo envía desde su WhatsApp. Los datos pueden incluir:</p>
       <ul>
         <li>Nombre completo</li>
         <li>Nombre de la empresa (cuando aplica)</li>
         <li>Correo electrónico y número de teléfono</li>
         <li>Servicio de interés y contenido del mensaje que nos envía</li>
       </ul>
-      <p>Actualmente este sitio no utiliza cookies de seguimiento ni herramientas de analítica de terceros. Si eso cambia en el futuro, actualizaremos esta política e informaremos de forma visible en el sitio.</p>
+      <p>Este sitio utiliza herramientas de analítica (Vercel Analytics, Google Analytics y Microsoft Clarity) para medir de forma agregada cómo se usa, por ejemplo qué páginas se visitan y cuántas personas pulsan los botones de WhatsApp. No las usamos para publicidad de terceros. Puede limitar las cookies desde la configuración de su navegador.</p>
 
       <h2>2. Cómo usamos su información</h2>
       <p>Usamos los datos que nos comparte exclusivamente para:</p>
@@ -487,12 +491,20 @@
       { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
       { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
       { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Valores de referencia por servicio.', url: 'precios.html', cat: 'Pagina' },
+      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
       { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'Escríbanos por WhatsApp o el formulario.', url: 'contacto.html', cat: 'Pagina' },
+      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
       { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
       { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
       { title: 'Calculadora de ROI', desc: 'Estime cuánto puede ahorrar automatizando sus procesos.', url: 'calculadora-roi.html', cat: 'Pagina' },
+      { title: 'Express', desc: 'Productos para negocios desde $35, listos en 48 a 72 horas.', url: 'express.html', cat: 'Producto' },
+      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
+      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
+      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
+      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
+      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
+      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
+      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
     ];
 
     const overlay = document.getElementById('search-overlay');
@@ -566,6 +578,19 @@
     const trigger = document.getElementById('search-trigger');
     if (trigger) trigger.addEventListener('click', openSearch);
   })();
+</script>
+<script>
+  // ---- Medición (GA4): clics a WhatsApp -> 'whatsapp_click' con ubicación y producto; elementos con data-track -> su propio evento ----
+  document.addEventListener('click', (e) => {
+    if (typeof gtag !== 'function') return;
+    const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
+    const tracked = e.target.closest('[data-track]');
+    if (tracked) gtag('event', tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
+    const a = e.target.closest('a[href*="wa.me"]');
+    if (!a) return;
+    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
+    gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
+  });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

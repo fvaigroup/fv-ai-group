@@ -20,20 +20,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contacto | F&V AI Group</title>
-<meta name="description" content="Escríbanos por WhatsApp, correo o el formulario. Respondemos con los próximos pasos para su proyecto.">
+<meta name="description" content="Escríbenos por WhatsApp y te respondemos el mismo día. También puedes agendar una llamada o escribirnos al correo.">
 <link rel="canonical" href="https://www.fvaigroup.com/contacto">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&amp;V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="Contacto | F&V AI Group">
-<meta property="og:description" content="Escríbanos por WhatsApp, correo o el formulario. Respondemos con los próximos pasos para su proyecto.">
+<meta property="og:description" content="Escríbenos por WhatsApp y te respondemos el mismo día. También puedes agendar una llamada o escribirnos al correo.">
 <meta property="og:url" content="https://www.fvaigroup.com/contacto">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contacto | F&V AI Group">
-<meta name="twitter:description" content="Escríbanos por WhatsApp, correo o el formulario. Respondemos con los próximos pasos para su proyecto.">
+<meta name="twitter:description" content="Escríbenos por WhatsApp y te respondemos el mismo día. También puedes agendar una llamada o escribirnos al correo.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
 <link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
@@ -71,8 +71,9 @@
   .fv-label { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: #9aa3af; margin-bottom: 6px; display: block; }
   .fv-input.input-error { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.14); }
   .fv-error { font-size: 12px; color: #f87171; margin-top: 6px; }
-  /* ---- Pulso de éxito del formulario (anillos cian-naranja expandiéndose) ---- */
+  /* ---- Estado del formulario ---- */
   #form-status.is-success { background: rgba(0,255,255,0.08); border: 1px solid rgba(0,255,255,0.3); color: #7fe7e7; }
+  #form-status.is-success a { text-decoration: underline; color: #fff; }
   #form-status.is-error { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.3); color: #f87171; }
 
   /* ---- Pulso de éxito del formulario (anillos cian-naranja expandiéndose) ---- */
@@ -269,12 +270,14 @@
   .sr-tag.cat-Curso { background: rgba(255,140,0,0.12); color: #FF8C00; }
   .sr-tag.cat-Pagina { background: rgba(255,255,255,0.08); color: #94a3b8; }
   .sr-tag.cat-Legal { background: rgba(255,255,255,0.06); color: #64748b; }
+  .sr-tag.cat-Producto { background: rgba(74,222,128,0.12); color: #4ade80; }
   #search-empty { padding: 28px 18px; text-align: center; color: #64748b; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #475569; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 <div id="search-overlay">
   <div id="search-panel">
     <div id="search-input-row">
@@ -306,10 +309,11 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="index.html" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block">F&amp;V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&amp;V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-9 font-head text-sm">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
         <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
+        <a href="express.html" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
         <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
         <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
         <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
@@ -317,12 +321,12 @@
         <a href="contacto.html" class="text-white">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-          <kbd>Ctrl K</kbd>
+          <kbd class="hidden xl:inline">Ctrl K</kbd>
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg">Hablar por WhatsApp</a>
-        <a href="#formulario" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg">Agendar auditoría</a>
+        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Hablar por </span>WhatsApp</a>
+        <a href="#formulario" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -333,6 +337,7 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="index.html" class="text-slate-300">Inicio</a>
+      <a href="express.html" class="text-fv-triGreen">Express</a>
       <a href="servicios.html" class="text-slate-300">Servicios</a>
       <a href="cursos.html" class="text-slate-300">Cursos</a>
       <a href="precios.html" class="text-slate-300">Precios</a>
@@ -346,41 +351,37 @@
 <div id="scroll-progress"></div>
 
 
-<main>
+<main id="main-content">
 
 <!-- ============ HERO + FORM ============ -->
-<section class="relative pt-40 pb-28 overflow-hidden">
+<section aria-label="Contacto por WhatsApp" class="relative pt-40 pb-28 overflow-hidden">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
   <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/4 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="max-w-2xl mb-16 reveal">
-      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">Hablemos de su <span class="text-neon-orange">próximo</span> <span class="shimmer-text">proyecto</span></h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light">Cuéntenos qué sistema usan hoy y qué les está costando más trabajo. Respondemos por WhatsApp o correo con los próximos pasos.</p>
-      <p class="text-sm text-slate-500 mt-3">¿Prefiere ver números antes de escribir? <a href="precios.html" class="link-underline text-fv-cyan">Consulte nuestros precios de referencia</a>.</p>
+      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">Hablemos de tu <span class="text-neon-orange">próximo</span> <span class="shimmer-text">proyecto</span></h1>
+      <p class="text-lg text-slate-400 leading-relaxed font-light mb-8">Escríbenos por WhatsApp y te respondemos el mismo día.</p>
+      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20hablar%20con%20F%26V" target="_blank" rel="noopener" data-cta="hero" class="btn-primary inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 min-h-[56px] font-head font-semibold text-lg rounded-lg">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <p class="text-sm text-slate-500 mt-5">¿Tienes un negocio pequeño? <a href="express.html" class="link-underline text-fv-cyan inline-block py-3 -my-3">Mira los productos Express desde $35</a>.</p>
+      <p class="text-sm text-slate-500 mt-2">¿Prefieres ver números antes de escribir? <a href="precios.html" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ver precios</a>.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
 
       <!-- Canales directos -->
       <div class="lg:col-span-2 space-y-4">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="flex items-center gap-4 p-6 rounded-lg bg-fv-surface border border-fv-border hover:border-fv-cyan/40 transition-colors">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-fv-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20hablar%20con%20F%26V" target="_blank" rel="noopener" data-cta="tarjeta_whatsapp" class="relative flex items-center gap-4 p-6 rounded-lg bg-fv-surface box-gradient-border transition-[filter] hover:brightness-110">
+          <div class="w-12 h-12 rounded-xl bg-fv-orange/10 border border-fv-orange/40 flex items-center justify-center shrink-0 text-fv-orange">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
           </div>
-          <div>
-            <p class="font-head text-white text-sm">WhatsApp</p>
-            <p class="text-sm text-slate-500">+58 424 412 5386</p>
-          </div>
-        </a>
-
-        <a href="mailto:contacto@fvaigroup.com" class="flex items-center gap-4 p-6 rounded-lg bg-fv-surface border border-fv-border hover:border-fv-orange/40 transition-colors">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-fv-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <div>
-            <p class="font-head text-white text-sm">Correo</p>
-            <p class="text-sm text-slate-500">contacto@fvaigroup.com</p>
+          <div class="min-w-0">
+            <span class="inline-block mb-1.5 text-[11px] font-head font-semibold uppercase tracking-wider text-fv-orange bg-fv-orange/10 border border-fv-orange/30 rounded-full px-2.5 py-0.5">Te respondemos el mismo día</span>
+            <p class="font-head text-white text-base">WhatsApp</p>
+            <p class="text-sm text-slate-400">+58 424 412 5386</p>
           </div>
         </a>
 
@@ -404,86 +405,72 @@
           </div>
         </a>
 
+        <p class="text-sm text-slate-500 px-1">¿Prefieres correo? <a href="mailto:contacto@fvaigroup.com" class="link-underline text-fv-cyan inline-block py-3 -my-3">contacto@fvaigroup.com</a></p>
+
         <div class="p-6 rounded-lg bg-black border border-fv-border">
-          <p class="font-head text-white text-sm mb-1.5">Horario y tiempo de respuesta</p>
-          <p class="text-sm text-slate-500 leading-relaxed">Lunes a viernes, de 9:00 a.m. a 5:00 p.m. Respondemos WhatsApp y correo en 24 a 48 horas hábiles; para algo urgente, WhatsApp es el canal más rápido.</p>
+          <p class="font-head text-white text-sm mb-1.5">Te respondemos el mismo día</p>
+          <p class="text-sm text-slate-500 leading-relaxed">Lunes a viernes, de 9:00 a.m. a 5:00 p.m. Si escribes fuera de ese horario, te respondemos a primera hora del siguiente día hábil.</p>
         </div>
       </div>
 
-      <!-- Formulario -->
-      <div id="formulario" class="lg:col-span-3">
-        <form id="contact-form" class="p-8 rounded-lg bg-fv-surface border border-fv-border space-y-5">
+      <!-- Formulario: arma el mensaje y abre WhatsApp -->
+      <div id="formulario" class="lg:col-span-3 scroll-mt-28">
+        <div class="mb-5">
+          <h2 class="font-sans text-xl sm:text-2xl text-white font-semibold tracking-tight mb-2">¿Prefieres dejarnos tus datos? Te armamos el mensaje</h2>
+          <p class="text-sm text-slate-400">Llena esto y se abre WhatsApp con tu mensaje listo para enviar.</p>
+        </div>
+        <form id="contact-form" class="p-6 sm:p-8 rounded-lg bg-fv-surface border border-fv-border space-y-5" novalidate>
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
-              <label class="fv-label" for="nombre">Nombre completo</label>
-              <input class="fv-input" type="text" id="nombre" name="nombre" placeholder="Su nombre completo" required>
+              <label class="fv-label" for="nombre">Nombre</label>
+              <input class="fv-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
               <p id="err-nombre" class="fv-error hidden"></p>
             </div>
             <div>
-              <label class="fv-label" for="empresa">Empresa <span class="text-slate-600">(opcional)</span></label>
-              <input class="fv-input" type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa">
-            </div>
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label class="fv-label" for="email">Correo principal o corporativo</label>
-              <input class="fv-input" type="email" id="email" name="email" placeholder="correo@empresa.com" required>
-              <p id="err-email" class="fv-error hidden"></p>
-            </div>
-            <div>
-              <label class="fv-label" for="telefono">Teléfono / WhatsApp</label>
-              <input class="fv-input" type="tel" id="telefono" name="telefono" placeholder="+58 000 000 0000" required>
-              <p id="err-telefono" class="fv-error hidden"></p>
+              <label class="fv-label" for="negocio">Negocio o empresa <span class="text-slate-600">(opcional)</span></label>
+              <input class="fv-input" type="text" id="negocio" name="negocio" placeholder="Nombre de tu negocio o empresa" autocomplete="organization">
             </div>
           </div>
 
           <div>
-            <label class="fv-label" for="servicio">Servicio de interés</label>
-            <select class="fv-input" id="servicio" name="servicio">
-              <option>Asesoría Estratégica</option>
-              <option>Evaluación de Procesos</option>
-              <option>Despliegue y Ejecución</option>
-              <option>Habilitación de Equipos</option>
-              <option>Masterclasses y Workshops</option>
-              <option>Acompañamiento Continuo</option>
-              <option>Aún no estoy seguro</option>
+            <label class="fv-label" for="interes">¿Qué te interesa?</label>
+            <select class="fv-input" id="interes" name="interes">
+              <optgroup label="Para tu negocio (Express)">
+                <option>Negocio Visible</option>
+                <option>Catálogo Express</option>
+                <option>Caja Clara</option>
+                <option>Asistente IA de WhatsApp</option>
+                <option>Clase 1:1 de IA</option>
+                <option>Mis Finanzas Claras</option>
+              </optgroup>
+              <optgroup label="Para empresas (Línea Hexagonal)">
+                <option>Asesoría Estratégica</option>
+                <option>Evaluación de Procesos</option>
+                <option>Despliegue y Ejecución</option>
+                <option>Habilitación de Equipos</option>
+                <option>Masterclasses y Workshops</option>
+                <option>Acompañamiento Continuo</option>
+              </optgroup>
+              <optgroup label="Línea Triangular">
+                <option>Sprint a medida</option>
+                <option>Curso Finanzas con IA</option>
+              </optgroup>
+              <option selected>Aún no estoy seguro</option>
             </select>
           </div>
 
           <div>
-            <label class="fv-label" for="mensaje">Cuéntenos brevemente su caso</label>
-            <textarea class="fv-input" id="mensaje" name="mensaje" rows="4" placeholder="Qué sistema usan hoy, y qué le está costando más trabajo" required></textarea>
-            <p id="err-mensaje" class="fv-error hidden"></p>
+            <label class="fv-label" for="mensaje">Mensaje <span class="text-slate-600">(opcional)</span></label>
+            <textarea class="fv-input" id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos tu caso en una o dos líneas"></textarea>
           </div>
 
-          <!-- Honeypot anti-spam: invisible para personas, casi siempre completado por bots -->
-          <div class="absolute -left-[9999px] opacity-0" aria-hidden="true">
-            <label for="sitio-web">No completar este campo</label>
-            <input type="text" id="sitio-web" name="sitio-web" tabindex="-1" autocomplete="off">
-          </div>
+          <div id="form-status" class="hidden text-sm rounded-lg px-4 py-3" role="status" aria-live="polite"></div>
 
-          <!--
-            Cloudflare Turnstile (recomendado: ya usan Cloudflare para el DNS).
-            1) Crear un sitekey gratis en https://dash.cloudflare.com/?to=/:account/turnstile
-            2) Descomentar el script de abajo y este div, y reemplazar YOUR_SITE_KEY.
-          <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY" data-theme="dark"></div>
-          -->
-
-          <div>
-            <label class="flex items-start gap-3 text-xs text-slate-500 leading-relaxed">
-              <input type="checkbox" id="acepto" name="acepto" required class="mt-0.5 accent-fv-orange">
-              <span>He leído y acepto la <a href="privacidad.html" target="_blank" class="link-underline text-fv-cyan hover:text-white transition-colors">Política de Privacidad</a> y los <a href="terminos.html" target="_blank" class="link-underline text-fv-cyan hover:text-white transition-colors">Términos y Condiciones</a>.</span>
-            </label>
-            <p id="err-acepto" class="fv-error hidden">Debe aceptar la Política de Privacidad y los Términos y Condiciones para continuar.</p>
-          </div>
-
-          <div id="form-status" class="hidden text-sm rounded-lg px-4 py-3"></div>
-
-          <button type="submit" class="btn-primary w-full inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">
-            Enviar mensaje
+          <button type="submit" class="btn-primary w-full inline-flex justify-center items-center gap-2.5 px-8 py-4 min-h-[52px] font-head font-semibold rounded-lg">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+            Enviar por WhatsApp
           </button>
-          <p class="text-xs text-slate-500 text-center">Al enviar se abrirá su cliente de correo con el mensaje ya redactado, listo para confirmar el envío.</p>
+          <p class="text-xs text-slate-500 text-center leading-relaxed">Se abrirá WhatsApp con tu mensaje listo. Al enviarlo aceptas nuestra <a href="privacidad.html" target="_blank" rel="noopener" class="link-underline text-fv-cyan hover:text-white transition-colors">Política de Privacidad</a> y los <a href="terminos.html" target="_blank" rel="noopener" class="link-underline text-fv-cyan hover:text-white transition-colors">Términos y Condiciones</a>.</p>
         </form>
       </div>
     </div>
@@ -491,10 +478,10 @@
 </section>
 
 <!-- ============ MAPA ============ -->
-<section id="mapa" class="scroll-mt relative border-t border-white/5">
+<section aria-label="Cómo llegar" id="mapa" class="scroll-mt relative border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
     <h2 class="font-sans text-2xl text-white mb-1 uppercase">Cómo llegar</h2>
-    <p class="text-sm text-slate-500 mb-6">Edificio Torre Trébol, Av. La Rosario, Urb. Lomas del Este — Valencia 2001, Carabobo, Venezuela · <a href="https://maps.app.goo.gl/P9tT39XcgRCV7rVeA" target="_blank" rel="noopener" class="text-fv-cyan hover:underline">Ver en Google Maps</a></p>
+    <p class="text-sm text-slate-500 mb-6">Edificio Torre Trébol, Av. La Rosario, Urb. Lomas del Este — Valencia 2001, Carabobo, Venezuela · <a href="https://maps.app.goo.gl/P9tT39XcgRCV7rVeA" target="_blank" rel="noopener" class="text-fv-cyan hover:underline inline-block py-3 -my-3">Ver en Google Maps</a></p>
   </div>
   <div class="w-full h-[380px] border-y border-fv-border grayscale-[0.3] opacity-90">
     <iframe
@@ -508,7 +495,7 @@
 </section>
 
 <!-- ============ CONFIANZA ============ -->
-<section class="relative py-20 border-b border-white/5 bg-fv-surface2/40">
+<section aria-label="Confianza" class="relative py-20 border-b border-white/5 bg-fv-surface2/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
       <div class="p-6 rounded-lg bg-fv-surface box-glow-cyan text-center">
@@ -521,7 +508,7 @@
       </div>
       <div class="p-6 rounded-lg bg-fv-surface box-glow-cyan text-center">
         <p class="font-head text-fv-orange text-sm mb-1.5">Supervisión humana</p>
-        <p class="text-sm text-slate-500 leading-relaxed">La decisión final siempre es de su equipo.</p>
+        <p class="text-sm text-slate-500 leading-relaxed">La decisión final siempre es de tu equipo.</p>
       </div>
     </div>
   </div>
@@ -534,19 +521,19 @@
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div class="relative z-10">
-      <h2 class="font-sans text-2xl sm:text-3xl text-white mb-3 uppercase">¿Prefiere <span class="text-neon-orange">hablar</span> <span class="shimmer-text">directamente</span>?</h2>
-      <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Reserve una llamada breve con nuestro equipo para conversar su caso antes de escribirnos.</p>
+      <h2 class="font-sans text-2xl sm:text-3xl text-white mb-3 uppercase">¿Prefieres <span class="text-neon-orange">hablar</span> <span class="shimmer-text">directamente</span>?</h2>
+      <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Reserva una llamada breve con nuestro equipo para conversar tu caso antes de escribirnos.</p>
       <div class="rounded-lg overflow-hidden border border-fv-border bg-black">
         <iframe src="https://cal.com/f-v-ai-group/contacto" width="100%" height="630" style="border:0;" loading="lazy" title="Agendar una llamada con F&V AI Group"></iframe>
       </div>
-      <p class="text-slate-500 text-sm mt-6">¿Prefiere no usar el calendario? <a href="https://wa.me/584244125386?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada" target="_blank" rel="noopener" class="link-underline text-fv-cyan">Agende por WhatsApp</a> en su lugar.</p>
+      <p class="text-slate-500 text-sm mt-6">¿Prefieres no usar el calendario? <a href="https://wa.me/584244125386?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada" target="_blank" rel="noopener" data-cta="agenda" class="link-underline text-fv-cyan inline-block py-3 -my-3">Agenda por WhatsApp</a>.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ FAQ CONTRATACIÓN ============ -->
-<section class="relative py-20">
+<section aria-label="Preguntas frecuentes" class="relative py-20">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <h2 class="font-sans text-2xl sm:text-3xl text-white mb-8 uppercase">Sobre el <span class="text-neon-cyan">proceso</span> de <span class="text-neon-orange">contratación</span></h2>
     <div class="space-y-3">
@@ -555,14 +542,21 @@
           <span>¿Cómo se cotiza un proyecto?</span>
           <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Después de la asesoría estratégica inicial, enviamos una propuesta con alcance, tiempos y costo — antes de comprometer cualquier presupuesto de ejecución.</p>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Los productos <a href="express.html" class="link-underline text-fv-cyan">Express</a> tienen precios fijos publicados. Para proyectos de empresa, después de la asesoría estratégica inicial te enviamos una propuesta con alcance, tiempos y costo, antes de comprometer cualquier presupuesto de ejecución.</p>
       </details>
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿En cuánto tiempo responden a un primer contacto?</span>
+          <span>¿En cuánto tiempo me responden?</span>
           <svg class="w-4 h-4 text-fv-orange transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">En 24 a 48 horas hábiles por WhatsApp o correo. Nuestro horario de atención es de lunes a viernes, de 9:00 a.m. a 5:00 p.m.</p>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Te respondemos el mismo día por WhatsApp. Si escribes fuera del horario (lunes a viernes, 9:00 a.m. a 5:00 p.m.), te respondemos a primera hora del siguiente día hábil.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
+          <span>¿Tienen algo para negocios pequeños?</span>
+          <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Sí. Los productos Express son para negocios pequeños: desde $35, con precio fijo y plazos de entrega publicados en cada producto. <a href="express.html" class="link-underline text-fv-cyan">Mira los productos Express</a>.</p>
       </details>
     </div>
   </div>
@@ -609,6 +603,7 @@
         <div>
           <h4 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
+            <li><a href="express.html" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a></li>
             <li><a href="nosotros.html#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
             <li><a href="nosotros.html#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&amp;V</a></li>
@@ -625,6 +620,7 @@
             <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
             <li class="pt-1 text-slate-600">Valencia, Carabobo, Venezuela</li>
             <li class="text-slate-600">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
+            <li class="text-slate-600">Te respondemos el mismo día</li>
           </ul>
         </div>
       </div>
@@ -664,7 +660,7 @@
     <div id="luci-quick" class="px-4 pb-3 flex flex-wrap gap-2"></div>
 
     <form id="luci-form" class="flex items-center gap-2 p-3 border-t border-white/5">
-      <input id="luci-input" type="text" placeholder="Escriba su pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-fv-cyan/50">
+      <input id="luci-input" type="text" placeholder="Escribe tu pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-fv-cyan/50">
       <button type="submit" aria-label="Enviar" class="w-9 h-9 rounded-lg bg-fv-orange text-black flex items-center justify-center shrink-0 hover:brightness-110 transition-all">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
       </button>
@@ -702,8 +698,6 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // Envío vía mailto (sin backend). Reemplazar por un servicio de formularios
-  // (Formspree, Web3Forms, etc.) cuando quieran envío silencioso sin abrir el cliente de correo.
   // ---- Pulso de éxito: anillos cian y naranja expandiéndose desde el botón ----
   function triggerSuccessPulse(button) {
     if (!button || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -718,93 +712,76 @@
     });
   }
 
-  const formLoadedAt = Date.now();
+  // ---- Formulario: arma el mensaje y abre WhatsApp ----
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
-
-  const validatedFields = [
-    { name: 'nombre', errId: 'err-nombre', msg: 'Ingrese su nombre completo.' },
-    { name: 'email', errId: 'err-email', msg: 'Ingrese un correo válido (ej. nombre@empresa.com).' },
-    { name: 'telefono', errId: 'err-telefono', msg: 'Ingrese un teléfono o WhatsApp de contacto.' },
-    { name: 'mensaje', errId: 'err-mensaje', msg: 'Cuéntenos brevemente su caso.' },
-  ];
+  const WA_BASE = 'https://wa.me/584244125386?text=';
 
   function clearFieldError(field) {
     field.classList.remove('input-error');
     const errEl = document.getElementById('err-' + field.name);
     if (errEl) errEl.classList.add('hidden');
   }
+  contactForm.nombre.addEventListener('input', () => clearFieldError(contactForm.nombre));
 
-  validatedFields.forEach(({ name }) => {
-    const el = contactForm[name];
-    el.addEventListener('input', () => clearFieldError(el));
-  });
-  contactForm.acepto.addEventListener('change', () => {
-    document.getElementById('err-acepto').classList.add('hidden');
-  });
-
-  function validateContactForm(f) {
-    let firstInvalid = null;
-    let allValid = true;
-
-    validatedFields.forEach(({ name, errId, msg }) => {
-      const el = f[name];
-      const errEl = document.getElementById(errId);
-      if (!el.checkValidity() || el.value.trim() === '') {
-        el.classList.add('input-error');
-        if (errEl) { errEl.textContent = msg; errEl.classList.remove('hidden'); }
-        allValid = false;
-        if (!firstInvalid) firstInvalid = el;
-      } else {
-        clearFieldError(el);
-      }
-    });
-
-    const aceptoErr = document.getElementById('err-acepto');
-    if (!f.acepto.checked) {
-      aceptoErr.classList.remove('hidden');
-      allValid = false;
-      if (!firstInvalid) firstInvalid = f.acepto;
-    } else {
-      aceptoErr.classList.add('hidden');
-    }
-
-    if (firstInvalid) firstInvalid.focus();
-    return allValid;
-  }
+  // Preselección desde ?interes= (coincidencia exacta con el valor, sin distinguir tildes ni mayúsculas)
+  (function () {
+    const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+    let wanted = '';
+    try { wanted = new URLSearchParams(location.search).get('interes') || ''; } catch (e) {}
+    if (!wanted) return;
+    const hit = Array.from(contactForm.interes.options).find(o => norm(o.value) === norm(wanted));
+    if (hit) contactForm.interes.value = hit.value;
+  })();
 
   contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const f = e.target;
     formStatus.classList.add('hidden');
     formStatus.classList.remove('is-success', 'is-error');
+    formStatus.textContent = '';
 
-    // Anti-spam: honeypot (campo invisible que un bot sí llena) y tiempo mínimo de llenado.
-    // Fallan en silencio (sin mensaje) porque están pensados para bots, no para personas.
-    if (f['sitio-web'] && f['sitio-web'].value) { return; }
-    if (Date.now() - formLoadedAt < 2500) { return; }
+    const nombre = f.nombre.value.trim();
+    const negocio = f.negocio.value.trim();
+    const interes = f.interes.value;
+    const mensaje = f.mensaje.value.trim();
+    const errEl = document.getElementById('err-nombre');
 
-    if (!validateContactForm(f)) {
-      formStatus.textContent = 'Revise los campos marcados en rojo antes de continuar.';
+    if (!nombre) {
+      f.nombre.classList.add('input-error');
+      errEl.textContent = 'Escribe tu nombre.';
+      errEl.classList.remove('hidden');
+      f.nombre.focus();
+      formStatus.textContent = 'Revisa el campo marcado en rojo antes de continuar.';
       formStatus.classList.remove('hidden');
       formStatus.classList.add('is-error');
       return;
     }
+    clearFieldError(f.nombre);
 
-    const subject = encodeURIComponent(`Contacto desde el sitio — ${f.servicio.value}`);
-    const body = encodeURIComponent(
-      `Nombre: ${f.nombre.value}\n` +
-      `Empresa: ${f.empresa.value}\n` +
-      `Correo: ${f.email.value}\n` +
-      `Teléfono: ${f.telefono.value}\n` +
-      `Servicio de interés: ${f.servicio.value}\n\n` +
-      `Mensaje:\n${f.mensaje.value}`
-    );
-    formStatus.textContent = 'Abriendo su cliente de correo con el mensaje listo para enviar…';
+    const msg = 'Hola, soy ' + nombre + (negocio ? ', de ' + negocio : '') + '. Me interesa: ' + interes + '.' + (mensaje ? '\n\n' + mensaje : '');
+    const url = WA_BASE + encodeURIComponent(msg);
+
+    formStatus.append('Abriendo WhatsApp con tu mensaje… ');
+    const fallback = document.createElement('a');
+    fallback.href = url;
+    fallback.target = '_blank';
+    fallback.rel = 'noopener';
+    fallback.dataset.cta = 'formulario_respaldo';
+    fallback.textContent = '¿No se abrió? Toca aquí';
+    formStatus.appendChild(fallback);
     formStatus.classList.remove('hidden');
     formStatus.classList.add('is-success');
     triggerSuccessPulse(f.querySelector('button[type="submit"]'));
-    window.location.href = `mailto:contacto@fvaigroup.com?subject=${subject}&body=${body}`;
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'whatsapp_click', { cta_location: 'formulario', product: interes, page: 'contacto' });
+      gtag('event', 'generate_lead', { method: 'whatsapp_form', interest: interes });
+    }
+    // Sin 'noopener' en las features: con él window.open devuelve siempre null y se navegaría también en esta pestaña.
+    const w = window.open(url, '_blank');
+    if (w) { try { w.opener = null; } catch (err) {} }
+    if (!w) window.location.href = url;
   });
 
   const scrollTopBtn = document.getElementById('scroll-top');
@@ -830,13 +807,14 @@
     if (!toggle || !panel) return;
 
     const faq = [
-      { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos su situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
-      { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida. Somos independientes de proveedor: recomendamos según su caso.' },
+      { k: ['express','maps','catalogo','bcv','caja clara','cuadre','bodegon','emprend','negocio pequeno','pequeno negocio','mi negocio','asistente ia','finanzas claras','clase 1:1','clase de ia','clase particular','redes al dia'], a: 'Para negocios tenemos productos Express con precio fijo desde $35 y plazos de entrega publicados en cada uno: Negocio Visible (Google Maps y WhatsApp Business), Catálogo Express con precios en Bs a tasa BCV, Caja Clara para el cuadre diario y más. Los encuentras todos en la página Express, en el menú de arriba.' },
+      { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos tu situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
+      { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida. Somos independientes de proveedor: recomendamos según tu caso.' },
       { k: ['soporte','despues','mantenimiento','postventa','incidencia'], a: 'Sí. El Acompañamiento Continuo es uno de nuestros seis servicios: canal directo, ajustes de configuración y revisión periódica.' },
-      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Tenemos valores de referencia en la página de Precios, pero el número final depende del alcance real de su proyecto.' },
-      { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre su sistema real, no un entorno genérico de demostración.' },
-      { k: ['horario','atencion','hora','abren'], a: 'Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m., y respondemos en 24 a 48 horas hábiles.' },
-      { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp o completar el formulario en la página de Contacto.' },
+      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Publicamos todos nuestros precios en la página de Precios: los productos Express van desde $10 y los servicios para empresas desde $40 al mes. Los proyectos de implementación se cotizan según tu alcance.' },
+      { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre tu sistema real, no un entorno genérico de demostración.' },
+      { k: ['horario','atencion','hora','abren'], a: 'Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m., y te respondemos el mismo día.' },
+      { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Escríbenos directo por WhatsApp: te respondemos el mismo día. También puedes usar el formulario de esta página, que te abre WhatsApp con tu mensaje listo.' },
     ];
 
     const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?'];
@@ -880,7 +858,7 @@
         if (hit) {
           addMessage(hit.a, 'bot');
         } else {
-          addMessage('No tengo una respuesta preparada para eso todavía. ¿Le gustaría hablar directo con nuestro equipo por WhatsApp?', 'bot');
+          addMessage('No tengo una respuesta preparada para eso todavía. ¿Quieres hablar directo con nuestro equipo por WhatsApp?', 'bot');
           addQuick(['Sí, ir a WhatsApp']);
         }
       }, 700);
@@ -890,7 +868,7 @@
       if (text === 'Sí, ir a WhatsApp') {
         addMessage(text, 'user');
         quick.innerHTML = '';
-        setTimeout(() => { window.open('https://wa.me/584244125386', '_blank'); }, 200);
+        setTimeout(() => { window.open('https://wa.me/584244125386', '_blank', 'noopener'); }, 200);
         return;
       }
       addMessage(text, 'user');
@@ -903,7 +881,7 @@
       panel.classList.add('is-open');
       if (!started) {
         started = true;
-        addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué le ayudo?', 'bot');
+        addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué te ayudo?', 'bot');
         addQuick(quickReplies);
       }
     }
@@ -1173,12 +1151,20 @@
       { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
       { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
       { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Valores de referencia por servicio.', url: 'precios.html', cat: 'Pagina' },
+      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
       { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'Escríbanos por WhatsApp o el formulario.', url: 'contacto.html', cat: 'Pagina' },
+      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
       { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
       { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
       { title: 'Calculadora de ROI', desc: 'Estime cuánto puede ahorrar automatizando sus procesos.', url: 'calculadora-roi.html', cat: 'Pagina' },
+      { title: 'Express', desc: 'Productos para tu negocio y para ti, con precio fijo desde $10.', url: 'express.html', cat: 'Producto' },
+      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
+      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
+      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
+      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
+      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
+      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
+      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
     ];
 
     const overlay = document.getElementById('search-overlay');
@@ -1193,7 +1179,7 @@
       currentResults = list;
       activeIndex = list.length ? 0 : -1;
       if (!list.length) {
-        resultsEl.innerHTML = '<div id="search-empty">Sin resultados. <a href="contacto.html" class="link-underline text-fv-cyan">Escríbanos</a> y le ayudamos directo.</div>';
+        resultsEl.innerHTML = '<div id="search-empty">Sin resultados. <a href="contacto.html" class="link-underline text-fv-cyan">Escríbenos</a> y te ayudamos directo.</div>';
         return;
       }
       resultsEl.innerHTML = list.map((r, i) => `
@@ -1252,6 +1238,19 @@
     const trigger = document.getElementById('search-trigger');
     if (trigger) trigger.addEventListener('click', openSearch);
   })();
+</script>
+<script>
+  // ---- Medición (GA4): clics a WhatsApp -> 'whatsapp_click' con ubicación y producto; elementos con data-track -> su propio evento ----
+  document.addEventListener('click', (e) => {
+    if (typeof gtag !== 'function') return;
+    const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
+    const tracked = e.target.closest('[data-track]');
+    if (tracked) gtag('event', tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
+    const a = e.target.closest('a[href*="wa.me"]');
+    if (!a) return;
+    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
+    gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
+  });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
