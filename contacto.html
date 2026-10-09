@@ -340,27 +340,35 @@
 <main id="main-content">
 
 <!-- ============ HERO + FORM ============ -->
-<section aria-label="Contacto por WhatsApp" class="relative pt-40 pb-28 overflow-hidden">
+<section aria-label="Contacto" class="relative pt-40 pb-28 overflow-hidden">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
   <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/4 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-    <div class="max-w-2xl mb-16 reveal">
-      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">Hablemos de tu <span class="text-neon-orange">próximo</span> <span class="shimmer-text">proyecto</span></h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light mb-8">Escríbenos por WhatsApp y te respondemos el mismo día.</p>
-      <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20hablar%20con%20F%26V" target="_blank" rel="noopener" data-cta="hero" class="btn-primary inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 min-h-[56px] font-head font-semibold text-lg rounded-lg">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
-        Escribir por WhatsApp
-      </a>
-      <p class="text-sm text-slate-500 mt-5">¿Tienes un negocio pequeño? <a href="/express" class="link-underline text-fv-cyan inline-block py-3 -my-3">Mira los productos Express desde $35</a>.</p>
-      <p class="text-sm text-slate-500 mt-2">¿Prefieres ver números antes de escribir? <a href="/soluciones" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ver precios</a>.</p>
+    <div class="max-w-3xl mx-auto text-center mb-10 reveal">
+      <p class="font-head uppercase tracking-[0.2em] text-xs text-fv-orange mb-5">Gratis · Sin compromiso</p>
+      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight text-balance">Agenda tu <span class="shimmer-text">diagnóstico gratis</span> de 20 minutos</h1>
+      <p class="text-lg text-slate-400 leading-relaxed font-light">Elige el día y la hora que te convengan: conversamos tu caso y te decimos por dónde empezar. Por videollamada, desde donde estés en Venezuela.</p>
+    </div>
+
+    <!-- Calendario de Cal.com (si no carga, el botón de abajo lo abre en otra pestaña) -->
+    <div id="agenda" class="max-w-4xl mx-auto mb-24 scroll-mt-28">
+      <div class="rounded-xl overflow-hidden border border-fv-border bg-black box-gradient-border">
+        <iframe id="cal-frame" src="https://cal.com/f-v-ai-group/contacto" width="100%" height="680" style="border:0;" title="Agendar el diagnóstico gratis de 20 minutos con F&V AI Group"></iframe>
+      </div>
+      <p class="text-sm text-slate-400 text-center mt-5">¿No ves el calendario? <a href="https://cal.com/f-v-ai-group/contacto" target="_blank" rel="noopener" data-evento="diagnostico_gratis" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ábrelo en otra pestaña</a>.</p>
+    </div>
+
+    <div class="max-w-2xl mb-10 reveal">
+      <h2 class="font-sans text-2xl sm:text-3xl text-white font-semibold tracking-tight mb-3">¿Prefieres <span class="text-neon-orange">escribirnos</span>?</h2>
+      <p class="text-slate-400 leading-relaxed">Por WhatsApp te respondemos el mismo día. ¿Tienes un negocio pequeño? <a href="/express" class="link-underline text-fv-cyan inline-block py-3 -my-3">Mira los productos Express desde $35</a>, o <a href="/soluciones" class="link-underline text-fv-cyan inline-block py-3 -my-3">revisa todos los precios</a>.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
 
       <!-- Canales directos -->
       <div class="lg:col-span-2 space-y-4">
-        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20hablar%20con%20F%26V" target="_blank" rel="noopener" data-cta="tarjeta_whatsapp" class="relative flex items-center gap-4 p-6 rounded-lg bg-fv-surface box-gradient-border transition-[filter] hover:brightness-110">
+        <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20hablar%20con%20F%26V" target="_blank" rel="noopener" data-cta="tarjeta_whatsapp" data-evento="whatsapp_contacto" class="relative flex items-center gap-4 p-6 rounded-lg bg-fv-surface box-gradient-border transition-[filter] hover:brightness-110">
           <div class="w-12 h-12 rounded-xl bg-fv-orange/10 border border-fv-orange/40 flex items-center justify-center shrink-0 text-fv-orange">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
           </div>
@@ -391,7 +399,7 @@
           </div>
         </a>
 
-        <p class="text-sm text-slate-500 px-1">¿Prefieres correo? <a href="mailto:contacto@fvaigroup.com" class="link-underline text-fv-cyan inline-block py-3 -my-3">contacto@fvaigroup.com</a></p>
+        <p class="text-sm text-slate-500 px-1">¿Prefieres correo? <a href="mailto:contacto@fvaigroup.com?subject=Consulta%20desde%20fvaigroup.com&amp;body=Hola%20F%26V%2C%20quiero%20consultar%20sobre%3A%20" class="link-underline text-fv-cyan inline-block py-3 -my-3">contacto@fvaigroup.com</a></p>
 
         <div class="p-6 rounded-lg bg-black border border-fv-border">
           <p class="font-head text-white text-sm mb-1.5">Horario de respuesta</p>
@@ -436,13 +444,27 @@
             <textarea class="fv-input" id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos tu caso en una o dos líneas"></textarea>
           </div>
 
+          <div>
+            <label for="consent" class="flex items-start gap-3 text-sm text-slate-300 leading-relaxed cursor-pointer min-h-[44px]">
+              <input type="checkbox" id="consent" name="consent" class="mt-0.5 w-5 h-5 shrink-0 accent-[#FF8C00]" required aria-describedby="err-consent">
+              <span>Acepto la <a href="/privacidad" target="_blank" rel="noopener" class="link-underline text-fv-cyan hover:text-white transition-colors">Política de Privacidad</a> y los <a href="/terminos" target="_blank" rel="noopener" class="link-underline text-fv-cyan hover:text-white transition-colors">Términos y Condiciones</a>.</span>
+            </label>
+            <p id="err-consent" class="fv-error hidden" role="alert"></p>
+          </div>
+
           <div id="form-status" class="hidden text-sm rounded-lg px-4 py-3" role="status" aria-live="polite"></div>
 
-          <button type="submit" class="btn-primary w-full inline-flex justify-center items-center gap-2.5 px-8 py-4 min-h-[52px] font-head font-semibold rounded-lg">
+
+          <button type="submit" data-evento="whatsapp_formulario" class="btn-primary w-full inline-flex justify-center items-center gap-2.5 px-8 py-4 min-h-[52px] font-head font-semibold rounded-lg">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
             Enviar por WhatsApp
           </button>
-          <p class="text-xs text-slate-500 text-center leading-relaxed">Se abrirá WhatsApp con tu mensaje listo. Al enviarlo aceptas nuestra <a href="/privacidad" target="_blank" rel="noopener" class="link-underline text-fv-cyan hover:text-white transition-colors">Política de Privacidad</a> y los <a href="/terminos" target="_blank" rel="noopener" class="link-underline text-fv-cyan hover:text-white transition-colors">Términos y Condiciones</a>.</p>
+          <p class="text-xs text-slate-400 text-center leading-relaxed">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+          <div class="relative flex items-center gap-3 text-xs text-slate-500 before:h-px before:flex-1 before:bg-fv-border after:h-px after:flex-1 after:bg-fv-border">o</div>
+          <a id="mailto-alt" href="mailto:contacto@fvaigroup.com?subject=Consulta%20desde%20fvaigroup.com" data-evento="correo_contacto" class="btn-secondary w-full inline-flex justify-center items-center gap-2.5 px-8 py-3.5 min-h-[48px] font-head font-medium rounded-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            Prefiero enviar un correo
+          </a>
         </form>
       </div>
     </div>
@@ -475,24 +497,6 @@
       <div class="p-6 rounded-lg bg-fv-surface box-glow-cyan text-center">
         <p class="font-head text-fv-orange text-sm mb-1.5">Supervisión humana</p>
         <p class="text-sm text-slate-500 leading-relaxed">La decisión final siempre es de tu equipo.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AGENDAR LLAMADA ============ -->
-<section id="agenda" class="relative py-20 border-b border-white/5 scroll-mt-24">
-  <div class="max-w-5xl mx-auto px-6 lg:px-8">
-    <div class="relative overflow-hidden rounded-xl bg-fv-surface box-gradient-border p-10 sm:p-12 text-center">
-      <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="relative z-10">
-      <h2 class="font-sans text-2xl sm:text-3xl text-white mb-3 uppercase">¿Prefieres <span class="text-neon-orange">hablar</span> <span class="shimmer-text">directamente</span>?</h2>
-      <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Reserva una llamada breve con nuestro equipo para conversar tu caso antes de escribirnos.</p>
-      <div class="rounded-lg overflow-hidden border border-fv-border bg-black">
-        <iframe src="https://cal.com/f-v-ai-group/contacto" width="100%" height="630" style="border:0;" loading="lazy" title="Agendar una llamada con F&V AI Group"></iframe>
-      </div>
-      <p class="text-slate-500 text-sm mt-6">¿Prefieres no usar el calendario? <a href="https://wa.me/584244125386?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada" target="_blank" rel="noopener" data-cta="agenda" class="link-underline text-fv-cyan inline-block py-3 -my-3">Agenda por WhatsApp</a>.</p>
       </div>
     </div>
   </div>
@@ -604,7 +608,7 @@
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40">
-  <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-8 h-8">
   </button>
 
@@ -614,7 +618,7 @@
         <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
-          <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente de preguntas frecuentes</p>
+          <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente virtual · responde al instante</p>
         </div>
       </div>
       <button id="luci-close" aria-label="Cerrar" class="text-slate-500 hover:text-white transition-colors">
@@ -689,6 +693,27 @@
     if (errEl) errEl.classList.add('hidden');
   }
   contactForm.nombre.addEventListener('input', () => clearFieldError(contactForm.nombre));
+  contactForm.consent.addEventListener('change', () => clearFieldError(contactForm.consent));
+
+  // Alternativa por correo: el asunto y el cuerpo salen de lo que ya llenaste
+  const mailAlt = document.getElementById('mailto-alt');
+  function actualizarMailto() {
+    const f = contactForm, n = f.nombre.value.trim(), neg = f.negocio.value.trim(), m = f.mensaje.value.trim();
+    const asunto = 'Consulta desde fvaigroup.com: ' + f.interes.value;
+    const cuerpo = 'Hola F&V, soy ' + (n || '[tu nombre]') + (neg ? ', de ' + neg : '') + '. Me interesa: ' + f.interes.value + '.' + (m ? '\n\n' + m : '');
+    mailAlt.href = 'mailto:contacto@fvaigroup.com?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo);
+  }
+  ['input', 'change'].forEach(ev => contactForm.addEventListener(ev, actualizarMailto));
+  actualizarMailto();
+  mailAlt.addEventListener('click', (e) => {
+    if (!contactForm.consent.checked) {
+      e.preventDefault();
+      const ec = document.getElementById('err-consent');
+      ec.textContent = 'Marca la casilla para poder continuar.';
+      ec.classList.remove('hidden');
+      contactForm.consent.focus();
+    }
+  });
 
   // Preselección desde ?interes= (coincidencia exacta con el valor, sin distinguir tildes ni mayúsculas)
   (function () {
@@ -724,6 +749,16 @@
       return;
     }
     clearFieldError(f.nombre);
+    if (!f.consent.checked) {
+      const ec = document.getElementById('err-consent');
+      ec.textContent = 'Marca la casilla para poder continuar.';
+      ec.classList.remove('hidden');
+      f.consent.focus();
+      formStatus.textContent = 'Falta aceptar la Política de Privacidad y los Términos.';
+      formStatus.classList.remove('hidden');
+      formStatus.classList.add('is-error');
+      return;
+    }
 
     const msg = 'Hola, soy ' + nombre + (negocio ? ', de ' + negocio : '') + '. Me interesa: ' + interes + '.' + (mensaje ? '\n\n' + mensaje : '');
     const url = WA_BASE + encodeURIComponent(msg);
@@ -760,111 +795,6 @@
     });
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
-
-  // ---- Asistente Luci (respuestas por palabras clave, no es un modelo de IA) ----
-  (function () {
-    const toggle = document.getElementById('luci-toggle');
-    const panel = document.getElementById('luci-panel');
-    const closeBtn = document.getElementById('luci-close');
-    const messages = document.getElementById('luci-messages');
-    const quick = document.getElementById('luci-quick');
-    const form = document.getElementById('luci-form');
-    const input = document.getElementById('luci-input');
-    if (!toggle || !panel) return;
-
-    const faq = [
-      { k: ['express','maps','catalogo','bcv','caja clara','cuadre','bodegon','emprend','negocio pequeno','pequeno negocio','mi negocio','asistente ia','finanzas claras','clase 1:1','clase de ia','clase particular','redes al dia'], a: 'Para negocios tenemos productos Express con precio fijo desde $35 y plazos de entrega publicados en cada uno: Negocio Visible (Google Maps y WhatsApp Business), Catálogo Express con precios en Bs a tasa BCV, Caja Clara para el cuadre diario y más. Los encuentras todos en la página Express, en el menú de arriba.' },
-      { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos tu situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
-      { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida. Somos independientes de proveedor: recomendamos según tu caso.' },
-      { k: ['soporte','despues','mantenimiento','postventa','incidencia'], a: 'Sí. El Acompañamiento Continuo es uno de nuestros seis servicios: canal directo, ajustes de configuración y revisión periódica.' },
-      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Publicamos todos nuestros precios en la página de Soluciones: los productos Express van desde $10 y los servicios para empresas desde $40 al mes. Los proyectos de implementación se cotizan según tu alcance.' },
-      { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre tu sistema real, no un entorno genérico de demostración.' },
-      { k: ['horario','atencion','hora','abren'], a: 'Respondemos el mismo día de lunes a viernes de 9:00 a 17:00. Fuera de ese horario te atiende Luci, nuestra asistente virtual, y te escribimos el siguiente día hábil.' },
-      { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Escríbenos directo por WhatsApp: te respondemos el mismo día. También puedes usar el formulario de esta página, que te abre WhatsApp con tu mensaje listo.' },
-    ];
-
-    const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?'];
-
-    function addMessage(text, from) {
-      const bubble = document.createElement('div');
-      bubble.className = from === 'user' ? 'luci-bubble-user' : 'luci-bubble-bot';
-      bubble.textContent = text;
-      messages.appendChild(bubble);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    function addQuick(list) {
-      quick.innerHTML = '';
-      list.forEach(text => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'luci-quick-btn';
-        btn.textContent = text;
-        btn.addEventListener('click', () => handleUserText(text));
-        quick.appendChild(btn);
-      });
-    }
-
-    function showTyping() {
-      const typing = document.createElement('div');
-      typing.className = 'luci-typing';
-      typing.id = 'luci-typing-indicator';
-      typing.innerHTML = '<span></span><span></span><span></span>';
-      messages.appendChild(typing);
-      messages.scrollTop = messages.scrollHeight;
-      return typing;
-    }
-
-    function botReply(userText) {
-      const norm = userText.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const hit = faq.find(item => item.k.some(kw => norm.includes(kw)));
-      const typing = showTyping();
-      setTimeout(() => {
-        typing.remove();
-        if (hit) {
-          addMessage(hit.a, 'bot');
-        } else {
-          addMessage('No tengo una respuesta preparada para eso todavía. ¿Quieres hablar directo con nuestro equipo por WhatsApp?', 'bot');
-          addQuick(['Sí, ir a WhatsApp']);
-        }
-      }, 700);
-    }
-
-    function handleUserText(text) {
-      if (text === 'Sí, ir a WhatsApp') {
-        addMessage(text, 'user');
-        quick.innerHTML = '';
-        setTimeout(() => { window.open('https://wa.me/584244125386', '_blank', 'noopener'); }, 200);
-        return;
-      }
-      addMessage(text, 'user');
-      quick.innerHTML = '';
-      botReply(text);
-    }
-
-    let started = false;
-    function openPanel() {
-      panel.classList.add('is-open');
-      if (!started) {
-        started = true;
-        addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué te ayudo?', 'bot');
-        addQuick(quickReplies);
-      }
-    }
-
-    toggle.addEventListener('click', () => {
-      panel.classList.contains('is-open') ? panel.classList.remove('is-open') : openPanel();
-    });
-    closeBtn.addEventListener('click', () => panel.classList.remove('is-open'));
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const val = input.value.trim();
-      if (!val) return;
-      input.value = '';
-      handleUserText(val);
-    });
-  })();
 
   // ---- Barra de progreso de scroll ----
   (function () {
@@ -1135,6 +1065,8 @@
     } else { load(); }
   })();
 </script>
+<script defer src="/assets/eventos.js"></script>
+<script defer src="/assets/luci.js"></script>
 <script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

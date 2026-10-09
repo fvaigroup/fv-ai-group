@@ -1237,14 +1237,11 @@
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40 group">
-  <span class="absolute bottom-[calc(100%+10px)] left-0 whitespace-nowrap px-3 py-2 rounded-lg bg-black/90 border border-white/10 text-xs font-head text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none shadow-lg">
-    ¿Dudas? Habla con un especialista
-  </span>
   <div id="luci-hint" class="luci-hint" role="status">
-    <button type="button" id="luci-hint-open" class="luci-hint-text">¿Tiene preguntas? Pregúntele a Luci.</button>
+    <button type="button" id="luci-hint-open" class="luci-hint-text">¿Dudas? Pregúntale a Luci (responde al instante)</button>
     <button type="button" id="luci-hint-dismiss" aria-label="Cerrar aviso" class="luci-hint-dismiss">&times;</button>
   </div>
-  <button id="luci-toggle" aria-label="Abrir asistente Luci" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-7 h-7 md:w-8 md:h-8">
   </button>
 
@@ -1254,7 +1251,7 @@
         <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
-          <p class="text-[11px] text-slate-400 leading-none mt-1">Asistente de preguntas frecuentes</p>
+          <p class="text-[11px] text-slate-400 leading-none mt-1">Asistente virtual · responde al instante</p>
         </div>
       </div>
       <button id="luci-close" aria-label="Cerrar" class="text-slate-400 hover:text-white transition-colors">
@@ -1266,7 +1263,7 @@
     <div id="luci-quick" class="px-4 pb-3 flex flex-wrap gap-2"></div>
 
     <form id="luci-form" class="flex items-center gap-2 p-3 border-t border-white/5">
-      <input id="luci-input" type="text" aria-label="Pregunta para Luci" placeholder="Escriba su pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:border-fv-cyan/50">
+      <input id="luci-input" type="text" aria-label="Pregunta para Luci" placeholder="Escribe tu pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:border-fv-cyan/50">
       <button type="submit" aria-label="Enviar" class="w-9 h-9 rounded-lg bg-fv-orange text-black flex items-center justify-center shrink-0 hover:brightness-110 transition-all">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
       </button>
@@ -1580,113 +1577,6 @@
     footerObserver.observe(siteFooter);
   }
 
-  // ---- Asistente Luci (respuestas por palabras clave, no es un modelo de IA) ----
-  (function () {
-    const toggle = document.getElementById('luci-toggle');
-    const panel = document.getElementById('luci-panel');
-    const closeBtn = document.getElementById('luci-close');
-    const messages = document.getElementById('luci-messages');
-    const quick = document.getElementById('luci-quick');
-    const form = document.getElementById('luci-form');
-    const input = document.getElementById('luci-input');
-    if (!toggle || !panel) return;
-
-    const faq = [
-      { k: ['express','maps','catalogo','bcv','caja clara','cuadre','bodegon','emprend','negocio pequeno','pequeno negocio','mi negocio','asistente ia','finanzas claras','clase 1:1','clase de ia','clase particular','redes al dia'], a: 'Para negocios tenemos productos Express con precio fijo, listos en 48 a 72 horas desde $35: Negocio Visible (Google Maps y WhatsApp Business), Catálogo Express con precios en Bs a tasa BCV, Caja Clara para el cuadre diario y más. Los encuentra todos en la página Express, en el menú de arriba.' },
-      { k: ['empezar','proceso','primer paso','arrancar'], a: 'Todo empieza con una Asesoría Estratégica: diagnosticamos su situación y proponemos la solución exacta antes de comprometer presupuesto en ejecución.' },
-      { k: ['erp','sap','odoo','dynamics','plataforma','software'], a: 'Trabajamos con Odoo Community, Dynamics 365 Sales/Customer Service y desarrollo a medida. Somos independientes de proveedor: recomendamos según su caso.' },
-      { k: ['soporte','despues','mantenimiento','postventa','incidencia'], a: 'Sí. El Acompañamiento Continuo es uno de nuestros seis servicios: canal directo, ajustes de configuración y revisión periódica.' },
-      { k: ['precio','costo','cuanto cuesta','tarifa','cotizacion','vale'], a: 'Publicamos todos nuestros precios en la página de Soluciones: los productos Express van desde $10 y los servicios para empresas desde $40 al mes. Los proyectos de implementación se cotizan según su alcance.' },
-      { k: ['capacitacion','entrenamiento','habilitacion','formacion'], a: 'La Habilitación de Equipos es formación práctica sobre su sistema real, no un entorno genérico de demostración.' },
-      { k: ['curso','cursos','aprender','estudiar'], a: 'Sí, también tenemos cursos independientes para formar a su equipo sin comprometerse todavía con un proyecto completo. Puede verlos en la página de Cursos.' },
-      { k: ['horario','atencion','hora','abren'], a: 'Respondemos el mismo día de lunes a viernes de 9:00 a 17:00. Fuera de ese horario te atiende Luci, nuestra asistente virtual, y te escribimos el siguiente día hábil.' },
-      { k: ['valencia','carabobo','ubicacion','zona','ciudad','donde'], a: 'Estamos en Valencia, Carabobo, y trabajamos con empresas de toda Venezuela — la mayoría de nuestros proyectos hoy son en Carabobo.' },
-      { k: ['contacto','hablar','humano','asesor','whatsapp','persona'], a: 'Con gusto. Puede escribirnos directo por WhatsApp o completar el formulario en la página de Contacto.' },
-    ];
-
-    const quickReplies = ['¿Cómo empiezo?', '¿Con qué ERP trabajan?', '¿Dan soporte después?', '¿Cuánto cuesta?', '¿Tienen algo para mi negocio?'];
-
-    function addMessage(text, from) {
-      const bubble = document.createElement('div');
-      bubble.className = from === 'user' ? 'luci-bubble-user' : 'luci-bubble-bot';
-      bubble.textContent = text;
-      messages.appendChild(bubble);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    function addQuick(list) {
-      quick.innerHTML = '';
-      list.forEach(text => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'luci-quick-btn';
-        btn.textContent = text;
-        btn.addEventListener('click', () => handleUserText(text));
-        quick.appendChild(btn);
-      });
-    }
-
-    function showTyping() {
-      const typing = document.createElement('div');
-      typing.className = 'luci-typing';
-      typing.id = 'luci-typing-indicator';
-      typing.innerHTML = '<span></span><span></span><span></span>';
-      messages.appendChild(typing);
-      messages.scrollTop = messages.scrollHeight;
-      return typing;
-    }
-
-    function botReply(userText) {
-      const norm = userText.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const hit = faq.find(item => item.k.some(kw => norm.includes(kw)));
-      const typing = showTyping();
-      setTimeout(() => {
-        typing.remove();
-        if (hit) {
-          addMessage(hit.a, 'bot');
-        } else {
-          addMessage('No tengo una respuesta preparada para eso todavía. ¿Le gustaría hablar directo con nuestro equipo por WhatsApp?', 'bot');
-          addQuick(['Sí, ir a WhatsApp']);
-        }
-      }, 700);
-    }
-
-    function handleUserText(text) {
-      if (text === 'Sí, ir a WhatsApp') {
-        addMessage(text, 'user');
-        quick.innerHTML = '';
-        setTimeout(() => { window.open('https://wa.me/584244125386', '_blank'); }, 200);
-        return;
-      }
-      addMessage(text, 'user');
-      quick.innerHTML = '';
-      botReply(text);
-    }
-
-    let started = false;
-    function openPanel() {
-      panel.classList.add('is-open');
-      if (!started) {
-        started = true;
-        addMessage('Hola, soy Luci. Puedo responder preguntas frecuentes sobre nuestros servicios. ¿En qué le ayudo?', 'bot');
-        addQuick(quickReplies);
-      }
-    }
-
-    toggle.addEventListener('click', () => {
-      panel.classList.contains('is-open') ? panel.classList.remove('is-open') : openPanel();
-    });
-    closeBtn.addEventListener('click', () => panel.classList.remove('is-open'));
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const val = input.value.trim();
-      if (!val) return;
-      input.value = '';
-      handleUserText(val);
-    });
-  })();
-
   // ---- Barra de progreso de scroll ----
   (function () {
     const bar = document.getElementById('scroll-progress');
@@ -1878,6 +1768,7 @@
 <script defer src="/assets/bcv.js"></script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/publicado.js"></script>
+<script defer src="/assets/luci.js"></script>
 <script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

@@ -25,6 +25,7 @@
     { title: 'Finanzas con IA', desc: 'Curso presencial: automatiza la conciliación de pagos de tu empresa.', url: '/cursos#finanzas-con-ia', cat: 'Curso' },
     { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: '/nosotros', cat: 'Pagina' },
     { title: 'Contacto', desc: 'WhatsApp directo y diagnóstico gratis de 20 minutos.', url: '/contacto', cat: 'Pagina' },
+    { title: 'Casos de clientes', desc: 'Qué hicimos y qué dijo el cliente. Pregunta por el precio de lanzamiento.', url: '/casos', cat: 'Pagina' },
     { title: 'Calculadora de precios', desc: 'Calcula a cuánto vender en $ y Bs con la tasa BCV del día. Gratis.', url: '/calculadora', cat: 'Pagina' },
     { title: 'Calculadora de ROI', desc: 'Estima cuánto puedes ahorrar automatizando tus procesos.', url: '/calculadora-roi', cat: 'Pagina' },
     { title: 'Política de Privacidad', desc: 'Cómo protegemos tu información.', url: '/privacidad', cat: 'Legal' },

@@ -10,6 +10,7 @@
                                                -> muestra u oculta el elemento (clase "hidden")
      data-ev-wa="taller|curso|curso-oct|curso-nov"  -> enlace de WhatsApp con el mensaje del evento (o el de "avísame" si ya pasó) */
 (function () {
+  if (window.FV_EVENTOS) return; // por si la página lo carga dos veces
   // ======================= EDITA AQUÍ =======================
   var EVENTOS = {
     taller: {
@@ -115,7 +116,7 @@
   }
 
   window.FV_EVENTOS = {
-    eventos: EVENTOS, estado: estado, datos: datos,
+    eventos: EVENTOS, estado: estado, datos: datos, refrescar: render,
     // para páginas que necesitan la cohorte vigente antes de que cargue el resto (p. ej. el curso Finanzas con IA)
     cursoProximo: function () {
       return { id: proxima.id, fechas: proxima.fechas, fechasTexto: fechasCurso(proxima), hora: proxima.hora, inicioISO: proxima.fechas[0] + 'T' + (proxima.id === 'oct' ? '08:00' : '14:00') + ':00-04:00', cuposLibres: proxima.cuposLibres, aforo: cur.cuposTotales, lugar: cur.lugar };
