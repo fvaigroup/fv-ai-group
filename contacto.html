@@ -342,22 +342,35 @@
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="max-w-3xl mx-auto text-center mb-10 reveal">
-      <p class="font-head uppercase tracking-[0.2em] text-xs text-fv-orange mb-5">Gratis · Sin compromiso</p>
-      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight text-balance">Agenda tu <span class="shimmer-text">diagnóstico gratis</span> de 20 minutos</h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light">Elige el día y la hora que te convengan: conversamos tu caso y te decimos por dónde empezar. Por videollamada, desde donde estés en Venezuela.</p>
+      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5 tracking-tight text-balance">¿Cómo prefieres <span class="shimmer-text">empezar</span>?</h1>
+      <p class="text-lg text-slate-400 leading-relaxed font-light">Elige la puerta que corresponde a lo tuyo. Respondemos el mismo día, de lunes a viernes.</p>
     </div>
 
-    <!-- Calendario de Cal.com (si no carga, el botón de abajo lo abre en otra pestaña) -->
-    <div id="agenda" class="max-w-4xl mx-auto mb-24 scroll-mt-28">
-      <div class="rounded-xl overflow-hidden border border-fv-border bg-black box-gradient-border">
-        <iframe id="cal-frame" src="https://cal.com/f-v-ai-group/contacto" width="100%" height="680" style="border:0;" title="Agendar el diagnóstico gratis de 20 minutos con F&V AI Group"></iframe>
-      </div>
-      <p class="text-sm text-slate-400 text-center mt-5">¿No ves el calendario? <a href="https://cal.com/f-v-ai-group/contacto" target="_blank" rel="noopener" data-evento="diagnostico_gratis" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ábrelo en otra pestaña</a>.</p>
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start mb-24">
+      <section class="linea-tri x-card is-static lg:col-span-2 flex flex-col p-7 sm:p-9" aria-labelledby="puerta-negocio">
+        <p class="mb-5 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span><span class="ins ins-express">Express · 24 h a 7 días</span></p>
+        <h2 id="puerta-negocio" class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">Tengo un negocio</h2>
+        <p class="text-slate-300 leading-relaxed mb-2">Escríbenos por WhatsApp y te recomendamos el producto justo para tu negocio.</p>
+        <p class="font-head text-lg mb-8"><span class="texto-linea">desde $10</span></p>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20producto%20me%20conviene%20%28L%C3%ADnea%20Triangular%29" target="_blank" rel="noopener" data-cta="contacto_negocio" data-evento="whatsapp_contacto" class="btn-linea mt-auto inline-flex items-center justify-center gap-2 min-h-[52px] px-7 py-3.5 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escribir por WhatsApp</span></a>
+        <p class="mt-4 text-sm text-slate-400">+58 424 412 5386 · <a href="/triangular" class="link-underline text-fv-triGreen py-2 inline-block">Ver la Línea Triangular</a></p>
+      </section>
+
+      <!-- Calendario de Cal.com (si no carga, el enlace de abajo lo abre en otra pestaña) -->
+      <section id="agenda" class="linea-hex x-card is-static lg:col-span-3 flex flex-col p-7 sm:p-9 scroll-mt-28" aria-labelledby="puerta-empresa">
+        <p class="mb-5 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span><span class="ins ins-express">Express · 1 a 3 semanas</span></p>
+        <h2 id="puerta-empresa" class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">Tengo una empresa</h2>
+        <p class="text-slate-300 leading-relaxed mb-6">Agenda tu diagnóstico gratis de 20 minutos: eliges el día y la hora, y conversamos tu caso por videollamada.</p>
+        <div class="rounded-xl overflow-hidden border border-fv-border bg-black">
+          <iframe id="cal-frame" src="https://cal.com/f-v-ai-group/contacto" width="100%" height="640" style="border:0;" title="Agendar el diagnóstico gratis de 20 minutos con F&V AI Group"></iframe>
+        </div>
+        <p class="text-sm text-slate-400 mt-4">¿No ves el calendario? <a href="https://cal.com/f-v-ai-group/contacto" target="_blank" rel="noopener" data-evento="diagnostico_gratis" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ábrelo en otra pestaña</a>.</p>
+      </section>
     </div>
 
     <div class="max-w-2xl mb-10 reveal">
       <h2 class="font-sans text-2xl sm:text-3xl text-white font-semibold tracking-tight mb-3">¿Prefieres <span class="text-neon-orange">escribirnos</span>?</h2>
-      <p class="text-slate-400 leading-relaxed">Por WhatsApp te respondemos el mismo día. ¿Tienes un negocio pequeño? <a href="/triangular" class="link-underline text-fv-cyan inline-block py-3 -my-3">Mira los productos Express desde $35</a>, o <a href="/#lineas" class="link-underline text-fv-cyan inline-block py-3 -my-3">revisa todos los precios</a>.</p>
+      <p class="text-slate-400 leading-relaxed">Déjanos tus datos y te armamos el mensaje. ¿Quieres ver los precios antes? <a href="/#lineas" class="link-underline text-fv-cyan inline-block py-3 -my-3">Mira cómo funcionan las dos líneas</a>.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
@@ -425,13 +438,17 @@
           <div>
             <label class="fv-label" for="interes">¿Qué te interesa?</label>
             <select class="fv-input" id="interes" name="interes">
-              <option>Triangular Express</option>
-              <option>Triangular</option>
-              <option>Hexagonal Express</option>
-              <option>Hexagonal</option>
-              <option>Página web</option>
-              <option>Curso o taller</option>
-              <option selected>Aún no estoy seguro</option>
+              <optgroup label="▲ Línea Triangular (negocios y personas)">
+                <option value="Línea Triangular Express (⚡ Pack Arranque, Negocio Visible, Caja Clara…)">⚡ Express: Pack Arranque, Negocio Visible, Caja Clara… (24 h a 7 días)</option>
+                <option value="Línea Triangular (webs profesionales, tableros, asistentes)">Triangular: webs profesionales, tableros, asistentes (1 a 3 semanas)</option>
+                <option value="Página web (Línea Triangular)">Página web (desde $90)</option>
+                <option value="Curso o taller (Línea Triangular Express)">⚡ Cursos, talleres y clases</option>
+              </optgroup>
+              <optgroup label="⬡ Línea Hexagonal (empresas)">
+                <option value="Línea Hexagonal Express (⚡ diagnóstico, automatización, tableros)">⚡ Express: diagnóstico, automatización, tableros (1 a 3 semanas)</option>
+                <option value="Línea Hexagonal (sistema completo)">Hexagonal: sistema completo (1 a 3 meses)</option>
+              </optgroup>
+              <option value="Aún no estoy seguro" selected>Aún no estoy seguro</option>
             </select>
           </div>
 
@@ -723,7 +740,7 @@
     let wanted = '';
     try { wanted = new URLSearchParams(location.search).get('interes') || ''; } catch (e) {}
     if (!wanted) return;
-    const hit = Array.from(contactForm.interes.options).find(o => norm(o.value) === norm(wanted));
+    const hit = Array.from(contactForm.interes.options).find(o => norm(o.value) === norm(wanted) || norm(o.value).startsWith(norm(wanted) + ' ('));
     if (hit) contactForm.interes.value = hit.value;
   })();
 
