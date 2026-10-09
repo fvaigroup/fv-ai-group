@@ -31,7 +31,21 @@ Los botones "Reservo con $100" de Finanzas con IA (octubre y noviembre), además
 ### 4. Envío de la calculadora: `generate_lead`
 Se envía desde `assets/calculadora.js` al enviar el formulario de `/calculadora`. Parámetros: `method` = `calculadora_pdf` o `calculadora_whatsapp`. El PDF descargado envía también `calculadora_pdf_descargado`.
 
-### 5. Otros eventos con nombre propio
+### 5. Eventos de la reorganización por líneas
+Cada botón nuevo lleva `data-evento`. Los de la portada y las páginas de línea:
+
+| Evento | Qué es |
+|---|---|
+| `portada_linea_triangular` / `portada_linea_hexagonal` | Las dos tarjetas grandes de la portada |
+| `portada_cuadro_tri_normal`, `…_tri_express`, `…_hex_normal`, `…_hex_express` | Las 4 casillas del cuadro «dos líneas, dos velocidades» |
+| `portada_test_abrir`, `portada_test_resultado` | Test «¿No sabes cuál?» |
+| `triangular_hero_whatsapp`, `triangular_hero_test`, `triangular_detalle_<producto>` | Página /triangular |
+| `hexagonal_hero_whatsapp`, `hexagonal_detalle_<producto>` | Página /hexagonal |
+| `header_whatsapp` | Botón único del menú |
+
+`whatsapp_click` sigue llevando `product` (nombre del producto) y `cta_location`. El mensaje prellenado de cada producto incluye su línea, por ejemplo «Línea Triangular Express».
+
+### 6. Otros eventos con nombre propio
 Cualquier elemento con `data-evento="nombre"` envía un evento llamado `nombre` al hacer clic. Los más útiles:
 
 | Evento | Qué es |

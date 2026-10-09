@@ -93,9 +93,9 @@ En resumen: **vanguardista en superficie (color, glow, motion), corporativo/met�
 
 ---
 
-## 6. Línea Triangular y página Express
+## 6. Línea Triangular y página /triangular
 
-La página `express.html` (productos con precio fijo para negocios y personas) es el escaparate de la Línea Triangular y usa su par cromático verde/violeta en lugar del cian/naranja:
+La página `/triangular` (`triangular.html`, antes `express.html`: productos con precio fijo para negocios y personas) es el escaparate de la Línea Triangular y usa su par cromático verde/violeta en lugar del cian/naranja. Hoy el color lo da la envolvente `.linea-tri` (ver sección 7); lo que sigue describe los componentes:
 
 - **CTA principal:** `.btn-tri` (definido en `src/tailwind.css`, capa `components`): fondo `fv-triGreen` lleno, texto negro, glow verde que vira a violeta en hover y `:active { scale(0.96) }`. Cumple el papel de `.btn-primary` dentro de Express y de cualquier bloque Express en otras páginas (franja de la portada, tarjetas Express en Precios y Cursos). Fuera de esos bloques el CTA principal sigue siendo el naranja.
 - **CTA secundario de la línea:** contorno violeta (`border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10`).
@@ -103,7 +103,7 @@ La página `express.html` (productos con precio fijo para negocios y personas) e
 - **Tarjetas:** hover con elevación y borde violeta iluminado; la tarjeta destacada usa borde en degradado verde→violeta (misma técnica `padding-box`/`border-box` que `.price-card.is-featured`).
 - **Precios en bolívares en vivo:** los montos en Bs se calculan en el navegador con la tasa oficial del BCV (`https://ve.dolarapi.com/v1/dolares/oficial`, permitida en la CSP de `vercel.json`). Marcado: contenedor con clase `hidden` + `data-bs-wrap`, monto con `data-usd="35"`, tasa con `data-bcv-rate`. Si la API no responde, los montos en Bs no aparecen y el texto sigue leyéndose bien. No usar el atributo `hidden` junto a clases de `display`: se usa la clase `hidden` y el script la quita.
 - **Botones de WhatsApp por producto:** mensaje ya escrito con el nombre del producto (`?text=Quiero%20Negocio%20Visible`) y atributos `data-product` / `data-cta`, que el script de medición envía a GA4 como `whatsapp_click`. Cualquier otro clic que se quiera medir lleva `data-track="nombre_del_evento"`.
-- **Registro:** las páginas y bloques Express hablan de **tú**; el resto del sitio mantiene **usted**. Nunca se mezclan dentro de una misma frase o tarjeta.
+- **Registro:** la Línea Triangular y las partes comunes (inicio, menú, pie, contacto, nosotros) hablan de **tú**; la Línea Hexagonal, de **usted**. Nunca se mezclan dentro de una misma frase o tarjeta.
 
 ---
 

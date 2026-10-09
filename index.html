@@ -178,10 +178,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" crossorigin>
+<style>/* Space Grotesk y Geist (Google Fonts), incluidas en la página y precargadas: sin pedir CSS aparte y sin saltos de diseño */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwSGFWfOw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -1777,7 +1782,7 @@
         '<p class="font-head text-lg mb-3"><span class="texto-linea">' + p.pr + '</span>' + (p.pl ? ' · ' + p.pl : '') + '</p>' +
         '<p class="text-slate-300 leading-relaxed mb-6">' + p.why + '</p>' +
         '<div class="flex flex-col sm:flex-row gap-3"><a href="' + WA + encodeURIComponent(p.m) + '" target="_blank" rel="noopener" data-product="' + p.id + '" data-cta="portada_test" data-evento="portada_test_resultado" class="btn-linea inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg font-head text-sm font-semibold">' + (tri ? 'Lo quiero por WhatsApp' : 'Consultar por WhatsApp') + '</a>' +
-        '<a href="/' + (tri ? 'triangular' : 'hexagonal') + '#' + p.id + '" class="btn-linea-sec inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg font-head text-sm">Ver en la Línea ' + (tri ? 'Triangular' : 'Hexagonal') + '</a>' +
+        '<a href="/' + (tri ? 'triangular' : 'hexagonal') + '#' + p.id + '" data-evento="portada_test_ver" class="btn-linea-sec inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg font-head text-sm">Ver en la Línea ' + (tri ? 'Triangular' : 'Hexagonal') + '</a>' +
         '<button type="button" id="test-reiniciar" class="min-h-[48px] px-4 py-3 rounded-lg text-slate-400 hover:text-white font-head text-sm transition-colors">Empezar de nuevo</button></div>';
       document.getElementById('test-reiniciar').addEventListener('click', function () { hist = []; actual = 'q1'; pintar(); });
     }
