@@ -23,7 +23,7 @@
 <meta name="description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
 <link rel="canonical" href="https://www.fvaigroup.com/curso-finanzas-ia">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="F&amp;V AI Group">
+<meta property="og:site_name" content="F&V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="Finanzas con IA — Curso presencial | F&V AI Group">
 <meta property="og:description" content="Automatice la conciliación de pagos de su empresa. Curso presencial de 3 sábados, cupos limitados a 6 personas. $300 pago único.">
@@ -305,21 +305,6 @@
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-<div id="search-overlay">
-  <div id="search-panel">
-    <div id="search-input-row">
-      <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-      <input id="search-input" type="text" placeholder="Buscar servicios, cursos, páginas..." autocomplete="off">
-    </div>
-    <div id="search-results"></div>
-    <div id="search-hint-row">
-      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navegar</span>
-      <span><kbd>&crarr;</kbd> abrir</span>
-      <span><kbd>Esc</kbd> cerrar</span>
-    </div>
-  </div>
-</div>
-
 <div id="page-load-bar"></div>
 <div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
 <div id="trail-orange" class="firefly-trail-dot" style="opacity:0;"></div>
@@ -330,26 +315,25 @@
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
-      <a href="index.html" class="flex items-center gap-3 shrink-0 site-logo-link">
+      <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&amp;V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
       <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
-        <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="express.html" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
-        <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
-        <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
-        <a href="nosotros.html" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
-        <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
-        <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
+        <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
+        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
+        <a href="/servicios" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
+        <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
+        <a href="/precios" class="text-slate-400 hover:text-white transition-colors">Precios</a>
+        <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
+        <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
+        <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-          <kbd class="hidden xl:inline">Ctrl K</kbd>
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
         <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
+        <a href="/contacto" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -359,15 +343,15 @@
   </div>
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
-      <a href="index.html" class="text-slate-300">Inicio</a>
-      <a href="express.html" class="text-fv-triGreen">Express</a>
-      <a href="servicios.html" class="text-slate-300">Servicios</a>
-      <a href="cursos.html" class="text-slate-300">Cursos</a>
-      <a href="precios.html" class="text-slate-300">Precios</a>
-      <a href="nosotros.html" class="text-slate-300">Nosotros</a>
-      <a href="contacto.html" class="text-slate-300">Contacto</a>
+      <a href="/" class="text-slate-300">Inicio</a>
+      <a href="/express" class="text-fv-triGreen">Express</a>
+      <a href="/servicios" class="text-slate-300">Servicios</a>
+      <a href="/cursos" class="text-slate-300">Cursos</a>
+      <a href="/precios" class="text-slate-300">Precios</a>
+      <a href="/nosotros" class="text-slate-300">Nosotros</a>
+      <a href="/contacto" class="text-slate-300">Contacto</a>
       <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="contacto.html" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
+      <a href="/contacto" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
     </div>
   </div>
 </header>
@@ -383,7 +367,7 @@
 
   <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
     <div class="reveal">
-      <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-cyan mb-5">F&amp;V AI Group — Línea Triangular</p>
+      <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-cyan mb-5">F&V AI Group — Línea Triangular</p>
 
       <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight uppercase">
         <span class="shimmer-text">Finanzas con IA</span>
@@ -633,16 +617,16 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
-        <a href="index.html" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="h-8 w-8">
-          <span class="font-sans font-semibold tracking-wide text-white text-lg">F&amp;V AI GROUP</span>
+        <a href="/" class="inline-flex items-center gap-2.5 mb-4">
+          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
+          <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
         <div class="flex items-center gap-3">
-          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
           </a>
-          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
+          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo: contacto@fvaigroup.com" title="contacto@fvaigroup.com" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
           <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
@@ -655,24 +639,24 @@
         <div>
           <h4 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Servicios</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="asesoria-estrategica.html" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
-            <li><a href="evaluacion-procesos.html" class="link-underline hover:text-white transition-colors">Evaluación de Procesos</a></li>
-            <li><a href="despliegue-ejecucion.html" class="link-underline hover:text-white transition-colors">Despliegue y Ejecución</a></li>
-            <li><a href="habilitacion-equipos.html" class="link-underline hover:text-white transition-colors">Habilitación de Equipos</a></li>
-            <li><a href="masterclasses-workshops.html" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
-            <li><a href="acompanamiento-continuo.html" class="link-underline hover:text-white transition-colors">Acompañamiento Continuo</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/evaluacion-procesos" class="link-underline hover:text-white transition-colors">Evaluación de Procesos</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Despliegue y Ejecución</a></li>
+            <li><a href="/habilitacion-equipos" class="link-underline hover:text-white transition-colors">Habilitación de Equipos</a></li>
+            <li><a href="/masterclasses-workshops" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
+            <li><a href="/acompanamiento-continuo" class="link-underline hover:text-white transition-colors">Acompañamiento Continuo</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="express.html" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
-            <li><a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a></li>
-            <li><a href="nosotros.html#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="nosotros.html#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&amp;V</a></li>
-            <li><a href="index.html#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="calculadora-roi.html" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
+            <li><a href="/express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
+            <li><a href="/precios" class="link-underline hover:text-white transition-colors">Precios</a></li>
+            <li><a href="/nosotros#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
+            <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
 
@@ -684,17 +668,17 @@
             <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
             <li class="pt-1 text-slate-600">Valencia, Carabobo, Venezuela</li>
             <li class="text-slate-600">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
-            <li class="text-slate-600">Te respondemos el mismo día</li>
+            <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-slate-600 text-sm">&copy; 2026 F&amp;V AI Group S.A. Todos los derechos reservados.</p>
+      <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
       <div class="flex gap-6 text-sm text-slate-600">
-        <a href="privacidad.html" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
-        <a href="terminos.html" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
+        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
+        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
       </div>
     </div>
   </div>
@@ -709,7 +693,7 @@
   <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente de preguntas frecuentes</p>
@@ -1150,107 +1134,8 @@
     trackWhatsApp(loc);
   });
 
-  // ---- Búsqueda global (Cmd+K / Ctrl+K) ----
-  (function () {
-    const SEARCH_INDEX = [
-      { title: 'Inicio', desc: 'Página principal de F&V AI Group.', url: 'index.html', cat: 'Pagina' },
-      { title: 'Servicios', desc: 'Seis etapas, un mismo equipo, de la asesoría al soporte.', url: 'servicios.html', cat: 'Pagina' },
-      { title: 'Asesoría Estratégica', desc: 'Diagnóstico antes de comprometer presupuesto en ejecución.', url: 'asesoria-estrategica.html', cat: 'Servicio' },
-      { title: 'Evaluación de Procesos', desc: 'Auditoría técnica y financiera de sus procesos actuales.', url: 'evaluacion-procesos.html', cat: 'Servicio' },
-      { title: 'Despliegue y Ejecución', desc: 'Implementación en Dynamics 365 Sales/Customer Service, Odoo Community, Hexágono o desarrollo a medida.', url: 'despliegue-ejecucion.html', cat: 'Servicio' },
-      { title: 'Habilitación de Equipos', desc: 'Formación práctica sobre el sistema real de su empresa.', url: 'habilitacion-equipos.html', cat: 'Servicio' },
-      { title: 'Masterclasses y Workshops', desc: 'Formación estructurada en gestión empresarial e IA aplicada.', url: 'masterclasses-workshops.html', cat: 'Servicio' },
-      { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
-      { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
-      { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
-      { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
-      { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
-      { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
-      { title: 'Calculadora de ROI', desc: 'Estime cuánto puede ahorrar automatizando sus procesos.', url: 'calculadora-roi.html', cat: 'Pagina' },
-      { title: 'Express', desc: 'Productos para negocios desde $35, listos en 48 a 72 horas.', url: 'express.html', cat: 'Producto' },
-      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
-      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
-      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
-      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
-      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
-      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
-      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
-    ];
-
-    const overlay = document.getElementById('search-overlay');
-    const input = document.getElementById('search-input');
-    const resultsEl = document.getElementById('search-results');
-    if (!overlay || !input || !resultsEl) return;
-
-    let activeIndex = -1;
-    let currentResults = [];
-
-    function render(list) {
-      currentResults = list;
-      activeIndex = list.length ? 0 : -1;
-      if (!list.length) {
-        resultsEl.innerHTML = '<div id="search-empty">Sin resultados. <a href="contacto.html" class="link-underline text-fv-cyan">Escríbanos</a> y le ayudamos directo.</div>';
-        return;
-      }
-      resultsEl.innerHTML = list.map((r, i) => `
-        <a href="${r.url}" class="search-result${i === 0 ? ' is-active' : ''}" data-i="${i}">
-          <span class="sr-title">${r.title} <span class="sr-tag cat-${r.cat}">${r.cat}</span></span>
-          <span class="sr-desc">${r.desc}</span>
-        </a>
-      `).join('');
-    }
-
-    function filterResults(q) {
-      const norm = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-      if (!norm) return SEARCH_INDEX;
-      return SEARCH_INDEX.filter(r => {
-        const hay = (r.title + ' ' + r.desc).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        return hay.includes(norm);
-      });
-    }
-
-    function setActive(i) {
-      const items = resultsEl.querySelectorAll('.search-result');
-      items.forEach(el => el.classList.remove('is-active'));
-      if (items[i]) { items[i].classList.add('is-active'); items[i].scrollIntoView({ block: 'nearest' }); }
-      activeIndex = i;
-    }
-
-    function openSearch() {
-      overlay.classList.add('is-open');
-      input.value = '';
-      render(SEARCH_INDEX);
-      setTimeout(() => input.focus(), 30);
-    }
-    function closeSearch() {
-      overlay.classList.remove('is-open');
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        overlay.classList.contains('is-open') ? closeSearch() : openSearch();
-      }
-      if (!overlay.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeSearch();
-      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(activeIndex + 1, currentResults.length - 1)); }
-      if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(activeIndex - 1, 0)); }
-      if (e.key === 'Enter' && currentResults[activeIndex]) { window.location.href = currentResults[activeIndex].url; }
-    });
-
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
-    input.addEventListener('input', () => render(filterResults(input.value)));
-    resultsEl.addEventListener('mouseover', (e) => {
-      const el = e.target.closest('.search-result');
-      if (el) setActive(parseInt(el.dataset.i, 10));
-    });
-
-    const trigger = document.getElementById('search-trigger');
-    if (trigger) trigger.addEventListener('click', openSearch);
-  })();
 </script>
+<script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

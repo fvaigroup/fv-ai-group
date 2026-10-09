@@ -244,21 +244,6 @@
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-<div id="search-overlay">
-  <div id="search-panel">
-    <div id="search-input-row">
-      <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-      <input id="search-input" type="text" placeholder="Buscar servicios, cursos, páginas..." autocomplete="off">
-    </div>
-    <div id="search-results"></div>
-    <div id="search-hint-row">
-      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navegar</span>
-      <span><kbd>&crarr;</kbd> abrir</span>
-      <span><kbd>Esc</kbd> cerrar</span>
-    </div>
-  </div>
-</div>
-
 <div id="page-load-bar"></div>
 
 <div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
@@ -273,26 +258,25 @@
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
-      <a href="index.html" class="flex items-center gap-3 shrink-0 site-logo-link">
+      <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&amp;V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
       <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
-        <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="express.html" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
-        <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
-        <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
-        <a href="nosotros.html" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
-        <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
-        <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
+        <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
+        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
+        <a href="/servicios" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
+        <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
+        <a href="/precios" class="text-slate-400 hover:text-white transition-colors">Precios</a>
+        <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
+        <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
+        <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-          <kbd class="hidden xl:inline">Ctrl K</kbd>
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
         <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="contacto.html" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
+        <a href="/contacto" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -302,15 +286,15 @@
   </div>
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
-      <a href="index.html" class="text-slate-300">Inicio</a>
-      <a href="express.html" class="text-fv-triGreen">Express</a>
-      <a href="servicios.html" class="text-slate-300">Servicios</a>
-      <a href="cursos.html" class="text-slate-300">Cursos</a>
-      <a href="precios.html" class="text-slate-300">Precios</a>
-      <a href="nosotros.html" class="text-slate-300">Nosotros</a>
-      <a href="contacto.html" class="text-slate-300">Contacto</a>
+      <a href="/" class="text-slate-300">Inicio</a>
+      <a href="/express" class="text-fv-triGreen">Express</a>
+      <a href="/servicios" class="text-slate-300">Servicios</a>
+      <a href="/cursos" class="text-slate-300">Cursos</a>
+      <a href="/precios" class="text-slate-300">Precios</a>
+      <a href="/nosotros" class="text-slate-300">Nosotros</a>
+      <a href="/contacto" class="text-slate-300">Contacto</a>
       <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="contacto.html" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
+      <a href="/contacto" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
     </div>
   </div>
 </header>
@@ -322,7 +306,7 @@
 
   <!-- ============ SIDEBAR ============ -->
   <aside class="tc-sidebar">
-    <a href="index.html" class="tc-home-link">
+    <a href="/" class="tc-home-link">
       <svg class="sb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:15px;height:15px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 011-1h0a1 1 0 011 1v4a1 1 0 001 1h4a1 1 0 001-1V10"/></svg>
       Inicio
     </a>
@@ -365,7 +349,7 @@
       <div class="sb-card-header" onclick="toggleSbCard(this)"><svg class="sb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:15px;height:15px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg><span class="sb-title">IV. Cancelaciones y Reembolsos</span><svg class="sb-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg></div>
       <div class="sb-card-body">
         <a href="#clausula-16" class="sb-clause-link" data-section="cap-4">Décima Sexta. Cancelación por el Cliente</a>
-        <a href="#clausula-17" class="sb-clause-link" data-section="cap-4">Décima Séptima. Cancelación imputable a F&amp;V</a>
+        <a href="#clausula-17" class="sb-clause-link" data-section="cap-4">Décima Séptima. Cancelación imputable a F&V</a>
         <a href="#clausula-18" class="sb-clause-link" data-section="cap-4">Décima Octava. Reprogramación de sesiones</a>
       </div>
     </div>
@@ -451,19 +435,19 @@
     <div class="tc-highlight-box tc-hb-data">
       <svg class="tc-hb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2M5 21H3m16 0h-4M9 7h1m-1 4h1m4-4h1m-1 4h1M9 21v-4a1 1 0 011-1h4a1 1 0 011 1v4"/></svg>
       <div>
-        <span class="tc-hb-row"><strong>Razón social:</strong> [RAZÓN SOCIAL LEGAL DE F&amp;V AI GROUP]</span>
-        <span class="tc-hb-row"><strong>RIF:</strong> [RIF DE F&amp;V]</span>
-        <span class="tc-hb-row"><strong>Domicilio fiscal:</strong> [DIRECCIÓN FISCAL DE F&amp;V]</span>
+        <span class="tc-hb-row"><strong>Razón social:</strong> [RAZÓN SOCIAL LEGAL DE F&V AI GROUP]</span>
+        <span class="tc-hb-row"><strong>RIF:</strong> [RIF DE F&V]</span>
+        <span class="tc-hb-row"><strong>Domicilio fiscal:</strong> [DIRECCIÓN FISCAL DE F&V]</span>
         <span class="tc-hb-row"><strong>Soporte:</strong> contacto@fvaigroup.com &middot; +58 424 412 5386</span>
       </div>
     </div>
 
     <div class="tc-highlight-box tc-hb-warn">
       <svg class="tc-hb-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
-      <div>El acceso a este sitio web y/o la contratación de cualquiera de los servicios de F&amp;V AI Group implica la lectura, comprensión y aceptación plena de estos Términos y Condiciones. Si no está de acuerdo con alguna disposición aquí contenida, le solicitamos abstenerse de contratar nuestros servicios y comunicarse con nosotros a través de los canales oficiales.</div>
+      <div>El acceso a este sitio web y/o la contratación de cualquiera de los servicios de F&V AI Group implica la lectura, comprensión y aceptación plena de estos Términos y Condiciones. Si no está de acuerdo con alguna disposición aquí contenida, le solicitamos abstenerse de contratar nuestros servicios y comunicarse con nosotros a través de los canales oficiales.</div>
     </div>
 
-    <p class="text-sm text-slate-500 leading-relaxed mb-2">Este documento regula la relación entre F&amp;V AI Group ("F&amp;V", "nosotros") y toda persona natural o jurídica que contrate sus servicios de consultoría, automatización, implementación de soluciones de inteligencia artificial, desarrollo de software o formación ("el Cliente"), organizada por capítulos y cláusulas numeradas. El contrato o propuesta específica firmada entre las partes prevalece sobre este documento en caso de conflicto.</p>
+    <p class="text-sm text-slate-500 leading-relaxed mb-2">Este documento regula la relación entre F&V AI Group ("F&V", "nosotros") y toda persona natural o jurídica que contrate sus servicios de consultoría, automatización, implementación de soluciones de inteligencia artificial, desarrollo de software o formación ("el Cliente"), organizada por capítulos y cláusulas numeradas. El contrato o propuesta específica firmada entre las partes prevalece sobre este documento en caso de conflicto.</p>
 
     <!-- ===== CAPÍTULO I ===== -->
     <div class="policy-section" id="cap-1">
@@ -471,30 +455,30 @@
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-1" data-anchor>
           <div class="tc-clause-title">Cláusula Primera. Objeto y alcance</div>
-          <p>F&amp;V AI Group es una consultora que presta, de forma independiente o combinada, los siguientes servicios: (1) consultoría estratégica en inteligencia artificial y transformación digital; (2) automatización de procesos operativos, administrativos y financieros; (3) implementación de soluciones y agentes de inteligencia artificial a medida; (4) desarrollo de software, incluyendo eventuales productos propios bajo modalidad SaaS; y (5) capacitaciones, cursos y talleres (masterclasses) sobre las materias anteriores. El alcance exacto de cada Proyecto, sus entregables, plazos y condiciones económicas se establecen en la Propuesta o Cotización aceptada por el Cliente, la cual forma parte integrante de estos Términos y prevalece sobre ellos en caso de contradicción.</p>
+          <p>F&V AI Group es una consultora que presta, de forma independiente o combinada, los siguientes servicios: (1) consultoría estratégica en inteligencia artificial y transformación digital; (2) automatización de procesos operativos, administrativos y financieros; (3) implementación de soluciones y agentes de inteligencia artificial a medida; (4) desarrollo de software, incluyendo eventuales productos propios bajo modalidad SaaS; y (5) capacitaciones, cursos y talleres (masterclasses) sobre las materias anteriores. El alcance exacto de cada Proyecto, sus entregables, plazos y condiciones económicas se establecen en la Propuesta o Cotización aceptada por el Cliente, la cual forma parte integrante de estos Términos y prevalece sobre ellos en caso de contradicción.</p>
         </div>
         <div class="tc-clause" id="clausula-2" data-anchor>
           <div class="tc-clause-title">Cláusula Segunda. Definiciones</div>
           <ul>
-            <li><strong>F&amp;V:</strong> F&amp;V AI Group, identificada en el encabezado de este documento.</li>
-            <li><strong>Cliente:</strong> la persona natural mayor de edad o persona jurídica, actuando por sí o a través de representante autorizado, que contrata uno o más Servicios de F&amp;V.</li>
+            <li><strong>F&V:</strong> F&V AI Group, identificada en el encabezado de este documento.</li>
+            <li><strong>Cliente:</strong> la persona natural mayor de edad o persona jurídica, actuando por sí o a través de representante autorizado, que contrata uno o más Servicios de F&V.</li>
             <li><strong>Servicio:</strong> cualquiera de las modalidades descritas en la Cláusula Primera.</li>
             <li><strong>Proyecto:</strong> el conjunto de actividades necesarias para ejecutar un Servicio contratado, con alcance, cronograma y presupuesto definidos en una Propuesta.</li>
-            <li><strong>Propuesta o Cotización:</strong> el documento escrito (correo electrónico, PDF o plataforma de firma electrónica) mediante el cual F&amp;V describe el alcance y precio de un Servicio y que, una vez aceptado por el Cliente, se vuelve vinculante.</li>
-            <li><strong>Entregable:</strong> todo producto, documento, sistema, integración, reporte o material que F&amp;V se obliga a proporcionar al Cliente conforme a la Propuesta.</li>
+            <li><strong>Propuesta o Cotización:</strong> el documento escrito (correo electrónico, PDF o plataforma de firma electrónica) mediante el cual F&V describe el alcance y precio de un Servicio y que, una vez aceptado por el Cliente, se vuelve vinculante.</li>
+            <li><strong>Entregable:</strong> todo producto, documento, sistema, integración, reporte o material que F&V se obliga a proporcionar al Cliente conforme a la Propuesta.</li>
             <li><strong>Alcance:</strong> el conjunto de actividades, funcionalidades y resultados específicamente descritos en la Propuesta, con exclusión de todo lo no mencionado en ella.</li>
-            <li><strong>Contenido:</strong> los textos, marcas, logotipos, gráficos y demás materiales publicados en el sitio web de F&amp;V.</li>
-            <li><strong>Datos Personales:</strong> cualquier información relativa a una persona natural identificada o identificable, tratada por F&amp;V en el marco de la prestación de un Servicio.</li>
-            <li><strong>Canales Oficiales:</strong> los medios de comunicación autorizados por F&amp;V para atención al Cliente, indicados en el Capítulo X de este documento.</li>
+            <li><strong>Contenido:</strong> los textos, marcas, logotipos, gráficos y demás materiales publicados en el sitio web de F&V.</li>
+            <li><strong>Datos Personales:</strong> cualquier información relativa a una persona natural identificada o identificable, tratada por F&V en el marco de la prestación de un Servicio.</li>
+            <li><strong>Canales Oficiales:</strong> los medios de comunicación autorizados por F&V para atención al Cliente, indicados en el Capítulo X de este documento.</li>
           </ul>
         </div>
         <div class="tc-clause" id="clausula-3" data-anchor>
           <div class="tc-clause-title">Cláusula Tercera. Naturaleza jurídica del contrato y aceptación</div>
-          <p>La relación entre F&amp;V y el Cliente se perfecciona mediante la aceptación expresa (por escrito, correo electrónico o firma electrónica) de una Propuesta o Cotización, conjuntamente con la aceptación de estos Términos y Condiciones. Dicha aceptación constituye un contrato de adhesión en lo relativo a las cláusulas generales aquí previstas, sin perjuicio de las condiciones particulares negociadas en cada Propuesta, las cuales prevalecen sobre este documento general.</p>
+          <p>La relación entre F&V y el Cliente se perfecciona mediante la aceptación expresa (por escrito, correo electrónico o firma electrónica) de una Propuesta o Cotización, conjuntamente con la aceptación de estos Términos y Condiciones. Dicha aceptación constituye un contrato de adhesión en lo relativo a las cláusulas generales aquí previstas, sin perjuicio de las condiciones particulares negociadas en cada Propuesta, las cuales prevalecen sobre este documento general.</p>
         </div>
         <div class="tc-clause" id="clausula-4" data-anchor>
           <div class="tc-clause-title">Cláusula Cuarta. Modificación de estos Términos</div>
-          <p>F&amp;V podrá modificar estos Términos y Condiciones en cualquier momento, notificando al Cliente con al menos quince (15) días hábiles de anticipación a través de sus Canales Oficiales o mediante aviso publicado en el sitio web. Las modificaciones no afectan los Proyectos ya contratados bajo una Propuesta vigente, salvo que ambas partes acuerden lo contrario por escrito.</p>
+          <p>F&V podrá modificar estos Términos y Condiciones en cualquier momento, notificando al Cliente con al menos quince (15) días hábiles de anticipación a través de sus Canales Oficiales o mediante aviso publicado en el sitio web. Las modificaciones no afectan los Proyectos ya contratados bajo una Propuesta vigente, salvo que ambas partes acuerden lo contrario por escrito.</p>
         </div>
       </div>
     </div>
@@ -525,7 +509,7 @@
         </div>
         <div class="tc-clause" id="clausula-10" data-anchor>
           <div class="tc-clause-title">Cláusula Décima. Requisitos para contratar</div>
-          <p>Puede contratar los Servicios de F&amp;V toda persona natural mayor de edad con capacidad legal para obligarse, o el representante legal o apoderado debidamente autorizado de una persona jurídica. F&amp;V podrá solicitar documentación que acredite dicha representación antes de formalizar la Propuesta.</p>
+          <p>Puede contratar los Servicios de F&V toda persona natural mayor de edad con capacidad legal para obligarse, o el representante legal o apoderado debidamente autorizado de una persona jurídica. F&V podrá solicitar documentación que acredite dicha representación antes de formalizar la Propuesta.</p>
         </div>
       </div>
     </div>
@@ -536,23 +520,23 @@
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-11" data-anchor>
           <div class="tc-clause-title">Cláusula Décima Primera. Vigencia de cotizaciones</div>
-          <p>Toda Propuesta o Cotización emitida por F&amp;V tiene una vigencia de quince (15) días calendario contados a partir de su fecha de emisión, salvo que se indique un plazo distinto en el propio documento. Transcurrido dicho plazo sin aceptación, F&amp;V podrá actualizar los precios antes de formalizar el Proyecto.</p>
+          <p>Toda Propuesta o Cotización emitida por F&V tiene una vigencia de quince (15) días calendario contados a partir de su fecha de emisión, salvo que se indique un plazo distinto en el propio documento. Transcurrido dicho plazo sin aceptación, F&V podrá actualizar los precios antes de formalizar el Proyecto.</p>
         </div>
         <div class="tc-clause" id="clausula-12" data-anchor>
           <div class="tc-clause-title">Cláusula Décima Segunda. Métodos de pago</div>
-          <p>Los pagos podrán realizarse en bolívares al tipo de cambio de referencia publicado por el Banco Central de Venezuela (BCV) vigente a la fecha del pago, o en divisas, USDT o efectivo, mediante Binance Pay, Zinli, Zelle u otros medios que F&amp;V habilite. Los pagos realizados en divisas están sujetos al Impuesto a las Grandes Transacciones Financieras (IGTF) del tres por ciento (3%), o la alícuota vigente conforme a la normativa venezolana aplicable, el cual será asumido por el Cliente salvo pacto expreso en contrario.</p>
+          <p>Los pagos podrán realizarse en bolívares al tipo de cambio de referencia publicado por el Banco Central de Venezuela (BCV) vigente a la fecha del pago, o en divisas, USDT o efectivo, mediante Binance Pay, Zinli, Zelle u otros medios que F&V habilite. Los pagos realizados en divisas están sujetos al Impuesto a las Grandes Transacciones Financieras (IGTF) del tres por ciento (3%), o la alícuota vigente conforme a la normativa venezolana aplicable, el cual será asumido por el Cliente salvo pacto expreso en contrario.</p>
         </div>
         <div class="tc-clause" id="clausula-13" data-anchor>
           <div class="tc-clause-title">Cláusula Décima Tercera. Facturación fiscal</div>
-          <p>F&amp;V emitirá la factura fiscal correspondiente conforme a las disposiciones del Servicio Nacional Integrado de Administración Aduanera y Tributaria (SENIAT), una vez confirmado el pago respectivo. El Cliente se obliga a suministrar oportunamente los datos fiscales necesarios para la emisión de dicha factura.</p>
+          <p>F&V emitirá la factura fiscal correspondiente conforme a las disposiciones del Servicio Nacional Integrado de Administración Aduanera y Tributaria (SENIAT), una vez confirmado el pago respectivo. El Cliente se obliga a suministrar oportunamente los datos fiscales necesarios para la emisión de dicha factura.</p>
         </div>
         <div class="tc-clause" id="clausula-14" data-anchor>
           <div class="tc-clause-title">Cláusula Décima Cuarta. Anticipos, hitos y pago final</div>
-          <p>Salvo que la Propuesta indique lo contrario, los Proyectos se facturan mediante un anticipo inicial (comúnmente el cincuenta por ciento del valor total) previo al inicio de actividades, pagos intermedios asociados a la entrega y aceptación de hitos definidos en la Propuesta, y un pago final contra la entrega del último Entregable. F&amp;V no está obligada a iniciar, continuar o entregar el Proyecto mientras existan pagos vencidos y no honrados por el Cliente.</p>
+          <p>Salvo que la Propuesta indique lo contrario, los Proyectos se facturan mediante un anticipo inicial (comúnmente el cincuenta por ciento del valor total) previo al inicio de actividades, pagos intermedios asociados a la entrega y aceptación de hitos definidos en la Propuesta, y un pago final contra la entrega del último Entregable. F&V no está obligada a iniciar, continuar o entregar el Proyecto mientras existan pagos vencidos y no honrados por el Cliente.</p>
         </div>
         <div class="tc-clause" id="clausula-15" data-anchor>
           <div class="tc-clause-title">Cláusula Décima Quinta. Cambios de alcance (scope creep)</div>
-          <p>Toda solicitud del Cliente que implique funcionalidades, procesos o entregables no contemplados en el Alcance original se considera un cambio de alcance. F&amp;V evaluará dicha solicitud y, de ser viable, emitirá una Cotización adicional que deberá ser aceptada y pagada por separado antes de incorporarse al Proyecto, sin que ello modifique los plazos y compromisos ya asumidos para el Alcance original.</p>
+          <p>Toda solicitud del Cliente que implique funcionalidades, procesos o entregables no contemplados en el Alcance original se considera un cambio de alcance. F&V evaluará dicha solicitud y, de ser viable, emitirá una Cotización adicional que deberá ser aceptada y pagada por separado antes de incorporarse al Proyecto, sin que ello modifique los plazos y compromisos ya asumidos para el Alcance original.</p>
         </div>
       </div>
     </div>
@@ -563,15 +547,15 @@
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-16" data-anchor>
           <div class="tc-clause-title">Cláusula Décima Sexta. Cancelación por el Cliente</div>
-          <p>El Cliente podrá cancelar un Proyecto en curso notificando por escrito a través de los Canales Oficiales, aplicándose las siguientes condiciones según la etapa en que se encuentre: (a) si la cancelación ocurre antes del inicio de actividades, F&amp;V reembolsará el anticipo recibido, deduciendo los gastos administrativos ya incurridos; (b) si el Proyecto se encuentra en curso sin hitos entregados, F&amp;V retendrá la porción del anticipo proporcional al trabajo ejecutado hasta la fecha de cancelación; (c) si ya se han entregado uno o más hitos, F&amp;V facturará y retendrá el valor correspondiente a dichos hitos, reembolsando únicamente el excedente no ejecutado, si lo hubiere.</p>
+          <p>El Cliente podrá cancelar un Proyecto en curso notificando por escrito a través de los Canales Oficiales, aplicándose las siguientes condiciones según la etapa en que se encuentre: (a) si la cancelación ocurre antes del inicio de actividades, F&V reembolsará el anticipo recibido, deduciendo los gastos administrativos ya incurridos; (b) si el Proyecto se encuentra en curso sin hitos entregados, F&V retendrá la porción del anticipo proporcional al trabajo ejecutado hasta la fecha de cancelación; (c) si ya se han entregado uno o más hitos, F&V facturará y retendrá el valor correspondiente a dichos hitos, reembolsando únicamente el excedente no ejecutado, si lo hubiere.</p>
         </div>
         <div class="tc-clause" id="clausula-17" data-anchor>
-          <div class="tc-clause-title">Cláusula Décima Séptima. Cancelación imputable a F&amp;V</div>
-          <p>Si F&amp;V decide unilateralmente no continuar con un Proyecto por causas que no sean imputables al Cliente, reembolsará la porción del monto pagado que no corresponda a trabajo ya ejecutado y entregado.</p>
+          <div class="tc-clause-title">Cláusula Décima Séptima. Cancelación imputable a F&V</div>
+          <p>Si F&V decide unilateralmente no continuar con un Proyecto por causas que no sean imputables al Cliente, reembolsará la porción del monto pagado que no corresponda a trabajo ya ejecutado y entregado.</p>
         </div>
         <div class="tc-clause" id="clausula-18" data-anchor>
           <div class="tc-clause-title">Cláusula Décima Octava. Reprogramación de sesiones</div>
-          <p>Las sesiones de consultoría, capacitación o cursos podrán reprogramarse con al menos cuarenta y ocho (48) horas de anticipación sin costo adicional. Las solicitudes con menor anticipación, o la inasistencia sin aviso, podrán dar lugar a la pérdida de la sesión, sin perjuicio de que F&amp;V pueda autorizar excepciones a su sola discreción.</p>
+          <p>Las sesiones de consultoría, capacitación o cursos podrán reprogramarse con al menos cuarenta y ocho (48) horas de anticipación sin costo adicional. Las solicitudes con menor anticipación, o la inasistencia sin aviso, podrán dar lugar a la pérdida de la sesión, sin perjuicio de que F&V pueda autorizar excepciones a su sola discreción.</p>
         </div>
       </div>
     </div>
@@ -581,12 +565,12 @@
       <div class="policy-section-header" onclick="toggleSection(this)">Capítulo V. Propiedad Intelectual y Confidencialidad<svg class="ps-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg></div>
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-19" data-anchor>
-          <div class="tc-clause-title">Cláusula Décima Novena. Propiedad de los entregables y del know-how de F&amp;V</div>
-          <p>Una vez pagado en su totalidad el precio del Proyecto, los Entregables desarrollados específicamente para el Cliente (código a medida, configuraciones, integraciones y documentación asociada) le pertenecerán en la extensión pactada en la Propuesta. F&amp;V conserva en todo momento la propiedad de sus metodologías, frameworks, plantillas, librerías internas, prompts, flujos de automatización reutilizables y demás herramientas propias desarrolladas antes o independientemente del Proyecto, aun cuando se utilicen para prestar el Servicio. El Cliente es en todo caso propietario de sus propios datos, información de negocio y contenidos aportados para la ejecución del Proyecto.</p>
+          <div class="tc-clause-title">Cláusula Décima Novena. Propiedad de los entregables y del know-how de F&V</div>
+          <p>Una vez pagado en su totalidad el precio del Proyecto, los Entregables desarrollados específicamente para el Cliente (código a medida, configuraciones, integraciones y documentación asociada) le pertenecerán en la extensión pactada en la Propuesta. F&V conserva en todo momento la propiedad de sus metodologías, frameworks, plantillas, librerías internas, prompts, flujos de automatización reutilizables y demás herramientas propias desarrolladas antes o independientemente del Proyecto, aun cuando se utilicen para prestar el Servicio. El Cliente es en todo caso propietario de sus propios datos, información de negocio y contenidos aportados para la ejecución del Proyecto.</p>
         </div>
         <div class="tc-clause" id="clausula-20" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima. Uso de herramientas y modelos de IA de terceros</div>
-          <p>Para la prestación de sus Servicios, F&amp;V podrá utilizar modelos, plataformas o infraestructura de terceros proveedores de inteligencia artificial (incluyendo, sin limitarse a, OpenAI, Anthropic o Google) bajo sus respectivos términos de servicio. F&amp;V no garantiza la disponibilidad, exactitud o continuidad de dichos servicios de terceros y su responsabilidad frente al Cliente por fallas atribuibles exclusivamente a dichos proveedores queda limitada conforme al Capítulo VIII.</p>
+          <p>Para la prestación de sus Servicios, F&V podrá utilizar modelos, plataformas o infraestructura de terceros proveedores de inteligencia artificial (incluyendo, sin limitarse a, OpenAI, Anthropic o Google) bajo sus respectivos términos de servicio. F&V no garantiza la disponibilidad, exactitud o continuidad de dichos servicios de terceros y su responsabilidad frente al Cliente por fallas atribuibles exclusivamente a dichos proveedores queda limitada conforme al Capítulo VIII.</p>
         </div>
         <div class="tc-clause" id="clausula-21" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Primera. Confidencialidad mutua</div>
@@ -601,7 +585,7 @@
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-22" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Segunda. Entregable aceptado y garantía</div>
-          <p>Un Entregable se considera aceptado cuando el Cliente lo aprueba por escrito o cuando, habiendo transcurrido cinco (5) días hábiles desde su presentación sin observaciones del Cliente, se entiende aceptado tácitamente. A partir de la aceptación, F&amp;V otorga un período de garantía de treinta (30) días calendario para corregir sin costo adicional los errores atribuibles a defectos del Entregable dentro del Alcance original, quedando excluidos los cambios de alcance y los problemas originados por modificaciones realizadas por terceros distintos a F&amp;V.</p>
+          <p>Un Entregable se considera aceptado cuando el Cliente lo aprueba por escrito o cuando, habiendo transcurrido cinco (5) días hábiles desde su presentación sin observaciones del Cliente, se entiende aceptado tácitamente. A partir de la aceptación, F&V otorga un período de garantía de treinta (30) días calendario para corregir sin costo adicional los errores atribuibles a defectos del Entregable dentro del Alcance original, quedando excluidos los cambios de alcance y los problemas originados por modificaciones realizadas por terceros distintos a F&V.</p>
         </div>
         <div class="tc-clause" id="clausula-23" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Tercera. Soporte y mantenimiento posterior</div>
@@ -616,11 +600,11 @@
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-24" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Cuarta. Datos recopilados y finalidad</div>
-          <p>F&amp;V recopila datos de contacto del Cliente (nombre, empresa, correo electrónico, teléfono) para la gestión comercial, contractual y de facturación del Servicio. Cuando el Proyecto lo requiera, F&amp;V podrá acceder a datos o sistemas internos del Cliente estrictamente necesarios para ejecutar el Alcance contratado, utilizándolos exclusivamente para dicho fin. Consulte también nuestra <a href="privacidad.html">Política de Privacidad</a>.</p>
+          <p>F&V recopila datos de contacto del Cliente (nombre, empresa, correo electrónico, teléfono) para la gestión comercial, contractual y de facturación del Servicio. Cuando el Proyecto lo requiera, F&V podrá acceder a datos o sistemas internos del Cliente estrictamente necesarios para ejecutar el Alcance contratado, utilizándolos exclusivamente para dicho fin. Consulte también nuestra <a href="/privacidad">Política de Privacidad</a>.</p>
         </div>
         <div class="tc-clause" id="clausula-25" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Quinta. No divulgación a terceros</div>
-          <p>F&amp;V no comparte los Datos Personales del Cliente con terceros, salvo: (a) cuando exista una obligación legal que así lo exija; o (b) cuando sea necesario para la ejecución del Servicio a través de subcontratistas o proveedores tecnológicos, en cuyo caso dichos terceros quedarán sujetos a obligaciones de confidencialidad equivalentes a las asumidas por F&amp;V.</p>
+          <p>F&V no comparte los Datos Personales del Cliente con terceros, salvo: (a) cuando exista una obligación legal que así lo exija; o (b) cuando sea necesario para la ejecución del Servicio a través de subcontratistas o proveedores tecnológicos, en cuyo caso dichos terceros quedarán sujetos a obligaciones de confidencialidad equivalentes a las asumidas por F&V.</p>
         </div>
         <div class="tc-clause" id="clausula-26" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Sexta. Derechos del Cliente sobre sus datos</div>
@@ -635,15 +619,15 @@
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-27" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Séptima. Límite de responsabilidad</div>
-          <p>La responsabilidad total de F&amp;V frente al Cliente por cualquier reclamo relacionado con un Servicio o Proyecto específico, cualquiera sea su causa, se limita al monto efectivamente pagado por el Cliente por dicho Servicio o Proyecto durante los seis (6) meses anteriores al hecho que origina el reclamo.</p>
+          <p>La responsabilidad total de F&V frente al Cliente por cualquier reclamo relacionado con un Servicio o Proyecto específico, cualquiera sea su causa, se limita al monto efectivamente pagado por el Cliente por dicho Servicio o Proyecto durante los seis (6) meses anteriores al hecho que origina el reclamo.</p>
         </div>
         <div class="tc-clause" id="clausula-28" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Octava. Exclusión de daños indirectos</div>
-          <p>En ningún caso F&amp;V será responsable por daños indirectos, incidentales, especiales o consecuenciales, incluyendo lucro cesante, pérdida de oportunidades de negocio o pérdida de datos, cuando estos se originen por causas ajenas al control razonable de F&amp;V, tales como fallas de proveedores de nube o de infraestructura de terceros, o el uso indebido de los Entregables por parte del Cliente.</p>
+          <p>En ningún caso F&V será responsable por daños indirectos, incidentales, especiales o consecuenciales, incluyendo lucro cesante, pérdida de oportunidades de negocio o pérdida de datos, cuando estos se originen por causas ajenas al control razonable de F&V, tales como fallas de proveedores de nube o de infraestructura de terceros, o el uso indebido de los Entregables por parte del Cliente.</p>
         </div>
         <div class="tc-clause" id="clausula-29" data-anchor>
           <div class="tc-clause-title">Cláusula Vigésima Novena. Indemnización por parte del Cliente</div>
-          <p>El Cliente se obliga a indemnizar y mantener indemne a F&amp;V frente a cualquier reclamo, sanción o daño derivado del uso indebido, ilegal o contrario al Alcance pactado que el Cliente o sus dependientes hagan de los Entregables o de las soluciones implementadas.</p>
+          <p>El Cliente se obliga a indemnizar y mantener indemne a F&V frente a cualquier reclamo, sanción o daño derivado del uso indebido, ilegal o contrario al Alcance pactado que el Cliente o sus dependientes hagan de los Entregables o de las soluciones implementadas.</p>
         </div>
       </div>
     </div>
@@ -669,11 +653,11 @@
       <div class="policy-section-body">
         <div class="tc-clause" id="clausula-32" data-anchor>
           <div class="tc-clause-title">Cláusula Trigésima Segunda. Canales oficiales</div>
-          <p>Los Canales Oficiales de comunicación con F&amp;V son el correo electrónico contacto@fvaigroup.com, el número de WhatsApp +58 424 412 5386 y el sitio web <a href="https://www.fvaigroup.com">fvaigroup.com</a>. Toda notificación relacionada con estos Términos o con un Proyecto en curso se considerará válidamente efectuada al ser enviada por alguno de estos medios.</p>
+          <p>Los Canales Oficiales de comunicación con F&V son el correo electrónico contacto@fvaigroup.com, el número de WhatsApp +58 424 412 5386 y el sitio web <a href="https://www.fvaigroup.com">fvaigroup.com</a>. Toda notificación relacionada con estos Términos o con un Proyecto en curso se considerará válidamente efectuada al ser enviada por alguno de estos medios.</p>
         </div>
         <div class="tc-clause" id="clausula-33" data-anchor>
           <div class="tc-clause-title">Cláusula Trigésima Tercera. Procedimiento de quejas</div>
-          <p>Toda queja o reclamo deberá dirigirse por escrito a través de los Canales Oficiales, indicando el Proyecto o Servicio involucrado y el detalle del inconveniente. F&amp;V acusará recibo dentro de dos (2) días hábiles y dará una respuesta sustantiva dentro de un plazo máximo de diez (10) días hábiles, salvo que la naturaleza del reclamo requiera un plazo mayor, lo cual será informado al Cliente.</p>
+          <p>Toda queja o reclamo deberá dirigirse por escrito a través de los Canales Oficiales, indicando el Proyecto o Servicio involucrado y el detalle del inconveniente. F&V acusará recibo dentro de dos (2) días hábiles y dará una respuesta sustantiva dentro de un plazo máximo de diez (10) días hábiles, salvo que la naturaleza del reclamo requiera un plazo mayor, lo cual será informado al Cliente.</p>
         </div>
       </div>
     </div>
@@ -688,7 +672,7 @@
         </div>
         <div class="tc-clause" id="clausula-35" data-anchor>
           <div class="tc-clause-title">Cláusula Trigésima Quinta. Cesión del contrato</div>
-          <p>Ninguna de las partes podrá ceder los derechos u obligaciones derivados de un Proyecto sin el consentimiento previo y por escrito de la otra parte, salvo que se trate de una reorganización societaria de F&amp;V que no afecte la prestación del Servicio contratado.</p>
+          <p>Ninguna de las partes podrá ceder los derechos u obligaciones derivados de un Proyecto sin el consentimiento previo y por escrito de la otra parte, salvo que se trate de una reorganización societaria de F&V que no afecte la prestación del Servicio contratado.</p>
         </div>
         <div class="tc-clause" id="clausula-36" data-anchor>
           <div class="tc-clause-title">Cláusula Trigésima Sexta. Nulidad parcial y prevalencia</div>
@@ -702,7 +686,7 @@
       <div class="policy-section-header" onclick="toggleSection(this)">Anexo I. Política de Cookies<svg class="ps-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg></div>
       <div class="policy-section-body">
         <div class="tc-clause">
-          <p>El sitio web de F&amp;V utiliza cookies necesarias para su funcionamiento básico (por ejemplo, mantener el estado del menú o del buscador), cookies analíticas para comprender el uso agregado del sitio (por ejemplo, Vercel Analytics) y, cuando aplique, cookies funcionales para recordar preferencias del usuario. El sitio no utiliza cookies de publicidad de terceros. El usuario puede deshabilitar las cookies desde la configuración de su navegador, lo cual podría afectar algunas funcionalidades del sitio.</p>
+          <p>El sitio web de F&V utiliza cookies necesarias para su funcionamiento básico (por ejemplo, mantener el estado del menú o del buscador), cookies analíticas para comprender el uso agregado del sitio (por ejemplo, Vercel Analytics) y, cuando aplique, cookies funcionales para recordar preferencias del usuario. El sitio no utiliza cookies de publicidad de terceros. El usuario puede deshabilitar las cookies desde la configuración de su navegador, lo cual podría afectar algunas funcionalidades del sitio.</p>
         </div>
       </div>
     </div>
@@ -711,7 +695,7 @@
       <div class="policy-section-header" onclick="toggleSection(this)">Anexo II. Uso de Proveedores de IA de Terceros / Subencargados de Tratamiento<svg class="ps-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg></div>
       <div class="policy-section-body">
         <div class="tc-clause">
-          <p>Para la prestación de sus Servicios, F&amp;V podrá subcontratar o integrar proveedores tecnológicos de infraestructura y modelos de inteligencia artificial (por ejemplo, OpenAI, Anthropic o Google), así como servicios de hospedaje en la nube. Dichos proveedores actúan como subencargados de tratamiento respecto de los Datos Personales que eventualmente procesen en nombre de F&amp;V, sujetos a sus propios términos de servicio y compromisos de confidencialidad y seguridad. F&amp;V selecciona proveedores que ofrezcan garantías razonables de seguridad y no autoriza el uso de los datos del Cliente para entrenar modelos de terceros salvo consentimiento expreso del Cliente.</p>
+          <p>Para la prestación de sus Servicios, F&V podrá subcontratar o integrar proveedores tecnológicos de infraestructura y modelos de inteligencia artificial (por ejemplo, OpenAI, Anthropic o Google), así como servicios de hospedaje en la nube. Dichos proveedores actúan como subencargados de tratamiento respecto de los Datos Personales que eventualmente procesen en nombre de F&V, sujetos a sus propios términos de servicio y compromisos de confidencialidad y seguridad. F&V selecciona proveedores que ofrezcan garantías razonables de seguridad y no autoriza el uso de los datos del Cliente para entrenar modelos de terceros salvo consentimiento expreso del Cliente.</p>
         </div>
       </div>
     </div>
@@ -720,7 +704,7 @@
       <div class="policy-section-header" onclick="toggleSection(this)">Anexo III. Protocolo de Reporte de Incidentes de Seguridad o Mal Uso<svg class="ps-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg></div>
       <div class="policy-section-body">
         <div class="tc-clause">
-          <p>Cualquier incidente de seguridad, sospecha de acceso no autorizado, o uso indebido de los Entregables o de datos relacionados con un Proyecto, deberá reportarse de inmediato al correo contacto@fvaigroup.com o al WhatsApp +58 424 412 5386, indicando fecha, descripción del incidente y sistemas involucrados. F&amp;V evaluará el reporte, tomará las medidas de contención razonables a su alcance y mantendrá informado al Cliente sobre el estado del incidente cuando este afecte datos o sistemas del Cliente.</p>
+          <p>Cualquier incidente de seguridad, sospecha de acceso no autorizado, o uso indebido de los Entregables o de datos relacionados con un Proyecto, deberá reportarse de inmediato al correo contacto@fvaigroup.com o al WhatsApp +58 424 412 5386, indicando fecha, descripción del incidente y sistemas involucrados. F&V evaluará el reporte, tomará las medidas de contención razonables a su alcance y mantendrá informado al Cliente sobre el estado del incidente cuando este afecte datos o sistemas del Cliente.</p>
         </div>
       </div>
     </div>
@@ -729,12 +713,12 @@
       <div class="policy-section-header" onclick="toggleSection(this)">Anexo IV. Procedimiento para Ejercer Derechos ARCO<svg class="ps-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg></div>
       <div class="policy-section-body">
         <div class="tc-clause">
-          <p>Para ejercer sus derechos de acceso, rectificación, cancelación u oposición sobre sus Datos Personales, el Cliente deberá enviar una solicitud al correo contacto@fvaigroup.com indicando: (1) nombre completo y datos de contacto; (2) el derecho que desea ejercer; (3) una descripción clara de los datos o el tratamiento involucrado; y (4) copia de un documento de identidad que permita verificar su identidad. F&amp;V responderá la solicitud dentro de un plazo máximo de diez (10) días hábiles.</p>
+          <p>Para ejercer sus derechos de acceso, rectificación, cancelación u oposición sobre sus Datos Personales, el Cliente deberá enviar una solicitud al correo contacto@fvaigroup.com indicando: (1) nombre completo y datos de contacto; (2) el derecho que desea ejercer; (3) una descripción clara de los datos o el tratamiento involucrado; y (4) copia de un documento de identidad que permita verificar su identidad. F&V responderá la solicitud dentro de un plazo máximo de diez (10) días hábiles.</p>
         </div>
       </div>
     </div>
 
-    <p class="text-xs text-slate-600 mt-10 pt-6 border-t border-white/5">Este documento es una plantilla de referencia y no constituye asesoría legal. Recomendamos que sea revisado por un abogado antes de considerarse definitivo. &copy; 2026 F&amp;V AI Group. Todos los derechos reservados.</p>
+    <p class="text-xs text-slate-600 mt-10 pt-6 border-t border-white/5">Este documento es una plantilla de referencia y no constituye asesoría legal. Recomendamos que sea revisado por un abogado antes de considerarse definitivo. &copy; 2026 F&V AI Group. Todos los derechos reservados.</p>
   </div>
 </div>
 </main>
@@ -743,14 +727,14 @@
 <footer class="bg-black border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-      <a href="index.html" class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="h-7 w-7">
-        <span class="font-sans font-semibold tracking-wide text-white text-sm">F&amp;V AI GROUP</span>
+      <a href="/" class="flex items-center gap-2.5">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="h-7 w-7">
+        <span class="font-sans font-semibold tracking-wide text-white text-sm">F&V AI GROUP</span>
       </a>
-      <p class="text-slate-600 text-sm">&copy; 2026 F&amp;V AI Group S.A. Todos los derechos reservados.</p>
+      <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
       <div class="flex gap-6 text-sm text-slate-600">
-        <a href="privacidad.html" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
-        <a href="terminos.html" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
+        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
+        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
       </div>
     </div>
   </div>
@@ -935,106 +919,6 @@
     });
   })();
 
-  // ---- Búsqueda global (Cmd+K / Ctrl+K) ----
-  (function () {
-    const SEARCH_INDEX = [
-      { title: 'Inicio', desc: 'Página principal de F&V AI Group.', url: 'index.html', cat: 'Pagina' },
-      { title: 'Servicios', desc: 'Seis etapas, un mismo equipo, de la asesoría al soporte.', url: 'servicios.html', cat: 'Pagina' },
-      { title: 'Asesoría Estratégica', desc: 'Diagnóstico antes de comprometer presupuesto en ejecución.', url: 'asesoria-estrategica.html', cat: 'Servicio' },
-      { title: 'Evaluación de Procesos', desc: 'Auditoría técnica y financiera de sus procesos actuales.', url: 'evaluacion-procesos.html', cat: 'Servicio' },
-      { title: 'Despliegue y Ejecución', desc: 'Implementación en Dynamics 365 Sales/Customer Service, Odoo Community, Hexágono o desarrollo a medida.', url: 'despliegue-ejecucion.html', cat: 'Servicio' },
-      { title: 'Habilitación de Equipos', desc: 'Formación práctica sobre el sistema real de su empresa.', url: 'habilitacion-equipos.html', cat: 'Servicio' },
-      { title: 'Masterclasses y Workshops', desc: 'Formación estructurada en gestión empresarial e IA aplicada.', url: 'masterclasses-workshops.html', cat: 'Servicio' },
-      { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
-      { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
-      { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
-      { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
-      { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
-      { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
-      { title: 'Calculadora de ROI', desc: 'Estime cuánto puede ahorrar automatizando sus procesos.', url: 'calculadora-roi.html', cat: 'Pagina' },
-      { title: 'Express', desc: 'Productos para negocios desde $35, listos en 48 a 72 horas.', url: 'express.html', cat: 'Producto' },
-      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
-      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
-      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
-      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
-      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
-      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
-      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
-    ];
-
-    const overlay = document.getElementById('search-overlay');
-    const input = document.getElementById('search-input');
-    const resultsEl = document.getElementById('search-results');
-    if (!overlay || !input || !resultsEl) return;
-
-    let activeIndex = -1;
-    let currentResults = [];
-
-    function render(list) {
-      currentResults = list;
-      activeIndex = list.length ? 0 : -1;
-      if (!list.length) {
-        resultsEl.innerHTML = '<div id="search-empty">Sin resultados. <a href="contacto.html" class="link-underline text-fv-cyan">Escríbanos</a> y le ayudamos directo.</div>';
-        return;
-      }
-      resultsEl.innerHTML = list.map((r, i) => `
-        <a href="${r.url}" class="search-result${i === 0 ? ' is-active' : ''}" data-i="${i}">
-          <span class="sr-title">${r.title} <span class="sr-tag cat-${r.cat}">${r.cat}</span></span>
-          <span class="sr-desc">${r.desc}</span>
-        </a>
-      `).join('');
-    }
-
-    function filterResults(q) {
-      const norm = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-      if (!norm) return SEARCH_INDEX;
-      return SEARCH_INDEX.filter(r => {
-        const hay = (r.title + ' ' + r.desc).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        return hay.includes(norm);
-      });
-    }
-
-    function setActive(i) {
-      const items = resultsEl.querySelectorAll('.search-result');
-      items.forEach(el => el.classList.remove('is-active'));
-      if (items[i]) { items[i].classList.add('is-active'); items[i].scrollIntoView({ block: 'nearest' }); }
-      activeIndex = i;
-    }
-
-    function openSearch() {
-      overlay.classList.add('is-open');
-      input.value = '';
-      render(SEARCH_INDEX);
-      setTimeout(() => input.focus(), 30);
-    }
-    function closeSearch() {
-      overlay.classList.remove('is-open');
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        overlay.classList.contains('is-open') ? closeSearch() : openSearch();
-      }
-      if (!overlay.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeSearch();
-      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(activeIndex + 1, currentResults.length - 1)); }
-      if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(activeIndex - 1, 0)); }
-      if (e.key === 'Enter' && currentResults[activeIndex]) { window.location.href = currentResults[activeIndex].url; }
-    });
-
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
-    input.addEventListener('input', () => render(filterResults(input.value)));
-    resultsEl.addEventListener('mouseover', (e) => {
-      const el = e.target.closest('.search-result');
-      if (el) setActive(parseInt(el.dataset.i, 10));
-    });
-
-    const trigger = document.getElementById('search-trigger');
-    if (trigger) trigger.addEventListener('click', openSearch);
-  })();
 
   // ---- Centro de políticas: sidebar de capítulos + acordeón de cláusulas ----
   function toggleSection(headerEl) {
@@ -1095,6 +979,7 @@
     gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
   });
 </script>
+<script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

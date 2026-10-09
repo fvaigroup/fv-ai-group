@@ -168,105 +168,6 @@
     updateParallax();
   })();
 
-  // ---- Búsqueda global (Cmd+K / Ctrl+K) ----
-  (function () {
-    const SEARCH_INDEX = [
-      { title: 'Inicio', desc: 'Página principal de F&V AI Group.', url: 'index.html', cat: 'Pagina' },
-      { title: 'Servicios', desc: 'Seis etapas, un mismo equipo, de la asesoría al soporte.', url: 'servicios.html', cat: 'Pagina' },
-      { title: 'Asesoría Estratégica', desc: 'Diagnóstico antes de comprometer presupuesto en ejecución.', url: 'asesoria-estrategica.html', cat: 'Servicio' },
-      { title: 'Evaluación de Procesos', desc: 'Auditoría técnica y financiera de sus procesos actuales.', url: 'evaluacion-procesos.html', cat: 'Servicio' },
-      { title: 'Despliegue y Ejecución', desc: 'Implementación en Dynamics 365 Sales/Customer Service, Odoo Community, Hexágono o desarrollo a medida.', url: 'despliegue-ejecucion.html', cat: 'Servicio' },
-      { title: 'Habilitación de Equipos', desc: 'Formación práctica sobre el sistema real de su empresa.', url: 'habilitacion-equipos.html', cat: 'Servicio' },
-      { title: 'Masterclasses y Workshops', desc: 'Formación estructurada en gestión empresarial e IA aplicada.', url: 'masterclasses-workshops.html', cat: 'Servicio' },
-      { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
-      { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
-      { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
-      { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
-      { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
-      { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
-      { title: 'Express', desc: 'Productos para negocios desde $35, listos en 48 a 72 horas.', url: 'express.html', cat: 'Producto' },
-      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
-      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
-      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
-      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
-      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
-      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
-      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
-    ];
-
-    const overlay = document.getElementById('search-overlay');
-    const input = document.getElementById('search-input');
-    const resultsEl = document.getElementById('search-results');
-    if (!overlay || !input || !resultsEl) return;
-
-    let activeIndex = -1;
-    let currentResults = [];
-
-    function render(list) {
-      currentResults = list;
-      activeIndex = list.length ? 0 : -1;
-      if (!list.length) {
-        resultsEl.innerHTML = '<div id="search-empty">Sin resultados. <a href="contacto.html" class="link-underline text-fv-cyan">Escríbanos</a> y le ayudamos directo.</div>';
-        return;
-      }
-      resultsEl.innerHTML = list.map((r, i) => `
-        <a href="${r.url}" class="search-result${i === 0 ? ' is-active' : ''}" data-i="${i}">
-          <span class="sr-title">${r.title} <span class="sr-tag cat-${r.cat}">${r.cat}</span></span>
-          <span class="sr-desc">${r.desc}</span>
-        </a>
-      `).join('');
-    }
-
-    function filterResults(q) {
-      const norm = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-      if (!norm) return SEARCH_INDEX;
-      return SEARCH_INDEX.filter(r => {
-        const hay = (r.title + ' ' + r.desc).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        return hay.includes(norm);
-      });
-    }
-
-    function setActive(i) {
-      const items = resultsEl.querySelectorAll('.search-result');
-      items.forEach(el => el.classList.remove('is-active'));
-      if (items[i]) { items[i].classList.add('is-active'); items[i].scrollIntoView({ block: 'nearest' }); }
-      activeIndex = i;
-    }
-
-    function openSearch() {
-      overlay.classList.add('is-open');
-      input.value = '';
-      render(SEARCH_INDEX);
-      setTimeout(() => input.focus(), 30);
-    }
-    function closeSearch() {
-      overlay.classList.remove('is-open');
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        overlay.classList.contains('is-open') ? closeSearch() : openSearch();
-      }
-      if (!overlay.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeSearch();
-      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(activeIndex + 1, currentResults.length - 1)); }
-      if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(activeIndex - 1, 0)); }
-      if (e.key === 'Enter' && currentResults[activeIndex]) { window.location.href = currentResults[activeIndex].url; }
-    });
-
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
-    input.addEventListener('input', () => render(filterResults(input.value)));
-    resultsEl.addEventListener('mouseover', (e) => {
-      const el = e.target.closest('.search-result');
-      if (el) setActive(parseInt(el.dataset.i, 10));
-    });
-
-    const trigger = document.getElementById('search-trigger');
-    if (trigger) trigger.addEventListener('click', openSearch);
-  })();
 </script>
 <style>
   :root {
@@ -365,21 +266,6 @@
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased min-h-screen flex items-center justify-center relative overflow-hidden px-6">
-<div id="search-overlay">
-  <div id="search-panel">
-    <div id="search-input-row">
-      <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-      <input id="search-input" type="text" placeholder="Buscar servicios, cursos, páginas..." autocomplete="off">
-    </div>
-    <div id="search-results"></div>
-    <div id="search-hint-row">
-      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navegar</span>
-      <span><kbd>&crarr;</kbd> abrir</span>
-      <span><kbd>Esc</kbd> cerrar</span>
-    </div>
-  </div>
-</div>
-
 <div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
 <div id="trail-orange" class="firefly-trail-dot" style="opacity:0;"></div>
 
@@ -394,8 +280,8 @@
 
   <div class="relative z-10 max-w-lg text-center">
     <div class="relative w-40 h-40 mx-auto mb-8">
-      <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" class="w-full h-full hex-spin opacity-80">
-      <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="absolute inset-0 m-auto w-16 h-16 float">
+      <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-full h-full hex-spin opacity-80">
+      <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="absolute inset-0 m-auto w-16 h-16 float">
     </div>
 
     <p class="font-head text-sm text-slate-500 uppercase tracking-widest mb-3">Error 404</p>
@@ -403,18 +289,19 @@
     <p class="text-slate-400 leading-relaxed mb-10">La dirección no existe o cambió de lugar. Vuelva al inicio o escríbanos por WhatsApp: respondemos el mismo día.</p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="index.html" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Volver al inicio</a>
+      <a href="/" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Volver al inicio</a>
       <a href="https://wa.me/584244125386?text=Hola%2C%20no%20encontr%C3%A9%20una%20p%C3%A1gina%20del%20sitio" target="_blank" rel="noopener" data-cta="404" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">Escribir por WhatsApp</a>
     </div>
 
     <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center mt-8 text-sm text-slate-500 font-head">
-      <a href="servicios.html" class="link-underline hover:text-white transition-colors">Servicios</a>
-      <a href="express.html" class="link-underline hover:text-white transition-colors">Express</a>
-      <a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a>
-      <a href="nosotros.html" class="link-underline hover:text-white transition-colors">Nosotros</a>
+      <a href="/servicios" class="link-underline hover:text-white transition-colors">Servicios</a>
+      <a href="/express" class="link-underline hover:text-white transition-colors">Express</a>
+      <a href="/precios" class="link-underline hover:text-white transition-colors">Precios</a>
+      <a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a>
     </div>
   </div>
 
+<script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
 <meta name="description" content="Google Maps en 48 horas, catálogo con precios en $ y Bs a tasa BCV en 72, control de caja y asistente de WhatsApp. Desde $35. Pide por WhatsApp.">
 <link rel="canonical" href="https://www.fvaigroup.com/express">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="F&amp;V AI Group">
+<meta property="og:site_name" content="F&V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="Express: productos para tu negocio, desde $35">
 <meta property="og:description" content="Google Maps en 48 horas, catálogo con precios en $ y Bs a tasa BCV en 72, control de caja y asistente de WhatsApp. Desde $35. Pide por WhatsApp.">
@@ -316,21 +316,6 @@
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-<div id="search-overlay">
-  <div id="search-panel">
-    <div id="search-input-row">
-      <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-      <input id="search-input" type="text" aria-label="Buscar en el sitio" placeholder="Buscar servicios, cursos, páginas..." autocomplete="off">
-    </div>
-    <div id="search-results"></div>
-    <div id="search-hint-row">
-      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navegar</span>
-      <span><kbd>&crarr;</kbd> abrir</span>
-      <span><kbd>Esc</kbd> cerrar</span>
-    </div>
-  </div>
-</div>
-
 <div id="page-load-bar"></div>
 
 <div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
@@ -345,21 +330,20 @@
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
-      <a href="index.html" class="flex items-center gap-3 shrink-0 site-logo-link">
+      <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&amp;V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
       <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
-        <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="express.html" class="text-white" aria-current="page">Express</a>
-        <a href="servicios.html" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
-        <a href="cursos.html" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="precios.html" class="text-slate-400 hover:text-white transition-colors">Precios</a>
-        <a href="nosotros.html" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
-        <a href="contacto.html" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
-        <button id="search-trigger" type="button" aria-label="Buscar (Ctrl+K)">
+        <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
+        <a href="/express" class="text-white" aria-current="page">Express</a>
+        <a href="/servicios" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
+        <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
+        <a href="/precios" class="text-slate-400 hover:text-white transition-colors">Precios</a>
+        <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
+        <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
+        <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
-          <kbd class="hidden xl:inline">Ctrl K</kbd>
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
@@ -374,13 +358,13 @@
   </div>
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-3 flex flex-col font-head text-sm">
-      <a href="index.html" class="text-slate-300 py-3">Inicio</a>
-      <a href="express.html" class="text-white py-3" aria-current="page">Express</a>
-      <a href="servicios.html" class="text-slate-300 py-3">Servicios</a>
-      <a href="cursos.html" class="text-slate-300 py-3">Cursos</a>
-      <a href="precios.html" class="text-slate-300 py-3">Precios</a>
-      <a href="nosotros.html" class="text-slate-300 py-3">Nosotros</a>
-      <a href="contacto.html" class="text-slate-300 py-3">Contacto</a>
+      <a href="/" class="text-slate-300 py-3">Inicio</a>
+      <a href="/express" class="text-white py-3" aria-current="page">Express</a>
+      <a href="/servicios" class="text-slate-300 py-3">Servicios</a>
+      <a href="/cursos" class="text-slate-300 py-3">Cursos</a>
+      <a href="/precios" class="text-slate-300 py-3">Precios</a>
+      <a href="/nosotros" class="text-slate-300 py-3">Nosotros</a>
+      <a href="/contacto" class="text-slate-300 py-3">Contacto</a>
       <a href="https://wa.me/584244125386?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Express" target="_blank" rel="noopener" data-cta="header" class="btn-secondary mt-2 text-center px-4 py-3 rounded-lg">WhatsApp</a>
       <a href="#productos" class="btn-tri text-center px-4 py-3 mt-3 rounded-lg font-semibold">Ver productos</a>
     </div>
@@ -399,18 +383,18 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="grid lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-7">
-        <p class="font-head uppercase tracking-[0.2em] text-xs text-fv-triGreen mb-5">F&amp;V Línea Triangular · Express</p>
+        <p class="font-head uppercase tracking-[0.2em] text-xs text-fv-triGreen mb-5">F&V Línea Triangular · Express</p>
         <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] text-balance mb-6">Tu negocio, listo para vender <span class="text-gradient-tri">desde $35</span></h1>
         <p class="text-lg text-slate-400 leading-relaxed font-light max-w-xl mb-8">Google Maps, catálogo con precios en $ y Bs que se actualizan solos con la tasa BCV, y control de caja. Precio fijo, entrega en días y lo pides todo por WhatsApp.</p>
         <div class="flex flex-col sm:flex-row gap-3 mb-6">
           <a href="#productos" class="btn-tri flex items-center justify-center min-h-[48px] px-7 py-3.5 rounded-lg font-head font-semibold text-center">Ver productos</a>
           <a href="https://wa.me/584244125386?text=Hola%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20producto%20me%20conviene" target="_blank" rel="noopener" data-cta="hero" class="flex items-center justify-center gap-2 min-h-[48px] px-7 py-3.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head font-medium text-center transition-colors"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>Escríbenos por WhatsApp</a>
         </div>
-        <div class="hidden mb-8" data-bs-wrap>
-          <div class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-fv-triGreen/25 bg-fv-triGreen/5 px-4 py-2 text-sm">
-            <span class="flex items-center gap-2 text-slate-200"><span class="relative flex h-2 w-2"><span class="x-ping absolute inline-flex h-full w-full rounded-full bg-fv-triGreen opacity-70"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-fv-triGreen"></span></span>Tasa BCV de hoy: <span class="font-head font-semibold text-white" data-bcv-rate></span></span>
-            <span class="text-[11px] text-slate-400">Fuente: BCV, vía DolarApi</span>
+        <div class="mb-8">
+          <div class="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full border border-fv-triGreen/25 bg-fv-triGreen/5 px-4 py-2 text-sm text-slate-200" data-bcv-chip>
+            <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20%C2%BFcu%C3%A1l%20es%20la%20tasa%20BCV%20de%20hoy%3F" target="_blank" rel="noopener" class="link-underline text-fv-cyan">Consulta la tasa del día por WhatsApp</a>
           </div>
+          <p class="mt-2 text-[11px] text-slate-400">Fuente: BCV, vía DolarApi</p>
         </div>
         <ul class="flex flex-col sm:flex-row sm:flex-wrap gap-x-7 gap-y-3 text-sm text-slate-300">
           <li class="flex items-center gap-2.5"><svg class="w-5 h-5 text-fv-triGreen shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><path d="M7.5 7.5h.01"/></svg>Precio fijo en dólares</li>
@@ -421,7 +405,7 @@
       <div class="hidden lg:flex lg:col-span-5 justify-center relative" aria-hidden="true">
         <div class="absolute inset-8 rounded-full bg-fv-triGreen/15 blur-[90px]"></div>
         <div class="absolute inset-x-16 inset-y-12 rounded-full bg-fv-triPurple/20 blur-[100px]"></div>
-        <img src="assets/logo-full-tri.png" width="677" height="369" alt="" class="relative w-full max-w-lg h-auto x-float drop-shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+        <img src="assets/logo-full-tri.png" width="677" height="369" alt="" aria-hidden="true" class="relative w-full max-w-lg h-auto x-float drop-shadow-[0_0_40px_rgba(168,85,247,0.35)]">
       </div>
     </div>
   </div>
@@ -442,7 +426,7 @@
   <h3 id="negocio-visible-t" class="font-sans text-xl font-bold text-white mb-2">Negocio Visible</h3>
   <p class="text-slate-400 leading-relaxed mb-5">Que te encuentren en Google Maps y te escriban por WhatsApp.</p>
   <div class="mb-1 flex items-baseline gap-2 flex-wrap"><span class="text-4xl font-extrabold text-white tracking-tight">$35</span><span class="font-head text-sm text-slate-400">pago único</span></div>
-  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap><span class="font-head font-medium text-fv-triGreen" data-usd="35"></span> a tasa BCV de hoy</p>
+  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap data-bs-line data-usd="35"></p>
   <p class="font-head text-xs uppercase tracking-wider text-slate-400 mt-6 mb-3">Qué recibes</p>
   <ul class="space-y-2.5 text-sm text-slate-300">
     <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Ficha de Google Maps completa</span></li>
@@ -463,7 +447,7 @@
   <p class="text-slate-400 leading-relaxed mb-5">Tus productos o tu menú en una página, con precios en $ y Bs que se actualizan solos.</p>
   <div class="mb-1 flex items-baseline gap-2 flex-wrap"><span class="text-4xl font-extrabold text-white tracking-tight">$90</span><span class="font-head text-sm text-slate-400">pago único</span></div>
   <p class="text-sm text-slate-400">$250 fuera de Venezuela</p>
-  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap><span class="font-head font-medium text-fv-triGreen" data-usd="90"></span> a tasa BCV de hoy</p>
+  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap data-bs-line data-usd="90"></p>
   <p class="mt-4 text-sm font-medium text-white rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 px-3.5 py-2.5">Dejas de cambiar los precios en bolívares a mano cada día.</p>
   <p class="font-head text-xs uppercase tracking-wider text-slate-400 mt-6 mb-3">Qué recibes</p>
   <ul class="space-y-2.5 text-sm text-slate-300">
@@ -474,16 +458,16 @@
   </ul>
   <p class="text-sm text-slate-400 mt-5"><span class="text-slate-300">Ideal para:</span> restaurantes, bodegones, tiendas, repuestos y venta de comida</p>
   <div class="mt-auto pt-7 flex flex-col gap-2.5">
-    <a href="demo-catalogo.html" data-track="demo_catalogo_click" data-cta="express_tarjeta" class="flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head text-sm font-medium transition-colors">Ver demo en vivo</a>
+    <a href="/demo-catalogo" data-track="demo_catalogo_click" data-cta="express_tarjeta" class="flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head text-sm font-medium transition-colors">Ver demo en vivo</a>
     <a href="https://wa.me/584244125386?text=Quiero%20Cat%C3%A1logo%20Express" target="_blank" rel="noopener" data-product="catalogo-express" data-cta="express_tarjeta" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero Catálogo Express</span></a>
   </div>
 </article>
 <article id="caja-clara" class="x-card flex flex-col p-6 sm:p-7 scroll-mt lg:col-span-2" aria-labelledby="caja-clara-t">
-  <div class="flex items-start justify-between gap-3 mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triGreen bg-fv-triGreen/10 border-fv-triGreen/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01"/></svg></span><span class="font-head text-xs text-slate-300 border border-white/10 bg-white/5 rounded-full px-3 py-1.5 text-right">Listo en 24 a 48 horas</span></div>
+  <div class="flex items-start justify-between gap-3 mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triGreen bg-fv-triGreen/10 border-fv-triGreen/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01"/></svg></span><span class="font-head text-xs text-slate-300 border border-white/10 bg-white/5 rounded-full px-3 py-1.5 text-right">Listo en 48 horas</span></div>
   <h3 id="caja-clara-t" class="font-sans text-xl font-bold text-white mb-2">Caja Clara</h3>
   <p class="text-slate-400 leading-relaxed mb-5">Para que sepas cuánto ganaste cada semana, sin sacar cuentas a mano.</p>
   <div class="mb-1 flex items-baseline gap-2 flex-wrap"><span class="text-4xl font-extrabold text-white tracking-tight">$50</span><span class="font-head text-sm text-slate-400">pago único</span></div>
-  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap><span class="font-head font-medium text-fv-triGreen" data-usd="50"></span> a tasa BCV de hoy</p>
+  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap data-bs-line data-usd="50"></p>
   <p class="font-head text-xs uppercase tracking-wider text-slate-400 mt-6 mb-3">Qué recibes</p>
   <ul class="space-y-2.5 text-sm text-slate-300">
     <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Google Sheets de cuadre diario en Bs, $, Pago Móvil y USDT</span></li>
@@ -497,12 +481,12 @@
   </div>
 </article>
 <article id="asistente-ia" class="x-card flex flex-col p-6 sm:p-7 scroll-mt lg:col-span-3" aria-labelledby="asistente-ia-t">
-  <div class="flex items-start justify-between gap-3 mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1-4.2A8 8 0 1121 12z"/><path d="M9 12h.01M12 12h.01M15 12h.01"/></svg></span><span class="font-head text-xs text-slate-300 border border-white/10 bg-white/5 rounded-full px-3 py-1.5 text-right">5 a 7 días · desde noviembre</span></div>
+  <div class="flex items-start justify-between gap-3 mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1-4.2A8 8 0 1121 12z"/><path d="M9 12h.01M12 12h.01M15 12h.01"/></svg></span><span class="font-head text-xs text-slate-300 border border-white/10 bg-white/5 rounded-full px-3 py-1.5 text-right">5 a 7 días · disponible desde noviembre de 2026</span></div>
   <h3 id="asistente-ia-t" class="font-sans text-xl font-bold text-white mb-2">Asistente IA de WhatsApp</h3>
   <p class="text-slate-400 leading-relaxed mb-5">Responde a tus clientes las 24 horas y te pasa solo lo difícil.</p>
   <div class="mb-1 flex items-baseline gap-2 flex-wrap"><span class="text-4xl font-extrabold text-white tracking-tight">$150</span><span class="font-head text-sm text-slate-400">+ $30/mes</span></div>
   <p class="text-sm text-slate-400">$350 + $60/mes fuera de Venezuela</p>
-  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap><span class="font-head font-medium text-fv-triGreen" data-usd="150"></span> a tasa BCV de hoy</p>
+  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap data-bs-line data-usd="150"></p>
   <p class="font-head text-xs uppercase tracking-wider text-slate-400 mt-6 mb-3">Qué recibes</p>
   <ul class="space-y-2.5 text-sm text-slate-300">
     <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Responde precios, horarios y ubicación las 24 horas</span></li>
@@ -527,11 +511,11 @@
     <h3 class="font-head uppercase tracking-[0.2em] text-xs text-fv-triPurple mb-8">Para ti</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
 <article id="clase-ia" class="x-card flex flex-col p-6 sm:p-7 scroll-mt" aria-labelledby="clase-ia-t">
-  <div class="flex items-start justify-between gap-3 mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v5"/></svg></span><span class="font-head text-xs text-slate-300 border border-white/10 bg-white/5 rounded-full px-3 py-1.5 text-right">Agenda esta semana</span></div>
+  <div class="flex items-start justify-between gap-3 mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v5"/></svg></span><span class="font-head text-xs text-slate-300 border border-white/10 bg-white/5 rounded-full px-3 py-1.5 text-right">Agéndala esta semana</span></div>
   <h3 id="clase-ia-t" class="font-sans text-xl font-bold text-white mb-2">Clase 1:1 de IA</h3>
   <p class="text-slate-400 leading-relaxed mb-5">Aprende a usar IA con tus propios archivos y tareas.</p>
   <div class="mb-1 flex items-baseline gap-2 flex-wrap"><span class="text-4xl font-extrabold text-white tracking-tight">$25</span><span class="font-head text-sm text-slate-400">por 90 minutos</span></div>
-  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap><span class="font-head font-medium text-fv-triGreen" data-usd="25"></span> a tasa BCV de hoy</p>
+  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap data-bs-line data-usd="25"></p>
   <a href="https://wa.me/584244125386?text=Quiero%20el%20paquete%20de%203%20Clases%201%3A1%20de%20IA" target="_blank" rel="noopener" data-product="clase-ia-paquete" data-cta="express_tarjeta" class="inline-flex items-center min-h-[44px] text-sm text-fv-triPurple hover:text-white underline underline-offset-4 decoration-fv-triPurple/40 transition-colors">o el paquete de 3 clases por $60</a>
   <p class="font-head text-xs uppercase tracking-wider text-slate-400 mt-6 mb-3">Qué recibes</p>
   <ul class="space-y-2.5 text-sm text-slate-300">
@@ -549,7 +533,7 @@
   <h3 id="mis-finanzas-claras-t" class="font-sans text-xl font-bold text-white mb-2">Mis Finanzas Claras</h3>
   <p class="text-slate-400 leading-relaxed mb-5">La versión personal de Caja Clara, lista para copiar.</p>
   <div class="mb-1 flex items-baseline gap-2 flex-wrap"><span class="text-4xl font-extrabold text-white tracking-tight">$10</span><span class="font-head text-sm text-slate-400">pago único</span></div>
-  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap><span class="font-head font-medium text-fv-triGreen" data-usd="10"></span> a tasa BCV de hoy</p>
+  <p class="hidden text-sm text-slate-400 mt-1" data-bs-wrap data-bs-line data-usd="10"></p>
   <p class="font-head text-xs uppercase tracking-wider text-slate-400 mt-6 mb-3">Qué recibes</p>
   <ul class="space-y-2.5 text-sm text-slate-300">
     <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Tus cuentas en Bs, $ y USDT en un solo lugar</span></li>
@@ -613,7 +597,7 @@
         </div>
         <p class="hidden text-xs text-slate-400 mt-4 text-center" data-bs-wrap>Los precios en Bs de esta vista usan la tasa BCV de hoy.</p>
         <div class="mt-auto pt-6">
-          <a href="demo-catalogo.html" data-track="demo_catalogo_click" data-cta="express_funcionando" class="flex items-center justify-center min-h-[48px] px-4 py-3 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head font-medium transition-colors">Abrir demo en vivo</a>
+          <a href="/demo-catalogo" data-track="demo_catalogo_click" data-cta="express_funcionando" class="flex items-center justify-center min-h-[48px] px-4 py-3 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head font-medium transition-colors">Abrir demo en vivo</a>
         </div>
       </article>
 
@@ -651,14 +635,14 @@
           <div class="flex items-center gap-2.5 px-4 py-3 bg-[#1f2c34]"><span class="w-8 h-8 rounded-full bg-fv-triGreen/20 text-fv-triGreen flex items-center justify-center font-head text-xs font-bold">TM</span><div><p class="text-sm text-white leading-none">Taller Mecánico</p><p class="text-[11px] text-slate-400 leading-none mt-1">Asistente IA</p></div></div>
           <div class="p-4 space-y-2.5 text-[13px] leading-snug">
             <div class="max-w-[85%] ml-auto rounded-xl rounded-tr-sm bg-[#005c4b] text-slate-100 px-3 py-2">Buenas, ¿cuánto cuesta el cambio de aceite?</div>
-            <div class="max-w-[88%] rounded-xl rounded-tl-sm bg-[#1f2c34] text-slate-100 px-3 py-2">¡Hola! El cambio de aceite cuesta $25<span class="hidden" data-bs-wrap> (<span data-usd="25"></span> a tasa BCV de hoy)</span>. ¿Quieres que te agende una cita?</div>
+            <div class="max-w-[88%] rounded-xl rounded-tl-sm bg-[#1f2c34] text-slate-100 px-3 py-2">¡Hola! El cambio de aceite cuesta $25 (en bolívares a la tasa BCV del día). ¿Quieres que te agende una cita?</div>
             <div class="max-w-[85%] ml-auto rounded-xl rounded-tr-sm bg-[#005c4b] text-slate-100 px-3 py-2">Sí, para mañana en la mañana</div>
             <div class="max-w-[88%] rounded-xl rounded-tl-sm bg-[#1f2c34] text-slate-100 px-3 py-2">Listo, quedaste anotado para mañana a las 9:00 a.m.</div>
             <div class="max-w-[85%] ml-auto rounded-xl rounded-tr-sm bg-[#005c4b] text-slate-100 px-3 py-2">Tengo un reclamo con una garantía</div>
             <div class="max-w-[88%] rounded-xl rounded-tl-sm bg-[#1f2c34] text-slate-100 px-3 py-2">Te paso con una persona del equipo para ayudarte mejor.</div>
           </div>
         </div>
-        <p class="text-xs text-slate-400 mt-4">Ejemplo ilustrativo · disponible desde noviembre</p>
+        <p class="text-xs text-slate-400 mt-4">Ejemplo ilustrativo · disponible desde noviembre de 2026</p>
       </article>
 
     </div>
@@ -746,7 +730,7 @@
           <span>¿Qué necesito para el Asistente IA de WhatsApp?</span>
           <svg class="chev w-4 h-4 text-fv-triGreen transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Está pensado para negocios con más de 30 mensajes al día. Se instala en 5 a 7 días y está disponible desde noviembre.</p>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Está pensado para negocios con más de 30 mensajes al día. Se instala en 5 a 7 días y está disponible desde noviembre de 2026.</p>
       </details>
       <details class="group x-faq bg-fv-surface border border-fv-border rounded-xl px-5 sm:px-6 py-1">
         <summary class="flex items-center justify-between gap-4 min-h-[44px] py-4 cursor-pointer font-head text-white">
@@ -770,11 +754,11 @@
         <p class="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto mb-8">Escríbenos y te recomendamos el producto justo para tu negocio. Te respondemos el mismo día.</p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a href="https://wa.me/584244125386?text=Hola%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20producto%20me%20conviene" target="_blank" rel="noopener" data-cta="cierre" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-7 py-3.5 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>Escríbenos por WhatsApp</a>
-          <a href="precios.html" class="flex items-center justify-center min-h-[48px] px-7 py-3.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head font-medium transition-colors">Ver todos los precios</a>
+          <a href="/precios" class="flex items-center justify-center min-h-[48px] px-7 py-3.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head font-medium transition-colors">Ver todos los precios</a>
         </div>
       </div>
     </div>
-    <p class="text-center text-sm text-slate-400 mt-8">¿Tu empresa necesita un proyecto más grande? <a href="servicios.html" class="inline-block py-2 text-slate-300 underline underline-offset-4 decoration-white/30 hover:text-white transition-colors">Conoce la Línea Hexagonal</a></p>
+    <p class="text-center text-sm text-slate-400 mt-8">¿Tu empresa necesita un proyecto más grande? <a href="/servicios" class="inline-block py-2 text-slate-300 underline underline-offset-4 decoration-white/30 hover:text-white transition-colors">Conoce la Línea Hexagonal</a></p>
   </div>
 </section>
 
@@ -790,16 +774,16 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
-        <a href="index.html" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="h-8 w-8">
-          <span class="font-sans font-semibold tracking-wide text-white text-lg">F&amp;V AI GROUP</span>
+        <a href="/" class="inline-flex items-center gap-2.5 mb-4">
+          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
+          <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
         <div class="flex items-center gap-3">
-          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
           </a>
-          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
+          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo: contacto@fvaigroup.com" title="contacto@fvaigroup.com" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
           <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
@@ -812,24 +796,24 @@
         <div>
           <h4 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Servicios</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="asesoria-estrategica.html" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
-            <li><a href="evaluacion-procesos.html" class="link-underline hover:text-white transition-colors">Evaluación de Procesos</a></li>
-            <li><a href="despliegue-ejecucion.html" class="link-underline hover:text-white transition-colors">Despliegue y Ejecución</a></li>
-            <li><a href="habilitacion-equipos.html" class="link-underline hover:text-white transition-colors">Habilitación de Equipos</a></li>
-            <li><a href="masterclasses-workshops.html" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
-            <li><a href="acompanamiento-continuo.html" class="link-underline hover:text-white transition-colors">Acompañamiento Continuo</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/evaluacion-procesos" class="link-underline hover:text-white transition-colors">Evaluación de Procesos</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Despliegue y Ejecución</a></li>
+            <li><a href="/habilitacion-equipos" class="link-underline hover:text-white transition-colors">Habilitación de Equipos</a></li>
+            <li><a href="/masterclasses-workshops" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
+            <li><a href="/acompanamiento-continuo" class="link-underline hover:text-white transition-colors">Acompañamiento Continuo</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h4>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="express.html" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
-            <li><a href="precios.html" class="link-underline hover:text-white transition-colors">Precios</a></li>
-            <li><a href="nosotros.html#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="nosotros.html#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&amp;V</a></li>
-            <li><a href="index.html#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="calculadora-roi.html" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
+            <li><a href="/express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
+            <li><a href="/precios" class="link-underline hover:text-white transition-colors">Precios</a></li>
+            <li><a href="/nosotros#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
+            <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
 
@@ -841,17 +825,17 @@
             <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
             <li class="pt-1 text-slate-600">Valencia, Carabobo, Venezuela</li>
             <li class="text-slate-600">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
-            <li class="text-slate-600">Te respondemos el mismo día</li>
+            <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-slate-600 text-sm">&copy; 2026 F&amp;V AI Group S.A. Todos los derechos reservados.</p>
+      <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
       <div class="flex gap-6 text-sm text-slate-600">
-        <a href="privacidad.html" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
-        <a href="terminos.html" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
+        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
+        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
       </div>
     </div>
   </div>
@@ -866,7 +850,7 @@
   <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente de preguntas frecuentes</p>
@@ -967,13 +951,13 @@
     const faq = [
       { k: ['negocio visible','google','maps','ficha','verificacion'], a: 'Negocio Visible cuesta $35 (pago único) y te lo entregamos en 48 horas: ficha de Google Maps completa, WhatsApp Business con catálogo, mensaje de bienvenida y 5 respuestas rápidas, código QR para el mostrador y 20 minutos de explicación. La verificación de Google la hace Google y puede tardar unos días más.' },
       { k: ['catalogo','menu','tasa','bcv','bolivares','demo'], a: 'El Catálogo Express cuesta $90 en Venezuela ($250 fuera) y está listo en 72 horas. Tus productos o tu menú van en una página con precios en $ y Bs que se actualizan solos con la tasa oficial del BCV de cada día; tus precios base van en dólares. Puedes ver el demo en vivo en la tarjeta del producto.' },
-      { k: ['caja clara','cuadre','caja'], a: 'Caja Clara cuesta $50 y está lista en 24 a 48 horas: Google Sheets de cuadre diario en Bs, $, Pago Móvil y USDT, tasa BCV automática, reporte semanal y 45 minutos de capacitación.' },
-      { k: ['asistente','chatbot','robot','automatico'], a: 'El Asistente IA de WhatsApp cuesta $150 + $30/mes en Venezuela ($350 + $60/mes fuera). Responde precios, horarios y ubicación las 24 horas, toma pedidos o citas y te pasa lo difícil. Se instala en 5 a 7 días y está disponible desde noviembre.' },
+      { k: ['caja clara','cuadre','caja'], a: 'Caja Clara cuesta $50 y está lista en 48 horas: Google Sheets de cuadre diario en Bs, $, Pago Móvil y USDT, tasa BCV automática, reporte semanal y 45 minutos de capacitación.' },
+      { k: ['asistente','chatbot','robot','automatico'], a: 'El Asistente IA de WhatsApp cuesta $150 + $30/mes en Venezuela ($350 + $60/mes fuera). Responde precios, horarios y ubicación las 24 horas, toma pedidos o citas y te pasa lo difícil. Se instala en 5 a 7 días y está disponible desde noviembre de 2026.' },
       { k: ['clase','aprender','profesor'], a: 'La Clase 1:1 de IA cuesta $25 por 90 minutos, o 3 clases por $60. Trabajas con tus propios archivos y tareas. Se agenda esta semana por WhatsApp.' },
       { k: ['finanzas claras','personal','finanzas'], a: 'Mis Finanzas Claras cuesta $10: una hoja de Google Sheets lista para copiar, con tus cuentas en Bs, $ y USDT en un solo lugar. La recibes apenas pagas.' },
       { k: ['redes','posts','publicaciones','instagram'], a: 'Redes al Día son 12 posts diseñados al mes por $60/mes. Todavía no está disponible, pero puedes anotarte en la lista de espera desde su tarjeta.' },
       { k: ['refiere','referir','referido','comision','recomendar'], a: 'Si nos recomiendas a alguien y paga, te llevas el 10 % de lo que pague. Escríbenos por WhatsApp desde la sección Cómo pagas.' },
-      { k: ['tarda','tiempo','entrega','cuando','demora','dias'], a: 'Negocio Visible: 48 horas. Catálogo Express: 72 horas. Caja Clara: 24 a 48 horas. Asistente IA: 5 a 7 días, desde noviembre. Mis Finanzas Claras: al pagar. La verificación de Google puede tardar unos días más.' },
+      { k: ['tarda','tiempo','entrega','cuando','demora','dias'], a: 'Negocio Visible: 48 horas. Catálogo Express: 72 horas. Caja Clara: 48 horas. Asistente IA: 5 a 7 días, disponible desde noviembre de 2026. Mis Finanzas Claras: al pagar. La verificación de Google puede tardar unos días más.' },
       { k: ['pago','pagar','usdt','efectivo','binance','zinli','descuento','cuesta','precio','cuanto'], a: 'Los precios son en dólares y pagas en bolívares a la tasa BCV del día. Si pagas en USDT o en efectivo, tienes 10 % de descuento. Más de $50: la mitad para empezar y la otra al entregar; $50 o menos: pago completo por adelantado. Fuera de Venezuela: Binance Pay (USDT) o Zinli.' },
       { k: ['horario','responden','respuesta','atencion','abren'], a: 'Te respondemos el mismo día. Atendemos de lunes a viernes, de 9:00 a.m. a 5:00 p.m.; si escribes fuera de ese horario, te respondemos a primera hora del siguiente día hábil.' },
       { k: ['contacto','whatsapp','humano','persona','asesor','hablar'], a: 'Claro. Escríbenos por WhatsApp y te recomendamos el producto justo para tu negocio.' },
@@ -1243,134 +1227,8 @@
     });
   })();
 
-  // ---- Búsqueda global (Cmd+K / Ctrl+K) ----
-  (function () {
-    const SEARCH_INDEX = [
-      { title: 'Inicio', desc: 'Página principal de F&V AI Group.', url: 'index.html', cat: 'Pagina' },
-      { title: 'Servicios', desc: 'Seis etapas, un mismo equipo, de la asesoría al soporte.', url: 'servicios.html', cat: 'Pagina' },
-      { title: 'Asesoría Estratégica', desc: 'Diagnóstico antes de comprometer presupuesto en ejecución.', url: 'asesoria-estrategica.html', cat: 'Servicio' },
-      { title: 'Evaluación de Procesos', desc: 'Auditoría técnica y financiera de sus procesos actuales.', url: 'evaluacion-procesos.html', cat: 'Servicio' },
-      { title: 'Despliegue y Ejecución', desc: 'Implementación en Dynamics 365 Sales/Customer Service, Odoo Community, Hexágono o desarrollo a medida.', url: 'despliegue-ejecucion.html', cat: 'Servicio' },
-      { title: 'Habilitación de Equipos', desc: 'Formación práctica sobre el sistema real de su empresa.', url: 'habilitacion-equipos.html', cat: 'Servicio' },
-      { title: 'Masterclasses y Workshops', desc: 'Formación estructurada en gestión empresarial e IA aplicada.', url: 'masterclasses-workshops.html', cat: 'Servicio' },
-      { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: 'acompanamiento-continuo.html', cat: 'Servicio' },
-      { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: 'cursos.html', cat: 'Pagina' },
-      { title: 'Finanzas con IA', desc: 'Curso presencial: automatice la conciliación de pagos de su empresa.', url: 'curso-finanzas-ia.html', cat: 'Curso' },
-      { title: 'Precios', desc: 'Precios publicados: Línea Triangular y Línea Hexagonal.', url: 'precios.html', cat: 'Pagina' },
-      { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: 'nosotros.html', cat: 'Pagina' },
-      { title: 'Contacto', desc: 'WhatsApp directo: te respondemos el mismo día.', url: 'contacto.html', cat: 'Pagina' },
-      { title: 'Política de Privacidad', desc: 'Cómo protegemos su información.', url: 'privacidad.html', cat: 'Legal' },
-      { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: 'terminos.html', cat: 'Legal' },
-      { title: 'Calculadora de ROI', desc: 'Estime cuánto puede ahorrar automatizando sus procesos.', url: 'calculadora-roi.html', cat: 'Pagina' },
-      { title: 'Express', desc: 'Productos para negocios desde $35, con entrega en días.', url: 'express.html', cat: 'Producto' },
-      { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: 'express.html#negocio-visible', cat: 'Producto' },
-      { title: 'Catálogo Express', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: 'express.html#catalogo-express', cat: 'Producto' },
-      { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: 'express.html#caja-clara', cat: 'Producto' },
-      { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Desde noviembre.', url: 'express.html#asistente-ia', cat: 'Producto' },
-      { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: 'express.html#clase-ia', cat: 'Producto' },
-      { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: 'express.html#mis-finanzas-claras', cat: 'Producto' },
-      { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: 'demo-catalogo.html', cat: 'Producto' },
-    ];
-
-    const overlay = document.getElementById('search-overlay');
-    const input = document.getElementById('search-input');
-    const resultsEl = document.getElementById('search-results');
-    if (!overlay || !input || !resultsEl) return;
-
-    let activeIndex = -1;
-    let currentResults = [];
-
-    function render(list) {
-      currentResults = list;
-      activeIndex = list.length ? 0 : -1;
-      if (!list.length) {
-        resultsEl.innerHTML = '<div id="search-empty">Sin resultados. <a href="contacto.html" class="link-underline text-fv-cyan">Escríbanos</a> y le ayudamos directo.</div>';
-        return;
-      }
-      resultsEl.innerHTML = list.map((r, i) => `
-        <a href="${r.url}" class="search-result${i === 0 ? ' is-active' : ''}" data-i="${i}">
-          <span class="sr-title">${r.title} <span class="sr-tag cat-${r.cat}">${r.cat}</span></span>
-          <span class="sr-desc">${r.desc}</span>
-        </a>
-      `).join('');
-    }
-
-    function filterResults(q) {
-      const norm = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-      if (!norm) return SEARCH_INDEX;
-      return SEARCH_INDEX.filter(r => {
-        const hay = (r.title + ' ' + r.desc).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        return hay.includes(norm);
-      });
-    }
-
-    function setActive(i) {
-      const items = resultsEl.querySelectorAll('.search-result');
-      items.forEach(el => el.classList.remove('is-active'));
-      if (items[i]) { items[i].classList.add('is-active'); items[i].scrollIntoView({ block: 'nearest' }); }
-      activeIndex = i;
-    }
-
-    function openSearch() {
-      overlay.classList.add('is-open');
-      input.value = '';
-      render(SEARCH_INDEX);
-      setTimeout(() => input.focus(), 30);
-    }
-    function closeSearch() {
-      overlay.classList.remove('is-open');
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        overlay.classList.contains('is-open') ? closeSearch() : openSearch();
-      }
-      if (!overlay.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeSearch();
-      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(activeIndex + 1, currentResults.length - 1)); }
-      if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(activeIndex - 1, 0)); }
-      if (e.key === 'Enter' && currentResults[activeIndex]) { window.location.href = currentResults[activeIndex].url; }
-    });
-
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
-    input.addEventListener('input', () => render(filterResults(input.value)));
-    resultsEl.addEventListener('mouseover', (e) => {
-      const el = e.target.closest('.search-result');
-      if (el) setActive(parseInt(el.dataset.i, 10));
-    });
-
-    const trigger = document.getElementById('search-trigger');
-    if (trigger) trigger.addEventListener('click', openSearch);
-  })();
 </script>
 <script>
-// ---- Tasa BCV del día (DolarApi) -> equivalentes en Bs. Sin respuesta de la API, los montos en Bs quedan ocultos. ----
-(function () {
-  const usdEls = document.querySelectorAll('[data-usd]');
-  const rateEls = document.querySelectorAll('[data-bcv-rate]');
-  const dateEls = document.querySelectorAll('[data-bcv-date]');
-  if (!usdEls.length && !rateEls.length) return;
-  const fmt = new Intl.NumberFormat('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  function apply(rate, fecha) {
-    usdEls.forEach(el => { const usd = parseFloat(el.dataset.usd); if (!isNaN(usd)) el.textContent = 'Bs ' + fmt.format(Math.round(usd * rate * 100 + 1e-6) / 100); });
-    rateEls.forEach(el => { el.textContent = 'Bs ' + fmt.format(rate); });
-    if (fecha) { const d = new Date(fecha); if (!isNaN(d)) dateEls.forEach(el => { el.textContent = d.toLocaleDateString('es-VE', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'America/Caracas' }); }); }
-    document.querySelectorAll('[data-bs-wrap]').forEach(el => el.classList.remove('hidden'));
-  }
-  try {
-    const c = JSON.parse(localStorage.getItem('fv_bcv') || 'null');
-    if (c && c.rate && Date.now() - c.ts < 36 * 3600 * 1000) apply(c.rate, c.fecha);
-  } catch (e) {}
-  fetch('https://ve.dolarapi.com/v1/dolares/oficial', { cache: 'no-store' })
-    .then(r => r.ok ? r.json() : Promise.reject(r.status))
-    .then(d => {
-      if (!d || !(d.promedio > 0)) return;
-      apply(d.promedio, d.fechaActualizacion);
-      try { localStorage.setItem('fv_bcv', JSON.stringify({ rate: d.promedio, fecha: d.fechaActualizacion, ts: Date.now() })); } catch (e) {}
-    })
-    .catch(() => {});
-})();
   // ---- CTA fijo en móvil ----
   (function () {
     const bar = document.getElementById('sticky-cta');
@@ -1393,6 +1251,8 @@
     gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
   });
 </script>
+<script defer src="/assets/bcv.js"></script>
+<script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
