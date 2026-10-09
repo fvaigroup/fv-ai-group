@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KY3QKJPK3K"></script>
+<!-- Google Analytics y Clarity: se cargan tras el primer toque/scroll o a los 8 s de cargada la página, para no frenar el primer pintado -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-KY3QKJPK3K');
-</script>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yr29hp4bfg");
+  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments)};
+  (function () {
+    var hecho = false;
+    function cargar() {
+      if (hecho) return; hecho = true;
+      var g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=G-KY3QKJPK3K'; document.head.appendChild(g);
+      var c = document.createElement('script'); c.async = true; c.src = 'https://www.clarity.ms/tag/yr29hp4bfg'; document.head.appendChild(c);
+    }
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { addEventListener(e, cargar, { once: true, passive: true }); });
+    addEventListener('load', function () { setTimeout(cargar, 8000); });
+  })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,11 +25,13 @@
 <meta name="description" content="Condiciones de uso del sitio web y de contratación de los servicios de F&V AI Group.">
 <link rel="canonical" href="https://www.fvaigroup.com/terminos">
 <meta name="robots" content="noindex">
-<link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
-<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -259,7 +263,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
-        <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
         <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
       <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
@@ -730,7 +734,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <a href="/" class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="h-7 w-7">
+        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-7 w-7">
         <span class="font-sans font-semibold tracking-wide text-white text-sm">F&V AI GROUP</span>
       </a>
       <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
@@ -789,7 +793,7 @@
   // ---- Fondo de constelación interactivo (canvas, requestAnimationFrame) ----
   (function () {
     const canvas = document.getElementById('constellation-canvas');
-    if (!canvas) return;
+    if (!canvas || window.matchMedia('(max-width: 1023px)').matches) return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
 
@@ -968,19 +972,7 @@
     }
   })();
 </script>
-<script>
-  // ---- Medición (GA4): clics a WhatsApp -> 'whatsapp_click' con ubicación y producto; elementos con data-track -> su propio evento ----
-  document.addEventListener('click', (e) => {
-    if (typeof gtag !== 'function') return;
-    const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
-    const tracked = e.target.closest('[data-evento],[data-track]');
-    if (tracked) gtag('event', tracked.dataset.evento || tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
-    const a = e.target.closest('a[href*="wa.me"]');
-    if (!a) return;
-    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
-    gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
-  });
-</script>
+<script defer src="/assets/medicion.js"></script>
 <script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

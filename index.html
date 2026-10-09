@@ -1,67 +1,195 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KY3QKJPK3K"></script>
+<!-- Google Analytics y Clarity: se cargan tras el primer toque/scroll o a los 8 s de cargada la página, para no frenar el primer pintado -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-KY3QKJPK3K');
-</script>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yr29hp4bfg");
+  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments)};
+  (function () {
+    var hecho = false;
+    function cargar() {
+      if (hecho) return; hecho = true;
+      var g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=G-KY3QKJPK3K'; document.head.appendChild(g);
+      var c = document.createElement('script'); c.async = true; c.src = 'https://www.clarity.ms/tag/yr29hp4bfg'; document.head.appendChild(c);
+    }
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { addEventListener(e, cargar, { once: true, passive: true }); });
+    addEventListener('load', function () { setTimeout(cargar, 8000); });
+  })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>F&V AI Group | Automatización, IA y páginas web en Valencia, Venezuela</title>
-<meta name="description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.">
+<meta name="description" content="Automatización, IA y páginas web con precios publicados en dólares: Pack Arranque desde $150, webs desde $90 y diagnóstico gratis. Valencia, Venezuela.">
 <link rel="canonical" href="https://www.fvaigroup.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&V AI Group">
 <meta property="og:locale" content="es_VE">
-<meta property="og:title" content="F&V AI Group | Auditoría e implementación de ERP e IA">
-<meta property="og:description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.">
+<meta property="og:title" content="F&V AI Group | Automatización, IA y páginas web en Valencia, Venezuela">
+<meta property="og:description" content="Automatización, IA y páginas web con precios publicados en dólares: Pack Arranque desde $150, webs desde $90 y diagnóstico gratis. Valencia, Venezuela.">
 <meta property="og:url" content="https://www.fvaigroup.com/">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="F&V AI Group | Auditoría e implementación de ERP e IA">
-<meta name="twitter:description" content="Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.">
+<meta name="twitter:title" content="F&V AI Group | Automatización, IA y páginas web en Valencia, Venezuela">
+<meta name="twitter:description" content="Automatización, IA y páginas web con precios publicados en dólares: Pack Arranque desde $150, webs desde $90 y diagnóstico gratis. Valencia, Venezuela.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "F&V AI Group",
-  "url": "https://www.fvaigroup.com/",
-  "logo": "https://www.fvaigroup.com/assets/logo-mark-hex.png",
-  "description": "Auditamos, implementamos y capacitamos equipos en Odoo Community y Dynamics 365, con IA a medida y soporte continuo después del go-live.",
-  "email": "contacto@fvaigroup.com",
-  "sameAs": [
-    "https://instagram.com/fvaigroup"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "telephone": "+58-424-412-5386",
-    "email": "contacto@fvaigroup.com",
-    "areaServed": "VE",
-    "availableLanguage": ["Spanish"]
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.fvaigroup.com/#organizacion",
+      "name": "F&V AI Group",
+      "url": "https://www.fvaigroup.com/",
+      "logo": "https://www.fvaigroup.com/assets/logo-mark-hex.png",
+      "description": "Consultora de Valencia, Venezuela: automatización, inteligencia artificial y páginas web con precios publicados en dólares.",
+      "email": "contacto@fvaigroup.com",
+      "telephone": "+58-424-412-5386",
+      "sameAs": [
+        "https://instagram.com/fvaigroup"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+58-424-412-5386",
+        "email": "contacto@fvaigroup.com",
+        "areaServed": "VE",
+        "availableLanguage": [
+          "Spanish"
+        ]
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.fvaigroup.com/#negocio-local",
+      "name": "F&V AI Group",
+      "url": "https://www.fvaigroup.com/",
+      "image": "https://www.fvaigroup.com/assets/og-image.png",
+      "telephone": "+58-424-412-5386",
+      "email": "contacto@fvaigroup.com",
+      "priceRange": "$10 - $3000",
+      "parentOrganization": {
+        "@id": "https://www.fvaigroup.com/#organizacion"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. La Rosario, Edif. Torre Trébol, Urb. Lomas del Este",
+        "addressLocality": "Valencia",
+        "addressRegion": "Carabobo",
+        "postalCode": "2001",
+        "addressCountry": "VE"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Venezuela"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://instagram.com/fvaigroup"
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.fvaigroup.com/express#pack-arranque",
+      "name": "Pack Arranque",
+      "description": "Negocio Visible (Google Maps y WhatsApp Business), Catálogo Express con tasa BCV y Caja Clara (control de caja diario). Entrega en 5 días.",
+      "brand": {
+        "@id": "https://www.fvaigroup.com/#organizacion"
+      },
+      "image": "https://www.fvaigroup.com/assets/og-express.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "150",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.fvaigroup.com/express#pack-arranque",
+        "seller": {
+          "@id": "https://www.fvaigroup.com/#organizacion"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.fvaigroup.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Y si no sé nada de tecnología?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No hace falta. Te lo dejamos listo: Negocio Visible incluye un recorrido de 20 minutos y Caja Clara 45 minutos de capacitación. Si tienes dudas, nos escribes por WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo pago?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los precios son en dólares. Pagas en bolívares por Pago Móvil a la tasa BCV del día, o en USDT por Binance, con Zinli o en efectivo en dólares. Con USDT o efectivo tienes 20 % de descuento. Hasta $50 pagas completo al pedir; más de $50, la mitad para empezar y la mitad al entregar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si no me gusta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En los productos Triangular Express aplica la Garantía Express: si tu producto no queda como lo prometimos, lo corregimos sin costo; si aun así no te sirve, te devolvemos tu dinero. En los proyectos de empresa, el alcance, los tiempos y el costo quedan por escrito en la propuesta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Atienden fuera de Valencia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, por videollamada y por WhatsApp. Los talleres y cursos son presenciales en Valencia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del producto: de 24 horas a 7 días en Triangular Express, de 1 a 3 semanas en Triangular y Hexagonal Express, y de 1 a 3 meses en la Línea Hexagonal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Trabajan con empresas grandes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La Línea Hexagonal es para empresas que quieren el sistema completo: empezamos con una evaluación y trabajamos por fases, con Odoo Community, Dynamics 365 Sales/Customer Service o desarrollo a medida."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
-<link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
-<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -626,7 +754,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="#inicio" class="flex items-center gap-3 shrink-0 site-logo-link">
-        <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
         <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
 
@@ -738,7 +866,7 @@
         <!-- Emblema hexagonal animado: el momento memorable de la página -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none">
           <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-full h-full hex-spin opacity-90">
-          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="absolute inset-0 m-auto w-56 h-56 float">
+          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="absolute inset-0 m-auto w-56 h-56 float">
         </div>
       </div>
 
@@ -753,38 +881,38 @@
   </div>
   <div class="marquee">
     <div class="marquee-track">
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="Logo de Licorway"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="Logo de Killjoy"></div>
-      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="Logo de Natural Sweet"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="Logo de Casa del Mocho"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="Logo de Sweetery"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="Logo de Rujano Raw"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="Logo de Surtidora 9° Los Andes"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="Logo de CVXRGXS.Graphic"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true"></div>
-      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="Logo de Licorway" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="Logo de Killjoy" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="Logo de Natural Sweet" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="Logo de Casa del Mocho" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="Logo de Sweetery" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="Logo de Rujano Raw" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="Logo de Surtidora 9° Los Andes" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="Logo de CVXRGXS.Graphic" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-killjoy.jpeg" width="897" height="623" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-[#F28412] rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-naturalsweet.png" width="853" height="709" class="h-[85%] w-[85%] object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-casadelmocho.jpg" width="1180" height="912" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-sweetery.jpg" width="1724" height="914" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-rujanoraw.jpg" width="2035" height="450" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-surtidora9gradoslosandes.jpg" width="340" height="167" class="h-full w-full object-contain rounded-md" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+      <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.jpg" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
     </div>
   </div>
 </section>
@@ -1090,7 +1218,7 @@
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12 flex items-center justify-between gap-6">
       <h2 id="h-sec-7" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Preguntas <span class="shimmer-text">frecuentes</span></h2>
-      <img src="assets/signos-hex.png" width="1024" height="1024" loading="lazy" alt="" aria-hidden="true" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
+      <img src="assets/signos-hex.webp" width="1024" height="1024" loading="lazy" alt="" aria-hidden="true" class="hidden sm:block w-20 h-20 rounded-2xl object-cover opacity-90 shrink-0">
     </div>
     <div class="space-y-3">
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
@@ -1169,10 +1297,10 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
+          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
-        <p class="text-sm text-slate-400 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
+        <p class="text-sm text-slate-400 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios publicados en dólares.</p>
         <div class="flex items-center gap-3">
           <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
@@ -1242,13 +1370,13 @@
     <button type="button" id="luci-hint-dismiss" aria-label="Cerrar aviso" class="luci-hint-dismiss">&times;</button>
   </div>
   <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-7 h-7 md:w-8 md:h-8">
+    <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-7 h-7 md:w-8 md:h-8">
   </button>
 
   <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-400 leading-none mt-1">Asistente virtual · responde al instante</p>
@@ -1415,8 +1543,13 @@
   // FAQ chevron already handled via CSS [open]
 
   // ---- Motor compartido de partículas para los fondos decorativos (hex-canvas y constellation-canvas) ----
+  // Los fondos decorativos arrancan después de que la página ya pintó y no se usan en pantallas pequeñas (rendimiento).
   function createParticleField(canvas, opts) {
-    if (!canvas) return;
+    if (!canvas || window.matchMedia('(max-width: 1023px)').matches) return;
+    const start = () => setTimeout(() => createParticleFieldNow(canvas, opts), 300);
+    if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+  }
+  function createParticleFieldNow(canvas, opts) {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion && opts.hideWhenReduced) return;
 
@@ -1752,23 +1885,11 @@
   })();
 
 </script>
-<script>
-  // ---- Medición (GA4): clics a WhatsApp -> 'whatsapp_click' con ubicación y producto; elementos con data-track -> su propio evento ----
-  document.addEventListener('click', (e) => {
-    if (typeof gtag !== 'function') return;
-    const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
-    const tracked = e.target.closest('[data-evento],[data-track]');
-    if (tracked) gtag('event', tracked.dataset.evento || tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
-    const a = e.target.closest('a[href*="wa.me"]');
-    if (!a) return;
-    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
-    gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
-  });
-</script>
 <script defer src="/assets/bcv.js"></script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/publicado.js"></script>
 <script defer src="/assets/luci.js"></script>
+<script defer src="/assets/medicion.js"></script>
 <script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KY3QKJPK3K"></script>
+<!-- Google Analytics y Clarity: se cargan tras el primer toque/scroll o a los 8 s de cargada la página, para no frenar el primer pintado -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-KY3QKJPK3K');
-</script>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yr29hp4bfg");
+  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments)};
+  (function () {
+    var hecho = false;
+    function cargar() {
+      if (hecho) return; hecho = true;
+      var g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=G-KY3QKJPK3K'; document.head.appendChild(g);
+      var c = document.createElement('script'); c.async = true; c.src = 'https://www.clarity.ms/tag/yr29hp4bfg'; document.head.appendChild(c);
+    }
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { addEventListener(e, cargar, { once: true, passive: true }); });
+    addEventListener('load', function () { setTimeout(cargar, 8000); });
+  })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de precios en dólares y bolívares con la tasa BCV | F&V AI Group</title>
+<title>Calculadora de precios en $ y Bs con la tasa BCV | F&V AI Group Valencia</title>
 <meta name="description" content="Gratis: calcula a cuánto vender tu producto en dólares y bolívares con la tasa BCV del día, tu margen y la comisión. Descarga tu tabla de precios en PDF.">
 <link rel="canonical" href="https://www.fvaigroup.com/calculadora">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&V AI Group">
 <meta property="og:locale" content="es_VE">
-<meta property="og:title" content="Calculadora de precios en $ y Bs con la tasa de hoy">
+<meta property="og:title" content="Calculadora de precios en $ y Bs con la tasa BCV | F&V AI Group Valencia">
 <meta property="og:description" content="Gratis: calcula a cuánto vender tu producto en dólares y bolívares con la tasa BCV del día, tu margen y la comisión. Descarga tu tabla de precios en PDF.">
 <meta property="og:url" content="https://www.fvaigroup.com/calculadora">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Calculadora de precios en $ y Bs con la tasa de hoy">
+<meta name="twitter:title" content="Calculadora de precios en $ y Bs con la tasa BCV | F&V AI Group Valencia">
 <meta name="twitter:description" content="Gratis: calcula a cuánto vender tu producto en dólares y bolívares con la tasa BCV del día, tu margen y la comisión. Descarga tu tabla de precios en PDF.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <script type="application/ld+json">
@@ -58,11 +60,13 @@
   }
 }
 </script>
-<link rel="apple-touch-icon" href="assets/logo-mark-hex.png">
-<link rel="icon" type="image/png" href="assets/logo-mark-hex.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -283,7 +287,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
-        <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
         <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
       <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
@@ -492,10 +496,10 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
+          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
-        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Auditoría, implementación y capacitación de sistemas empresariales, con integración de IA sobre flujos reales de negocio.</p>
+        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios publicados en dólares.</p>
         <div class="flex items-center gap-3">
           <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
@@ -511,31 +515,31 @@
 
       <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
         <div>
-          <h4 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Servicios</h4>
+          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Soluciones</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
-            <li><a href="/evaluacion-procesos" class="link-underline hover:text-white transition-colors">Evaluación de Procesos</a></li>
-            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Despliegue y Ejecución</a></li>
-            <li><a href="/habilitacion-equipos" class="link-underline hover:text-white transition-colors">Habilitación de Equipos</a></li>
-            <li><a href="/masterclasses-workshops" class="link-underline hover:text-white transition-colors">Masterclasses y Workshops</a></li>
-            <li><a href="/acompanamiento-continuo" class="link-underline hover:text-white transition-colors">Acompañamiento Continuo</a></li>
+            <li><a href="/express" class="link-underline hover:text-white transition-colors">Triangular Express</a></li>
+            <li><a href="/soluciones#triangular" class="link-underline hover:text-white transition-colors">Triangular</a></li>
+            <li><a href="/soluciones#hexagonal-express" class="link-underline hover:text-white transition-colors">Hexagonal Express</a></li>
+            <li><a href="/soluciones#hexagonal" class="link-underline hover:text-white transition-colors">Hexagonal</a></li>
+            <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
+            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h4>
+          <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
-            <li><a href="/precios" class="link-underline hover:text-white transition-colors">Precios</a></li>
-            <li><a href="/nosotros#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
+            <li><a href="/soluciones#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
             <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
+            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
             <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h4>
+          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
             <li><a href="mailto:contacto@fvaigroup.com" class="link-underline hover:text-white transition-colors">contacto@fvaigroup.com</a></li>
             <li><a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">+58 424 412 5386</a></li>
@@ -561,13 +565,13 @@
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40">
   <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark-hex.png" width="500" height="500" alt="Luci" class="w-8 h-8">
+    <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8">
   </button>
 
   <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente virtual · responde al instante</p>
@@ -658,7 +662,7 @@
   // ---- Fondo de constelación interactivo (canvas, requestAnimationFrame) ----
   (function () {
     const canvas = document.getElementById('constellation-canvas');
-    if (!canvas) return;
+    if (!canvas || window.matchMedia('(max-width: 1023px)').matches) return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return;
 
@@ -790,23 +794,11 @@
   })();
 
 </script>
-<script>
-  // ---- Medición (GA4): clics a WhatsApp -> 'whatsapp_click' con ubicación y producto; elementos con data-track -> su propio evento ----
-  document.addEventListener('click', (e) => {
-    if (typeof gtag !== 'function') return;
-    const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
-    const tracked = e.target.closest('[data-evento],[data-track]');
-    if (tracked) gtag('event', tracked.dataset.evento || tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
-    const a = e.target.closest('a[href*="wa.me"]');
-    if (!a) return;
-    const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
-    gtag('event', 'whatsapp_click', { cta_location: loc, product: a.dataset.product || '', page: page });
-  });
-</script>
 <script defer src="/assets/bcv.js"></script>
 <script defer src="/assets/calculadora.js"></script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/luci.js"></script>
+<script defer src="/assets/medicion.js"></script>
 <script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

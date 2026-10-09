@@ -81,3 +81,24 @@
   }
   .skip-link:focus { top: 1rem; }
 }
+
+/* ---- Rendimiento en móvil: los halos decorativos con desenfoque grande se ocultan (pintarlos es muy costoso) ---- */
+@media (max-width: 767px) {
+  .pointer-events-none[class*="blur-["] { display: none; }
+}
+
+/* ---- Rendimiento en móvil: sin animaciones infinitas que obligan a repintar (el degradado del título, las pulsaciones) ---- */
+@media (max-width: 767px) {
+  .shimmer-text { animation: none !important; background-position: 30% 50% !important; }
+  .badge-pill, .badge-pill::before, .badge-dot, #luci-toggle { animation: none !important; }
+}
+
+/* ---- Móvil: el titular del hero se pinta de inmediato (sin entrada con desvanecido) para que cargue más rápido ---- */
+@media (max-width: 767px) {
+  .hero-copy > *, .hero-visual-in { opacity: 1 !important; animation: none !important; }
+}
+
+
+/* ---- Accesibilidad: los grises de texto secundario cumplen el contraste mínimo (4,5:1) sobre fondo negro ---- */
+.text-slate-500 { color: #8190a5; }
+.text-slate-600 { color: #7f8da3; }
