@@ -20,8 +20,8 @@
 </script>
 <!-- Fin Medición F&V -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demo Catálogo Express | F&V AI Group</title>
-<meta name="description" content="Prueba cómo se vería el Catálogo Express de tu negocio: precios en $ y Bs con la tasa BCV y pedido por WhatsApp. Negocio ficticio.">
+<title>Demo Catálogo con tasa BCV | F&V AI Group</title>
+<meta name="description" content="Prueba cómo se vería el Catálogo con tasa BCV de tu negocio: precios en $ y Bs con la tasa BCV y pedido por WhatsApp. Negocio ficticio.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#15803d">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
@@ -215,9 +215,9 @@
 
 <div class="demo-bar" id="demoBar" hidden>
   <div class="wrap">
-    <p><strong>Demo<span class="txt-largo"> de Catálogo Express</span></strong> · negocio ficticio</p>
+    <p><strong>Demo<span class="txt-largo"> de Catálogo con tasa BCV</span></strong> · negocio ficticio</p>
     <div class="acciones">
-      <a class="quiero" id="quieroUno" data-track="demo_quiero_click" href="https://wa.me/584244125386?text=Quiero%20Cat%C3%A1logo%20Express%20(vi%20el%20demo)" target="_blank" rel="noopener">Quiero uno así</a>
+      <a class="quiero" id="quieroUno" data-track="demo_quiero_click" href="https://wa.me/584244125386?text=Quiero%20Cat%C3%A1logo%20con%20tasa%20BCV%20%28vi%20el%20demo%29" target="_blank" rel="noopener">Quiero uno así</a>
       <a class="volver" href="/express">Volver a Express</a>
     </div>
   </div>
@@ -678,7 +678,7 @@ const PRODUCTOS = [
     const nota = $('cNota').value.trim();
     const t = totalUsd();
     const l = [];
-    l.push(NEGOCIO.modoDemo ? 'Hola, probé el demo del Catálogo Express. Este sería un pedido de prueba:' : 'Hola, quiero hacer este pedido:');
+    l.push(NEGOCIO.modoDemo ? 'Hola, probé el demo del Catálogo con tasa BCV. Este sería un pedido de prueba:' : 'Hola, quiero hacer este pedido:');
     l.push('');
     lineas().forEach((p) => l.push('• ' + cant(p) + ' × ' + p.nombre + ' — ' + usd(cant(p) * p.precioUsd)));
     l.push('');

@@ -217,7 +217,7 @@
 
     R(36, 70, 523, 74, VERDE_CLARO);
     T('F2', 13, 52, 120, '¿Quieres que tus precios se actualicen solos?');
-    T('F1', 11, 52, 102, 'Catálogo Express $90 · Caja Clara $50');
+    T('F1', 11, 52, 102, 'Catálogo con tasa BCV $90 · Caja Clara $50');
     T('F2', 11, 52, 84, 'fvaigroup.com/express', VERDE);
     cs.push('0.12 0.62 0.32 RG 0.8 w 52 82 m 168 82 l S');
     T('F1', 8, 36, 54, 'Precios en dólares, pagaderos en bolívares a la tasa BCV del día.', GRIS);
