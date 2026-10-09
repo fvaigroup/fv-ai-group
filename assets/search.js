@@ -12,6 +12,7 @@
     { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: '/express#clase-ia', cat: 'Producto' },
     { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $10.', url: '/express#mis-finanzas-claras', cat: 'Producto' },
     { title: 'Demo: Catálogo Express', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: '/demo-catalogo', cat: 'Producto' },
+    { title: 'Páginas web', desc: 'Catálogo Express $90, Web Express $150, Web Profesional desde $350 y Tienda Online desde $500.', url: '/paginas-web', cat: 'Producto' },
     { title: 'Servicios', desc: 'Seis etapas, un mismo equipo, de la asesoría al soporte.', url: '/servicios', cat: 'Pagina' },
     { title: 'Asesoría Estratégica', desc: 'Diagnóstico antes de comprometer presupuesto en ejecución.', url: '/asesoria-estrategica', cat: 'Servicio' },
     { title: 'Evaluación de Procesos', desc: 'Auditoría técnica y financiera de sus procesos actuales.', url: '/evaluacion-procesos', cat: 'Servicio' },
