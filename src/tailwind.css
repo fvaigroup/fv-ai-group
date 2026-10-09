@@ -195,3 +195,5 @@
 .filtro:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; }
 .filtro:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
 .filtro[aria-pressed="true"] { background: var(--acento-1); border-color: var(--acento-1); color: #000; font-weight: 600; }
+.linea-tri.link-underline { background-image: linear-gradient(to right, #4ade80, #a855f7); }
+.linea-hex.link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
