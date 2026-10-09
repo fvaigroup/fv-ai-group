@@ -107,6 +107,33 @@ La página `express.html` (productos con precio fijo para negocios y personas) e
 
 ---
 
+## 7. Color por línea (sistema vigente)
+
+El sitio comunica **dos líneas con dos velocidades**: ▲ Línea Triangular (negocios pequeños y personas) y ⬡ Línea Hexagonal (empresas), cada una con productos normales y productos ⚡ Express. El color depende de la **línea donde está el bloque**, no del componente.
+
+| Envolvente | Par de acento | Emblema | Hover de tarjetas | Botón principal |
+|---|---|---|---|---|
+| `.linea-tri` | verde `#4ade80` + morado `#a855f7` | triángulo | morado | verde lleno (`.btn-linea`) |
+| `.linea-hex` | cian `#00FFFF` + naranja `#FF8C00` | hexágono | cian | naranja lleno |
+| (sin envolvente) marca madre F&V: encabezado, pie, inicio, Nosotros, Contacto, Casos, 404 | cian + naranja (igual que `.linea-hex`) | hexágono de F&V | cian | naranja lleno |
+
+Variables que fija cada envolvente (en `src/tailwind.css`): `--acento-1`, `--acento-2`, `--acento-1-rgb`, `--acento-2-rgb`, `--brillo-rgb` (brillo al pasar el mouse), `--cta` y `--cta-rgb` (botón principal).
+
+**Componentes que resuelven solos según la envolvente:** `.x-card` (+ `.is-featured`, `.is-help`), `.x-faq[open]`, `.card-lift` (`.card-lift-cyan` queda como alias), `.texto-linea` (Tri: degradado estático verde→morado; Hex y marca madre: degradado animado cian→dorado→naranja), `.btn-linea` y `.btn-linea-sec`, `.box-glow-tri`.
+
+**Reglas**
+- Como la marca madre comparte colores con la Hexagonal, todo bloque Hexagonal lleva SIEMPRE la insignia «⬡ Línea Hexagonal».
+- Ningún bloque Triangular usa cian ni naranja por dentro, y ningún bloque Hexagonal usa verde ni morado (excepciones: el ícono de WhatsApp, el encabezado y el pie).
+- `.btn-tri`, `.btn-primary`, `.text-gradient-tri` y `.shimmer-text` siguen existiendo; en bloques nuevos usar `.btn-linea` y `.texto-linea`.
+
+**Insignias (siempre texto + forma, nunca solo color)**
+- `<span class="ins ins-tri"><span>Línea Triangular</span></span>` → «▲ Línea Triangular»: borde verde, texto en degradado verde→morado.
+- `<span class="ins ins-hex"><span>Línea Hexagonal</span></span>` → «⬡ Línea Hexagonal»: borde cian, texto en degradado cian→naranja.
+- `<span class="ins ins-express">Express · 48 h</span>` → «⚡ Express · plazo»: relleno con el `--acento-1` de su línea y texto negro. Solo en productos Express; los normales llevan solo la insignia de línea.
+- Regla escrita igual en ambas líneas: «⚡ Express = entrega rápida. Triangular: máximo 7 días. Hexagonal: máximo 3 semanas.»
+
+**Tono:** la Línea Triangular le habla de «tú»; la Hexagonal, de «usted»; las partes comunes (inicio, menú, pie, contacto, nosotros), de «tú».
+
 ## Cómo aplicar esta guía a nuevas páginas
 
 1. Reutilizar siempre el mismo `<head>` (fuentes, `tailwind.css`, meta tags de OG) y el mismo shell de header/footer/Luci/search del home.

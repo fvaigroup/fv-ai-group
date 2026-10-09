@@ -32,7 +32,7 @@ Sitio estático (HTML/CSS/JS + Tailwind CLI vía `npm run build`, sin framework)
 
 ## Brand Commitments
 
-Identidad oscura cian/naranja (línea Hexágono, y color base de todo el sitio) más verde/púrpura (línea Triángulo, exclusivo — `fv-triGreen`/`fv-triPurple`). Tipografía Space Grotesk (títulos, nav, UI) + Geist (cuerpo). Emblema hexagonal animado. Tono: "Diseñando ecosistemas de IA con humanidad".
+Marca madre F&V: oscura, cian/naranja, con el hexágono de F&V (encabezado, pie, inicio, Nosotros, Contacto, Casos, 404). Dos líneas con dos velocidades, cada una con su propio par de color: ▲ Línea Triangular (verde `fv-triGreen` + morado `fv-triPurple`, emblema triángulo, le habla de "tú") y ⬡ Línea Hexagonal (cian + naranja, emblema hexágono, le habla de "usted"). Cada línea tiene productos normales y productos ⚡ Express (entrega rápida: Triangular máximo 7 días, Hexagonal máximo 3 semanas). El color depende de la línea donde está el bloque (`.linea-tri` / `.linea-hex`); como la marca madre comparte colores con la Hexagonal, todo bloque Hexagonal lleva siempre la insignia "⬡ Línea Hexagonal". Nunca decir "cuatro líneas". Tipografía Space Grotesk (títulos, nav, UI) + Geist (cuerpo). Tono: "Diseñando ecosistemas de IA con humanidad".
 
 ## Evidence on Hand
 

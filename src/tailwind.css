@@ -4,6 +4,15 @@
 
 /* Componentes compartidos por todas las páginas (los estilos propios de cada página siguen en su <style>). */
 @layer components {
+  /* ---- Variables de color por línea (ver bloque "COLOR POR LÍNEA" más abajo) ---- */
+  :root, .linea-hex {
+    --acento-1: #00FFFF; --acento-2: #FF8C00; --acento-1-rgb: 0,255,255; --acento-2-rgb: 255,140,0;
+    --brillo-rgb: 0,255,255; --cta: #FF8C00; --cta-rgb: 255,140,0;
+  }
+  .linea-tri {
+    --acento-1: #4ade80; --acento-2: #a855f7; --acento-1-rgb: 74,222,128; --acento-2-rgb: 168,85,247;
+    --brillo-rgb: 168,85,247; --cta: #4ade80; --cta-rgb: 74,222,128;
+  }
   /* ---- Línea Triangular: CTA principal (verde de la línea). Cumple el papel de .btn-primary
      dentro de la página Express y de los bloques de la Línea Triangular; fuera de ellos el CTA
      principal sigue siendo el naranja. ---- */
@@ -35,34 +44,86 @@
   }
 
 
-  /* ---- Tarjetas de la Línea Triangular (Express, páginas web, soluciones...): borde violeta al pasar el mouse,
-     variante destacada con borde degradado verde -> violeta, 'próximamente' punteada y de ayuda. ---- */
+  /* =====================================================================
+     COLOR POR LÍNEA. El color depende de la línea donde está el bloque, no del componente.
+     Se envuelve el bloque con .linea-tri (verde/morado) o .linea-hex (cian/naranja).
+     Sin envolvente: marca madre F&V = cian/naranja (igual que .linea-hex).
+       --acento-1 / --acento-2  : par de la línea
+       --brillo-rgb             : color del brillo al pasar el mouse (Tri: morado, Hex: cian)
+       --cta / --cta-rgb        : color del botón principal (Tri: verde, Hex: naranja)
+     ===================================================================== */
+  /* ---- Tarjetas (Express, páginas web, soluciones...): brillo de la línea al pasar el mouse ---- */
   .x-card {
     position: relative; background: #0D0E12; border: 1px solid #1F232B; border-radius: 1.25rem;
     transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1), border-color .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .3s cubic-bezier(0.23, 1, 0.32, 1);
   }
   @media (hover: hover) and (pointer: fine) {
-    .x-card:hover { transform: translateY(-4px); border-color: rgba(168,85,247,.6); box-shadow: 0 0 0 1px rgba(168,85,247,.2), 0 14px 44px rgba(168,85,247,.18); }
-    .x-card.is-featured:hover { transform: translateY(-6px); border-color: transparent; box-shadow: 0 16px 50px rgba(168,85,247,.28), 0 0 30px rgba(74,222,128,.12); }
+    .x-card:hover { transform: translateY(-4px); border-color: rgba(var(--brillo-rgb),.6); box-shadow: 0 0 0 1px rgba(var(--brillo-rgb),.2), 0 14px 44px rgba(var(--brillo-rgb),.18); }
+    .x-card.is-featured:hover { transform: translateY(-6px); border-color: transparent; box-shadow: 0 16px 50px rgba(var(--acento-2-rgb),.28), 0 0 30px rgba(var(--acento-1-rgb),.12); }
     .x-card.is-static:hover { transform: none; box-shadow: none; }
   }
   .x-card.is-featured {
     border: 1px solid transparent;
-    background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #4ade80, #a855f7) border-box;
+    background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, var(--acento-1), var(--acento-2)) border-box;
   }
   .x-card.is-soon { border: 1px dashed rgba(255,255,255,.18); background: rgba(13,14,18,.55); }
-  .x-card.is-help { background: linear-gradient(160deg, rgba(168,85,247,.10), #0D0E12 60%); }
+  .x-card.is-help { background: linear-gradient(160deg, rgba(var(--acento-2-rgb),.10), #0D0E12 60%); }
   @media (prefers-reduced-motion: reduce) { .x-card, .x-card:hover { transform: none !important; transition: none !important; } }
   details[open] .chev { transform: rotate(45deg); }
-  .x-faq[open] { border-color: rgba(74,222,128,.35); }
+  .x-faq[open] { border-color: rgba(var(--acento-1-rgb),.35); }
 
-
-  /* ---- Tarjetas con elevación y brillo cian al pasar el mouse (portada, soluciones) ---- */
-  .card-lift-cyan { transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1), border-color .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .3s cubic-bezier(0.23, 1, 0.32, 1); }
+  /* ---- Tarjetas con elevación y brillo de la línea al pasar el mouse (.card-lift-cyan queda como alias) ---- */
+  .card-lift, .card-lift-cyan { transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1), border-color .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .3s cubic-bezier(0.23, 1, 0.32, 1); }
   @media (hover: hover) and (pointer: fine) {
-    .card-lift-cyan:hover { transform: translateY(-6px); border-color: rgba(0,255,255,0.6); box-shadow: 0 0 26px rgba(0,204,255,0.25); }
+    .card-lift:hover, .card-lift-cyan:hover { transform: translateY(-6px); border-color: rgba(var(--brillo-rgb),0.6); box-shadow: 0 0 26px rgba(var(--brillo-rgb),0.25); }
   }
-  @media (prefers-reduced-motion: reduce) { .card-lift-cyan { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .card-lift, .card-lift-cyan { transition: none; } }
+
+  /* ---- Texto con degradado de la línea: Tri = verde → morado (estático); Hex y marca madre = cian → dorado → naranja (animado) ---- */
+  .texto-linea {
+    position: relative; display: inline-block;
+    background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    animation: lineaShimmer 7s ease-in-out infinite;
+  }
+  .linea-tri .texto-linea { background: linear-gradient(90deg, #4ade80, #a855f7); background-size: auto; -webkit-background-clip: text; background-clip: text; animation: none; }
+  @keyframes lineaShimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @media (prefers-reduced-motion: reduce) { .texto-linea { animation: none; background-position: 30% 50%; } }
+
+  /* ---- Botón principal de la línea: Tri = verde lleno; Hex y marca madre = naranja lleno (texto negro) ---- */
+  .btn-linea {
+    background-color: var(--cta); color: #000;
+    box-shadow: 0 0 10px rgba(var(--cta-rgb),0.6), 0 0 26px rgba(var(--cta-rgb),0.25);
+    transition: transform .2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .2s cubic-bezier(0.23, 1, 0.32, 1), filter .2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-linea:hover { filter: brightness(1.08); box-shadow: 0 0 14px rgba(var(--cta-rgb),0.75), 0 0 36px rgba(var(--acento-2-rgb),0.35); }
+  }
+  .btn-linea:active { transform: scale(0.96); transition: transform .1s cubic-bezier(0.23, 1, 0.32, 1); }
+  /* botón secundario de la línea: contorno con el color de la línea */
+  .btn-linea-sec { border: 1px solid rgba(var(--acento-2-rgb),.55); color: #fff; background: transparent; transition: background-color .2s, border-color .2s; }
+  @media (hover: hover) and (pointer: fine) { .btn-linea-sec:hover { background-color: rgba(var(--acento-2-rgb),.10); border-color: rgba(var(--acento-2-rgb),.9); } }
+
+  /* ---- Resplandor de reposo para cajas destacadas de la línea Triangular (verde; morado al pasar el mouse) ---- */
+  .box-glow-tri { border: 1px solid rgba(74,222,128,0.4); box-shadow: 0 0 14px rgba(74,222,128,0.2); }
+  @media (hover: hover) and (pointer: fine) {
+    .box-glow-tri:hover { border-color: rgba(168,85,247,0.55); box-shadow: 0 0 18px rgba(168,85,247,0.22), 0 0 14px rgba(74,222,128,0.12); }
+  }
+
+  /* ---- Insignias: SIEMPRE llevan texto y forma (▲ ⬡ ⚡), nunca solo color ---- */
+  .ins {
+    display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 11px; line-height: 1;
+    letter-spacing: .06em; text-transform: uppercase; padding: .45rem .75rem; border-radius: 999px; border: 1px solid;
+  }
+  .ins::before { content: ''; width: .85em; height: .85em; flex: none; background: currentColor; -webkit-mask: var(--forma) center / contain no-repeat; mask: var(--forma) center / contain no-repeat; }
+  .ins-tri { --forma: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3 22.5 21H1.5z'/%3E%3C/svg%3E"); border-color: rgba(74,222,128,.6); color: #4ade80; }
+  .ins-hex { --forma: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 21.6 7v10L12 22.5 2.4 17V7z'/%3E%3C/svg%3E"); border-color: rgba(0,255,255,.6); color: #00FFFF; }
+  .ins-tri > span { background: linear-gradient(90deg, #4ade80, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+  .ins-hex > span { background: linear-gradient(90deg, #00FFFF, #FF8C00); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+  .ins-express { --forma: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13.5 1 4 13.5h6.5L9.5 23 20 9.5h-6.8z'/%3E%3C/svg%3E"); background: var(--acento-1); border-color: var(--acento-1); color: #000; }
+
   /* ---- Entrada escalonada de tarjetas ---- */
   .stagger-grid > .reveal:nth-child(2) { transition-delay: .06s; }
   .stagger-grid > .reveal:nth-child(3) { transition-delay: .12s; }
