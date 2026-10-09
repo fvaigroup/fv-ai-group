@@ -163,3 +163,25 @@
 /* ---- Accesibilidad: los grises de texto secundario cumplen el contraste mínimo (4,5:1) sobre fondo negro ---- */
 .text-slate-500 { color: #8190a5; }
 .text-slate-600 { color: #7f8da3; }
+
+/* ---- Clases heredadas dentro de una envolvente de línea: se re-colorean solas (así un bloque envuelto no mezcla colores) ---- */
+.linea-tri .btn-primary, .linea-tri .btn-linea { background-color: #4ade80; color: #000; box-shadow: 0 0 10px rgba(74,222,128,.6), 0 0 26px rgba(74,222,128,.25); }
+.linea-hex .btn-tri, .linea-hex .btn-linea { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px rgba(255,69,0,.5), 0 0 50px rgba(255,69,0,.25); }
+@media (hover: hover) and (pointer: fine) {
+  .linea-tri .btn-primary:hover { filter: brightness(1.08); box-shadow: 0 0 14px rgba(74,222,128,.75), 0 0 36px rgba(168,85,247,.35); }
+  .linea-tri .btn-glow-on-hover:hover { box-shadow: 0 0 14px rgba(74,222,128,.75), 0 0 36px rgba(168,85,247,.35); }
+  .linea-tri .btn-secondary:hover { background-color: rgba(168,85,247,.08); border-color: rgba(168,85,247,.55); box-shadow: 0 0 22px rgba(168,85,247,.25); }
+  .linea-hex .btn-tri:hover { filter: brightness(1.1); box-shadow: 0 0 14px #FF8C00, 0 0 36px rgba(255,69,0,.6); }
+}
+.linea-tri .box-gradient-border { background: linear-gradient(#0D0E12, #0D0E12) padding-box, linear-gradient(135deg, #4ade80, #a855f7) border-box; box-shadow: 0 0 16px rgba(74,222,128,.18), 0 0 16px rgba(168,85,247,.18); }
+.linea-tri .glow-cyan { box-shadow: 0 0 10px #4ade80, 0 0 25px rgba(74,222,128,.6), 0 0 50px rgba(74,222,128,.25); }
+.linea-tri .glow-orange { box-shadow: 0 0 10px #a855f7, 0 0 30px rgba(168,85,247,.6), 0 0 60px rgba(168,85,247,.25); }
+.linea-tri .shimmer-text { background: linear-gradient(90deg, #4ade80, #a855f7) !important; -webkit-background-clip: text; background-clip: text; animation: none; }
+.linea-hex .text-gradient-tri { background: linear-gradient(90deg, #00FFFF, #FF8C00); -webkit-background-clip: text; background-clip: text; }
+.linea-tri .text-neon-cyan { color: #4ade80 !important; text-shadow: 0 0 8px rgba(74,222,128,.55); }
+.linea-tri .text-neon-orange { color: #a855f7 !important; text-shadow: 0 0 8px rgba(168,85,247,.55); }
+.linea-hex .box-glow-tri { border-color: rgba(0,255,255,.4); box-shadow: 0 0 14px rgba(0,255,255,.2); }
+.linea-tri .link-underline { background-image: linear-gradient(to right, #4ade80, #a855f7); }
+.linea-hex .link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
+.linea-hex .linea-tri .link-underline { background-image: linear-gradient(to right, #4ade80, #a855f7); }
+.linea-tri .linea-hex .link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
