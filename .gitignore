@@ -6,3 +6,6 @@ node_modules/
 
 # Tailwind CLI build output (generated via `npm run build`)
 assets/css/
+
+# Capturas de revisión visual (local)
+capturas/

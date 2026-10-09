@@ -40,10 +40,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" crossorigin>
+<style>/* Space Grotesk y Geist (Google Fonts), incluidas en la página y precargadas: sin pedir CSS aparte y sin saltos de diseño */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwSGFWfOw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -265,15 +270,12 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Triangular Express</a>
-        <a href="/soluciones" class="text-slate-400 hover:text-white transition-colors">Soluciones</a>
-        <a href="/paginas-web" class="text-slate-400 hover:text-white transition-colors">Páginas web</a>
-        <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="/casos" class="text-white" aria-current="page">Casos</a>
+        <a href="/triangular" class="nav-forma nav-tri transition-colors">Línea Triangular</a>
+        <a href="/hexagonal" class="nav-forma nav-hex transition-colors">Línea Hexagonal</a>
         <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
@@ -281,8 +283,7 @@
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="hidden xl:inline-block btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden 2xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Diagnóstico gratis</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -293,15 +294,11 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="/" class="text-slate-300">Inicio</a>
-      <a href="/express" class="text-fv-triGreen">Triangular Express</a>
-      <a href="/soluciones" class="text-slate-300">Soluciones</a>
-      <a href="/paginas-web" class="text-slate-300">Páginas web</a>
-      <a href="/cursos" class="text-slate-300">Cursos</a>
-      <a href="/casos" class="text-white" aria-current="page">Casos</a>
+      <a href="/triangular" class="nav-forma nav-tri">Línea Triangular</a>
+      <a href="/hexagonal" class="nav-forma nav-hex">Línea Hexagonal</a>
       <a href="/nosotros" class="text-slate-300">Nosotros</a>
       <a href="/contacto" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Diagnóstico gratis</a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-2 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
     </div>
   </div>
 </header>
@@ -312,11 +309,11 @@
 <!-- ============ HERO ============ -->
 <section class="relative pt-36 pb-14 lg:pt-40 overflow-hidden border-b border-white/5" aria-labelledby="hero-title">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
-  <div class="absolute top-0 right-0 w-[520px] h-[520px] bg-fv-triGreen/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3"></div>
-  <div class="absolute bottom-0 left-0 w-[460px] h-[460px] bg-fv-triPurple/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+  <div class="absolute top-0 right-0 w-[520px] h-[520px] bg-fv-cyan/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-[460px] h-[460px] bg-fv-orange/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
   <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
-    <p class="font-head uppercase tracking-[0.2em] text-xs text-fv-triGreen mb-5">Casos de clientes</p>
-    <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] text-balance mb-6">Qué hicimos y <span class="text-gradient-tri">qué dijo el cliente</span></h1>
+    <p class="font-head uppercase tracking-[0.2em] text-xs text-fv-cyan mb-5">Casos de clientes</p>
+    <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] text-balance mb-6">Qué hicimos y <span class="texto-linea">qué dijo el cliente</span></h1>
     <p class="text-lg text-slate-400 leading-relaxed font-light max-w-2xl mx-auto">Cada caso cuenta el problema, lo que construimos y el resultado con las palabras del propio cliente. Solo publicamos casos reales y con su permiso.</p>
   </div>
 </section>
@@ -328,41 +325,50 @@
     <article data-publicado="false" style="display:none" aria-hidden="true" class="x-caso x-card is-static p-6 sm:p-8 flex flex-col">
       <!-- PENDIENTE: caso real 1. Rellena cada línea con lo que de verdad pasó y pide permiso al cliente antes de publicar.
            Cuando esté listo: cambia data-publicado="false" por data-publicado="true" y quita style="display:none" aria-hidden="true" (publicado.js también lo hace solo). -->
-      <p class="font-head text-xs uppercase tracking-[0.18em] text-fv-triGreen mb-1">Rubro del cliente</p>
+      <!-- PENDIENTE: línea del producto usado. Pon aquí la insignia y añade la clase "linea-tri" o "linea-hex" al <article>:
+           <span class="ins ins-tri"><span>Línea Triangular</span></span>  o  <span class="ins ins-hex"><span>Línea Hexagonal</span></span>  (+ <span class="ins ins-express">Express · plazo</span> si era un producto Express) -->
+      <p class="mb-3 flex flex-wrap gap-2" data-linea-caso></p>
+      <p class="font-head text-xs uppercase tracking-[0.18em] text-fv-cyan mb-1">Rubro del cliente</p>
       <h3 class="font-head text-xl text-white font-semibold mb-5">Nombre del cliente</h3>
       <dl class="space-y-4 text-sm leading-relaxed flex-1">
         <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El problema</dt><dd class="text-slate-300">Qué le pasaba al negocio antes de trabajar con nosotros.</dd></div>
         <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Qué hicimos</dt><dd class="text-slate-300">Qué se construyó o se configuró, en una o dos líneas.</dd></div>
-        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El resultado, en palabras del cliente</dt><dd><blockquote class="text-slate-100 font-head leading-snug border-l-2 border-fv-triGreen pl-4">«Frase real del cliente, con su permiso.»</blockquote></dd></div>
-        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Producto usado</dt><dd class="text-slate-300">Nombre del producto <a href="/express" class="text-fv-triGreen link-underline">(ver producto)</a></dd></div>
+        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El resultado, en palabras del cliente</dt><dd><blockquote class="text-slate-100 font-head leading-snug border-l-2 border-fv-cyan pl-4">«Frase real del cliente, con su permiso.»</blockquote></dd></div>
+        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Producto usado</dt><dd class="text-slate-300">Nombre del producto <a href="/triangular" class="text-fv-cyan link-underline">(ver producto)</a></dd></div>
       </dl>
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20caso%20de%20%5Bcliente%5D%20y%20quiero%20algo%20as%C3%AD.%20%C2%BFC%C3%B3mo%20empezamos%3F" target="_blank" rel="noopener" data-evento="caso_quiero_algo_asi" data-cta="casos" data-product="caso-1" class="btn-tri mt-6 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero algo así</span></a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20caso%20de%20%5Bcliente%5D%20y%20quiero%20algo%20as%C3%AD.%20%C2%BFC%C3%B3mo%20empezamos%3F" target="_blank" rel="noopener" data-evento="caso_quiero_algo_asi" data-cta="casos" data-product="caso-1" class="btn-linea mt-6 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero algo así</span></a>
     </article>
     <article data-publicado="false" style="display:none" aria-hidden="true" class="x-caso x-card is-static p-6 sm:p-8 flex flex-col">
       <!-- PENDIENTE: caso real 2. Rellena cada línea con lo que de verdad pasó y pide permiso al cliente antes de publicar.
            Cuando esté listo: cambia data-publicado="false" por data-publicado="true" y quita style="display:none" aria-hidden="true" (publicado.js también lo hace solo). -->
-      <p class="font-head text-xs uppercase tracking-[0.18em] text-fv-triGreen mb-1">Rubro del cliente</p>
+      <!-- PENDIENTE: línea del producto usado. Pon aquí la insignia y añade la clase "linea-tri" o "linea-hex" al <article>:
+           <span class="ins ins-tri"><span>Línea Triangular</span></span>  o  <span class="ins ins-hex"><span>Línea Hexagonal</span></span>  (+ <span class="ins ins-express">Express · plazo</span> si era un producto Express) -->
+      <p class="mb-3 flex flex-wrap gap-2" data-linea-caso></p>
+      <p class="font-head text-xs uppercase tracking-[0.18em] text-fv-cyan mb-1">Rubro del cliente</p>
       <h3 class="font-head text-xl text-white font-semibold mb-5">Nombre del cliente</h3>
       <dl class="space-y-4 text-sm leading-relaxed flex-1">
         <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El problema</dt><dd class="text-slate-300">Qué le pasaba al negocio antes de trabajar con nosotros.</dd></div>
         <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Qué hicimos</dt><dd class="text-slate-300">Qué se construyó o se configuró, en una o dos líneas.</dd></div>
-        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El resultado, en palabras del cliente</dt><dd><blockquote class="text-slate-100 font-head leading-snug border-l-2 border-fv-triGreen pl-4">«Frase real del cliente, con su permiso.»</blockquote></dd></div>
-        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Producto usado</dt><dd class="text-slate-300">Nombre del producto <a href="/express" class="text-fv-triGreen link-underline">(ver producto)</a></dd></div>
+        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El resultado, en palabras del cliente</dt><dd><blockquote class="text-slate-100 font-head leading-snug border-l-2 border-fv-cyan pl-4">«Frase real del cliente, con su permiso.»</blockquote></dd></div>
+        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Producto usado</dt><dd class="text-slate-300">Nombre del producto <a href="/triangular" class="text-fv-cyan link-underline">(ver producto)</a></dd></div>
       </dl>
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20caso%20de%20%5Bcliente%5D%20y%20quiero%20algo%20as%C3%AD.%20%C2%BFC%C3%B3mo%20empezamos%3F" target="_blank" rel="noopener" data-evento="caso_quiero_algo_asi" data-cta="casos" data-product="caso-2" class="btn-tri mt-6 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero algo así</span></a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20caso%20de%20%5Bcliente%5D%20y%20quiero%20algo%20as%C3%AD.%20%C2%BFC%C3%B3mo%20empezamos%3F" target="_blank" rel="noopener" data-evento="caso_quiero_algo_asi" data-cta="casos" data-product="caso-2" class="btn-linea mt-6 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero algo así</span></a>
     </article>
     <article data-publicado="false" style="display:none" aria-hidden="true" class="x-caso x-card is-static p-6 sm:p-8 flex flex-col">
       <!-- PENDIENTE: caso real 3. Rellena cada línea con lo que de verdad pasó y pide permiso al cliente antes de publicar.
            Cuando esté listo: cambia data-publicado="false" por data-publicado="true" y quita style="display:none" aria-hidden="true" (publicado.js también lo hace solo). -->
-      <p class="font-head text-xs uppercase tracking-[0.18em] text-fv-triGreen mb-1">Rubro del cliente</p>
+      <!-- PENDIENTE: línea del producto usado. Pon aquí la insignia y añade la clase "linea-tri" o "linea-hex" al <article>:
+           <span class="ins ins-tri"><span>Línea Triangular</span></span>  o  <span class="ins ins-hex"><span>Línea Hexagonal</span></span>  (+ <span class="ins ins-express">Express · plazo</span> si era un producto Express) -->
+      <p class="mb-3 flex flex-wrap gap-2" data-linea-caso></p>
+      <p class="font-head text-xs uppercase tracking-[0.18em] text-fv-cyan mb-1">Rubro del cliente</p>
       <h3 class="font-head text-xl text-white font-semibold mb-5">Nombre del cliente</h3>
       <dl class="space-y-4 text-sm leading-relaxed flex-1">
         <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El problema</dt><dd class="text-slate-300">Qué le pasaba al negocio antes de trabajar con nosotros.</dd></div>
         <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Qué hicimos</dt><dd class="text-slate-300">Qué se construyó o se configuró, en una o dos líneas.</dd></div>
-        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El resultado, en palabras del cliente</dt><dd><blockquote class="text-slate-100 font-head leading-snug border-l-2 border-fv-triGreen pl-4">«Frase real del cliente, con su permiso.»</blockquote></dd></div>
-        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Producto usado</dt><dd class="text-slate-300">Nombre del producto <a href="/express" class="text-fv-triGreen link-underline">(ver producto)</a></dd></div>
+        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">El resultado, en palabras del cliente</dt><dd><blockquote class="text-slate-100 font-head leading-snug border-l-2 border-fv-cyan pl-4">«Frase real del cliente, con su permiso.»</blockquote></dd></div>
+        <div><dt class="font-head text-[11px] uppercase tracking-wider text-slate-400 mb-1">Producto usado</dt><dd class="text-slate-300">Nombre del producto <a href="/triangular" class="text-fv-cyan link-underline">(ver producto)</a></dd></div>
       </dl>
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20caso%20de%20%5Bcliente%5D%20y%20quiero%20algo%20as%C3%AD.%20%C2%BFC%C3%B3mo%20empezamos%3F" target="_blank" rel="noopener" data-evento="caso_quiero_algo_asi" data-cta="casos" data-product="caso-3" class="btn-tri mt-6 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero algo así</span></a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20caso%20de%20%5Bcliente%5D%20y%20quiero%20algo%20as%C3%AD.%20%C2%BFC%C3%B3mo%20empezamos%3F" target="_blank" rel="noopener" data-evento="caso_quiero_algo_asi" data-cta="casos" data-product="caso-3" class="btn-linea mt-6 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero algo así</span></a>
     </article>
     </div>
   </div>
@@ -372,13 +378,13 @@
 <section data-publicado-vacio class="py-16 lg:py-20" aria-labelledby="vacio-title">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="x-card is-featured is-static p-8 sm:p-10 text-center">
-      <span class="mx-auto mb-5 w-14 h-14 rounded-2xl border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6l8-3z"/></svg></span>
+      <span class="mx-auto mb-5 w-14 h-14 rounded-2xl border border-fv-cyan/30 bg-fv-cyan/10 text-fv-cyan flex items-center justify-center"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6l8-3z"/></svg></span>
       <h2 id="vacio-title" class="font-head text-2xl sm:text-3xl text-white font-semibold text-balance mb-4">Estamos documentando nuestros primeros casos</h2>
       <p class="text-slate-300 leading-relaxed text-lg mb-2">¿Quieres ser uno de ellos?</p>
       <p class="text-slate-400 leading-relaxed mb-8">Pregunta por el precio de lanzamiento y te contamos cómo funciona.</p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20ser%20uno%20de%20sus%20primeros%20casos.%20%C2%BFCu%C3%A1l%20es%20el%20precio%20de%20lanzamiento%3F" target="_blank" rel="noopener" data-evento="casos_precio_lanzamiento" data-cta="casos" data-product="precio-lanzamiento" class="btn-tri inline-flex items-center justify-center gap-2 min-h-[52px] px-7 py-3.5 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero el precio de lanzamiento</span></a>
-        <a href="/contacto#agenda" data-evento="diagnostico_gratis" class="inline-flex items-center justify-center min-h-[52px] px-7 py-3.5 rounded-lg border border-fv-border text-white font-head font-semibold hover:border-fv-triGreen/60 transition-colors">Agenda tu diagnóstico gratis</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20ser%20uno%20de%20sus%20primeros%20casos.%20%C2%BFCu%C3%A1l%20es%20el%20precio%20de%20lanzamiento%3F" target="_blank" rel="noopener" data-evento="casos_precio_lanzamiento" data-cta="casos" data-product="precio-lanzamiento" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[52px] px-7 py-3.5 rounded-lg font-head font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero el precio de lanzamiento</span></a>
+        <a href="/contacto#agenda" data-evento="diagnostico_gratis" class="inline-flex items-center justify-center min-h-[52px] px-7 py-3.5 rounded-lg border border-fv-border text-white font-head font-semibold hover:border-fv-cyan/60 transition-colors">Agenda tu diagnóstico gratis</a>
       </div>
     </div>
   </div>
@@ -387,12 +393,12 @@
 <!-- ============ MIENTRAS TANTO ============ -->
 <section class="py-16 lg:py-20 bg-fv-surface2/40 border-t border-white/5" aria-labelledby="mientras-title">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
-    <h2 id="mientras-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-3 text-center">Mientras tanto, <span class="text-gradient-tri">míralo tú mismo</span></h2>
+    <h2 id="mientras-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-3 text-center">Mientras tanto, <span class="texto-linea">míralo tú mismo</span></h2>
     <p class="text-slate-400 text-center max-w-2xl mx-auto mb-10">Todo lo que vendemos tiene precio publicado, plazo y garantía. Y puedes probar un ejemplo antes de decidir.</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <a href="/demo-catalogo" class="x-card p-6 block"><p class="font-head text-white font-semibold mb-2">Demo de un catálogo con tasa BCV</p><p class="text-sm text-slate-400 leading-relaxed">Un bodegón de ejemplo con precios en $ y Bs, carrito y pedido por WhatsApp. <span class="text-fv-triGreen">Ver demo en vivo →</span></p></a>
-      <a href="/paginas-web" class="x-card p-6 block"><p class="font-head text-white font-semibold mb-2">Páginas web con precio fijo</p><p class="text-sm text-slate-400 leading-relaxed">Desde $90, con capturas de las webs que hemos hecho. <span class="text-fv-triGreen">Ver páginas web →</span></p></a>
-      <a href="/express" class="x-card p-6 block"><p class="font-head text-white font-semibold mb-2">Triangular Express</p><p class="text-sm text-slate-400 leading-relaxed">Google Maps, catálogo y control de caja desde $35, con garantía. <span class="text-fv-triGreen">Ver productos →</span></p></a>
+      <a href="/demo-catalogo" class="x-card p-6 block"><p class="font-head text-white font-semibold mb-2">Demo de un catálogo con tasa BCV</p><p class="text-sm text-slate-400 leading-relaxed">Un bodegón de ejemplo con precios en $ y Bs, carrito y pedido por WhatsApp. <span class="text-fv-cyan">Ver demo en vivo →</span></p></a>
+      <a href="/paginas-web" class="x-card p-6 block"><p class="font-head text-white font-semibold mb-2">Páginas web con precio fijo</p><p class="text-sm text-slate-400 leading-relaxed">Desde $90, con capturas de las webs que hemos hecho. <span class="text-fv-cyan">Ver páginas web →</span></p></a>
+      <a href="/triangular" class="x-card p-6 block"><p class="font-head text-white font-semibold mb-2">Triangular Express</p><p class="text-sm text-slate-400 leading-relaxed">Google Maps, catálogo y control de caja desde $35, con garantía. <span class="text-fv-cyan">Ver productos →</span></p></a>
     </div>
   </div>
 </section>
@@ -422,31 +428,36 @@
         </div>
       </div>
 
-      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div data-pie-lineas class="lg:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Soluciones</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/express" class="link-underline hover:text-white transition-colors">Triangular Express</a></li>
-            <li><a href="/soluciones#triangular" class="link-underline hover:text-white transition-colors">Triangular</a></li>
-            <li><a href="/soluciones#hexagonal-express" class="link-underline hover:text-white transition-colors">Hexagonal Express</a></li>
-            <li><a href="/soluciones#hexagonal" class="link-underline hover:text-white transition-colors">Hexagonal</a></li>
+          <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/triangular?modo=express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
-            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos</a></li>
+            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
+            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
           </ul>
         </div>
-
         <div>
-          <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/soluciones#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
-            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
-            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
+          <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
-
+        <div>
+          <h3 class="font-head text-xs font-semibold uppercase tracking-wider mb-4 text-fv-orange">Empresa</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
+            <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
+            <li><a href="/terminos" class="link-underline hover:text-white transition-colors">Términos</a></li>
+          </ul>
+        </div>
         <div>
           <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
@@ -458,6 +469,7 @@
             <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
           </ul>
         </div>
+      
       </div>
     </div>
 

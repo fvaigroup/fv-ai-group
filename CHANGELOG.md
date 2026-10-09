@@ -36,4 +36,20 @@ Calculadora de precios en $ y Bs con la tasa BCV, PDF descargable y envío de da
 - **Accesibilidad:** grises de texto con contraste mínimo 4,5:1, encabezados del pie en orden, un solo H1 por página.
 - **Imagen para Instagram:** `assets/social/ig-fvaigroup-1080x1350.png`.
 
+---
+
+# Reorganización por líneas (rama `lineas-colores`)
+
+El sitio ahora comunica **dos líneas con dos velocidades**: ▲ Línea Triangular (negocios, verde y morado, "tú") y ⬡ Línea Hexagonal (empresas, cian y naranja, "usted"), cada una con productos normales y productos ⚡ Express. Ya no se dice "cuatro líneas".
+
+- **Fase 1:** sistema de color por línea (`.linea-tri`, `.linea-hex`, `.btn-linea`, `.texto-linea`, `.card-lift`) e insignias con texto y forma (▲ ⬡ ⚡). Documentado en `docs/design-system-fvaigroup.md` §7.
+- **Fase 2:** cada bloque con el color de su línea; auditoría automática de colores cruzados (0 cruces).
+- **Fase 3:** rangos por plazo (Triangular desde $250; Hexagonal Express desde $150), Habilitación de equipos a Hexagonal Express, Acompañamiento Básico solo en Triangular, nombres sin "Express" en productos normales (Catálogo con tasa BCV, Web de una página, Garantía), mensajes de WhatsApp con producto y línea, cupos sin "Quedan 6 de 6".
+- **Fase 4:** página nueva `/triangular` (23 productos por categoría con filtros accesibles y "Ver N más").
+- **Fase 5:** página nueva `/hexagonal` (ruta de entrada, dolores en usted, 17 productos con filtros) y miga de pan en las 6 páginas de detalle.
+- **Fase 6:** menú Inicio · Línea Triangular · Línea Hexagonal · Nosotros · Contacto + un solo botón de WhatsApp; pie por líneas; `/express` y `/soluciones` redirigen a `/triangular` y a `/`.
+- **Fase 7:** inicio nuevo de 8 bloques con las dos líneas al mismo nivel, cuadro 2×2, "Lo más pedido" y test que también recomienda la Hexagonal.
+- **Fase 8:** Contacto con dos puertas (negocio por WhatsApp, empresa con Cal.com) y formulario agrupado por línea; plantilla de casos con espacio para la insignia; sección "Dos líneas, dos velocidades" en Nosotros.
+- **Fase 9:** control de calidad (ver el resumen entregado con la rama).
+
 La lista de pendientes del dueño (testimonios, casos, fotos, historia, webhook, validación de precios) está en `PENDIENTES-LOCAL.md`, un archivo local que no se sube al repositorio público.

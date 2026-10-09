@@ -40,10 +40,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" crossorigin>
+<style>/* Space Grotesk y Geist (Google Fonts), incluidas en la página y precargadas: sin pedir CSS aparte y sin saltos de diseño */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwSGFWfOw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -277,15 +282,12 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Triangular Express</a>
-        <a href="/soluciones" class="text-slate-400 hover:text-white transition-colors">Soluciones</a>
-        <a href="/paginas-web" class="text-slate-400 hover:text-white transition-colors">Páginas web</a>
-        <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="/casos" class="text-slate-400 hover:text-white transition-colors">Casos</a>
+        <a href="/triangular" class="nav-forma nav-tri transition-colors">Línea Triangular</a>
+        <a href="/hexagonal" class="nav-forma nav-hex transition-colors">Línea Hexagonal</a>
         <a href="/nosotros" class="text-white" aria-current="page">Nosotros</a>
         <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
@@ -293,8 +295,7 @@
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="hidden xl:inline-block btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden 2xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Diagnóstico gratis</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -305,15 +306,11 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="/" class="text-slate-300">Inicio</a>
-      <a href="/express" class="text-fv-triGreen">Triangular Express</a>
-      <a href="/soluciones" class="text-slate-300">Soluciones</a>
-      <a href="/paginas-web" class="text-slate-300">Páginas web</a>
-      <a href="/cursos" class="text-slate-300">Cursos</a>
-      <a href="/casos" class="text-slate-300">Casos</a>
+      <a href="/triangular" class="nav-forma nav-tri">Línea Triangular</a>
+      <a href="/hexagonal" class="nav-forma nav-hex">Línea Hexagonal</a>
       <a href="/nosotros" class="text-white" aria-current="page">Nosotros</a>
       <a href="/contacto" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Diagnóstico gratis</a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-2 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
     </div>
   </div>
 </header>
@@ -332,7 +329,7 @@
       <p class="text-lg text-slate-400 leading-relaxed font-light">F&V AI Group es una consultora independiente de Valencia, Carabobo. Ayudamos a negocios y empresas de toda Venezuela a ordenar su plata, vender por WhatsApp y automatizar tareas con IA: desde un Pack Arranque de $150 hasta un sistema completo con Odoo o Dynamics 365. Te acompañamos desde el diagnóstico hasta el soporte del día a día.</p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
         <a href="/contacto#agenda" data-evento="diagnostico_gratis" class="btn-primary inline-flex justify-center items-center px-7 py-3.5 font-head font-semibold rounded-lg">Agenda tu diagnóstico gratis</a>
-        <a href="/soluciones" class="btn-secondary inline-flex justify-center items-center px-7 py-3.5 font-head font-medium rounded-lg">Ver soluciones y precios</a>
+        <a href="/#lineas" class="btn-secondary inline-flex justify-center items-center px-7 py-3.5 font-head font-medium rounded-lg">Ver las dos líneas</a>
       </div>
     </div>
     <div class="relative h-72 hidden lg:flex items-center justify-center">
@@ -394,6 +391,30 @@
     <div class="reveal rounded-lg bg-fv-surface border border-fv-border p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
       <p class="font-head text-sm uppercase tracking-[0.18em] text-fv-cyan shrink-0">Por qué Valencia</p>
       <p class="text-slate-300 leading-relaxed">Estamos en Valencia, Carabobo, en pleno centro industrial del país: trabajamos cerca de los negocios y las empresas que atendemos, y damos aquí mismo los talleres y cursos presenciales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOS LÍNEAS, DOS VELOCIDADES ============ -->
+<section id="dos-lineas" class="scroll-mt relative py-24 border-b border-white/5" aria-labelledby="dos-lineas-title">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="reveal max-w-2xl mb-10">
+      <h2 id="dos-lineas-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight">Dos líneas, <span class="shimmer-text">dos velocidades</span></h2>
+      <p class="text-slate-400 mt-4 leading-relaxed">Trabajamos con negocios pequeños y con empresas. Cada línea tiene productos normales y productos ⚡ Express (entrega rápida).</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+      <a href="/triangular" data-evento="nosotros_linea_tri" class="linea-tri x-card flex flex-col p-6 sm:p-8 h-full reveal">
+        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span><span class="ins ins-express">Express y normal</span></p>
+        <h3 class="font-sans text-xl font-bold text-white mb-2">Para negocios y emprendedores</h3>
+        <p class="font-head text-lg mb-5"><span class="texto-linea">desde $10 · Express en 24 h a 7 días</span></p>
+        <span class="mt-auto font-head text-sm text-fv-triGreen">Ver la Línea Triangular →</span>
+      </a>
+      <a href="/hexagonal" data-evento="nosotros_linea_hex" class="linea-hex x-card flex flex-col p-6 sm:p-8 h-full reveal">
+        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span><span class="ins ins-express">Express y normal</span></p>
+        <h3 class="font-sans text-xl font-bold text-white mb-2">Para empresas</h3>
+        <p class="font-head text-lg mb-5"><span class="texto-linea">desde $150 · Express en 1 a 3 semanas</span></p>
+        <span class="mt-auto font-head text-sm text-fv-cyan">Ver la Línea Hexagonal →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -521,31 +542,36 @@
         </div>
       </div>
 
-      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div data-pie-lineas class="lg:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Soluciones</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/express" class="link-underline hover:text-white transition-colors">Triangular Express</a></li>
-            <li><a href="/soluciones#triangular" class="link-underline hover:text-white transition-colors">Triangular</a></li>
-            <li><a href="/soluciones#hexagonal-express" class="link-underline hover:text-white transition-colors">Hexagonal Express</a></li>
-            <li><a href="/soluciones#hexagonal" class="link-underline hover:text-white transition-colors">Hexagonal</a></li>
+          <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/triangular?modo=express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
-            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos</a></li>
+            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
+            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
           </ul>
         </div>
-
         <div>
-          <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/soluciones#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
-            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
-            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
+          <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
-
+        <div>
+          <h3 class="font-head text-xs font-semibold uppercase tracking-wider mb-4 text-fv-orange">Empresa</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
+            <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
+            <li><a href="/terminos" class="link-underline hover:text-white transition-colors">Términos</a></li>
+          </ul>
+        </div>
         <div>
           <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
@@ -557,6 +583,7 @@
             <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
           </ul>
         </div>
+      
       </div>
     </div>
 

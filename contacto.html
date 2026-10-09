@@ -40,10 +40,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" crossorigin>
+<style>/* Space Grotesk y Geist (Google Fonts), incluidas en la página y precargadas: sin pedir CSS aparte y sin saltos de diseño */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwSGFWfOw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -298,15 +303,12 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Triangular Express</a>
-        <a href="/soluciones" class="text-slate-400 hover:text-white transition-colors">Soluciones</a>
-        <a href="/paginas-web" class="text-slate-400 hover:text-white transition-colors">Páginas web</a>
-        <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="/casos" class="text-slate-400 hover:text-white transition-colors">Casos</a>
+        <a href="/triangular" class="nav-forma nav-tri transition-colors">Línea Triangular</a>
+        <a href="/hexagonal" class="nav-forma nav-hex transition-colors">Línea Hexagonal</a>
         <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="/contacto" class="text-white" aria-current="page">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
@@ -314,8 +316,7 @@
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="hidden xl:inline-block btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden 2xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="#agenda" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Diagnóstico gratis</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -326,15 +327,11 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="/" class="text-slate-300">Inicio</a>
-      <a href="/express" class="text-fv-triGreen">Triangular Express</a>
-      <a href="/soluciones" class="text-slate-300">Soluciones</a>
-      <a href="/paginas-web" class="text-slate-300">Páginas web</a>
-      <a href="/cursos" class="text-slate-300">Cursos</a>
-      <a href="/casos" class="text-slate-300">Casos</a>
+      <a href="/triangular" class="nav-forma nav-tri">Línea Triangular</a>
+      <a href="/hexagonal" class="nav-forma nav-hex">Línea Hexagonal</a>
       <a href="/nosotros" class="text-slate-300">Nosotros</a>
       <a href="/contacto" class="text-white" aria-current="page">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="#agenda" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Diagnóstico gratis</a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-2 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
     </div>
   </div>
 </header>
@@ -350,22 +347,35 @@
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="max-w-3xl mx-auto text-center mb-10 reveal">
-      <p class="font-head uppercase tracking-[0.2em] text-xs text-fv-orange mb-5">Gratis · Sin compromiso</p>
-      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight text-balance">Agenda tu <span class="shimmer-text">diagnóstico gratis</span> de 20 minutos</h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light">Elige el día y la hora que te convengan: conversamos tu caso y te decimos por dónde empezar. Por videollamada, desde donde estés en Venezuela.</p>
+      <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5 tracking-tight text-balance">¿Cómo prefieres <span class="shimmer-text">empezar</span>?</h1>
+      <p class="text-lg text-slate-400 leading-relaxed font-light">Elige la puerta que corresponde a lo tuyo. Respondemos el mismo día, de lunes a viernes.</p>
     </div>
 
-    <!-- Calendario de Cal.com (si no carga, el botón de abajo lo abre en otra pestaña) -->
-    <div id="agenda" class="max-w-4xl mx-auto mb-24 scroll-mt-28">
-      <div class="rounded-xl overflow-hidden border border-fv-border bg-black box-gradient-border">
-        <iframe id="cal-frame" src="https://cal.com/f-v-ai-group/contacto" width="100%" height="680" style="border:0;" title="Agendar el diagnóstico gratis de 20 minutos con F&V AI Group"></iframe>
-      </div>
-      <p class="text-sm text-slate-400 text-center mt-5">¿No ves el calendario? <a href="https://cal.com/f-v-ai-group/contacto" target="_blank" rel="noopener" data-evento="diagnostico_gratis" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ábrelo en otra pestaña</a>.</p>
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start mb-24">
+      <section class="linea-tri x-card is-static lg:col-span-2 flex flex-col p-7 sm:p-9" aria-labelledby="puerta-negocio">
+        <p class="mb-5 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span><span class="ins ins-express">Express · 24 h a 7 días</span></p>
+        <h2 id="puerta-negocio" class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">Tengo un negocio</h2>
+        <p class="text-slate-300 leading-relaxed mb-2">Escríbenos por WhatsApp y te recomendamos el producto justo para tu negocio.</p>
+        <p class="font-head text-lg mb-8"><span class="texto-linea">desde $10</span></p>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20producto%20me%20conviene%20%28L%C3%ADnea%20Triangular%29" target="_blank" rel="noopener" data-cta="contacto_negocio" data-evento="whatsapp_contacto" class="btn-linea mt-auto inline-flex items-center justify-center gap-2 min-h-[52px] px-7 py-3.5 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escribir por WhatsApp</span></a>
+        <p class="mt-4 text-sm text-slate-400">+58 424 412 5386 · <a href="/triangular" class="link-underline text-fv-triGreen py-2 inline-block">Ver la Línea Triangular</a></p>
+      </section>
+
+      <!-- Calendario de Cal.com (si no carga, el enlace de abajo lo abre en otra pestaña) -->
+      <section id="agenda" class="linea-hex x-card is-static lg:col-span-3 flex flex-col p-7 sm:p-9 scroll-mt-28" aria-labelledby="puerta-empresa">
+        <p class="mb-5 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span><span class="ins ins-express">Express · 1 a 3 semanas</span></p>
+        <h2 id="puerta-empresa" class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">Tengo una empresa</h2>
+        <p class="text-slate-300 leading-relaxed mb-6">Agenda tu diagnóstico gratis de 20 minutos: eliges el día y la hora, y conversamos tu caso por videollamada.</p>
+        <div class="rounded-xl overflow-hidden border border-fv-border bg-black">
+          <iframe id="cal-frame" src="https://cal.com/f-v-ai-group/contacto" width="100%" height="640" style="border:0;" title="Agendar el diagnóstico gratis de 20 minutos con F&V AI Group"></iframe>
+        </div>
+        <p class="text-sm text-slate-400 mt-4">¿No ves el calendario? <a href="https://cal.com/f-v-ai-group/contacto" target="_blank" rel="noopener" data-evento="diagnostico_gratis" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ábrelo en otra pestaña</a>.</p>
+      </section>
     </div>
 
     <div class="max-w-2xl mb-10 reveal">
       <h2 class="font-sans text-2xl sm:text-3xl text-white font-semibold tracking-tight mb-3">¿Prefieres <span class="text-neon-orange">escribirnos</span>?</h2>
-      <p class="text-slate-400 leading-relaxed">Por WhatsApp te respondemos el mismo día. ¿Tienes un negocio pequeño? <a href="/express" class="link-underline text-fv-cyan inline-block py-3 -my-3">Mira los productos Express desde $35</a>, o <a href="/soluciones" class="link-underline text-fv-cyan inline-block py-3 -my-3">revisa todos los precios</a>.</p>
+      <p class="text-slate-400 leading-relaxed">Déjanos tus datos y te armamos el mensaje. ¿Quieres ver los precios antes? <a href="/#lineas" class="link-underline text-fv-cyan inline-block py-3 -my-3">Mira cómo funcionan las dos líneas</a>.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
@@ -433,13 +443,17 @@
           <div>
             <label class="fv-label" for="interes">¿Qué te interesa?</label>
             <select class="fv-input" id="interes" name="interes">
-              <option>Triangular Express</option>
-              <option>Triangular</option>
-              <option>Hexagonal Express</option>
-              <option>Hexagonal</option>
-              <option>Página web</option>
-              <option>Curso o taller</option>
-              <option selected>Aún no estoy seguro</option>
+              <optgroup label="▲ Línea Triangular (negocios y personas)">
+                <option value="Línea Triangular Express (⚡ Pack Arranque, Negocio Visible, Caja Clara…)">⚡ Express: Pack Arranque, Negocio Visible, Caja Clara… (24 h a 7 días)</option>
+                <option value="Línea Triangular (webs profesionales, tableros, asistentes)">Triangular: webs profesionales, tableros, asistentes (1 a 3 semanas)</option>
+                <option value="Página web (Línea Triangular)">Página web (desde $90)</option>
+                <option value="Curso o taller (Línea Triangular Express)">⚡ Cursos, talleres y clases</option>
+              </optgroup>
+              <optgroup label="⬡ Línea Hexagonal (empresas)">
+                <option value="Línea Hexagonal Express (⚡ diagnóstico, automatización, tableros)">⚡ Express: diagnóstico, automatización, tableros (1 a 3 semanas)</option>
+                <option value="Línea Hexagonal (sistema completo)">Hexagonal: sistema completo (1 a 3 meses)</option>
+              </optgroup>
+              <option value="Aún no estoy seguro" selected>Aún no estoy seguro</option>
             </select>
           </div>
 
@@ -516,7 +530,7 @@
           <span>¿Cómo se cotiza un proyecto?</span>
           <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Los productos <a href="/express" class="link-underline text-fv-cyan">Express</a> tienen precios fijos publicados. Para proyectos de empresa, después de la asesoría estratégica inicial te enviamos una propuesta con alcance, tiempos y costo, antes de comprometer cualquier presupuesto de ejecución.</p>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Los productos <a href="/triangular" class="link-underline text-fv-cyan">Express</a> tienen precios fijos publicados. Para proyectos de empresa, después de la asesoría estratégica inicial te enviamos una propuesta con alcance, tiempos y costo, antes de comprometer cualquier presupuesto de ejecución.</p>
       </details>
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
         <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
@@ -530,7 +544,7 @@
           <span>¿Tienen algo para negocios pequeños?</span>
           <svg class="w-4 h-4 text-fv-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Sí. Los productos Express son para negocios pequeños: desde $35, con precio fijo y plazos de entrega publicados en cada producto. <a href="/express" class="link-underline text-fv-cyan">Mira los productos Express</a>.</p>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Sí. Los productos Express son para negocios pequeños: desde $35, con precio fijo y plazos de entrega publicados en cada producto. <a href="/triangular" class="link-underline text-fv-cyan">Mira los productos Express</a>.</p>
       </details>
     </div>
   </div>
@@ -561,31 +575,36 @@
         </div>
       </div>
 
-      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div data-pie-lineas class="lg:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Soluciones</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/express" class="link-underline hover:text-white transition-colors">Triangular Express</a></li>
-            <li><a href="/soluciones#triangular" class="link-underline hover:text-white transition-colors">Triangular</a></li>
-            <li><a href="/soluciones#hexagonal-express" class="link-underline hover:text-white transition-colors">Hexagonal Express</a></li>
-            <li><a href="/soluciones#hexagonal" class="link-underline hover:text-white transition-colors">Hexagonal</a></li>
+          <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/triangular?modo=express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
-            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos</a></li>
+            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
+            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
           </ul>
         </div>
-
         <div>
-          <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/soluciones#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
-            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
-            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
+          <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
-
+        <div>
+          <h3 class="font-head text-xs font-semibold uppercase tracking-wider mb-4 text-fv-orange">Empresa</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
+            <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
+            <li><a href="/terminos" class="link-underline hover:text-white transition-colors">Términos</a></li>
+          </ul>
+        </div>
         <div>
           <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
@@ -597,6 +616,7 @@
             <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
           </ul>
         </div>
+      
       </div>
     </div>
 
@@ -725,7 +745,7 @@
     let wanted = '';
     try { wanted = new URLSearchParams(location.search).get('interes') || ''; } catch (e) {}
     if (!wanted) return;
-    const hit = Array.from(contactForm.interes.options).find(o => norm(o.value) === norm(wanted));
+    const hit = Array.from(contactForm.interes.options).find(o => norm(o.value) === norm(wanted) || norm(o.value).startsWith(norm(wanted) + ' ('));
     if (hit) contactForm.interes.value = hit.value;
   })();
 

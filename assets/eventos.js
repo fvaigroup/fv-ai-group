@@ -57,7 +57,7 @@
   function msgCurso(c, cur) {
     var ds = dias(c).join(', ').replace(/, (\d+)$/, ' y $1');
     var mes = d(c.fechas[0]).toLocaleDateString('es-VE', { month: 'long', timeZone: TZ }).slice(0, 3);
-    return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (' + ds + ' de ' + mes + ') con $' + cur.reserva;
+    return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (Línea Triangular, ' + ds + ' de ' + mes + ') con $' + cur.reserva;
   }
 
   var t = EVENTOS.taller, cur = EVENTOS.curso;
@@ -75,26 +75,29 @@
   };
   coh.forEach(function (c) { estado[c.id + ':vigente'] = hoy <= c.fechas[0]; estado[c.id + ':pasado'] = hoy > c.fechas[0]; });
 
+  // "Quedan 6 de 6" sugiere que nadie se ha inscrito: mientras todos los cupos estén libres se dice solo el máximo
+  function cupos(libres, total) { return libres >= total ? 'Máximo ' + total + ' personas' : 'Quedan ' + libres + ' ' + (libres === 1 ? 'cupo' : 'cupos'); }
+
   var datos = {
     'taller.nombre': t.nombre, 'taller.fecha': larga(t.fecha), 'taller.fechaCorta': sinAnio(t.fecha), 'taller.diaMes': diaMes(t.fecha),
     'taller.hora': t.hora, 'taller.duracion': t.duracion, 'taller.lugar': t.lugar, 'taller.precio': '$' + t.precio,
     'taller.precioAnticipado': '$' + t.precioAnticipado, 'taller.anticipadoHasta': sinAnio(t.anticipadoHasta),
-    'taller.cupos': 'Quedan ' + t.cuposLibres + ' de ' + t.cuposTotales, 'taller.cuposTotales': String(t.cuposTotales),
+    'taller.cupos': cupos(t.cuposLibres, t.cuposTotales), 'taller.cuposTotales': String(t.cuposTotales),
     'curso.nombre': cur.nombre, 'curso.lugar': cur.lugar, 'curso.precio': '$' + cur.precio, 'curso.precioEfectivo': '$' + cur.precioEfectivo,
     'curso.reserva': '$' + cur.reserva, 'curso.cuposTotales': String(cur.cuposTotales)
   };
   function volcar(prefijo, c) {
     datos[prefijo + '.fechas'] = fechasCurso(c);
     datos[prefijo + '.hora'] = c.hora;
-    datos[prefijo + '.cupos'] = 'Quedan ' + c.cuposLibres + ' de ' + cur.cuposTotales;
+    datos[prefijo + '.cupos'] = cupos(c.cuposLibres, cur.cuposTotales);
     datos[prefijo + '.inicio'] = larga(c.fechas[0]);
   }
   volcar('curso', proxima);
   coh.forEach(function (c) { volcar('curso.' + c.id, c); });
 
   var mensajes = {
-    taller: { ok: 'Hola F&V, quiero un cupo en el taller del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller "' + t.nombre + '"' },
-    curso: { ok: msgCurso(proxima, cur), pasado: 'Hola F&V, avísame cuando haya nueva fecha de ' + cur.nombre }
+    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» (Línea Triangular Express) del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '» (Línea Triangular Express)' },
+    curso: { ok: msgCurso(proxima, cur), pasado: 'Hola F&V, avísame cuando haya nueva fecha de ' + cur.nombre + ' (Línea Triangular)' }
   };
   coh.forEach(function (c) { mensajes['curso-' + c.id] = { ok: msgCurso(c, cur), pasado: mensajes.curso.pasado }; });
 

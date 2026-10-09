@@ -93,9 +93,9 @@ En resumen: **vanguardista en superficie (color, glow, motion), corporativo/met�
 
 ---
 
-## 6. Línea Triangular y página Express
+## 6. Línea Triangular y página /triangular
 
-La página `express.html` (productos con precio fijo para negocios y personas) es el escaparate de la Línea Triangular y usa su par cromático verde/violeta en lugar del cian/naranja:
+La página `/triangular` (`triangular.html`, antes `express.html`: productos con precio fijo para negocios y personas) es el escaparate de la Línea Triangular y usa su par cromático verde/violeta en lugar del cian/naranja. Hoy el color lo da la envolvente `.linea-tri` (ver sección 7); lo que sigue describe los componentes:
 
 - **CTA principal:** `.btn-tri` (definido en `src/tailwind.css`, capa `components`): fondo `fv-triGreen` lleno, texto negro, glow verde que vira a violeta en hover y `:active { scale(0.96) }`. Cumple el papel de `.btn-primary` dentro de Express y de cualquier bloque Express en otras páginas (franja de la portada, tarjetas Express en Precios y Cursos). Fuera de esos bloques el CTA principal sigue siendo el naranja.
 - **CTA secundario de la línea:** contorno violeta (`border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10`).
@@ -103,9 +103,36 @@ La página `express.html` (productos con precio fijo para negocios y personas) e
 - **Tarjetas:** hover con elevación y borde violeta iluminado; la tarjeta destacada usa borde en degradado verde→violeta (misma técnica `padding-box`/`border-box` que `.price-card.is-featured`).
 - **Precios en bolívares en vivo:** los montos en Bs se calculan en el navegador con la tasa oficial del BCV (`https://ve.dolarapi.com/v1/dolares/oficial`, permitida en la CSP de `vercel.json`). Marcado: contenedor con clase `hidden` + `data-bs-wrap`, monto con `data-usd="35"`, tasa con `data-bcv-rate`. Si la API no responde, los montos en Bs no aparecen y el texto sigue leyéndose bien. No usar el atributo `hidden` junto a clases de `display`: se usa la clase `hidden` y el script la quita.
 - **Botones de WhatsApp por producto:** mensaje ya escrito con el nombre del producto (`?text=Quiero%20Negocio%20Visible`) y atributos `data-product` / `data-cta`, que el script de medición envía a GA4 como `whatsapp_click`. Cualquier otro clic que se quiera medir lleva `data-track="nombre_del_evento"`.
-- **Registro:** las páginas y bloques Express hablan de **tú**; el resto del sitio mantiene **usted**. Nunca se mezclan dentro de una misma frase o tarjeta.
+- **Registro:** la Línea Triangular y las partes comunes (inicio, menú, pie, contacto, nosotros) hablan de **tú**; la Línea Hexagonal, de **usted**. Nunca se mezclan dentro de una misma frase o tarjeta.
 
 ---
+
+## 7. Color por línea (sistema vigente)
+
+El sitio comunica **dos líneas con dos velocidades**: ▲ Línea Triangular (negocios pequeños y personas) y ⬡ Línea Hexagonal (empresas), cada una con productos normales y productos ⚡ Express. El color depende de la **línea donde está el bloque**, no del componente.
+
+| Envolvente | Par de acento | Emblema | Hover de tarjetas | Botón principal |
+|---|---|---|---|---|
+| `.linea-tri` | verde `#4ade80` + morado `#a855f7` | triángulo | morado | verde lleno (`.btn-linea`) |
+| `.linea-hex` | cian `#00FFFF` + naranja `#FF8C00` | hexágono | cian | naranja lleno |
+| (sin envolvente) marca madre F&V: encabezado, pie, inicio, Nosotros, Contacto, Casos, 404 | cian + naranja (igual que `.linea-hex`) | hexágono de F&V | cian | naranja lleno |
+
+Variables que fija cada envolvente (en `src/tailwind.css`): `--acento-1`, `--acento-2`, `--acento-1-rgb`, `--acento-2-rgb`, `--brillo-rgb` (brillo al pasar el mouse), `--cta` y `--cta-rgb` (botón principal).
+
+**Componentes que resuelven solos según la envolvente:** `.x-card` (+ `.is-featured`, `.is-help`), `.x-faq[open]`, `.card-lift` (`.card-lift-cyan` queda como alias), `.texto-linea` (Tri: degradado estático verde→morado; Hex y marca madre: degradado animado cian→dorado→naranja), `.btn-linea` y `.btn-linea-sec`, `.box-glow-tri`.
+
+**Reglas**
+- Como la marca madre comparte colores con la Hexagonal, todo bloque Hexagonal lleva SIEMPRE la insignia «⬡ Línea Hexagonal».
+- Ningún bloque Triangular usa cian ni naranja por dentro, y ningún bloque Hexagonal usa verde ni morado (excepciones: el ícono de WhatsApp, el encabezado y el pie).
+- `.btn-tri`, `.btn-primary`, `.text-gradient-tri` y `.shimmer-text` siguen existiendo; en bloques nuevos usar `.btn-linea` y `.texto-linea`.
+
+**Insignias (siempre texto + forma, nunca solo color)**
+- `<span class="ins ins-tri"><span>Línea Triangular</span></span>` → «▲ Línea Triangular»: borde verde, texto en degradado verde→morado.
+- `<span class="ins ins-hex"><span>Línea Hexagonal</span></span>` → «⬡ Línea Hexagonal»: borde cian, texto en degradado cian→naranja.
+- `<span class="ins ins-express">Express · 48 h</span>` → «⚡ Express · plazo»: relleno con el `--acento-1` de su línea y texto negro. Solo en productos Express; los normales llevan solo la insignia de línea.
+- Regla escrita igual en ambas líneas: «⚡ Express = entrega rápida. Triangular: máximo 7 días. Hexagonal: máximo 3 semanas.»
+
+**Tono:** la Línea Triangular le habla de «tú»; la Hexagonal, de «usted»; las partes comunes (inicio, menú, pie, contacto, nosotros), de «tú».
 
 ## Cómo aplicar esta guía a nuevas páginas
 

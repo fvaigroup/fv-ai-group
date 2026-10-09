@@ -149,10 +149,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" crossorigin>
+<style>/* Space Grotesk y Geist (Google Fonts), incluidas en la página y precargadas: sin pedir CSS aparte y sin saltos de diseño */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwSGFWfOw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -374,15 +379,12 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Triangular Express</a>
-        <a href="/soluciones" class="text-slate-400 hover:text-white transition-colors">Soluciones</a>
-        <a href="/paginas-web" class="text-slate-400 hover:text-white transition-colors">Páginas web</a>
-        <a href="/cursos" class="text-white" aria-current="page">Cursos</a>
-        <a href="/casos" class="text-slate-400 hover:text-white transition-colors">Casos</a>
+        <a href="/triangular" class="nav-forma nav-tri transition-colors" aria-current="page">Línea Triangular</a>
+        <a href="/hexagonal" class="nav-forma nav-hex transition-colors">Línea Hexagonal</a>
         <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
@@ -390,8 +392,7 @@
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="hidden xl:inline-block btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden 2xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Diagnóstico gratis</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20L%C3%ADnea%20Triangular%20y%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -402,15 +403,11 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="/" class="text-slate-300">Inicio</a>
-      <a href="/express" class="text-fv-triGreen">Triangular Express</a>
-      <a href="/soluciones" class="text-slate-300">Soluciones</a>
-      <a href="/paginas-web" class="text-slate-300">Páginas web</a>
-      <a href="/cursos" class="text-white" aria-current="page">Cursos</a>
-      <a href="/casos" class="text-slate-300">Casos</a>
+      <a href="/triangular" class="nav-forma nav-tri" aria-current="page">Línea Triangular</a>
+      <a href="/hexagonal" class="nav-forma nav-hex">Línea Hexagonal</a>
       <a href="/nosotros" class="text-slate-300">Nosotros</a>
       <a href="/contacto" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Diagnóstico gratis</a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20L%C3%ADnea%20Triangular%20y%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-2 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
     </div>
   </div>
 </header>
@@ -421,17 +418,17 @@
 <!-- ============ HERO ============ -->
 <section class="relative pt-40 pb-16 overflow-hidden border-b border-white/5" aria-labelledby="hero-title">
   <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-fv-triGreen/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3"></div>
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-fv-cyan/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3"></div>
   <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
-    <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-triGreen/10 text-fv-triGreen rounded-full border border-fv-triGreen/30 uppercase tracking-wider mb-6">Cursos y clases</span>
+    <span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-cyan/10 text-fv-cyan rounded-full border border-fv-cyan/30 uppercase tracking-wider mb-6">Cursos y clases</span>
     <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5 tracking-tight text-balance">Aprende IA aplicada a <span class="shimmer-text">tu trabajo y tu plata</span></h1>
     <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto mb-8">Cursos y talleres presenciales en Valencia y clases 1:1. Formación práctica, con tus propios datos. Reserva tu cupo por WhatsApp.</p>
-    <a href="#fechas" class="btn-tri inline-flex justify-center items-center px-8 py-3.5 font-head font-semibold rounded-lg">Ver próximas fechas</a>
+    <a href="#fechas" data-evento="cursos_ver_fechas" class="btn-linea inline-flex justify-center items-center px-8 py-3.5 font-head font-semibold rounded-lg">Ver próximas fechas</a>
   </div>
 </section>
 
 <!-- ============ PRÓXIMAS FECHAS (datos en /assets/eventos.js) ============ -->
-<section id="fechas" class="relative py-20 border-b border-white/5 scroll-mt" aria-labelledby="fechas-title">
+<section id="fechas" class="relative py-20 border-b border-white/5 scroll-mt linea-tri" aria-labelledby="fechas-title">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-2xl mb-10">
       <h2 id="fechas-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-4">Próximas <span class="text-gradient-tri">fechas</span></h2>
@@ -440,7 +437,7 @@
     <div class="space-y-5">
       <article data-ev-show="oct:vigente" class="x-card is-static grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-7 items-center">
         <div class="md:col-span-3">
-          <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-triPurple mb-1.5">Curso</p>
+          <p class="mb-2 flex flex-wrap gap-2" data-cursos-lineas><span class="ins ins-tri"><span>Línea Triangular</span></span></p><p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 mb-1.5">Curso</p>
           <h3 class="font-sans text-2xl font-bold text-white leading-tight">Finanzas con IA</h3>
           <p class="text-sm text-slate-400 mt-1">Cohorte de octubre</p>
         </div>
@@ -448,34 +445,34 @@
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><span><span data-ev="curso.oct.fechas"></span></span></li>
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><span data-ev="curso.oct.hora"></span></span></li>
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1114 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Presencial en <span data-ev="curso.lugar">Valencia</span></span></li>
-          <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span><span><span data-ev="curso.oct.cupos">Quedan 6 de 6</span> cupos</span></li>
+          <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span><span><span data-ev="curso.oct.cupos">Máximo 6 personas</span></span></li>
         </ul>
         <div class="md:col-span-4 flex flex-col gap-3">
           <p class="text-slate-300"><strong class="text-2xl text-white"><span data-ev="curso.precio">$300</span></strong> <span class="text-sm text-slate-400">· <span data-ev="curso.precioEfectivo">$265</span> en efectivo o USDT</span></p>
           <a href="#finanzas-con-ia" data-evento="fechas_ver_curso_oct" class="flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head text-sm font-medium transition-colors">Ver el curso</a>
-          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20con%20%24100" data-ev-wa="curso-oct" target="_blank" rel="noopener" data-product="finanzas-con-ia-oct" data-cta="cursos_fechas" data-evento="reservo_100_oct" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span></span></a>
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20%28L%C3%ADnea%20Triangular%29%20con%20%24100" data-ev-wa="curso-oct" target="_blank" rel="noopener" data-product="finanzas-con-ia-oct" data-cta="cursos_fechas" data-evento="reservo_100_oct" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span></span></a>
         </div>
       </article>
       <article data-ev-show="taller:vigente" class="x-card is-static grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-7 items-center">
         <div class="md:col-span-3">
-          <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-triGreen mb-1.5">Taller</p>
+          <p class="mb-2 flex flex-wrap gap-2" data-cursos-lineas><span class="ins ins-tri"><span>Línea Triangular</span></span><span class="ins ins-express">Express · 3 horas</span></p><p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 mb-1.5">Taller</p>
           <h3 class="font-sans text-2xl font-bold text-white leading-tight">La plata de tu negocio clara</h3>
         </div>
         <ul class="md:col-span-5 space-y-2.5 text-sm text-slate-300">
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><span><span data-ev="taller.fecha">sábado 17 de octubre de 2026</span></span></li>
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><span data-ev="taller.hora">3:00 a 6:00 pm</span> (<span data-ev="taller.duracion">3 horas</span>)</span></li>
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1114 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Presencial en <span data-ev="taller.lugar">Valencia</span></span></li>
-          <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span><span><span data-ev="taller.cupos">Quedan 6 de 6</span> cupos</span></li>
+          <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span><span><span data-ev="taller.cupos">Máximo 6 personas</span></span></li>
         </ul>
         <div class="md:col-span-4 flex flex-col gap-3">
           <p class="text-slate-300"><strong class="text-2xl text-white"><span data-ev="taller.precio">$25</span></strong> <span class="text-sm text-slate-400">por persona</span></p>
           <p data-ev-show="taller:anticipado" class="text-sm font-medium text-fv-triGreen -mt-2"><span data-ev="taller.precioAnticipado">$20</span> si pagas antes del <span data-ev="taller.anticipadoHasta">miércoles 14 de octubre</span></p>
-          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20un%20cupo%20en%20el%20taller%20del%20s%C3%A1bado%2017%20de%20octubre" data-ev-wa="taller" target="_blank" rel="noopener" data-product="taller-plata-clara" data-cta="cursos_fechas" data-evento="reservo_taller" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo mi cupo<span class="sr-only"> en el taller</span></span></a>
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20un%20cupo%20en%20el%20taller%20%C2%ABLa%20plata%20de%20tu%20negocio%20clara%C2%BB%20(L%C3%ADnea%20Triangular%20Express)%20del%20s%C3%A1bado%2017%20de%20octubre" data-ev-wa="taller" target="_blank" rel="noopener" data-product="taller-plata-clara" data-cta="cursos_fechas" data-evento="reservo_taller" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo mi cupo<span class="sr-only"> en el taller</span></span></a>
         </div>
       </article>
       <article data-ev-show="nov:vigente" class="x-card is-static grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-7 items-center">
         <div class="md:col-span-3">
-          <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-triPurple mb-1.5">Curso</p>
+          <p class="mb-2 flex flex-wrap gap-2" data-cursos-lineas><span class="ins ins-tri"><span>Línea Triangular</span></span></p><p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 mb-1.5">Curso</p>
           <h3 class="font-sans text-2xl font-bold text-white leading-tight">Finanzas con IA</h3>
           <p class="text-sm text-slate-400 mt-1">Cohorte de noviembre</p>
         </div>
@@ -483,17 +480,17 @@
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><span><span data-ev="curso.nov.fechas"></span></span></li>
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><span data-ev="curso.nov.hora"></span></span></li>
           <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1114 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Presencial en <span data-ev="curso.lugar">Valencia</span></span></li>
-          <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span><span><span data-ev="curso.nov.cupos">Quedan 6 de 6</span> cupos</span></li>
+          <li class="flex gap-3 items-start"><span class="text-slate-400 mt-0.5 shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span><span><span data-ev="curso.nov.cupos">Máximo 6 personas</span></span></li>
         </ul>
         <div class="md:col-span-4 flex flex-col gap-3">
           <p class="text-slate-300"><strong class="text-2xl text-white"><span data-ev="curso.precio">$300</span></strong> <span class="text-sm text-slate-400">· <span data-ev="curso.precioEfectivo">$265</span> en efectivo o USDT</span></p>
           <a href="#finanzas-con-ia" data-evento="fechas_ver_curso_nov" class="flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head text-sm font-medium transition-colors">Ver el curso</a>
-          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20con%20%24100" data-ev-wa="curso-nov" target="_blank" rel="noopener" data-product="finanzas-con-ia-nov" data-cta="cursos_fechas" data-evento="reservo_100_nov" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span></span></a>
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20%28L%C3%ADnea%20Triangular%29%20con%20%24100" data-ev-wa="curso-nov" target="_blank" rel="noopener" data-product="finanzas-con-ia-nov" data-cta="cursos_fechas" data-evento="reservo_100_nov" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span></span></a>
         </div>
       </article>
       <article class="x-card is-static is-soon grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-7 items-center">
         <div class="md:col-span-3">
-          <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-triGreen mb-1.5">Taller</p>
+          <p class="mb-2 flex flex-wrap gap-2" data-cursos-lineas><span class="ins ins-tri"><span>Línea Triangular</span></span><span class="ins ins-express">Express · 3 horas</span></p><p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 mb-1.5">Taller</p>
           <h3 class="font-sans text-2xl font-bold text-white leading-tight">ChatGPT para tu negocio en 3 horas</h3>
         </div>
         <ul class="md:col-span-5 space-y-2.5 text-sm text-slate-300">
@@ -509,11 +506,11 @@
 </section>
 
 <!-- ============ FINANZAS CON IA (ficha completa) ============ -->
-<section id="finanzas-con-ia" class="relative py-24 bg-fv-surface2/40 border-b border-white/5 scroll-mt" aria-labelledby="finanzas-title">
+<section id="finanzas-con-ia" class="relative py-24 bg-fv-surface2/40 border-b border-white/5 scroll-mt linea-tri" aria-labelledby="finanzas-title">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl mb-12">
       <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-triPurple mb-2">Curso presencial · 3 sábados · máximo 6 personas</p>
-      <h2 id="finanzas-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-4">Finanzas con <span class="shimmer-text">IA</span></h2>
+      <h2 id="finanzas-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-4">Finanzas con <span class="texto-linea">IA</span></h2>
       <p class="text-slate-300 text-lg leading-relaxed">Aprende a ver tu dinero claro cuando se mueve en bolívares, dólares y USDT, y a pedirle a la IA que haga el trabajo pesado: cuadrar cuentas, armar reportes y proyectar tu caja.</p>
     </div>
 
@@ -555,9 +552,9 @@
           <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Pagas por Pago Móvil (a tasa BCV), USDT, Zinli o efectivo</span></li>
         </ul>
         <div class="mt-6 flex flex-col gap-3">
-          <a data-ev-show="oct:vigente" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20(10%2C%2017%20y%2024%20de%20oct)%20con%20%24100" data-ev-wa="curso-oct" target="_blank" rel="noopener" data-product="finanzas-con-ia-oct" data-cta="cursos_ficha" data-evento="reservo_100" class="btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span><span class="block text-[11px] font-medium opacity-80">Cohorte de octubre</span></span></a>
-          <a data-ev-show="nov:vigente" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20(7%2C%2014%20y%2021%20de%20nov)%20con%20%24100" data-ev-wa="curso-nov" target="_blank" rel="noopener" data-product="finanzas-con-ia-nov" data-cta="cursos_ficha" data-evento="reservo_100" class="btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span><span class="block text-[11px] font-medium opacity-80">Cohorte de noviembre</span></span></a>
-          <a data-ev-show="curso:pasado" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20haya%20nueva%20fecha%20de%20Finanzas%20con%20IA" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="cursos_ficha" class="hidden btn-tri items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Avísame la próxima fecha</span></a>
+          <a data-ev-show="oct:vigente" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20%28L%C3%ADnea%20Triangular%2C%2010%2C%2017%20y%2024%20de%20oct%29%20con%20%24100" data-ev-wa="curso-oct" target="_blank" rel="noopener" data-product="finanzas-con-ia-oct" data-cta="cursos_ficha" data-evento="reservo_100" class="btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span><span class="block text-[11px] font-medium opacity-80">Cohorte de octubre</span></span></a>
+          <a data-ev-show="nov:vigente" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20reservar%20mi%20cupo%20en%20Finanzas%20con%20IA%20%28L%C3%ADnea%20Triangular%2C%207%2C%2014%20y%2021%20de%20nov%29%20con%20%24100" data-ev-wa="curso-nov" target="_blank" rel="noopener" data-product="finanzas-con-ia-nov" data-cta="cursos_ficha" data-evento="reservo_100" class="btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo con <span data-ev="curso.reserva">$100</span><span class="block text-[11px] font-medium opacity-80">Cohorte de noviembre</span></span></a>
+          <a data-ev-show="curso:pasado" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20haya%20nueva%20fecha%20de%20Finanzas%20con%20IA%20%28L%C3%ADnea%20Triangular%29" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="cursos_ficha" class="hidden btn-tri items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Avísame la próxima fecha</span></a>
           <a href="/curso-finanzas-ia" class="flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head text-sm font-medium transition-colors">Ver el programa completo</a>
         </div>
       </aside>
@@ -569,17 +566,18 @@
         <span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span>
         <div><h3 class="font-sans text-xl font-bold text-white mb-1">¿No puedes los sábados?</h3><p class="text-slate-400 leading-relaxed">Hazlo 1 a 1, en 2 días de 5 horas, con tus propios datos: <strong class="text-white">$350</strong>.</p></div>
       </div>
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20Finanzas%20con%20IA%201%20a%201%20en%202%20d%C3%ADas%20(%24350).%20%C2%BFC%C3%B3mo%20coordinamos%3F" target="_blank" rel="noopener" data-product="finanzas-con-ia-privado" data-cta="cursos_ficha" data-evento="finanzas_privado" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold text-center whitespace-nowrap"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero la opción 1 a 1</span></a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20Finanzas%20con%20IA%201%20a%201%20en%202%20d%C3%ADas%20%28L%C3%ADnea%20Triangular%2C%20%24350%29.%20%C2%BFC%C3%B3mo%20coordinamos%3F" target="_blank" rel="noopener" data-product="finanzas-con-ia-privado" data-cta="cursos_ficha" data-evento="finanzas_privado" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold text-center whitespace-nowrap"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero la opción 1 a 1</span></a>
     </div>
   </div>
 </section>
 
 <!-- ============ OTRAS CLASES ============ -->
-<section class="relative py-24 border-b border-white/5" aria-labelledby="otras-title">
+<section class="relative py-24 border-b border-white/5 linea-tri" aria-labelledby="otras-title">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <h2 id="otras-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-10">Otras <span class="text-gradient-tri">clases</span></h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
       <div id="clase-ia" class="course-card x-card is-static p-7 flex flex-col scroll-mt">
+        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span><span class="ins ins-express">Express · esta semana</span></p>
         <div class="mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span></div>
         <h3 class="font-sans text-xl font-bold text-white mb-2">Clase 1:1 de IA</h3>
         <p class="text-sm text-slate-400 leading-relaxed mb-4">Aprende a usar IA con tus propios archivos y tareas, en una clase individual de 90 minutos.</p>
@@ -587,15 +585,16 @@
         <p class="text-sm text-fv-triGreen mb-4">3 clases por $60</p>
         <p class="text-sm text-slate-400 mb-6"><span class="text-slate-300">Ideal para:</span> administradores, contadores, profesionales y estudiantes.</p>
         <div class="mt-auto flex flex-col gap-2.5">
-          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20la%20Clase%201%3A1%20de%20IA%20(%2425).%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="clase-ia" data-cta="cursos_tarjeta" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero<span class="sr-only">: Clase 1:1 de IA</span></span></a>
-          <a href="/express#clase-ia" class="text-center text-xs text-fv-cyan link-underline py-2">Ver detalles</a>
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20la%20Clase%201%3A1%20de%20IA%20%28L%C3%ADnea%20Triangular%20Express%2C%20%2425%29.%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="clase-ia" data-cta="cursos_tarjeta" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero<span class="sr-only">: Clase 1:1 de IA</span></span></a>
+          <a href="/triangular#clase-ia" class="text-center text-xs text-fv-triGreen link-underline py-2">Ver detalles</a>
         </div>
       </div>
-      <div class="course-card x-card is-static p-7 flex flex-col">
-        <div class="mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triGreen bg-fv-triGreen/10 border-fv-triGreen/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span></div>
+      <div class="course-card x-card is-static p-7 flex flex-col linea-hex">
+        <div class="mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-cyan bg-fv-cyan/10 border-fv-cyan/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span></div>
+        <p class="mb-3"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
         <h3 class="font-sans text-xl font-bold text-white mb-2">Capacitación a medida</h3>
         <p class="text-sm text-slate-400 leading-relaxed mb-6">Si eres una empresa y ninguno de estos programas encaja tal cual con tu equipo, armamos una capacitación específica para ustedes: Masterclass privada, Finanzas con IA en su sede y más. Y si de ahí surge un proyecto más grande, seguimos con el mismo equipo.</p>
-        <a href="/soluciones#hexagonal-express" data-evento="cursos_a_medida" class="mt-auto flex items-center justify-center min-h-[48px] px-4 py-3 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head text-sm font-medium text-center transition-colors">Ver capacitaciones para empresas</a>
+        <a href="/hexagonal" data-evento="cursos_a_medida" class="mt-auto flex items-center justify-center min-h-[48px] px-4 py-3 rounded-lg border border-fv-orange/50 text-white hover:bg-fv-orange/10 font-head text-sm font-medium text-center transition-colors">Ver capacitaciones para empresas</a>
       </div>
       <div class="course-card x-card is-static is-help p-7 flex flex-col">
         <div class="mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/></svg></span></div>
@@ -635,15 +634,45 @@
 </section>
 
 <!-- ============ MUY PRONTO ============ -->
-<section class="relative py-24" aria-labelledby="pronto-title">
+<section class="linea-hex relative py-24 border-b border-white/5" aria-labelledby="empresas-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <p class="mb-4"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+    <h2 id="empresas-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-4">Formación para su <span class="texto-linea">empresa</span></h2>
+    <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-10">Capacitación privada para su equipo, en sus oficinas o donde usted prefiera.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+      <article id="masterclass-privada" class="x-card is-static flex flex-col p-6 sm:p-7 scroll-mt">
+        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span><span class="ins ins-express">Express · 3 horas</span></p>
+        <h3 class="font-sans text-xl font-bold text-white mb-2">Masterclass privada</h3>
+        <p class="text-sm text-slate-400 leading-relaxed mb-4">IA aplicada al trabajo de su empresa, hasta 8 personas.</p>
+        <p class="font-head text-2xl font-extrabold texto-linea mb-6">$500 a $700 por sesión</p>
+        <div class="mt-auto flex flex-col gap-2.5">
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Masterclass%20privada%20%28L%C3%ADnea%20Hexagonal%20Express%2C%20%24500%20a%20%24700%20por%20sesi%C3%B3n%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="masterclass-privada" data-cta="cursos_hexagonal" class="btn-linea flex items-center justify-center min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold">Consultar por WhatsApp</a>
+          <a href="/hexagonal#masterclass-privada" data-evento="cursos_a_hexagonal_masterclass-privada" class="text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
+        </div>
+      </article>
+      <article id="finanzas-ia-sede" class="x-card is-static flex flex-col p-6 sm:p-7 scroll-mt">
+        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span><span class="ins ins-express">Express · 2 sesiones</span></p>
+        <h3 class="font-sans text-xl font-bold text-white mb-2">Finanzas con IA en su sede</h3>
+        <p class="text-sm text-slate-400 leading-relaxed mb-4">El curso de conciliación de pagos con IA, en sus oficinas.</p>
+        <p class="font-head text-2xl font-extrabold texto-linea mb-6">$600 por grupo de hasta 6</p>
+        <div class="mt-auto flex flex-col gap-2.5">
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Finanzas%20con%20IA%20en%20su%20sede%20%28L%C3%ADnea%20Hexagonal%20Express%2C%20%24600%20por%20grupo%20de%20hasta%206%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="finanzas-ia-sede" data-cta="cursos_hexagonal" class="btn-linea flex items-center justify-center min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold">Consultar por WhatsApp</a>
+          <a href="/hexagonal#finanzas-ia-sede" data-evento="cursos_a_hexagonal_finanzas-ia-sede" class="text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="relative py-24 linea-tri" aria-labelledby="pronto-title">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <h2 id="pronto-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-3">Muy <span class="text-gradient-tri">pronto</span></h2>
     <p class="text-slate-400 mb-8">Los próximos talleres que estamos preparando. Avísame y te escribimos cuando abra la fecha.</p>
     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Vende más por WhatsApp Business</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Vende%20m%C3%A1s%20por%20WhatsApp%20Business%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Avísame<span class="sr-only">: Vende más por WhatsApp Business</span></a></li>
-      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Precios en dólares sin perder plata</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Precios%20en%20d%C3%B3lares%20sin%20perder%20plata%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Avísame<span class="sr-only">: Precios en dólares sin perder plata</span></a></li>
-      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Crea la web de tu negocio con IA en un fin de semana</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Crea%20la%20web%20de%20tu%20negocio%20con%20IA%20en%20un%20fin%20de%20semana%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Avísame<span class="sr-only">: Crea la web de tu negocio con IA en un fin de semana</span></a></li>
-      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Marketing con IA para emprendedores</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Marketing%20con%20IA%20para%20emprendedores%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Avísame<span class="sr-only">: Marketing con IA para emprendedores</span></a></li>
+      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Vende más por WhatsApp Business</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Vende%20m%C3%A1s%20por%20WhatsApp%20Business%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-triGreen link-underline">Avísame<span class="sr-only">: Vende más por WhatsApp Business</span></a></li>
+      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Precios en dólares sin perder plata</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Precios%20en%20d%C3%B3lares%20sin%20perder%20plata%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-triGreen link-underline">Avísame<span class="sr-only">: Precios en dólares sin perder plata</span></a></li>
+      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Crea la web de tu negocio con IA en un fin de semana</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Crea%20la%20web%20de%20tu%20negocio%20con%20IA%20en%20un%20fin%20de%20semana%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-triGreen link-underline">Avísame<span class="sr-only">: Crea la web de tu negocio con IA en un fin de semana</span></a></li>
+      <li class="x-card is-static is-soon flex items-center justify-between gap-4 p-5"><span class="font-head text-white">Marketing con IA para emprendedores</span><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20abra%20el%20taller%20%22Marketing%20con%20IA%20para%20emprendedores%22" target="_blank" rel="noopener" data-product="muy-pronto" data-cta="cursos_muy_pronto" data-evento="avisame_muy_pronto" class="shrink-0 inline-flex items-center min-h-[44px] font-head text-sm text-fv-triGreen link-underline">Avísame<span class="sr-only">: Marketing con IA para emprendedores</span></a></li>
     </ul>
   </div>
 </section>
@@ -673,31 +702,36 @@
         </div>
       </div>
 
-      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div data-pie-lineas class="lg:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Soluciones</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/express" class="link-underline hover:text-white transition-colors">Triangular Express</a></li>
-            <li><a href="/soluciones#triangular" class="link-underline hover:text-white transition-colors">Triangular</a></li>
-            <li><a href="/soluciones#hexagonal-express" class="link-underline hover:text-white transition-colors">Hexagonal Express</a></li>
-            <li><a href="/soluciones#hexagonal" class="link-underline hover:text-white transition-colors">Hexagonal</a></li>
+          <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/triangular?modo=express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
-            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos</a></li>
+            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
+            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
           </ul>
         </div>
-
         <div>
-          <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/soluciones#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
-            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
-            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
+          <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
-
+        <div>
+          <h3 class="font-head text-xs font-semibold uppercase tracking-wider mb-4 text-fv-orange">Empresa</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
+            <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
+            <li><a href="/terminos" class="link-underline hover:text-white transition-colors">Términos</a></li>
+          </ul>
+        </div>
         <div>
           <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
@@ -709,6 +743,7 @@
             <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
           </ul>
         </div>
+      
       </div>
     </div>
 

@@ -29,12 +29,12 @@
         '<span>Tasa BCV de hoy: <strong class="text-white font-semibold">' + money(state.rate) + '</strong>' + (state.fecha ? ' <span class="text-slate-400">· ' + dateText(state.fecha) + '</span>' : '') + '</span>';
     }
     if (state.rate) {
-      return '<span class="inline-flex h-2 w-2 shrink-0 rounded-full bg-fv-orange"></span>' +
+      return '<span class="inline-flex h-2 w-2 shrink-0 rounded-full bg-[color:var(--acento-2)]"></span>' +
         '<span>Última tasa BCV conocida: <strong class="text-white font-semibold">' + money(state.rate) + '</strong> <span class="text-slate-400">· ' + dateText(state.fecha) + '</span> ' +
-        '<a href="' + WA + '" target="_blank" rel="noopener" class="link-underline text-fv-cyan">Confirma la de hoy por WhatsApp</a></span>';
+        '<a href="' + WA + '" target="_blank" rel="noopener" class="link-underline text-[color:var(--acento-1)]">Confirma la de hoy por WhatsApp</a></span>';
     }
     return '<span class="inline-flex h-2 w-2 shrink-0 rounded-full bg-slate-500"></span>' +
-      '<a href="' + WA + '" target="_blank" rel="noopener" class="link-underline text-fv-cyan">Consulta la tasa del día por WhatsApp</a>';
+      '<a href="' + WA + '" target="_blank" rel="noopener" class="link-underline text-[color:var(--acento-1)]">Consulta la tasa del día por WhatsApp</a>';
   }
 
   function render() {

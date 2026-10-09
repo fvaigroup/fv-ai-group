@@ -40,10 +40,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/css/tailwind.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" crossorigin>
+<style>/* Space Grotesk y Geist (Google Fonts), incluidas en la página y precargadas: sin pedir CSS aparte y sin saltos de diseño */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwSGFWfOw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
   :root {
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -258,15 +263,12 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Triangular Express</a>
-        <a href="/soluciones" class="text-white" aria-current="page">Soluciones</a>
-        <a href="/paginas-web" class="text-slate-400 hover:text-white transition-colors">Páginas web</a>
-        <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="/casos" class="text-slate-400 hover:text-white transition-colors">Casos</a>
+        <a href="/triangular" class="nav-forma nav-tri transition-colors">Línea Triangular</a>
+        <a href="/hexagonal" class="nav-forma nav-hex transition-colors" aria-current="page">Línea Hexagonal</a>
         <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
@@ -274,8 +276,7 @@
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="hidden xl:inline-block btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden 2xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Diagnóstico gratis</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20L%C3%ADnea%20Hexagonal%20y%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -286,21 +287,17 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="/" class="text-slate-300">Inicio</a>
-      <a href="/express" class="text-fv-triGreen">Triangular Express</a>
-      <a href="/soluciones" class="text-white" aria-current="page">Soluciones</a>
-      <a href="/paginas-web" class="text-slate-300">Páginas web</a>
-      <a href="/cursos" class="text-slate-300">Cursos</a>
-      <a href="/casos" class="text-slate-300">Casos</a>
+      <a href="/triangular" class="nav-forma nav-tri">Línea Triangular</a>
+      <a href="/hexagonal" class="nav-forma nav-hex" aria-current="page">Línea Hexagonal</a>
       <a href="/nosotros" class="text-slate-300">Nosotros</a>
       <a href="/contacto" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Diagnóstico gratis</a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20L%C3%ADnea%20Hexagonal%20y%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-2 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
     </div>
   </div>
 </header>
 <div id="scroll-progress"></div>
 
-<main id="main-content">
+<main class="linea-hex" id="main-content">
 
 <!-- ============ HERO ============ -->
 <section class="relative pt-40 pb-16 overflow-hidden border-b border-white/5">
@@ -309,15 +306,17 @@
 
   <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="reveal">
-      <nav class="flex items-center gap-2 text-xs font-head text-slate-500 mb-6">
-        <a href="/soluciones" class="link-underline hover:text-white transition-colors">Soluciones</a>
-        <span>/</span>
-        <span class="text-slate-400">Acompañamiento Continuo</span>
+      <nav data-miga-hex aria-label="Ruta" class="flex flex-wrap items-center gap-2 text-xs font-head text-slate-400 mb-6">
+        <a href="/" class="link-underline hover:text-white transition-colors">F&V</a>
+        <span aria-hidden="true">›</span>
+        <a href="/hexagonal" class="link-underline hover:text-white transition-colors"><span aria-hidden="true">⬡</span> Línea Hexagonal</a>
+        <span aria-hidden="true">›</span>
+        <span class="text-slate-300" aria-current="page">Acompañamiento Continuo</span>
       </nav>
       <span class="font-head text-sm text-fv-orange">06</span>
       <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mt-2 mb-5 tracking-tight">Acompañamiento <span class="text-neon-orange">Continuo</span></h1>
       <p class="text-lg text-slate-400 leading-relaxed max-w-2xl">Retención y continuidad a largo plazo, una vez todo lo anterior está en marcha.</p>
-      <p class="mt-6" data-linea-badge><a href="#precio" class="inline-flex items-center gap-2 font-head text-xs font-semibold uppercase tracking-wider px-3.5 py-2 rounded-full border border-fv-cyan/40 bg-fv-cyan/10 text-fv-cyan hover:bg-fv-cyan/20 transition-colors">Línea Hexagonal · desde $90/mes</a></p>
+      <p class="mt-6 flex flex-wrap items-center gap-2.5" data-linea-badge><span class="ins ins-hex"><span>Línea Hexagonal</span></span><a href="#precio" class="font-head text-sm text-fv-cyan link-underline py-1">desde $200/mes</a></p>
     </div>
   </div>
 </section>
@@ -374,7 +373,7 @@
     </div>
 
       <div class="mt-14 pt-8 border-t border-white/5 text-sm">
-        <a href="/soluciones" class="link-underline text-slate-400 hover:text-white transition-colors font-head">← Todas las soluciones</a>
+        <a href="/hexagonal" class="link-underline text-slate-400 hover:text-white transition-colors font-head">← Volver a la Línea Hexagonal</a>
       </div>
   </div>
 </section>
@@ -382,18 +381,18 @@
 <!-- ============ PRECIO Y ALCANCE ============ -->
 <section id="precio" class="relative py-20 border-b border-white/5 scroll-mt" aria-labelledby="precio-title">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-    <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-cyan mb-2">Línea Hexagonal · desde $90/mes</p>
+    <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-cyan mb-2">Línea Hexagonal · desde $200/mes</p>
     <h2 id="precio-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight mb-3">Niveles y precios</h2>
     <p class="text-slate-400 mb-10 max-w-2xl">Precios en dólares, pagaderos en bolívares a la tasa BCV del día.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
-        <div class="x-card is-static flex flex-col p-6"><p class="font-head text-xs uppercase tracking-wider text-fv-cyan mb-2">Nivel</p><h3 class="font-sans text-lg font-bold text-white mb-2">Básico</h3><p class="text-3xl font-extrabold text-white tracking-tight">$90<span class="font-head text-sm text-slate-400 font-normal">/mes</span></p><ul class="mt-4 space-y-2 text-sm text-slate-300"><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>3 h incluidas al mes</span></li><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Respuesta en 24 h hábiles</span></li></ul><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Acompa%C3%B1amiento%20Continuo%20nivel%20B%C3%A1sico%20(%2490%2Fmes).%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="acompanamiento-b-sico" data-cta="servicio_acompanamiento-continuo" class="mt-auto pt-5 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Consultar por WhatsApp<span class="sr-only">: Básico</span></a></div>
-        <div class="x-card is-static is-featured flex flex-col p-6"><p class="font-head text-xs uppercase tracking-wider text-fv-cyan mb-2">Nivel</p><h3 class="font-sans text-lg font-bold text-white mb-2">Estándar</h3><p class="text-3xl font-extrabold text-white tracking-tight">$200<span class="font-head text-sm text-slate-400 font-normal">/mes</span></p><ul class="mt-4 space-y-2 text-sm text-slate-300"><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>8 h incluidas al mes</span></li><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Respuesta el mismo día</span></li></ul><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Acompa%C3%B1amiento%20Continuo%20nivel%20Est%C3%A1ndar%20(%24200%2Fmes).%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="acompanamiento-est-ndar" data-cta="servicio_acompanamiento-continuo" class="mt-auto pt-5 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Consultar por WhatsApp<span class="sr-only">: Estándar</span></a></div>
-        <div class="x-card is-static flex flex-col p-6"><p class="font-head text-xs uppercase tracking-wider text-fv-cyan mb-2">Nivel</p><h3 class="font-sans text-lg font-bold text-white mb-2">Prioritario</h3><p class="text-3xl font-extrabold text-white tracking-tight">$400<span class="font-head text-sm text-slate-400 font-normal">/mes</span></p><ul class="mt-4 space-y-2 text-sm text-slate-300"><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>18 h incluidas al mes</span></li><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Respuesta en 4 h</span></li></ul><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Acompa%C3%B1amiento%20Continuo%20nivel%20Prioritario%20(%24400%2Fmes).%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="acompanamiento-prioritario" data-cta="servicio_acompanamiento-continuo" class="mt-auto pt-5 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Consultar por WhatsApp<span class="sr-only">: Prioritario</span></a></div>
-        <div class="x-card is-static flex flex-col p-6"><p class="font-head text-xs uppercase tracking-wider text-fv-cyan mb-2">A tiempo parcial</p><h3 class="font-sans text-lg font-bold text-white mb-2">Director de IA a tiempo parcial</h3><p class="text-3xl font-extrabold text-white tracking-tight">$600<span class="font-head text-sm text-slate-400 font-normal">/mes</span></p><ul class="mt-4 space-y-2 text-sm text-slate-300"><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>16 h incluidas al mes</span></li><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Más una reunión semanal</span></li></ul><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Acompa%C3%B1amiento%20Continuo%20nivel%20Director%20de%20IA%20a%20tiempo%20parcial%20(%24600%2Fmes).%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="acompanamiento-director-de-ia-a-tiempo-parcial" data-cta="servicio_acompanamiento-continuo" class="mt-auto pt-5 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Consultar por WhatsApp<span class="sr-only">: Director de IA a tiempo parcial</span></a></div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="x-card is-static is-featured flex flex-col p-6"><p class="font-head text-xs uppercase tracking-wider text-fv-cyan mb-2">Nivel</p><h3 class="font-sans text-lg font-bold text-white mb-2">Estándar</h3><p class="text-3xl font-extrabold text-white tracking-tight">$200<span class="font-head text-sm text-slate-400 font-normal">/mes</span></p><ul class="mt-4 space-y-2 text-sm text-slate-300"><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>8 h incluidas al mes</span></li><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Respuesta el mismo día</span></li></ul><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Acompa%C3%B1amiento%20Continuo%20nivel%20Est%C3%A1ndar%20%28L%C3%ADnea%20Hexagonal%2C%20%24200%2Fmes%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="acompanamiento-est-ndar" data-cta="servicio_acompanamiento-continuo" class="mt-auto pt-5 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Consultar por WhatsApp<span class="sr-only">: Estándar</span></a></div>
+        <div class="x-card is-static flex flex-col p-6"><p class="font-head text-xs uppercase tracking-wider text-fv-cyan mb-2">Nivel</p><h3 class="font-sans text-lg font-bold text-white mb-2">Prioritario</h3><p class="text-3xl font-extrabold text-white tracking-tight">$400<span class="font-head text-sm text-slate-400 font-normal">/mes</span></p><ul class="mt-4 space-y-2 text-sm text-slate-300"><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>18 h incluidas al mes</span></li><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Respuesta en 4 h</span></li></ul><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Acompa%C3%B1amiento%20Continuo%20nivel%20Prioritario%20%28L%C3%ADnea%20Hexagonal%2C%20%24400%2Fmes%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="acompanamiento-prioritario" data-cta="servicio_acompanamiento-continuo" class="mt-auto pt-5 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Consultar por WhatsApp<span class="sr-only">: Prioritario</span></a></div>
+        <div class="x-card is-static flex flex-col p-6"><p class="font-head text-xs uppercase tracking-wider text-fv-cyan mb-2">A tiempo parcial</p><h3 class="font-sans text-lg font-bold text-white mb-2">Director de IA a tiempo parcial</h3><p class="text-3xl font-extrabold text-white tracking-tight">$600<span class="font-head text-sm text-slate-400 font-normal">/mes</span></p><ul class="mt-4 space-y-2 text-sm text-slate-300"><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>16 h incluidas al mes</span></li><li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Más una reunión semanal</span></li></ul><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Acompa%C3%B1amiento%20Continuo%20nivel%20Director%20de%20IA%20a%20tiempo%20parcial%20%28L%C3%ADnea%20Hexagonal%2C%20%24600%2Fmes%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="acompanamiento-director-de-ia-a-tiempo-parcial" data-cta="servicio_acompanamiento-continuo" class="mt-auto pt-5 inline-flex items-center min-h-[44px] font-head text-sm text-fv-cyan link-underline">Consultar por WhatsApp<span class="sr-only">: Director de IA a tiempo parcial</span></a></div>
       </div>
+    <p class="mt-5 text-sm text-slate-400">¿Tiene un negocio pequeño? El <a href="/triangular#mensualidades" class="link-underline text-fv-cyan">Acompañamiento Básico ($90/mes)</a> es de la Línea Triangular.</p>
     <div class="mt-10 flex flex-col sm:flex-row gap-3">
       <a href="/contacto#agenda" data-evento="servicio_diagnostico_acompanamiento-continuo" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center px-7 py-3.5 font-head font-semibold rounded-lg">Agendar diagnóstico gratis</a>
-      <a href="/soluciones" class="btn-secondary inline-flex justify-center items-center px-7 py-3.5 font-head font-medium rounded-lg">Ver todas las soluciones</a>
+      <a href="/hexagonal" class="btn-linea-sec inline-flex justify-center items-center px-7 py-3.5 font-head font-medium rounded-lg">Volver a la Línea Hexagonal</a>
     </div>
   </div>
 </section>
@@ -409,9 +408,9 @@
         <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Cuéntenos su situación y le confirmamos si Acompañamiento Continuo es el punto de partida correcto — o cuál lo es. Respondemos el mismo día de lunes a viernes de 9:00 a 17:00. Fuera de ese horario le atiende Luci, nuestra asistente virtual, y le escribimos el siguiente día hábil.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/contacto#agenda" class="btn-primary inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg">Agendar diagnóstico gratis</a>
-          <a href="/soluciones" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">Ver todas las soluciones</a>
+          <a href="/hexagonal" class="btn-secondary inline-flex justify-center items-center px-8 py-4 font-head font-medium rounded-lg">Ver todas las soluciones</a>
         </div>
-        <p class="mt-6 text-sm text-slate-500">O escríbanos directo por <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20una%20orientaci%C3%B3n%20sobre%20Acompa%C3%B1amiento%20Continuo" target="_blank" rel="noopener" data-cta="servicio_acompanamiento-continuo" class="link-underline text-fv-cyan hover:text-white transition-colors font-head">WhatsApp</a>.</p>
+        <p class="mt-6 text-sm text-slate-500">O escríbanos directo por <a href="https://wa.me/584244125386?text=Hola%2C%20quiero%20una%20orientaci%C3%B3n%20sobre%20Acompa%C3%B1amiento%20Continuo%20%28L%C3%ADnea%20Hexagonal%29" target="_blank" rel="noopener" data-cta="servicio_acompanamiento-continuo" class="link-underline text-fv-cyan hover:text-white transition-colors font-head">WhatsApp</a>.</p>
       </div>
     </div>
   </div>
@@ -442,31 +441,36 @@
         </div>
       </div>
 
-      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div data-pie-lineas class="lg:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Soluciones</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/express" class="link-underline hover:text-white transition-colors">Triangular Express</a></li>
-            <li><a href="/soluciones#triangular" class="link-underline hover:text-white transition-colors">Triangular</a></li>
-            <li><a href="/soluciones#hexagonal-express" class="link-underline hover:text-white transition-colors">Hexagonal Express</a></li>
-            <li><a href="/soluciones#hexagonal" class="link-underline hover:text-white transition-colors">Hexagonal</a></li>
+          <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/triangular?modo=express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
             <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
-            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos</a></li>
+            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
+            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
           </ul>
         </div>
-
         <div>
-          <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-4">Empresa</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="/soluciones#metodologia" class="link-underline hover:text-white transition-colors">Cómo trabajamos</a></li>
-            <li><a href="/nosotros#diferencial" class="link-underline hover:text-white transition-colors">Por qué F&V</a></li>
-            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
-            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
+          <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
         </div>
-
+        <div>
+          <h3 class="font-head text-xs font-semibold uppercase tracking-wider mb-4 text-fv-orange">Empresa</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
+            <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
+            <li><a href="/terminos" class="link-underline hover:text-white transition-colors">Términos</a></li>
+          </ul>
+        </div>
         <div>
           <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
           <ul class="space-y-2.5 text-sm text-slate-500">
@@ -478,6 +482,7 @@
             <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
           </ul>
         </div>
+      
       </div>
     </div>
 
