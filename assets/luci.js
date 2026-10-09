@@ -17,9 +17,9 @@
   function ev(k, d) { try { var v = window.FV_EVENTOS && window.FV_EVENTOS.datos[k]; return v !== undefined ? v : d; } catch (e) { return d; } }
   function estado(k) { try { return window.FV_EVENTOS ? window.FV_EVENTOS.estado[k] : true; } catch (e) { return true; } }
   function pedir(nombre, precio, linea) { return { l: 'Lo quiero por WhatsApp', h: wa('Hola F&V, quiero ' + nombre + ' (' + (linea || 'Línea Triangular Express') + ', ' + precio + '). ¿Cómo pago?'), wa: true, p: nombre }; }
-  var VER_EXPRESS = { l: 'Ver productos Express', h: '/express' };
+  var VER_EXPRESS = { l: 'Ver la Línea Triangular', h: '/triangular' };
   var VER_WEBS = { l: 'Ver páginas web y precios', h: '/paginas-web' };
-  var VER_SOL = { l: 'Ver todas las soluciones', h: '/soluciones' };
+  var VER_SOL = { l: 'Ver las dos líneas', h: '/#lineas' };
   var DIAG = { l: 'Agendar diagnóstico gratis', h: '/contacto#agenda' };
   var ESCRIBIR = { l: 'Escribir por WhatsApp', h: wa('Hola F&V, tengo una consulta'), wa: true };
 
@@ -60,8 +60,8 @@
     { k: ['calculadora', 'calcular', 'margen', 'recargo'], a: 'Tenemos una calculadora gratis: pones tu costo y tu margen y te dice a cuánto vender en $ y en Bs con la tasa del día, y puedes descargar tu tabla de precios en PDF.', c: { l: 'Usar la calculadora', h: '/calculadora' } },
     { k: ['tasa', 'bcv', 'bolivares', 'dolar', 'euro'], a: 'Usamos la tasa oficial del BCV (dólar o euro) del día. En el Catálogo con tasa BCV y en Caja Clara los precios en bolívares se actualizan solos con esa tasa. Para calcular tus propios precios usa la calculadora gratis.', c: { l: 'Usar la calculadora', h: '/calculadora' } },
     { k: ['linea', 'lineas', 'triangular', 'hexagonal', 'diferencia', 'express'], a: 'Triangular Express: negocios pequeños y personas, de $10 a $150, entrega de 24 horas a 7 días. Triangular: negocios que ya venden, desde $250, en 1 a 3 semanas. Hexagonal Express: empresas con un problema puntual, desde $150, en 1 a 3 semanas. Hexagonal: sistema completo para empresas, desde $2.000, en 1 a 3 meses. ⚡ Express = entrega rápida (Triangular: máximo 7 días; Hexagonal: máximo 3 semanas). Lo que pagas en un paso se abona al siguiente.', c: VER_SOL },
-    { k: ['habilitacion', 'capacitacion', 'tablero', 'automatizacion de 1', 'equipo'], a: 'En la Línea Triangular: Tablero de Ventas y Caja $250 (1 semana) y Automatización de 1 tarea desde $300 (1 a 2 semanas). La Habilitación de equipos ($60 por persona, desde 3 personas, 1 sesión) es de la Línea Hexagonal Express.', c: { l: 'Ver la Línea Triangular', h: '/soluciones#triangular' } },
-    { k: ['evaluacion', 'asesoria', 'auditoria', 'sprint', 'conciliacion', 'agente de ia', 'tablero gerencial', 'masterclass'], a: 'En Hexagonal Express: Asesoría Estratégica $150 (1 sesión + informe en 72 h) y Evaluación de Procesos $400 (1 semana), ambas se abonan si contratas la implementación; Sprint de Automatización desde $800, Conciliación Automática desde $900, Agente de IA a medida desde $1.000, Habilitación de equipos $60 por persona y Masterclass privada de $500 a $700.', c: { l: 'Ver Hexagonal Express', h: '/soluciones#hexagonal-express' } },
+    { k: ['habilitacion', 'capacitacion', 'tablero', 'automatizacion de 1', 'equipo'], a: 'En la Línea Triangular: Tablero de Ventas y Caja $250 (1 semana) y Automatización de 1 tarea desde $300 (1 a 2 semanas). La Habilitación de equipos ($60 por persona, desde 3 personas, 1 sesión) es de la Línea Hexagonal Express.', c: { l: 'Ver la Línea Triangular', h: '/triangular' } },
+    { k: ['evaluacion', 'asesoria', 'auditoria', 'sprint', 'conciliacion', 'agente de ia', 'tablero gerencial', 'masterclass'], a: 'En Hexagonal Express: Asesoría Estratégica $150 (1 sesión + informe en 72 h) y Evaluación de Procesos $400 (1 semana), ambas se abonan si contratas la implementación; Sprint de Automatización desde $800, Conciliación Automática desde $900, Agente de IA a medida desde $1.000, Habilitación de equipos $60 por persona y Masterclass privada de $500 a $700.', c: { l: 'Ver Hexagonal Express', h: '/hexagonal' } },
     { k: ['odoo', 'dynamics', 'erp', 'crm', 'n8n', 'implementacion', 'sistema completo', 'desarrollo a medida', 'empresa grande', 'empresas'], a: 'La Línea Hexagonal es el sistema completo para empresas, siempre después de una evaluación y por fases: Odoo Community desde $2.000, Ecosistema de Automatización desde $2.500, Dynamics 365 Sales/Customer Service desde $3.000 + licencias y desarrollo a medida desde $3.000.', c: DIAG },
     { k: ['soporte', 'acompanamiento', 'despues del', 'incidencia'], a: 'El Acompañamiento Continuo de la Línea Hexagonal tiene tres niveles: Estándar $200/mes (8 h), Prioritario $400/mes (18 h) y Director de IA a tiempo parcial $600/mes (16 h + reunión semanal). Para negocios pequeños existe el Acompañamiento Básico, $90/mes (3 h), de la Línea Triangular.', c: { l: 'Ver los niveles', h: '/acompanamiento-continuo' } },
     { k: ['donde', 'ubicacion', 'direccion', 'oficina', 'valencia', 'carabobo', 'venezuela', 'fuera de'], a: 'Estamos en Valencia, Carabobo (Av. La Rosario, Edif. Torre Trébol, Urb. Lomas del Este) y atendemos negocios y empresas de toda Venezuela por WhatsApp y videollamada. Los talleres y cursos son presenciales en Valencia.', c: { l: 'Ver el mapa', h: '/contacto#mapa' } },
@@ -88,15 +88,15 @@
   /* ---------- interfaz ---------- */
   var path = location.pathname.replace(/\/$/, '') || '/';
   var QUICK = {
-    '/express': ['¿Qué incluye el Pack Arranque?', '¿Cómo pago?', '¿Cuánto tarda?', '¿Hay garantía?'],
+    '/triangular': ['¿Qué incluye el Pack Arranque?', '¿Cómo pago?', '¿Cuánto tarda?', '¿Hay garantía?'],
     '/paginas-web': ['¿Cuánto cuesta una web?', '¿Cuánto tarda?', '¿El dominio está incluido?', '¿Cómo pago?'],
     '/cursos': ['¿Cuándo es el próximo taller?', '¿Cuánto cuesta Finanzas con IA?', '¿Cómo reservo mi cupo?'],
     '/curso-finanzas-ia': ['¿Cuándo empieza?', '¿Cuánto cuesta?', '¿Cómo reservo mi cupo?'],
     '/calculadora': ['¿Cómo se calcula el margen?', '¿De dónde sale la tasa?', '¿Cómo pago?'],
-    '/soluciones': ['¿Cuál es la diferencia entre las líneas?', '¿Cuánto cuesta una evaluación?', '¿Dan soporte después?'],
+    '/hexagonal': ['¿Cuál es la diferencia entre las líneas?', '¿Cuánto cuesta una evaluación?', '¿Dan soporte después?'],
     '/contacto': ['¿Cómo agendo el diagnóstico?', '¿En cuánto tiempo responden?', '¿Dónde están?']
   };
-  var quickReplies = QUICK[path] || (/^\/(asesoria|evaluacion|despliegue|habilitacion|masterclasses|acompanamiento)/.test(path) ? QUICK['/soluciones'] : ['¿Cuánto cuesta?', '¿Qué productos tienen?', '¿Cómo pago?', '¿Cuándo es el próximo taller?']);
+  var quickReplies = QUICK[path] || (/^\/(asesoria|evaluacion|despliegue|habilitacion|masterclasses|acompanamiento)/.test(path) ? QUICK['/hexagonal'] : ['¿Cuánto cuesta?', '¿Qué productos tienen?', '¿Cómo pago?', '¿Cuándo es el próximo taller?']);
 
   var css = document.createElement('style');
   css.textContent = '.luci-cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:8px 12px;border-radius:8px;font-family:"Space Grotesk",sans-serif;font-size:12.5px;font-weight:600;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.45);color:#4ade80;text-decoration:none;transition:background-color .2s}.luci-cta:hover{background:rgba(74,222,128,.22)}' +

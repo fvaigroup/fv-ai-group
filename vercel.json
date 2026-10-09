@@ -36,28 +36,48 @@
   ],
   "redirects": [
     {
+      "source": "/express",
+      "destination": "/triangular",
+      "permanent": true
+    },
+    {
+      "source": "/express.html",
+      "destination": "/triangular",
+      "permanent": true
+    },
+    {
       "source": "/triangular-express",
-      "destination": "/express",
+      "destination": "/triangular",
+      "permanent": true
+    },
+    {
+      "source": "/soluciones",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/soluciones.html",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/servicios",
-      "destination": "/soluciones",
-      "permanent": true
-    },
-    {
-      "source": "/precios",
-      "destination": "/soluciones",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/servicios.html",
-      "destination": "/soluciones",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/precios",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/precios.html",
-      "destination": "/soluciones",
+      "destination": "/",
       "permanent": true
     }
   ]

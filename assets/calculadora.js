@@ -218,7 +218,7 @@
     R(36, 70, 523, 74, VERDE_CLARO);
     T('F2', 13, 52, 120, '¿Quieres que tus precios se actualicen solos?');
     T('F1', 11, 52, 102, 'Catálogo con tasa BCV $90 · Caja Clara $50');
-    T('F2', 11, 52, 84, 'fvaigroup.com/express', VERDE);
+    T('F2', 11, 52, 84, 'fvaigroup.com/triangular', VERDE);
     cs.push('0.12 0.62 0.32 RG 0.8 w 52 82 m 168 82 l S');
     T('F1', 8, 36, 54, 'Precios en dólares, pagaderos en bolívares a la tasa BCV del día.', GRIS);
     T('F1', 8, 36, 43, 'Cálculo orientativo: confirma tus costos y comisiones antes de publicar tus precios.', GRIS);
@@ -241,7 +241,7 @@
     obj(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
     obj(5, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
     obj(6, '<< /Length %L >>', contenido);
-    obj(7, '<< /Type /Annot /Subtype /Link /Rect [50 80 170 96] /Border [0 0 0] /A << /S /URI /URI (https://www.fvaigroup.com/express) >> >>');
+    obj(7, '<< /Type /Annot /Subtype /Link /Rect [50 80 170 96] /Border [0 0 0] /A << /S /URI /URI (https://www.fvaigroup.com/triangular) >> >>');
     var total = 7;
     if (logo) { obj(8, '<< /Type /XObject /Subtype /Image /Width 200 /Height 200 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length %L >>', logo); total = 8; }
     var xref = largo;
