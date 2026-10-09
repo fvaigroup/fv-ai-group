@@ -254,14 +254,15 @@
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
         <img src="assets/logo-full-hex.png" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
-        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden 2xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-5 xl:gap-6 font-head text-sm whitespace-nowrap">
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Express</a>
-        <a href="/servicios" class="text-slate-400 hover:text-white transition-colors">Servicios</a>
+        <a href="/express" class="text-fv-triGreen hover:text-white transition-colors">Triangular Express</a>
+        <a href="/soluciones" class="text-white" aria-current="page">Soluciones</a>
+        <a href="/paginas-web" class="text-slate-400 hover:text-white transition-colors">Páginas web</a>
         <a href="/cursos" class="text-slate-400 hover:text-white transition-colors">Cursos</a>
-        <a href="/precios" class="text-slate-400 hover:text-white transition-colors">Precios</a>
+        <a href="/casos" class="text-slate-400 hover:text-white transition-colors">Casos</a>
         <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
@@ -269,8 +270,8 @@
         </button>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Hablar por </span>WhatsApp</a>
-        <a href="/contacto" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Agendar auditoría</a>
+        <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="hidden xl:inline-block btn-secondary font-head text-sm font-medium px-4 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden 2xl:inline">Hablar por </span>WhatsApp</a>
+        <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap">Diagnóstico gratis</a>
       </div>
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -281,14 +282,15 @@
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
     <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
       <a href="/" class="text-slate-300">Inicio</a>
-      <a href="/express" class="text-fv-triGreen">Express</a>
-      <a href="/servicios" class="text-slate-300">Servicios</a>
+      <a href="/express" class="text-fv-triGreen">Triangular Express</a>
+      <a href="/soluciones" class="text-white" aria-current="page">Soluciones</a>
+      <a href="/paginas-web" class="text-slate-300">Páginas web</a>
       <a href="/cursos" class="text-slate-300">Cursos</a>
-      <a href="/precios" class="text-slate-300">Precios</a>
+      <a href="/casos" class="text-slate-300">Casos</a>
       <a href="/nosotros" class="text-slate-300">Nosotros</a>
       <a href="/contacto" class="text-slate-300">Contacto</a>
       <a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="btn-secondary mt-2 text-center px-4 py-2.5 rounded-lg">WhatsApp</a>
-      <a href="/contacto" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Agendar auditoría</a>
+      <a href="/contacto#agenda" class="btn-primary btn-glow-on-hover text-center px-4 py-2.5 rounded-lg font-semibold">Diagnóstico gratis</a>
     </div>
   </div>
 </header>
@@ -805,8 +807,8 @@
   document.addEventListener('click', (e) => {
     if (typeof gtag !== 'function') return;
     const page = location.pathname.replace(/^\/|\.html$/g, '') || 'inicio';
-    const tracked = e.target.closest('[data-track]');
-    if (tracked) gtag('event', tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
+    const tracked = e.target.closest('[data-evento],[data-track]');
+    if (tracked) gtag('event', tracked.dataset.evento || tracked.dataset.track, { cta_location: tracked.dataset.cta || 'otro', page: page });
     const a = e.target.closest('a[href*="wa.me"]');
     if (!a) return;
     const loc = a.dataset.cta || (a.closest('#mobile-menu') ? 'menu_movil' : a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : 'otro');
