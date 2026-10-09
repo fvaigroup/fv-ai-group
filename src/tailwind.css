@@ -185,3 +185,13 @@
 .linea-hex .link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
 .linea-hex .linea-tri .link-underline { background-image: linear-gradient(to right, #4ade80, #a855f7); }
 .linea-tri .linea-hex .link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
+
+/* ---- Filtros de /triangular y /hexagonal: botones con aria-pressed (el color sale de la línea) ---- */
+.filtro {
+  display: inline-flex; align-items: center; gap: .35rem; min-height: 40px; padding: .45rem .95rem; border-radius: 999px;
+  font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 500; color: #cbd5e1;
+  border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.03); transition: background-color .2s, border-color .2s, color .2s;
+}
+.filtro:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; }
+.filtro:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
+.filtro[aria-pressed="true"] { background: var(--acento-1); border-color: var(--acento-1); color: #000; font-weight: 600; }
