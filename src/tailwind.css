@@ -56,6 +56,22 @@
   details[open] .chev { transform: rotate(45deg); }
   .x-faq[open] { border-color: rgba(74,222,128,.35); }
 
+
+  /* ---- Tarjetas con elevación y brillo cian al pasar el mouse (portada, soluciones) ---- */
+  .card-lift-cyan { transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1), border-color .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .3s cubic-bezier(0.23, 1, 0.32, 1); }
+  @media (hover: hover) and (pointer: fine) {
+    .card-lift-cyan:hover { transform: translateY(-6px); border-color: rgba(0,255,255,0.6); box-shadow: 0 0 26px rgba(0,204,255,0.25); }
+  }
+  @media (prefers-reduced-motion: reduce) { .card-lift-cyan { transition: none; } }
+  /* ---- Entrada escalonada de tarjetas ---- */
+  .stagger-grid > .reveal:nth-child(2) { transition-delay: .06s; }
+  .stagger-grid > .reveal:nth-child(3) { transition-delay: .12s; }
+  .stagger-grid > .reveal:nth-child(4) { transition-delay: .18s; }
+  .stagger-grid > .reveal:nth-child(5) { transition-delay: .24s; }
+  .stagger-grid > .reveal:nth-child(6) { transition-delay: .30s; }
+  /* ---- Línea de tiempo continua ('Cómo trabajamos') ---- */
+  .timeline-spine::before { content: ''; position: absolute; left: 0; top: 0.35rem; bottom: 0.35rem; width: 2px; background: linear-gradient(to bottom, rgba(0,255,255,0.35), rgba(255,140,0,0.35), rgba(0,255,255,0.35)); }
+
   /* ---- Enlace "saltar al contenido" para navegación por teclado ---- */
   .skip-link {
     position: fixed; top: -100px; left: 1rem; z-index: 300;
