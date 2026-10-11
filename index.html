@@ -72,7 +72,7 @@
       "image": "https://www.fvaigroup.com/assets/og-image.png",
       "telephone": "+58-424-412-5386",
       "email": "contacto@fvaigroup.com",
-      "priceRange": "$10 - $3000",
+      "priceRange": "$4.99 - $3000",
       "parentOrganization": {
         "@id": "https://www.fvaigroup.com/#organizacion"
       },
@@ -108,19 +108,20 @@
     },
     {
       "@type": "Product",
-      "@id": "https://www.fvaigroup.com/triangular#pack-arranque",
-      "name": "Pack Arranque",
-      "description": "Negocio Visible (Google Maps y WhatsApp Business), Catálogo con tasa BCV y Caja Clara (control de caja diario). Entrega en 5 días.",
+      "@id": "https://www.fvaigroup.com/triangular#plan-arranque",
+      "name": "Plan Arranque",
+      "description": "Presencia Catálogo (Google Maps, WhatsApp Business y catálogo con tasa BCV) y Caja Clara (control de caja), por una mensualidad. Activo en 72 horas.",
       "brand": {
         "@id": "https://www.fvaigroup.com/#organizacion"
       },
       "image": "https://www.fvaigroup.com/assets/og-triangular.png",
       "offers": {
         "@type": "Offer",
-        "price": "150",
+        "price": "39.00",
         "priceCurrency": "USD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "39.00", "priceCurrency": "USD", "unitCode": "MON", "billingDuration": 1 },
         "availability": "https://schema.org/InStock",
-        "url": "https://www.fvaigroup.com/triangular#pack-arranque",
+        "url": "https://www.fvaigroup.com/triangular#plan-arranque",
         "seller": {
           "@id": "https://www.fvaigroup.com/#organizacion"
         }
@@ -135,7 +136,7 @@
           "name": "¿Cómo pago?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Los precios son en dólares. Pagas en bolívares por Pago Móvil a la tasa BCV del día, o en USDT por Binance, con Zinli o en efectivo en dólares. Con USDT o efectivo tienes 20 % de descuento. Hasta $50 pagas completo al pedir; más de $50, la mitad para empezar y la mitad al entregar."
+            "text": "Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. En la Línea Triangular, los planes mensuales se pagan mes a mes, sin descuento; hay 20 % de descuento si pagas de contado un producto de pago único o si adelantas 3, 6, 9 o 12 meses, y los pagos únicos también se pueden pagar en 2 o 3 cuotas, sin descuento. Si no se paga la mensualidad, el servicio se pausa hasta ponerse al día. Los proyectos de la Línea Hexagonal se pagan por hitos, según la propuesta."
           }
         },
         {
@@ -1040,6 +1041,24 @@
 </section>
 
 <!-- ============ 7. PREGUNTAS FRECUENTES ============ -->
+<!-- COMO-PAGAS -->
+<section id="como-pagas" class="linea-tri py-20 lg:py-24 border-t border-white/5 scroll-mt" aria-labelledby="pagos-title">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <p class="mb-4"><span class="ins ins-tri"><span>Línea Triangular</span></span></p>
+    <h2 id="pagos-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-10">Cómo <span class="text-gradient-tri">pagas</span></h2>
+    <div class="x-card is-static p-6 sm:p-8">
+      <ul class="space-y-5">
+          <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M16.5 7.5c-.8-1-2.2-1.5-4.5-1.5-2.5 0-4 1-4 2.75S9.5 11.5 12 12s4 1.2 4 3.25S14.5 18 12 18c-2.3 0-3.8-.6-4.7-1.7"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5">Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo.</p></li>
+          <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5"><strong class="text-white font-semibold">Mensual:</strong> pagas mes a mes, sin descuento.</p></li>
+          <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5"><strong class="text-white font-semibold">20 % de descuento</strong> si pagas de contado un producto de pago único, o si adelantas 3, 6, 9 o 12 meses.</p></li>
+          <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9h9"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5">Los pagos únicos también se pueden pagar en 2 o 3 cuotas, sin descuento.</p></li>
+          <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5">Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día.</p></li>
+        </ul>
+    </div>
+  </div>
+</section>
+<!-- /COMO-PAGAS -->
+
 <section aria-labelledby="h-sec-7" id="faq" class="relative py-28 border-t border-white/5 scroll-mt">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <div class="reveal mb-12 flex items-center justify-between gap-6">
@@ -1052,7 +1071,7 @@
           <span>¿Cómo pago?</span>
           <svg class="chev w-4 h-4 text-fv-orange transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Los precios son en dólares. Pagas en bolívares por Pago Móvil a la tasa BCV del día, o en USDT por Binance, con Zinli o en efectivo en dólares. Con USDT o efectivo tienes 20 % de descuento. Hasta $50 pagas completo al pedir; más de $50, la mitad para empezar y la mitad al entregar.</p>
+        <p class="text-slate-400 text-sm leading-relaxed pb-5">Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. En la Línea Triangular, los planes mensuales se pagan mes a mes, sin descuento; hay 20 % de descuento si pagas de contado un producto de pago único o si adelantas 3, 6, 9 o 12 meses, y los pagos únicos también se pueden pagar en 2 o 3 cuotas, sin descuento. Si no se paga la mensualidad, el servicio se pausa hasta ponerse al día. Los proyectos de la Línea Hexagonal se pagan por hitos, según la propuesta.</p>
       </details>
 
       <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
