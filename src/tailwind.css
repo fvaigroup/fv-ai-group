@@ -416,3 +416,38 @@ html :is(input, select, textarea):disabled { opacity: .5; cursor: not-allowed; }
   html :is(.btn-tri, .btn-primary, .btn-linea, .btn-glow-on-hover, .btn-grow, .btn-secondary, .btn-linea-sec, .filtro, .tam-tab, #luci-toggle, #scroll-top, a.x-card, a.card-lift):active { transform: none !important; }
   html #site-header nav > a::after { transition: none; }
 }
+
+/* ---- Skeleton en línea (el ancho lo da el texto de relleno: montos en Bs, tasa BCV) ---- */
+.skeleton-texto { display: inline-block; vertical-align: baseline; border-radius: 6px; line-height: 1.15; min-width: 4ch; }
+
+/* ---- Número que cambia (calculadora): fundido corto con 2 px de desplazamiento (solo opacity y transform) ---- */
+.num-cambia { animation: fvNumero .22s var(--ease-estado) both; }
+@keyframes fvNumero { from { opacity: .35; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .num-cambia { animation: fvFundido .22s var(--ease-estado) both; } }
+
+/* ---- Aviso "¿No se abrió?" de los botones de WhatsApp (assets/estados.js) ---- */
+.fv-toast {
+  position: fixed; left: 50%; bottom: 5.5rem; z-index: 250; display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; justify-content: center;
+  width: max-content; max-width: calc(100vw - 2rem); background: #0D0E12; color: #e2e8f0; font: 500 .8125rem 'Space Grotesk', sans-serif;
+  border: 1px solid rgba(var(--acento-1-rgb), .5); border-radius: 14px; padding: .625rem .75rem .625rem 1rem; box-shadow: 0 10px 34px rgba(0,0,0,.6);
+  opacity: 0; transform: translate(-50%, 8px); transition: opacity var(--t-entrada) var(--ease-estado), transform var(--t-entrada) var(--ease-estado);
+}
+.fv-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.fv-toast p { margin: 0; } .fv-toast strong { color: #fff; }
+.fv-toast-copiar { min-height: 36px; padding: 0 .75rem; border-radius: 8px; border: 1px solid rgba(var(--acento-1-rgb), .6); color: #fff; background: transparent; font: 600 .75rem 'Space Grotesk', sans-serif; }
+.fv-toast-cerrar { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; color: #94a3b8; background: transparent; border: 0; }
+@media (hover: hover) and (pointer: fine) { .fv-toast-copiar:hover { background: rgba(var(--acento-1-rgb), .12); } .fv-toast-cerrar:hover { color: #fff; } }
+@media (min-width: 1024px) { .fv-toast { bottom: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) { .fv-toast, .fv-toast.is-visible { transform: translate(-50%, 0); } }
+html a[href*="wa.me"]:active { opacity: .85; }
+
+/* ---- Luci y botón flotante: sin animaciones infinitas con movimiento reducido ---- */
+@media (prefers-reduced-motion: reduce) { html .luci-typing span, html #luci-toggle { animation: none; } html .luci-typing span { opacity: .75; } }
+
+/* ---- Imágenes grandes: fondo skeleton con el tamaño reservado (width/height) y fundido al cargar (assets/estados.js) ---- */
+img.img-cargando { background: var(--fondo-skeleton); color: transparent; }
+img.img-listo { animation: fvFundido var(--t-entrada) var(--ease-estado) both; }
+@media (prefers-reduced-motion: reduce) { img.img-listo { animation: none; } }
+
+/* ---- Barra de progreso entre páginas: 2 px, acento de la marca madre ---- */
+html #page-load-bar { height: 2px; background: linear-gradient(90deg, #00FFFF, #FF8C00); }

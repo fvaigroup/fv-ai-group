@@ -1376,7 +1376,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
+          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8" loading="lazy" decoding="async">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios publicados en dólares.</p>
@@ -1452,13 +1452,13 @@
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-24 lg:bottom-6 left-6 z-40">
   <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8">
+    <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8" loading="lazy" decoding="async">
   </button>
 
   <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7" loading="lazy" decoding="async">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente virtual · responde al instante</p>
@@ -1766,9 +1766,16 @@
       }
       return a.length >= 3 ? PROD[a[2]] : null;
     }
-    var ans = [], step = 0;
+    var ans = [], step = 0, calc = null;
+    function fade(el) { el.classList.remove('fade-in'); void el.offsetWidth; el.classList.add('fade-in'); }
     var elStep = document.getElementById('quiz-step'), elQ = document.getElementById('quiz-q'), elO = document.getElementById('quiz-options'), elR = document.getElementById('quiz-result');
+    function calculando(p) { // "Calculando tu recomendación…" ~600 ms antes del resultado
+      elStep.classList.add('hidden'); elQ.classList.add('hidden'); elO.classList.add('hidden'); elR.classList.remove('hidden');
+      elR.setAttribute('aria-busy', 'true'); elR.innerHTML = '<p class="flex items-center gap-3 text-slate-300 py-6" role="status"><span class="spinner-sm" aria-hidden="true"></span>Calculando tu recomendación…</p>'; fade(elR);
+      clearTimeout(calc); calc = setTimeout(function () { elR.removeAttribute('aria-busy'); result(p); fade(elR); }, 600);
+    }
     function render() {
+      clearTimeout(calc); elR.removeAttribute('aria-busy'); [elStep, elQ, elO].forEach(fade);
       elR.classList.add('hidden'); elR.innerHTML = '';
       elQ.classList.remove('hidden'); elO.classList.remove('hidden'); elStep.classList.remove('hidden');
       var s = QS[step];
@@ -1780,7 +1787,7 @@
         b.type = 'button';
         b.className = 'flex-1 min-h-[52px] px-5 py-3 rounded-lg border border-fv-triPurple/40 text-white font-head font-medium hover:bg-fv-triPurple/10 hover:border-fv-triPurple/70 transition-colors';
         b.textContent = op[0];
-        b.addEventListener('click', function () { ans.push(op[1]); step++; var p = pick(ans); p ? result(p) : render(); });
+        b.addEventListener('click', function () { ans.push(op[1]); step++; var p = pick(ans); p ? calculando(p) : render(); });
         elO.appendChild(b);
       });
     }

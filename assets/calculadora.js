@@ -89,6 +89,11 @@
   }
 
   /* ---------------- pantalla ---------------- */
+  // Escribe un número solo si cambió y lo anima (opacity y transform: no mueve nada del diseño)
+  function pon(id, texto) {
+    var el = $(id); if (!el || el.textContent === texto) return;
+    el.textContent = texto; el.classList.remove('num-cambia'); void el.offsetWidth; el.classList.add('num-cambia');
+  }
   function actualizar() {
     var manualWrap = $('c-manual-wrap');
     manualWrap.classList.toggle('hidden', $('c-tasa').value !== 'manual');
@@ -98,14 +103,15 @@
     var vacio = $('r-vacio'), box = $('r-box');
     if (!v.ok) { vacio.classList.remove('hidden'); box.classList.add('hidden'); ultimo = null; return; }
     var c = calcular(v); ultimo = c;
-    vacio.classList.add('hidden'); box.classList.remove('hidden');
+    if (box.classList.contains('hidden')) { box.classList.remove('hidden'); box.classList.add('fade-in'); setTimeout(function () { box.classList.remove('fade-in'); }, 320); }
+    vacio.classList.add('hidden');
     var f = c.f, s = c.sym;
-    $('r-precio').textContent = dinero(f.precio, s);
-    $('r-precio-bs').textContent = c.rate ? dinero(f.precioBs, 'Bs ') : 'Bs —';
-    $('r-ganancia').textContent = dinero(f.ganancia, s);
-    $('r-ganancia-bs').textContent = c.rate ? dinero(f.gananciaBs, 'Bs ') : 'Bs —';
-    $('r-margen-real').textContent = fmt1.format(f.real) + ' %';
-    $('r-comision').textContent = v.com > 0 ? dinero(f.comision, s) + ' (' + fmt1.format(v.com) + ' %)' : 'Sin comisión';
+    pon('r-precio', dinero(f.precio, s));
+    pon('r-precio-bs', c.rate ? dinero(f.precioBs, 'Bs ') : 'Bs —');
+    pon('r-ganancia', dinero(f.ganancia, s));
+    pon('r-ganancia-bs', c.rate ? dinero(f.gananciaBs, 'Bs ') : 'Bs —');
+    pon('r-margen-real', fmt1.format(f.real) + ' %');
+    pon('r-comision', v.com > 0 ? dinero(f.comision, s) + ' (' + fmt1.format(v.com) + ' %)' : 'Sin comisión');
     $('r-tasa').innerHTML = '';
     if (c.t) { $('r-tasa').textContent = c.t.texto; }
     else {
@@ -263,11 +269,18 @@
   /* ---------------- captura de contactos ---------------- */
   function estado(html, tipo) {
     var e = $('lead-status');
-    e.className = 'rounded-lg px-4 py-3 text-sm mt-4 ' + (tipo === 'error' ? 'border border-fv-orange/40 bg-fv-orange/10 text-slate-200' : 'border border-fv-triGreen/30 bg-fv-triGreen/10 text-slate-200');
-    e.innerHTML = html; e.classList.remove('hidden');
+    var ico = tipo === 'error'
+      ? '<svg class="w-5 h-5 shrink-0 mt-0.5 text-fv-triPurple" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5h.01"/></svg>'
+      : tipo === 'cargando' ? '<span class="spinner-sm shrink-0 mt-0.5 text-slate-300" aria-hidden="true"></span>'
+      : '<svg class="w-5 h-5 shrink-0 mt-0.5 text-fv-triGreen" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>';
+    e.className = 'flex gap-3 items-start rounded-lg px-4 py-3 text-sm mt-4 fade-in ' + (tipo === 'error' ? 'border border-fv-triPurple/50 bg-fv-triPurple/10 text-slate-200' : 'border border-fv-triGreen/30 bg-fv-triGreen/10 text-slate-200');
+    e.setAttribute('role', tipo === 'error' ? 'alert' : 'status'); e.setAttribute('aria-live', tipo === 'error' ? 'assertive' : 'polite');
+    e.innerHTML = ico + '<span class="min-w-0">' + html + '</span>'; e.classList.remove('hidden');
   }
   var ERR = { nombre: 'Escribe tu nombre.', whatsapp: 'Revisa tu número de WhatsApp (ejemplo: +58 424 000 0000).', negocio: 'Cuéntanos qué tipo de negocio tienes.', consentimiento: 'Marca la casilla para continuar.', origin: 'No pudimos enviar tus datos desde aquí. Escríbenos por WhatsApp.' };
+  var enviando = false;
   function enviar(accion) {
+    if (enviando) return; // sin doble envío
     var v = leer(true);
     if (!v.ok) { estado('Primero completa la calculadora de arriba para generar tu tabla.', 'error'); var k = Object.keys(v.errs)[0]; var i = $('c-' + k); if (i) i.focus(); return; }
     var nombre = $('l-nombre').value.trim(), tel = $('l-whatsapp').value.trim(), negocio = $('l-negocio').value.trim(), ok = $('l-consent').checked;
@@ -278,20 +291,27 @@
     if (!ok) { estado(ERR.consentimiento, 'error'); $('l-consent').focus(); return; }
     var c = calcular(v);
     var resumen = 'Costo ' + dinero(v.costo, c.sym) + ', margen ' + fmt1.format(v.margen) + ' %, comisión ' + fmt1.format(v.com) + ' %, precio ' + dinero(c.f.precio, c.sym) + (c.rate ? ' / ' + dinero(c.f.precioBs, 'Bs ') : '');
-    var btns = [$('btn-pdf'), $('btn-wa')]; btns.forEach(function (b) { b.disabled = true; });
-    estado('Enviando…', 'ok');
+    var btns = [$('btn-pdf'), $('btn-wa')], clicado = accion === 'pdf' ? $('btn-pdf') : $('btn-wa');
+    enviando = true; btns.forEach(function (b) { if (b !== clicado) b.disabled = true; });
+    if (window.FV_ESTADOS) FV_ESTADOS.setCargando(clicado, true); else clicado.disabled = true;
+    estado('Enviando…', 'cargando');
     var waMsg = 'Hola F&V, quiero la calculadora de precios. Soy ' + nombre + ', tengo ' + negocio;
     function abrirWA() { var url = WA + encodeURIComponent(waMsg); var w = window.open(url, '_blank', 'noopener'); return url; }
     fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nombre: nombre, whatsapp: tel, negocio: negocio, accion: accion, consentimiento: true, resumen: resumen, web: $('l-web').value }) })
       .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
-      .catch(function () { return { ok: true, forwarded: false, offline: true }; })
+      .catch(function () { return { ok: false, falla: true }; })
       .then(function (d) {
         if (d && d.ok === false && d.error && ERR[d.error]) { estado(ERR[d.error], 'error'); return; }
+        var falla = !d || d.ok === false;
         var enviado = !!(d && d.ok && d.forwarded);
         gt('generate_lead', { method: accion === 'pdf' ? 'calculadora_pdf' : 'calculadora_whatsapp', enviado: enviado });
         var hecho = function (pdfOk) {
-          if (accion === 'pdf') gt('calculadora_pdf_descargado');
-          if (enviado) {
+          if (accion === 'pdf' && pdfOk) gt('calculadora_pdf_descargado');
+          if (falla) {
+            var urlWa = WA + encodeURIComponent(waMsg + '. ' + resumen);
+            estado((accion === 'pdf' && pdfOk ? 'Descargamos tu tabla de precios. ' : '') + 'No pudimos enviar tus datos. Escríbenos por WhatsApp y te ayudamos.' +
+              '<a href="' + urlWa + '" target="_blank" rel="noopener" data-cta="calculadora_respaldo" data-evento="calculadora_respaldo_whatsapp" class="btn-tri estado-interactivo mt-3 flex items-center justify-center min-h-[48px] px-5 py-3 rounded-lg font-head font-semibold text-center">Escribir por WhatsApp</a>', 'error');
+          } else if (enviado) {
             estado(accion === 'pdf' ? (pdfOk ? '¡Listo! Descargamos tu tabla de precios y te escribimos por WhatsApp pronto.' : '¡Listo! Recibimos tus datos y te escribimos por WhatsApp pronto.') : '¡Listo! Recibimos tus datos y te escribimos por WhatsApp para enviarte la calculadora.', 'ok');
           } else {
             var url = abrirWA();
@@ -302,7 +322,9 @@
           cargarLogo().then(function (logo) { try { descargar(armarPDF(c, logo)); hecho(true); } catch (e) { estado('No pudimos armar el PDF en este navegador. Escríbenos por WhatsApp y te lo enviamos.', 'error'); abrirWA(); } });
         } else hecho(false);
       })
-      .then(function () { btns.forEach(function (b) { b.disabled = false; }); });
+      .then(function () {
+        enviando = false; if (window.FV_ESTADOS) FV_ESTADOS.setCargando(clicado, false); btns.forEach(function (b) { b.disabled = false; });
+      });
   }
 
   /* ---------------- eventos ---------------- */

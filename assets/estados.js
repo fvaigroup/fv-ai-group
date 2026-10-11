@@ -46,5 +46,65 @@
     c.classList.remove('skeleton'); c.removeAttribute('aria-busy');
     if (estaba) { c.classList.add('fade-in'); setTimeout(function () { c.classList.remove('fade-in'); }, 320); }
   }
+  /* ---- Botones que abren WhatsApp: si pasado 1,5 s el sitio sigue en primer plano (no se abrió nada), un aviso pequeño con el número y un botón para copiarlo ---- */
+  var NUMERO = '+58 424 412 5386', toast = null, toastTimer = null;
+  function cerrarToast() { if (!toast) return; toast.classList.remove('is-visible'); var t = toast; toast = null; setTimeout(function () { t.remove(); }, 300); clearTimeout(toastTimer); }
+  function copiar(texto, boton) {
+    var listo = function () { boton.textContent = 'Número copiado'; anunciar('Número copiado'); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(texto).then(listo, function () { boton.textContent = NUMERO; });
+    else { var i = document.createElement('input'); i.value = texto; document.body.appendChild(i); i.select(); try { document.execCommand('copy'); listo(); } catch (e) { boton.textContent = NUMERO; } i.remove(); }
+  }
+  function avisoWhatsApp() {
+    if (toast || document.visibilityState !== 'visible') return;
+    toast = document.createElement('div'); toast.className = 'fv-toast'; toast.setAttribute('role', 'status'); toast.setAttribute('aria-live', 'polite');
+    toast.innerHTML = '<p>¿No se abrió? Escríbenos al <strong>' + NUMERO + '</strong></p>' +
+      '<button type="button" class="fv-toast-copiar estado-interactivo">Copiar número</button>' +
+      '<button type="button" class="fv-toast-cerrar estado-interactivo" aria-label="Cerrar aviso"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+    document.body.appendChild(toast);
+    toast.querySelector('.fv-toast-copiar').addEventListener('click', function (e) { copiar('+584244125386', e.currentTarget); });
+    toast.querySelector('.fv-toast-cerrar').addEventListener('click', cerrarToast);
+    requestAnimationFrame(function () { toast && toast.classList.add('is-visible'); });
+    toastTimer = setTimeout(cerrarToast, 9000);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="wa.me"]'); if (!a) return;
+    setTimeout(function () { if (document.visibilityState === 'visible' && document.hasFocus()) avisoWhatsApp(); }, 1500);
+  });
+
+  /* ---- Imágenes grandes: fondo skeleton mientras cargan (el tamaño ya está reservado con width/height) y fundido al llegar ---- */
+  function imagenes() {
+    document.querySelectorAll('img').forEach(function (img) {
+      if (img.complete && img.naturalWidth) return;
+      img.classList.add('img-cargando');
+      var listo = function () { img.classList.remove('img-cargando'); img.classList.add('img-listo'); setTimeout(function () { img.classList.remove('img-listo'); }, 320); };
+      img.addEventListener('load', listo, { once: true });
+      img.addEventListener('error', function () { img.classList.remove('img-cargando'); }, { once: true });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', imagenes); else imagenes();
+
+  /* ---- Barra de progreso entre páginas: al hacer clic en un enlace interno (no externos, anclas ni wa.me) y completa al cargar la nueva página ---- */
+  var barra = document.getElementById('page-load-bar');
+  if (barra) {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || a.hasAttribute('download') || e.metaKey || e.ctrlKey || e.shiftKey || e.defaultPrevented) return;
+      try {
+        var u = new URL(a.href, location.href);
+        if (u.origin !== location.origin || /^(mailto|tel):/.test(a.getAttribute('href')) || (u.hash && u.pathname === location.pathname)) return;
+        sessionStorage.setItem('fv_nav', '1');
+      } catch (err) {}
+    }, true);
+    window.addEventListener('pageshow', function (e) {
+      var venia = false; try { venia = sessionStorage.getItem('fv_nav') === '1'; sessionStorage.removeItem('fv_nav'); } catch (err) {}
+      barra.style.transition = 'none'; barra.style.opacity = venia && !e.persisted ? '1' : '0'; barra.style.transform = venia && !e.persisted ? 'scaleX(.92)' : 'scaleX(0)';
+      if (!venia || e.persisted) return;
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        barra.style.transition = ''; barra.style.transform = 'scaleX(1)';
+        setTimeout(function () { barra.style.opacity = '0'; }, 380);
+      }); });
+    });
+  }
+
   window.FV_ESTADOS = { setCargando: setCargando, mostrarSkeleton: mostrarSkeleton, ocultarSkeleton: ocultarSkeleton, anunciar: anunciar };
 })();
