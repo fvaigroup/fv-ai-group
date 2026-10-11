@@ -65,6 +65,62 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Los socios tienen que descargar una app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Club se abre en el navegador del teléfono, sin descargar nada, y cada socio puede instalarlo en su pantalla de inicio si quiere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo pasamos nuestros socios actuales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usted nos entrega su lista en Excel y nosotros hacemos la carga durante la implementación: socios, grupos familiares y cuotas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Club cobra o mueve el dinero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El dinero llega directamente a las cuentas de su club. Club no procesa pagos: registra y concilia los que su club ya recibe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si dejamos de usarlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usted exporta todos sus datos cuando quiera. El plan mensual no tiene permanencia. Si una mensualidad no se paga, el servicio se pausa hasta ponerse al día."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En cuánto tiempo estamos funcionando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La implementación toma de 1 a 2 semanas, según el tamaño de su club y lo lista que esté su lista de socios."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué incluye el soporte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Horas de soporte cada mes según su plan, de 2 h en Esencial a 8 h en Max, por WhatsApp y en persona en Valencia."
+      }
+    }
+  ]
+}
+</script>
 <link rel="stylesheet" href="assets/css/tailwind.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
@@ -370,6 +426,27 @@
   .club-precio-un { font-size: 1rem; font-weight: 500; color: #94a3b8; margin-left: .35rem; letter-spacing: 0; }
   .club-precio-nota { margin-top: .6rem; font-size: .8rem; color: #94a3b8; min-height: 1.2rem; }
   [data-club-planes][data-ciclo="anual"] .club-precio-nota { color: #e3c452; }
+
+  /* ---- Calculadora ---- */
+  .club-range { accent-color: #c9a227; height: 44px; cursor: pointer; background: transparent; }
+  /* ---- Comparación ---- */
+  .club-cmp { border-collapse: collapse; }
+  .club-cmp-head { padding: 1.1rem 1.5rem; font-family: 'Space Grotesk', sans-serif; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: #94a3b8; font-weight: 600; background: rgba(255,255,255,0.02); width: 36%; }
+  .club-cmp-head-club { color: #e3c452; background: rgba(201,162,39,0.08); }
+  .club-cmp-th { padding: 1.25rem 1.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #fff; width: 28%; vertical-align: top; border-top: 1px solid #1F232B; }
+  .club-cmp-hoy, .club-cmp-club { padding: 1.25rem 1.5rem; vertical-align: top; border-top: 1px solid #1F232B; line-height: 1.5; }
+  .club-cmp-hoy { color: #94a3b8; }
+  .club-cmp-club { color: #f1f5f9; background: rgba(201,162,39,0.05); }
+  @media (max-width: 767px) {
+    .club-cmp thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .club-cmp, .club-cmp tbody, .club-cmp tr, .club-cmp th, .club-cmp td { display: block; width: 100%; }
+    .club-cmp tr { border-top: 1px solid #1F232B; padding: 1.1rem 0; }
+    .club-cmp tr:first-child { border-top: 0; }
+    .club-cmp-th { border: 0; padding: .1rem 1.25rem .5rem; }
+    .club-cmp-hoy, .club-cmp-club { border: 0; padding: .6rem 1.25rem; }
+    .club-cmp td::before { content: attr(data-label); display: block; font-family: 'Space Grotesk', sans-serif; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; margin-bottom: .2rem; color: #94a3b8; }
+    .club-cmp-club::before { color: #e3c452; }
+  }
 
 </style>
 </head>
@@ -747,7 +824,147 @@
   </div>
 </section>
 
-<!-- @@SECCIONES -->
+<!-- ============ CALCULADORA ============ -->
+<section id="calculadora" class="relative py-20 sm:py-28 border-b border-white/5 bg-fv-surface2/40 scroll-mt" aria-labelledby="calc-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="club-eyebrow mb-5">Calculadora</p>
+      <h2 id="calc-title" class="club-h2 text-3xl sm:text-4xl lg:text-5xl">¿Cuánto le cuesta Club?</h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch" data-club-calc>
+      <div class="lg:col-span-5 club-card-flat p-6 sm:p-8 lg:self-start">
+        <label for="calc-socios" class="font-head text-xs uppercase tracking-wider text-slate-300 mb-3 block">¿Cuántos socios tiene su club?</label>
+        <input id="calc-socios" type="number" inputmode="numeric" min="50" max="10000" step="1" value="800" class="w-full min-h-[56px] rounded-xl bg-black border border-fv-border px-4 text-2xl font-head font-semibold text-white focus:outline-none focus:border-club-oro mb-5" data-calc-numero>
+        <input id="calc-rango" type="range" min="50" max="10000" step="10" value="800" aria-label="Número de socios (deslizador)" class="club-range w-full" data-calc-rango>
+        <div class="flex justify-between text-xs text-slate-400 mt-2" aria-hidden="true"><span>50</span><span>10.000</span></div>
+        <p class="mt-6 text-sm text-slate-400 leading-relaxed">Mueva el deslizador o escriba el número. El plan recomendado y los montos se calculan al instante.</p>
+      </div>
+      <div class="lg:col-span-7 club-card p-6 sm:p-8 flex flex-col" aria-live="polite" data-calc-resultado>
+        <p class="font-head text-xs uppercase tracking-wider text-slate-300 mb-2">Plan recomendado</p>
+        <p class="flex flex-wrap items-baseline gap-x-3"><span class="font-sans text-4xl sm:text-5xl font-bold text-white" data-calc="plan">Plus</span><span class="text-slate-300" data-calc="rango">301 a 1.000 socios</span></p>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><p class="text-xs uppercase tracking-wider text-slate-400 mb-1 font-head">Mensual</p><p class="font-head text-3xl font-bold text-white" data-calc="mensual">$349/mes</p></div>
+          <div class="rounded-2xl border border-club-oro/40 bg-club-oro/10 p-5"><p class="text-xs uppercase tracking-wider text-club-oro mb-1 font-head">Anual, 20 % menos</p><p class="font-head text-3xl font-bold text-white" data-calc="anual">$279,20/mes</p><p class="text-xs text-slate-300 mt-1" data-calc="anual-total">Se paga $3.350,40 al año por adelantado.</p></div>
+        </div>
+        <dl class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><dt class="text-xs uppercase tracking-wider text-slate-400 mb-1 font-head">Costo por socio</dt><dd class="font-head text-2xl font-semibold text-white" data-calc="porsocio">$0,44 al mes</dd></div>
+          <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><dt class="text-xs uppercase tracking-wider text-slate-400 mb-1 font-head">Cobranza que se ahorra <span class="normal-case tracking-normal text-club-oro">(estimación)</span></dt><dd class="font-head text-2xl font-semibold text-white" data-calc="horas">27 horas al mes</dd></div>
+        </dl>
+        <p class="mt-4 text-xs text-slate-400 leading-relaxed">Estimación, no una promesa: supone 2 minutos de cobranza ahorrados por socio al mes en recordatorios y conciliación de pagos. Su club puede ahorrar más o menos.</p>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20mi%20club%20tiene%20800%20socios%20y%20quiero%20ver%20la%20demo%20de%20Club" target="_blank" rel="noopener" data-evento="club_calculadora" data-cta="club_calculadora" data-product="club-calculadora" data-calc-wa class="btn-club mt-6 inline-flex justify-center items-center gap-2.5 min-h-[52px] px-7 py-3.5 font-head font-semibold rounded-xl self-start"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Agendar demo</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANTES Y DESPUÉS ============ -->
+<section id="comparacion" class="relative py-20 sm:py-28 border-b border-white/5 scroll-mt" aria-labelledby="cmp-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="club-eyebrow mb-5">Antes y después</p>
+      <h2 id="cmp-title" class="club-h2 text-3xl sm:text-4xl lg:text-5xl">Antes y después con Club.</h2>
+    </div>
+    <div class="club-card-flat overflow-hidden">
+      <table class="club-cmp w-full text-left">
+        <caption class="sr-only">Comparación entre llevar las cuotas en Excel y WhatsApp y llevarlas con Club</caption>
+        <thead><tr><th scope="col" class="sr-only">Tema</th><th scope="col" class="club-cmp-head">Hoy: Excel y WhatsApp</th><th scope="col" class="club-cmp-head club-cmp-head-club">Con Club</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="club-cmp-th">Cobro</th><td data-label="Hoy: Excel y WhatsApp" class="club-cmp-hoy">Mensajes uno por uno a cada socio.</td><td data-label="Con Club" class="club-cmp-club">Recordatorios por correo y WhatsApp desde el panel.</td></tr>
+          <tr><th scope="row" class="club-cmp-th">Conciliación de pagos</th><td data-label="Hoy: Excel y WhatsApp" class="club-cmp-hoy">Revisar capturas y estados de cuenta a mano, con la tasa del día.</td><td data-label="Con Club" class="club-cmp-club">El socio reporta con comprobante y usted aprueba con un clic.</td></tr>
+          <tr><th scope="row" class="club-cmp-th">Información al socio</th><td data-label="Hoy: Excel y WhatsApp" class="club-cmp-hoy">Cada socio pregunta por WhatsApp cuánto debe.</td><td data-label="Con Club" class="club-cmp-club">Cada socio ve su estado de cuenta en $ y Bs, cuando quiera.</td></tr>
+          <tr><th scope="row" class="club-cmp-th">Reportes a la junta</th><td data-label="Hoy: Excel y WhatsApp" class="club-cmp-hoy">Se arman a mano en Excel, al cierre del mes.</td><td data-label="Con Club" class="club-cmp-club">Indicadores en tiempo real y reportes listos para la asamblea.</td></tr>
+          <tr><th scope="row" class="club-cmp-th">Morosidad</th><td data-label="Hoy: Excel y WhatsApp" class="club-cmp-hoy">Se descubre tarde, cuando ya falta caja.</td><td data-label="Con Club" class="club-cmp-club">Visible todos los días: quién debe, cuánto y desde cuándo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEGURIDAD Y DATOS ============ -->
+<section id="seguridad" class="relative py-20 sm:py-28 border-b border-white/5 bg-fv-surface2/40 scroll-mt" aria-labelledby="seg-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    <div class="lg:col-span-5">
+      <p class="club-eyebrow mb-5">Seguridad y datos</p>
+      <h2 id="seg-title" class="club-h2 text-3xl sm:text-4xl">Su información, bien cuidada y siempre suya.</h2>
+    </div>
+    <ul class="lg:col-span-7 club-card p-6 sm:p-8 space-y-5">
+      <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span><span><strong class="text-white font-semibold">Acceso con usuario y contraseña por rol.</strong> La administración, la junta y los socios ven solo lo que les corresponde.</span></li>
+      <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span><span><strong class="text-white font-semibold">Cada club solo ve sus datos.</strong> La información de su club no se mezcla con la de ningún otro.</span></li>
+      <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span><span><strong class="text-white font-semibold">Copias de seguridad diarias.</strong></span></li>
+      <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span><span><strong class="text-white font-semibold">Exporte su información cuando quiera.</strong> Sus datos son suyos.</span></li>
+      <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span><span><strong class="text-white font-semibold">No procesamos pagos.</strong> Registramos y conciliamos los pagos que su club ya recibe en sus propias cuentas.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS FRECUENTES ============ -->
+<section id="preguntas" class="relative py-20 sm:py-28 border-b border-white/5 scroll-mt" aria-labelledby="faq-title">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="club-eyebrow mb-5">Preguntas frecuentes</p>
+      <h2 id="faq-title" class="club-h2 text-3xl sm:text-4xl lg:text-5xl">Lo que suele preguntar una junta.</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer font-head text-white min-h-[44px]" data-evento="club_faq_1">
+          <span>¿Los socios tienen que descargar una app?</span>
+          <svg class="chev w-4 h-4 text-club-oro shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-[15px] leading-relaxed pb-5">No. Club se abre en el navegador del teléfono, sin descargar nada, y cada socio puede instalarlo en su pantalla de inicio si quiere.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer font-head text-white min-h-[44px]" data-evento="club_faq_2">
+          <span>¿Cómo pasamos nuestros socios actuales?</span>
+          <svg class="chev w-4 h-4 text-club-oro shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-[15px] leading-relaxed pb-5">Usted nos entrega su lista en Excel y nosotros hacemos la carga durante la implementación: socios, grupos familiares y cuotas.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer font-head text-white min-h-[44px]" data-evento="club_faq_3">
+          <span>¿Club cobra o mueve el dinero?</span>
+          <svg class="chev w-4 h-4 text-club-oro shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-[15px] leading-relaxed pb-5">No. El dinero llega directamente a las cuentas de su club. Club no procesa pagos: registra y concilia los que su club ya recibe.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer font-head text-white min-h-[44px]" data-evento="club_faq_4">
+          <span>¿Qué pasa si dejamos de usarlo?</span>
+          <svg class="chev w-4 h-4 text-club-oro shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-[15px] leading-relaxed pb-5">Usted exporta todos sus datos cuando quiera. El plan mensual no tiene permanencia. Si una mensualidad no se paga, el servicio se pausa hasta ponerse al día.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer font-head text-white min-h-[44px]" data-evento="club_faq_5">
+          <span>¿En cuánto tiempo estamos funcionando?</span>
+          <svg class="chev w-4 h-4 text-club-oro shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-[15px] leading-relaxed pb-5">La implementación toma de 1 a 2 semanas, según el tamaño de su club y lo lista que esté su lista de socios.</p>
+      </details>
+      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer font-head text-white min-h-[44px]" data-evento="club_faq_6">
+          <span>¿Qué incluye el soporte?</span>
+          <svg class="chev w-4 h-4 text-club-oro shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-[15px] leading-relaxed pb-5">Horas de soporte cada mes según su plan, de 2 h en Esencial a 8 h en Max, por WhatsApp y en persona en Valencia.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section id="demo" class="relative py-24 sm:py-32 scroll-mt overflow-hidden" aria-labelledby="cierre-title">
+  <div class="absolute inset-0 club-hero-bg pointer-events-none opacity-80"></div>
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+    <img src="assets/club/club-emblema.svg" width="48" height="56" alt="" aria-hidden="true" class="mx-auto mb-8 h-14 w-auto" loading="lazy" decoding="async">
+    <h2 id="cierre-title" class="club-h2 text-4xl sm:text-5xl lg:text-6xl mb-6">Vea Club funcionando con datos de ejemplo.</h2>
+    <p class="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">En 20 minutos le mostramos cómo lo vería su socio, su administración y su junta.</p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20ver%20la%20demo%20de%20Club%20para%20nuestro%20club" target="_blank" rel="noopener" data-evento="club_demo_cierre" data-cta="club_cierre" data-product="club-demo" class="btn-club inline-flex justify-center items-center gap-2.5 min-h-[56px] px-8 py-4 font-head font-semibold rounded-xl"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Agendar una demo</span></a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta%20sobre%20Club" target="_blank" rel="noopener" data-evento="club_whatsapp_cierre" data-cta="club_cierre" data-product="club-consulta" class="btn-club-sec inline-flex justify-center items-center gap-2.5 min-h-[56px] px-8 py-4 font-head font-medium rounded-xl"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escribir por WhatsApp</span></a>
+    </div>
+    <p class="mt-6 text-sm text-slate-400">Respondemos el mismo día, de lunes a viernes de 9:00 a 17:00.</p>
+  </div>
+</section>
 
 </main>
 
