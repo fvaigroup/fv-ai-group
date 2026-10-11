@@ -143,3 +143,47 @@ Variables que fija cada envolvente (en `src/tailwind.css`): `--acento-1`, `--ace
 ## Selector de tamaño (`.tam-tab`) y pago adelantado
 
 Cada producto de `/triangular` ofrece varios tamaños como pestañas (`role="tablist"` / `role="tab"` / `role="tabpanel"`): las flechas, Inicio y Fin del teclado cambian de tamaño y solo el panel elegido se ve. El estilo es `.tam-tab` en `src/tailwind.css` (el color sale de `--acento-1` de la línea; el tamaño elegido lleva `aria-selected="true"`). El comportamiento y los cálculos están en `assets/planes.js`: cada panel declara `data-panel`, `data-precio` y `data-tipo` (`mensual` o `unico`) y el script escribe el pago adelantado (`data-ahorro="12"`, `data-ahorro-lista="3|6|9"`) y el pago de contado (`data-contado`). Sin JavaScript se ven todos los tamaños.
+
+## Estados de interacción
+
+Base común en `src/tailwind.css` (final del archivo) y `assets/estados.js`. El color de todos los estados sale de las variables de la línea (`--acento-1`, `--acento-2` y sus versiones `-rgb`): dentro de `.linea-tri` son verde `#4ade80` y morado `#a855f7`; en `.linea-hex` y en la marca madre, cian `#00FFFF` y naranja `#FF8C00`.
+
+- **Curva y tiempos:** `--ease-estado: cubic-bezier(0.23, 1, 0.32, 1)`; `--t-rapida: .18s` (hover y presionado, 150–200 ms) y `--t-entrada: .28s` (entradas, 250–300 ms). Solo se animan `transform`, `opacity`, `color`, `background-color`, `border-color`, `box-shadow` y `filter`: nada que mueva el layout, así que el CLS no cambia.
+- **`.estado-interactivo`:** transición estándar, `:focus-visible` con anillo de 2 px del acento y 2 px de separación, y `:active` con `scale(0.97)`.
+- **Deshabilitado:** `[disabled]` y `[aria-disabled="true"]` → opacidad .5, cursor `not-allowed`, sin hover, brillo ni escala.
+- **`.spinner` / `.spinner-sm`:** 20 px y 16 px, color heredado (`currentColor`).
+- **`.btn-cargando`:** el botón conserva su ancho (el contenido se oculta con `opacity` pero sigue ocupando lugar), spinner centrado, `cursor: progress`, `pointer-events: none`. Con etiqueta (`.btn-cargando-texto`) el texto se queda visible junto al spinner.
+- **`.skeleton`:** fondo `#121319`, brillo que recorre de izquierda a derecha (`transform`), radio heredado del componente; el contenido se oculta con `opacity` y el tamaño se conserva. `.fade-in` hace aparecer el contenido real al reemplazarlo.
+- **Movimiento reducido:** sin giros ni desplazamientos; el spinner y el skeleton quedan en un pulso suave de opacidad.
+- **Helper `assets/estados.js` (`window.FV_ESTADOS`):** `setCargando(boton, true|false[, texto])` (clase, `aria-busy`, `disabled`, guarda y restaura el contenido), `mostrarSkeleton(contenedor)` / `ocultarSkeleton(contenedor)` y `anunciar(texto)` (región `aria-live="polite"` para lectores de pantalla). Se carga con `defer` en las páginas que lo usan.
+
+### Hover, foco y presionado (unificados)
+
+Reglas en `src/tailwind.css` (bloque «ESTADOS: hover, foco y presionado»); llevan el prefijo `html` para ganar a los `<style>` de cada página. Todo hover va dentro de `@media (hover: hover) and (pointer: fine)` (también los `hover:*` de Tailwind: `future.hoverOnlyWhenSupported` en `tailwind.config.js`); en celular el feedback es `:active`.
+
+| Elemento | Hover | Presionado | Foco |
+|---|---|---|---|
+| Botón principal (`.btn-tri`, `.btn-primary`, `.btn-linea`, `.btn-glow-on-hover`, `.btn-grow`) | `brightness(1.08)`, `translateY(-1px)` y sombra suave del acento de la línea (`--cta-rgb`) | `scale(0.97)` sin sombra | anillo de 2 px del acento, separado 2 px |
+| Botón secundario (`.btn-secondary`, `.btn-linea-sec`) | borde y fondo tenue del acento de su línea (`--brillo-rgb`: Tri morado, Hex y marca madre cian) | `scale(0.97)` | anillo |
+| Tarjeta clicable (`a.x-card`, `a.card-lift`) | sube 4 px, borde y sombra del acento; `.is-static` no se mueve ni cambia de borde | `scale(0.985)` | anillo |
+| Menú | subrayado que crece desde el centro; la página actual (`aria-current="page"`) lo lleva siempre | opacidad .7 | anillo |
+| Enlaces dentro de texto (`main a.link-underline`) | subrayado siempre visible; en hover, algo más claro y grueso | opacidad .75 | anillo |
+| Pie de página | cambio de color | opacidad .7 | anillo |
+| Preguntas frecuentes (`<details>`) | fondo tenue del acento en el resumen; la flecha gira suave al abrir | fondo algo más marcado | anillo |
+| Filtros y pestañas (`.filtro`, `.tam-tab`) | solo borde; el seleccionado es fondo del acento + texto oscuro (`aria-pressed` / `aria-selected`) | `scale(0.97)` | anillo |
+| Flotantes (Luci, volver arriba) | `scale(1.05)` y sombra; tooltip con su nombre en hover y foco | `scale(0.94)` | anillo |
+| Logos de clientes | `brightness(1.1)` (la imagen no cambia) | — | — |
+| Campos | borde más claro; en foco, borde del acento + anillo; inválido (`aria-invalid="true"` o `.input-error`): borde rojo suave y mensaje (`.fv-error`) asociado con `aria-describedby` | — | anillo (rojo si es inválido) |
+
+El foco visible es una sola regla global (`:focus-visible` de `a[href]`, `button`, `summary`, `[role=tab]`, campos e iframes) con `outline: 2px solid var(--acento-1)`; ya no hay anillos verdes fijos en los `<style>` de cada página. Con `prefers-reduced-motion` desaparecen las escalas y los desplazamientos: queda solo el cambio de color, opacidad y sombra.
+
+### Estados de carga, error y vacío
+
+- **Tasa BCV (`assets/bcv.js`):** skeleton del ancho del número en el chip y en cada monto en Bs; si ya hay una tasa guardada en `localStorage` se muestra al instante marcada con su fecha («Tasa BCV del 09/10/2026 … actualizando…»). Si la API falla: la tasa guardada con su fecha y un enlace para confirmar la de hoy por WhatsApp; sin ninguna, se ocultan los montos en Bs y el chip lleva a WhatsApp. Nunca «NaN».
+- **Calculadora:** los números cambian con un fundido corto; el envío deja el botón en carga, no permite doble envío y termina en éxito (check) o en error con botón de WhatsApp prellenado (el botón vuelve a su estado normal).
+- **Contacto:** el envío muestra «Abriendo WhatsApp…» ~1 s; Cal.com con skeleton de calendario y, si no carga en 8 s, botón «Agendar por WhatsApp»; mapa con skeleton hasta que cargue el iframe.
+- **WhatsApp en todo el sitio:** si 1,5 s después de pulsar un enlace de `wa.me` la página sigue en primer plano, aviso «¿No se abrió? Escríbenos al +58 424 412 5386» con botón para copiar el número.
+- **Luci:** «escribiendo…» de 400–700 ms y botón de enviar deshabilitado mientras responde. **Tests:** transición entre preguntas y «Calculando tu recomendación…» ~600 ms.
+- **Fechas (`assets/eventos.js`) e imágenes:** skeleton hasta pintarse y fundido al llegar; las imágenes debajo del primer pantallazo llevan `loading="lazy"` y `decoding="async"`.
+- **Navegación:** barra de progreso de 2 px (marca madre) al hacer clic en un enlace interno; se completa al cargar la nueva página (no aparece con enlaces externos, anclas ni `wa.me`).
+- **Vacío:** el filtro de `/hexagonal` sin resultados muestra «No hay productos con ese filtro.» y un botón «Ver todos».

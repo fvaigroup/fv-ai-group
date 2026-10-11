@@ -124,5 +124,14 @@
       return { id: proxima.id, fechas: proxima.fechas, fechasTexto: fechasCurso(proxima), hora: proxima.hora, inicioISO: proxima.fechas[0] + 'T' + (proxima.id === 'oct' ? '08:00' : '14:00') + ':00-04:00', cuposLibres: proxima.cuposLibres, aforo: cur.cuposTotales, lugar: cur.lugar };
     }
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render();
+  // Estado de carga: las fechas, horas y precios se marcan como skeleton (el texto de respaldo mantiene el tamaño) hasta que se pintan, y entran con un fundido
+  function pintarConEstado() {
+    var els = document.querySelectorAll('[data-ev]');
+    els.forEach(function (el) { el.classList.add('skeleton'); el.setAttribute('aria-busy', 'true'); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      render();
+      els.forEach(function (el) { el.classList.remove('skeleton'); el.removeAttribute('aria-busy'); el.classList.add('fade-in'); setTimeout(function () { el.classList.remove('fade-in'); }, 320); });
+    }); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pintarConEstado); else pintarConEstado();
 })();

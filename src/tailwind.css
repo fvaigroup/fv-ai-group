@@ -191,7 +191,7 @@
   font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 500; color: #cbd5e1;
   border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.03); transition: background-color .2s, border-color .2s, color .2s;
 }
-.filtro:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; }
+@media (hover: hover) and (pointer: fine) { .filtro:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; } }
 .filtro:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
 .filtro[aria-pressed="true"] { background: var(--acento-1); border-color: var(--acento-1); color: #000; font-weight: 600; }
 /* Selector de tamaño de cada producto (pestañas con aria-selected; flechas del teclado cambian de tamaño) */
@@ -200,7 +200,7 @@
   font-family: 'Space Grotesk', sans-serif; color: #cbd5e1; text-align: left; line-height: 1.2;
   border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.03); transition: background-color .2s, border-color .2s, color .2s;
 }
-.tam-tab:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; }
+@media (hover: hover) and (pointer: fine) { .tam-tab:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; } }
 .tam-tab:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
 .tam-tab .tam-nombre { font-size: .875rem; font-weight: 600; }
 .tam-tab .tam-precio { font-size: .75rem; opacity: .85; }
@@ -213,7 +213,7 @@
 .nav-forma::before { content: ''; width: .8em; height: .8em; flex: none; background: currentColor; -webkit-mask: var(--forma-nav) center / contain no-repeat; mask: var(--forma-nav) center / contain no-repeat; }
 .nav-tri { --forma-nav: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3 22.5 21H1.5z'/%3E%3C/svg%3E"); color: #4ade80; }
 .nav-hex { --forma-nav: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5 21.6 7v10L12 22.5 2.4 17V7z'/%3E%3C/svg%3E"); color: #00FFFF; }
-a.nav-tri:hover, a.nav-hex:hover { filter: brightness(1.25); }
+@media (hover: hover) and (pointer: fine) { a.nav-tri:hover, a.nav-hex:hover { filter: brightness(1.25); } }
 a.nav-tri[aria-current="page"], a.nav-hex[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
 .linea-tri .linea-hex .texto-linea { background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; animation: lineaShimmer 7s ease-in-out infinite; }
 
@@ -231,3 +231,228 @@ a.nav-tri[aria-current="page"], a.nav-hex[aria-current="page"] { text-decoration
 .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .2s cubic-bezier(0.23, 1, 0.32, 1), background-color .2s, border-color .2s; }
 @media (hover: hover) and (pointer: fine) { .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); box-shadow: 0 0 22px rgba(0,204,255,0.25); } }
 .btn-secondary:active { transform: scale(0.96); transition: transform .1s cubic-bezier(0.23, 1, 0.32, 1); }
+
+/* =====================================================================
+   ESTADOS DE INTERACCIÓN (base común). Ver docs/design-system-fvaigroup.md, sección "Estados de interacción".
+   Curva del sitio: cubic-bezier(0.23, 1, 0.32, 1). Solo se animan transform, opacity, color, background-color,
+   border-color, box-shadow y filter (nunca el tamaño ni la posición: el CLS no cambia).
+   El color de los estados sale de --acento-1 / --acento-2 de la línea (.linea-tri verde/morado; .linea-hex y marca madre cian/naranja).
+   ===================================================================== */
+:root { --ease-estado: cubic-bezier(0.23, 1, 0.32, 1); --t-rapida: .18s; --t-entrada: .28s; --fondo-skeleton: #121319; }
+
+/* ---- .estado-interactivo: transición estándar + foco con el acento de la línea + presionado ---- */
+.estado-interactivo {
+  transition: transform var(--t-rapida) var(--ease-estado), box-shadow var(--t-rapida) var(--ease-estado), background-color var(--t-rapida) var(--ease-estado),
+              border-color var(--t-rapida) var(--ease-estado), color var(--t-rapida) var(--ease-estado), opacity var(--t-rapida) var(--ease-estado), filter var(--t-rapida) var(--ease-estado);
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.estado-interactivo:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
+.estado-interactivo:active { transform: scale(0.97); }
+
+/* ---- Deshabilitado: opacidad .5, cursor no permitido, sin hover ni brillo ---- */
+:is(button, input, select, textarea)[disabled], [aria-disabled="true"] {
+  opacity: .5; cursor: not-allowed; box-shadow: none !important; filter: none !important; transform: none !important;
+}
+
+/* ---- Spinner (16 px y 20 px) con el color del texto (currentColor) ---- */
+.spinner, .spinner-sm {
+  display: inline-block; flex: none; width: 1.25rem; height: 1.25rem; border-radius: 50%;
+  border: 2px solid currentColor; border-right-color: transparent; animation: fvGirar .7s linear infinite;
+}
+.spinner-sm { width: 1rem; height: 1rem; }
+@keyframes fvGirar { to { transform: rotate(360deg); } }
+
+/* ---- Botón cargando: conserva su ancho (el contenido sigue ocupando lugar, solo se oculta), spinner centrado ---- */
+.btn-cargando { position: relative; cursor: progress; pointer-events: none; }
+.btn-cargando[disabled], .btn-cargando[aria-disabled="true"] { opacity: 1; cursor: progress; }
+.btn-cargando > .btn-cargando-contenido { opacity: 0; }
+.btn-cargando > .spinner, .btn-cargando > .spinner-sm { position: absolute; inset: 0; margin: auto; }
+/* con etiqueta visible ("Abriendo WhatsApp…"): el texto se queda y el spinner va a su lado */
+.btn-cargando.btn-cargando-texto > .btn-cargando-contenido { opacity: 1; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-cargando.btn-cargando-texto > .spinner, .btn-cargando.btn-cargando-texto > .spinner-sm { position: static; margin: 0; }
+
+/* ---- Skeleton: fondo #121319 con un brillo que recorre de izquierda a derecha. Hereda el radio del componente que reemplaza ---- */
+.skeleton { position: relative; overflow: hidden; background: var(--fondo-skeleton) !important; border-color: transparent !important; box-shadow: none !important; pointer-events: none; }
+.skeleton, .skeleton > * { color: transparent !important; }
+.skeleton > * { opacity: 0 !important; }
+.skeleton::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--acento-1-rgb), .10) 50%, transparent 100%);
+  transform: translateX(-100%); animation: fvBrillo 1.4s var(--ease-estado) infinite;
+}
+@keyframes fvBrillo { to { transform: translateX(100%); } }
+@keyframes fvPulso { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+/* ---- Entrada suave del contenido cuando reemplaza a un skeleton ---- */
+.fade-in { animation: fvFundido var(--t-entrada) var(--ease-estado) both; }
+@keyframes fvFundido { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---- Texto solo para lectores de pantalla (región aria-live del helper estados.js) ---- */
+.fv-sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---- Movimiento reducido: sin giros ni desplazamientos; solo opacidad ---- */
+@media (prefers-reduced-motion: reduce) {
+  .spinner, .spinner-sm { animation: fvPulso 1.2s ease-in-out infinite; border-right-color: currentColor; border-style: dotted; }
+  .skeleton::after { transform: none; background: rgba(var(--acento-1-rgb), .08); animation: fvPulso 1.6s ease-in-out infinite; }
+  .fade-in { animation: none; }
+  .estado-interactivo, .estado-interactivo:active { transition: color var(--t-rapida), background-color var(--t-rapida), border-color var(--t-rapida), opacity var(--t-rapida); transform: none; }
+}
+
+/* =====================================================================
+   ESTADOS: hover, foco y presionado, unificados para todo el sitio (el prefijo "html" sube la especificidad
+   por encima de los <style> que cada página todavía trae). Todos los hover van dentro de
+   @media (hover: hover) and (pointer: fine); en celular el feedback es :active.
+   ===================================================================== */
+
+/* ---- Foco visible: anillo de 2 px con el acento de la línea y 2 px de separación (contraste ≥ 3:1 sobre el fondo oscuro) ---- */
+html :is(a[href], button, summary, [role="tab"], [tabindex]:not([tabindex="-1"]), input, select, textarea, iframe, label.cursor-pointer):focus-visible {
+  outline: 2px solid var(--acento-1); outline-offset: 2px;
+}
+html :is(input, select, textarea):focus-visible { outline-offset: 2px; }
+
+/* ---- Botón principal: .btn-tri (Triangular), .btn-primary (Hexagonal y marca madre) y .btn-linea (el de la línea) ---- */
+.btn-tri { --cta-rgb: 74,222,128; }
+.linea-hex .btn-tri { --cta-rgb: 255,140,0; }
+html :is(.btn-tri, .btn-primary, .btn-linea, .btn-glow-on-hover, .btn-grow) {
+  transition: transform var(--t-rapida) var(--ease-estado), box-shadow var(--t-rapida) var(--ease-estado), filter var(--t-rapida) var(--ease-estado);
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+@media (hover: hover) and (pointer: fine) {
+  html :is(.btn-tri, .btn-primary, .btn-linea, .btn-glow-on-hover, .btn-grow):where(:not([disabled]):not([aria-disabled="true"]):not(.btn-cargando)):hover {
+    filter: brightness(1.08); transform: translateY(-1px);
+    box-shadow: 0 0 14px rgba(var(--cta-rgb), .7), 0 8px 22px rgba(var(--cta-rgb), .3);
+  }
+}
+html :is(.btn-tri, .btn-primary, .btn-linea, .btn-glow-on-hover, .btn-grow):where(:not([disabled]):not([aria-disabled="true"]):not(.btn-cargando)):active {
+  transform: scale(0.97); filter: none; box-shadow: none; transition-duration: .1s;
+}
+
+/* ---- Botón secundario: borde y fondo tenue del acento de SU línea (Tri: morado; Hex y marca madre: cian) ---- */
+html :is(.btn-secondary, .btn-linea-sec) { transition: background-color var(--t-rapida) var(--ease-estado), border-color var(--t-rapida) var(--ease-estado), box-shadow var(--t-rapida) var(--ease-estado), transform var(--t-rapida) var(--ease-estado); -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+@media (hover: hover) and (pointer: fine) {
+  html .btn-secondary:where(:not([disabled]):not([aria-disabled="true"])):hover { background-color: rgba(var(--brillo-rgb), .10); border-color: rgba(var(--brillo-rgb), .65); box-shadow: 0 0 18px rgba(var(--brillo-rgb), .2); }
+}
+html :is(.btn-secondary, .btn-linea-sec):where(:not([disabled]):not([aria-disabled="true"])):active { transform: scale(0.97); box-shadow: none; transition-duration: .1s; }
+
+/* ---- Tarjetas: las clicables se elevan con el acento de su línea; las .is-static no se mueven ni cambian de borde ---- */
+html .x-card { transition-duration: var(--t-rapida), var(--t-rapida), var(--t-rapida); }
+@media (hover: hover) and (pointer: fine) { 
+  html .x-card.is-static:hover { border-color: #1F232B; }
+  html .x-card.is-featured.is-static:hover { border-color: transparent; }
+  html .x-card.is-soon.is-static:hover { border-color: rgba(255,255,255,.18); }
+}
+html a.x-card, html a.card-lift { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+html a.x-card:active, html a.card-lift:active { transform: scale(0.985); box-shadow: none; transition-duration: .1s; }
+
+/* ---- Menú: subrayado que crece desde el centro; la página actual queda marcada (color + subrayado) ---- */
+html #site-header nav > a { position: relative; }
+html #site-header nav > a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: currentColor;
+  transform: scaleX(0); transform-origin: 50% 50%; transition: transform var(--t-rapida) var(--ease-estado);
+}
+@media (hover: hover) and (pointer: fine) { html #site-header nav > a:hover::after { transform: scaleX(1); } }
+html #site-header nav > a[aria-current="page"]::after { transform: scaleX(1); }
+html a.nav-tri[aria-current="page"], html a.nav-hex[aria-current="page"] { text-decoration: none; }
+html #site-header nav > a:active, html #mobile-menu a:active { opacity: .7; }
+html #mobile-menu a { -webkit-tap-highlight-color: transparent; transition: opacity var(--t-rapida) var(--ease-estado), color var(--t-rapida) var(--ease-estado); }
+html #mobile-menu a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+/* ---- Enlaces dentro de texto: subrayado siempre visible y un leve cambio de color en hover ---- */
+html main a.link-underline { background-size: 100% 1.5px; transition: color var(--t-rapida) var(--ease-estado), filter var(--t-rapida) var(--ease-estado); }
+@media (hover: hover) and (pointer: fine) { html main a.link-underline:hover { filter: brightness(1.3); background-size: 100% 2px; } }
+html main a.link-underline:active { opacity: .75; }
+
+/* ---- Pie de página: color en hover, foco visible (regla global) y presionado ---- */
+html footer a { transition: color var(--t-rapida) var(--ease-estado), opacity var(--t-rapida) var(--ease-estado); -webkit-tap-highlight-color: transparent; }
+html footer a:active { opacity: .7; }
+
+/* ---- Preguntas frecuentes (<details>): fondo tenue en hover, flecha que gira suave, foco visible ---- */
+html details > summary { border-radius: .6rem; transition: background-color var(--t-rapida) var(--ease-estado); -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) and (pointer: fine) { html details > summary:hover { background-color: rgba(var(--acento-1-rgb), .06); } }
+html details > summary:active { background-color: rgba(var(--acento-1-rgb), .10); }
+html details .chev { transition: transform var(--t-entrada) var(--ease-estado); }
+
+/* ---- Filtros y pestañas: seleccionado = fondo del acento + texto oscuro; hover = solo borde; presionado ---- */
+html :is(.filtro, .tam-tab):where(:not([disabled])):active { transform: scale(0.97); }
+html :is(.filtro, .tam-tab) { transition: background-color var(--t-rapida) var(--ease-estado), border-color var(--t-rapida) var(--ease-estado), color var(--t-rapida) var(--ease-estado), transform var(--t-rapida) var(--ease-estado); -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) and (pointer: fine) {
+  html .filtro[aria-pressed="true"]:hover, html .tam-tab[aria-selected="true"]:hover { background: var(--acento-1); border-color: var(--acento-1); color: #000; }
+}
+
+/* ---- Botones flotantes (Luci y volver arriba): scale 1.05 y sombra en hover; tooltip con su nombre en hover y foco ---- */
+html :is(#luci-toggle, #scroll-top) { transition: transform var(--t-rapida) var(--ease-estado), box-shadow var(--t-rapida) var(--ease-estado), opacity var(--t-entrada) var(--ease-estado); -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) and (pointer: fine) {
+  html :is(#luci-toggle, #scroll-top):hover { transform: scale(1.05); box-shadow: 0 8px 28px rgba(var(--acento-1-rgb), .35); }
+}
+html :is(#luci-toggle, #scroll-top):active { transform: scale(0.94); box-shadow: none; transition-duration: .1s; }
+html #scroll-top::after {
+  content: attr(aria-label); position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%); white-space: nowrap; pointer-events: none;
+  background: #0D0E12; color: #fff; border: 1px solid rgba(var(--acento-1-rgb), .45); border-radius: 999px; padding: 6px 12px;
+  font: 600 12px 'Space Grotesk', sans-serif; opacity: 0; transition: opacity var(--t-rapida) var(--ease-estado);
+}
+html #scroll-top:focus-visible::after { opacity: 1; }
+@media (hover: hover) and (pointer: fine) { html #scroll-top:hover::after { opacity: 1; } }
+html #luci-widget:has(#luci-toggle:focus-visible) #luci-pill { display: block; }
+@media (hover: hover) and (pointer: fine) { html #luci-widget:has(#luci-toggle:hover) #luci-pill { display: block; } }
+
+/* ---- Logos de clientes: leve aumento de brillo en hover (las imágenes no cambian) ---- */
+html .marquee-track > div { transition: filter var(--t-rapida) var(--ease-estado); }
+@media (hover: hover) and (pointer: fine) { html .marquee-track > div:hover { filter: brightness(1.1); } }
+
+/* ---- Campos de formulario: hover (borde más claro), foco (borde del acento + anillo), inválido (borde rojo suave + mensaje asociado) ---- */
+html :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]), select, textarea) {
+  transition: border-color var(--t-rapida) var(--ease-estado), box-shadow var(--t-rapida) var(--ease-estado), background-color var(--t-rapida) var(--ease-estado);
+}
+@media (hover: hover) and (pointer: fine) {
+  html :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea):hover:not(:focus):not(:disabled) { border-color: rgba(255,255,255,.32); }
+}
+html :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea):focus-visible { border-color: var(--acento-1); }
+html :is(input, select, textarea)[aria-invalid="true"], html .input-error { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,.14); }
+html :is(input, select, textarea)[aria-invalid="true"]:focus-visible, html .input-error:focus-visible { outline-color: #f87171; border-color: #f87171; }
+html :is(input, select, textarea):disabled { opacity: .5; cursor: not-allowed; }
+.fv-error, .campo-error { color: #f87171; font-size: .8125rem; line-height: 1.35; margin-top: .375rem; }
+.fv-error::before, .campo-error::before { content: '! '; font-weight: 700; }
+
+/* ---- Movimiento reducido: sin desplazamientos ni escalas; solo color, opacidad y sombra ---- */
+@media (prefers-reduced-motion: reduce) {
+  html :is(.btn-tri, .btn-primary, .btn-linea, .btn-glow-on-hover, .btn-grow, .btn-secondary, .btn-linea-sec, .filtro, .tam-tab, #luci-toggle, #scroll-top, a.x-card, a.card-lift):hover,
+  html :is(.btn-tri, .btn-primary, .btn-linea, .btn-glow-on-hover, .btn-grow, .btn-secondary, .btn-linea-sec, .filtro, .tam-tab, #luci-toggle, #scroll-top, a.x-card, a.card-lift):active { transform: none !important; }
+  html #site-header nav > a::after { transition: none; }
+}
+
+/* ---- Skeleton en línea (el ancho lo da el texto de relleno: montos en Bs, tasa BCV) ---- */
+.skeleton-texto { display: inline-block; vertical-align: baseline; border-radius: 6px; line-height: 1.15; min-width: 4ch; }
+
+/* ---- Número que cambia (calculadora): fundido corto con 2 px de desplazamiento (solo opacity y transform) ---- */
+.num-cambia { animation: fvNumero .22s var(--ease-estado) both; }
+@keyframes fvNumero { from { opacity: .35; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .num-cambia { animation: fvFundido .22s var(--ease-estado) both; } }
+
+/* ---- Aviso "¿No se abrió?" de los botones de WhatsApp (assets/estados.js) ---- */
+.fv-toast {
+  position: fixed; left: 50%; bottom: 5.5rem; z-index: 250; display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; justify-content: center;
+  width: max-content; max-width: calc(100vw - 2rem); background: #0D0E12; color: #e2e8f0; font: 500 .8125rem 'Space Grotesk', sans-serif;
+  border: 1px solid rgba(var(--acento-1-rgb), .5); border-radius: 14px; padding: .625rem .75rem .625rem 1rem; box-shadow: 0 10px 34px rgba(0,0,0,.6);
+  opacity: 0; transform: translate(-50%, 8px); transition: opacity var(--t-entrada) var(--ease-estado), transform var(--t-entrada) var(--ease-estado);
+}
+.fv-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.fv-toast p { margin: 0; } .fv-toast strong { color: #fff; }
+.fv-toast-copiar { min-height: 36px; padding: 0 .75rem; border-radius: 8px; border: 1px solid rgba(var(--acento-1-rgb), .6); color: #fff; background: transparent; font: 600 .75rem 'Space Grotesk', sans-serif; }
+.fv-toast-cerrar { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; color: #94a3b8; background: transparent; border: 0; }
+@media (hover: hover) and (pointer: fine) { .fv-toast-copiar:hover { background: rgba(var(--acento-1-rgb), .12); } .fv-toast-cerrar:hover { color: #fff; } }
+@media (min-width: 1024px) { .fv-toast { bottom: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) { .fv-toast, .fv-toast.is-visible { transform: translate(-50%, 0); } }
+html a[href*="wa.me"]:active { opacity: .85; }
+
+/* ---- Luci y botón flotante: sin animaciones infinitas con movimiento reducido ---- */
+@media (prefers-reduced-motion: reduce) { html .luci-typing span, html #luci-toggle { animation: none; } html .luci-typing span { opacity: .75; } }
+
+/* ---- Imágenes grandes: fondo skeleton con el tamaño reservado (width/height) y fundido al cargar (assets/estados.js) ---- */
+img.img-cargando { background: var(--fondo-skeleton); color: transparent; }
+img.img-listo { animation: fvFundido var(--t-entrada) var(--ease-estado) both; }
+@media (prefers-reduced-motion: reduce) { img.img-listo { animation: none; } }
+
+/* ---- Barra de progreso entre páginas: 2 px, acento de la marca madre ---- */
+html #page-load-bar { height: 2px; background: linear-gradient(90deg, #00FFFF, #FF8C00); }
+
+/* ---- Movimiento reducido: los adornos que giran o flotan se quedan quietos ---- */
+@media (prefers-reduced-motion: reduce) { html .hex-spin, html .float, html .x-float { animation: none !important; } }

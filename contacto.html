@@ -160,8 +160,7 @@
   /* ---- Transición nativa entre páginas (navegadores Chromium; se ignora en el resto) ---- */
   @view-transition { navigation: auto; }
 
-  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }
-  .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
+  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
 
   /* ---- Asistente Luci ---- */
   .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
@@ -225,8 +224,7 @@
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
     color: #64748b; padding: 6px 10px; border-radius: 8px; font-size: 12px;
     transition: border-color .2s ease, color .2s ease;
-  }
-  #search-trigger:hover { border-color: rgba(0,255,255,0.4); color: #cbd5e1; }
+  }@media (hover: hover) and (pointer: fine) { #search-trigger:hover { border-color: rgba(0,255,255,0.4); color: #cbd5e1; } }
   #search-trigger kbd {
     font-family: 'Space Grotesk', sans-serif; font-size: 10px; background: rgba(255,255,255,0.08);
     padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);
@@ -270,8 +268,8 @@
   #search-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 15px; font-family: 'Geist', sans-serif; }
   #search-input::placeholder { color: #475569; }
   #search-results { overflow-y: auto; padding: 8px; }
-  .search-result { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-decoration: none; }
-  .search-result:hover, .search-result.is-active { background: rgba(0,204,255,0.08); }
+  .search-result { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-decoration: none; }.search-result.is-active { background: rgba(0,204,255,0.08); }
+  @media (hover: hover) and (pointer: fine) { .search-result:hover { background: rgba(0,204,255,0.08); } }
   .search-result .sr-title { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 14px; display: flex; align-items: center; gap: 8px; }
   .search-result .sr-desc { color: #64748b; font-size: 12.5px; }
   .sr-tag { font-size: 10px; padding: 1px 7px; border-radius: 999px; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: .03em; }
@@ -366,7 +364,12 @@
         <p class="mb-5 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
         <h2 id="puerta-empresa" class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">Tengo una empresa</h2>
         <p class="text-slate-300 leading-relaxed mb-6">Agenda tu diagnóstico gratis de 20 minutos: eliges el día y la hora, y conversamos tu caso por videollamada.</p>
-        <div class="rounded-xl overflow-hidden border border-fv-border bg-black">
+        <div class="relative rounded-xl overflow-hidden border border-fv-border bg-black" aria-busy="true">
+          <div id="cal-skeleton" class="absolute inset-0 z-10 bg-black p-5 sm:p-8 flex flex-col gap-5 transition-opacity duration-300" aria-hidden="true">
+            <div class="flex justify-between items-center"><div class="skeleton h-6 w-40 rounded-lg"></div><div class="flex gap-2"><div class="skeleton h-8 w-8 rounded-lg"></div><div class="skeleton h-8 w-8 rounded-lg"></div></div></div>
+            <div class="grid grid-cols-7 gap-2"><div class="skeleton h-4 rounded"></div><div class="skeleton h-4 rounded"></div><div class="skeleton h-4 rounded"></div><div class="skeleton h-4 rounded"></div><div class="skeleton h-4 rounded"></div><div class="skeleton h-4 rounded"></div><div class="skeleton h-4 rounded"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div><div class="skeleton aspect-square rounded-lg"></div></div>
+            <div class="flex gap-2 flex-wrap"><div class="skeleton h-9 w-24 rounded-lg"></div><div class="skeleton h-9 w-24 rounded-lg"></div><div class="skeleton h-9 w-24 rounded-lg"></div><div class="skeleton h-9 w-24 rounded-lg"></div></div>
+          </div>
           <iframe id="cal-frame" src="https://cal.com/f-v-ai-group/contacto" width="100%" height="640" style="border:0;" title="Agendar el diagnóstico gratis de 20 minutos con F&V AI Group"></iframe>
         </div>
         <p class="text-sm text-slate-400 mt-4">¿No ves el calendario? <a href="https://cal.com/f-v-ai-group/contacto" target="_blank" rel="noopener" data-evento="diagnostico_gratis" class="link-underline text-fv-cyan inline-block py-3 -my-3">Ábrelo en otra pestaña</a>.</p>
@@ -431,7 +434,7 @@
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="fv-label" for="nombre">Nombre</label>
-              <input class="fv-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
+              <input class="fv-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required aria-describedby="err-nombre">
               <p id="err-nombre" class="fv-error hidden"></p>
             </div>
             <div>
@@ -563,7 +566,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div class="lg:col-span-4">
         <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
+          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8" loading="lazy" decoding="async">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
         <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios publicados en dólares.</p>
@@ -639,13 +642,13 @@
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40">
   <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
-    <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8">
+    <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8" loading="lazy" decoding="async">
   </button>
 
   <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
     <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
       <div class="flex items-center gap-2.5">
-        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
+        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7" loading="lazy" decoding="async">
         <div>
           <p class="font-head text-white text-sm leading-none">Luci</p>
           <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente virtual · responde al instante</p>
@@ -718,7 +721,7 @@
   const WA_BASE = 'https://wa.me/584244125386?text=';
 
   function clearFieldError(field) {
-    field.classList.remove('input-error');
+    field.classList.remove('input-error'); field.removeAttribute('aria-invalid');
     const errEl = document.getElementById('err-' + field.name);
     if (errEl) errEl.classList.add('hidden');
   }
@@ -769,7 +772,7 @@
     const errEl = document.getElementById('err-nombre');
 
     if (!nombre) {
-      f.nombre.classList.add('input-error');
+      f.nombre.classList.add('input-error'); f.nombre.setAttribute('aria-invalid', 'true');
       errEl.textContent = 'Escribe tu nombre.';
       errEl.classList.remove('hidden');
       f.nombre.focus();
@@ -783,6 +786,7 @@
       const ec = document.getElementById('err-consent');
       ec.textContent = 'Marca la casilla para poder continuar.';
       ec.classList.remove('hidden');
+      f.consent.setAttribute('aria-invalid', 'true');
       f.consent.focus();
       formStatus.textContent = 'Falta aceptar la Política de Privacidad y los Términos.';
       formStatus.classList.remove('hidden');
@@ -810,6 +814,8 @@
       gtag('event', 'generate_lead', { method: 'whatsapp_form', interest: interes });
     }
     // Sin 'noopener' en las features: con él window.open devuelve siempre null y se navegaría también en esta pestaña.
+    const btnEnviar = f.querySelector('button[type="submit"]');
+    if (window.FV_ESTADOS && btnEnviar) { FV_ESTADOS.setCargando(btnEnviar, true, 'Abriendo WhatsApp…'); setTimeout(() => FV_ESTADOS.setCargando(btnEnviar, false), 1000); }
     const w = window.open(url, '_blank');
     if (w) { try { w.opener = null; } catch (err) {} }
     if (!w) window.location.href = url;
@@ -1075,14 +1081,34 @@
       var f = document.createElement('iframe');
       f.title = box.dataset.title; f.src = box.dataset.src; f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
       f.className = 'w-full h-full border-0';
-      box.textContent = ''; box.classList.remove('flex', 'items-center', 'justify-center'); box.appendChild(f);
+      box.textContent = ''; box.classList.remove('flex', 'items-center', 'justify-center'); box.classList.add('relative'); box.appendChild(f);
+      var sk = document.createElement('div'); sk.className = 'skeleton absolute inset-0 transition-opacity duration-300'; sk.setAttribute('aria-hidden', 'true'); box.appendChild(sk); box.setAttribute('aria-busy', 'true');
+      f.addEventListener('load', function () { sk.style.opacity = '0'; box.removeAttribute('aria-busy'); setTimeout(function () { sk.remove(); }, 320); });
     }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { load(); o.disconnect(); } }, { rootMargin: '400px' }).observe(box);
     } else { load(); }
   })();
 </script>
+<script>
+  // ---- Cal.com: skeleton con forma de calendario hasta que cargue el iframe; si no carga en 8 s, botón para agendar por WhatsApp ----
+  (function () {
+    var fr = document.getElementById('cal-frame'), sk = document.getElementById('cal-skeleton'); if (!fr || !sk) return;
+    var caja = fr.parentNode, hecho = false;
+    function quitarSkeleton() { sk.style.opacity = '0'; sk.style.pointerEvents = 'none'; setTimeout(function () { sk.remove(); }, 320); }
+    fr.addEventListener('load', function () { if (hecho) return; hecho = true; clearTimeout(t); caja.removeAttribute('aria-busy'); quitarSkeleton(); });
+    var t = setTimeout(function () {
+      if (hecho) return;
+      hecho = true; // un load tardío (incluida la página de error del navegador) ya no quita el respaldo
+      caja.removeAttribute('aria-busy');
+      sk.setAttribute('aria-hidden', 'false'); sk.setAttribute('role', 'alert'); sk.id = 'cal-respaldo'; sk.className = 'absolute inset-0 z-10 bg-black p-6 flex flex-col items-center justify-center text-center gap-4 fade-in';
+      sk.innerHTML = '<p class="text-slate-200 max-w-sm">No pudimos cargar el calendario.</p>' +
+        '<a href="https://wa.me/584244125386?text=' + encodeURIComponent('Hola F&V, quiero agendar el diagnóstico gratis de 20 minutos') + '" target="_blank" rel="noopener" data-cta="agenda_respaldo" data-evento="agenda_respaldo_whatsapp" class="btn-linea estado-interactivo inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold">Agendar por WhatsApp</a>';
+    }, 8000);
+  })();
+</script>
 <script defer src="/assets/eventos.js"></script>
+<script defer src="/assets/estados.js"></script>
 <script defer src="/assets/luci.js"></script>
 <script defer src="/assets/medicion.js"></script>
 <script defer src="/assets/search.js"></script>

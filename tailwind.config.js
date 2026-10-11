@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  future: { hoverOnlyWhenSupported: true }, // los hover:* se aplican solo con mouse (en celular no quedan "pegados")
   content: ['./*.html', './assets/*.js'],
   theme: {
     extend: {

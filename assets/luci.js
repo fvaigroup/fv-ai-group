@@ -94,7 +94,7 @@
   var quickReplies = QUICK[path] || (/^\/(asesoria|evaluacion|despliegue|habilitacion|masterclasses|acompanamiento)/.test(path) ? QUICK['/hexagonal'] : ['¿Cuánto cuesta?', '¿Qué productos tienen?', '¿Cómo pago?', '¿Cuándo es el próximo taller?']);
 
   var css = document.createElement('style');
-  css.textContent = '.luci-cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:8px 12px;border-radius:8px;font-family:"Space Grotesk",sans-serif;font-size:12.5px;font-weight:600;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.45);color:#4ade80;text-decoration:none;transition:background-color .2s}.luci-cta:hover{background:rgba(74,222,128,.22)}' +
+  css.textContent = '.luci-cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:8px 12px;border-radius:8px;font-family:"Space Grotesk",sans-serif;font-size:12.5px;font-weight:600;background:rgba(var(--acento-1-rgb),.12);border:1px solid rgba(var(--acento-1-rgb),.5);color:var(--acento-1);text-decoration:none;transition:background-color .18s cubic-bezier(.23,1,.32,1),transform .18s cubic-bezier(.23,1,.32,1)}.luci-cta:active{transform:scale(.97)}@media (hover:hover) and (pointer:fine){.luci-cta:hover{background:rgba(var(--acento-1-rgb),.22)}}' +
     '.luci-wrap{max-width:85%}.luci-wrap .luci-bubble-bot{max-width:100%}#luci-pill{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);white-space:nowrap;display:none;background:#0D0E12;border:1px solid rgba(0,255,255,.35);color:#fff;font:600 12.5px "Space Grotesk",sans-serif;padding:9px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5);cursor:pointer}@media (min-width:768px){#luci-pill{display:block}}#luci-pill[hidden]{display:none!important}';
   document.head.appendChild(css);
 
@@ -138,19 +138,22 @@
     });
   }
   function escribiendo() {
-    var t = document.createElement('div'); t.className = 'luci-typing'; t.innerHTML = '<span></span><span></span><span></span>';
+    var t = document.createElement('div'); t.className = 'luci-typing'; t.setAttribute('role', 'status'); t.setAttribute('aria-label', 'Luci está escribiendo'); t.innerHTML = '<span></span><span></span><span></span>';
     messages.appendChild(t); messages.scrollTop = messages.scrollHeight; return t;
   }
+  var respondiendo = false;
   function preguntar(texto) {
     mensaje(texto, 'user'); quick.innerHTML = '';
+    if (respondiendo) return; respondiendo = true;
+    var enviar = form.querySelector('button[type="submit"]'); if (enviar) enviar.disabled = true; messages.setAttribute('aria-busy', 'true');
     var r = buscar(texto), t = escribiendo();
     setTimeout(function () {
-      t.remove();
+      t.remove(); respondiendo = false; if (enviar) enviar.disabled = false; messages.removeAttribute('aria-busy');
       if (r) mensaje(typeof r.a === 'function' ? r.a() : r.a, 'bot', r.c);
       else mensaje('No tengo una respuesta preparada para eso todavía. Escríbenos por WhatsApp y una persona del equipo te responde el mismo día de lunes a viernes.', 'bot', ESCRIBIR);
       opciones(quickReplies.slice(0, 3));
       if (window.FV_EVENTOS && window.FV_EVENTOS.refrescar) window.FV_EVENTOS.refrescar();
-    }, 650);
+    }, 400 + Math.round(Math.random() * 300)); // 400 a 700 ms de "escribiendo…" antes de cada respuesta
   }
 
   var iniciado = false;

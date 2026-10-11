@@ -66,3 +66,15 @@ Se elimina el concepto «Express», la Línea Triangular se rehace con 6 product
 - **Fase 4:** inicio (lo más pedido Triangular, franja de software, FAQ y test con productos reales), /paginas-web con los tamaños de Presencia, /cursos y /curso-finanzas-ia con precios nuevos (la Clase 1:1 sale; entra la Sesión Clara), Contacto agrupado, cierre de la calculadora con Presencia Catálogo.
 - **Fase 5:** `/software` (plataforma de cuotas para clubes y condominios, cliente piloto), en el sitemap, el pie y Contacto; no va en el menú.
 - **Fase 6:** control de calidad (rastreo de 22 páginas a 2 tamaños, enlaces y anclas, cálculos con `tests/planes.test.js`, Lighthouse), imágenes para redes con los precios nuevos y esta documentación.
+
+---
+
+# Estados de interacción (rama `estados-interaccion`)
+
+Solo estados visuales y de interacción: no cambian textos, precios ni estructura.
+
+- **Fase 1:** base común en `src/tailwind.css` (`.estado-interactivo`, deshabilitado, `.spinner`, `.btn-cargando`, `.skeleton`, `.fade-in`) y `assets/estados.js` (`FV_ESTADOS.setCargando`, `mostrarSkeleton`/`ocultarSkeleton`, `anunciar`).
+- **Fase 2:** hover, foco y presionado unificados en todas las páginas con el color de su línea; el hover solo en dispositivos con mouse; un solo foco visible global (se quitan los anillos verdes fijos de seis páginas); menú con subrayado desde el centro y página actual marcada; campos con foco y estado inválido accesibles.
+- **Fase 3:** estados de carga: tasa BCV con skeleton y «tasa del [fecha]», calculadora (número con transición, botón en carga, sin doble envío), contacto («Abriendo WhatsApp…», skeleton de Cal.com y del mapa), aviso «¿No se abrió?» en los enlaces de WhatsApp, Luci escribiendo, test con «Calculando tu recomendación…», skeleton de fechas e imágenes, barra de progreso entre páginas.
+- **Fase 4:** estados de error y vacío: respaldo si falla la tasa o `/api/lead`, respaldo si Cal.com no carga, filtro sin resultados con «Ver todos». La calculadora ya no disfraza una falla real de envío como éxito.
+- **Fase 5:** control de calidad (teclado en 22 páginas, hover sin quedar «pegado» en celular, movimiento reducido, colores por línea, Lighthouse antes y después, eventos de medición).
