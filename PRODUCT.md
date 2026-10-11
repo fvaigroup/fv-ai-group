@@ -60,3 +60,15 @@ No se estableció un requisito específico más allá de las prácticas ya prese
 - **Pago:** dólares, pagaderos en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Los pagos únicos pueden ir en 2 o 3 cuotas. Si no se paga la mensualidad, el servicio se pausa hasta ponerse al día.
 - **Permanencia mínima:** Presencia Web y Tienda, 12 meses; Asistente IA de WhatsApp, 6 meses. El resto, sin permanencia.
 - **/software:** página de marca madre («tú») para validar una plataforma de cuotas de clubes y condominios con clientes piloto. No va en el menú; se enlaza desde el inicio, el pie y Contacto.
+
+---
+
+# Club (rama `pagina-club`, 11 de octubre de 2026)
+
+`/club` (`club.html`): página de producto para vender **Club, de F&V AI Group**, un software como servicio para que clubes sociales y deportivos cobren y controlen las cuotas de sus socios. Público: juntas directivas y administraciones de clubes de Venezuela. Todo en «usted» (la excepción: las tarjetas de enlace en páginas en «tú», como `/triangular`, hablan en «tú»).
+
+- **Identidad propia** dentro del sistema oscuro del sitio: verde profundo `#14532d`, verde medio `#1f7a4d`, dorado `#c9a227` y crema `#faf7f0` (tokens `club-*` en `tailwind.config.js`). El cian/naranja y el verde/morado de las líneas **no** son colores del producto: solo aparecen en las insignias de línea de cada plan (▲ Triangular en Esencial; ⬡ Hexagonal en Plus, Pro, Max y A medida). El foco, la barra de progreso y la estela del cursor toman el dorado de Club en esta página. Emblema (escudo con «C») y favicon en `assets/club/`; imagen para redes `assets/club/og-club.png`.
+- **Planes (USD/mes, trato mensual sin permanencia):** Esencial hasta 300 socios $199 · Plus 301 a 1.000 $349 · Pro 1.001 a 2.500 $549 · Max 2.501 a 5.000 $799 · A medida (más de 5.000 o varias sedes) desde $1.100. Anual con 20 % de descuento (mensual × 12 × 0,8). Implementación única: $150 / $300 / $450 / $600 (2 o 3 cuotas, o 20 % menos de contado). La fuente de los números es `assets/club.js` (`Club.PLANES`), probada con `node tests/club.test.js`.
+- **Honestidad:** el producto está en lanzamiento. No hay clientes, logos, testimonios ni cifras de uso. Las capturas son de la demo de Club con un club ficticio («Club Campestre de Ejemplo») y siempre dicen «Ejemplo ilustrativo». No se nombra a ningún club real. Las horas de cobranza ahorradas son una estimación explicada (2 minutos por socio al mes).
+- **Pendiente de decisión del dueño:** la banda «Clientes fundadores: los primeros 3 clubes no pagan la implementación» está en el HTML con `hidden`; para publicarla basta quitar ese atributo.
+- **Relación con `/software`:** `/software` (clubes y condominios, cliente piloto, precios orientativos de $249/mes) sigue publicada con una tarjeta que lleva a `/club`; sus precios orientativos no coinciden con los de Club y conviene alinearlos o retirarlos.

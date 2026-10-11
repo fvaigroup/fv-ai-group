@@ -45,6 +45,21 @@ Cada botón nuevo lleva `data-evento`. Los de la portada y las páginas de líne
 
 `whatsapp_click` sigue llevando `product` (nombre del producto) y `cta_location`. El mensaje prellenado de cada producto incluye su línea, por ejemplo «Línea Triangular».
 
+### 7. Página de producto Club (`/club`)
+Todos los botones y enlaces de `/club` llevan `data-evento`; los de WhatsApp además `data-product` y `data-cta`, así que `whatsapp_click` dice qué producto y qué bloque trajo al cliente.
+
+| Evento | Qué es |
+|---|---|
+| `club_demo_hero` | «Agendar una demo de 20 minutos» de la portada (WhatsApp, `product=club-demo`) |
+| `club_planes` | «Ver planes» de la portada |
+| `club_tab_socio` / `club_tab_administracion` / `club_tab_junta` | Pestañas de «Lo que hace» |
+| `club_planes_mensual` / `club_planes_anual` | Interruptor mensual / anual |
+| `club_plan_esencial`, `club_plan_plus`, `club_plan_pro`, `club_plan_max`, `club_plan_a_medida` | Botón de demo de cada plan (`product=club-<plan>`) |
+| `club_calculadora` | «Agendar demo» de la calculadora (el mensaje lleva el número de socios y el plan recomendado) |
+| `club_faq_1` … `club_faq_6` | Pregunta frecuente abierta |
+| `club_demo_cierre` / `club_whatsapp_cierre` | Botones del cierre |
+| `portada_club`, `triangular_club`, `hexagonal_club`, `software_club`, `pie_club` | Enlaces hacia `/club` desde el inicio, las dos líneas, `/software` y el pie |
+
 ### 6. Otros eventos con nombre propio
 Cualquier elemento con `data-evento="nombre"` envía un evento llamado `nombre` al hacer clic. Los más útiles:
 
