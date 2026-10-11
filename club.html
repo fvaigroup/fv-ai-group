@@ -288,6 +288,8 @@
   /* ================= Club: identidad propia (verde profundo, dorado y crema sobre el fondo oscuro del sitio) ================= */
   :root { --club-verde: #14532d; --club-medio: #1f7a4d; --club-oro: #c9a227; --club-crema: #faf7f0; }
   ::selection { background: #c9a227; color: #1a1405; }
+  /* el foco, los filtros y los brillos del sitio toman los colores de Club (no el par cian/naranja de la marca madre) */
+  :root { --acento-1: #e3c452; --acento-2: #1f7a4d; --acento-1-rgb: 227,196,82; --acento-2-rgb: 31,122,77; --brillo-rgb: 201,162,39; --cta: #c9a227; --cta-rgb: 201,162,39; }
   /* adornos del sitio (haz de luz, estela, barras) en los colores de Club: el cian y el naranja quedan solo en la marca madre */
   #mouse-spotlight { background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(201,162,39,0.06), transparent 40%); }
   #trail-cyan { background: #c9a227; box-shadow: 0 0 8px #c9a227, 0 0 14px rgba(201,162,39,0.6); }
@@ -336,6 +338,23 @@
   /* ---- Tarjetas y superficies ---- */
   .club-card { background: linear-gradient(180deg, rgba(20,83,45,0.18), rgba(13,14,18,0.9)); border: 1px solid rgba(250,247,240,0.09); border-radius: 22px; }
   .club-card-flat { background: #0D0E12; border: 1px solid #1F232B; border-radius: 22px; }
+
+  /* ---- Pestañas ---- */
+  .club-tab { min-height: 52px; padding: .5rem .55rem; text-align: center; line-height: 1.2; border-radius: 12px; border: 1px solid transparent; font-family: 'Space Grotesk', sans-serif; font-size: .8rem; font-weight: 500; color: #94a3b8; transition: color .25s var(--ease-out), background-color .25s var(--ease-out), border-color .25s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .club-tab:hover { color: #fff; } }
+  .club-tab[aria-selected="true"] { color: #f1dc8f; background: rgba(201,162,39,0.14); border-color: rgba(201,162,39,0.45); font-weight: 600; }
+  @media (min-width: 640px) { .club-tab { min-height: 46px; padding: .55rem 1.15rem; font-size: .9rem; white-space: nowrap; } }
+  .club-panel[hidden] { display: none; }
+  .club-panel:not([hidden]) { animation: clubIn .4s var(--ease-out); }
+  @keyframes clubIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .club-beneficio { display: flex; align-items: flex-start; gap: .9rem; font-size: 1.05rem; line-height: 1.45; color: #e2e8f0; }
+  .club-check { flex: none; width: 1.55rem; height: 1.55rem; margin-top: .05rem; border-radius: 999px; background: rgba(201,162,39,0.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e3c452' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 62% no-repeat; border: 1px solid rgba(201,162,39,0.4); }
+  .club-duo { position: relative; display: flex; justify-content: center; align-items: center; gap: 1.25rem; padding: 1rem 0 1.5rem; }
+  .club-duo::before { content: ''; position: absolute; inset: 6% 8%; background: radial-gradient(closest-side, rgba(201,162,39,0.16), transparent 72%); filter: blur(22px); pointer-events: none; }
+  .club-phone-s { position: relative; width: min(220px, 42%); border: 6px solid #0b0c10; border-radius: 30px; overflow: hidden; background: #0b0c10; box-shadow: 0 26px 60px rgba(0,0,0,0.65), 0 0 0 1.5px rgba(255,255,255,0.12); }
+  .club-phone-s img { display: block; width: 100%; height: auto; }
+  .club-phone-s-a { transform: rotate(-3deg) translateY(14px); }
+  .club-phone-s-b { transform: rotate(3deg) translateY(-10px); }
 
 </style>
 </head>
@@ -433,6 +452,165 @@
       <li class="club-dato"><span class="club-dato-ico" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h13v4"/><path d="M3 7v10a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H5a2 2 0 0 1-2-2Z"/><circle cx="16.5" cy="14" r="1"/></svg></span><p class="text-sm text-slate-300 leading-snug"><strong class="block text-white font-semibold">Pago Móvil, Zelle, USDT y efectivo</strong>todos los métodos en un solo lugar</p></li>
       <li class="club-dato"><span class="club-dato-ico" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><p class="text-sm text-slate-300 leading-snug"><strong class="block text-white font-semibold">Recibos por correo y WhatsApp</strong>el socio recibe su constancia</p></li>
       <li class="club-dato"><span class="club-dato-ico" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><p class="text-sm text-slate-300 leading-snug"><strong class="block text-white font-semibold">Cualquier teléfono, sin descargar nada</strong>se abre desde el navegador</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ EL PROBLEMA ============ -->
+<section id="problema" class="relative py-20 sm:py-28 border-b border-white/5 scroll-mt" aria-labelledby="problema-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="club-eyebrow mb-5">El problema</p>
+      <h2 id="problema-title" class="club-h2 text-3xl sm:text-4xl lg:text-5xl">¿Le suena familiar?</h2>
+    </div>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <li class="reveal club-card-flat p-6 sm:p-7 flex gap-5 items-start">
+        <span class="club-dato-ico" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M9 11h6M9 14h3"/></svg></span>
+        <p class="text-lg text-slate-200 leading-snug">La administración pasa días persiguiendo socios por WhatsApp para cobrar.</p>
+      </li>
+      <li class="reveal club-card-flat p-6 sm:p-7 flex gap-5 items-start">
+        <span class="club-dato-ico" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8M12 17h.01"/></svg></span>
+        <p class="text-lg text-slate-200 leading-snug">Los socios no saben cuánto deben y discuten «yo ya pagué».</p>
+      </li>
+      <li class="reveal club-card-flat p-6 sm:p-7 flex gap-5 items-start">
+        <span class="club-dato-ico" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <p class="text-lg text-slate-200 leading-snug">Cuadrar Pago Móvil, Zelle, USDT y efectivo con la tasa del día toma horas.</p>
+      </li>
+      <li class="reveal club-card-flat p-6 sm:p-7 flex gap-5 items-start">
+        <span class="club-dato-ico" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/></svg></span>
+        <p class="text-lg text-slate-200 leading-snug">La junta se entera de la morosidad cuando ya es un hueco en la caja.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section id="como-funciona" class="relative py-20 sm:py-28 border-b border-white/5 bg-fv-surface2/40 scroll-mt" aria-labelledby="como-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="club-eyebrow mb-5">Cómo funciona</p>
+      <h2 id="como-title" class="club-h2 text-3xl sm:text-4xl lg:text-5xl">Tres pasos y su club está cobrando.</h2>
+    </div>
+    <ol class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <li class="reveal club-card overflow-hidden flex flex-col">
+        <div class="aspect-[1.85/1] overflow-hidden bg-[#0b0c10] border-b border-white/5"><img src="assets/club/club-paso-1.webp" width="960" height="519" alt="Lista de socios cargada en Club, con número de acción, categoría, estado y deuda (datos de ejemplo)" loading="lazy" decoding="async" class="w-full h-full object-cover object-top"></div>
+        <div class="p-6 sm:p-7">
+          <span class="font-head text-sm font-semibold text-club-oro tracking-wider">PASO 1</span>
+          <h3 class="font-sans text-xl font-semibold text-white mt-2 mb-2">Cargamos sus socios</h3>
+          <p class="text-slate-300 leading-relaxed">Desde su Excel. Nosotros hacemos la carga: usted no tiene que digitar nada.</p>
+        </div>
+      </li>
+      <li class="reveal club-card overflow-hidden flex flex-col">
+        <div class="aspect-[1.85/1] overflow-hidden bg-[#0b0c10] border-b border-white/5"><img src="assets/club/club-paso-2.webp" width="585" height="750" alt="Pantalla de inicio de la app del socio con su estado de cuenta (datos de ejemplo)" loading="lazy" decoding="async" class="w-full h-full object-cover object-top"></div>
+        <div class="p-6 sm:p-7">
+          <span class="font-head text-sm font-semibold text-club-oro tracking-wider">PASO 2</span>
+          <h3 class="font-sans text-xl font-semibold text-white mt-2 mb-2">Cada socio recibe su acceso</h3>
+          <p class="text-slate-300 leading-relaxed">Por correo y WhatsApp, sin descargar aplicaciones: entra desde el navegador de su teléfono.</p>
+        </div>
+      </li>
+      <li class="reveal club-card overflow-hidden flex flex-col">
+        <div class="aspect-[1.85/1] overflow-hidden bg-[#0b0c10] border-b border-white/5"><img src="assets/club/club-paso-3.webp" width="960" height="519" alt="Resumen de administración con cobranza del mes, morosidad y pagos por aprobar (datos de ejemplo)" loading="lazy" decoding="async" class="w-full h-full object-cover object-top"></div>
+        <div class="p-6 sm:p-7">
+          <span class="font-head text-sm font-semibold text-club-oro tracking-wider">PASO 3</span>
+          <h3 class="font-sans text-xl font-semibold text-white mt-2 mb-2">Usted cobra, aprueba y controla</h3>
+          <p class="text-slate-300 leading-relaxed">Todo en tiempo real: cada pago reportado llega a su panel y cada cifra se actualiza al instante.</p>
+        </div>
+      </li>
+    </ol>
+    <p class="mt-6 text-xs text-slate-400">Ejemplo ilustrativo con datos ficticios.</p>
+  </div>
+</section>
+
+<!-- ============ LO QUE HACE (pestañas) ============ -->
+<section id="funciones" class="relative py-20 sm:py-28 border-b border-white/5 scroll-mt" aria-labelledby="funciones-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-10">
+      <p class="club-eyebrow mb-5">Lo que hace</p>
+      <h2 id="funciones-title" class="club-h2 text-3xl sm:text-4xl lg:text-5xl">Una herramienta, tres miradas.</h2>
+    </div>
+
+    <div role="tablist" aria-label="Quién usa Club" class="club-tabs grid grid-cols-3 w-full sm:inline-grid sm:w-auto gap-1 p-1.5 rounded-2xl border border-white/10 bg-white/[0.03] mb-10" data-club-tabs>
+      <button type="button" role="tab" id="tab-socio" aria-controls="panel-socio" aria-selected="true" data-evento="club_tab_socio" class="club-tab">Para el socio</button>
+      <button type="button" role="tab" id="tab-admin" aria-controls="panel-admin" aria-selected="false" tabindex="-1" data-evento="club_tab_administracion" class="club-tab">Para la administración</button>
+      <button type="button" role="tab" id="tab-junta" aria-controls="panel-junta" aria-selected="false" tabindex="-1" data-evento="club_tab_junta" class="club-tab">Para la junta directiva</button>
+    </div>
+
+    <div id="panel-socio" role="tabpanel" aria-labelledby="tab-socio" tabindex="0" class="club-panel grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-6 order-2 lg:order-1">
+        <figure class="club-duo" aria-label="Ejemplo ilustrativo: reportar un pago y carnet digital en la app del socio">
+          <div class="club-phone-s club-phone-s-a"><img src="assets/club/club-socio-pagar.webp" width="585" height="1266" alt="App del socio: revisión del pago antes de enviarlo, con método, monto en dólares y bolívares, referencia y comprobante (datos de ejemplo)" loading="lazy" decoding="async"></div>
+          <div class="club-phone-s club-phone-s-b"><img src="assets/club/club-socio-carnet.webp" width="585" height="1266" alt="App del socio: carnet digital con código QR y la leyenda al día, acceso permitido (datos de ejemplo)" loading="lazy" decoding="async"></div>
+          <figcaption class="sr-only">Ejemplo ilustrativo con datos ficticios.</figcaption>
+        </figure>
+        <p class="mt-5 text-center lg:text-left text-xs text-slate-400">Ejemplo ilustrativo con datos ficticios.</p>
+      </div>
+      <div class="lg:col-span-6 order-1 lg:order-2">
+        <h3 class="font-sans text-2xl sm:text-3xl font-semibold text-white mb-6 tracking-tight">Su socio siempre sabe cómo está.</h3>
+        <ul class="space-y-4">
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Estado de cuenta en tiempo real, en $ y en Bs.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Reporta su pago con la foto del comprobante.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Historial de todos sus pagos.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Carnet digital con código QR para la entrada.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Grupo familiar y avisos del club en un solo lugar.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="panel-admin" role="tabpanel" aria-labelledby="tab-admin" tabindex="0" class="club-panel grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <figure>
+          <div class="club-laptop-screen"><img src="assets/club/club-admin-pagos.webp" width="1440" height="900" alt="Panel de administración: cola de pagos por aprobar con comprobante, monto, referencia y botones Aprobar y Rechazar (datos de ejemplo)" loading="lazy" decoding="async"></div>
+          <div class="club-laptop-base" aria-hidden="true"></div>
+          <figcaption class="mt-5 text-center lg:text-left text-xs text-slate-400">Ejemplo ilustrativo con datos ficticios.</figcaption>
+        </figure>
+      </div>
+      <div class="lg:col-span-5 order-1 lg:order-2">
+        <h3 class="font-sans text-2xl sm:text-3xl font-semibold text-white mb-6 tracking-tight">Su administración cobra en minutos, no en días.</h3>
+        <ul class="space-y-4">
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Aprueba o rechaza pagos con un clic.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Genera las cuotas del mes y los recargos por mora.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Recordatorios de cobro por correo y WhatsApp.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Ficha de cada socio con su historial.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Reportes en Excel y PDF.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="panel-junta" role="tabpanel" aria-labelledby="tab-junta" tabindex="0" class="club-panel grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <figure>
+          <div class="club-laptop-screen"><img src="assets/club/club-admin-junta.webp" width="1440" height="900" alt="Vista de la junta directiva: cobranza del mes, morosidad, evolución de la morosidad e ingresos por método de pago (datos de ejemplo)" loading="lazy" decoding="async"></div>
+          <div class="club-laptop-base" aria-hidden="true"></div>
+          <figcaption class="mt-5 text-center lg:text-left text-xs text-slate-400">Ejemplo ilustrativo con datos ficticios.</figcaption>
+        </figure>
+      </div>
+      <div class="lg:col-span-5 order-1 lg:order-2">
+        <h3 class="font-sans text-2xl sm:text-3xl font-semibold text-white mb-6 tracking-tight">Su junta decide con datos de hoy.</h3>
+        <ul class="space-y-4">
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Indicadores de cobranza y morosidad en tiempo real.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Ingresos por método de pago.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Acceso de solo lectura: ve todo, no modifica nada.</li>
+          <li class="club-beneficio"><span class="club-check" aria-hidden="true"></span>Reportes listos para la asamblea.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ CLUB ============ -->
+<section id="por-que" class="relative py-20 sm:py-28 border-b border-white/5 bg-fv-surface2/40 scroll-mt" aria-labelledby="porque-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="club-eyebrow mb-5">Por qué Club</p>
+      <h2 id="porque-title" class="club-h2 text-3xl sm:text-4xl lg:text-5xl">Hecho para cómo se cobra en Venezuela.</h2>
+    </div>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <li class="reveal club-card p-6 sm:p-7"><span class="club-dato-ico mb-5" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg></span><h3 class="font-sans text-lg font-semibold text-white mb-2">Hecho para Venezuela</h3><p class="text-slate-300 leading-relaxed">Multimoneda y tasa BCV automática.</p></li>
+      <li class="reveal club-card p-6 sm:p-7"><span class="club-dato-ico mb-5" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h3 class="font-sans text-lg font-semibold text-white mb-2">Sin descargas</h3><p class="text-slate-300 leading-relaxed">Se instala desde el navegador en cualquier teléfono.</p></li>
+      <li class="reveal club-card p-6 sm:p-7"><span class="club-dato-ico mb-5" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><h3 class="font-sans text-lg font-semibold text-white mb-2">Recibos y recordatorios</h3><p class="text-slate-300 leading-relaxed">Por correo y WhatsApp.</p></li>
+      <li class="reveal club-card p-6 sm:p-7"><span class="club-dato-ico mb-5" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 19h14"/></svg></span><h3 class="font-sans text-lg font-semibold text-white mb-2">Sus datos son suyos</h3><p class="text-slate-300 leading-relaxed">Los exporta cuando quiera.</p></li>
+      <li class="reveal club-card p-6 sm:p-7"><span class="club-dato-ico mb-5" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><h3 class="font-sans text-lg font-semibold text-white mb-2">Copias de seguridad diarias</h3><p class="text-slate-300 leading-relaxed">Su información queda respaldada todos los días.</p></li>
+      <li class="reveal club-card p-6 sm:p-7"><span class="club-dato-ico mb-5" aria-hidden="true"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><h3 class="font-sans text-lg font-semibold text-white mb-2">Soporte local en Valencia</h3><p class="text-slate-300 leading-relaxed">Por WhatsApp y en persona.</p></li>
     </ul>
   </div>
 </section>
