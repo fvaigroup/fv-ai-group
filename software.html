@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<!-- Google Analytics y Clarity: se cargan tras el primer toque/scroll o a los 8 s de cargada la página, para no frenar el primer pintado -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KY3QKJPK3K');
+  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments)};
+  (function () {
+    var hecho = false;
+    function cargar() {
+      if (hecho) return; hecho = true;
+      var g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=G-KY3QKJPK3K'; document.head.appendChild(g);
+      var c = document.createElement('script'); c.async = true; c.src = 'https://www.clarity.ms/tag/yr29hp4bfg'; document.head.appendChild(c);
+    }
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { addEventListener(e, cargar, { once: true, passive: true }); });
+    addEventListener('load', function () { setTimeout(cargar, 8000); });
+  })();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software para clubes y condominios: cobra las cuotas sin perseguir a nadie | F&V AI Group</title>
+<meta name="description" content="Plataforma para clubes y condominios: cada socio o propietario ve cuánto debe y cuánto ha pagado, y la administración ve los pagos y los deudores. Próximamente: buscamos clientes piloto.">
+<link rel="canonical" href="https://www.fvaigroup.com/software">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="F&V AI Group">
+<meta property="og:locale" content="es_VE">
+<meta property="og:title" content="Software para clubes y condominios: cobra las cuotas sin perseguir a nadie | F&V AI Group">
+<meta property="og:description" content="Plataforma para clubes y condominios: cada socio o propietario ve cuánto debe y cuánto ha pagado, y la administración ve los pagos y los deudores. Próximamente: buscamos clientes piloto.">
+<meta property="og:url" content="https://www.fvaigroup.com/software">
+<meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Software para clubes y condominios: cobra las cuotas sin perseguir a nadie | F&V AI Group">
+<meta name="twitter:description" content="Plataforma para clubes y condominios: cada socio o propietario ve cuánto debe y cuánto ha pagado, y la administración ve los pagos y los deudores. Próximamente: buscamos clientes piloto.">
+<meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="stylesheet" href="assets/css/tailwind.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2" crossorigin>
+<style>/* Space Grotesk y Geist (Google Fonts), incluidas en la página y precargadas: sin pedir CSS aparte y sin saltos de diseño */
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwSGFWfOw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
+<style>
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* ---- Estándar de transición: color, fondo y borde cambian juntos en el mismo tiempo/curva,
+       nunca por separado, para que un hover se sienta como un solo cambio de estado. Referenciar
+       esta variable (o replicar los mismos tres tramos) en cualquier regla nueva de hover/focus. ---- */
+    --transition-base: color .3s var(--ease-out), background-color .3s var(--ease-out), border-color .3s var(--ease-out);
+  }
+
+  html { background: #000; } body { background: #000; }
+  ::selection { background: #FF8C00; color: #000; }
+  .glow-cyan { box-shadow: 0 0 10px #00FFFF, 0 0 25px #00CCFF, 0 0 50px rgba(0,204,255,0.25); }
+  .glow-orange { box-shadow: 0 0 10px #FF8C00, 0 0 30px #FF4500, 0 0 60px rgba(255,69,0,0.25); }
+  .grain { background-image: radial-gradient(#ffffff08 1px, transparent 1px); background-size: 28px 28px; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+  .reveal.is-in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } * { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { #search-overlay, #search-panel, #mobile-menu, #luci-panel { transition: none !important; } }
+  @keyframes hexspin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
+  .hex-spin { animation: hexspin 40s linear infinite; }
+  @keyframes floaty { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+  .float { animation: floaty 6s ease-in-out infinite; }
+  .scroll-mt { scroll-margin-top: 96px; }
+
+  /* ---- Botones interactivos: brillo + micro-interacción ---- */
+  .btn-primary {
+    background-color: #FF8C00; color: #000;
+    box-shadow: 0 0 10px #FF8C00, 0 0 26px #FF4500, 0 0 50px rgba(255,69,0,0.3);
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover { filter: brightness(1.1); box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45); }
+  }
+  .btn-primary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
+
+  .btn-glow-on-hover {
+    box-shadow: none;
+    transition: transform .35s var(--ease-bounce), box-shadow .25s var(--ease-out), filter .25s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-glow-on-hover:hover {
+      transform: scale(1.06);
+      filter: brightness(1.1);
+      box-shadow: 0 0 14px #FF8C00, 0 0 36px #FF4500, 0 0 70px rgba(255,69,0,0.45);
+    }
+  }
+  .btn-glow-on-hover:active {
+    transform: scale(0.93);
+    transition: transform .1s var(--ease-out);
+  }
+
+  .btn-secondary {
+    background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff;
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out), border-color .2s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); box-shadow: 0 0 22px rgba(0,204,255,0.25); }
+  }
+  .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
+
+  /* ---- Hover sutil en preguntas frecuentes ---- */
+  details > summary:hover { background-color: rgba(255,255,255,0.03); }
+
+  /* ---- Transición nativa entre páginas (navegadores Chromium; se ignora en el resto) ---- */
+  @view-transition { navigation: auto; }
+
+  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }
+  .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
+
+  /* ---- Asistente Luci ---- */
+  .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
+  .luci-typing { display: inline-flex; gap: 4px; background: #121319; border: 1px solid #1F232B; border-radius: 12px 12px 12px 4px; padding: 10px 14px; }
+  .luci-typing span { width: 6px; height: 6px; border-radius: 50%; background: #64748b; animation: luciTypingBounce 1.2s infinite ease-in-out; }
+  .luci-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .luci-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes luciTypingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+  .luci-bubble-user { background: #FF8C00; color: #000; border-radius: 12px 12px 4px 12px; padding: 8px 12px; max-width: 85%; margin-left: auto; }
+  .luci-quick-btn { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid #1F232B; color: #94a3b8; transition: border-color .2s var(--ease-out), color .2s var(--ease-out); background: transparent; }
+  @media (hover: hover) and (pointer: fine) {
+    .luci-quick-btn:hover { border-color: rgba(0,204,255,0.5); color: #fff; }
+  }
+  @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
+  #luci-toggle { animation: luciPulse 3s ease-in-out infinite; }
+  /* ---- Texto con degradado animado (cian → naranja) ---- */
+  .shimmer-text {
+    position: relative; display: inline-block;
+    background: linear-gradient(100deg, #00FFFF 0%, #00CCFF 20%, #FFBF00 45%, #FF8C00 60%, #FF4500 75%, #00FFFF 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent !important; color: transparent !important;
+    animation: shimmerMove 7s ease-in-out infinite;
+  }
+  @keyframes shimmerMove { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @media (prefers-reduced-motion: reduce) { .shimmer-text { animation: none; background-position: 30% 50%; } }
+
+  /* ---- Texto neón sólido ---- */
+  .text-neon-orange { color: #FF8C00 !important; text-shadow: 0 0 8px rgba(255,140,0,0.65), 0 0 18px rgba(255,69,0,0.45); }
+  .text-neon-cyan { color: #00FFFF !important; text-shadow: 0 0 8px rgba(0,255,255,0.65), 0 0 18px rgba(0,204,255,0.45); }
+
+  /* ---- Recuadros iluminados alternados ---- */
+  .box-glow-cyan { border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 14px rgba(0,255,255,0.2); }
+  .box-glow-orange { border: 1px solid rgba(255,140,0,0.4); box-shadow: 0 0 14px rgba(255,140,0,0.2); }
+
+  /* ---- Borde con degradado cian-naranja estático ---- */
+  .box-gradient-border {
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, #0D0E12, #000000) padding-box, linear-gradient(135deg, #00FFFF, #FF8C00) border-box;
+    box-shadow: 0 0 16px rgba(0,255,255,0.18), 0 0 16px rgba(255,140,0,0.18);
+  }
+
+  /* ---- Barra de progreso de scroll ---- */
+  #scroll-progress {
+    position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    z-index: 60; transition: width .08s linear;
+    box-shadow: 0 0 8px rgba(0,255,255,0.5);
+  }
+
+  /* ---- Spotlight que sigue el mouse ---- */
+  #mouse-spotlight {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(0,204,255,0.06), transparent 40%);
+    transition: background .1s ease-out;
+  }
+
+  /* ---- Transición compartida del logo entre páginas (View Transitions API) ---- */
+  #site-header a.site-logo-link { view-transition-name: site-logo; }
+  @media (prefers-reduced-motion: reduce) { #site-header a.site-logo-link { view-transition-name: none; } }
+
+  /* ---- Fondo de constelación (canvas) ---- */
+  #constellation-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
+
+  /* ---- Rastro de partículas del cursor (estela luciérnaga) ---- */
+  .firefly-trail-dot {
+    position: fixed; top: 0; left: 0; z-index: 55; pointer-events: none;
+    border-radius: 9999px; will-change: transform, opacity;
+  }
+  #trail-cyan { width: 7px; height: 7px; background: #00FFFF; box-shadow: 0 0 8px #00FFFF, 0 0 14px rgba(0,255,255,0.6); }
+  #trail-orange { width: 5px; height: 5px; background: #FF8C00; box-shadow: 0 0 8px #FF8C00, 0 0 14px rgba(255,140,0,0.6); }
+
+  /* ---- Barra de carga entre páginas (navegación simulada) ---- */
+  #page-load-bar {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    z-index: 100; box-shadow: 0 0 8px rgba(0,255,255,0.6);
+    transition: width .4s ease-out, opacity .2s ease .3s;
+  }
+
+  /* ---- Búsqueda global (Cmd+K / Ctrl+K) ---- */
+  #search-trigger {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    color: #64748b; padding: 6px 10px; border-radius: 8px; font-size: 12px;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  #search-trigger:hover { border-color: rgba(0,255,255,0.4); color: #cbd5e1; }
+  #search-trigger kbd {
+    font-family: 'Space Grotesk', sans-serif; font-size: 10px; background: rgba(255,255,255,0.08);
+    padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);
+  }
+  #search-overlay {
+    position: fixed; inset: 0; z-index: 200; display: flex;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    align-items: flex-start; justify-content: center; padding: 12vh 1.5rem 2rem;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .2s var(--ease-out), visibility 0s linear .2s;
+  }
+  #search-overlay.is-open {
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transition: opacity .2s var(--ease-out);
+  }
+  #search-panel {
+    width: 100%; max-width: 560px; background: #0D0E12; border: 1px solid #1F232B;
+    border-radius: 16px; box-shadow: 0 0 0 1px rgba(0,255,255,0.08), 0 20px 60px rgba(0,0,0,0.6);
+    overflow: hidden; max-height: 70vh; display: flex; flex-direction: column;
+    transform: scale(0.96); transition: transform .2s var(--ease-out);
+  }
+  #search-overlay.is-open #search-panel { transform: scale(1); }
+  /* ---- Menu movil: slide-down + fade en vez de aparecer de golpe ---- */
+  #mobile-menu {
+    display: grid; grid-template-rows: 0fr; opacity: 0;
+    transition: grid-template-rows .25s var(--ease-out), opacity .2s var(--ease-out);
+  }
+  #mobile-menu > div { overflow: hidden; min-height: 0; }
+  #mobile-menu.is-open { grid-template-rows: 1fr; opacity: 1; }
+  @media (min-width: 1024px) { #mobile-menu { display: none !important; } }
+  /* ---- Panel de Luci: slide-up + fade en vez de aparecer de golpe ---- */
+  #luci-panel {
+    opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(0.98);
+    transition: opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility 0s linear .2s;
+  }
+  #luci-panel.is-open {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1);
+    transition: opacity .2s var(--ease-out), transform .2s var(--ease-out);
+  }
+  #search-input-row { display: flex; align-items: center; gap: 10px; padding: 16px 18px; border-bottom: 1px solid #1F232B; }
+  #search-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 15px; font-family: 'Geist', sans-serif; }
+  #search-input::placeholder { color: #475569; }
+  #search-results { overflow-y: auto; padding: 8px; }
+  .search-result { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-decoration: none; }
+  .search-result:hover, .search-result.is-active { background: rgba(0,204,255,0.08); }
+  .search-result .sr-title { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .search-result .sr-desc { color: #64748b; font-size: 12.5px; }
+  .sr-tag { font-size: 10px; padding: 1px 7px; border-radius: 999px; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: .03em; }
+  .sr-tag.cat-Servicio { background: rgba(0,255,255,0.1); color: #00FFFF; }
+  .sr-tag.cat-Curso { background: rgba(255,140,0,0.12); color: #FF8C00; }
+  .sr-tag.cat-Pagina { background: rgba(255,255,255,0.08); color: #94a3b8; }
+  .sr-tag.cat-Legal { background: rgba(255,255,255,0.06); color: #64748b; }
+  .sr-tag.cat-Producto { background: rgba(74,222,128,0.12); color: #4ade80; }
+  #search-empty { padding: 28px 18px; text-align: center; color: #64748b; font-size: 13px; }
+  #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #475569; font-family: 'Space Grotesk', sans-serif; }
+  #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+</style>
+</head>
+<body class="bg-fv-black text-slate-300 font-sans antialiased">
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+<div id="page-load-bar"></div>
+
+<div id="trail-cyan" class="firefly-trail-dot" style="opacity:0;"></div>
+<div id="trail-orange" class="firefly-trail-dot" style="opacity:0;"></div>
+
+<canvas id="constellation-canvas"></canvas>
+
+<div id="mouse-spotlight"></div>
+
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex justify-between items-center h-[76px]">
+      <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
+        <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+        <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
+        <a href="/triangular" class="nav-forma nav-tri transition-colors">Línea Triangular</a>
+        <a href="/hexagonal" class="nav-forma nav-hex transition-colors">Línea Hexagonal</a>
+        <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
+        <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
+        <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
+        </button>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
+      </div>
+      <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
+        <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
+    <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
+      <a href="/" class="text-slate-300">Inicio</a>
+      <a href="/triangular" class="nav-forma nav-tri">Línea Triangular</a>
+      <a href="/hexagonal" class="nav-forma nav-hex">Línea Hexagonal</a>
+      <a href="/nosotros" class="text-slate-300">Nosotros</a>
+      <a href="/contacto" class="text-slate-300">Contacto</a>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-2 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
+    </div>
+  </div>
+</header>
+<div id="scroll-progress"></div>
+
+
+<main id="main-content">
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-40 pb-20 overflow-hidden border-b border-white/5" aria-labelledby="hero-title">
+  <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-fv-orange/10 rounded-full blur-[130px] pointer-events-none translate-x-1/4 -translate-y-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-[420px] h-[420px] bg-fv-cyan/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+    <p class="mb-6"><span class="inline-block text-[11px] font-head font-semibold px-3 py-1.5 bg-fv-orange/10 text-fv-orange rounded-full border border-fv-orange/40 uppercase tracking-wider">Próximamente · buscamos clientes piloto</span></p>
+    <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight text-balance">Cobra las cuotas de tu club o condominio <span class="shimmer-text">sin perseguir a nadie</span></h1>
+    <p class="text-lg text-slate-400 leading-relaxed font-light max-w-2xl mx-auto mb-8">Una plataforma donde cada socio o propietario ve en tiempo real cuánto debe y cuánto ha pagado, y tú ves los pagos, los deudores y envías avisos.</p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="#piloto" data-evento="software_hero_piloto" class="btn-primary inline-flex justify-center items-center px-7 py-3.5 font-head font-semibold rounded-lg">Quiero ser cliente piloto</a>
+      <a href="#ejemplo" data-evento="software_hero_ejemplo" class="btn-secondary inline-flex justify-center items-center px-7 py-3.5 font-head font-medium rounded-lg">Ver un ejemplo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUÉ ES ============ -->
+<section class="relative py-20 border-b border-white/5" aria-labelledby="que-es-title">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <h2 id="que-es-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight mb-6">Qué <span class="text-neon-cyan">es</span></h2>
+    <p class="text-slate-300 text-lg leading-relaxed mb-4">Una plataforma para clubes y condominios. Cada socio o propietario entra y ve en tiempo real cuánto debe y cuánto ha pagado.</p>
+    <p class="text-slate-300 text-lg leading-relaxed">Tú, desde la administración, ves los pagos, los deudores y envías avisos, sin llevar las cuentas en un cuaderno ni en mensajes sueltos.</p>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section class="relative py-20 border-b border-white/5 bg-fv-surface2/40" aria-labelledby="como-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <h2 id="como-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight mb-10">Cómo <span class="shimmer-text">funciona</span></h2>
+    <ol class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <li class="reveal x-card is-static p-6 sm:p-7"><span class="font-head text-5xl font-bold text-neon-cyan leading-none" aria-hidden="true">1</span><p class="text-white text-lg font-semibold mt-4 mb-2">Cargamos tus socios o apartamentos</p><p class="text-slate-400 leading-relaxed">Nos pasas la lista y nosotros la dejamos cargada en la plataforma.</p></li>
+      <li class="reveal x-card is-static p-6 sm:p-7"><span class="font-head text-5xl font-bold text-neon-cyan leading-none" aria-hidden="true">2</span><p class="text-white text-lg font-semibold mt-4 mb-2">Cada uno recibe su acceso</p><p class="text-slate-400 leading-relaxed">Cada socio o propietario entra con su acceso y ve su propio estado de cuenta.</p></li>
+      <li class="reveal x-card is-static p-6 sm:p-7"><span class="font-head text-5xl font-bold text-neon-cyan leading-none" aria-hidden="true">3</span><p class="text-white text-lg font-semibold mt-4 mb-2">Registras los pagos</p><p class="text-slate-400 leading-relaxed">Tú registras cada pago y todos ven su estado de cuenta actualizado.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PARA QUÉ / POR QUÉ ============ -->
+<section class="relative py-20 border-b border-white/5" aria-labelledby="para-que-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <h2 id="para-que-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight mb-10">Para qué <span class="text-neon-orange">te sirve</span></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="reveal rounded-xl border border-fv-border bg-fv-surface p-6"><p class="font-sans text-lg font-bold text-white mb-2">Menos tiempo cobrando</p><p class="text-slate-400 leading-relaxed">Dejas de perseguir a cada persona: el estado de cuenta ya está a la vista.</p></div>
+      <div class="reveal rounded-xl border border-fv-border bg-fv-surface p-6"><p class="font-sans text-lg font-bold text-white mb-2">Menos discusiones</p><p class="text-slate-400 leading-relaxed">Se acabó el «yo ya pagué»: cada pago queda registrado y todos lo ven.</p></div>
+      <div class="reveal rounded-xl border border-fv-border bg-fv-surface p-6"><p class="font-sans text-lg font-bold text-white mb-2">La morosidad a la vista</p><p class="text-slate-400 leading-relaxed">Ves quién debe y cuánto, y envías el aviso desde el mismo lugar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOS VERSIONES ============ -->
+<section id="versiones" class="relative py-20 border-b border-white/5 bg-fv-surface2/40 scroll-mt" aria-labelledby="versiones-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-10">
+      <h2 id="versiones-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight mb-4">Dos versiones, <span class="shimmer-text">la misma idea</span></h2>
+      <p class="text-slate-400 text-lg leading-relaxed">Precios orientativos en dólares, pagaderos en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Pagando por adelantado tienes 20 % de descuento.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+      <article id="clubes" class="reveal rounded-xl border border-fv-border bg-fv-surface p-6 sm:p-8 flex flex-col scroll-mt" aria-labelledby="clubes-t">
+        <h3 id="clubes-t" class="font-sans text-2xl font-bold text-white mb-1">Clubes</h3>
+        <p class="text-slate-400 mb-5">Para clubes sociales, deportivos y asociaciones con cuotas de socios.</p>
+        <ul class="space-y-2.5 text-sm text-slate-300 mb-6">
+          <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Cada socio ve cuánto debe y cuánto ha pagado.</span></li>
+          <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>La administración ve los pagos y los deudores, y envía avisos.</span></li>
+          <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>La administración registra los pagos y todos ven su estado de cuenta al momento.</span></li>
+        </ul>
+        <p class="font-head text-xs uppercase tracking-wider text-slate-400 mb-2">Precio orientativo</p>
+        <ul class="space-y-1.5 text-slate-200 mb-4"><li><strong class="text-white text-xl">$249/mes</strong> <span class="text-slate-400 text-sm">para clubes de hasta 300 socios</span></li><li><strong class="text-white text-xl">desde $300</strong> <span class="text-slate-400 text-sm">para clubes más grandes: consultar</span></li></ul>
+        <p class="text-sm text-slate-400 mt-auto">Si tu club es más grande, cuéntanos cuántos socios tiene y te damos el precio.</p>
+      </article>
+      <article id="condominios" class="reveal rounded-xl border border-fv-border bg-fv-surface p-6 sm:p-8 flex flex-col scroll-mt" aria-labelledby="condominios-t">
+        <h3 id="condominios-t" class="font-sans text-2xl font-bold text-white mb-1">Condominios</h3>
+        <p class="text-slate-400 mb-5">Para condominios y edificios que cobran la cuota de condominio.</p>
+        <ul class="space-y-2.5 text-sm text-slate-300 mb-6">
+          <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Cada propietario ve cuánto debe y cuánto ha pagado.</span></li>
+          <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>La administración ve los pagos y los deudores, y envía avisos.</span></li>
+          <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-cyan shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>La administración registra los pagos y todos ven su estado de cuenta al momento.</span></li>
+        </ul>
+        <p class="font-head text-xs uppercase tracking-wider text-slate-400 mb-2">Precio orientativo</p>
+        <ul class="space-y-1.5 text-slate-200 mb-4"><li><strong class="text-white text-xl">$1 por apartamento</strong> <span class="text-slate-400 text-sm">al mes</span></li><li><strong class="text-white text-xl">mínimo $90/mes</strong></li></ul>
+        <p class="text-sm text-slate-400 mt-auto">Por ejemplo, un edificio de 120 apartamentos pagaría $120 al mes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAQUETA ============ -->
+<section id="ejemplo" class="relative py-20 border-b border-white/5 scroll-mt" aria-labelledby="ejemplo-title">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-10">
+      <h2 id="ejemplo-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight uppercase tracking-tight mb-4">Así se <span class="text-neon-cyan">vería</span></h2>
+      <p class="text-slate-400 text-lg leading-relaxed">Dos pantallas: lo que ve un socio y lo que ves tú como administrador.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <figure class="rounded-xl border border-fv-border bg-fv-surface p-5 sm:p-6" aria-labelledby="mq1-t">
+        <p id="mq1-t" class="font-head text-sm font-semibold text-white mb-1">Estado de cuenta de un socio</p>
+        <p class="text-xs text-slate-400 mb-4">Socio n.º 0123</p>
+        <div class="rounded-lg border border-white/10 overflow-x-auto" tabindex="0" role="region" aria-label="Estado de cuenta de ejemplo, desplazable">
+          <table class="w-full min-w-[300px] text-[13px] text-slate-300">
+            <caption class="sr-only">Cuotas del socio n.º 0123</caption>
+            <thead><tr class="bg-fv-cyan/10 text-fv-cyan font-head text-[11px] uppercase tracking-wide"><th scope="col" class="text-left font-medium px-3 py-2.5">Cuota</th><th scope="col" class="text-right font-medium px-3 py-2.5">Monto</th><th scope="col" class="text-right font-medium px-3 py-2.5">Estado</th></tr></thead>
+            <tbody>
+              <tr class="border-t border-white/5"><th scope="row" class="text-left font-normal px-3 py-2.5">Cuota 1</th><td class="px-3 py-2.5 text-right tabular-nums">$20</td><td class="px-3 py-2.5 text-right"><span class="text-fv-cyan">Pagada</span></td></tr>
+              <tr class="border-t border-white/5"><th scope="row" class="text-left font-normal px-3 py-2.5">Cuota 2</th><td class="px-3 py-2.5 text-right tabular-nums">$20</td><td class="px-3 py-2.5 text-right"><span class="text-fv-cyan">Pagada</span></td></tr>
+              <tr class="border-t border-white/5"><th scope="row" class="text-left font-normal px-3 py-2.5">Cuota 3</th><td class="px-3 py-2.5 text-right tabular-nums">$20</td><td class="px-3 py-2.5 text-right"><span class="text-fv-orange">Pendiente</span></td></tr>
+              <tr class="border-t border-white/5"><th scope="row" class="text-left font-normal px-3 py-2.5">Cuota 4</th><td class="px-3 py-2.5 text-right tabular-nums">$20</td><td class="px-3 py-2.5 text-right"><span class="text-fv-orange">Pendiente</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <dl class="mt-3 rounded-lg border border-white/10 text-[13px] overflow-hidden">
+          <div class="flex items-center justify-between gap-4 px-3 py-2.5"><dt class="text-slate-400">Has pagado</dt><dd class="tabular-nums text-white">$40</dd></div>
+          <div class="flex items-center justify-between gap-4 px-3 py-2.5 border-t border-white/5 bg-fv-orange/10"><dt class="font-head font-semibold text-white">Debes</dt><dd class="tabular-nums font-head font-bold text-fv-orange">$40</dd></div>
+        </dl>
+        <figcaption class="text-xs text-slate-400 mt-4">Ejemplo ilustrativo con datos ficticios.</figcaption>
+      </figure>
+      <figure class="rounded-xl border border-fv-border bg-fv-surface p-5 sm:p-6" aria-labelledby="mq2-t">
+        <p id="mq2-t" class="font-head text-sm font-semibold text-white mb-1">Panel de deudores</p>
+        <p class="text-xs text-slate-400 mb-4">Vista de la administración</p>
+        <div class="rounded-lg border border-white/10 overflow-x-auto" tabindex="0" role="region" aria-label="Panel de deudores de ejemplo, desplazable">
+          <table class="w-full min-w-[320px] text-[13px] text-slate-300">
+            <caption class="sr-only">Socios con cuotas pendientes</caption>
+            <thead><tr class="bg-fv-orange/10 text-fv-orange font-head text-[11px] uppercase tracking-wide"><th scope="col" class="text-left font-medium px-3 py-2.5">Socio</th><th scope="col" class="text-right font-medium px-3 py-2.5">Cuotas</th><th scope="col" class="text-right font-medium px-3 py-2.5">Debe</th><th scope="col" class="px-3 py-2.5"><span class="sr-only">Acción</span></th></tr></thead>
+            <tbody>
+              <tr class="border-t border-white/5"><th scope="row" class="text-left font-normal px-3 py-2.5 whitespace-nowrap">N.º 0087</th><td class="px-3 py-2.5 text-right tabular-nums">3</td><td class="px-3 py-2.5 text-right tabular-nums text-white">$60</td><td class="px-3 py-2.5 text-right"><span class="inline-block rounded border border-white/15 px-2 py-0.5 text-[11px] text-slate-300">Enviar aviso</span></td></tr>
+              <tr class="border-t border-white/5"><th scope="row" class="text-left font-normal px-3 py-2.5 whitespace-nowrap">N.º 0123</th><td class="px-3 py-2.5 text-right tabular-nums">2</td><td class="px-3 py-2.5 text-right tabular-nums text-white">$40</td><td class="px-3 py-2.5 text-right"><span class="inline-block rounded border border-white/15 px-2 py-0.5 text-[11px] text-slate-300">Enviar aviso</span></td></tr>
+              <tr class="border-t border-white/5"><th scope="row" class="text-left font-normal px-3 py-2.5 whitespace-nowrap">N.º 0310</th><td class="px-3 py-2.5 text-right tabular-nums">1</td><td class="px-3 py-2.5 text-right tabular-nums text-white">$20</td><td class="px-3 py-2.5 text-right"><span class="inline-block rounded border border-white/15 px-2 py-0.5 text-[11px] text-slate-300">Enviar aviso</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <dl class="mt-3 rounded-lg border border-white/10 text-[13px] overflow-hidden">
+          <div class="flex items-center justify-between gap-4 px-3 py-2.5 bg-fv-orange/10"><dt class="font-head font-semibold text-white">Total por cobrar</dt><dd class="tabular-nums font-head font-bold text-fv-orange">$120</dd></div>
+        </dl>
+        <figcaption class="text-xs text-slate-400 mt-4">Ejemplo ilustrativo con datos ficticios.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENTE PILOTO ============ -->
+<section id="piloto" class="relative py-24 scroll-mt" aria-labelledby="piloto-title">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="relative rounded-xl overflow-hidden box-gradient-border p-8 sm:p-14 text-center">
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]"></div>
+      <div class="relative z-10">
+        <h2 id="piloto-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 uppercase tracking-tight text-balance">Sé de los <span class="shimmer-text">primeros</span></h2>
+        <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">Estamos validando la plataforma antes de construirla. Cuéntanos cómo cobras hoy y te escribimos.</p>
+        <form id="form-piloto" class="max-w-md mx-auto text-left" novalidate>
+          <fieldset class="mb-5">
+            <legend class="font-head text-xs uppercase tracking-wider text-slate-400 mb-2">Administro un</legend>
+            <div class="flex gap-3" role="group">
+              <button type="button" class="filtro" data-tipo="club" aria-pressed="true" data-evento="software_tipo_club">Club</button>
+              <button type="button" class="filtro" data-tipo="condominio" aria-pressed="false" data-evento="software_tipo_condominio">Condominio</button>
+            </div>
+          </fieldset>
+          <label class="font-head text-xs uppercase tracking-wider text-slate-400 mb-2 block" for="piloto-n"><span id="piloto-n-label">¿Cuántos socios tiene?</span></label>
+          <input id="piloto-n" type="number" inputmode="numeric" min="1" step="1" placeholder="Por ejemplo, 120" class="w-full min-h-[48px] rounded-lg bg-black border border-fv-border px-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-fv-cyan mb-6">
+          <a id="piloto-wa" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20administro%20un%20%5Bclub%2Fcondominio%5D%20de%20%5BN%5D%20socios%2Fapartamentos%20y%20quiero%20ser%20cliente%20piloto" target="_blank" rel="noopener" data-product="software-piloto" data-cta="software_piloto" data-evento="software_cta_piloto" class="btn-primary flex justify-center items-center gap-2 min-h-[52px] px-8 py-4 font-head font-semibold rounded-lg"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero ser cliente piloto</span></a>
+        </form>
+        <p class="mt-6 text-sm text-slate-400">Se abre WhatsApp con el mensaje ya escrito. Respondemos el mismo día de lunes a viernes de 9:00 a 17:00.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-black border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4">
+        <a href="/" class="inline-flex items-center gap-2.5 mb-4">
+          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8">
+          <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
+        </a>
+        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios publicados en dólares.</p>
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+            <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+          </a>
+          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo: contacto@fvaigroup.com" title="contacto@fvaigroup.com" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
+            <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+            <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div data-pie-lineas class="lg:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/triangular" class="link-underline hover:text-white transition-colors">Productos</a></li>
+            <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
+            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
+            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
+            <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-head text-xs font-semibold uppercase tracking-wider mb-4 text-fv-orange">Empresa</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
+            <li><a href="/software" data-evento="pie_software" class="link-underline hover:text-white transition-colors">Software (próximamente)</a></li>
+            <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
+            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
+            <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
+            <li><a href="/terminos" class="link-underline hover:text-white transition-colors">Términos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
+          <ul class="space-y-2.5 text-sm text-slate-500">
+            <li><a href="mailto:contacto@fvaigroup.com" class="link-underline hover:text-white transition-colors">contacto@fvaigroup.com</a></li>
+            <li><a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">+58 424 412 5386</a></li>
+            <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
+            <li class="pt-1 text-slate-600">Valencia, Carabobo, Venezuela</li>
+            <li class="text-slate-600">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
+            <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
+          </ul>
+        </div>
+      
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
+      <div class="flex gap-6 text-sm text-slate-600">
+        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
+        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
+<div id="luci-widget" class="fixed bottom-6 left-6 z-40">
+  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+    <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8">
+  </button>
+
+  <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+    <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
+      <div class="flex items-center gap-2.5">
+        <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7">
+        <div>
+          <p class="font-head text-white text-sm leading-none">Luci</p>
+          <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente virtual · responde al instante</p>
+        </div>
+      </div>
+      <button id="luci-close" aria-label="Cerrar" class="text-slate-500 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div id="luci-messages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 text-sm"></div>
+    <div id="luci-quick" class="px-4 pb-3 flex flex-wrap gap-2"></div>
+
+    <form id="luci-form" class="flex items-center gap-2 p-3 border-t border-white/5">
+      <input id="luci-input" type="text" placeholder="Escribe tu pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-fv-cyan/50">
+      <button type="submit" aria-label="Enviar" class="w-9 h-9 rounded-lg bg-fv-orange text-black flex items-center justify-center shrink-0 hover:brightness-110 transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-br from-fv-cyan to-fv-orange text-black flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  menuBtn.addEventListener('click', () => {
+    const isOpening = !mobileMenu.classList.contains('is-open');
+    mobileMenu.classList.toggle('is-open');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isOpening));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('is-open');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const scrollTopBtn = document.getElementById('scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      const show = window.scrollY > 500;
+      scrollTopBtn.classList.toggle('opacity-0', !show);
+      scrollTopBtn.classList.toggle('pointer-events-none', !show);
+      scrollTopBtn.classList.toggle('translate-y-3', !show);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // ---- Barra de progreso de scroll ----
+  (function () {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  })();
+
+  // ---- Spotlight que sigue el mouse ----
+  (function () {
+    const spotlight = document.getElementById('mouse-spotlight');
+    if (!spotlight || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    window.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
+    }, { passive: true });
+  })();
+
+  // ---- Fondo de constelación interactivo (canvas, requestAnimationFrame) ----
+  (function () {
+    const canvas = document.getElementById('constellation-canvas');
+    if (!canvas || window.matchMedia('(max-width: 1023px)').matches) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return; // se deja el canvas vacío/transparente, no penaliza nada
+
+    const ctx = canvas.getContext('2d');
+    let w, h, particles, mouse = { x: null, y: null };
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeParticles() {
+      const count = Math.min(70, Math.floor((w * h) / 22000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      const linkDist = 130;
+
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        // atracción muy sutil hacia el mouse
+        if (mouse.x !== null) {
+          const dx = mouse.x - p.x, dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160) {
+            p.x += dx * 0.0018;
+            p.y += dy * 0.0018;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,255,255,0.55)';
+        ctx.fill();
+      });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < linkDist) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(255,140,0,${0.12 * (1 - dist / linkDist)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+    window.addEventListener('resize', () => { resize(); makeParticles(); });
+
+    resize();
+    makeParticles();
+    tick();
+  })();
+
+  // ---- Rastro de partículas del cursor (estela luciérnaga, lerp) ----
+  (function () {
+    const cyanDot = document.getElementById('trail-cyan');
+    const orangeDot = document.getElementById('trail-orange');
+    if (!cyanDot || !orangeDot || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return; // sin cursor real (touch), no aplica
+
+    let mouseX = -100, mouseY = -100;
+    let cyanX = -100, cyanY = -100;
+    let orangeX = -100, orangeY = -100;
+    let active = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      if (!active) { active = true; cyanDot.style.opacity = '0.9'; orangeDot.style.opacity = '0.6'; }
+    }, { passive: true });
+
+    function lerp(a, b, n) { return a + (b - a) * n; }
+
+    function animateTrail() {
+      cyanX = lerp(cyanX, mouseX, 0.35);
+      cyanY = lerp(cyanY, mouseY, 0.35);
+      orangeX = lerp(orangeX, mouseX, 0.15);
+      orangeY = lerp(orangeY, mouseY, 0.15);
+      cyanDot.style.transform = `translate(${cyanX - 3.5}px, ${cyanY - 3.5}px)`;
+      orangeDot.style.transform = `translate(${orangeX - 2.5}px, ${orangeY - 2.5}px)`;
+      requestAnimationFrame(animateTrail);
+    }
+    requestAnimationFrame(animateTrail);
+  })();
+
+  // ---- Parallax en blobs de fondo (usa la propiedad CSS 'translate', independiente de 'transform',
+  // para no pisar las clases de posicionamiento -translate-x/y-* que ya tienen estos elementos) ----
+  (function () {
+    const blobs = document.querySelectorAll('.parallax-blob');
+    if (!blobs.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ticking = false;
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      blobs.forEach(blob => {
+        const speed = parseFloat(blob.dataset.speed || '0.1');
+        blob.style.translate = `0 ${scrollY * speed}px`;
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
+    }, { passive: true });
+    updateParallax();
+  })();
+
+  // ---- Barra de carga entre páginas (se anima al hacer clic en un link interno) ----
+  (function () {
+    const bar = document.getElementById('page-load-bar');
+    if (!bar) return;
+    const isInternalLink = (a) => {
+      if (!a.href || a.target === '_blank') return false;
+      try {
+        const url = new URL(a.href, window.location.href);
+        return url.origin === window.location.origin && !a.href.startsWith('mailto:') && !a.href.startsWith('tel:') && !a.hash;
+      } catch (e) { return false; }
+    };
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a || !isInternalLink(a)) return;
+      bar.style.opacity = '1';
+      requestAnimationFrame(() => { bar.style.width = '75%'; });
+      setTimeout(() => { bar.style.width = '92%'; }, 300);
+    });
+    window.addEventListener('pageshow', () => {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      bar.style.opacity = '1';
+      requestAnimationFrame(() => { bar.style.transition = ''; });
+    });
+  })();
+
+</script>
+<script>
+  // Formulario del cliente piloto: arma el mensaje de WhatsApp con el tipo y la cantidad
+  (function () {
+    var f = document.getElementById('form-piloto'); if (!f) return;
+    var tipo = 'club', n = document.getElementById('piloto-n'), a = document.getElementById('piloto-wa'), lab = document.getElementById('piloto-n-label');
+    function actualizar() {
+      var club = tipo === 'club', cant = parseInt(n.value, 10);
+      lab.textContent = club ? '¿Cuántos socios tiene?' : '¿Cuántos apartamentos tiene?';
+      var msg = 'Hola F&V, administro un ' + tipo + ' de ' + (cant > 0 ? cant : '[N]') + ' ' + (club ? 'socios' : 'apartamentos') + ' y quiero ser cliente piloto';
+      a.setAttribute('href', 'https://wa.me/584244125386?text=' + encodeURIComponent(msg));
+      f.querySelectorAll('[data-tipo]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-tipo') === tipo ? 'true' : 'false'); });
+    }
+    f.querySelectorAll('[data-tipo]').forEach(function (b) { b.addEventListener('click', function () { tipo = b.getAttribute('data-tipo'); actualizar(); }); });
+    n.addEventListener('input', actualizar);
+    f.addEventListener('submit', function (e) { e.preventDefault(); });
+  })();
+</script>
+<script defer src="/assets/eventos.js"></script>
+<script defer src="/assets/luci.js"></script>
+<script defer src="/assets/medicion.js"></script>
+<script defer src="/assets/search.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
