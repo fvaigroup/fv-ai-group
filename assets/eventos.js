@@ -1,6 +1,6 @@
 /* Talleres y cursos: fechas, horas, precios y cupos en UN solo lugar.
    >>> Para cambiar una fecha, un precio o los cupos libres, edita SOLO el bloque EVENTOS de abajo. <<<
-   Las páginas (Express, portada, Cursos, curso Finanzas con IA) leen estos datos; el HTML trae el mismo texto por defecto
+   Las páginas (Triangular, portada, Cursos, curso Finanzas con IA) leen estos datos; el HTML trae el mismo texto por defecto
    para quien no tiene JavaScript. Los eventos con fecha pasada se ocultan solos.
 
    Marcado que entiende:
@@ -20,17 +20,16 @@
       duracion: '3 horas',
       lugar: 'Valencia',
       precio: 25,                         // USD por persona
-      precioAnticipado: 20,               // USD si pagan antes de la fecha de abajo
-      anticipadoHasta: '2026-10-14',      // miércoles (incluido)
+      precioContado: 20,                  // USD pagando de contado al reservar (20 % menos)
       cuposTotales: 6,
       cuposLibres: 6                      // <- actualiza esto cuando se reserve un cupo
     },
     curso: {
       nombre: 'Finanzas con IA',
       lugar: 'Valencia',
-      precio: 300,                        // USD precio regular
-      precioEfectivo: 265,                // USD pagando en efectivo o USDT
-      reserva: 100,                       // USD para reservar el cupo
+      precio: 299,                        // USD en 3 cuotas, una por sábado
+      cuotas: [100, 100, 99],             // USD de cada cuota (suman el precio)
+      precioContado: 239.2,               // USD de contado (20 % menos)
       cuposTotales: 6,
       cohortes: [                         // en orden de fecha; cada una con sus cupos
         { id: 'oct', fechas: ['2026-10-10', '2026-10-17', '2026-10-24'], hora: '8:00 a.m. a 12:00 p.m.', cuposLibres: 6 },
@@ -57,7 +56,7 @@
   function msgCurso(c, cur) {
     var ds = dias(c).join(', ').replace(/, (\d+)$/, ' y $1');
     var mes = d(c.fechas[0]).toLocaleDateString('es-VE', { month: 'long', timeZone: TZ }).slice(0, 3);
-    return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (Línea Triangular, ' + ds + ' de ' + mes + ') con $' + cur.reserva;
+    return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (Línea Triangular, ' + ds + ' de ' + mes + '). ¿Cómo pago: en 3 cuotas o de contado?';
   }
 
   var t = EVENTOS.taller, cur = EVENTOS.curso;
@@ -69,7 +68,7 @@
   var estado = {
     'taller:vigente': hoy <= t.fecha,
     'taller:pasado': hoy > t.fecha,
-    'taller:anticipado': hoy <= t.fecha && hoy <= t.anticipadoHasta,
+    'taller:anticipado': false,         // ya no hay fecha límite: el descuento es por pagar de contado
     'curso:vigente': coh.some(function (c) { return hoy <= c.fechas[0]; }),
     'curso:pasado': !coh.some(function (c) { return hoy <= c.fechas[0]; })
   };
@@ -81,10 +80,10 @@
   var datos = {
     'taller.nombre': t.nombre, 'taller.fecha': larga(t.fecha), 'taller.fechaCorta': sinAnio(t.fecha), 'taller.diaMes': diaMes(t.fecha),
     'taller.hora': t.hora, 'taller.duracion': t.duracion, 'taller.lugar': t.lugar, 'taller.precio': '$' + t.precio,
-    'taller.precioAnticipado': '$' + t.precioAnticipado, 'taller.anticipadoHasta': sinAnio(t.anticipadoHasta),
+    'taller.precioContado': '$' + t.precioContado,
     'taller.cupos': cupos(t.cuposLibres, t.cuposTotales), 'taller.cuposTotales': String(t.cuposTotales),
-    'curso.nombre': cur.nombre, 'curso.lugar': cur.lugar, 'curso.precio': '$' + cur.precio, 'curso.precioEfectivo': '$' + cur.precioEfectivo,
-    'curso.reserva': '$' + cur.reserva, 'curso.cuposTotales': String(cur.cuposTotales)
+    'curso.nombre': cur.nombre, 'curso.lugar': cur.lugar, 'curso.precio': '$' + cur.precio, 'curso.contado': '$239,20',
+    'curso.cuotas': '$100, $100 y $99', 'curso.cuposTotales': String(cur.cuposTotales)
   };
   function volcar(prefijo, c) {
     datos[prefijo + '.fechas'] = fechasCurso(c);
@@ -96,7 +95,7 @@
   coh.forEach(function (c) { volcar('curso.' + c.id, c); });
 
   var mensajes = {
-    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» (Línea Triangular Express) del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '» (Línea Triangular Express)' },
+    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» (Línea Triangular) del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '» (Línea Triangular)' },
     curso: { ok: msgCurso(proxima, cur), pasado: 'Hola F&V, avísame cuando haya nueva fecha de ' + cur.nombre + ' (Línea Triangular)' }
   };
   coh.forEach(function (c) { mensajes['curso-' + c.id] = { ok: msgCurso(c, cur), pasado: mensajes.curso.pasado }; });

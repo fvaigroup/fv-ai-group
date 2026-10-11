@@ -1,4 +1,4 @@
-# Catálogo Express: cómo adaptarlo a un cliente
+# Catálogo con tasa BCV: cómo adaptarlo a un cliente
 
 Archivo base: `demo-catalogo.html`.
 

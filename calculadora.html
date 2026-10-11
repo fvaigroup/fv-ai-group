@@ -108,7 +108,7 @@
 
   .box-glow-cyan { border: 1px solid rgba(0,255,255,0.4); box-shadow: 0 0 14px rgba(0,255,255,0.2); }
   .box-glow-orange { border: 1px solid rgba(255,140,0,0.4); box-shadow: 0 0 14px rgba(255,140,0,0.2); }
-  /* ---- Tarjeta de la Línea Triangular (Express): glow verde en reposo, borde violeta al pasar el mouse ---- */
+  /* ---- Tarjeta de la Línea Triangular: glow verde en reposo, borde violeta al pasar el mouse ---- */
   .box-glow-tri { border: 1px solid rgba(74,222,128,0.4); box-shadow: 0 0 14px rgba(74,222,128,0.2); }
   @media (hover: hover) and (pointer: fine) {
     .box-glow-tri:hover { border-color: rgba(168,85,247,0.55); box-shadow: 0 0 18px rgba(168,85,247,0.22), 0 0 14px rgba(74,222,128,0.12); }
@@ -442,9 +442,9 @@
     <div class="x-card is-featured is-static relative overflow-hidden p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 justify-between">
       <div>
         <h2 id="sig-title" class="font-sans text-2xl sm:text-3xl font-bold text-white mb-2">¿Quieres que tus precios se actualicen solos?</h2>
-        <p class="text-slate-300 text-lg">Catálogo con tasa BCV <strong class="text-white">$90</strong> · Caja Clara <strong class="text-white">$50</strong>. Con la tasa BCV del día, sin que tengas que cambiar nada a mano.</p>
+        <p class="text-slate-300 text-lg">Presencia, tamaño Catálogo: <strong class="text-white">$29 al mes</strong>. Tus precios en $ y Bs se actualizan solos con la tasa BCV del día, sin que tengas que cambiar nada a mano.</p>
       </div>
-      <a href="/triangular" data-evento="calculadora_a_express" class="btn-tri inline-flex justify-center items-center px-7 py-3.5 font-head font-semibold rounded-lg whitespace-nowrap">Ver Triangular Express</a>
+      <a href="/triangular#presencia" data-evento="calculadora_a_triangular" class="btn-tri inline-flex justify-center items-center px-7 py-3.5 font-head font-semibold rounded-lg whitespace-nowrap">Ver Presencia Catálogo</a>
     </div>
   </div>
 </section>
@@ -515,7 +515,7 @@
         <div>
           <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
           <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="/triangular?modo=express" class="link-underline hover:text-white transition-colors">Productos Express</a></li>
+            <li><a href="/triangular" class="link-underline hover:text-white transition-colors">Productos</a></li>
             <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
             <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
             <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
@@ -535,6 +535,7 @@
           <ul class="space-y-2.5 text-sm text-slate-400">
             <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
             <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
+            <li><a href="/software" data-evento="pie_software" class="link-underline hover:text-white transition-colors">Software (próximamente)</a></li>
             <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
             <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
             <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>

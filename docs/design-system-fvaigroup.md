@@ -95,9 +95,9 @@ En resumen: **vanguardista en superficie (color, glow, motion), corporativo/met�
 
 ## 6. Línea Triangular y página /triangular
 
-La página `/triangular` (`triangular.html`, antes `express.html`: productos con precio fijo para negocios y personas) es el escaparate de la Línea Triangular y usa su par cromático verde/violeta en lugar del cian/naranja. Hoy el color lo da la envolvente `.linea-tri` (ver sección 7); lo que sigue describe los componentes:
+La página `/triangular` (`triangular.html`, antes `express.html`: planes y productos para negocios y personas) es el escaparate de la Línea Triangular y usa su par cromático verde/violeta en lugar del cian/naranja. Hoy el color lo da la envolvente `.linea-tri` (ver sección 7); lo que sigue describe los componentes:
 
-- **CTA principal:** `.btn-tri` (definido en `src/tailwind.css`, capa `components`): fondo `fv-triGreen` lleno, texto negro, glow verde que vira a violeta en hover y `:active { scale(0.96) }`. Cumple el papel de `.btn-primary` dentro de Express y de cualquier bloque Express en otras páginas (franja de la portada, tarjetas Express en Precios y Cursos). Fuera de esos bloques el CTA principal sigue siendo el naranja.
+- **CTA principal:** `.btn-tri` (definido en `src/tailwind.css`, capa `components`): fondo `fv-triGreen` lleno, texto negro, glow verde que vira a violeta en hover y `:active { scale(0.96) }`. Cumple el papel de `.btn-primary` dentro de la Línea Triangular. Fuera de esos bloques el CTA principal sigue siendo el naranja.
 - **CTA secundario de la línea:** contorno violeta (`border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10`).
 - **Texto destacado:** `.text-gradient-tri` (degradado estático verde → violeta), también global en `src/tailwind.css`. El `shimmer-text` cian→naranja queda para la marca general y la Línea Hexagonal.
 - **Tarjetas:** hover con elevación y borde violeta iluminado; la tarjeta destacada usa borde en degradado verde→violeta (misma técnica `padding-box`/`border-box` que `.price-card.is-featured`).
@@ -109,7 +109,7 @@ La página `/triangular` (`triangular.html`, antes `express.html`: productos con
 
 ## 7. Color por línea (sistema vigente)
 
-El sitio comunica **dos líneas con dos velocidades**: ▲ Línea Triangular (negocios pequeños y personas) y ⬡ Línea Hexagonal (empresas), cada una con productos normales y productos ⚡ Express. El color depende de la **línea donde está el bloque**, no del componente.
+El sitio comunica **dos líneas**: ▲ Línea Triangular (negocios pequeños y personas) y ⬡ Línea Hexagonal (empresas), sin concepto "Express": cada tarjeta lleva solo la insignia de su línea y el plazo como texto normal. El color depende de la **línea donde está el bloque**, no del componente.
 
 | Envolvente | Par de acento | Emblema | Hover de tarjetas | Botón principal |
 |---|---|---|---|---|
@@ -126,11 +126,9 @@ Variables que fija cada envolvente (en `src/tailwind.css`): `--acento-1`, `--ace
 - Ningún bloque Triangular usa cian ni naranja por dentro, y ningún bloque Hexagonal usa verde ni morado (excepciones: el ícono de WhatsApp, el encabezado y el pie).
 - `.btn-tri`, `.btn-primary`, `.text-gradient-tri` y `.shimmer-text` siguen existiendo; en bloques nuevos usar `.btn-linea` y `.texto-linea`.
 
-**Insignias (siempre texto + forma, nunca solo color)**
+**Insignias (siempre texto + forma, nunca solo color)** (no existe insignia «Express»; el plazo va como texto normal: «Activo en 48 h», «Entrega en 2 semanas»)
 - `<span class="ins ins-tri"><span>Línea Triangular</span></span>` → «▲ Línea Triangular»: borde verde, texto en degradado verde→morado.
 - `<span class="ins ins-hex"><span>Línea Hexagonal</span></span>` → «⬡ Línea Hexagonal»: borde cian, texto en degradado cian→naranja.
-- `<span class="ins ins-express">Express · 48 h</span>` → «⚡ Express · plazo»: relleno con el `--acento-1` de su línea y texto negro. Solo en productos Express; los normales llevan solo la insignia de línea.
-- Regla escrita igual en ambas líneas: «⚡ Express = entrega rápida. Triangular: máximo 7 días. Hexagonal: máximo 3 semanas.»
 
 **Tono:** la Línea Triangular le habla de «tú»; la Hexagonal, de «usted»; las partes comunes (inicio, menú, pie, contacto, nosotros), de «tú».
 
@@ -139,5 +137,9 @@ Variables que fija cada envolvente (en `src/tailwind.css`): `--acento-1`, `--ace
 1. Reutilizar siempre el mismo `<head>` (fuentes, `tailwind.css`, meta tags de OG) y el mismo shell de header/footer/Luci/search del home.
 2. Toda sección nueva sigue la fórmula: `<section class="relative py-24 border-t border-white/5">` (alternando `bg-fv-surface2/40`) → encabezado (`h2` uppercase `semibold` + párrafo `text-slate-400`) → contenido.
 3. Usar `.btn-primary` solo para la conversión principal de la página; todo lo demás es `.btn-secondary` o un link con `.link-underline`.
-4. Elegir el par de acento según la línea de negocio: **cian/naranja** para todo lo relacionado con la línea Hexágono (servicios principales, cursos estándar), **verde/violeta (`fv-triGreen`/`fv-triPurple`)** solo cuando el contenido pertenece explícitamente a la línea Triángulo (Mid-Ticket y productos Express), con `.btn-tri` como CTA principal de esos bloques.
+4. Elegir el par de acento según la línea de negocio: **cian/naranja** para todo lo relacionado con la línea Hexágono (servicios principales, cursos estándar), **verde/violeta (`fv-triGreen`/`fv-triPurple`)** solo cuando el contenido pertenece explícitamente a la línea Triángulo (planes y productos para negocios), con `.btn-tri` como CTA principal de esos bloques.
 5. Los íconos nuevos deben mantenerse en estilo *outline* SVG, `stroke-width` 1.5, y heredar el color de acento de su contexto (nunca un color fuera de la paleta `fv`).
+
+## Selector de tamaño (`.tam-tab`) y pago adelantado
+
+Cada producto de `/triangular` ofrece varios tamaños como pestañas (`role="tablist"` / `role="tab"` / `role="tabpanel"`): las flechas, Inicio y Fin del teclado cambian de tamaño y solo el panel elegido se ve. El estilo es `.tam-tab` en `src/tailwind.css` (el color sale de `--acento-1` de la línea; el tamaño elegido lleva `aria-selected="true"`). El comportamiento y los cálculos están en `assets/planes.js`: cada panel declara `data-panel`, `data-precio` y `data-tipo` (`mensual` o `unico`) y el script escribe el pago adelantado (`data-ahorro="12"`, `data-ahorro-lista="3|6|9"`) y el pago de contado (`data-contado`). Sin JavaScript se ven todos los tamaños.
