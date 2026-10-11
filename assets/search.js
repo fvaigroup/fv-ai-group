@@ -15,7 +15,7 @@
     { title: 'Aprende: talleres y curso', desc: 'IA y finanzas presenciales en Valencia, grupos de máximo 6. Desde $25.', url: '/triangular#aprende', cat: 'Producto' },
     { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $4,99, pago único.', url: '/triangular#mis-finanzas-claras', cat: 'Producto' },
     { title: 'Demo: Catálogo con tasa BCV', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: '/demo-catalogo', cat: 'Producto' },
-    { title: 'Páginas web', desc: 'Catálogo con tasa BCV $90, Web de una página $150, Web Profesional desde $350 y Tienda Online desde $500.', url: '/paginas-web', cat: 'Producto' },
+    { title: 'Páginas web (Presencia)', desc: 'Catálogo $29/mes, Web $59/mes y Tienda $99/mes, montadas y mantenidas por nosotros.', url: '/paginas-web', cat: 'Producto' },
     { title: 'Asesoría Estratégica', desc: 'Diagnóstico antes de comprometer presupuesto en ejecución.', url: '/asesoria-estrategica', cat: 'Servicio' },
     { title: 'Evaluación de Procesos', desc: 'Auditoría técnica y financiera de sus procesos actuales.', url: '/evaluacion-procesos', cat: 'Servicio' },
     { title: 'Despliegue y Ejecución', desc: 'Implementación en Dynamics 365 Sales/Customer Service, Odoo Community o desarrollo a medida.', url: '/despliegue-ejecucion', cat: 'Servicio' },

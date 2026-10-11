@@ -2,7 +2,7 @@
    - Cualquier elemento con data-evento="nombre" (o data-track) envía ese evento al hacer clic.
    - Todo enlace a WhatsApp envía "whatsapp_click" con el producto (data-product, o el nombre sacado del mensaje prellenado).
    - Los enlaces a /contacto#agenda y al calendario envían "diagnostico_gratis".
-   - Los mensajes de reserva con $100 del curso envían "reservo_100".
+   - Los mensajes de cupo del curso Finanzas con IA envían "reservo_curso".
    - La calculadora envía "generate_lead" y "calculadora_pdf_descargado" desde assets/calculadora.js. */
 (function () {
   'use strict';
@@ -30,7 +30,7 @@
     var href = a.getAttribute('href') || '';
     if (/wa\.me/.test(href)) {
       gtag('event', 'whatsapp_click', { cta_location: ubicacion(a), product: producto(a), page: page });
-      if (/\$100|%24100/.test(textoWa(a) + href) && /reserv/i.test(textoWa(a))) gtag('event', 'reservo_100', { cta_location: ubicacion(a), page: page });
+      if (/Finanzas con IA/i.test(textoWa(a)) && /cupo|reserv/i.test(textoWa(a))) gtag('event', 'reservo_curso', { cta_location: ubicacion(a), page: page });
     } else if (/\/contacto#agenda|cal\.com\/f-v-ai-group/.test(href) && !(marcado && marcado.dataset.evento === 'diagnostico_gratis')) {
       gtag('event', 'diagnostico_gratis', { cta_location: ubicacion(a), page: page });
     }
