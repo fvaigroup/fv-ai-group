@@ -55,6 +55,8 @@
     var p = n.toFixed(2).split('.');
     return '$' + p[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + p[1];
   }
+  /** Entero con puntos de miles: 1000 → «1.000». */
+  function miles(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   /** Plan recomendado para un número de socios (más de 5.000: a medida). */
   function planPara(socios) {
     var n = Math.max(1, Math.floor(Number(socios) || 0));
@@ -93,7 +95,6 @@
       });
     }
     grupo.querySelectorAll('[data-ciclo]').forEach(function (b) { b.addEventListener('click', function () { aplicar(b.getAttribute('data-ciclo')); }); });
-    aplicar('mensual');
   }
 
   // ---------------- Calculadora ----------------
@@ -107,7 +108,7 @@
       el('horas').textContent = (horas === 1 ? '1 hora' : horas + ' horas') + ' al mes';
       if (plan.mensual) {
         el('plan').textContent = plan.nombre;
-        el('rango').textContent = (plan.min === 1 ? 'Hasta ' + plan.max.toLocaleString('es-VE') : plan.min.toLocaleString('es-VE') + ' a ' + plan.max.toLocaleString('es-VE')) + ' socios';
+        el('rango').textContent = (plan.min === 1 ? 'Hasta ' + miles(plan.max) : miles(plan.min) + ' a ' + miles(plan.max)) + ' socios';
         el('mensual').textContent = '$' + plan.mensual + '/mes';
         el('anual').textContent = fmt(equivalenteMensual(plan.mensual)) + '/mes';
         el('anual-total').textContent = 'Se paga ' + fmt(anual(plan.mensual)) + ' al año por adelantado.';
@@ -115,12 +116,12 @@
       } else {
         el('plan').textContent = 'A medida';
         el('rango').textContent = 'Más de 5.000 socios o varias sedes';
-        el('mensual').textContent = 'Desde $' + A_MEDIDA.desde.toLocaleString('es-VE') + '/mes';
+        el('mensual').textContent = 'Desde $' + miles(A_MEDIDA.desde) + '/mes';
         el('anual').textContent = 'A medida';
         el('anual-total').textContent = 'Armamos la propuesta para su club.';
         el('porsocio').textContent = 'Se cotiza a la medida';
       }
-      var msg = 'Hola F&V, mi club tiene ' + n.toLocaleString('es-VE') + ' socios y quiero ver la demo de Club (plan ' + plan.nombre.toLowerCase() + ')';
+      var msg = 'Hola F&V, mi club tiene ' + miles(n) + ' socios y quiero ver la demo de Club (plan ' + plan.nombre.toLowerCase() + ')';
       wa.setAttribute('href', 'https://wa.me/584244125386?text=' + encodeURIComponent(msg));
     }
     function desdeNumero() {
@@ -132,10 +133,9 @@
     }
     num.addEventListener('input', desdeNumero);
     rango.addEventListener('input', function () { num.value = rango.value; desdeNumero(); });
-    desdeNumero();
   }
 
-  var Club = { PLANES: PLANES, A_MEDIDA: A_MEDIDA, anual: anual, equivalenteMensual: equivalenteMensual, ahorroAnual: ahorroAnual, fmt: fmt, planPara: planPara, costoPorSocio: costoPorSocio, horasAhorradas: horasAhorradas };
+  var Club = { PLANES: PLANES, A_MEDIDA: A_MEDIDA, anual: anual, equivalenteMensual: equivalenteMensual, ahorroAnual: ahorroAnual, fmt: fmt, planPara: planPara, costoPorSocio: costoPorSocio, horasAhorradas: horasAhorradas, miles: miles };
   root.Club = Club;
   if (typeof module !== 'undefined' && module.exports) module.exports = Club;
   if (typeof document !== 'undefined') {
