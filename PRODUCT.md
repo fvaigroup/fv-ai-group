@@ -51,3 +51,12 @@ Logos reales de clientes ya integrados en el carrusel (Licorway, Killjoy, Natura
 ## Accessibility & Inclusion
 
 No se estableció un requisito específico más allá de las prácticas ya presentes en el sitio (skip-link, alt text, contraste, `prefers-reduced-motion`).
+
+## 8. Oferta y reglas de pago (simplificación de octubre de 2026)
+
+- **Línea Triangular:** todo cuesta entre $4,99 y $299,99 (precio mensual o del pago único), preferiblemente mensual. Plan Arranque $39/mes y 6 productos con tamaños: Presencia, Caja Clara, Tablero Ejecutivo, Asistente IA de WhatsApp, Asesor F&V y Aprende; anzuelo: Mis Finanzas Claras $4,99. La fuente de verdad de los precios es `triangular.html` (generada con los mismos datos que `assets/planes.js`); talleres y cursos salen de `assets/eventos.js`.
+- **Línea Hexagonal:** «desde $300» en el discurso público; sus productos y precios no cambian (Asesoría Estratégica $150 y Habilitación de equipos $60 por persona siguen publicados: decisión del dueño). Sin descuento por pago adelantado.
+- **Descuento:** 20 % solo si se paga de contado un producto de pago único o si se adelantan 3, 6, 9 o 12 meses de un plan mensual (precio × meses × 0,8). Mes a mes o en cuotas: sin descuento. Ya no existe descuento por USDT o efectivo.
+- **Pago:** dólares, pagaderos en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Los pagos únicos pueden ir en 2 o 3 cuotas. Si no se paga la mensualidad, el servicio se pausa hasta ponerse al día.
+- **Permanencia mínima:** Presencia Web y Tienda, 12 meses; Asistente IA de WhatsApp, 6 meses. El resto, sin permanencia.
+- **/software:** página de marca madre («tú») para validar una plataforma de cuotas de clubes y condominios con clientes piloto. No va en el menú; se enlaza desde el inicio, el pie y Contacto.

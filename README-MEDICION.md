@@ -16,7 +16,7 @@ Todo el seguimiento de clics vive en **un solo archivo**: [`assets/medicion.js`]
 
 ### 1. WhatsApp por producto: `whatsapp_click`
 Se envía en **todo** enlace a `wa.me`. Parámetros:
-- `product`: el producto que trajo al cliente. Sale del atributo `data-product` del botón o, si no lo tiene, del mensaje prellenado (por ejemplo, «Hola F&V, quiero el Pack Arranque ($150)…» → `pack-arranque`).
+- `product`: el producto que trajo al cliente. Sale del atributo `data-product` del botón o, si no lo tiene, del mensaje prellenado (por ejemplo, «Hola F&V, quiero el Plan Arranque (Línea Triangular, $39/mes)…» → `pack-arranque`).
 - `cta_location`: dónde estaba el botón (`hero`, `header`, `footer`, `menu_movil`, `luci`, o el nombre del bloque).
 - `page`: la página (`inicio`, `triangular`, `paginas-web`…).
 
@@ -25,8 +25,8 @@ En GA4: Eventos → `whatsapp_click` → agregar la dimensión personalizada `pr
 ### 2. Diagnóstico gratis: `diagnostico_gratis`
 Cualquier enlace a `/contacto#agenda` o al calendario de Cal.com. Los botones "Agenda tu diagnóstico gratis" de Contacto, Nosotros y Casos lo llevan además marcado con `data-evento`.
 
-### 3. Reservo con $100: `reservo_100`
-Los botones "Reservo con $100" de Finanzas con IA (octubre y noviembre), además de `reservo_100_oct` / `reservo_100_nov` según la cohorte.
+### 3. Reserva de cupo del curso: `reservo_curso`
+Los botones "Reservo mi cupo" de Finanzas con IA (octubre y noviembre; el pago es en 3 cuotas o de contado), además de `reservo_curso_oct` / `reservo_curso_nov` según la cohorte.
 
 ### 4. Envío de la calculadora: `generate_lead`
 Se envía desde `assets/calculadora.js` al enviar el formulario de `/calculadora`. Parámetros: `method` = `calculadora_pdf` o `calculadora_whatsapp`. El PDF descargado envía también `calculadora_pdf_descargado`.
@@ -63,7 +63,21 @@ Para medir un botón nuevo basta con añadirle `data-evento="mi_evento"`; no hay
 ## Qué mirar cada semana
 1. `whatsapp_click` agrupado por `product`: qué producto trae más conversaciones.
 2. `diagnostico_gratis`: cuántas personas piden el diagnóstico (y desde qué página).
-3. `reservo_100` y `reservo_taller`: reservas iniciadas de cursos y talleres.
+3. `reservo_curso` y `reservo_taller`: reservas iniciadas de cursos y talleres.
 4. `generate_lead` (calculadora): cuántos dejan sus datos a cambio del regalo.
 
 Nota: un clic en WhatsApp es una **intención**, no una venta. Para saber qué se cerró, anota en una hoja qué producto pidió cada persona (el mensaje prellenado lo dice).
+
+### 6. Eventos de la simplificación de la oferta
+Cada botón nuevo lleva `data-evento`. Los de WhatsApp de producto usan `<ubicación>_<producto>` (por ejemplo `triangular_tarjeta_presencia-catalogo`, `portada_pedido_plan-arranque`).
+
+| Evento | Dónde |
+|---|---|
+| `triangular_indice_<producto>` | Chips para ir a un producto en /triangular |
+| `triangular_demo_catalogo` | "Ver la demo en vivo" del tamaño Catálogo |
+| `portada_software`, `pie_software`, `contacto_software` | Enlaces a /software (franja de la portada, pie y Contacto) |
+| `software_hero_piloto`, `software_hero_ejemplo`, `software_tipo_club`, `software_tipo_condominio`, `software_cta_piloto` | Página /software; el WhatsApp del piloto trae el producto `software-piloto` |
+| `web_plan_catalogo`, `web_plan_web`, `web_plan_tienda` | Tamaños de Presencia en /paginas-web |
+| `cursos_a_asesor`, `avisame_curso_finanzas` | Sesión Clara y aviso de nueva fecha en /cursos |
+
+La prueba automática de los cálculos de pago adelantado está en `tests/planes.test.js` (`node tests/planes.test.js`).

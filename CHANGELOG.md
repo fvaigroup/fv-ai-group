@@ -53,3 +53,16 @@ El sitio ahora comunica **dos líneas con dos velocidades**: ▲ Línea Triangul
 - **Fase 9:** control de calidad (ver el resumen entregado con la rama).
 
 La lista de pendientes del dueño (testimonios, casos, fotos, historia, webhook, validación de precios) está en `PENDIENTES-LOCAL.md`, un archivo local que no se sube al repositorio público.
+
+---
+
+# Simplificación de la oferta (rama `simplificar-oferta`, 11 de octubre de 2026)
+
+Se elimina el concepto «Express», la Línea Triangular se rehace con 6 productos casi todos mensuales y entran reglas de pago nuevas.
+
+- **Fase 1:** «Express» y «⚡» desaparecen de todo lo visible (insignias, filtros por velocidad, textos, CSS, buscador, Luci, JSON-LD); la comparación del inicio pasa a dos columnas. Se conservan las redirecciones `/express` y `/triangular-express` → `/triangular`.
+- **Fase 2:** `/triangular` nueva: Plan Arranque ($39/mes, antes $44) y 6 productos con selector de tamaño y pago adelantado calculado (`assets/planes.js`): Presencia ($15 · $29 · $59 · $99), Caja Clara ($15 · $29 · $39), Tablero Ejecutivo ($79 · $149), Asistente IA de WhatsApp ($119 · $179), Asesor F&V ($30 · $80 · $119 · $199) y Aprende (taller $25, Finanzas con IA $299 en 3 cuotas, taller de ChatGPT por anunciar), más el anzuelo Mis Finanzas Claras ($4,99). Test de hasta 3 preguntas, 5 preguntas frecuentes y datos estructurados nuevos. `assets/eventos.js` con los precios nuevos del taller y del curso.
+- **Fase 3:** bloque «Cómo pagas» único (inicio, /triangular, /paginas-web, /cursos), reglas viejas de descuento por USDT/efectivo y de «mitad y mitad» eliminadas, capítulo XII de `terminos.html` (permanencia mínima, pausa por falta de pago, descuento por pago adelantado, cancelación), Luci y JSON-LD al día. La Hexagonal queda sin descuento y con «desde $300».
+- **Fase 4:** inicio (lo más pedido Triangular, franja de software, FAQ y test con productos reales), /paginas-web con los tamaños de Presencia, /cursos y /curso-finanzas-ia con precios nuevos (la Clase 1:1 sale; entra la Sesión Clara), Contacto agrupado, cierre de la calculadora con Presencia Catálogo.
+- **Fase 5:** `/software` (plataforma de cuotas para clubes y condominios, cliente piloto), en el sitemap, el pie y Contacto; no va en el menú.
+- **Fase 6:** control de calidad (rastreo de 22 páginas a 2 tamaños, enlaces y anclas, cálculos con `tests/planes.test.js`, Lighthouse), imágenes para redes con los precios nuevos y esta documentación.
