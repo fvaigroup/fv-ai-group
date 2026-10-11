@@ -4,10 +4,10 @@
   // Para añadir una página al buscador: una línea más en este arreglo.
   var SEARCH_INDEX = [
     { title: 'Inicio', desc: 'Página principal de F&V AI Group.', url: '/', cat: 'Pagina' },
-    { title: 'Línea Triangular', desc: 'Productos para tu negocio y para ti, con precio fijo desde $10. ⚡ Express en 24 h a 7 días.', url: '/triangular', cat: 'Pagina' },
-    { title: 'Línea Hexagonal', desc: 'Sistemas, automatización e IA para empresas. ⚡ Hexagonal Express desde $150 en 1 a 3 semanas.', url: '/hexagonal', cat: 'Pagina' },
+    { title: 'Línea Triangular', desc: 'Planes mensuales para tu negocio y productos para ti, desde $4,99.', url: '/triangular', cat: 'Pagina' },
+    { title: 'Línea Hexagonal', desc: 'Sistemas, automatización e IA para empresas, con proyectos a la medida y soporte.', url: '/hexagonal', cat: 'Pagina' },
     { title: 'Negocio Visible', desc: 'Google Maps, WhatsApp Business y QR para tu negocio. $35.', url: '/triangular#negocio-visible', cat: 'Producto' },
-    { title: 'Catálogo con tasa BCV', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: '/triangular#catalogo-express', cat: 'Producto' },
+    { title: 'Catálogo con tasa BCV', desc: 'Tu catálogo web con precios en $ y Bs a tasa BCV. $90.', url: '/triangular#catalogo-bcv', cat: 'Producto' },
     { title: 'Caja Clara', desc: 'Cuadre de caja diario en Bs, $, Pago Móvil y USDT. $50.', url: '/triangular#caja-clara', cat: 'Producto' },
     { title: 'Asistente IA de WhatsApp', desc: 'Responde, toma pedidos y citas las 24 horas. Disponible desde noviembre de 2026.', url: '/triangular#asistente-ia', cat: 'Producto' },
     { title: 'Clase 1:1 de IA', desc: 'Aprende a usar IA con tus propios archivos. $25 por 90 min.', url: '/triangular#clase-ia', cat: 'Producto' },

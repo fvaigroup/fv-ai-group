@@ -1,6 +1,6 @@
 /* Talleres y cursos: fechas, horas, precios y cupos en UN solo lugar.
    >>> Para cambiar una fecha, un precio o los cupos libres, edita SOLO el bloque EVENTOS de abajo. <<<
-   Las páginas (Express, portada, Cursos, curso Finanzas con IA) leen estos datos; el HTML trae el mismo texto por defecto
+   Las páginas (Triangular, portada, Cursos, curso Finanzas con IA) leen estos datos; el HTML trae el mismo texto por defecto
    para quien no tiene JavaScript. Los eventos con fecha pasada se ocultan solos.
 
    Marcado que entiende:
@@ -96,7 +96,7 @@
   coh.forEach(function (c) { volcar('curso.' + c.id, c); });
 
   var mensajes = {
-    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» (Línea Triangular Express) del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '» (Línea Triangular Express)' },
+    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» (Línea Triangular) del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '» (Línea Triangular)' },
     curso: { ok: msgCurso(proxima, cur), pasado: 'Hola F&V, avísame cuando haya nueva fecha de ' + cur.nombre + ' (Línea Triangular)' }
   };
   coh.forEach(function (c) { mensajes['curso-' + c.id] = { ok: msgCurso(c, cur), pasado: mensajes.curso.pasado }; });

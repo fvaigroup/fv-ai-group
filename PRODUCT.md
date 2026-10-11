@@ -10,7 +10,7 @@ web
 
 Empresas en Venezuela que evalúan o ya usan Odoo Community o Dynamics 365 Sales/Customer Service, buscando diagnóstico, automatización, implementación, capacitación y soporte continuo, con integración de IA sobre sus flujos existentes (público de la Línea Hexagonal, `/hexagonal`).
 
-Negocios pequeños y personas (talleres, gomeras, panaderías, peluquerías, consultorios, restaurantes, bodegones, tiendas; profesionales y estudiantes) que compran productos Express de precio fijo por WhatsApp, casi siempre desde el teléfono (página `/triangular`).
+Negocios pequeños y personas (talleres, gomeras, panaderías, peluquerías, consultorios, restaurantes, bodegones, tiendas; profesionales y estudiantes) que compran planes y productos de precio publicado por WhatsApp, casi siempre desde el teléfono (página `/triangular`).
 
 ## Product Purpose
 
@@ -22,12 +22,11 @@ Independiente de proveedor (no atado a un solo fabricante) y de ciclo completo c
 
 ## Operating Context
 
-Dos líneas con dos velocidades cada una (el sitio nunca dice "cuatro líneas"):
-- ▲ **Línea Triangular** (`/triangular`, negocios pequeños y personas, "tú"): Triangular normal, 1 a 3 semanas, desde $250 (Web Profesional, Tienda Online, Tablero de Ventas y Caja, Asistente IA Pro, Finanzas con IA…) y ⚡ **Triangular Express**, 24 h a 7 días, de $10 a $150 (Pack Arranque, Negocio Visible, Catálogo con tasa BCV, Web de una página, Caja Clara, Asistente IA de WhatsApp, clases y taller…).
-- ⬡ **Línea Hexagonal** (`/hexagonal`, empresas, "usted"): Hexagonal normal, 1 a 3 meses, desde $2.000 (Odoo Community, Ecosistema de Automatización, Dynamics 365, desarrollo a medida, Acompañamiento) y ⚡ **Hexagonal Express**, 1 a 3 semanas, desde $150 (Asesoría Estratégica, Evaluación de Procesos, Tablero Gerencial, Sprint de Automatización, Habilitación de equipos, Masterclass privada…).
-- Regla escrita igual en ambas líneas: "⚡ Express = entrega rápida. Triangular: máximo 7 días. Hexagonal: máximo 3 semanas."
+Dos líneas (el sitio nunca dice "cuatro líneas" y no existe el concepto "Express"):
+- ▲ **Línea Triangular** (`/triangular`, negocios pequeños y personas, "tú"): planes y productos de $4,99 a $299,99, la mayoría con pago mensual.
+- ⬡ **Línea Hexagonal** (`/hexagonal`, empresas, "usted"): proyectos a la medida con soporte (diagnóstico, automatización, sistemas completos, formación y acompañamiento).
 
-Canal principal: WhatsApp. Cada botón de producto lleva el mensaje ya escrito con el nombre del producto y su línea, y el formulario de `contacto.html` arma un mensaje de WhatsApp. Empresas: diagnóstico gratis de 20 minutos con Cal.com. Promesa pública: "te respondemos el mismo día" (lun–vie, 9:00 a.m.–5:00 p.m.). `/express` y `/soluciones` ya no existen (redirigen a `/triangular` y a `/`).
+Canal principal: WhatsApp. Cada botón de producto lleva el mensaje ya escrito con el nombre del producto y su línea, y el formulario de `contacto.html` arma un mensaje de WhatsApp. Empresas: diagnóstico gratis de 20 minutos con Cal.com. Promesa pública: "te respondemos el mismo día" (lun–vie, 9:00 a.m.–5:00 p.m.). `/express` y `/soluciones` ya no existen (redirigen a `/triangular` y a `/`; la redirección de `/express` se conserva para no romper enlaces viejos).
 
 ## Capabilities and Constraints
 
@@ -37,7 +36,7 @@ Sitio estático (HTML/CSS/JS + Tailwind CLI vía `npm run build`, sin framework)
 
 ## Brand Commitments
 
-Marca madre F&V: oscura, cian/naranja, con el hexágono de F&V (encabezado, pie, inicio, Nosotros, Contacto, Casos, 404). Dos líneas con dos velocidades, cada una con su propio par de color: ▲ Línea Triangular (verde `fv-triGreen` + morado `fv-triPurple`, emblema triángulo, le habla de "tú") y ⬡ Línea Hexagonal (cian + naranja, emblema hexágono, le habla de "usted"). Cada línea tiene productos normales y productos ⚡ Express (entrega rápida: Triangular máximo 7 días, Hexagonal máximo 3 semanas). El color depende de la línea donde está el bloque (`.linea-tri` / `.linea-hex`); como la marca madre comparte colores con la Hexagonal, todo bloque Hexagonal lleva siempre la insignia "⬡ Línea Hexagonal". Nunca decir "cuatro líneas". Tipografía Space Grotesk (títulos, nav, UI) + Geist (cuerpo). Tono: "Diseñando ecosistemas de IA con humanidad".
+Marca madre F&V: oscura, cian/naranja, con el hexágono de F&V (encabezado, pie, inicio, Nosotros, Contacto, Casos, 404). Dos líneas, cada una con su propio par de color: ▲ Línea Triangular (verde `fv-triGreen` + morado `fv-triPurple`, emblema triángulo, le habla de "tú") y ⬡ Línea Hexagonal (cian + naranja, emblema hexágono, le habla de "usted"). El color depende de la línea donde está el bloque (`.linea-tri` / `.linea-hex`); como la marca madre comparte colores con la Hexagonal, todo bloque Hexagonal lleva siempre la insignia "⬡ Línea Hexagonal". Nunca decir "cuatro líneas" ni usar el concepto "Express". Tipografía Space Grotesk (títulos, nav, UI) + Geist (cuerpo). Tono: "Diseñando ecosistemas de IA con humanidad".
 
 ## Evidence on Hand
 

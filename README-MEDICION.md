@@ -18,7 +18,7 @@ Todo el seguimiento de clics vive en **un solo archivo**: [`assets/medicion.js`]
 Se envía en **todo** enlace a `wa.me`. Parámetros:
 - `product`: el producto que trajo al cliente. Sale del atributo `data-product` del botón o, si no lo tiene, del mensaje prellenado (por ejemplo, «Hola F&V, quiero el Pack Arranque ($150)…» → `pack-arranque`).
 - `cta_location`: dónde estaba el botón (`hero`, `header`, `footer`, `menu_movil`, `luci`, o el nombre del bloque).
-- `page`: la página (`inicio`, `express`, `paginas-web`…).
+- `page`: la página (`inicio`, `triangular`, `paginas-web`…).
 
 En GA4: Eventos → `whatsapp_click` → agregar la dimensión personalizada `product` (Administrar → Definiciones personalizadas → Dimensión, alcance Evento, parámetro `product`). Hasta que se cree, el detalle aparece en DebugView.
 
@@ -37,13 +37,13 @@ Cada botón nuevo lleva `data-evento`. Los de la portada y las páginas de líne
 | Evento | Qué es |
 |---|---|
 | `portada_linea_triangular` / `portada_linea_hexagonal` | Las dos tarjetas grandes de la portada |
-| `portada_cuadro_tri_normal`, `…_tri_express`, `…_hex_normal`, `…_hex_express` | Las 4 casillas del cuadro «dos líneas, dos velocidades» |
+| `portada_comparacion_triangular` / `portada_comparacion_hexagonal` | Las dos columnas de la comparación de líneas en la portada |
 | `portada_test_abrir`, `portada_test_resultado` | Test «¿No sabes cuál?» |
 | `triangular_hero_whatsapp`, `triangular_hero_test`, `triangular_detalle_<producto>` | Página /triangular |
 | `hexagonal_hero_whatsapp`, `hexagonal_detalle_<producto>` | Página /hexagonal |
 | `header_whatsapp` | Botón único del menú |
 
-`whatsapp_click` sigue llevando `product` (nombre del producto) y `cta_location`. El mensaje prellenado de cada producto incluye su línea, por ejemplo «Línea Triangular Express».
+`whatsapp_click` sigue llevando `product` (nombre del producto) y `cta_location`. El mensaje prellenado de cada producto incluye su línea, por ejemplo «Línea Triangular».
 
 ### 6. Otros eventos con nombre propio
 Cualquier elemento con `data-evento="nombre"` envía un evento llamado `nombre` al hacer clic. Los más útiles:
