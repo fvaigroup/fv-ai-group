@@ -194,6 +194,17 @@
 .filtro:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; }
 .filtro:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
 .filtro[aria-pressed="true"] { background: var(--acento-1); border-color: var(--acento-1); color: #000; font-weight: 600; }
+/* Selector de tamaño de cada producto (pestañas con aria-selected; flechas del teclado cambian de tamaño) */
+.tam-tab {
+  display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 52px; padding: .5rem .95rem; border-radius: .75rem;
+  font-family: 'Space Grotesk', sans-serif; color: #cbd5e1; text-align: left; line-height: 1.2;
+  border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.03); transition: background-color .2s, border-color .2s, color .2s;
+}
+.tam-tab:hover { border-color: rgba(var(--acento-1-rgb), .6); color: #fff; }
+.tam-tab:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
+.tam-tab .tam-nombre { font-size: .875rem; font-weight: 600; }
+.tam-tab .tam-precio { font-size: .75rem; opacity: .85; }
+.tam-tab[aria-selected="true"] { background: var(--acento-1); border-color: var(--acento-1); color: #000; }
 .linea-tri.link-underline { background-image: linear-gradient(to right, #4ade80, #a855f7); }
 .linea-hex.link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
 
