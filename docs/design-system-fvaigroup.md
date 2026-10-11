@@ -143,3 +143,16 @@ Variables que fija cada envolvente (en `src/tailwind.css`): `--acento-1`, `--ace
 ## Selector de tamaño (`.tam-tab`) y pago adelantado
 
 Cada producto de `/triangular` ofrece varios tamaños como pestañas (`role="tablist"` / `role="tab"` / `role="tabpanel"`): las flechas, Inicio y Fin del teclado cambian de tamaño y solo el panel elegido se ve. El estilo es `.tam-tab` en `src/tailwind.css` (el color sale de `--acento-1` de la línea; el tamaño elegido lleva `aria-selected="true"`). El comportamiento y los cálculos están en `assets/planes.js`: cada panel declara `data-panel`, `data-precio` y `data-tipo` (`mensual` o `unico`) y el script escribe el pago adelantado (`data-ahorro="12"`, `data-ahorro-lista="3|6|9"`) y el pago de contado (`data-contado`). Sin JavaScript se ven todos los tamaños.
+
+## Estados de interacción
+
+Base común en `src/tailwind.css` (final del archivo) y `assets/estados.js`. El color de todos los estados sale de las variables de la línea (`--acento-1`, `--acento-2` y sus versiones `-rgb`): dentro de `.linea-tri` son verde `#4ade80` y morado `#a855f7`; en `.linea-hex` y en la marca madre, cian `#00FFFF` y naranja `#FF8C00`.
+
+- **Curva y tiempos:** `--ease-estado: cubic-bezier(0.23, 1, 0.32, 1)`; `--t-rapida: .18s` (hover y presionado, 150–200 ms) y `--t-entrada: .28s` (entradas, 250–300 ms). Solo se animan `transform`, `opacity`, `color`, `background-color`, `border-color`, `box-shadow` y `filter`: nada que mueva el layout, así que el CLS no cambia.
+- **`.estado-interactivo`:** transición estándar, `:focus-visible` con anillo de 2 px del acento y 2 px de separación, y `:active` con `scale(0.97)`.
+- **Deshabilitado:** `[disabled]` y `[aria-disabled="true"]` → opacidad .5, cursor `not-allowed`, sin hover, brillo ni escala.
+- **`.spinner` / `.spinner-sm`:** 20 px y 16 px, color heredado (`currentColor`).
+- **`.btn-cargando`:** el botón conserva su ancho (el contenido se oculta con `opacity` pero sigue ocupando lugar), spinner centrado, `cursor: progress`, `pointer-events: none`. Con etiqueta (`.btn-cargando-texto`) el texto se queda visible junto al spinner.
+- **`.skeleton`:** fondo `#121319`, brillo que recorre de izquierda a derecha (`transform`), radio heredado del componente; el contenido se oculta con `opacity` y el tamaño se conserva. `.fade-in` hace aparecer el contenido real al reemplazarlo.
+- **Movimiento reducido:** sin giros ni desplazamientos; el spinner y el skeleton quedan en un pulso suave de opacidad.
+- **Helper `assets/estados.js` (`window.FV_ESTADOS`):** `setCargando(boton, true|false[, texto])` (clase, `aria-busy`, `disabled`, guarda y restaura el contenido), `mostrarSkeleton(contenedor)` / `ocultarSkeleton(contenedor)` y `anunciar(texto)` (región `aria-live="polite"` para lectores de pantalla). Se carga con `defer` en las páginas que lo usan.

@@ -231,3 +231,68 @@ a.nav-tri[aria-current="page"], a.nav-hex[aria-current="page"] { text-decoration
 .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .2s cubic-bezier(0.23, 1, 0.32, 1), background-color .2s, border-color .2s; }
 @media (hover: hover) and (pointer: fine) { .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); box-shadow: 0 0 22px rgba(0,204,255,0.25); } }
 .btn-secondary:active { transform: scale(0.96); transition: transform .1s cubic-bezier(0.23, 1, 0.32, 1); }
+
+/* =====================================================================
+   ESTADOS DE INTERACCIÓN (base común). Ver docs/design-system-fvaigroup.md, sección "Estados de interacción".
+   Curva del sitio: cubic-bezier(0.23, 1, 0.32, 1). Solo se animan transform, opacity, color, background-color,
+   border-color, box-shadow y filter (nunca el tamaño ni la posición: el CLS no cambia).
+   El color de los estados sale de --acento-1 / --acento-2 de la línea (.linea-tri verde/morado; .linea-hex y marca madre cian/naranja).
+   ===================================================================== */
+:root { --ease-estado: cubic-bezier(0.23, 1, 0.32, 1); --t-rapida: .18s; --t-entrada: .28s; --fondo-skeleton: #121319; }
+
+/* ---- .estado-interactivo: transición estándar + foco con el acento de la línea + presionado ---- */
+.estado-interactivo {
+  transition: transform var(--t-rapida) var(--ease-estado), box-shadow var(--t-rapida) var(--ease-estado), background-color var(--t-rapida) var(--ease-estado),
+              border-color var(--t-rapida) var(--ease-estado), color var(--t-rapida) var(--ease-estado), opacity var(--t-rapida) var(--ease-estado), filter var(--t-rapida) var(--ease-estado);
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.estado-interactivo:focus-visible { outline: 2px solid var(--acento-1); outline-offset: 2px; }
+.estado-interactivo:active { transform: scale(0.97); }
+
+/* ---- Deshabilitado: opacidad .5, cursor no permitido, sin hover ni brillo ---- */
+:is(button, input, select, textarea)[disabled], [aria-disabled="true"] {
+  opacity: .5; cursor: not-allowed; box-shadow: none !important; filter: none !important; transform: none !important;
+}
+
+/* ---- Spinner (16 px y 20 px) con el color del texto (currentColor) ---- */
+.spinner, .spinner-sm {
+  display: inline-block; flex: none; width: 1.25rem; height: 1.25rem; border-radius: 50%;
+  border: 2px solid currentColor; border-right-color: transparent; animation: fvGirar .7s linear infinite;
+}
+.spinner-sm { width: 1rem; height: 1rem; }
+@keyframes fvGirar { to { transform: rotate(360deg); } }
+
+/* ---- Botón cargando: conserva su ancho (el contenido sigue ocupando lugar, solo se oculta), spinner centrado ---- */
+.btn-cargando { position: relative; cursor: progress; pointer-events: none; }
+.btn-cargando[disabled], .btn-cargando[aria-disabled="true"] { opacity: 1; cursor: progress; }
+.btn-cargando > .btn-cargando-contenido { opacity: 0; }
+.btn-cargando > .spinner, .btn-cargando > .spinner-sm { position: absolute; inset: 0; margin: auto; }
+/* con etiqueta visible ("Abriendo WhatsApp…"): el texto se queda y el spinner va a su lado */
+.btn-cargando.btn-cargando-texto > .btn-cargando-contenido { opacity: 1; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-cargando.btn-cargando-texto > .spinner, .btn-cargando.btn-cargando-texto > .spinner-sm { position: static; margin: 0; }
+
+/* ---- Skeleton: fondo #121319 con un brillo que recorre de izquierda a derecha. Hereda el radio del componente que reemplaza ---- */
+.skeleton { position: relative; overflow: hidden; background: var(--fondo-skeleton) !important; border-color: transparent !important; box-shadow: none !important; pointer-events: none; }
+.skeleton, .skeleton > * { color: transparent !important; }
+.skeleton > * { opacity: 0 !important; }
+.skeleton::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--acento-1-rgb), .10) 50%, transparent 100%);
+  transform: translateX(-100%); animation: fvBrillo 1.4s var(--ease-estado) infinite;
+}
+@keyframes fvBrillo { to { transform: translateX(100%); } }
+@keyframes fvPulso { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+/* ---- Entrada suave del contenido cuando reemplaza a un skeleton ---- */
+.fade-in { animation: fvFundido var(--t-entrada) var(--ease-estado) both; }
+@keyframes fvFundido { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---- Texto solo para lectores de pantalla (región aria-live del helper estados.js) ---- */
+.fv-sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---- Movimiento reducido: sin giros ni desplazamientos; solo opacidad ---- */
+@media (prefers-reduced-motion: reduce) {
+  .spinner, .spinner-sm { animation: fvPulso 1.2s ease-in-out infinite; border-right-color: currentColor; border-style: dotted; }
+  .skeleton::after { transform: none; background: rgba(var(--acento-1-rgb), .08); animation: fvPulso 1.6s ease-in-out infinite; }
+  .fade-in { animation: none; }
+  .estado-interactivo, .estado-interactivo:active { transition: color var(--t-rapida), background-color var(--t-rapida), border-color var(--t-rapida), opacity var(--t-rapida); transform: none; }
+}
