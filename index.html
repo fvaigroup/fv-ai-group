@@ -320,8 +320,7 @@
   details > summary::-webkit-details-marker { display: none; }
   details[open] .chev { transform: rotate(45deg); }
 
-  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(to right, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }
-  .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; }
+  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(to right, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
 
   #hex-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 
@@ -604,8 +603,7 @@
   .luci-hint-dismiss {
     flex-shrink: 0; background: none; border: none; color: #64748b; font-size: 16px; line-height: 1; cursor: pointer; padding: 0 2px;
     transition: color .2s var(--ease-out);
-  }
-  .luci-hint-dismiss:hover { color: #fff; }
+  }@media (hover: hover) and (pointer: fine) { .luci-hint-dismiss:hover { color: #fff; } }
   /* mientras el aviso está visible, no dupliques con el tooltip hover-only */
   #luci-widget:has(.luci-hint.is-visible) > span { opacity: 0 !important; }
   @media (prefers-reduced-motion: reduce) {
@@ -661,8 +659,7 @@
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
     color: #94a3b8; padding: 6px 10px; border-radius: 8px; font-size: 12px;
     transition: border-color .2s ease, color .2s ease, transform .1s var(--ease-out);
-  }
-  #search-trigger:hover { border-color: rgba(0,255,255,0.4); color: #cbd5e1; }
+  }@media (hover: hover) and (pointer: fine) { #search-trigger:hover { border-color: rgba(0,255,255,0.4); color: #cbd5e1; } }
   #menu-btn { transition: transform .1s var(--ease-out); }
   #search-trigger:active, #menu-btn:active { transform: scale(0.94); }
   #search-trigger kbd {
@@ -711,8 +708,8 @@
   #search-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 15px; font-family: 'Geist', sans-serif; }
   #search-input::placeholder { color: #94a3b8; }
   #search-results { overflow-y: auto; padding: 8px; }
-  .search-result { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-decoration: none; }
-  .search-result:hover, .search-result.is-active { background: rgba(0,204,255,0.08); }
+  .search-result { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-decoration: none; }.search-result.is-active { background: rgba(0,204,255,0.08); }
+  @media (hover: hover) and (pointer: fine) { .search-result:hover { background: rgba(0,204,255,0.08); } }
   .search-result .sr-title { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 14px; display: flex; align-items: center; gap: 8px; }
   .search-result .sr-desc { color: #94a3b8; font-size: 12.5px; }
   .sr-tag { font-size: 10px; padding: 1px 7px; border-radius: 999px; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: .03em; }
