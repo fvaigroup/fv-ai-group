@@ -10,6 +10,8 @@ module.exports = {
         sans: ['Geist', 'sans-serif'],
       },
       colors: {
+        // Club (producto propio): verde profundo, verde medio, dorado suave y crema; sobre el fondo oscuro del sitio
+        club: { verde: '#14532d', medio: '#1f7a4d', oro: '#c9a227', crema: '#faf7f0' },
         fv: {
           black: '#000000',
           surface: '#0D0E12',

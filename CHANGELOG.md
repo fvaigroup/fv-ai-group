@@ -78,3 +78,11 @@ Solo estados visuales y de interacción: no cambian textos, precios ni estructur
 - **Fase 3:** estados de carga: tasa BCV con skeleton y «tasa del [fecha]», calculadora (número con transición, botón en carga, sin doble envío), contacto («Abriendo WhatsApp…», skeleton de Cal.com y del mapa), aviso «¿No se abrió?» en los enlaces de WhatsApp, Luci escribiendo, test con «Calculando tu recomendación…», skeleton de fechas e imágenes, barra de progreso entre páginas.
 - **Fase 4:** estados de error y vacío: respaldo si falla la tasa o `/api/lead`, respaldo si Cal.com no carga, filtro sin resultados con «Ver todos». La calculadora ya no disfraza una falla real de envío como éxito.
 - **Fase 5:** control de calidad (teclado en 22 páginas, hover sin quedar «pegado» en celular, movimiento reducido, colores por línea, Lighthouse antes y después, eventos de medición).
+
+---
+
+# Página de producto Club (rama `pagina-club`)
+
+`/club` (archivo `club.html`): página para vender Club, el software de cobro de cuotas para clubes. Trato de «usted». Identidad propia (verde profundo, dorado y crema sobre el fondo oscuro) con el emblema y el favicon en `assets/club/`. Las capturas son de la demo de Club con un nombre neutro («Club Campestre de Ejemplo») y siempre rotuladas «Ejemplo ilustrativo».
+
+- **Fase 1:** estructura y portada: etiqueta «Nuevo · Software para clubes», titular, subtítulo, botón dorado «Agendar una demo de 20 minutos» (WhatsApp con mensaje prellenado) y «Ver planes», composición de teléfono y laptop con capturas reales de la demo (en móvil, solo el teléfono), franja de 4 datos de confianza, título y descripción únicos, datos estructurados `SoftwareApplication` con las ofertas, favicon y `og-club.png` (1200×630).
