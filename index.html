@@ -21,20 +21,20 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>F&V AI Group | Automatización, IA y páginas web en Valencia, Venezuela</title>
+<title>F&V AI Group | Automatización, IA y software para negocios y empresas en Venezuela</title>
 <meta name="description" content="F&V AI Group, Valencia, Venezuela: Línea Triangular para emprendedores, comercios y pequeñas empresas; Línea Hexagonal para medianas y grandes empresas, corporaciones e instituciones. Precios publicados en dólares.">
 <link rel="canonical" href="https://www.fvaigroup.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&V AI Group">
 <meta property="og:locale" content="es_VE">
-<meta property="og:title" content="F&V AI Group | Automatización, IA y páginas web en Valencia, Venezuela">
+<meta property="og:title" content="F&V AI Group | Automatización, IA y software para negocios y empresas en Venezuela">
 <meta property="og:description" content="F&V AI Group, Valencia, Venezuela: Línea Triangular para emprendedores, comercios y pequeñas empresas; Línea Hexagonal para medianas y grandes empresas, corporaciones e instituciones. Precios publicados en dólares.">
 <meta property="og:url" content="https://www.fvaigroup.com/">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="F&V AI Group | Automatización, IA y páginas web en Valencia, Venezuela">
+<meta name="twitter:title" content="F&V AI Group | Automatización, IA y software para negocios y empresas en Venezuela">
 <meta name="twitter:description" content="F&V AI Group, Valencia, Venezuela: Línea Triangular para emprendedores, comercios y pequeñas empresas; Línea Hexagonal para medianas y grandes empresas, corporaciones e instituciones. Precios publicados en dólares.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <script type="application/ld+json">
@@ -47,7 +47,7 @@
       "name": "F&V AI Group",
       "url": "https://www.fvaigroup.com/",
       "logo": "https://www.fvaigroup.com/assets/logo-mark-hex.png",
-      "description": "Consultora de Valencia, Venezuela: dos líneas según el tipo de negocio (Triangular para emprendedores, comercios y pequeñas empresas; Hexagonal para medianas y grandes empresas e instituciones) de automatización, inteligencia artificial y páginas web, con precios publicados en dólares.",
+      "description": "Consultora de Valencia, Venezuela, con software, automatización, inteligencia artificial y páginas web: dos líneas según el tipo de negocio (Triangular para emprendedores, comercios y pequeñas empresas; Hexagonal para medianas y grandes empresas e instituciones) de automatización, inteligencia artificial y páginas web, con precios publicados en dólares.",
       "email": "contacto@fvaigroup.com",
       "telephone": "+58-424-412-5386",
       "sameAs": [
@@ -169,14 +169,6 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Depende del producto. En la Línea Triangular, entre 48 horas y 3 semanas; en la Línea Hexagonal, desde 72 horas (una asesoría) hasta 3 meses (un sistema completo)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Atienden fuera de Valencia?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí, por videollamada y por WhatsApp. Los talleres y cursos son presenciales en Valencia."
           }
         }
       ]
@@ -493,6 +485,16 @@
 
   /* ---- Animación de entrada del hero ---- */
   @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  /* ---- Software: una tarjeta por producto, con su propia paleta (Club verde y dorado, Condominio azul petróleo y menta, Gym grafito y rojo) ---- */
+  .sw-card { border-radius: 20px; border: 1px solid var(--sw-borde); background: linear-gradient(180deg, var(--sw-fondo), #0D0E12 78%); transition: border-color .25s var(--ease-out), transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .sw-card:hover { border-color: var(--sw-acento); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.45); } }
+  .sw-card:active { transform: scale(.985); transition: transform .1s var(--ease-out); }
+  .sw-ico { display: inline-flex; width: 3.5rem; height: 3.5rem; align-items: center; justify-content: center; border-radius: 1rem; color: var(--sw-acento); background: rgba(255,255,255,.04); border: 1px solid var(--sw-borde); }
+  .sw-link { color: var(--sw-acento); }
+  .sw-club { --sw-borde: rgba(201,162,39,.38); --sw-fondo: rgba(20,83,45,.34); --sw-acento: #e3c452; }
+  .sw-condo { --sw-borde: rgba(42,157,143,.42); --sw-fondo: rgba(15,76,92,.42); --sw-acento: #4fd1c0; }
+  .sw-gym { --sw-borde: rgba(239,68,68,.42); --sw-fondo: rgba(31,41,55,.7); --sw-acento: #f87171; }
+  @media (prefers-reduced-motion: reduce) { .sw-card, .sw-card:hover, .sw-card:active { transform: none; transition: none; } }
   .hero-copy > * { opacity: 0; animation: heroIn .6s var(--ease-out) forwards; }
   .hero-copy > *:nth-child(1) { animation-delay: .05s; }
   .hero-copy > *:nth-child(2) { animation-delay: .16s; }
@@ -800,47 +802,59 @@
 
 <main id="main-content">
 
-<!-- ============ 1. HERO: dos líneas al mismo nivel ============ -->
-<section id="inicio" class="relative flex items-center pt-32 lg:pt-36 pb-20 overflow-hidden" aria-labelledby="hero-title">
+<!-- ============ 1. PORTADA: texto a la izquierda, las dos líneas a la derecha (Hexagonal primero) ============ -->
+<section id="inicio" class="relative pt-32 lg:pt-36 pb-20 overflow-hidden" aria-labelledby="hero-title">
   <canvas id="hex-canvas" class="opacity-70"></canvas>
   <div class="absolute top-0 left-0 w-[560px] h-[560px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3 parallax-blob" data-speed="0.08"></div>
   <div class="absolute bottom-0 right-0 w-[620px] h-[620px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4 parallax-blob" data-speed="-0.05"></div>
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 w-full relative z-10 text-center">
-    <div class="hero-copy">
-      <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold text-white tracking-tight leading-[1.1] text-balance max-w-4xl mx-auto mb-5">Automatización, IA y <span class="shimmer-text">páginas web</span> para negocios y empresas en Venezuela</h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light max-w-2xl mx-auto">Desde Valencia. Precios publicados en dólares, pagaderos en bolívares a la tasa BCV del día.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 text-left items-stretch">
-      <article class="linea-tri x-card is-static flex flex-col p-7 sm:p-9 h-full reveal">
-        <div class="flex items-center justify-between gap-4 mb-6">
-          <span class="ins ins-tri"><span>Línea Triangular</span></span>
-          <img src="assets/logo-full-tri.webp" width="677" height="369" alt="" aria-hidden="true" class="w-28 h-auto">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+      <div class="lg:col-span-6 hero-copy">
+        <p class="mb-6"><span class="inline-block font-head text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border border-fv-cyan/30 bg-fv-cyan/5 text-fv-cyan">F&amp;V AI Group · Valencia, Venezuela</span></p>
+        <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold text-white tracking-tight leading-[1.1] text-balance mb-5">Automatización, IA y software para que tu negocio <span class="shimmer-text">crezca</span></h1>
+        <p class="text-lg text-slate-400 leading-relaxed font-light max-w-xl">Trabajamos con emprendedores, comercios, empresas e instituciones en toda Venezuela. Precios publicados, en dólares y bolívares, con soporte de un equipo en Valencia.</p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-8">
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20conocer%20sus%20soluciones" target="_blank" rel="noopener" data-evento="portada_whatsapp" data-cta="portada_hero" data-product="consulta-general" class="btn-primary btn-glow-on-hover inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-lg font-head font-semibold text-center whitespace-nowrap"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escríbenos por WhatsApp</span></a>
+          <button type="button" id="abrir-test" aria-expanded="false" aria-controls="test" data-evento="portada_test_abrir" class="btn-secondary inline-flex items-center justify-center min-h-[52px] px-7 py-3.5 rounded-lg font-head font-medium text-center sm:whitespace-nowrap">¿Cuál es para mí? (3 preguntas)</button>
         </div>
-        <h2 class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">Para emprendedores y negocios pequeños</h2>
-        <p class="font-head text-lg font-extrabold mb-4"><span class="texto-linea">¿Eres tú quien decide en tu negocio?</span></p>
-        <p class="text-slate-300 leading-relaxed mb-8 flex flex-wrap items-center gap-x-2.5 gap-y-2"><span class="text-sm text-slate-400">Planes mensuales desde $4,99, listos en días.</span></p>
-        <a href="/triangular" data-evento="portada_linea_triangular" data-cta="portada_hero" class="btn-linea mt-auto inline-flex items-center justify-center min-h-[52px] px-7 py-3.5 rounded-lg font-head font-semibold text-center">Ver Línea Triangular</a>
-      </article>
-      <article class="linea-hex x-card is-static flex flex-col p-7 sm:p-9 h-full reveal">
-        <div class="flex items-center justify-between gap-4 mb-6">
-          <span class="ins ins-hex"><span>Línea Hexagonal</span></span>
-          <img src="assets/logo-full-hex.webp" width="192" height="192" alt="" aria-hidden="true" class="w-16 h-auto">
-        </div>
-        <h2 class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">Para empresas y organizaciones grandes</h2>
-        <p class="font-head text-lg font-extrabold mb-4"><span class="texto-linea">¿Tiene áreas, sedes o junta directiva?</span></p>
-        <p class="text-slate-300 leading-relaxed mb-8 flex flex-wrap items-center gap-x-2.5 gap-y-2"><span class="text-sm text-slate-400">Proyectos a la medida, implementación y soporte con su equipo.</span></p>
-        <a href="/hexagonal" data-evento="portada_linea_hexagonal" data-cta="portada_hero" class="btn-linea mt-auto inline-flex items-center justify-center min-h-[52px] px-7 py-3.5 rounded-lg font-head font-semibold text-center">Ver Línea Hexagonal</a>
-      </article>
-    </div>
-    <p class="mt-8 text-center"><button type="button" id="abrir-test" aria-expanded="false" aria-controls="test" data-evento="portada_test_abrir" class="link-underline font-head text-slate-300 hover:text-white py-3 px-1">¿No sabes cuál? Responde 3 preguntas</button></p>
-    <div id="test" class="hidden mt-4 max-w-2xl mx-auto text-left" role="region" aria-label="Test para elegir tu línea">
-      <div class="x-card is-static p-6 sm:p-8" aria-live="polite">
-        <p id="test-paso" class="font-head text-xs uppercase tracking-wider text-slate-400 mb-3"></p>
-        <h3 id="test-q" class="font-sans text-xl sm:text-2xl font-bold text-white mb-6"></h3>
-        <div id="test-opciones" class="flex flex-col sm:flex-row sm:flex-wrap gap-3"></div>
-        <div id="test-resultado" class="hidden"></div>
+      </div>
+
+      <div id="lineas" class="lg:col-span-6 scroll-mt space-y-4">
+        <article class="linea-hex x-card is-static flex flex-col p-6 sm:p-7 reveal">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="ins ins-hex"><span>Línea Hexagonal</span></span>
+            <img src="assets/logo-full-hex.webp" width="192" height="192" alt="" aria-hidden="true" class="w-12 h-auto">
+          </div>
+          <h2 class="font-sans text-2xl font-bold text-white leading-tight mb-3">Para empresas y organizaciones grandes</h2>
+          <ul class="flex flex-wrap gap-2 mb-4" aria-label="Quién usa la Línea Hexagonal">
+            <li class="rounded-full border border-fv-cyan/30 bg-fv-cyan/5 px-3 py-1 text-xs text-slate-200">Corporaciones</li><li class="rounded-full border border-fv-cyan/30 bg-fv-cyan/5 px-3 py-1 text-xs text-slate-200">Medianas empresas</li><li class="rounded-full border border-fv-cyan/30 bg-fv-cyan/5 px-3 py-1 text-xs text-slate-200">Instituciones</li><li class="rounded-full border border-fv-cyan/30 bg-fv-cyan/5 px-3 py-1 text-xs text-slate-200">Clubes sociales</li><li class="rounded-full border border-fv-cyan/30 bg-fv-cyan/5 px-3 py-1 text-xs text-slate-200">Administradoras</li>
+          </ul>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">Proyectos a la medida, implementación y soporte con su equipo.</p>
+          <a href="/hexagonal" data-evento="portada_linea_hexagonal" data-cta="portada_hero" class="btn-linea mt-auto inline-flex items-center justify-center min-h-[48px] px-7 py-3 rounded-lg font-head font-semibold text-center">Ver Línea Hexagonal</a>
+        </article>
+        <article class="linea-tri x-card is-static flex flex-col p-6 sm:p-7 reveal">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="ins ins-tri"><span>Línea Triangular</span></span>
+            <img src="assets/logo-full-tri.webp" width="677" height="369" alt="" aria-hidden="true" class="w-20 h-auto">
+          </div>
+          <h2 class="font-sans text-2xl font-bold text-white leading-tight mb-3">Para emprendedores y negocios pequeños</h2>
+          <ul class="flex flex-wrap gap-2 mb-4" aria-label="Quién usa la Línea Triangular">
+            <li class="rounded-full border border-fv-triGreen/30 bg-fv-triGreen/5 px-3 py-1 text-xs text-slate-200">Emprendedores</li><li class="rounded-full border border-fv-triGreen/30 bg-fv-triGreen/5 px-3 py-1 text-xs text-slate-200">Comercios</li><li class="rounded-full border border-fv-triGreen/30 bg-fv-triGreen/5 px-3 py-1 text-xs text-slate-200">Profesionales</li><li class="rounded-full border border-fv-triGreen/30 bg-fv-triGreen/5 px-3 py-1 text-xs text-slate-200">Pequeñas empresas</li>
+          </ul>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">Planes y productos desde $4,99, listos en días.</p>
+          <a href="/triangular" data-evento="portada_linea_triangular" data-cta="portada_hero" class="btn-linea mt-auto inline-flex items-center justify-center min-h-[48px] px-7 py-3 rounded-lg font-head font-semibold text-center">Ver Línea Triangular</a>
+        </article>
+        <p class="text-sm text-slate-400 leading-relaxed text-center lg:text-left">¿No sabe cuál? Menos de 20 personas: Triangular. Más de 20, varias sedes o junta directiva: Hexagonal.</p>
       </div>
     </div>
+    <div id="test" class="hidden mt-10 max-w-2xl mx-auto text-left" role="region" aria-label="Test para elegir tu línea">
+        <div class="x-card is-static p-6 sm:p-8" aria-live="polite">
+          <p id="test-paso" class="font-head text-xs uppercase tracking-wider text-slate-400 mb-3"></p>
+          <h3 id="test-q" class="font-sans text-xl sm:text-2xl font-bold text-white mb-6"></h3>
+          <div id="test-opciones" class="flex flex-col sm:flex-row sm:flex-wrap gap-3"></div>
+          <div id="test-resultado" class="hidden"></div>
+        </div>
+      </div>
   </div>
 </section>
 
@@ -916,108 +930,142 @@
   </div>
 </section>
 
-<!-- ============ 3. CÓMO FUNCIONA: dos líneas, dos velocidades ============ -->
-<section id="lineas" aria-labelledby="h-lineas" class="relative py-24 border-t border-white/5 scroll-mt">
+<!-- ============ 3. QUÉ HACEMOS ============ -->
+<section id="que-hacemos" aria-labelledby="h-que" class="relative py-24 border-t border-white/5 scroll-mt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="reveal max-w-2xl mb-10">
-      <h2 id="h-lineas" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Dos líneas, <span class="shimmer-text">una para cada tamaño</span></h2>
-      <p class="text-slate-400 mt-4 leading-relaxed">Elige la que corresponde a lo tuyo. Todos los precios están publicados.</p>
+    <div class="reveal max-w-2xl mb-12">
+      <h2 id="h-que" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Qué <span class="shimmer-text">hacemos</span></h2>
+      <p class="text-slate-400 mt-4 leading-relaxed">Tres formas de trabajar con nosotros, con precios publicados.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-      <article class="linea-tri x-card flex flex-col p-7 sm:p-9 h-full reveal">
-        <p class="mb-5"><span class="ins ins-tri"><span>Línea Triangular</span></span></p>
-        <h3 class="font-sans text-2xl font-bold text-white mb-2">Para emprendedores y negocios pequeños</h3>
-        <p class="font-head text-lg mb-4"><span class="texto-linea">Hasta unas 20 personas, y tú decides</span></p>
-        <p class="text-slate-300 leading-relaxed mb-8">Planes mensuales, activos en días.</p>
-        <a href="/triangular" data-evento="portada_comparacion_triangular" class="btn-linea mt-auto inline-flex items-center justify-center min-h-[48px] px-7 py-3.5 rounded-lg font-head font-semibold text-center">Ver Línea Triangular</a>
-      </article>
-      <article class="linea-hex x-card flex flex-col p-7 sm:p-9 h-full reveal">
-        <p class="mb-5"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
-        <h3 class="font-sans text-2xl font-bold text-white mb-2">Para empresas y organizaciones grandes</h3>
-        <p class="font-head text-lg mb-4"><span class="texto-linea">Más de 20 personas, varias sedes o junta directiva</span></p>
-        <p class="text-slate-300 leading-relaxed mb-8">Proyectos a la medida con soporte.</p>
-        <a href="/hexagonal" data-evento="portada_comparacion_hexagonal" class="btn-linea mt-auto inline-flex items-center justify-center min-h-[48px] px-7 py-3.5 rounded-lg font-head font-semibold text-center">Ver Línea Hexagonal</a>
-      </article>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <a href="/hexagonal" data-evento="portada_hacemos_automatizacion" class="reveal group flex flex-col rounded-xl border border-fv-border bg-fv-surface p-6 sm:p-7 card-lift">
+          <span class="w-12 h-12 rounded-xl border border-fv-cyan/30 bg-fv-cyan/10 text-fv-cyan flex items-center justify-center mb-5"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M12 7V4M9 11h.01M15 11h.01M9 15h6"/></svg></span>
+          <h3 class="font-sans text-xl font-bold text-white mb-2">Automatización e IA</h3>
+          <p class="text-slate-400 leading-relaxed mb-6">Asistentes, procesos y tableros para que tu equipo trabaje menos y vea más.</p>
+          <span class="mt-auto font-head text-sm text-fv-cyan link-underline self-start">Ver Línea Hexagonal <span aria-hidden="true">→</span></span>
+        </a>
+        <a href="/software" data-evento="portada_hacemos_software" class="reveal group flex flex-col rounded-xl border border-fv-border bg-fv-surface p-6 sm:p-7 card-lift">
+          <span class="w-12 h-12 rounded-xl border border-fv-cyan/30 bg-fv-cyan/10 text-fv-cyan flex items-center justify-center mb-5"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+          <h3 class="font-sans text-xl font-bold text-white mb-2">Software para su organización</h3>
+          <p class="text-slate-400 leading-relaxed mb-6">Apps mensuales para clubes, condominios y gimnasios.</p>
+          <span class="mt-auto font-head text-sm text-fv-cyan link-underline self-start">Ver el software <span aria-hidden="true">→</span></span>
+        </a>
+        <a href="/paginas-web" data-evento="portada_hacemos_webs" class="reveal group flex flex-col rounded-xl border border-fv-border bg-fv-surface p-6 sm:p-7 card-lift">
+          <span class="w-12 h-12 rounded-xl border border-fv-cyan/30 bg-fv-cyan/10 text-fv-cyan flex items-center justify-center mb-5"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 9h18M7 6h.01M10 6h.01"/></svg></span>
+          <h3 class="font-sans text-xl font-bold text-white mb-2">Páginas web</h3>
+          <p class="text-slate-400 leading-relaxed mb-6">Desde una página hasta tiendas online, montadas y mantenidas por nosotros.</p>
+          <span class="mt-auto font-head text-sm text-fv-cyan link-underline self-start">Ver páginas web <span aria-hidden="true">→</span></span>
+        </a>
     </div>
-    <p class="reveal mt-8 text-center text-sm text-slate-400">¿Pones tus precios en dólares y en bolívares? <a href="/calculadora" data-evento="portada_calculadora" class="link-underline text-fv-triGreen py-2 inline-block">Usa la calculadora gratis</a>.</p>
   </div>
 </section>
 
-<!-- ============ 4. LO MÁS PEDIDO ============ -->
-<section id="pedidos" aria-labelledby="h-prod" class="relative py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt">
+<!-- ============ 4. SOFTWARE ============ -->
+<section id="software" aria-labelledby="h-software" class="relative py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="reveal max-w-2xl mb-12">
+      <h2 id="h-software" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Apps web listas para usar, <span class="shimmer-text">por una mensualidad</span></h2>
+      <p class="text-slate-400 mt-4 leading-relaxed">Funcionan desde el teléfono o la computadora, sin instalar nada. Cada una tiene su página, su demo y sus precios.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <a href="/club" data-evento="portada_software_club" class="reveal sw-card sw-club group flex flex-col p-6 sm:p-7">
+          <span class="sw-ico mb-5"><img src="assets/club/club-emblema.svg" width="40" height="47" alt="" aria-hidden="true" class="h-11 w-auto" loading="lazy" decoding="async"></span>
+          <h3 class="font-sans text-2xl font-bold text-white mb-2">Club</h3>
+          <p class="text-slate-300 leading-relaxed mb-6">Cobro de cuotas, estado de cuenta y carnet digital para los socios de su club.</p>
+          <span class="sw-link mt-auto font-head text-sm font-semibold self-start link-underline">Ver Club <span aria-hidden="true">→</span></span>
+        </a>
+        <a href="/condominio" data-evento="portada_software_condominio" class="reveal sw-card sw-condo group flex flex-col p-6 sm:p-7">
+          <span class="sw-ico mb-5"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M3 21h18M8 8h2M8 12h2M8 16h2M17 13h.01M17 17h.01"/></svg></span>
+          <h3 class="font-sans text-2xl font-bold text-white mb-2">Condominio</h3>
+          <p class="text-slate-300 leading-relaxed mb-6">Recibos, alícuotas y transparencia de gastos para su edificio o conjunto.</p>
+          <span class="sw-link mt-auto font-head text-sm font-semibold self-start link-underline">Ver Condominio <span aria-hidden="true">→</span></span>
+        </a>
+        <a href="/gym" data-evento="portada_software_gym" class="reveal sw-card sw-gym group flex flex-col p-6 sm:p-7">
+          <span class="sw-ico mb-5"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></span>
+          <h3 class="font-sans text-2xl font-bold text-white mb-2">Gym</h3>
+          <p class="text-slate-300 leading-relaxed mb-6">Membresías, cobros y entrada con QR para su gimnasio.</p>
+          <span class="sw-link mt-auto font-head text-sm font-semibold self-start link-underline">Ver Gym <span aria-hidden="true">→</span></span>
+        </a>
+    </div>
+    <p class="reveal mt-10 text-center"><a href="/software" data-evento="portada_software_todo" class="btn-secondary inline-flex items-center justify-center min-h-[48px] px-7 py-3 rounded-lg font-head font-medium">Ver todo el software</a></p>
+  </div>
+</section>
+
+<!-- ============ 5. LO MÁS PEDIDO ============ -->
+<section id="pedidos" aria-labelledby="h-prod" class="relative py-24 border-t border-white/5 scroll-mt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
       <h2 id="h-prod" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Lo más <span class="shimmer-text">pedido</span></h2>
       <p class="text-slate-400 mt-4 leading-relaxed">Precios en dólares, pagaderos en bolívares a la tasa BCV del día.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 stagger-grid items-stretch">
-      <div class="linea-tri reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
-        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span></p>
-        <h3 class="font-sans text-xl font-bold text-white mb-1">Plan Arranque</h3>
-        <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">$39,99</span><span class="font-head text-sm text-slate-400">al mes · antes $44,98</span></div>
-        <p class="text-sm text-slate-400 leading-relaxed mb-6">Presencia Catálogo + Caja Clara: que te encuentren, te compren por WhatsApp y sepas cuánto ganas.</p>
-        <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_plan-arranque" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20el%20Plan%20Arranque%20(L%C3%ADnea%20Triangular%2C%20%2439%2C99%2Fmes).%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="plan-arranque" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero</span></a><a href="/triangular#plan-arranque" class="text-center text-sm text-fv-triGreen link-underline py-1">Ver detalle</a></div>
-      </div>
-      <div class="linea-tri reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
-        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span></p>
-        <h3 class="font-sans text-xl font-bold text-white mb-1">Caja Clara</h3>
-        <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">desde $14,99</span><span class="font-head text-sm text-slate-400">al mes</span></div>
-        <p class="text-sm text-slate-400 leading-relaxed mb-6">Cuadre diario en Bs, $, Pago Móvil y USDT con tasa BCV automática y reporte semanal.</p>
-        <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_caja-clara-caja" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20Caja%20Clara%2C%20tama%C3%B1o%20Caja%20(L%C3%ADnea%20Triangular%2C%20%2414%2C99%2Fmes).%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="caja-clara-caja" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero</span></a><a href="/triangular#caja-clara" class="text-center text-sm text-fv-triGreen link-underline py-1">Ver detalle</a></div>
-      </div>
-      <div class="linea-tri reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
-        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span></p>
-        <h3 class="font-sans text-xl font-bold text-white mb-1">Tablero Ejecutivo</h3>
-        <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">desde $79,99</span><span class="font-head text-sm text-slate-400">al mes</span></div>
-        <p class="text-sm text-slate-400 leading-relaxed mb-6">Tus números clave (ventas, gastos, margen y cobros) en una sola pantalla, desde el teléfono.</p>
-        <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_tablero-ejecutivo-pyme" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20Tablero%20Ejecutivo%2C%20tama%C3%B1o%20Pyme%20(L%C3%ADnea%20Triangular%2C%20%2479%2C99%2Fmes).%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="tablero-ejecutivo-pyme" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero</span></a><a href="/triangular#tablero-ejecutivo" class="text-center text-sm text-fv-triGreen link-underline py-1">Ver detalle</a></div>
-      </div>
-      <div class="linea-hex reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
-        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-start">
+      <div class="linea-hex">
+        <p class="mb-5"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+        <div class="space-y-5">
+<div class="linea-hex reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
         <h3 class="font-sans text-xl font-bold text-white mb-1">Asesoría Estratégica</h3>
         <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">$150</span></div>
         <p class="text-sm text-slate-400 leading-relaxed mb-6">Diagnóstico ejecutivo, cuellos de botella y hoja de ruta priorizada. Se abona si contrata la implementación.</p>
         <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_asesoria-estrategica" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Asesor%C3%ADa%20Estrat%C3%A9gica%20%28L%C3%ADnea%20Hexagonal%2C%20%24150%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="asesoria-estrategica" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Consultar por WhatsApp</span></a><a href="/hexagonal#asesoria-estrategica" class="text-center text-sm text-fv-cyan link-underline py-1">Ver detalle</a></div>
       </div>
-      <div class="linea-hex reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
-        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+<div class="linea-hex reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
         <h3 class="font-sans text-xl font-bold text-white mb-1">Sprint de Automatización</h3>
         <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">desde $800</span></div>
         <p class="text-sm text-slate-400 leading-relaxed mb-6">Un proceso de punta a punta con n8n e IA, probado y documentado.</p>
         <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_sprint-automatizacion" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Sprint%20de%20Automatizaci%C3%B3n%20%28L%C3%ADnea%20Hexagonal%2C%20desde%20%24800%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="sprint-automatizacion" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Consultar por WhatsApp</span></a><a href="/hexagonal#sprint-automatizacion" class="text-center text-sm text-fv-cyan link-underline py-1">Ver detalle</a></div>
       </div>
-      <div class="linea-hex reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
-        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+<div class="linea-hex reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
         <h3 class="font-sans text-xl font-bold text-white mb-1">Tablero Gerencial</h3>
         <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">desde $600</span></div>
         <p class="text-sm text-slate-400 leading-relaxed mb-6">Indicadores de ventas, caja, cobros y margen en un solo tablero.</p>
         <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_tablero-gerencial" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Tablero%20Gerencial%20%28L%C3%ADnea%20Hexagonal%2C%20desde%20%24600%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="tablero-gerencial" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Consultar por WhatsApp</span></a><a href="/hexagonal#tablero-gerencial" class="text-center text-sm text-fv-cyan link-underline py-1">Ver detalle</a></div>
       </div>
+
+        </div>
+      </div>
+      <div class="linea-tri">
+        <p class="mb-5"><span class="ins ins-tri"><span>Línea Triangular</span></span></p>
+        <div class="space-y-5">
+<div class="linea-tri reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
+        <h3 class="font-sans text-xl font-bold text-white mb-1">Plan Arranque</h3>
+        <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">$39,99</span><span class="font-head text-sm text-slate-400">al mes · antes $44,98</span></div>
+        <p class="text-sm text-slate-400 leading-relaxed mb-6">Presencia Catálogo + Caja Clara: que te encuentren, te compren por WhatsApp y sepas cuánto ganas.</p>
+        <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_plan-arranque" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20el%20Plan%20Arranque%20(L%C3%ADnea%20Triangular%2C%20%2439%2C99%2Fmes).%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="plan-arranque" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero</span></a><a href="/triangular#plan-arranque" class="text-center text-sm text-fv-triGreen link-underline py-1">Ver detalle</a></div>
+      </div>
+<div class="linea-tri reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
+        <h3 class="font-sans text-xl font-bold text-white mb-1">Caja Clara</h3>
+        <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">desde $14,99</span><span class="font-head text-sm text-slate-400">al mes</span></div>
+        <p class="text-sm text-slate-400 leading-relaxed mb-6">Cuadre diario en Bs, $, Pago Móvil y USDT con tasa BCV automática y reporte semanal.</p>
+        <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_caja-clara-caja" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20Caja%20Clara%2C%20tama%C3%B1o%20Caja%20(L%C3%ADnea%20Triangular%2C%20%2414%2C99%2Fmes).%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="caja-clara-caja" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero</span></a><a href="/triangular#caja-clara" class="text-center text-sm text-fv-triGreen link-underline py-1">Ver detalle</a></div>
+      </div>
+<div class="linea-tri reveal flex flex-col p-6 rounded-lg bg-fv-surface border border-fv-border card-lift">
+        <h3 class="font-sans text-xl font-bold text-white mb-1">Tablero Ejecutivo</h3>
+        <div class="flex items-baseline gap-2 flex-wrap mb-3"><span class="text-3xl font-extrabold text-white tracking-tight">desde $79,99</span><span class="font-head text-sm text-slate-400">al mes</span></div>
+        <p class="text-sm text-slate-400 leading-relaxed mb-6">Tus números clave (ventas, gastos, margen y cobros) en una sola pantalla, desde el teléfono.</p>
+        <div class="mt-auto flex flex-col gap-2"><a data-evento="portada_pedido_tablero-ejecutivo-pyme" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20Tablero%20Ejecutivo%2C%20tama%C3%B1o%20Pyme%20(L%C3%ADnea%20Triangular%2C%20%2479%2C99%2Fmes).%20%C2%BFC%C3%B3mo%20pago%3F" target="_blank" rel="noopener" data-product="tablero-ejecutivo-pyme" data-cta="portada_pedido" class="btn-linea inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Lo quiero</span></a><a href="/triangular#tablero-ejecutivo" class="text-center text-sm text-fv-triGreen link-underline py-1">Ver detalle</a></div>
+      </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 4a. CLUB (software para clubes) ============ -->
-<section aria-label="Nuevo: Club, software para clubes" class="relative pt-6 border-t border-white/5">
+<!-- ============ 6. CÓMO TRABAJAMOS ============ -->
+<section id="como-trabajamos" aria-labelledby="h-como" class="relative py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <a href="/club" data-evento="portada_club" class="reveal flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-xl border border-club-oro/40 bg-club-oro/[0.07] px-5 py-4 transition-colors hover:border-club-oro/80">
-      <span class="font-head text-sm text-slate-200"><span class="font-semibold text-club-oro">Nuevo:</span> <span class="font-semibold text-white">Club, software para clubes</span> · cobre las cuotas de sus socios sin perseguir a nadie</span>
-      <span class="font-head text-sm font-semibold text-club-oro">Ver Club <span aria-hidden="true">→</span></span>
-    </a>
+    <div class="reveal max-w-2xl mb-12">
+      <h2 id="h-como" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight uppercase text-balance">Cómo <span class="shimmer-text">trabajamos</span></h2>
+    </div>
+    <ol class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <li class="reveal x-card is-static p-6 sm:p-7"><span class="font-head text-5xl font-bold text-neon-cyan leading-none" aria-hidden="true">1</span><h3 class="text-white text-lg font-semibold mt-4 mb-2">Conversamos</h3><p class="text-slate-400 leading-relaxed">Nos cuentas cómo funciona tu negocio u organización y qué quieres resolver, por WhatsApp o en un diagnóstico gratis.</p></li>
+        <li class="reveal x-card is-static p-6 sm:p-7"><span class="font-head text-5xl font-bold text-neon-cyan leading-none" aria-hidden="true">2</span><h3 class="text-white text-lg font-semibold mt-4 mb-2">Te proponemos con precio publicado</h3><p class="text-slate-400 leading-relaxed">Te decimos qué te conviene, cuánto cuesta y en cuánto tiempo, sin sorpresas.</p></li>
+        <li class="reveal x-card is-static p-6 sm:p-7"><span class="font-head text-5xl font-bold text-neon-cyan leading-none" aria-hidden="true">3</span><h3 class="text-white text-lg font-semibold mt-4 mb-2">Implementamos y te acompañamos</h3><p class="text-slate-400 leading-relaxed">Lo dejamos funcionando, capacitamos a tu equipo y seguimos disponibles después.</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- ============ 4b. SOFTWARE (próximamente) ============ -->
-<section aria-label="Software para clubes y condominios" class="relative py-6 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <a href="/software" data-evento="portada_software" class="reveal flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 hover:border-fv-cyan/50 transition-colors">
-      <span class="font-head text-sm text-slate-200"><span class="font-semibold text-white">Software para clubes y condominios</span> · próximamente</span>
-      <span class="font-head text-sm text-fv-cyan">Conoce el piloto</span>
-    </a>
-  </div>
-</section>
-
-<!-- ============ 5. PRÓXIMAS FECHAS ============ -->
+<!-- ============ 7. PRÓXIMAS FECHAS ============ -->
 <section id="proximas-fechas" aria-labelledby="h-fechas" class="linea-tri relative py-14 border-t border-white/5 scroll-mt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal flex flex-wrap items-center gap-3 mb-6">
@@ -1047,7 +1095,7 @@
   </div>
 </section>
 
-<!-- ============ 6. POR QUÉ F&V ============ -->
+<!-- ============ 8. POR QUÉ F&V ============ -->
 <section aria-labelledby="h-porque" id="diferencial" class="relative py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-2xl mb-12">
@@ -1073,7 +1121,7 @@
   </div>
 </section>
 
-<!-- ============ 7. PREGUNTAS FRECUENTES ============ -->
+<!-- ============ 9. PREGUNTAS FRECUENTES ============ -->
 <!-- COMO-PAGAS -->
 <section id="como-pagas" class="linea-tri py-20 lg:py-24 border-t border-white/5 scroll-mt" aria-labelledby="pagos-title">
   <div class="max-w-4xl mx-auto px-6 lg:px-8">
@@ -1083,7 +1131,7 @@
       <ul class="space-y-5">
           <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M16.5 7.5c-.8-1-2.2-1.5-4.5-1.5-2.5 0-4 1-4 2.75S9.5 11.5 12 12s4 1.2 4 3.25S14.5 18 12 18c-2.3 0-3.8-.6-4.7-1.7"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5">Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo.</p></li>
           <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5"><strong class="text-white font-semibold">Mensual:</strong> pagas mes a mes, sin descuento.</p></li>
-          <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5"><strong class="text-white font-semibold">30 % de descuento</strong> si pagas 12 meses por adelantado. Es el único descuento.</p></li>
+          <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5"><strong class="text-white font-semibold">30 % de descuento</strong> si pagas 12 meses por adelantado un plan mensual o una app de software. Es el único descuento.</p></li>
           <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9h9"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5">Los pagos únicos se pagan de contado o en 2 o 3 cuotas, siempre al mismo precio.</p></li>
           <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></svg></span><p class="text-slate-300 leading-relaxed pt-1.5">Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día.</p></li>
         </ul>
@@ -1138,19 +1186,11 @@
         </summary>
         <p class="text-slate-400 text-sm leading-relaxed pb-5">Depende del producto. En la Línea Triangular, entre 48 horas y 3 semanas; en la Línea Hexagonal, desde 72 horas (una asesoría) hasta 3 meses (un sistema completo).</p>
       </details>
-
-      <details class="group bg-fv-surface border border-fv-border rounded-xl px-6 py-1">
-        <summary class="flex items-center justify-between py-4 cursor-pointer font-head text-white">
-          <span>¿Atienden fuera de Valencia?</span>
-          <svg class="chev w-4 h-4 text-fv-orange transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        </summary>
-        <p class="text-slate-400 text-sm leading-relaxed pb-5">Sí, por videollamada y por WhatsApp. Los talleres y cursos son presenciales en Valencia.</p>
-      </details>
     </div>
   </div>
 </section>
 
-<!-- ============ 8. CIERRE ============ -->
+<!-- ============ 10. CIERRE ============ -->
 <section aria-labelledby="h-sec-8" id="cta-final" class="relative py-24 border-t border-white/5">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
     <div class="relative rounded-xl overflow-hidden bg-fv-surface box-gradient-border p-10 sm:p-16 text-center">
