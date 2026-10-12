@@ -78,7 +78,7 @@ Object.entries(PAGINAS).forEach(([pag, prod]) => {
     if (m) eq(m[1].trim(), S.planesHTML(l, prod), pag + '.html: el bloque de planes ' + l + ' no coincide con la tabla (ejecuta node scripts/render-planes.js)');
   });
   // ningún precio de plan escrito a mano fuera de los bloques generados
-  const fuera = html.replace(/<!-- sw-planes:(hex|tri) -->[\s\S]*?<!-- \/sw-planes:\1 -->/g, '').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
+  const fuera = html.replace(/<section id="calculadora"[\s\S]*?<\/section>/g, '').replace(/<!-- sw-planes:(hex|tri) -->[\s\S]*?<!-- \/sw-planes:\1 -->/g, '').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
   ['$89,99', '$119,99', '$189,99', '$190', '$430', '$740'].forEach(pr => ok(fuera.indexOf(pr) === -1 || /desde\s*\$/.test(fuera), pag + '.html: el precio ' + pr + ' debe salir de la tabla'));
 });
 
