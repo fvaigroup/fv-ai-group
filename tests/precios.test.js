@@ -3,7 +3,7 @@
 //  - Línea Hexagonal: todo precio es un número redondo (múltiplo de 10).
 //  - Los totales del pago adelantado (12 meses, 30 %) se calculan con assets/planes.js.
 //  - No queda ninguna mención a la regla vieja (líneas por precio) ni al descuento viejo de 20 %.
-// Uso: node tests/precios.test.js
+// Uso: node tests/precios.test.js        (estricto; --parcial omite lo que dependía de las últimas fases)
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
@@ -30,7 +30,7 @@ function ok(cond, msg) { comprobaciones++; assert.ok(cond, msg); }
 function visible(html) { return html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' '); }
 
 // ---------- 1) Páginas de la Línea Triangular y mixtas: cada precio de producto ----------
-const MIXTAS = ['index.html', 'triangular.html', 'paginas-web.html', 'cursos.html', 'curso-finanzas-ia.html', 'masterclasses-workshops.html', 'contacto.html', 'nosotros.html'];
+const MIXTAS = ['index.html', 'software.html', 'club.html', 'condominio.html', 'gym.html', 'triangular.html', 'paginas-web.html', 'cursos.html', 'curso-finanzas-ia.html', 'masterclasses-workshops.html', 'contacto.html', 'nosotros.html'];
 MIXTAS.forEach(f => {
   const html = leer(f);
   // atributos de precio
@@ -83,7 +83,7 @@ for (const m of hex.matchAll(/"price":\s*"([\d.]+)"/g)) ok(esHex(parseFloat(m[1]
 // ---------- 5) Nada de la regla vieja ni del descuento viejo en el contenido visible ----------
 const PAGINAS = fs.readdirSync(RAIZ).filter(f => f.endsWith('.html') && f !== '404.html');
 // Fase 1: regla vieja por precio y descuento viejo. Con --final (Fase 8) se exige además que ya no se mezclen clubes con condominios.
-const FINAL = process.argv.includes('--final');
+const FINAL = !process.argv.includes('--parcial');   // estricto por defecto: con --parcial se omiten las comprobaciones de las fases pendientes
 const PROHIBIDO = [/hasta \$299,99/i, /desde \$300(?![\d.,])/i, /de \$4,99 a \$299/i, /\$4,99 a \$299/i, /20 ?% de descuento/i, /\(20 ?% menos\)/i, /3, 6, 9 o 12 meses/i,
   /\bExpress\b/, /\bDelta\b/];
 if (FINAL) PROHIBIDO.push(/clubes? y condominios?/i, /clubes? o condominios?/i, /Premium/);

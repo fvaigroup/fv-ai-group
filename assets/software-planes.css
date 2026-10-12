@@ -21,7 +21,7 @@
 .swp-grid[data-sw-ciclo-actual="anual"] .swp-nota { color: var(--p-acento-claro); }
 .swp-detalle { margin-top: .45rem; font-size: .875rem; line-height: 1.45; color: #cbd5e1; }
 .swp-detalle strong { color: #fff; font-weight: 600; }
-.swp-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: auto; min-height: 50px; padding: .7rem 1rem; border-radius: .9rem; border: 1px solid transparent; background: var(--p-acento); color: var(--p-sobre); font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .9rem; text-align: center; line-height: 1.25; transition: transform .2s var(--ease-out), filter .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+.swp-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: auto; min-height: 50px; padding: .7rem 1rem; border-radius: .9rem; border: 1px solid transparent; background: var(--p-btn, var(--p-acento)); color: var(--p-sobre); font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .9rem; text-align: center; line-height: 1.25; transition: transform .2s var(--ease-out), filter .2s var(--ease-out), box-shadow .2s var(--ease-out); }
 .swp-card .swp-detalle + .swp-cta, .swp-card .swp-nota + .swp-cta { margin-top: 1.4rem; }
 .swp-detalle:last-of-type { margin-bottom: 1.4rem; }
 @media (hover: hover) and (pointer: fine) { .swp-cta:hover { filter: brightness(1.08); box-shadow: 0 8px 28px color-mix(in srgb, var(--p-acento) 35%, transparent); } }

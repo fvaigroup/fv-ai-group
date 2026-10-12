@@ -3,7 +3,7 @@
 //  - Descuento único: 30 % por 12 meses por adelantado (mensual × 12 × 0,70); Hexagonal al entero, Triangular a 2 decimales.
 //  - Bordes de cada plan y recomendación (100, 101, 300, 301, 500, 501, 1.000, 1.001, 2.500, 2.501, 5.000, 5.001).
 //  - Las páginas leen de la misma fuente: el HTML de los planes de cada página es exactamente el que genera la tabla.
-// Uso: node tests/software.test.js [--final]   (--final exige que existan /club, /condominio y /gym)
+// Uso: node tests/software.test.js        (exige que existan /club, /condominio y /gym; --parcial lo relaja)
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
@@ -63,7 +63,7 @@ ok(/pago anual por adelantado, \$1\.596 \(30 % menos\)/.test(S.mensaje('hex', 'c
 ok(/más de 5\.000 unidades/.test(S.mensaje('hex', 'condominio', null)));
 
 // ---------- las páginas leen la misma fuente ----------
-const FINAL = process.argv.includes('--final');
+const FINAL = !process.argv.includes('--parcial');   // estricto por defecto: con --parcial se omiten las comprobaciones de las fases pendientes
 const PAGINAS = { software: null, club: 'club', condominio: 'condominio', gym: 'gym' };
 Object.entries(PAGINAS).forEach(([pag, prod]) => {
   const f = path.join(RAIZ, pag + '.html');

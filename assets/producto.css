@@ -86,13 +86,14 @@
 .mk * { box-sizing: border-box; }
 .mk-tel { background: var(--mk-fondo); aspect-ratio: 9 / 19.5; padding: 5cqw 5cqw 0; font-size: 4.4cqw; line-height: 1.25; display: flex; flex-direction: column; gap: 3.5cqw; overflow: hidden; }
 .mk-barra { display: flex; align-items: center; gap: 3cqw; font-weight: 700; font-size: 4.6cqw; }
-.mk-barra small { display: block; font-weight: 500; font-size: 3.1cqw; opacity: .65; }
+.mk-barra small { display: block; font-weight: 500; font-size: 3.1cqw; color: #4b5563; }
 .mk-emb { flex: none; width: 9.5cqw; height: 9.5cqw; border-radius: 50%; background: var(--mk-primario); color: #fff; font-size: 3.5cqw; display: flex; align-items: center; justify-content: center; font-weight: 700; border: .5cqw solid var(--mk-borde-emb, var(--p-acento)); }
 .mk-tarjeta { background: #fff; border-radius: 3.5cqw; padding: 4cqw; box-shadow: 0 .4cqw 1.2cqw rgba(0,0,0,.1); }
 .mk-destacado { border-radius: 4cqw; padding: 5cqw; background: var(--mk-primario); color: #fff; }
-.mk-etq { font-size: 3cqw; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
+.mk-etq { font-size: 3cqw; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .mk-grande { font-size: 9.5cqw; font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
-.mk-peq { font-size: 3.3cqw; opacity: .8; }
+.mk-peq { font-size: 3.3cqw; color: #4b5563; }
+.mk-destacado .mk-peq, .mk-destacado .mk-etq { color: #fff; }
 .mk-fila { display: flex; justify-content: space-between; gap: 2cqw; padding: 2.1cqw 0; border-top: 1px solid rgba(0,0,0,.08); font-size: 3.9cqw; }
 .mk-fila:first-child { border-top: 0; }
 .mk-fila b { font-weight: 700; }
@@ -108,13 +109,13 @@
 .mk-lap { background: var(--mk-fondo); aspect-ratio: 16 / 10; display: grid; grid-template-columns: 17cqw 1fr; font-size: 1.35cqw; line-height: 1.3; overflow: hidden; }
 .mk-lado { background: var(--mk-primario); color: #fff; padding: 2.2cqw 1.6cqw; display: flex; flex-direction: column; gap: .9cqw; }
 .mk-lado b { font-size: 1.5cqw; margin-bottom: 1.2cqw; display: flex; align-items: center; gap: .8cqw; }
-.mk-lado span { padding: .9cqw 1.1cqw; border-radius: .8cqw; opacity: .85; font-size: 1.3cqw; }
-.mk-lado span.on { background: rgba(255,255,255,.18); opacity: 1; font-weight: 700; }
+.mk-lado span { padding: .9cqw 1.1cqw; border-radius: .8cqw; font-size: 1.3cqw; }
+.mk-lado span.on { background: rgba(255,255,255,.18); font-weight: 700; }
 .mk-main { padding: 2.2cqw 2.4cqw; display: flex; flex-direction: column; gap: 1.6cqw; min-width: 0; }
 .mk-titulo { font-size: 2cqw; font-weight: 800; }
 .mk-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2cqw; }
 .mk-kpi { background: #fff; border-radius: 1cqw; padding: 1.3cqw 1.5cqw; box-shadow: 0 .2cqw .6cqw rgba(0,0,0,.08); }
-.mk-kpi small { display: block; font-size: 1.05cqw; opacity: .65; } .mk-kpi strong { display: block; font-size: 2.3cqw; font-weight: 800; letter-spacing: -.02em; }
+.mk-kpi small { display: block; font-size: 1.05cqw; color: #4b5563; } .mk-kpi strong { display: block; font-size: 2.3cqw; font-weight: 800; letter-spacing: -.02em; }
 .mk-kpi strong.mal { color: #c2410c; } .mk-kpi strong.bien { color: var(--mk-primario); }
 .mk-dos { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.2cqw; min-height: 0; }
 .mk-panel { background: #fff; border-radius: 1cqw; padding: 1.4cqw 1.6cqw; box-shadow: 0 .2cqw .6cqw rgba(0,0,0,.08); min-width: 0; }
@@ -130,7 +131,7 @@
 .mk-paso .mk-tarjeta { padding: 2.6cqw 3.4cqw; }
 .mk-paso .mk-fila { font-size: 3.2cqw; padding: 1.5cqw 0; }
 .mk-codigo { display: flex; justify-content: center; gap: 2cqw; } .mk-codigo i { width: 8cqw; height: 10cqw; border-radius: 1.6cqw; background: #fff; border: .4cqw solid rgba(0,0,0,.15); display: flex; align-items: center; justify-content: center; font-style: normal; font-weight: 800; font-size: 5cqw; color: var(--mk-primario); }
-.mk-minikpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; } .mk-minikpis .mk-tarjeta { padding: 2.4cqw; } .mk-minikpis small { display: block; font-size: 2.6cqw; opacity: .65; } .mk-minikpis strong { display: block; font-size: 6cqw; font-weight: 800; letter-spacing: -.02em; }
+.mk-minikpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; } .mk-minikpis .mk-tarjeta { padding: 2.4cqw; } .mk-minikpis small { display: block; font-size: 2.6cqw; color: #4b5563; } .mk-minikpis strong { display: block; font-size: 6cqw; font-weight: 800; letter-spacing: -.02em; }
 .mk-dos { flex: 1; }
 .mk-main > .mk-panel { flex: 1; }
 .mk-barras { height: 13cqw; }

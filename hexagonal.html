@@ -451,6 +451,16 @@
   #search-empty { padding: 28px 18px; text-align: center; color: #64748b; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #475569; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+  /* ---- Software: una tarjeta por producto, con su propia paleta (Club verde y dorado, Condominio azul petróleo y menta, Gym grafito y rojo) ---- */
+  .sw-card { border-radius: 20px; border: 1px solid var(--sw-borde); background: linear-gradient(180deg, var(--sw-fondo), #0D0E12 78%); transition: border-color .25s var(--ease-out), transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .sw-card:hover { border-color: var(--sw-acento); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.45); } }
+  .sw-card:active { transform: scale(.985); transition: transform .1s var(--ease-out); }
+  .sw-ico { display: inline-flex; width: 3.5rem; height: 3.5rem; align-items: center; justify-content: center; border-radius: 1rem; color: var(--sw-acento); background: rgba(255,255,255,.04); border: 1px solid var(--sw-borde); }
+  .sw-link { color: var(--sw-acento); }
+  .sw-club { --sw-borde: rgba(201,162,39,.38); --sw-fondo: rgba(20,83,45,.34); --sw-acento: #e3c452; }
+  .sw-condo { --sw-borde: rgba(42,157,143,.42); --sw-fondo: rgba(15,76,92,.42); --sw-acento: #4fd1c0; }
+  .sw-gym { --sw-borde: rgba(239,68,68,.42); --sw-fondo: rgba(31,41,55,.7); --sw-acento: #f87171; }
+  @media (prefers-reduced-motion: reduce) { .sw-card, .sw-card:hover, .sw-card:active { transform: none; transition: none; } }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
@@ -1058,18 +1068,37 @@
 </section>
 
 <!-- ============ CIERRE ============ -->
-<!-- ============ CLUB (software para clubes) ============ -->
-<section aria-label="Club, software para clubes" class="py-8 border-t border-white/5">
+<!-- ============ SOFTWARE (Club, Condominio y Gym) ============ -->
+<section id="software" aria-labelledby="sw-title" class="py-16 lg:py-20 border-t border-white/5 scroll-mt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <a href="/club" data-evento="hexagonal_club" class="group flex flex-col sm:flex-row sm:items-center gap-5 rounded-2xl border border-club-oro/40 bg-gradient-to-r from-club-verde/30 to-transparent px-5 py-5 sm:px-7 sm:py-6 transition-colors hover:border-club-oro/80">
-      <img src="assets/club/club-emblema.svg" width="48" height="56" alt="" aria-hidden="true" class="h-12 w-auto shrink-0" loading="lazy" decoding="async">
-      <span class="flex-1">
-        <span class="block font-head text-[11px] font-semibold uppercase tracking-wider text-club-oro">Nuevo · Software para clubes</span>
-        <span class="block font-sans text-xl font-semibold text-white mt-1">Club · desde $190/mes</span>
-        <span class="block text-sm text-slate-300 leading-relaxed mt-1">Software para clubes sociales e instituciones: su administración cobra las cuotas sin perseguir a nadie y su junta ve la morosidad en tiempo real.</span>
-      </span>
-      <span class="font-head text-sm font-semibold text-club-oro whitespace-nowrap">Conocer Club <span aria-hidden="true">→</span></span>
-    </a>
+    <div class="max-w-2xl mb-10">
+      <h2 id="sw-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance mb-3">Software para su organización</h2>
+      <p class="text-slate-400 text-lg leading-relaxed">Apps web por mensualidad para clubes sociales e instituciones, administradoras de condominios y cadenas de gimnasios, con su marca completa y capacitación.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      <a href="/club#hexagonal" data-evento="hexagonal_software_club" class="reveal sw-card sw-club flex flex-col p-6">
+        <span class="sw-ico mb-4"><img src="assets/club/club-emblema.svg" width="40" height="47" alt="" aria-hidden="true" class="h-11 w-auto" loading="lazy" decoding="async"></span>
+        <h3 class="font-sans text-2xl font-bold text-white mb-2">Club</h3>
+        <p class="text-slate-300 leading-relaxed mb-4">Cobro de cuotas, estado de cuenta, carnet digital y reportes para la junta directiva.</p>
+        <p class="mt-auto mb-3 text-slate-200"><span class="text-sm text-slate-400">desde</span> <strong class="text-xl text-white font-head"><span data-sw-desde="hex">$190</span></strong><span class="text-sm text-slate-400">/mes</span></p>
+        <span class="sw-link font-head text-sm font-semibold self-start link-underline">Ver Club <span aria-hidden="true">→</span></span>
+      </a>
+      <a href="/condominio#hexagonal" data-evento="hexagonal_software_condominio" class="reveal sw-card sw-condo flex flex-col p-6">
+        <span class="sw-ico mb-4"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M3 21h18M8 8h2M8 12h2M8 16h2M17 13h.01M17 17h.01"/></svg></span>
+        <h3 class="font-sans text-2xl font-bold text-white mb-2">Condominio</h3>
+        <p class="text-slate-300 leading-relaxed mb-4">Recibos, alícuotas y gastos transparentes para sus edificios y conjuntos.</p>
+        <p class="mt-auto mb-3 text-slate-200"><span class="text-sm text-slate-400">desde</span> <strong class="text-xl text-white font-head"><span data-sw-desde="hex">$190</span></strong><span class="text-sm text-slate-400">/mes</span></p>
+        <span class="sw-link font-head text-sm font-semibold self-start link-underline">Ver Condominio <span aria-hidden="true">→</span></span>
+      </a>
+      <a href="/gym#hexagonal" data-evento="hexagonal_software_gym" class="reveal sw-card sw-gym flex flex-col p-6">
+        <span class="sw-ico mb-4"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></span>
+        <h3 class="font-sans text-2xl font-bold text-white mb-2">Gym</h3>
+        <p class="text-slate-300 leading-relaxed mb-4">Membresías, cobros y entrada con QR para cada sede.</p>
+        <p class="mt-auto mb-3 text-slate-200"><span class="text-sm text-slate-400">desde</span> <strong class="text-xl text-white font-head"><span data-sw-desde="hex">$190</span></strong><span class="text-sm text-slate-400">/mes</span></p>
+        <span class="sw-link font-head text-sm font-semibold self-start link-underline">Ver Gym <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+    <p class="mt-8"><a href="/software" data-evento="hexagonal_software_software" class="link-underline text-fv-cyan py-2 inline-block">Ver todo el software</a></p>
   </div>
 </section>
 
@@ -1406,6 +1435,7 @@
 </script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/publicado.js"></script>
+<script defer src="/assets/precios-software.js"></script>
 <script defer src="/assets/estados.js"></script>
 <script defer src="/assets/luci.js"></script>
 <script defer src="/assets/medicion.js"></script>

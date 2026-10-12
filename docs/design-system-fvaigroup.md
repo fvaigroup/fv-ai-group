@@ -187,3 +187,17 @@ El foco visible es una sola regla global (`:focus-visible` de `a[href]`, `button
 - **Fechas (`assets/eventos.js`) e imágenes:** skeleton hasta pintarse y fundido al llegar; las imágenes debajo del primer pantallazo llevan `loading="lazy"` y `decoding="async"`.
 - **Navegación:** barra de progreso de 2 px (marca madre) al hacer clic en un enlace interno; se completa al cargar la nueva página (no aparece con enlaces externos, anclas ni `wa.me`).
 - **Vacío:** el filtro de `/hexagonal` sin resultados muestra «No hay productos con ese filtro.» y un botón «Ver todos».
+
+---
+
+## 7. Líneas por tipo de negocio y páginas de software (octubre de 2026)
+
+**Las líneas se separan por TIPO de negocio, no por precio.** ⬡ Hexagonal (`.linea-hex`, cian #00FFFF / naranja #FF8C00, hexágono, «usted»): medianas y grandes empresas, corporaciones, grupos, instituciones y administradoras de condominios, donde decide una estructura. ▲ Triangular (`.linea-tri`, verde #4ade80 / morado #a855f7, triángulo, «tú»): negocios pequeños donde decide el dueño. En cualquier lugar donde se comparen las dos, la Hexagonal va primero y se agrega la línea de ayuda «¿No sabe cuál? Menos de 20 personas: Triangular. Más de 20, varias sedes o junta directiva: Hexagonal.»
+
+**Formato de precios:** Triangular siempre en ,99 (con 2 decimales); Hexagonal en números redondos (múltiplos de 10). Un solo descuento: 30 % por 12 meses por adelantado (mensual × 12 × 0,70). Las cuentas están en `assets/planes.js` (productos Triangulares) y `assets/precios-software.js` (apps).
+
+**Inicio:** portada en dos columnas (texto a la izquierda; las dos líneas a la derecha, Hexagonal arriba; en móvil: texto, Hexagonal, Triangular). Las tres apps van en tarjetas SEPARADAS, cada una con su paleta (`.sw-card` + `.sw-club`, `.sw-condo`, `.sw-gym`): nunca en un mismo texto.
+
+**Páginas de producto (`/club`, `/condominio`, `/gym`):** estructura común (portada con teléfono y laptop, datos de confianza, problema, cómo funciona, funciones por pestañas, por qué, dirección propia, planes `#hexagonal` y `#triangular`, calculadora, comparación, seguridad, preguntas frecuentes y cierre). Cada producto tiene identidad propia sobre el fondo oscuro del sitio (clase de tema con variables `--p-acento`, `--p-acento-claro`, `--p-btn`, `--p-sobre`, `--p-fondo`, `--p-borde`, `--p-hero-1/2` y `--mk-*` para las maquetas). El cian/naranja y el verde/morado solo aparecen en las insignias de línea. Los rellenos de botón cumplen contraste AA (por eso el rojo de Gym usa #dc2626 con texto blanco). Maquetas: HTML y CSS con unidades de contenedor (`cqw`), siempre rotuladas «Ejemplo ilustrativo»; las capturas reales de la demo solo se usan para Club y con un club ficticio.
+
+**Planes compartidos:** el HTML de los planes lo genera `assets/precios-software.js` (`planesHTML`) y se escribe en cada página con `node scripts/render-planes.js`; estilos en `assets/software-planes.css`. No se escriben precios de planes a mano.
