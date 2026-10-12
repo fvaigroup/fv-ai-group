@@ -14,6 +14,7 @@
     { title: 'Asesor F&V', desc: 'Consultoría por Google Meet con plan de acción por escrito. Desde $29,99.', url: '/triangular#asesor', cat: 'Producto' },
     { title: 'Aprende: talleres y curso', desc: 'IA y finanzas presenciales en Valencia, grupos de máximo 6. Desde $24,99.', url: '/triangular#aprende', cat: 'Producto' },
     { title: 'Mis Finanzas Claras', desc: 'Tus cuentas personales en Bs, $ y USDT. $4,99, pago único.', url: '/triangular#mis-finanzas-claras', cat: 'Producto' },
+    { title: 'Software', desc: 'Apps web por mensualidad para clubes, condominios y gimnasios, para organizaciones grandes y pequeñas.', url: '/software', cat: 'Producto' },
     { title: 'Club', desc: 'Software para que los clubes cobren y controlen las cuotas de sus socios. Desde $89,99 al mes para clubes pequeños y desde $190 al mes para clubes sociales e instituciones.', url: '/club', cat: 'Producto' },
     { title: 'Demo: Catálogo con tasa BCV', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: '/demo-catalogo', cat: 'Producto' },
     { title: 'Páginas web (Presencia)', desc: 'Catálogo $29,99/mes, Web $59,99/mes y Tienda $99,99/mes, montadas y mantenidas por nosotros.', url: '/paginas-web', cat: 'Producto' },
