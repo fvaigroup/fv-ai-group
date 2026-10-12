@@ -1,8 +1,27 @@
 /* Club: comportamiento de la página /club.
-   Pestañas accesibles (flechas, Inicio y Fin), interruptor mensual/anual, planes y calculadora.
-   Los cálculos son funciones puras (Club.*) que también se prueban con `node tests/club.test.js`. */
+   - Pestañas accesibles (flechas, Inicio y Fin).
+   - Calculadora: recomienda la línea según tenga o no junta directiva y administración propia, y el plan según el número de socios.
+     Los precios salen SIEMPRE de assets/precios-software.js (la tabla única de Club, Condominio y Gym); aquí no hay precios escritos.
+   Las funciones puras (Club.calcular) también se prueban con `node tests/club.test.js`. */
 (function (root) {
   'use strict';
+  var S = (typeof require === 'function' && typeof module !== 'undefined' && module.exports) ? require('./precios-software.js') : root.FV_SOFTWARE;
+
+  // ---------------- Calculadora (cálculo puro) ----------------
+  /** Resultado completo para un club: línea, plan, precio mensual y anual (30 % menos), costo por socio, implementación y mensaje de WhatsApp. */
+  function calcular(tieneJunta, socios) {
+    var n = Math.max(1, Math.floor(Number(socios) || 0));
+    var r = S.recomendar(!!tieneJunta, n);
+    var out = { socios: n, linea: r.linea, plan: r.plan, aMedida: r.aMedida, cambioDeLinea: r.cambioDeLinea };
+    if (r.plan) {
+      var m = r.plan.mensual;
+      out.mensual = m; out.anual = S.anual(r.linea, m); out.equivalente = S.equivalenteMensual(r.linea, m); out.ahorro = S.ahorroAnual(r.linea, m);
+      out.porSocio = Math.round((m / n) * 100) / 100;
+      out.implementacion = S.implementacion(r.linea, n);
+    }
+    out.mensaje = S.mensaje(r.linea, 'club', r.plan, 'mensual').replace('(', '(mi club tiene ' + S.miles(n) + ' socios; ');
+    return out;
+  }
 
   // ---------------- Pestañas ----------------
   function iniciarPestanas() {
@@ -34,112 +53,50 @@
     });
   }
 
-  // ---------------- Planes y precios (fuente única de los números de la página) ----------------
-  var DESCUENTO_ANUAL = 0.3;
-  var MINUTOS_POR_SOCIO = 2; // estimación: minutos de cobranza ahorrados por socio al mes (recordatorios y conciliación)
-  var PLANES = [
-    { id: 'esencial', nombre: 'Esencial', min: 1, max: 300, mensual: 199, implementacion: 150 },
-    { id: 'plus', nombre: 'Plus', min: 301, max: 1000, mensual: 349, implementacion: 300 },
-    { id: 'pro', nombre: 'Pro', min: 1001, max: 2500, mensual: 549, implementacion: 450 },
-    { id: 'max', nombre: 'Max', min: 2501, max: 5000, mensual: 799, implementacion: 600 }
-  ];
-  var A_MEDIDA = { id: 'a-medida', nombre: 'A medida', min: 5001, max: Infinity, mensual: null, desde: 1100 };
-
-  function redondear(n) { return Math.round(n * 100) / 100; }
-  /** Total del año pagado por adelantado: mensual × 12 × 0,70, con 2 decimales. */
-  function anual(mensual) { return redondear(mensual * 12 * (1 - DESCUENTO_ANUAL)); }
-  /** Precio mensual equivalente del plan anual. */
-  function equivalenteMensual(mensual) { return redondear(anual(mensual) / 12); }
-  function ahorroAnual(mensual) { return redondear(mensual * 12 - anual(mensual)); }
-  function fmt(n) {
-    var p = n.toFixed(2).split('.');
-    return '$' + p[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + p[1];
-  }
-  /** Entero con puntos de miles: 1000 → «1.000». */
-  function miles(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
-  /** Plan recomendado para un número de socios (más de 5.000: a medida). */
-  function planPara(socios) {
-    var n = Math.max(1, Math.floor(Number(socios) || 0));
-    for (var i = 0; i < PLANES.length; i++) if (n <= PLANES[i].max) return PLANES[i];
-    return A_MEDIDA;
-  }
-  /** Costo por socio al mes con ese plan y ese número de socios (null si es a medida). */
-  function costoPorSocio(plan, socios) {
-    var n = Math.max(1, Math.floor(Number(socios) || 0));
-    return plan.mensual ? redondear(plan.mensual / n) : null;
-  }
-  /** Horas de cobranza que se estima ahorrar al mes (2 minutos por socio), redondeadas a la hora. */
-  function horasAhorradas(socios) {
-    var n = Math.max(0, Math.floor(Number(socios) || 0));
-    return Math.round((n * MINUTOS_POR_SOCIO) / 60);
-  }
-
-  // ---------------- Interruptor mensual / anual ----------------
-  function iniciarPlanes() {
-    var grupo = document.querySelector('[data-club-toggle]');
-    var rejilla = document.querySelector('[data-club-planes]');
-    if (!grupo || !rejilla) return;
-    function aplicar(ciclo) {
-      rejilla.setAttribute('data-ciclo', ciclo);
-      grupo.querySelectorAll('[data-ciclo]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-ciclo') === ciclo ? 'true' : 'false'); });
-      rejilla.querySelectorAll('[data-plan]').forEach(function (art) {
-        var m = parseFloat(art.getAttribute('data-mensual'));
-        var precio = art.querySelector('[data-precio]'), nota = art.querySelector('[data-nota]');
-        if (ciclo === 'anual') {
-          precio.textContent = fmt(equivalenteMensual(m));
-          nota.textContent = 'Se paga ' + fmt(anual(m)) + ' por adelantado (12 meses). Ahorra ' + fmt(ahorroAnual(m)) + '.';
-        } else {
-          precio.textContent = '$' + m;
-          nota.textContent = 'Pago mes a mes, sin permanencia.';
-        }
-      });
-    }
-    grupo.querySelectorAll('[data-ciclo]').forEach(function (b) { b.addEventListener('click', function () { aplicar(b.getAttribute('data-ciclo')); }); });
-  }
-
-  // ---------------- Calculadora ----------------
+  // ---------------- Calculadora (pantalla) ----------------
   function iniciarCalculadora() {
     var cont = document.querySelector('[data-club-calc]');
-    if (!cont) return;
+    if (!cont || !S) return;
     var num = cont.querySelector('[data-calc-numero]'), rango = cont.querySelector('[data-calc-rango]'), wa = cont.querySelector('[data-calc-wa]');
+    var radios = cont.querySelectorAll('input[name="calc-junta"]');
     function el(k) { return cont.querySelector('[data-calc="' + k + '"]'); }
-    function pintar(n) {
-      var plan = planPara(n), horas = horasAhorradas(n);
-      el('horas').textContent = (horas === 1 ? '1 hora' : horas + ' horas') + ' al mes';
-      if (plan.mensual) {
-        el('plan').textContent = plan.nombre;
-        el('rango').textContent = (plan.min === 1 ? 'Hasta ' + miles(plan.max) : miles(plan.min) + ' a ' + miles(plan.max)) + ' socios';
-        el('mensual').textContent = '$' + plan.mensual + '/mes';
-        el('anual').textContent = fmt(equivalenteMensual(plan.mensual)) + '/mes';
-        el('anual-total').textContent = 'Se paga ' + fmt(anual(plan.mensual)) + ' al año por adelantado.';
-        el('porsocio').textContent = fmt(costoPorSocio(plan, n)) + ' al mes';
-      } else {
-        el('plan').textContent = 'A medida';
-        el('rango').textContent = 'Más de 5.000 socios o varias sedes';
-        el('mensual').textContent = 'Desde $' + miles(A_MEDIDA.desde) + '/mes';
-        el('anual').textContent = 'A medida';
-        el('anual-total').textContent = 'Armamos la propuesta para su club.';
-        el('porsocio').textContent = 'Se cotiza a la medida';
-      }
-      var msg = 'Hola F&V, mi club tiene ' + miles(n) + ' socios y quiero ver la demo de Club (plan ' + plan.nombre.toLowerCase() + ')';
-      wa.setAttribute('href', 'https://wa.me/584244125386?text=' + encodeURIComponent(msg));
-    }
-    function desdeNumero() {
+    function junta() { var c = cont.querySelector('input[name="calc-junta"]:checked'); return !c || c.value === 'si'; }
+    function pintar() {
       var n = parseInt(num.value, 10);
       if (!(n >= 1)) return;
       n = Math.min(n, 100000);
       rango.value = Math.min(n, parseInt(rango.max, 10));
-      pintar(n);
+      var r = calcular(junta(), n), hex = r.linea === 'hex';
+      var insignia = el('linea'); insignia.textContent = hex ? 'Línea Hexagonal' : 'Línea Triangular';
+      insignia.className = 'club-linea nav-forma ' + (hex ? 'nav-hex' : 'nav-tri');
+      var aviso = el('aviso');
+      if (r.aMedida) {
+        el('plan').textContent = 'A medida';
+        el('mensual').textContent = 'A medida'; el('anual').textContent = 'A medida'; el('anual-total').textContent = 'Armamos la propuesta para su club.';
+        el('porsocio').textContent = 'Se cotiza'; el('impl').textContent = 'A medida';
+        aviso.textContent = 'Con más de 5.000 socios armamos una propuesta a la medida.'; aviso.hidden = false;
+      } else {
+        el('plan').textContent = 'Hasta ' + S.miles(r.plan.hasta) + ' socios';
+        el('mensual').textContent = S.fmtPrecio(r.linea, r.mensual) + '/mes';
+        el('anual').textContent = S.fmtPrecio(r.linea, r.equivalente) + '/mes';
+        el('anual-total').textContent = 'Se paga ' + S.fmtPrecio(r.linea, r.anual) + ' al año por adelantado. Ahorra ' + S.fmtPrecio(r.linea, r.ahorro) + '.';
+        el('porsocio').textContent = S.fmt(r.porSocio) + ' al mes';
+        el('impl').textContent = r.implementacion ? S.fmtPrecio(r.linea, r.implementacion.unico) + (r.implementacion.cuotas ? ' en ' + r.implementacion.cuotas + ' cuotas' : ' (pago único)') : 'A medida';
+        aviso.textContent = r.cambioDeLinea ? 'Con más de 500 socios corresponde la Línea Hexagonal.' : ''; aviso.hidden = !r.cambioDeLinea;
+      }
+      wa.setAttribute('href', 'https://wa.me/584244125386?text=' + encodeURIComponent(r.mensaje));
     }
-    num.addEventListener('input', desdeNumero);
-    rango.addEventListener('input', function () { num.value = rango.value; desdeNumero(); });
+    num.addEventListener('input', pintar);
+    rango.addEventListener('input', function () { num.value = rango.value; pintar(); });
+    radios.forEach(function (r) { r.addEventListener('change', pintar); });
+    pintar();
   }
 
-  var Club = { PLANES: PLANES, A_MEDIDA: A_MEDIDA, anual: anual, equivalenteMensual: equivalenteMensual, ahorroAnual: ahorroAnual, fmt: fmt, planPara: planPara, costoPorSocio: costoPorSocio, horasAhorradas: horasAhorradas, miles: miles };
+  var Club = { calcular: calcular };
   root.Club = Club;
   if (typeof module !== 'undefined' && module.exports) module.exports = Club;
   if (typeof document !== 'undefined') {
-    var listo = function () { iniciarPestanas(); iniciarPlanes(); iniciarCalculadora(); };
+    var listo = function () { iniciarPestanas(); iniciarCalculadora(); };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', listo); else listo();
   }
 })(typeof window !== 'undefined' ? window : globalThis);
