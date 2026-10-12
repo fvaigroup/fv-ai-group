@@ -22,20 +22,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Línea Hexagonal: sistemas, automatización e IA para empresas | F&V AI Group</title>
-<meta name="description" content="Línea Hexagonal de F&V AI Group para empresas: diagnóstico gratis, asesoría, automatización y sistemas completos con Odoo o Dynamics 365. Valencia, Venezuela.">
+<meta name="description" content="Línea Hexagonal de F&V AI Group para medianas y grandes empresas, corporaciones, instituciones y administradoras de condominios: diagnóstico gratis, asesoría, automatización y sistemas con Odoo o Dynamics 365. Valencia, Venezuela.">
 <link rel="canonical" href="https://www.fvaigroup.com/hexagonal">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="Línea Hexagonal: sistemas, automatización e IA para empresas | F&V AI Group">
-<meta property="og:description" content="Línea Hexagonal de F&V AI Group para empresas: diagnóstico gratis, asesoría, automatización y sistemas completos con Odoo o Dynamics 365. Valencia, Venezuela.">
+<meta property="og:description" content="Línea Hexagonal de F&V AI Group para medianas y grandes empresas, corporaciones, instituciones y administradoras de condominios: diagnóstico gratis, asesoría, automatización y sistemas con Odoo o Dynamics 365. Valencia, Venezuela.">
 <meta property="og:url" content="https://www.fvaigroup.com/hexagonal">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Línea Hexagonal: sistemas, automatización e IA para empresas | F&V AI Group">
-<meta name="twitter:description" content="Línea Hexagonal de F&V AI Group para empresas: diagnóstico gratis, asesoría, automatización y sistemas completos con Odoo o Dynamics 365. Valencia, Venezuela.">
+<meta name="twitter:description" content="Línea Hexagonal de F&V AI Group para medianas y grandes empresas, corporaciones, instituciones y administradoras de condominios: diagnóstico gratis, asesoría, automatización y sistemas con Odoo o Dynamics 365. Valencia, Venezuela.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <script type="application/ld+json">
 {
@@ -451,6 +451,16 @@
   #search-empty { padding: 28px 18px; text-align: center; color: #64748b; font-size: 13px; }
   #search-hint-row { display: flex; gap: 14px; padding: 10px 18px; border-top: 1px solid #1F232B; font-size: 11px; color: #475569; font-family: 'Space Grotesk', sans-serif; }
   #search-hint-row kbd { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+  /* ---- Software: una tarjeta por producto, con su propia paleta (Club verde y dorado, Condominio azul petróleo y menta, Gym grafito y rojo) ---- */
+  .sw-card { border-radius: 20px; border: 1px solid var(--sw-borde); background: linear-gradient(180deg, var(--sw-fondo), #0D0E12 78%); transition: border-color .25s var(--ease-out), transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .sw-card:hover { border-color: var(--sw-acento); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.45); } }
+  .sw-card:active { transform: scale(.985); transition: transform .1s var(--ease-out); }
+  .sw-ico { display: inline-flex; width: 3.5rem; height: 3.5rem; align-items: center; justify-content: center; border-radius: 1rem; color: var(--sw-acento); background: rgba(255,255,255,.04); border: 1px solid var(--sw-borde); }
+  .sw-link { color: var(--sw-acento); }
+  .sw-club { --sw-borde: rgba(201,162,39,.38); --sw-fondo: rgba(20,83,45,.34); --sw-acento: #e3c452; }
+  .sw-condo { --sw-borde: rgba(42,157,143,.42); --sw-fondo: rgba(15,76,92,.42); --sw-acento: #4fd1c0; }
+  .sw-gym { --sw-borde: rgba(239,68,68,.42); --sw-fondo: rgba(31,41,55,.7); --sw-acento: #f87171; }
+  @media (prefers-reduced-motion: reduce) { .sw-card, .sw-card:hover, .sw-card:active { transform: none; transition: none; } }
 </style>
 </head>
 <body class="bg-fv-black text-slate-300 font-sans antialiased">
@@ -513,7 +523,7 @@
     <div class="lg:col-span-7">
       <p class="mb-5"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
       <h1 id="hero-title" class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] text-balance mb-6">Sistemas, automatización e IA <span class="texto-linea">para su empresa</span></h1>
-      <p class="text-lg text-slate-400 leading-relaxed font-light max-w-xl mb-6">Para empresas de Valencia y de toda Venezuela que quieren ordenar sus procesos, integrar IA y capacitar a su equipo, con un mismo equipo de principio a fin y precios publicados.</p>
+      <p class="text-lg text-slate-400 leading-relaxed font-light max-w-xl mb-6">Para medianas y grandes empresas, corporaciones e instituciones de toda Venezuela, donde decide una estructura: áreas, sedes o una junta directiva. Ordenamos procesos, integramos IA y capacitamos a su equipo, con un mismo equipo de principio a fin y precios publicados.</p>
       <div class="flex flex-col sm:flex-row gap-3">
         <a href="/contacto#agenda" data-evento="diagnostico_gratis" data-cta="hexagonal_hero" class="btn-linea flex items-center justify-center min-h-[48px] px-7 py-3.5 rounded-lg font-head font-semibold text-center">Agendar diagnóstico gratis de 20 min</a>
         <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20conversar%20sobre%20una%20soluci%C3%B3n%20para%20mi%20empresa%20%28L%C3%ADnea%20Hexagonal%29" target="_blank" rel="noopener" data-cta="hexagonal_hero" data-evento="hexagonal_hero_whatsapp" class="btn-linea-sec flex items-center justify-center gap-2 min-h-[48px] px-7 py-3.5 rounded-lg font-head font-medium text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escribir por WhatsApp</span></a>
@@ -523,6 +533,29 @@
       <div class="relative w-[420px] h-[420px]">
         <img src="assets/logo-hex-hex.png" width="500" height="500" alt="" aria-hidden="true" class="w-full h-full hex-spin opacity-90">
         <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="absolute inset-0 m-auto w-40 h-40 float">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARA QUIÉN ES ESTA LÍNEA ============ -->
+<section id="para-quien" class="linea-hex py-14 lg:py-16 border-b border-white/5 scroll-mt" aria-labelledby="para-quien-title">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-5">
+        <h2 id="para-quien-title" class="font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight tracking-tight text-balance mb-3">¿Es esta <span class="texto-linea">su línea</span>?</h2>
+        <p class="text-slate-300 leading-relaxed mb-3">¿Su empresa tiene áreas, sedes o junta directiva? Para medianas y grandes empresas, corporaciones e instituciones.</p>
+        <p class="text-sm text-slate-400 leading-relaxed">Referencia: más de unas 20 personas, varias sedes, o una junta directiva o gerencia que aprueba la compra.</p>
+      </div>
+      <div class="lg:col-span-7">
+        <ul class="flex flex-wrap gap-2.5" aria-label="Quién usa la Línea Hexagonal">
+          <li class="rounded-2xl border border-fv-cyan/30 bg-fv-cyan/5 px-4 py-2 text-sm text-slate-200">Medianas empresas con varias áreas y gerencias</li>
+          <li class="rounded-2xl border border-fv-cyan/30 bg-fv-cyan/5 px-4 py-2 text-sm text-slate-200">Grandes empresas y corporaciones</li>
+          <li class="rounded-2xl border border-fv-cyan/30 bg-fv-cyan/5 px-4 py-2 text-sm text-slate-200">Grupos empresariales y franquicias</li>
+          <li class="rounded-2xl border border-fv-cyan/30 bg-fv-cyan/5 px-4 py-2 text-sm text-slate-200">Instituciones (clubes sociales, colegios, universidades, clínicas y hospitales, cámaras y gremios)</li>
+          <li class="rounded-2xl border border-fv-cyan/30 bg-fv-cyan/5 px-4 py-2 text-sm text-slate-200">Administradoras de condominios</li>
+        </ul>
+        <p class="mt-5 text-sm text-slate-400">Un negocio pequeño que factura mucho sigue siendo Triangular: manda el tamaño y quién decide, no la facturación. Una empresa grande que pide algo pequeño es Hexagonal. Si su organización crece, pasa de línea. ¿No sabe cuál? Menos de 20 personas: Triangular. Más de 20, varias sedes o junta directiva: Hexagonal. <a href="/triangular" data-evento="hexagonal_para_quien_triangular" class="link-underline linea-tri text-fv-triGreen py-2 inline-block">Ver la Línea Triangular</a></p>
       </div>
     </div>
   </div>
@@ -1035,18 +1068,37 @@
 </section>
 
 <!-- ============ CIERRE ============ -->
-<!-- ============ CLUB (software para clubes) ============ -->
-<section aria-label="Club, software para clubes" class="py-8 border-t border-white/5">
+<!-- ============ SOFTWARE (Club, Condominio y Gym) ============ -->
+<section id="software" aria-labelledby="sw-title" class="py-16 lg:py-20 border-t border-white/5 scroll-mt">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <a href="/club" data-evento="hexagonal_club" class="group flex flex-col sm:flex-row sm:items-center gap-5 rounded-2xl border border-club-oro/40 bg-gradient-to-r from-club-verde/30 to-transparent px-5 py-5 sm:px-7 sm:py-6 transition-colors hover:border-club-oro/80">
-      <img src="assets/club/club-emblema.svg" width="48" height="56" alt="" aria-hidden="true" class="h-12 w-auto shrink-0" loading="lazy" decoding="async">
-      <span class="flex-1">
-        <span class="block font-head text-[11px] font-semibold uppercase tracking-wider text-club-oro">Nuevo · Software para clubes</span>
-        <span class="block font-sans text-xl font-semibold text-white mt-1">Club · desde $349/mes</span>
-        <span class="block text-sm text-slate-300 leading-relaxed mt-1">Software para clubes: su administración cobra las cuotas sin perseguir a nadie y su junta ve la morosidad en tiempo real. Planes para clubes de 301 socios en adelante.</span>
-      </span>
-      <span class="font-head text-sm font-semibold text-club-oro whitespace-nowrap">Conocer Club <span aria-hidden="true">→</span></span>
-    </a>
+    <div class="max-w-2xl mb-10">
+      <h2 id="sw-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance mb-3">Software para su organización</h2>
+      <p class="text-slate-400 text-lg leading-relaxed">Apps web por mensualidad para clubes sociales e instituciones, administradoras de condominios y cadenas de gimnasios, con su marca completa y capacitación.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      <a href="/club#hexagonal" data-evento="hexagonal_software_club" class="reveal sw-card sw-club flex flex-col p-6">
+        <span class="sw-ico mb-4"><img src="assets/club/club-emblema.svg" width="40" height="47" alt="" aria-hidden="true" class="h-11 w-auto" loading="lazy" decoding="async"></span>
+        <h3 class="font-sans text-2xl font-bold text-white mb-2">Club</h3>
+        <p class="text-slate-300 leading-relaxed mb-4">Cobro de cuotas, estado de cuenta, carnet digital y reportes para la junta directiva.</p>
+        <p class="mt-auto mb-3 text-slate-200"><span class="text-sm text-slate-400">desde</span> <strong class="text-xl text-white font-head"><span data-sw-desde="hex">$190</span></strong><span class="text-sm text-slate-400">/mes</span></p>
+        <span class="sw-link font-head text-sm font-semibold self-start link-underline">Ver Club <span aria-hidden="true">→</span></span>
+      </a>
+      <a href="/condominio#hexagonal" data-evento="hexagonal_software_condominio" class="reveal sw-card sw-condo flex flex-col p-6">
+        <span class="sw-ico mb-4"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M3 21h18M8 8h2M8 12h2M8 16h2M17 13h.01M17 17h.01"/></svg></span>
+        <h3 class="font-sans text-2xl font-bold text-white mb-2">Condominio</h3>
+        <p class="text-slate-300 leading-relaxed mb-4">Recibos, alícuotas y gastos transparentes para sus edificios y conjuntos.</p>
+        <p class="mt-auto mb-3 text-slate-200"><span class="text-sm text-slate-400">desde</span> <strong class="text-xl text-white font-head"><span data-sw-desde="hex">$190</span></strong><span class="text-sm text-slate-400">/mes</span></p>
+        <span class="sw-link font-head text-sm font-semibold self-start link-underline">Ver Condominio <span aria-hidden="true">→</span></span>
+      </a>
+      <a href="/gym#hexagonal" data-evento="hexagonal_software_gym" class="reveal sw-card sw-gym flex flex-col p-6">
+        <span class="sw-ico mb-4"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></span>
+        <h3 class="font-sans text-2xl font-bold text-white mb-2">Gym</h3>
+        <p class="text-slate-300 leading-relaxed mb-4">Membresías, cobros y entrada con QR para cada sede.</p>
+        <p class="mt-auto mb-3 text-slate-200"><span class="text-sm text-slate-400">desde</span> <strong class="text-xl text-white font-head"><span data-sw-desde="hex">$190</span></strong><span class="text-sm text-slate-400">/mes</span></p>
+        <span class="sw-link font-head text-sm font-semibold self-start link-underline">Ver Gym <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+    <p class="mt-8"><a href="/software" data-evento="hexagonal_software_software" class="link-underline text-fv-cyan py-2 inline-block">Ver todo el software</a></p>
   </div>
 </section>
 
@@ -1059,7 +1111,7 @@
         <a href="/contacto#agenda" data-evento="diagnostico_gratis" data-cta="hexagonal_cierre" class="btn-linea flex items-center justify-center min-h-[48px] px-7 py-3.5 rounded-lg font-head font-semibold">Agendar diagnóstico gratis</a>
         <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20conversar%20sobre%20una%20soluci%C3%B3n%20para%20mi%20empresa%20%28L%C3%ADnea%20Hexagonal%29" target="_blank" rel="noopener" data-cta="hexagonal_cierre" class="btn-linea-sec flex items-center justify-center gap-2 min-h-[48px] px-7 py-3.5 rounded-lg font-head font-medium"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escribir por WhatsApp</span></a>
       </div>
-      <p class="mt-6 text-sm text-slate-400">¿Tiene un negocio pequeño? <a href="/triangular" class="linea-tri text-fv-triGreen link-underline py-1">Mire la Línea Triangular</a>.</p>
+      <p class="mt-6 text-sm text-slate-400">¿Su organización es pequeña y usted decide? <a href="/triangular" class="linea-tri text-fv-triGreen link-underline py-1">Mire la Línea Triangular</a>.</p>
     </div>
   </div>
 </section>
@@ -1114,8 +1166,10 @@
           <ul class="space-y-2.5 text-sm text-slate-400">
             <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
             <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
-            <li><a href="/software" data-evento="pie_software" class="link-underline hover:text-white transition-colors">Software (próximamente)</a></li>
+            <li><a href="/software" data-evento="pie_software" class="link-underline hover:text-white transition-colors">Software</a></li>
             <li><a href="/club" data-evento="pie_club" class="link-underline hover:text-white transition-colors">Club</a></li>
+            <li><a href="/condominio" data-evento="pie_condominio" class="link-underline hover:text-white transition-colors">Condominio</a></li>
+            <li><a href="/gym" data-evento="pie_gym" class="link-underline hover:text-white transition-colors">Gym</a></li>
             <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
             <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
             <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
@@ -1381,6 +1435,7 @@
 </script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/publicado.js"></script>
+<script defer src="/assets/precios-software.js"></script>
 <script defer src="/assets/estados.js"></script>
 <script defer src="/assets/luci.js"></script>
 <script defer src="/assets/medicion.js"></script>

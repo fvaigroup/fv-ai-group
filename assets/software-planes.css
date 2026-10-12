@@ -1,0 +1,37 @@
+/* Planes de las apps de software (Club, Condominio y Gym): estilos compartidos por las tres páginas.
+   El HTML lo genera assets/precios-software.js (planesHTML). Cada página define su paleta con estas variables:
+     --p-acento        color principal del producto (botones y bordes)
+     --p-acento-claro  versión clara para textos sobre fondo oscuro
+     --p-fondo         tinte de las tarjetas
+     --p-borde         borde de las tarjetas
+     --p-sobre         color del texto sobre el acento
+   Ejemplo: .tema-club { --p-acento: #c9a227; ... } */
+.swp-toggle { display: inline-grid; grid-template-columns: 1fr 1fr; gap: .25rem; padding: .375rem; max-width: 100%; margin-bottom: 1.75rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03); }
+.swp-tab { min-height: 46px; padding: .5rem 1.1rem; border-radius: .75rem; border: 1px solid transparent; font-family: 'Space Grotesk', sans-serif; font-size: .9rem; font-weight: 500; line-height: 1.2; color: #94a3b8; transition: color .25s var(--ease-out), background-color .25s var(--ease-out), border-color .25s var(--ease-out); }
+.swp-tab span { color: var(--p-acento-claro); }
+@media (hover: hover) and (pointer: fine) { .swp-tab[aria-pressed="false"]:hover { color: #fff; } }
+.swp-tab[aria-pressed="true"] { color: var(--p-acento-claro); background: color-mix(in srgb, var(--p-acento) 16%, transparent); border-color: color-mix(in srgb, var(--p-acento) 45%, transparent); font-weight: 600; }
+.swp-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr)); align-items: stretch; }
+.swp-card { display: flex; flex-direction: column; padding: 1.6rem; border-radius: 22px; border: 1px solid var(--p-borde); background: linear-gradient(180deg, var(--p-fondo), rgba(13,14,18,.96)); }
+.swp-tam { font-family: 'Geist', sans-serif; font-size: 1.25rem; font-weight: 700; color: #fff; letter-spacing: -.01em; }
+.swp-precio { font-family: 'Space Grotesk', sans-serif; font-size: 2.7rem; font-weight: 700; line-height: 1; color: #fff; letter-spacing: -.02em; margin: .9rem 0 .5rem; }
+.swp-precio-medida { font-size: 2.1rem; }
+.swp-un { margin-left: .3rem; font-size: 1rem; font-weight: 500; letter-spacing: 0; color: #94a3b8; }
+.swp-nota { min-height: 2.4em; font-size: .8rem; line-height: 1.3; color: #94a3b8; }
+.swp-grid[data-sw-ciclo-actual="anual"] .swp-nota { color: var(--p-acento-claro); }
+.swp-detalle { margin-top: .45rem; font-size: .875rem; line-height: 1.45; color: #cbd5e1; }
+.swp-detalle strong { color: #fff; font-weight: 600; }
+.swp-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: auto; min-height: 50px; padding: .7rem 1rem; border-radius: .9rem; border: 1px solid transparent; background: var(--p-btn, var(--p-acento)); color: var(--p-sobre); font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .9rem; text-align: center; line-height: 1.25; transition: transform .2s var(--ease-out), filter .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+.swp-card .swp-detalle + .swp-cta, .swp-card .swp-nota + .swp-cta { margin-top: 1.4rem; }
+.swp-detalle:last-of-type { margin-bottom: 1.4rem; }
+@media (hover: hover) and (pointer: fine) { .swp-cta:hover { filter: brightness(1.08); box-shadow: 0 8px 28px color-mix(in srgb, var(--p-acento) 35%, transparent); } }
+.swp-cta:active { transform: scale(.97); transition: transform .1s var(--ease-out); }
+.swp-medida { border-style: dashed; }
+.swp-incluye { margin-top: 1.75rem; padding: 1.5rem; border-radius: 20px; border: 1px solid #1F232B; background: #0D0E12; }
+.swp-incluye h4 { margin-bottom: 1rem; font-family: 'Geist', sans-serif; font-weight: 600; font-size: 1.05rem; color: #fff; }
+.swp-incluye ul { display: grid; gap: .65rem 2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); list-style: none; padding: 0; margin: 0; color: #e2e8f0; font-size: .95rem; line-height: 1.45; }
+.swp-incluye li { position: relative; padding-left: 1.6rem; }
+.swp-incluye li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--p-acento-claro); font-weight: 700; }
+.swp-aviso { margin-top: 1rem; font-size: .9rem; color: #94a3b8; }
+.swp-aviso a { color: var(--p-acento-claro); text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .swp-cta, .swp-cta:active { transition: none; transform: none; } }

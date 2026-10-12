@@ -1,40 +1,53 @@
-// Prueba de los cálculos de la página /club (planes, precio anual, plan recomendado y estimaciones).
+// Prueba de la calculadora de /club: la línea sale de la pregunta «¿tiene junta directiva y administración propia?» y el plan, del número de socios.
+// Los precios vienen de assets/precios-software.js (la misma tabla que usan Condominio, Gym y /software).
 // Uso: node tests/club.test.js
+const fs = require('fs');
+const path = require('path');
 const assert = require('assert');
-const C = require('../assets/club.js');
+const Producto = require('../assets/producto.js');
+const Club = { calcular: (j, u) => Producto.calcular('club', j, u) };
+const S = require('../assets/precios-software.js');
+let n = 0;
+const eq = (a, b, m) => { n++; assert.deepStrictEqual(a, b, m); };
+const ok = (c, m) => { n++; assert.ok(c, m); };
 
-// Anual = mensual × 12 × 0,8, con 2 decimales
-const anual = { esencial: 1910.40, plus: 3350.40, pro: 5270.40, max: 7670.40 };
-C.PLANES.forEach(p => assert.strictEqual(C.anual(p.mensual), anual[p.id], 'anual ' + p.id));
-const equiv = { esencial: 159.20, plus: 279.20, pro: 439.20, max: 639.20 };
-C.PLANES.forEach(p => assert.strictEqual(C.equivalenteMensual(p.mensual), equiv[p.id], 'equivalente ' + p.id));
-const ahorro = { esencial: 477.60, plus: 837.60, pro: 1317.60, max: 1917.60 };
-C.PLANES.forEach(p => assert.strictEqual(C.ahorroAnual(p.mensual), ahorro[p.id], 'ahorro ' + p.id));
-assert.strictEqual(C.fmt(1910.4), '$1.910,40');
-assert.strictEqual(C.fmt(159.2), '$159,20');
-assert.strictEqual(C.fmt(7670.4), '$7.670,40');
+// bordes de cada plan, con y sin junta directiva
+const SOCIOS = [100, 101, 300, 301, 500, 501, 1000, 1001, 2500, 2501, 5000, 5001];
+const CON_JUNTA = { 100: 190, 101: 190, 300: 190, 301: 190, 500: 190, 501: 250, 1000: 250, 1001: 430, 2500: 430, 2501: 740, 5000: 740, 5001: null };
+const SIN_JUNTA = { 100: ['tri', 89.99], 101: ['tri', 119.99], 300: ['tri', 119.99], 301: ['tri', 189.99], 500: ['tri', 189.99], 501: ['hex', 250], 1000: ['hex', 250], 1001: ['hex', 430], 2500: ['hex', 430], 2501: ['hex', 740], 5000: ['hex', 740], 5001: ['hex', null] };
+SOCIOS.forEach(u => {
+  const a = Club.calcular(true, u);
+  eq(a.linea, 'hex', 'con junta: Hexagonal con ' + u); eq(a.mensual === undefined ? null : a.mensual, CON_JUNTA[u], 'con junta ' + u); eq(a.aMedida, CON_JUNTA[u] === null);
+  const b = Club.calcular(false, u);
+  eq([b.linea, b.mensual === undefined ? null : b.mensual], SIN_JUNTA[u], 'sin junta ' + u); eq(b.cambioDeLinea, u > 500);
+});
 
-// Plan recomendado en los límites de cada plan
-const casos = [[1, 'esencial'], [50, 'esencial'], [300, 'esencial'], [301, 'plus'], [1000, 'plus'], [1001, 'pro'], [2500, 'pro'], [2501, 'max'], [5000, 'max'], [5001, 'a-medida'], [12000, 'a-medida']];
-casos.forEach(([n, id]) => assert.strictEqual(C.planPara(n).id, id, n + ' socios'));
-assert.strictEqual(C.planPara('800').id, 'plus');
-assert.strictEqual(C.planPara(0).id, 'esencial');   // valor vacío o inválido: el plan más chico
-assert.strictEqual(C.planPara(NaN).id, 'esencial');
+// anual con 30 % menos, costo por socio e implementación (800 socios con junta: Hexagonal hasta 1.000)
+const c = Club.calcular(true, 800);
+eq([c.mensual, c.anual, c.equivalente, c.ahorro], [250, 2100, 175, 900]);
+eq(c.porUsuario, 0.31);
+eq(c.implementacion, { unico: 300 });
+// 100 socios sin junta: Triangular hasta 100
+const t = Club.calcular(false, 100);
+eq([t.mensual, t.anual, t.equivalente, t.ahorro], [89.99, 755.92, 62.99, 323.96]);
+eq(t.porUsuario, 0.9);
+eq(t.implementacion, { unico: 99.99, cuotas: 2 });
+// más de 500 socios sin junta pasa a la Hexagonal y avisa; más de 5.000 es a medida
+eq(Club.calcular(false, 600).cambioDeLinea, true);
+eq(Club.calcular(true, 6000).implementacion, undefined);
+// valores inválidos: el plan más chico
+eq(Club.calcular(true, 0).usuarios, 1); eq(Club.calcular(false, NaN).linea, 'tri');
+// el mensaje de WhatsApp nombra producto, línea, tamaño y número de socios
+ok(/Club \(mi club tiene 800 socios; Línea Hexagonal, hasta 1\.000 socios, \$250\/mes\)/.test(c.mensaje), c.mensaje);
+ok(/Línea Triangular, hasta 100 socios, \$89,99\/mes/.test(t.mensaje), t.mensaje);
+ok(/más de 5\.000 socios/.test(Club.calcular(true, 6000).mensaje));
 
-// Costo por socio con el plan lleno: lo que dice la tarjeta de cada plan
-const porSocio = { esencial: 0.66, plus: 0.35, pro: 0.22, max: 0.16 };
-C.PLANES.forEach(p => assert.strictEqual(C.costoPorSocio(p, p.max), porSocio[p.id], 'por socio ' + p.id));
-assert.strictEqual(C.costoPorSocio(C.A_MEDIDA, 6000), null);
+// la página no escribe precios a mano ni usa los nombres viejos de los planes
+const html = fs.readFileSync(path.join(__dirname, '..', 'club.html'), 'utf8');
+const visible = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ');
+['Esencial', 'Plus', 'Max', 'Premium', 'Club Pro'].forEach(v => ok(!new RegExp('\\b' + v + '\\b').test(visible), '/club no debe mencionar «' + v + '»'));
+ok(/id="hexagonal"/.test(html) && /id="triangular"/.test(html), '/club debe tener las anclas #hexagonal y #triangular');
+ok(html.indexOf('id="hexagonal"') < html.indexOf('id="triangular"'), 'la Hexagonal va primero');
+ok(/Anual <span>\(30 % de descuento\)/.test(html), 'interruptor anual con 30 %');
 
-// Horas de cobranza ahorradas: 2 minutos por socio al mes, redondeadas a la hora
-assert.strictEqual(C.horasAhorradas(300), 10);
-assert.strictEqual(C.horasAhorradas(800), 27);
-assert.strictEqual(C.horasAhorradas(2000), 67);
-assert.strictEqual(C.horasAhorradas(0), 0);
-
-// Los planes cubren de 1 a 5.000 socios sin huecos ni solapes
-for (let i = 1; i < C.PLANES.length; i++) assert.strictEqual(C.PLANES[i].min, C.PLANES[i - 1].max + 1);
-assert.strictEqual(C.PLANES[0].min, 1);
-assert.strictEqual(C.A_MEDIDA.min, C.PLANES[C.PLANES.length - 1].max + 1);
-
-console.log('club: ' + (C.PLANES.length * 3 + 3 + casos.length + 2 + C.PLANES.length + 5 + 4 + C.PLANES.length) + ' comprobaciones correctas');
+console.log('club: ' + n + ' comprobaciones correctas');

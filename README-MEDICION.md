@@ -60,6 +60,23 @@ Todos los botones y enlaces de `/club` llevan `data-evento`; los de WhatsApp ade
 | `club_demo_cierre` / `club_whatsapp_cierre` | Botones del cierre |
 | `portada_club`, `triangular_club`, `hexagonal_club`, `software_club`, `pie_club` | Enlaces hacia `/club` desde el inicio, las dos líneas, `/software` y el pie |
 
+### 8. Páginas de software (`/software`, `/club`, `/condominio`, `/gym`) y portada nueva
+Mismo patrón que `/club` (sección 7): todos los botones y enlaces llevan `data-evento`; los de WhatsApp, además, `data-product` y `data-cta`.
+
+| Evento | Qué es |
+|---|---|
+| `condominio_*` y `gym_*` | Igual que `club_*`: `_demo_hero`, `_planes`, `_tab_1…4`, `_plan_hex_<tamaño>`, `_plan_tri_<tamaño>`, `_plan_hex_a_medida`, `_hex_mensual` / `_hex_anual` / `_tri_mensual` / `_tri_anual`, `_calculadora`, `_calculadora_si` / `_calculadora_no`, `_faq_1…6`, `_demo_cierre`, `_whatsapp_cierre` |
+| `software_hex_club`, `software_hex_condominio`, `software_hex_gym` / `software_tri_*` | Tarjetas de las apps en `/software` (cada una lleva a su `#hexagonal` o `#triangular`) |
+| `software_hex_<solución>` / `software_tri_<solución>` | Tarjetas pequeñas de «Más soluciones» en `/software` |
+| `software_medida` | «Lo desarrollamos a la medida» (WhatsApp) |
+| `portada_whatsapp`, `portada_test_abrir` | Botones de la portada nueva |
+| `portada_hacemos_automatizacion` / `_software` / `_webs` | «Qué hacemos» |
+| `portada_software_club` / `_condominio` / `_gym` / `_todo` | Las tres apps del inicio y «Ver todo el software» |
+| `hexagonal_software_club`, `triangular_software_condominio`, … | Tarjetas de software en `/hexagonal` y `/triangular` |
+| `pie_software`, `pie_club`, `pie_condominio`, `pie_gym` | Enlaces del pie |
+
+El producto de cada mensaje de WhatsApp de los planes sale de `assets/precios-software.js` (por ejemplo `club-hex-500`, `gym-tri-100`).
+
 ### 6. Otros eventos con nombre propio
 Cualquier elemento con `data-evento="nombre"` envía un evento llamado `nombre` al hacer clic. Los más útiles:
 
