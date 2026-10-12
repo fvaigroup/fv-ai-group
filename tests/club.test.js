@@ -3,16 +3,16 @@
 const assert = require('assert');
 const C = require('../assets/club.js');
 
-// Anual = mensual × 12 × 0,8, con 2 decimales
-const anual = { esencial: 1910.40, plus: 3350.40, pro: 5270.40, max: 7670.40 };
+// Anual = mensual × 12 × 0,70, con 2 decimales
+const anual = { esencial: 1671.60, plus: 2931.60, pro: 4611.60, max: 6711.60 };
 C.PLANES.forEach(p => assert.strictEqual(C.anual(p.mensual), anual[p.id], 'anual ' + p.id));
-const equiv = { esencial: 159.20, plus: 279.20, pro: 439.20, max: 639.20 };
+const equiv = { esencial: 139.30, plus: 244.30, pro: 384.30, max: 559.30 };
 C.PLANES.forEach(p => assert.strictEqual(C.equivalenteMensual(p.mensual), equiv[p.id], 'equivalente ' + p.id));
-const ahorro = { esencial: 477.60, plus: 837.60, pro: 1317.60, max: 1917.60 };
+const ahorro = { esencial: 716.40, plus: 1256.40, pro: 1976.40, max: 2876.40 };
 C.PLANES.forEach(p => assert.strictEqual(C.ahorroAnual(p.mensual), ahorro[p.id], 'ahorro ' + p.id));
-assert.strictEqual(C.fmt(1910.4), '$1.910,40');
-assert.strictEqual(C.fmt(159.2), '$159,20');
-assert.strictEqual(C.fmt(7670.4), '$7.670,40');
+assert.strictEqual(C.fmt(1671.6), '$1.671,60');
+assert.strictEqual(C.fmt(139.3), '$139,30');
+assert.strictEqual(C.fmt(6711.6), '$6.711,60');
 
 // Plan recomendado en los límites de cada plan
 const casos = [[1, 'esencial'], [50, 'esencial'], [300, 'esencial'], [301, 'plus'], [1000, 'plus'], [1001, 'pro'], [2500, 'pro'], [2501, 'max'], [5000, 'max'], [5001, 'a-medida'], [12000, 'a-medida']];

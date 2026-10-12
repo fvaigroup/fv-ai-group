@@ -19,17 +19,15 @@
       hora: '3:00 a 6:00 pm',
       duracion: '3 horas',
       lugar: 'Valencia',
-      precio: 25,                         // USD por persona
-      precioContado: 20,                  // USD pagando de contado al reservar (20 % menos)
+      precio: 24.99,                      // USD por persona
       cuposTotales: 6,
       cuposLibres: 6                      // <- actualiza esto cuando se reserve un cupo
     },
     curso: {
       nombre: 'Finanzas con IA',
       lugar: 'Valencia',
-      precio: 299,                        // USD en 3 cuotas, una por sábado
-      cuotas: [100, 100, 99],             // USD de cada cuota (suman el precio)
-      precioContado: 239.2,               // USD de contado (20 % menos)
+      precio: 299.99,                     // USD en 3 cuotas, una por sábado
+      cuotas: [100, 100, 99.99],          // USD de cada cuota (suman el precio)
       cuposTotales: 6,
       cohortes: [                         // en orden de fecha; cada una con sus cupos
         { id: 'oct', fechas: ['2026-10-10', '2026-10-17', '2026-10-24'], hora: '8:00 a.m. a 12:00 p.m.', cuposLibres: 6 },
@@ -59,6 +57,8 @@
     return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (Línea Triangular, ' + ds + ' de ' + mes + '). ¿Cómo pago: en 3 cuotas o de contado?';
   }
 
+  // Los precios Triangulares terminan en ,99: siempre con coma decimal y 2 decimales
+  function usd(n) { return '$' + n.toFixed(2).replace('.', ','); }
   var t = EVENTOS.taller, cur = EVENTOS.curso;
   var hoy = hoyISO();
   var coh = cur.cohortes;
@@ -68,7 +68,7 @@
   var estado = {
     'taller:vigente': hoy <= t.fecha,
     'taller:pasado': hoy > t.fecha,
-    'taller:anticipado': false,         // ya no hay fecha límite: el descuento es por pagar de contado
+    'taller:anticipado': false,         // ya no hay fecha límite ni descuento por pagar de contado
     'curso:vigente': coh.some(function (c) { return hoy <= c.fechas[0]; }),
     'curso:pasado': !coh.some(function (c) { return hoy <= c.fechas[0]; })
   };
@@ -79,11 +79,10 @@
 
   var datos = {
     'taller.nombre': t.nombre, 'taller.fecha': larga(t.fecha), 'taller.fechaCorta': sinAnio(t.fecha), 'taller.diaMes': diaMes(t.fecha),
-    'taller.hora': t.hora, 'taller.duracion': t.duracion, 'taller.lugar': t.lugar, 'taller.precio': '$' + t.precio,
-    'taller.precioContado': '$' + t.precioContado,
+    'taller.hora': t.hora, 'taller.duracion': t.duracion, 'taller.lugar': t.lugar, 'taller.precio': usd(t.precio),
     'taller.cupos': cupos(t.cuposLibres, t.cuposTotales), 'taller.cuposTotales': String(t.cuposTotales),
-    'curso.nombre': cur.nombre, 'curso.lugar': cur.lugar, 'curso.precio': '$' + cur.precio, 'curso.contado': '$239,20',
-    'curso.cuotas': '$100, $100 y $99', 'curso.cuposTotales': String(cur.cuposTotales)
+    'curso.nombre': cur.nombre, 'curso.lugar': cur.lugar, 'curso.precio': usd(cur.precio),
+    'curso.cuotas': cur.cuotas.slice(0, -1).map(usd).join(', ') + ' y ' + usd(cur.cuotas[cur.cuotas.length - 1]), 'curso.cuposTotales': String(cur.cuposTotales)
   };
   function volcar(prefijo, c) {
     datos[prefijo + '.fechas'] = fechasCurso(c);

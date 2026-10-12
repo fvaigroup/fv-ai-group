@@ -1,32 +1,30 @@
 /* Planes de la Línea Triangular: pago adelantado y selector de tamaño.
-   Regla de precio: 20 % de descuento SOLO si se paga de contado un producto de pago único o si se adelantan 3, 6, 9 o 12 meses
-   de un producto mensual. Pagando mes a mes o en cuotas no hay descuento.
-   ahorro(precio, meses) = precio × meses × 0,8 (2 decimales). Este archivo también lo usan las pruebas automáticas (Node). */
+   Regla de precio: hay UN solo descuento, 30 % por pagar 12 meses por adelantado un plan mensual. Mes a mes, en cuotas o de contado
+   (productos de pago único) no hay descuento.
+   anual(precio) = precio × 12 × 0,70, con 2 decimales (Línea Triangular). anualEntero(precio) = lo mismo redondeado al entero (Línea Hexagonal).
+   Este archivo también lo usan las pruebas automáticas (Node). */
 (function (g) {
   'use strict';
-  var MESES = [3, 6, 9, 12], FACTOR = 0.8;
-  function ahorro(precio, meses) { return Math.round(precio * meses * FACTOR * 100) / 100; }
+  var DESCUENTO = 0.30, FACTOR = 0.70;
+  function anual(precio) { return Math.round(precio * 12 * FACTOR * 100) / 100; }
+  function anualEntero(precio) { return Math.round(precio * 12 * FACTOR); }
+  function miles(entero) { return String(entero).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   function fmt(n) {
     var p = n.toFixed(2).split('.');
-    return '$' + p[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + p[1];
+    return '$' + miles(p[0]) + ',' + p[1];
   }
-  var API = { MESES: MESES, FACTOR: FACTOR, ahorro: ahorro, fmt: fmt };
+  function fmtEntero(n) { return '$' + miles(Math.round(n)); }
+  var API = { DESCUENTO: DESCUENTO, FACTOR: FACTOR, anual: anual, anualEntero: anualEntero, fmt: fmt, fmtEntero: fmtEntero };
   g.FV_PLANES = API;
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   if (typeof document === 'undefined') return;
 
   function iniciar() {
-    // 1) pago adelantado: se calcula a partir del precio del tamaño elegido
-    document.querySelectorAll('[data-panel][data-precio]').forEach(function (panel) {
+    // 1) pago adelantado (12 meses, 30 % menos): se calcula a partir del precio del tamaño elegido
+    document.querySelectorAll('[data-panel][data-precio][data-tipo="mensual"]').forEach(function (panel) {
       var precio = parseFloat(panel.getAttribute('data-precio'));
-      var tipo = panel.getAttribute('data-tipo');
       if (isNaN(precio)) return;
-      if (tipo === 'mensual') {
-        var l12 = panel.querySelector('[data-ahorro="12"]'); if (l12) l12.textContent = fmt(ahorro(precio, 12));
-        MESES.forEach(function (m) { var el = panel.querySelector('[data-ahorro-lista="' + m + '"]'); if (el) el.textContent = fmt(ahorro(precio, m)); });
-      } else {
-        var c = panel.querySelector('[data-contado]'); if (c) c.textContent = fmt(Math.round(precio * FACTOR * 100) / 100);
-      }
+      var l12 = panel.querySelector('[data-ahorro="12"]'); if (l12) l12.textContent = fmt(anual(precio));
     });
     // 2) selector de tamaño (pestañas con teclado): el precio, lo que incluye y el mensaje de WhatsApp cambian con el tamaño
     document.querySelectorAll('[data-tabs]').forEach(function (grupo) {

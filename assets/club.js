@@ -35,7 +35,7 @@
   }
 
   // ---------------- Planes y precios (fuente única de los números de la página) ----------------
-  var DESCUENTO_ANUAL = 0.2;
+  var DESCUENTO_ANUAL = 0.3;
   var MINUTOS_POR_SOCIO = 2; // estimación: minutos de cobranza ahorrados por socio al mes (recordatorios y conciliación)
   var PLANES = [
     { id: 'esencial', nombre: 'Esencial', min: 1, max: 300, mensual: 199, implementacion: 150 },
@@ -46,7 +46,7 @@
   var A_MEDIDA = { id: 'a-medida', nombre: 'A medida', min: 5001, max: Infinity, mensual: null, desde: 1100 };
 
   function redondear(n) { return Math.round(n * 100) / 100; }
-  /** Total del año pagado por adelantado: mensual × 12 × 0,8, con 2 decimales. */
+  /** Total del año pagado por adelantado: mensual × 12 × 0,70, con 2 decimales. */
   function anual(mensual) { return redondear(mensual * 12 * (1 - DESCUENTO_ANUAL)); }
   /** Precio mensual equivalente del plan anual. */
   function equivalenteMensual(mensual) { return redondear(anual(mensual) / 12); }
