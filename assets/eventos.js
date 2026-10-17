@@ -75,7 +75,7 @@
   function msgCurso(c, cur) {
     var ds = dias(c).join(', ').replace(/, (\d+)$/, ' y $1');
     var mes = d(c.fechas[0]).toLocaleDateString('es-VE', { month: 'long', timeZone: TZ }).slice(0, 3);
-    return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (Línea Triangular, ' + ds + ' de ' + mes + '). ¿Cómo pago: en 3 cuotas o de contado?';
+    return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (' + ds + ' de ' + mes + '). ¿Cómo pago: en 3 cuotas o de contado?';
   }
 
   // Los precios Triangulares terminan en ,99: siempre con coma decimal y 2 decimales
@@ -136,9 +136,9 @@
   datos['eventos.resumen'] = lista.length ? lista.map(function (e) { return e.nombre + ': ' + e.texto; }).join(' · ') : SIN_FECHAS;
 
   var mensajes = {
-    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» (Línea Triangular) del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '» (Línea Triangular)' },
-    curso: { ok: proxima ? msgCurso(proxima, cur) : '', pasado: 'Hola F&V, avísame cuando haya nueva fecha de ' + cur.nombre + ' (Línea Triangular)' },
-    proximas: { ok: 'Hola F&V, quiero saber las próximas fechas de los cursos y talleres (Línea Triangular)', pasado: 'Hola F&V, quiero saber las próximas fechas de los cursos y talleres (Línea Triangular)' }
+    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '»' },
+    curso: { ok: proxima ? msgCurso(proxima, cur) : '', pasado: 'Hola F&V, avísame cuando haya nueva fecha de ' + cur.nombre },
+    proximas: { ok: 'Hola F&V, quiero saber las próximas fechas de los cursos y talleres', pasado: 'Hola F&V, quiero saber las próximas fechas de los cursos y talleres' }
   };
   coh.forEach(function (c) { mensajes['curso-' + c.id] = { ok: msgCurso(c, cur), pasado: mensajes.curso.pasado }; });
 
