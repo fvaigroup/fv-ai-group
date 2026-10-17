@@ -163,6 +163,15 @@
 .text-slate-500 { color: #8190a5; }
 .text-slate-600 { color: #7f8da3; }
 
+/* ---- Legibilidad Hexagonal (.hex-legible, en el contenedor de cada sección Hexagonal, /ejecutivos y la sección de dueños del inicio):
+   párrafos, li y dd del cuerpo a 18 px, interlineado 1,6 y gris claro #e2e8f0 (contraste AA holgado sobre negro).
+   No agranda etiquetas, insignias ni precios: se salta lo que ya trae tamaño propio (text-xs/sm/lg/xl…, text-[..]),
+   lo que usa font-head y lo que está dentro de un contenedor text-xs o text-sm. ---- */
+.hex-legible :is(p, li, dd):not([class*="text-xs"], [class*="text-sm"], [class*="text-lg"], [class*="text-xl"], [class*="text-2xl"], [class*="text-3xl"], [class*="text-4xl"], [class*="text-5xl"], [class*="text-6xl"], [class*="text-["], .font-head, [class*="text-xs"] > *, [class*="text-sm"] > *) {
+  font-size: 1.125rem; line-height: 1.6;
+}
+.hex-legible :is(p, li, dd):is(.text-slate-400, .text-slate-500):not([class*="text-xs"], .font-head) { color: #e2e8f0; }
+
 /* ---- Clases heredadas dentro de una envolvente de línea: se re-colorean solas (así un bloque envuelto no mezcla colores) ---- */
 .linea-tri .btn-primary, .linea-tri .btn-linea { background-color: #4ade80; color: #000; box-shadow: 0 0 10px rgba(74,222,128,.6), 0 0 26px rgba(74,222,128,.25); }
 .linea-hex .btn-tri, .linea-hex .btn-linea { background-color: #FF8C00; color: #000; box-shadow: 0 0 10px #FF8C00, 0 0 26px rgba(255,69,0,.5), 0 0 50px rgba(255,69,0,.25); }
@@ -184,6 +193,11 @@
 .linea-hex .link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
 .linea-hex .linea-tri .link-underline { background-image: linear-gradient(to right, #4ade80, #a855f7); }
 .linea-tri .linea-hex .link-underline { background-image: linear-gradient(to right, #00FFFF, #FF8C00); }
+
+/* ---- Línea Hexagonal más sobria (.hex-legible): botones de línea con brillo suave en reposo (el brillo completo queda para el hover)
+   y filtros de 44 px de alto. Va después de las envolventes de línea para ganarles con la misma especificidad. ---- */
+.hex-legible .btn-linea { box-shadow: 0 0 0 1px rgba(255,140,0,.45), 0 4px 14px rgba(255,140,0,.16); }
+.hex-legible .filtro { min-height: 44px; }
 
 /* ---- Filtros de /triangular y /hexagonal: botones con aria-pressed (el color sale de la línea) ---- */
 .filtro {

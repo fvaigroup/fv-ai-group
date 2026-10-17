@@ -9,3 +9,11 @@ assets/css/
 
 # Capturas de revisión visual (local)
 capturas/
+
+# Archivos intermedios de graphify (se regeneran en cada corrida)
+graphify-out/.chunklist_*.txt
+graphify-out/.graphify_chunk_*.json
+graphify-out/.graphify_ast.json
+graphify-out/.graphify_cached.json
+graphify-out/.graphify_detect.json
+graphify-out/.graphify_uncached.txt

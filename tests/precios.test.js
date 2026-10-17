@@ -96,4 +96,95 @@ PAGINAS.forEach(f => {
   PROHIBIDO.forEach(re => ok(!re.test(js), f + ' contiene un texto viejo: ' + re));
 });
 
+// ---------- 6) Oferta Hexagonal nueva (17 de octubre de 2026) ----------
+//  - /hexagonal y /ejecutivos publican los precios nuevos; el Diagnóstico de $270 lleva su frase de abono.
+//  - Desaparecen la Asesoría Estratégica ($150), la Evaluación de Procesos ($400) como producto y la Habilitación ($60 por persona).
+//  - Todo «desde $X» de una implementación Hexagonal va con «precio final después del diagnóstico» en la misma tarjeta o párrafo.
+//  - Sin «no reembolsable», sin «Ricardo de Freitas» y ningún descuento que no sea el 30 %.
+const ABONO = 'Si después contrata la implementación, los $270 se abonan al proyecto.';
+const FINAL_DIAG = 'precio final después del diagnóstico';
+const plano = t => t.replace(/\s+/g, ' ');
+// Páginas Hexagonales: todos los precios visibles y del JSON-LD son redondos (salvo una referencia a un producto Triangular, siempre en ,99)
+['ejecutivos.html', 'asesoria-estrategica.html', 'despliegue-ejecucion.html', 'acompanamiento-continuo.html', 'calculadora-roi.html'].forEach(f => {
+  const html = leer(f);
+  for (const k of visible(html).match(TOKEN) || []) ok(esHex(num(k)) || TRI.has(num(k)), f + ' ' + k + ' debe ser múltiplo de 10 (o un precio Triangular en ,99)');
+  for (const m of html.matchAll(/"price":\s*"([\d.]+)"/g)) ok(esHex(parseFloat(m[1])), f + ' JSON-LD ' + m[1]);
+});
+// precios nuevos publicados
+const PRECIOS_HEX = { '$270': 'Diagnóstico / Programa ejecutivo individual', '$960': 'Formación ejecutiva 1 a 1', '$180': 'Programa ejecutivo por persona', '$120': 'Asesor financiero mensual', '$480': 'Asesor financiero semanal' };
+['hexagonal.html', 'ejecutivos.html'].forEach(f => {
+  const txt = plano(visible(leer(f)));
+  Object.entries(PRECIOS_HEX).forEach(([p, que]) => ok(new RegExp('\\' + p + '(?![\\d.,])').test(txt), f + ' debe publicar ' + p + ' (' + que + ')'));
+  ok(/Formaci[óo]n ejecutiva 1 a 1/.test(txt) && /Programa ejecutivo/.test(txt) && /Asesor financiero con IA/.test(txt) && /Consulta gratis de 20 min/.test(txt), f + ': productos nuevos y «Consulta gratis de 20 min»');
+});
+['hexagonal.html', 'ejecutivos.html', 'asesoria-estrategica.html'].forEach(f => {
+  const txt = plano(visible(leer(f)));
+  ok(txt.includes('¿En qué se va la plata de su empresa?') && txt.includes(ABONO), f + ': Diagnóstico «¿En qué se va la plata de su empresa?» con la frase de abono');
+  ok(/\$270/.test(txt), f + ': Diagnóstico de $270');
+});
+ok(/Formaci[óo]n para su equipo/.test(visible(leer('hexagonal.html'))) && /id="formacion-equipo"/.test(leer('hexagonal.html')), 'hexagonal.html: Formación para su equipo (#formacion-equipo)');
+// mensajes de WhatsApp exactos de la oferta nueva
+const WA_HEX = {
+  'diagnostico-270': 'Hola F&V, quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (Línea Hexagonal, $270).',
+  'formacion-ejecutiva': 'Hola F&V, me interesa la Formación ejecutiva 1 a 1 (Línea Hexagonal, $960).',
+  'asesor-financiero': 'Hola F&V, me interesa el Asesor financiero con IA (Línea Hexagonal, $120 o $480 al mes).'
+};
+['hexagonal.html', 'ejecutivos.html'].forEach(f => {
+  const msgs = [...leer(f).matchAll(/https:\/\/wa\.me\/\d+\?text=([^"'\s]+)/g)].map(m => { try { return decodeURIComponent(m[1]); } catch (e) { return ''; } });
+  Object.entries(WA_HEX).forEach(([id, m]) => ok(msgs.includes(m), f + ': WhatsApp exacto de ' + id));
+});
+// productos y textos que ya no existen
+// (en Luci y el buscador se omiten las palabras clave de búsqueda: «asesoria estrategica» sigue llevando al Diagnóstico)
+const sinClaves = js => js.replace(/\bk: \[[^\]]*\]/g, '').replace(/\bkw: '[^']*'/g, '');
+const PAGINAS_Y_JS = PAGINAS.map(f => [f, visible(leer(f))]).concat(['assets/luci.js', 'assets/search.js'].map(f => [f, sinClaves(leer(f))]));
+const VIEJO_HEX = [/Asesor[ií]a Estrat[ée]gica/i, /\$150(?![\d.,])/, /\$60 por persona/i, /Habilitaci[óo]n de equipos/i, /Evaluaci[óo]n de procesos[^.]{0,80}\$400/i,
+  /no reembolsable/i, /Ricardo de Freitas/, /\bExpress\b/, /20 ?% (?:de )?(?:descuento|menos)/i, /descuento (?:de|del) 20/i];
+PAGINAS_Y_JS.forEach(([f, txt]) => {
+  VIEJO_HEX.forEach(re => ok(!re.test(txt), f + ' contiene un texto de la oferta vieja: ' + re));
+  for (const m of txt.matchAll(/(\d+) ?% (?:de descuento|menos)/gi)) ok(m[1] === '30', f + ': el único descuento publicado es 30 % (aparece ' + m[0] + ')');
+});
+ok(!fs.existsSync(path.join(RAIZ, 'evaluacion-procesos.html')) && !fs.existsSync(path.join(RAIZ, 'habilitacion-equipos.html')), 'las páginas de Evaluación de Procesos y Habilitación de equipos ya no existen');
+// «desde $X» de una implementación Hexagonal: con «precio final después del diagnóstico» en su tarjeta o párrafo
+const VACIOS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'use', 'stop']);
+function contenedor(html, pos) {
+  // elementos abiertos en «pos»; devuelve el texto de la tarjeta (x-card, article, li, details, tr) más cercana, o el del abuelo del texto
+  const pila = [];
+  const re = /<(\/?)([a-zA-Z][\w-]*)([^>]*?)(\/?)>/g; let m;
+  while ((m = re.exec(html)) && m.index < pos) {
+    const tag = m[2].toLowerCase();
+    if (tag === 'script' || tag === 'style') { if (!m[1]) { const fin = html.indexOf('</' + tag, re.lastIndex); re.lastIndex = fin < 0 ? html.length : fin; } continue; }
+    if (m[1]) { const i = pila.map(e => e.tag).lastIndexOf(tag); if (i !== -1) pila.length = i; }
+    else if (!m[4] && !VACIOS.has(tag)) pila.push({ tag, attrs: m[3], ini: m.index });
+  }
+  let el = null;
+  for (let i = pila.length - 1; i >= 0; i--) if (/^(article|li|details|tr)$/.test(pila[i].tag) || /class="[^"]*\b(x-card|card-lift|sw-card)\b/.test(pila[i].attrs)) { el = pila[i]; break; }
+  if (!el) el = pila[Math.max(0, pila.length - 2)];
+  // fin del elemento: contar aperturas y cierres del mismo tag
+  const reTag = new RegExp('<(/?)' + el.tag + '\\b[^>]*>', 'gi'); reTag.lastIndex = el.ini; let prof = 0, fin = html.length, t;
+  while ((t = reTag.exec(html))) { if (t[1]) { prof--; if (prof === 0) { fin = t.index; break; } } else prof++; }
+  return plano(html.slice(el.ini, fin).replace(/<[^>]+>/g, ' '));
+}
+const SOLO_SOFTWARE = ['club.html', 'condominio.html', 'gym.html', 'software.html', 'triangular.html', 'paginas-web.html'];
+let desdeRevisados = 0;
+PAGINAS.filter(f => !SOLO_SOFTWARE.includes(f)).forEach(f => {
+  const html = leer(f).replace(/<script(?![^>]*application\/ld\+json)[\s\S]*?<\/script>/g, s => ' '.repeat(s.length)).replace(/<style[\s\S]*?<\/style>/g, s => ' '.repeat(s.length));
+  for (const m of html.matchAll(/desde (?:<[^>]+>\s*)?(\$\d[\d.]*(?:,\d+)?)([^<]{0,20})/gi)) {
+    if (/\/\s*mes|al mes|por mes|mensual/i.test(m[2]) || !esHex(num(m[1]))) continue;      // mensualidades de software y precios Triangulares
+    if (html.lastIndexOf('application/ld+json', m.index) > html.lastIndexOf('</script>', m.index)) continue;   // JSON-LD: se revisa abajo
+    desdeRevisados++;
+    ok(contenedor(html, m.index).includes(FINAL_DIAG), f + ': «desde ' + m[1] + '» sin «' + FINAL_DIAG + '» en su tarjeta o párrafo');
+  }
+});
+// en los scripts de la página (test de la portada), Luci y el buscador: en la misma cadena de texto
+[['index.html', s => (s.match(/<script(?![^>]*application\/ld\+json)[\s\S]*?<\/script>/g) || []).join('\n')], ['assets/luci.js', s => s], ['assets/search.js', s => s]].forEach(([f, js]) => {
+  const codigo = js(leer(f));
+  for (const cadena of codigo.match(/'(?:[^'\\\n]|\\.)*'/g) || []) for (const m of cadena.matchAll(/desde (\$\d[\d.]*(?:,\d+)?)([^']{0,20})/gi)) {
+    if (/\/\s*mes|al mes|por mes|mensual/i.test(m[2]) || !esHex(num(m[1]))) continue;
+    desdeRevisados++;
+    const linea = codigo.split('\n').find(l => l.includes(cadena)) || cadena;
+    ok(linea.includes(FINAL_DIAG), f + ': «desde ' + m[1] + '» sin «' + FINAL_DIAG + '» en la misma respuesta');
+  }
+});
+ok(desdeRevisados > 10, 'se revisaron los «desde $X» Hexagonales (' + desdeRevisados + ')');
+
 console.log('precios: ' + comprobaciones + ' comprobaciones correctas');

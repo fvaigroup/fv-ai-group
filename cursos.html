@@ -63,31 +63,6 @@
       {
         "@type": "CourseInstance",
         "courseMode": "Onsite",
-        "startDate": "2026-10-10",
-        "endDate": "2026-10-24",
-        "courseSchedule": {
-          "@type": "Schedule",
-          "repeatFrequency": "P1W",
-          "repeatCount": 3,
-          "byDay": "https://schema.org/Saturday",
-          "startTime": "08:00",
-          "endTime": "12:00",
-          "scheduleTimezone": "America/Caracas"
-        },
-        "location": {
-          "@type": "Place",
-          "name": "F&V AI Group, Valencia",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Valencia",
-            "addressRegion": "Carabobo",
-            "addressCountry": "VE"
-          }
-        }
-      },
-      {
-        "@type": "CourseInstance",
-        "courseMode": "Onsite",
         "startDate": "2026-11-07",
         "endDate": "2026-11-21",
         "courseSchedule": {
@@ -433,7 +408,16 @@
       <p class="text-slate-400 text-lg leading-relaxed">Grupos de máximo 6 personas en Valencia. Las fechas que ya pasaron se ocultan solas.</p>
     </div>
     <div class="space-y-5">
-      <article data-ev-show="oct:vigente" class="x-card is-static grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-7 items-center">
+      <!-- Sin ninguna fecha futura (ni taller ni cohortes): lo muestra assets/eventos.js -->
+      <article data-ev-show="eventos:sin-fechas" class="hidden x-card is-static p-6 sm:p-7 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+        <div>
+          <p class="mb-2 flex flex-wrap gap-2"><span class="ins ins-tri"><span>Línea Triangular</span></span></p>
+          <h3 class="font-sans text-2xl font-bold text-white leading-tight"><span data-ev="eventos.proximas">Próximas fechas: escríbenos por WhatsApp</span></h3>
+          <p class="text-slate-300 mt-2 leading-relaxed">Escríbenos y te avisamos las próximas fechas del taller y de Finanzas con IA apenas abran.</p>
+        </div>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20saber%20las%20pr%C3%B3ximas%20fechas%20de%20los%20cursos%20y%20talleres%20(L%C3%ADnea%20Triangular)" data-ev-wa="proximas" target="_blank" rel="noopener" data-product="proximas-fechas" data-cta="cursos_fechas" data-evento="cursos_proximas_fechas" class="btn-tri shrink-0 flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escríbenos por WhatsApp</span></a>
+      </article>
+      <article data-ev-show="oct:vigente" class="hidden x-card is-static grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-7 items-center">
         <div class="md:col-span-3">
           <p class="mb-2 flex flex-wrap gap-2" data-cursos-lineas><span class="ins ins-tri"><span>Línea Triangular</span></span></p><p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 mb-1.5">Curso</p>
           <h3 class="font-sans text-2xl font-bold text-white leading-tight">Finanzas con IA</h3>
@@ -549,22 +533,47 @@
           <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Grupo de máximo <span data-ev="curso.cuposTotales">6</span> personas</span></li>
           <li class="flex gap-2.5"><svg class="w-4 h-4 text-fv-triGreen shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M5 13l4 4L19 7"/></svg><span>Pagas en bolívares a la tasa BCV, o en USDT, Zinli o dólares en efectivo</span></li>
         </ul>
+        <p data-ev-show="curso:sin-fechas" class="hidden mt-6 font-head font-semibold text-white"><span data-ev="eventos.proximas">Próximas fechas: escríbenos por WhatsApp</span></p>
         <div class="mt-6 flex flex-col gap-3">
-          <a data-ev-show="oct:vigente" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular%2C%2010%2C%2017%20y%2024%20de%20oct).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso-oct" target="_blank" rel="noopener" data-product="finanzas-con-ia-oct" data-cta="cursos_ficha" data-evento="reservo_curso" class="btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo mi cupo<span class="block text-[11px] font-medium opacity-80">Cohorte de octubre</span></span></a>
+          <a data-ev-show="oct:vigente" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular%2C%2010%2C%2017%20y%2024%20de%20oct).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso-oct" target="_blank" rel="noopener" data-product="finanzas-con-ia-oct" data-cta="cursos_ficha" data-evento="reservo_curso" class="hidden btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo mi cupo<span class="block text-[11px] font-medium opacity-80">Cohorte de octubre</span></span></a>
           <a data-ev-show="nov:vigente" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular%2C%207%2C%2014%20y%2021%20de%20nov).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso-nov" target="_blank" rel="noopener" data-product="finanzas-con-ia-nov" data-cta="cursos_ficha" data-evento="reservo_curso" class="btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Reservo mi cupo<span class="block text-[11px] font-medium opacity-80">Cohorte de noviembre</span></span></a>
-          <a data-ev-show="curso:pasado" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20haya%20nueva%20fecha%20de%20Finanzas%20con%20IA%20%28L%C3%ADnea%20Triangular%29" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="cursos_ficha" class="hidden btn-tri items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Avísame la próxima fecha</span></a>
+          <a data-ev-show="curso:pasado" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20haya%20nueva%20fecha%20de%20Finanzas%20con%20IA%20%28L%C3%ADnea%20Triangular%29" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="cursos_ficha" data-evento="avisame_curso_finanzas" class="hidden btn-tri flex items-center justify-center gap-2 min-h-[52px] px-4 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Avísame la próxima fecha</span></a>
           <a href="/curso-finanzas-ia" class="flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head text-sm font-medium transition-colors">Ver el programa completo</a>
         </div>
       </aside>
     </div>
 
-    <!-- Opción privada -->
-    <div class="mt-12 x-card is-static p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-6 justify-between">
-      <div class="flex gap-5 items-start">
-        <span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14c2.4 0 4 1.5 4 4"/></svg></span>
-        <div><h3 class="font-sans text-xl font-bold text-white mb-1">¿No puedes los sábados?</h3><p class="text-slate-400 leading-relaxed">Avísanos y te escribimos cuando abramos otra fecha.</p></div>
+    <!-- Programa ejecutivo (Línea Hexagonal, «usted»): versión privada entre semana. Mismos datos que /ejecutivos y /hexagonal#programa-ejecutivo -->
+    <div id="programa-ejecutivo" class="linea-hex hex-legible mt-12 x-card is-static p-6 sm:p-8 scroll-mt">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7">
+          <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+          <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-cyan mb-2">Programa ejecutivo</p>
+          <h3 id="programa-ejecutivo-title" class="font-sans text-2xl sm:text-3xl font-bold text-white leading-tight text-balance mb-3">Versión privada entre semana: martes y jueves en la mañana</h3>
+          <p class="text-slate-200">¿Los sábados no le sirven? El programa ejecutivo es para dueños y directivos: en privado o en un grupo pequeño, entre semana, en nuestra oficina de Torre Trébol, en Valencia, con estacionamiento gratuito.</p>
+          <ul class="mt-5 space-y-3 text-slate-200">
+            <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>10 horas en 2 días de 5 horas: martes y jueves en la mañana</span></li>
+            <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1114 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Torre Trébol, Av. La Rosario, Urb. Lomas del Este, Valencia, con estacionamiento gratuito</span></li>
+          </ul>
+          <p class="mt-5 font-head text-sm text-slate-300">Privado o grupo pequeño · refrigerio · diploma · oficina con estacionamiento</p>
+        </div>
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <dl class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-3">
+            <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <dt class="font-head text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Individual</dt>
+              <dd class="font-head text-3xl font-extrabold text-white tracking-tight">$270</dd>
+              <dd class="text-sm text-slate-300 mt-1">las 10 horas</dd>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <dt class="font-head text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Grupo de 2 a 4</dt>
+              <dd class="font-head text-3xl font-extrabold text-white tracking-tight">$180</dd>
+              <dd class="text-sm text-slate-300 mt-1">por persona</dd>
+            </div>
+          </dl>
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Programa%20ejecutivo%20entre%20semana%20(L%C3%ADnea%20Hexagonal%2C%20martes%20y%20jueves%20en%20la%20ma%C3%B1ana).%20%C2%BFQu%C3%A9%20fechas%20tienen%3F" target="_blank" rel="noopener" data-product="programa-ejecutivo" data-cta="cursos_ficha" data-evento="cursos_hexagonal_programa-ejecutivo" class="btn-linea flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Consultar fechas por WhatsApp</span></a>
+          <a href="/ejecutivos" data-evento="cursos_a_ejecutivos" class="btn-linea-sec flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg font-head text-sm font-medium text-center">Ver el programa ejecutivo</a>
+        </div>
       </div>
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20haya%20nueva%20fecha%20de%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular)" target="_blank" rel="noopener" data-cta="cursos_ficha" data-evento="avisame_curso_finanzas" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold text-center whitespace-nowrap"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Avísame la próxima fecha</span></a>
     </div>
   </div>
 </section>
@@ -585,12 +594,12 @@
           <a href="/triangular#asesor" data-evento="cursos_a_asesor" class="text-center text-xs text-fv-triGreen link-underline py-2">Ver el Asesor F&amp;V</a>
         </div>
       </div>
-      <div class="course-card x-card is-static p-7 flex flex-col linea-hex">
+      <div class="course-card x-card is-static p-7 flex flex-col linea-hex hex-legible">
         <div class="mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-cyan bg-fv-cyan/10 border-fv-cyan/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span></div>
         <p class="mb-3"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
-        <h3 class="font-sans text-xl font-bold text-white mb-2">Capacitación a medida</h3>
-        <p class="text-sm text-slate-400 leading-relaxed mb-6">Si eres una empresa y ninguno de estos programas encaja tal cual con tu equipo, armamos una capacitación específica para ustedes: Masterclass privada, Finanzas con IA en su sede y más. Y si de ahí surge un proyecto más grande, seguimos con el mismo equipo.</p>
-        <a href="/hexagonal" data-evento="cursos_a_medida" class="mt-auto flex items-center justify-center min-h-[48px] px-4 py-3 rounded-lg border border-fv-orange/50 text-white hover:bg-fv-orange/10 font-head text-sm font-medium text-center transition-colors">Ver capacitaciones para empresas</a>
+        <h3 class="font-sans text-xl font-bold text-white mb-2">Formación para su empresa</h3>
+        <p class="text-slate-200 mb-6">¿Su empresa tiene áreas, sedes o junta directiva? Tenemos formación ejecutiva 1 a 1, un programa ejecutivo entre semana, Masterclass privada y formación a la medida de su equipo.</p>
+        <a href="#formacion-empresas" data-evento="cursos_a_medida" class="mt-auto flex items-center justify-center min-h-[48px] px-4 py-3 rounded-lg border border-fv-orange/50 text-white hover:bg-fv-orange/10 font-head text-sm font-medium text-center transition-colors">Ver formación para empresas</a>
       </div>
       <div class="course-card x-card is-static is-help p-7 flex flex-col">
         <div class="mb-5"><span class="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 text-fv-triPurple bg-fv-triPurple/10 border-fv-triPurple/30"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/></svg></span></div>
@@ -647,33 +656,61 @@
   </div>
 </section>
 
-<!-- ============ MUY PRONTO ============ -->
-<section class="linea-hex relative py-24 border-b border-white/5" aria-labelledby="empresas-title">
+<!-- ============ FORMACIÓN PARA EMPRESAS (Línea Hexagonal, «usted») ============ -->
+<section id="formacion-empresas" class="linea-hex hex-legible relative py-24 border-b border-white/5 scroll-mt" aria-labelledby="empresas-title">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <p class="mb-4"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
     <h2 id="empresas-title" class="font-sans text-3xl sm:text-4xl uppercase font-semibold tracking-tight text-white text-balance mb-4">Formación para su <span class="texto-linea">empresa</span></h2>
-    <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-10">Capacitación privada para su equipo, en sus oficinas o donde usted prefiera.</p>
+    <p class="text-slate-200 max-w-2xl mb-10">Para el dueño, los directivos y el equipo: en privado, en su oficina o en la nuestra, con sus propios números y procesos.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+      <article id="formacion-ejecutiva" class="x-card is-static flex flex-col p-6 sm:p-7 scroll-mt">
+        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+        <h3 class="font-sans text-xl font-bold text-white mb-2">Formación ejecutiva 1 a 1</h3>
+        <p class="text-slate-200 mb-4">IA aplicada a las finanzas y la gestión de su empresa, uno a uno con el dueño o el directivo: Claude, reportes, automatizaciones, y qué son MCP y las APIs, explicado sin tecnicismos.</p>
+        <p class="font-head text-2xl font-extrabold texto-linea mb-1">$960</p>
+        <p class="font-head text-sm text-slate-300 mb-6">8 sesiones de 4 horas</p>
+        <div class="mt-auto flex flex-col gap-2.5">
+          <a data-evento="cursos_hexagonal_formacion-ejecutiva" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20la%20Formaci%C3%B3n%20ejecutiva%201%20a%201%20(L%C3%ADnea%20Hexagonal%2C%20%24960)." target="_blank" rel="noopener" data-product="formacion-ejecutiva" data-cta="cursos_hexagonal" class="btn-linea flex items-center justify-center min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold">Consultar por WhatsApp</a>
+          <a href="/hexagonal#formacion-ejecutiva" data-evento="cursos_a_hexagonal_formacion-ejecutiva" class="self-center inline-flex items-center justify-center min-h-[44px] text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
+        </div>
+      </article>
       <article id="masterclass-privada" class="x-card is-static flex flex-col p-6 sm:p-7 scroll-mt">
         <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
         <h3 class="font-sans text-xl font-bold text-white mb-2">Masterclass privada</h3>
-        <p class="text-sm text-slate-400 leading-relaxed mb-4">IA aplicada al trabajo de su empresa, hasta 8 personas.</p>
+        <p class="text-slate-200 mb-4">IA aplicada al trabajo de su empresa, hasta 8 personas.</p>
         <p class="font-head text-2xl font-extrabold texto-linea mb-6">$500 a $700 por sesión</p>
         <div class="mt-auto flex flex-col gap-2.5">
           <a data-evento="cursos_hexagonal_masterclass-privada" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Masterclass%20privada%20%28L%C3%ADnea%20Hexagonal%2C%20%24500%20a%20%24700%20por%20sesi%C3%B3n%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="masterclass-privada" data-cta="cursos_hexagonal" class="btn-linea flex items-center justify-center min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold">Consultar por WhatsApp</a>
-          <a href="/hexagonal#masterclass-privada" data-evento="cursos_a_hexagonal_masterclass-privada" class="text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
+          <a href="/hexagonal#masterclass-privada" data-evento="cursos_a_hexagonal_masterclass-privada" class="self-center inline-flex items-center justify-center min-h-[44px] text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
         </div>
       </article>
       <article id="finanzas-ia-sede" class="x-card is-static flex flex-col p-6 sm:p-7 scroll-mt">
         <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
         <h3 class="font-sans text-xl font-bold text-white mb-2">Finanzas con IA en su sede</h3>
-        <p class="text-sm text-slate-400 leading-relaxed mb-4">El curso de conciliación de pagos con IA, en sus oficinas.</p>
+        <p class="text-slate-200 mb-4">El curso de conciliación de pagos con IA, en sus oficinas.</p>
         <p class="font-head text-2xl font-extrabold texto-linea mb-6">$600 por grupo de hasta 6</p>
         <div class="mt-auto flex flex-col gap-2.5">
           <a data-evento="cursos_hexagonal_finanzas-ia-sede" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Finanzas%20con%20IA%20en%20su%20sede%20%28L%C3%ADnea%20Hexagonal%2C%20%24600%20por%20grupo%20de%20hasta%206%29.%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="finanzas-ia-sede" data-cta="cursos_hexagonal" class="btn-linea flex items-center justify-center min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold">Consultar por WhatsApp</a>
-          <a href="/hexagonal#finanzas-ia-sede" data-evento="cursos_a_hexagonal_finanzas-ia-sede" class="text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
+          <a href="/hexagonal#finanzas-ia-sede" data-evento="cursos_a_hexagonal_finanzas-ia-sede" class="self-center inline-flex items-center justify-center min-h-[44px] text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
         </div>
       </article>
+      <article id="formacion-equipo" class="x-card is-static flex flex-col p-6 sm:p-7 scroll-mt">
+        <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+        <h3 class="font-sans text-xl font-bold text-white mb-2">Formación para su equipo</h3>
+        <p class="text-slate-200 mb-4">Capacitación a la medida de su equipo, sobre las herramientas y los procesos que ya usa su empresa. La armamos después de conocer su operación.</p>
+        <p class="font-head text-2xl font-extrabold texto-linea mb-6">A medida</p>
+        <div class="mt-auto flex flex-col gap-2.5">
+          <a data-evento="cursos_hexagonal_formacion-equipo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20la%20Formaci%C3%B3n%20para%20su%20equipo%20(L%C3%ADnea%20Hexagonal%2C%20a%20medida).%20%C2%BFPodemos%20conversar%3F" target="_blank" rel="noopener" data-product="formacion-equipo" data-cta="cursos_hexagonal" class="btn-linea flex items-center justify-center min-h-[48px] px-5 py-3 rounded-lg font-head text-sm font-semibold">Consultar por WhatsApp</a>
+          <a href="/hexagonal#formacion-equipo" data-evento="cursos_a_hexagonal_formacion-equipo" class="self-center inline-flex items-center justify-center min-h-[44px] text-center text-sm text-fv-cyan link-underline py-2">Ver en la Línea Hexagonal</a>
+        </div>
+      </article>
+    </div>
+    <div class="mt-8 x-card is-static p-6 sm:p-7 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+      <div>
+        <h3 class="font-sans text-xl font-bold text-white mb-1">¿Es usted el dueño o un directivo?</h3>
+        <p class="text-slate-200">Vea el programa ejecutivo entre semana (martes y jueves en la mañana, en Torre Trébol) y la formación ejecutiva 1 a 1.</p>
+      </div>
+      <a href="/ejecutivos" data-evento="cursos_a_ejecutivos" class="btn-linea-sec shrink-0 flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg font-head text-sm font-semibold text-center">Ver formación para ejecutivos</a>
     </div>
   </div>
 </section>
@@ -702,15 +739,15 @@
           <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8" loading="lazy" decoding="async">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
-        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios publicados en dólares.</p>
+        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios claros en dólares.</p>
         <div class="flex items-center gap-3">
-          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
           </a>
-          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo: contacto@fvaigroup.com" title="contacto@fvaigroup.com" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
+          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo: contacto@fvaigroup.com" title="contacto@fvaigroup.com" class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
-          <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+          <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
         </div>
@@ -729,8 +766,9 @@
         <div>
           <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
           <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
-            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Consulta gratis de 20 min</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Diagnóstico</a></li>
+            <li><a href="/ejecutivos" class="link-underline hover:text-white transition-colors">Dueños y directivos</a></li>
             <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
@@ -768,8 +806,8 @@
     <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
       <div class="flex gap-6 text-sm text-slate-600">
-        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
-        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
+        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors inline-flex items-center min-h-[44px]">Políticas de privacidad</a>
+        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors inline-flex items-center min-h-[44px]">Términos y Condiciones</a>
       </div>
     </div>
   </div>

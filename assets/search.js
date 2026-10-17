@@ -5,7 +5,8 @@
   var SEARCH_INDEX = [
     { title: 'Inicio', desc: 'Página principal de F&V AI Group.', url: '/', cat: 'Pagina' },
     { title: 'Línea Triangular', desc: 'Planes mensuales para emprendedores, comercios y pequeñas empresas, desde $4,99.', url: '/triangular', cat: 'Pagina' },
-    { title: 'Línea Hexagonal', desc: 'Sistemas, automatización e IA para medianas y grandes empresas, instituciones y administradoras de condominios.', url: '/hexagonal', cat: 'Pagina' },
+    { title: 'Línea Hexagonal', desc: 'Para medianas y grandes empresas e instituciones: diagnóstico de $270, formación ejecutiva, asesor financiero con IA, implementación a medida y software.', url: '/hexagonal', cat: 'Pagina' },
+    { title: 'Para dueños de empresa: finanzas e IA', desc: 'Diagnóstico de $270, programa ejecutivo entre semana ($270 individual o $180 por persona), formación 1 a 1 ($960) y asesor financiero con IA ($120 o $480 al mes).', url: '/ejecutivos', cat: 'Servicio', kw: 'duenos ejecutivos directivos gerentes programa ejecutivo formacion ejecutiva asesor financiero reportes whatsapp torre trebol martes jueves entre semana' },
     { title: 'Plan Arranque', desc: 'Presencia Catálogo + Caja Clara por una mensualidad. $39,99 al mes.', url: '/triangular#plan-arranque', cat: 'Producto' },
     { title: 'Presencia', desc: 'Google Maps, WhatsApp Business, catálogo con tasa BCV, web y tienda. Desde $14,99 al mes.', url: '/triangular#presencia', cat: 'Producto' },
     { title: 'Caja Clara', desc: 'Cuadre de caja en Bs, $, Pago Móvil y USDT, cobros e inventario. Desde $14,99 al mes.', url: '/triangular#caja-clara', cat: 'Producto' },
@@ -20,15 +21,18 @@
     { title: 'Club', desc: 'Software para que los clubes cobren y controlen las cuotas de sus socios. Desde $89,99 al mes para clubes pequeños y desde $190 al mes para clubes sociales e instituciones.', url: '/club', cat: 'Producto' },
     { title: 'Demo: Catálogo con tasa BCV', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: '/demo-catalogo', cat: 'Producto' },
     { title: 'Páginas web (Presencia)', desc: 'Catálogo $29,99/mes, Web $59,99/mes y Tienda $99,99/mes, montadas y mantenidas por nosotros.', url: '/paginas-web', cat: 'Producto' },
-    { title: 'Asesoría Estratégica', desc: 'Diagnóstico antes de comprometer presupuesto en ejecución.', url: '/asesoria-estrategica', cat: 'Servicio' },
-    { title: 'Evaluación de Procesos', desc: 'Auditoría técnica y financiera de sus procesos actuales.', url: '/evaluacion-procesos', cat: 'Servicio' },
-    { title: 'Despliegue y Ejecución', desc: 'Implementación en Dynamics 365 Sales/Customer Service, Odoo Community o desarrollo a medida.', url: '/despliegue-ejecucion', cat: 'Servicio' },
-    { title: 'Habilitación de Equipos', desc: 'Formación práctica sobre el sistema real de su empresa.', url: '/habilitacion-equipos', cat: 'Servicio' },
-    { title: 'Masterclasses y Workshops', desc: 'Formación estructurada en gestión empresarial e IA aplicada.', url: '/masterclasses-workshops', cat: 'Servicio' },
-    { title: 'Acompañamiento Continuo', desc: 'Mantenimiento evolutivo y soporte después del go-live.', url: '/acompanamiento-continuo', cat: 'Servicio' },
-    { title: 'Cursos', desc: 'Catálogo de masterclasses y workshops presenciales.', url: '/cursos', cat: 'Pagina' },
-    { title: 'Taller: La plata de tu negocio clara', desc: 'Sábado 17 de octubre, 3:00 a 6:00 pm, en Valencia. $24,99 por persona.', url: '/cursos#fechas', cat: 'Curso' },
-    { title: 'Finanzas con IA', desc: 'Curso presencial: automatiza la conciliación de pagos de tu empresa.', url: '/cursos#finanzas-con-ia', cat: 'Curso' },
+    { title: 'Diagnóstico «¿En qué se va la plata de su empresa?»', desc: 'Un día presencial en su empresa: revisión de sus números y reportes, informe de dónde se pierde el dinero y plan de acción de 30 días. $270, que se abonan si contrata la implementación.', url: '/asesoria-estrategica', cat: 'Servicio', kw: 'diagnostico asesoria estrategica evaluacion de procesos auditoria margen costos rentabilidad' },
+    { title: 'Formación ejecutiva 1 a 1', desc: '8 sesiones de 4 horas de IA aplicada a finanzas y gestión: Claude, reportes, automatizaciones, MCP y APIs explicados para dueños. $960.', url: '/hexagonal#formacion-ejecutiva', cat: 'Curso', kw: 'duenos directivos privado clases ejecutivos' },
+    { title: 'Programa ejecutivo entre semana', desc: 'Martes y jueves en la mañana, 10 horas en la oficina de Torre Trébol. $270 individual o $180 por persona en grupo de 2 a 4.', url: '/ejecutivos#programa-ejecutivo', cat: 'Curso', kw: 'entre semana martes jueves no puedo los sabados ejecutivos directivos duenos' },
+    { title: 'Asesor financiero con IA', desc: 'Revisión de indicadores, márgenes y alertas para las decisiones del dueño, con reportes cortos por WhatsApp. $120 o $480 al mes.', url: '/hexagonal#asesor-financiero', cat: 'Servicio', kw: 'finanzas kpi indicadores mensual reunion duenos' },
+    { title: 'Formación para su equipo', desc: 'Capacitación a medida en las herramientas y sistemas de su empresa.', url: '/hexagonal#formacion-equipo', cat: 'Servicio', kw: 'habilitacion de equipos capacitacion personal empleados' },
+    { title: 'Reportes automáticos por WhatsApp', desc: 'Los números de su empresa en su teléfono, sin pedirlos. A medida: se cotiza después del diagnóstico.', url: '/hexagonal#reportes-whatsapp', cat: 'Servicio' },
+    { title: 'Despliegue y Ejecución', desc: 'Implementación a medida en Dynamics 365 Sales/Customer Service, Odoo Community o desarrollo propio. Se cotiza después del diagnóstico.', url: '/despliegue-ejecucion', cat: 'Servicio', kw: 'implementacion odoo dynamics erp crm tablero gerencial sprint automatizacion' },
+    { title: 'Masterclasses y Workshops', desc: 'Masterclass privada para su empresa ($500 a $700 por sesión) y formación para dueños y equipos.', url: '/masterclasses-workshops', cat: 'Servicio' },
+    { title: 'Acompañamiento Continuo', desc: 'Soporte técnico mensual de los sistemas y automatizaciones ya implementados: $200, $400 o Director de IA $600 al mes.', url: '/acompanamiento-continuo', cat: 'Servicio', kw: 'soporte mantenimiento director de ia' },
+    { title: 'Cursos', desc: 'Curso Finanzas con IA, talleres y formación para empresas y ejecutivos.', url: '/cursos', cat: 'Pagina' },
+    { title: 'Taller: La plata de tu negocio clara', desc: 'Taller presencial de 3 horas en Valencia. $24,99 por persona.', url: '/cursos#fechas', cat: 'Curso', ev: 'taller' },
+    { title: 'Finanzas con IA', desc: 'Curso presencial: automatiza la conciliación de pagos de tu empresa.', url: '/cursos#finanzas-con-ia', cat: 'Curso', ev: 'curso' },
     { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: '/nosotros', cat: 'Pagina' },
     { title: 'Contacto', desc: 'WhatsApp directo y diagnóstico gratis de 20 minutos.', url: '/contacto', cat: 'Pagina' },
     { title: 'Casos de clientes', desc: 'Qué hicimos y qué dijo el cliente. Pregunta por el precio de lanzamiento.', url: '/casos', cat: 'Pagina' },
@@ -113,7 +117,7 @@
   function filter(q) {
     var n = norm(q);
     if (!n) return SEARCH_INDEX;
-    return SEARCH_INDEX.filter(function (r) { return norm(r.title + ' ' + r.desc).indexOf(n) !== -1; });
+    return SEARCH_INDEX.filter(function (r) { return norm(r.title + ' ' + r.desc + ' ' + (r.kw || '')).indexOf(n) !== -1; });
   }
 
   function setActive(i) {
@@ -123,8 +127,21 @@
     activeIndex = i;
   }
 
+  // Fechas de talleres y cursos: se leen de assets/eventos.js (FV_EVENTOS) al abrir el buscador.
+  // El texto fijo del índice no lleva fechas, para que nunca anuncie una fecha pasada.
+  function fechasEventos() {
+    var E = window.FV_EVENTOS;
+    SEARCH_INDEX.forEach(function (r) {
+      if (!r.ev) return;
+      if (r.base === undefined) r.base = r.desc;
+      var e = E && E.proximas ? E.proximas().filter(function (x) { return x.tipo === r.ev; })[0] : null;
+      r.desc = r.base + ' ' + (e ? 'Próxima fecha: ' + e.texto + '.' : (E && E.sinFechas ? E.sinFechas : 'Próximas fechas: escríbenos por WhatsApp') + '.');
+    });
+  }
+
   function open() {
     build();
+    fechasEventos();
     lastFocus = document.activeElement;
     overlay.classList.add('is-open');
     input.value = '';

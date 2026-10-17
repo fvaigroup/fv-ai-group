@@ -77,6 +77,60 @@ Mismo patrón que `/club` (sección 7): todos los botones y enlaces llevan `data
 
 El producto de cada mensaje de WhatsApp de los planes sale de `assets/precios-software.js` (por ejemplo `club-hex-500`, `gym-tri-100`).
 
+### 9. Página para dueños de empresa (`/ejecutivos`, destino de los anuncios de Meta)
+Todos los botones de WhatsApp de la página llevan `data-evento="ejecutivos_whatsapp"`, `data-product` y `data-cta`. Además, `assets/medicion.js` envía `ejecutivos_whatsapp` en **cualquier** otro clic a WhatsApp dentro de `/ejecutivos` (menú, pie, Luci), con el producto sacado del mensaje prellenado. Cada clic cuenta una sola vez como `ejecutivos_whatsapp` y, como en todo el sitio, también como `whatsapp_click`.
+
+| Evento | Qué es | Parámetros |
+|---|---|---|
+| `ejecutivos_whatsapp` | Clic a WhatsApp en `/ejecutivos` | `product`, `cta_location`, `page` |
+| `diagnostico_gratis` | «Consulta gratis de 20 min» del cierre (lleva a `/contacto#agenda`; se envía solo, sin `data-evento`) | `cta_location` (`ejecutivos_cierre`), `page` |
+| `ejecutivos_ver_programa` | «Ver el programa ejecutivo» de la portada (baja a `#programa-ejecutivo`) | `cta_location`, `page` |
+| `ejecutivos_ver_implementacion` | «Ver qué implementamos» (lleva a `/hexagonal#productos`) | `cta_location`, `page` |
+| `ejecutivos_mapa`, `ejecutivos_nosotros` | «Ver en Google Maps» y «Conozca al equipo» | `cta_location`, `page` |
+| `ejecutivos_faq_1` … `ejecutivos_faq_5` | Pregunta frecuente abierta (o cerrada) | `cta_location`, `page` |
+
+Valores de `product` en `ejecutivos_whatsapp`:
+
+| `product` | Botón | `cta_location` |
+|---|---|---|
+| `diagnostico-270` | «Agendar diagnóstico» (portada, tarjeta del Diagnóstico y cierre) | `ejecutivos_portada`, `ejecutivos_oferta_diagnostico`, `ejecutivos_cierre` |
+| `programa-ejecutivo` | «Preguntar por las fechas» del Programa ejecutivo entre semana | `ejecutivos_oferta_programa` |
+| `formacion-ejecutiva` | Formación ejecutiva 1 a 1 | `ejecutivos_oferta_formacion` |
+| `asesor-financiero` | Asesor financiero con IA | `ejecutivos_oferta_asesor` |
+| `ejecutivos-consulta` | Botón de WhatsApp del menú (además envía `header_whatsapp`) | `header`, `menu_movil` |
+| (texto del mensaje) | WhatsApp del pie o de Luci | `footer`, `luci` |
+
+Desde este cambio, todo evento con `data-evento` puesto en un enlace de WhatsApp lleva también `product` (antes solo lo llevaba `whatsapp_click`).
+
+Para separar lo que traen los anuncios: en Meta, agregue a la URL del anuncio `?utm_source=meta&utm_medium=paid&utm_campaign=<nombre>`; GA4 lo toma solo (Adquisición → Adquisición de tráfico) y se puede cruzar con `ejecutivos_whatsapp` por `product`.
+
+### 10. Oferta Hexagonal nueva (17 de octubre de 2026)
+La Asesoría Estratégica ($150), la Evaluación de Procesos ($400) y la Habilitación de equipos ($60 por persona) dejaron de ser productos. Desaparecen sus valores de `product` (`asesoria-estrategica`, `evaluacion-procesos`, `habilitacion-equipos`) y el evento `portada_pedido_asesoria-estrategica`; si algún informe de GA4 filtraba por ellos, hay que cambiarlo a los nuevos.
+
+Valores nuevos de `product` (botones de WhatsApp de `/hexagonal`, `/ejecutivos`, el inicio, `/asesoria-estrategica`, `/cursos`, `/masterclasses-workshops`, `/nosotros`, `/contacto` y Luci):
+
+| `product` | Producto |
+|---|---|
+| `diagnostico-270` | Diagnóstico «¿En qué se va la plata de su empresa?» ($270) |
+| `formacion-ejecutiva` | Formación ejecutiva 1 a 1 ($960) |
+| `programa-ejecutivo` | Programa ejecutivo entre semana ($270 individual; $180 por persona en grupo de 2 a 4) |
+| `asesor-financiero` | Asesor financiero con IA ($120 o $480 al mes) |
+| `formacion-equipo` | Formación para su equipo (a medida) |
+| `reportes-whatsapp` | Reportes automáticos por WhatsApp (a medida) |
+| `acompanamiento-continuo` | Acompañamiento Continuo (soporte técnico) |
+| `proximas-fechas` | «Próximas fechas: escríbenos por WhatsApp» de cursos y talleres |
+
+Eventos nuevos con `data-evento` (cada uno envía un evento con su nombre):
+
+| Evento | Dónde |
+|---|---|
+| `hexagonal_hero_diagnostico`, `hexagonal_hero_ejecutivos`, `hexagonal_detalle_diagnostico`, `hexagonal_detalle_formacion-ejecutiva`, `hexagonal_detalle_programa-ejecutivo`, `hexagonal_metodo_<etapa>`, `hexagonal_cierre_diagnostico` | `/hexagonal` |
+| `portada_duenos_diagnostico`, `portada_duenos_programa`, `portada_duenos_ejecutivos`, `portada_pedido_diagnostico`, `portada_pedido_asesor-financiero` | Inicio (sección «Para dueños de empresa» y «Lo más pedido») |
+| `nosotros_mapa`, `nosotros_diagnostico`, `nosotros_implementacion`, `nosotros_formacion_ejecutiva`, `nosotros_programa_ejecutivo`, `nosotros_formacion_equipo`, `nosotros_masterclass`, `nosotros_asesor_financiero`, `nosotros_acompanamiento` | `/nosotros` |
+| `contacto_diagnostico_270` | `/contacto` (tarjeta del Diagnóstico de $270) |
+
+La llamada gratuita de 20 minutos se llama «Consulta gratis de 20 min» en las páginas Hexagonales y en `/ejecutivos`, y sigue midiendo `diagnostico_gratis` (sección 2).
+
 ### 6. Otros eventos con nombre propio
 Cualquier elemento con `data-evento="nombre"` envía un evento llamado `nombre` al hacer clic. Los más útiles:
 
@@ -97,6 +151,7 @@ Para medir un botón nuevo basta con añadirle `data-evento="mi_evento"`; no hay
 2. `diagnostico_gratis`: cuántas personas piden el diagnóstico (y desde qué página).
 3. `reservo_curso` y `reservo_taller`: reservas iniciadas de cursos y talleres.
 4. `generate_lead` (calculadora): cuántos dejan sus datos a cambio del regalo.
+5. `ejecutivos_whatsapp` agrupado por `product` (y por campaña de Meta): qué oferta de `/ejecutivos` trae conversaciones; y `diagnostico_gratis` con `page` = `ejecutivos`.
 
 Nota: un clic en WhatsApp es una **intención**, no una venta. Para saber qué se cerró, anota en una hoja qué producto pidió cada persona (el mensaje prellenado lo dice).
 

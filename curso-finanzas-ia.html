@@ -63,31 +63,6 @@
     {
       "@type": "CourseInstance",
       "courseMode": "Onsite",
-      "startDate": "2026-10-10",
-      "endDate": "2026-10-24",
-      "courseSchedule": {
-        "@type": "Schedule",
-        "repeatFrequency": "P1W",
-        "repeatCount": 3,
-        "byDay": "https://schema.org/Saturday",
-        "startTime": "08:00",
-        "endTime": "12:00",
-        "scheduleTimezone": "America/Caracas"
-      },
-      "location": {
-        "@type": "Place",
-        "name": "F&V AI Group, Valencia",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Valencia",
-          "addressRegion": "Carabobo",
-          "addressCountry": "VE"
-        }
-      }
-    },
-    {
-      "@type": "CourseInstance",
-      "courseMode": "Onsite",
       "startDate": "2026-11-07",
       "endDate": "2026-11-21",
       "courseSchedule": {
@@ -128,9 +103,10 @@
 <script src="/assets/eventos.js"></script>
 <script>
   // La próxima cohorte vigente sale de /assets/eventos.js (ahí se editan fechas, horas y cupos). El contador se oculta solo al pasar el inicio.
+  // Si no queda ninguna cohorte por empezar, las fechas dicen «Próximas fechas: escríbenos por WhatsApp» y no hay contador.
   (function () {
     var c = window.FV_EVENTOS.cursoProximo();
-    var f = c.fechasTexto.charAt(0).toUpperCase() + c.fechasTexto.slice(1);
+    var f = c.vigente ? c.fechasTexto.charAt(0).toUpperCase() + c.fechasTexto.slice(1) : c.fechasTexto;
     window.PROXIMA_COHORTE = { ubicacion: c.lugar + ', Venezuela.', fechas: f.replace(/ de 20\d\d$/, '') + '.', horario: c.hora, inicioISO: c.inicioISO, aforo: c.aforo, cuposDisponibles: c.cuposLibres, requisito: 'Solo necesitas llevar tu laptop. Todo incluido en el acceso.' };
   })();
 </script>
@@ -406,7 +382,7 @@
         En 3 sábados presenciales, automatiza la <strong class="text-white font-semibold">conciliación de los pagos de tu empresa</strong>: deja de cruzar comprobantes y estados de cuenta a mano.
       </p>
 
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="hero" class="btn-linea btn-glow-on-hover inline-flex justify-center items-center px-8 py-4 font-head font-semibold rounded-lg text-lg">
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="hero" class="btn-linea btn-glow-on-hover inline-flex flex-wrap justify-center items-center gap-x-1.5 px-8 py-4 font-head font-semibold rounded-lg text-lg">
         Asegurar mi cupo <span data-cupos-texto>(máximo 6 personas)</span>
       </a>
     </div>
@@ -479,7 +455,7 @@
       </div>
       <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-tri flex gap-4 items-start">
         <svg class="w-7 h-7 shrink-0 text-fv-triPurple" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M16 3v4M8 3v4M3 10h18"/></svg>
-        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Fechas:</span> <span id="cohorte-fechas">Sábados 10, 17 y 24 de octubre.</span><br><span class="text-white font-head font-semibold">Horario:</span> <span id="cohorte-horario">8:00 a.m. a 12:00 p.m.</span></p>
+        <p class="text-slate-300 leading-relaxed"><span class="text-white font-head font-semibold">Fechas:</span> <span id="cohorte-fechas">Sábados 7, 14 y 21 de noviembre.</span><br><span class="text-white font-head font-semibold">Horario:</span> <span id="cohorte-horario">2:00 a 6:00 pm</span></p>
       </div>
       <div class="reveal p-6 rounded-lg bg-fv-surface box-glow-tri flex gap-4 items-start">
         <svg class="w-7 h-7 shrink-0 text-fv-triGreen" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20v-1a4 4 0 00-4-4H7a4 4 0 00-4 4v1M21 20v-1a4 4 0 00-3-3.87M16 4.13a3.5 3.5 0 010 6.74"/><circle cx="10" cy="8" r="3.5" stroke-width="1.5"/></svg>
@@ -491,7 +467,14 @@
       </div>
     </div>
 
-    <div data-ev-show="oct:vigente" class="reveal mt-10 p-6 rounded-lg bg-fv-surface border border-fv-triPurple/40 text-center">
+    <!-- Sin ninguna cohorte por empezar: lo muestra assets/eventos.js -->
+    <div data-ev-show="curso:sin-fechas" class="hidden reveal mt-10 p-6 rounded-lg bg-fv-surface border border-fv-triGreen/40 text-center">
+      <p class="font-head text-lg font-semibold text-white"><span data-ev="eventos.proximas">Próximas fechas: escríbenos por WhatsApp</span></p>
+      <p class="text-slate-300 mt-2">Te avisamos apenas abra la próxima cohorte.</p>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20av%C3%ADsame%20cuando%20haya%20nueva%20fecha%20de%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular)" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="curso_sin_fechas" data-evento="avisame_curso_finanzas" class="btn-linea mt-4 inline-flex justify-center items-center min-h-[48px] px-6 py-3 font-head font-semibold rounded-lg">Escríbenos por WhatsApp</a>
+    </div>
+
+    <div data-ev-show="oct:vigente" class="hidden reveal mt-10 p-6 rounded-lg bg-fv-surface border border-fv-triPurple/40 text-center">
       <p class="font-head text-xs font-semibold uppercase tracking-[0.2em] text-fv-triPurple mb-2">Siguiente cohorte</p>
       <p class="text-slate-200 text-lg"><span data-ev="curso.nov.fechas">sábados 7, 14 y 21 de noviembre de 2026</span>, <span data-ev="curso.nov.hora">2:00 a 6:00 pm</span> · <span data-ev="curso.nov.cupos">Máximo 6 personas</span></p>
       <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular%2C%207%2C%2014%20y%2021%20de%20nov).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso-nov" target="_blank" rel="noopener" data-cta="curso_siguiente" data-evento="reservo_curso" class="btn-secondary mt-4 inline-flex justify-center items-center px-6 py-3 font-head font-semibold rounded-lg">Reservar la cohorte de noviembre</a>
@@ -505,6 +488,43 @@
         <div class="cd-box !min-w-0 rounded-lg bg-fv-surface box-glow-tri px-2 py-4"><div class="cd-num font-head text-3xl sm:text-4xl font-bold text-white" data-cd="h">00</div><div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Horas</div></div>
         <div class="cd-box !min-w-0 rounded-lg bg-fv-surface box-glow-tri px-2 py-4"><div class="cd-num font-head text-3xl sm:text-4xl font-bold text-white" data-cd="m">00</div><div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Min</div></div>
         <div class="cd-box !min-w-0 rounded-lg bg-fv-surface box-glow-tri px-2 py-4"><div class="cd-num font-head text-3xl sm:text-4xl font-bold text-fv-triPurple" data-cd="s">00</div><div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Seg</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4b. PROGRAMA EJECUTIVO (Línea Hexagonal, «usted»): versión privada entre semana. Mismos datos que /ejecutivos y /cursos#programa-ejecutivo ============ -->
+<section id="programa-ejecutivo" class="linea-hex hex-legible relative py-20 border-b border-white/5 scroll-mt" aria-labelledby="programa-ejecutivo-title">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="x-card is-static p-6 sm:p-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7">
+          <p class="mb-4 flex flex-wrap gap-2"><span class="ins ins-hex"><span>Línea Hexagonal</span></span></p>
+          <p class="font-head text-xs font-semibold uppercase tracking-[0.18em] text-fv-cyan mb-2">Programa ejecutivo</p>
+          <h2 id="programa-ejecutivo-title" class="font-sans text-2xl sm:text-3xl font-semibold uppercase tracking-tight text-white leading-tight text-balance mb-3">Versión privada entre semana: martes y jueves en la mañana</h2>
+          <p class="text-slate-200">¿Los sábados no le sirven? El programa ejecutivo es para dueños y directivos: en privado o en un grupo pequeño, entre semana, en nuestra oficina de Torre Trébol, en Valencia, con estacionamiento gratuito.</p>
+          <ul class="mt-5 space-y-3 text-slate-200">
+            <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>10 horas en 2 días de 5 horas: martes y jueves en la mañana</span></li>
+            <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-fv-cyan shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1114 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Torre Trébol, Av. La Rosario, Urb. Lomas del Este, Valencia, con estacionamiento gratuito</span></li>
+          </ul>
+          <p class="mt-5 font-head text-sm text-slate-300">Privado o grupo pequeño · refrigerio · diploma · oficina con estacionamiento</p>
+        </div>
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <dl class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-3">
+            <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <dt class="font-head text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Individual</dt>
+              <dd class="font-head text-3xl font-extrabold text-white tracking-tight">$270</dd>
+              <dd class="text-sm text-slate-300 mt-1">las 10 horas</dd>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <dt class="font-head text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Grupo de 2 a 4</dt>
+              <dd class="font-head text-3xl font-extrabold text-white tracking-tight">$180</dd>
+              <dd class="text-sm text-slate-300 mt-1">por persona</dd>
+            </div>
+          </dl>
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20el%20Programa%20ejecutivo%20entre%20semana%20(L%C3%ADnea%20Hexagonal%2C%20martes%20y%20jueves%20en%20la%20ma%C3%B1ana).%20%C2%BFQu%C3%A9%20fechas%20tienen%3F" target="_blank" rel="noopener" data-product="programa-ejecutivo" data-cta="curso_finanzas_ejecutivo" data-evento="curso_finanzas_programa-ejecutivo" class="btn-linea flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-lg font-head font-semibold text-center"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Consultar fechas por WhatsApp</span></a>
+          <a href="/ejecutivos" data-evento="curso_finanzas_a_ejecutivos" class="btn-linea-sec flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg font-head text-sm font-medium text-center">Ver el programa ejecutivo</a>
+        </div>
       </div>
     </div>
   </div>
@@ -628,7 +648,7 @@
 
 <!-- CTA fijo en móvil: aparece al bajar del hero -->
 <div id="sticky-cta" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-black/90 backdrop-blur-md border-t border-white/10 px-4 py-3 translate-y-full transition-transform duration-300 linea-tri">
-  <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="sticky" class="btn-linea flex justify-center items-center w-full px-4 py-3 font-head font-semibold rounded-lg">
+  <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20mi%20cupo%20en%20Finanzas%20con%20IA%20(L%C3%ADnea%20Triangular).%20%C2%BFC%C3%B3mo%20pago%3A%20en%203%20cuotas%20o%20de%20contado%3F" data-ev-wa="curso" target="_blank" rel="noopener" data-cta="sticky" class="btn-linea flex flex-wrap justify-center items-center gap-x-1.5 w-full px-4 py-3 font-head font-semibold rounded-lg">
     Asegurar mi cupo <span data-cupos-texto>(máximo 6 personas)</span>
   </a>
 </div>
@@ -642,15 +662,15 @@
           <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8" loading="lazy" decoding="async">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
-        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios publicados en dólares.</p>
+        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios claros en dólares.</p>
         <div class="flex items-center gap-3">
-          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+          <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
           </a>
-          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo: contacto@fvaigroup.com" title="contacto@fvaigroup.com" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
+          <a href="mailto:contacto@fvaigroup.com" aria-label="Correo: contacto@fvaigroup.com" title="contacto@fvaigroup.com" class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-orange/50 hover:bg-fv-orange/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
-          <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
+          <a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
         </div>
@@ -669,8 +689,9 @@
         <div>
           <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
           <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Diagnóstico gratis</a></li>
-            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Asesoría Estratégica</a></li>
+            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Consulta gratis de 20 min</a></li>
+            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Diagnóstico</a></li>
+            <li><a href="/ejecutivos" class="link-underline hover:text-white transition-colors">Dueños y directivos</a></li>
             <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
             <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
           </ul>
@@ -708,8 +729,8 @@
     <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
       <div class="flex gap-6 text-sm text-slate-600">
-        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors">Políticas de privacidad</a>
-        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors">Términos y Condiciones</a>
+        <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors inline-flex items-center min-h-[44px]">Políticas de privacidad</a>
+        <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors inline-flex items-center min-h-[44px]">Términos y Condiciones</a>
       </div>
     </div>
   </div>

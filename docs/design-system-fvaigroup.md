@@ -201,3 +201,24 @@ El foco visible es una sola regla global (`:focus-visible` de `a[href]`, `button
 **Páginas de producto (`/club`, `/condominio`, `/gym`):** estructura común (portada con teléfono y laptop, datos de confianza, problema, cómo funciona, funciones por pestañas, por qué, dirección propia, planes `#hexagonal` y `#triangular`, calculadora, comparación, seguridad, preguntas frecuentes y cierre). Cada producto tiene identidad propia sobre el fondo oscuro del sitio (clase de tema con variables `--p-acento`, `--p-acento-claro`, `--p-btn`, `--p-sobre`, `--p-fondo`, `--p-borde`, `--p-hero-1/2` y `--mk-*` para las maquetas). El cian/naranja y el verde/morado solo aparecen en las insignias de línea. Los rellenos de botón cumplen contraste AA (por eso el rojo de Gym usa #dc2626 con texto blanco). Maquetas: HTML y CSS con unidades de contenedor (`cqw`), siempre rotuladas «Ejemplo ilustrativo»; las capturas reales de la demo solo se usan para Club y con un club ficticio.
 
 **Planes compartidos:** el HTML de los planes lo genera `assets/precios-software.js` (`planesHTML`) y se escribe en cada página con `node scripts/render-planes.js`; estilos en `assets/software-planes.css`. No se escriben precios de planes a mano.
+
+---
+
+## 8. Legibilidad Hexagonal: `.hex-legible` (17 de octubre de 2026)
+
+El cliente ideal de la Hexagonal son dueños y directivos de 40 a 65 años que leen desde el teléfono. Por eso las secciones Hexagonales llevan menos brillo y más tamaño de letra.
+
+**Qué hace** (definida en `src/tailwind.css`, junto al bloque de accesibilidad):
+
+- Párrafos, `li` y `dd` del cuerpo dentro del contenedor: **18 px** (`1.125rem`) con **interlineado 1,6**.
+- Los que estaban en gris tenue (`text-slate-400`, `text-slate-500`) pasan a **#e2e8f0** (contraste AA holgado sobre negro). Para texto nuevo, escriba directamente `text-slate-200` (#e2e8f0) o `text-slate-300` (#cbd5e1).
+- **No toca** lo que ya trae su propio tamaño (`text-xs`, `text-sm`, `text-lg`, `text-xl` y mayores, `text-[..]`), lo que usa `font-head` (etiquetas, insignias, botones) ni lo que está dentro de un contenedor `text-xs` o `text-sm`. Así los precios grandes, las etiquetas cian y los kickers quedan como están.
+- Botones de línea (`.btn-linea`) con **brillo suave en reposo** (borde naranja y sombra corta); el brillo completo queda para el hover. Filtros (`.filtro`) de **44 px** de alto.
+
+**Dónde usarla:** en el contenedor (`<section>`) de cada sección Hexagonal: todas las de `/hexagonal`, `/ejecutivos`, la sección `#duenos` del inicio, las páginas de detalle (`/asesoria-estrategica`, `/despliegue-ejecucion`, `/acompanamiento-continuo`, `/masterclasses-workshops`, `/calculadora-roi`), `/cursos#formacion-empresas`, `/nosotros#metodologia` y la tarjeta `#agenda` de `/contacto`. **No** se usa en secciones Triangulares ni en la marca madre (salvo que fallen AA).
+
+**Junto con `.hex-legible`:** «usted»; resultados de negocio en lugar de jerga; en los títulos, `.texto-linea` en vez de `shimmer-text`; sin texto cian o naranja en párrafos; tarjetas `x-card` sin neón (sin `box-glow` ni `text-neon`); áreas táctiles de 44 px o más.
+
+**/ejecutivos** agrega en su propio `<style>`: botones grandes `.btn-grande` de 56 px (texto de 18 px) y `.texto-linea` con un degradado fijo dorado a naranja (el animado cian, dorado y naranja se veía verdoso quieto). No lleva constelación, foco del mouse ni estela.
+
+**Nombres en lo Hexagonal:** la llamada gratuita de Cal.com se llama «Consulta gratis de 20 min» (en el pie, columna Línea Hexagonal, también); «Diagnóstico» es solo el de $270. En el menú, Contacto y lo Triangular sigue «Diagnóstico gratis».

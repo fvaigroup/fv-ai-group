@@ -8,17 +8,17 @@ web
 
 ## Users
 
-Empresas en Venezuela que evalúan o ya usan Odoo Community o Dynamics 365 Sales/Customer Service, buscando diagnóstico, automatización, implementación, capacitación y soporte continuo, con integración de IA sobre sus flujos existentes (público de la Línea Hexagonal, `/hexagonal`).
+Dueños y directivos de empresas con estructura en Venezuela (público de la Línea Hexagonal, `/hexagonal` y `/ejecutivos`): quieren ver en qué se va la plata de su empresa, ordenar sus números y reportes y usar IA en finanzas y gestión; muchos evalúan o ya usan Odoo Community o Dynamics 365 Sales/Customer Service. Ver el cliente ideal en «Oferta Hexagonal (17 de octubre de 2026)».
 
 Negocios pequeños y personas (talleres, gomeras, panaderías, peluquerías, consultorios, restaurantes, bodegones, tiendas; profesionales y estudiantes) que compran planes y productos de precio publicado por WhatsApp, casi siempre desde el teléfono (página `/triangular`).
 
 ## Product Purpose
 
-F&V AI Group audita procesos, implementa Odoo Community y Dynamics 365 Sales/Customer Service, integra IA en flujos ya existentes, y capacita equipos para que la inversión no quede subutilizada.
+F&V AI Group hace consultoría financiera con IA para dueños (diagnóstico, formación ejecutiva y asesor financiero), implementa a medida tableros, reportes, automatizaciones, Odoo Community y Dynamics 365 Sales/Customer Service, vende software por mensualidad (Club, Condominio y Gym) y capacita equipos para que la inversión no quede subutilizada.
 
 ## Positioning
 
-Independiente de proveedor (no atado a un solo fabricante) y de ciclo completo con un mismo equipo (auditoría → implementación → capacitación → soporte), a diferencia de subcontratar cada fase por separado.
+Independiente de proveedor (no atado a un solo fabricante) y de ciclo completo con un mismo equipo (diagnóstico → implementación → formación → soporte), a diferencia de subcontratar cada fase por separado. En la Hexagonal habla de resultados de negocio (margen, costos, reportes, indicadores), no de tecnología.
 
 ## Operating Context
 
@@ -28,7 +28,7 @@ Dos líneas (el sitio nunca dice "cuatro líneas" y no existe el concepto "Expre
 - ⬡ **Línea Hexagonal** (`/hexagonal`, organizaciones grandes donde decide una estructura, "usted"): medianas empresas con varias áreas y gerencias; grandes empresas y corporaciones; grupos empresariales y franquicias; instituciones (clubes sociales, colegios, universidades, clínicas y hospitales, cámaras y gremios); administradoras de condominios. Referencia: más de unas 20 personas, varias sedes, o una junta directiva o gerencia que aprueba la compra. Frase: «¿Su empresa tiene áreas, sedes o junta directiva? Para medianas y grandes empresas, corporaciones e instituciones.»
 - Línea de ayuda donde se comparan: «¿No sabe cuál? Menos de 20 personas: Triangular. Más de 20, varias sedes o junta directiva: Hexagonal.»
 
-Canal principal: WhatsApp. Cada botón de producto lleva el mensaje ya escrito con el nombre del producto y su línea, y el formulario de `contacto.html` arma un mensaje de WhatsApp. Empresas: diagnóstico gratis de 20 minutos con Cal.com. Promesa pública: "te respondemos el mismo día" (lun–vie, 9:00 a.m.–5:00 p.m.). `/express` y `/soluciones` ya no existen (redirigen a `/triangular` y a `/`; la redirección de `/express` se conserva para no romper enlaces viejos).
+Canal principal: WhatsApp. Cada botón de producto lleva el mensaje ya escrito con el nombre del producto y su línea, y el formulario de `contacto.html` arma un mensaje de WhatsApp. Empresas: la llamada gratis de 20 minutos con Cal.com («Diagnóstico gratis» en el menú, Contacto y lo Triangular; «Consulta gratis de 20 min» en las páginas Hexagonales y `/ejecutivos`, para no confundirla con el Diagnóstico de $270; el evento de medición sigue siendo `diagnostico_gratis`). La puerta de entrada pagada de la Hexagonal es el Diagnóstico de $270. Promesa pública: "te respondemos el mismo día" (lun–vie, 9:00 a.m.–5:00 p.m.). `/express` y `/soluciones` ya no existen (redirigen a `/triangular` y a `/`; la redirección de `/express` se conserva para no romper enlaces viejos).
 
 ## Capabilities and Constraints
 
@@ -42,7 +42,7 @@ Marca madre F&V: oscura, cian/naranja, con el hexágono de F&V (encabezado, pie,
 
 ## Evidence on Hand
 
-Logos reales de clientes ya integrados en el carrusel (Licorway, Killjoy, Natural Sweet, Casa del Mocho). Testimonios reales existen pero el usuario aún no los ha cargado en el sitio — la sección permanece en placeholder a propósito; no fabricar citas de reemplazo.
+Logos reales de clientes ya integrados en el carrusel del inicio (los más pesados, comprimidos a WebP con la misma apariencia y con los originales conservados). Testimonios reales existen pero el usuario aún no los ha cargado en el sitio — la sección permanece en placeholder a propósito; no fabricar citas de reemplazo.
 
 ## Product Principles
 
@@ -57,9 +57,9 @@ No se estableció un requisito específico más allá de las prácticas ya prese
 ## 8. Oferta y reglas de pago (simplificación de octubre de 2026)
 
 - **Línea Triangular:** el precio mensual o del pago único termina siempre en ,99 (excepción: las cuotas $100,00 del curso y $40,00 de la primera cuota del Pack Enfoque). Plan Arranque $39,99/mes y 6 productos con tamaños: Presencia ($14,99 · $29,99 · $59,99 · $99,99), Caja Clara ($14,99 · $29,99 · $39,99), Tablero Ejecutivo ($79,99 · $149,99), Asistente IA de WhatsApp ($119,99 · $179,99), Asesor F&V (Sesión Clara $29,99 · Pack Enfoque $79,99 · Mensual $119,99 · Pro $199,99) y Aprende (Taller $24,99; Finanzas con IA $299,99 en $100,00 + $100,00 + $99,99); anzuelo: Mis Finanzas Claras $4,99. La fuente de verdad de los precios es `triangular.html` (generada con los mismos datos que `assets/planes.js`); talleres y cursos salen de `assets/eventos.js`.
-- **Línea Hexagonal:** todos los precios son números redondos (múltiplos de 10). El discurso público ya no dice «desde $300»: la línea se define por tipo de organización. Sus proyectos (Asesoría, Sprint, Odoo, etc.) se rigen por su Propuesta y no tienen descuento.
+- **Línea Hexagonal:** todos los precios son números redondos (múltiplos de 10). El discurso público ya no dice «desde $300»: la línea se define por tipo de organización. La implementación es a medida y se cotiza después del Diagnóstico de $270; los proyectos no tienen descuento. Detalle en «Oferta Hexagonal (17 de octubre de 2026)».
 - **Descuento (octubre de 2026, rama `lineas-por-tipo`):** hay UN solo descuento: 30 % por pagar 12 meses por adelantado un plan mensual (mensual × 12 × 0,70). Aplica a los planes mensuales Triangulares y a las apps mensuales de software (Club, Condominio y Gym) de ambas líneas; no aplica a los proyectos Hexagonales. Mes a mes, en cuotas, por 3, 6 o 9 meses o de contado un pago único: sin descuento. Triangular: totales con 2 decimales; Hexagonal: redondeados al entero. La fórmula está en `assets/planes.js` y se prueba con `node tests/planes.test.js`; el formato de precios, con `node tests/precios.test.js`.
-- **Pago:** dólares, pagaderos en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Los pagos únicos pueden ir en 2 o 3 cuotas. Si no se paga la mensualidad, el servicio se pausa hasta ponerse al día.
+- **Pago:** Triangular: dólares, pagaderos en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Hexagonal: bolívares a la tasa BCV del día, dólares, Pago Móvil o USDT; la fecha o el proyecto se reserva con el 50 % (no se publica «no reembolsable»). Los pagos únicos pueden ir en 2 o 3 cuotas. Si no se paga la mensualidad, el servicio se pausa hasta ponerse al día.
 - **Permanencia mínima:** Presencia Web y Tienda, 12 meses; Asistente IA de WhatsApp, 6 meses. El resto, sin permanencia.
 - **/software:** catálogo de todo el software de F&V (Hexagonal primero, Triangular después), enlazado en el menú, el pie, el inicio y las dos líneas. Ver el apartado «Software» al final.
 
@@ -87,3 +87,39 @@ Tres apps web por mensualidad, cada una con su página, su identidad y sus plane
 - **Dirección propia por organización:** club.fvaigroup.com/su-club, condominio.fvaigroup.com/su-edificio y gym.fvaigroup.com/su-gym, con acceso por correo o cédula y un código por correo o WhatsApp; la Hexagonal puede usar su propio dominio. Si la organización ya tiene página, se le agrega el botón de portal; si no, se le hace una (Web Corporativa, Hexagonal; páginas web, Triangular).
 - **Calculadora (en las tres páginas):** pregunta si tiene junta directiva y administración propia (sí → Hexagonal, no → Triangular) y el número de usuarios; con más de 500 sin junta pasa a la Hexagonal y con más de 5.000 es a medida.
 - **Pendiente de decisión del dueño:** la banda «Clientes fundadores» de `/club` sigue oculta (`hidden`).
+
+---
+
+# Oferta Hexagonal (17 de octubre de 2026)
+
+La Línea Hexagonal ya no es solo Odoo y Dynamics 365: incluye **consultoría financiera con IA** para dueños, **implementación a medida** después del diagnóstico y **software** por mensualidad (Club, Condominio y Gym). Los nombres, precios y mensajes de WhatsApp son idénticos en todo el sitio (`/hexagonal`, `/ejecutivos`, inicio, páginas de detalle, Luci y buscador).
+
+## Cliente ideal de la Hexagonal
+
+Dueños y directivos de empresas que facturan entre $20.000 y $100.000 al mes: transporte, distribuidoras, mayoristas, constructoras, clínicas y agroindustria. Tienen entre 40 y 65 años, saben de finanzas pero no son técnicos, viven en WhatsApp desde el teléfono y deciden rápido. Quieren todo **entre semana en la mañana** (los sábados no les sirven), valoran la atención personal y llegan por anuncios de Meta (destino: `/ejecutivos`). Por eso, en lo Hexagonal: «usted», resultados de negocio (margen, costos, reportes, indicadores) en vez de jerga, texto de cuerpo a 18 px (`.hex-legible`) y menos brillos.
+
+## Productos
+
+| Producto | Precio | Dónde |
+|---|---|---|
+| Diagnóstico «¿En qué se va la plata de su empresa?»: un día presencial en la empresa, revisión de números y reportes, informe escrito de dónde se pierde el dinero y plan de acción de 30 días. Frase obligatoria: «Si después contrata la implementación, los $270 se abonan al proyecto.» | $270 | `/asesoria-estrategica` (canónica; `/diagnostico` redirige con 301), `/hexagonal#diagnostico`, `/ejecutivos#diagnostico` |
+| Evaluación de procesos: etapa del método, a medida, después del diagnóstico | sin precio propio | `/hexagonal#evaluacion-procesos` (`/evaluacion-procesos` redirige a `/asesoria-estrategica`) |
+| Formación ejecutiva 1 a 1: 8 sesiones de 4 horas de IA aplicada a finanzas y gestión (Claude, reportes, automatizaciones, MCP y APIs explicados para dueños) | $960 | `/hexagonal#formacion-ejecutiva`, `/ejecutivos#formacion-ejecutiva` |
+| Programa ejecutivo entre semana: martes y jueves en la mañana, 10 horas (2 días de 5), en la oficina de Torre Trébol; privado o grupo pequeño, refrigerio, diploma, estacionamiento | $270 individual; $180 por persona en grupo de 2 a 4 | `/ejecutivos#programa-ejecutivo`, `/hexagonal#programa-ejecutivo` |
+| Asesor financiero con IA: KPIs, márgenes, alertas y reportes cortos por WhatsApp, para las finanzas y decisiones del dueño | $120 al mes (1 reunión de hasta 4 h) o $480 al mes (1 reunión semanal de hasta 4 h) | `/hexagonal#asesor-financiero` |
+| Acompañamiento Continuo: soporte técnico de sistemas y automatizaciones ya implementados (distinto del Asesor financiero) | $200 / $400 / Director de IA $600 al mes | `/acompanamiento-continuo` |
+| Formación para su equipo (antes «Habilitación de equipos») | a medida | `/hexagonal#formacion-equipo` (`/habilitacion-equipos` redirige ahí) |
+| Masterclass privada | $500 a $700 por sesión | `/masterclasses-workshops` |
+| Implementación: tableros de rentabilidad, reportes automáticos por WhatsApp, automatizaciones, Tablero Gerencial, Sprint de Automatización, Odoo Community, Dynamics 365 Sales/Customer Service, desarrollo a medida | a medida, «se cotiza después del diagnóstico» | `/hexagonal` (Plata y caja, Ventas y atención, Automatización y sistemas), `/despliegue-ejecucion` |
+| Software: Club, Condominio y Gym en versión institucional | ver «Software» arriba | `/club`, `/condominio`, `/gym`, `/software` |
+
+- Los «desde $X» de las implementaciones son **solo referencia** y siempre van con la frase exacta «precio final después del diagnóstico» (lo comprueba `node tests/precios.test.js`).
+- Dejaron de existir como productos: Asesoría Estratégica ($150), Evaluación de Procesos ($400) y Habilitación de equipos ($60 por persona).
+- Anticipo publicable: «reserva con el 50 %». Sin «no reembolsable».
+- Sin descuento en los productos Hexagonales; el único descuento del sitio sigue siendo el 30 % por 12 meses por adelantado de los planes mensuales Triangulares y del software.
+- Mensajes de WhatsApp (con `data-product`): «Hola F&V, quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (Línea Hexagonal, $270).» (`diagnostico-270`); «Hola F&V, me interesa la Formación ejecutiva 1 a 1 (Línea Hexagonal, $960).» (`formacion-ejecutiva`); «Hola F&V, me interesa el Programa ejecutivo entre semana (Línea Hexagonal, martes y jueves en la mañana). ¿Qué fechas tienen?» (`programa-ejecutivo`); «Hola F&V, me interesa el Asesor financiero con IA (Línea Hexagonal, $120 o $480 al mes).» (`asesor-financiero`).
+- Fundadores: Ricardo Freitas y Cristhian Vargas.
+
+## /ejecutivos
+
+Página para dueños y directivos, destino de los anuncios de Meta (no está en el menú; se enlaza desde el pie, el inicio, `/hexagonal` y `/cursos`). Todo en «usted», dentro de `.linea-hex` con `.hex-legible` en cada sección, botones grandes de 56 px y sin constelación ni efectos de cursor. Secciones: portada, para quién, qué logra, las 4 ofertas (Diagnóstico, Programa ejecutivo, Formación ejecutiva y Asesor financiero), cómo es (con el mapa de Torre Trébol), quién lo dicta, testimonio (listo y oculto con `data-publicado="false"` hasta tener uno real con permiso), preguntas frecuentes y cierre. El inicio tiene además la sección `#duenos` («Para dueños de empresa») con el mismo enfoque.

@@ -79,6 +79,31 @@
       "source": "/precios.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/diagnostico",
+      "destination": "/asesoria-estrategica",
+      "permanent": true
+    },
+    {
+      "source": "/evaluacion-procesos",
+      "destination": "/asesoria-estrategica",
+      "permanent": true
+    },
+    {
+      "source": "/evaluacion-procesos.html",
+      "destination": "/asesoria-estrategica",
+      "permanent": true
+    },
+    {
+      "source": "/habilitacion-equipos",
+      "destination": "/hexagonal#formacion-equipo",
+      "permanent": true
+    },
+    {
+      "source": "/habilitacion-equipos.html",
+      "destination": "/hexagonal#formacion-equipo",
+      "permanent": true
     }
   ]
 }
