@@ -1,6 +1,30 @@
 # Cambios de fvaigroup.com: de landing a embudo de venta
 
 Un commit por fase (los mensajes empiezan con «Fase N:»). Este archivo no se publica en el sitio.
+Las entradas anteriores a octubre de 2026 describen el sitio de su momento y usan nombres hoy retirados (Express, Asesor F&V, los nombres de línea fuera del inicio, las páginas por línea). La organización vigente está en `PRODUCT.md` y `README.md`.
+
+# Reestructuración por Servicios y Productos (octubre de 2026)
+
+El sitio deja de organizarse por línea y pasa a organizarse por **Servicios** (el equipo de F&V trabaja con el cliente; 19 ítems en 4 categorías) y **Productos** (listos para usar, con el mismo precio y la misma entrega para todos; 15 ítems en 6 categorías). Las dos líneas siguen como etiqueta de a quién le habla cada ítem (⬡ y ▲, por tipo de negocio) y sus nombres solo se escriben en el inicio. Rama `servicios-productos`; un commit por fase.
+
+- **Fase 1: base técnica** (`cabeef4`). Encabezado y pie únicos en `partials/`, insertados en cada página por `scripts/build-html.js` entre marcadores (`npm run build`; `--check` para verificar). `assets/menu.js`: menú móvil con acordeón y desplegables de escritorio accesibles (Servicios y Productos). Catálogo único `data/catalogo.json` (19 servicios y 15 productos, la página compartida de Acompañamiento y bloques de texto reutilizables) con sus reglas en `data/ESQUEMA.md` y el validador `scripts/validar-catalogo.js`. Pruebas nuevas: catálogo, estructura y enlaces.
+- **Fase 2: `/servicios` y `/productos`** (`4f34e33`). Generador `scripts/catalogo/` enganchado al build: las dos páginas y las tarjetas cortas (nombre, forma y color, frase de 15 palabras o menos, «desde $X» o «A medida», plazo y un solo botón «Ver detalle») salen del catálogo; marcadores `<!-- tarjetas:inicio … -->` para pedirlas en cualquier página. Sección «Tarjetas y listados» en `src/tailwind.css`, 12 imágenes para redes en `assets/og/`, pruebas de listados y ambas rutas en el sitemap.
+- **Fase 3: páginas de detalle** (`9806b4b`). 23 páginas (`/servicios/<id>` y `/productos/<id>`, con Acompañamiento como página compartida de 3 niveles) generadas desde una plantilla común (`scripts/catalogo/detalle.js`): cabecera con precio y WhatsApp, secciones solo si hay contenido real en el catálogo, preguntas, «También te puede servir» y cierre. El build borra las páginas generadas que ya no estén en el catálogo. El buscador incluye las páginas nuevas; pruebas de detalle.
+- **Fase 4: inicio** (`23eaee6`). Portada con la frase de marca y tres botones, las dos líneas (Hexagonal primero) con su precio «desde» tomado del catálogo, servicios y productos destacados con tarjetas cortas, «Para dueños de empresa» en versión corta, cinco preguntas frecuentes y datos estructurados con los precios del catálogo. Se retiran el cuestionario, los bloques viejos de software y pedidos y `bcv.js` del inicio. Mensajes de `assets/eventos.js` sin el nombre de línea. Prueba nueva del inicio.
+- **Fase 5: redirecciones, salida del Asesor F&V y limpieza** (`4c9380c`, `c034be5`).
+  - **Redirecciones 301** en `vercel.json` de las URLs viejas (`/hexagonal`, `/triangular`, `/software`, `/cursos`, `/asesoria-estrategica`, `/acompanamiento-continuo`, `/despliegue-ejecucion`, `/masterclasses-workshops`, `/diagnostico`, `/express` y otras) a `/servicios`, `/productos` o su detalle, sin cadenas; `assets/anclas-viejas.js` lleva las anclas viejas (`/hexagonal#id`) a su página nueva. Las ocho páginas viejas siguen en el repositorio, inalcanzables, hasta que el dueño apruebe borrarlas (el build y las pruebas las saltan).
+  - **El Asesor F&V de lo ▲ desaparece** (textos, datos estructurados, mensajes, medición y pruebas): la asesoría solo existe en lo ⬡.
+  - **Descuentos:** 30 % por pagar 12 meses por adelantado y, nuevo, 10 % de descuento en el primer pago para el recomendado de un cliente (a quien recomienda no se le ofrece nada en dinero ni porcentaje). «Refiere y gana» y «el único descuento» ya no existen.
+  - **Nombres de línea:** «Línea Hexagonal» y «Línea Triangular» solo quedan en el inicio (y en el texto legal de `terminos.html`, que se deja intacto en `c034be5`); en el resto, la forma (⬡ ▲), el color y «Empresas e instituciones» / «Negocios pequeños».
+  - **Buscador y Luci** reescritos sobre el catálogo (rutas, precios y categorías salen de él).
+  - **Sitemap** generado desde el catálogo y las páginas estáticas vivas (`scripts/catalogo/sitemap.js`); `robots.txt` bloquea `/data/` y `/partials/`.
+  - **Medición:** eventos con `item` y `linea` (`ver_detalle`, `detalle_cruce`, `detalle_nivel_atajo`, `menu_categoria`) y los de los bloques extra, documentados en `README-MEDICION.md`.
+  - **Contenido movido:** a `/servicios`, «Cómo trabajamos» y «Detalle técnico» (`partials/servicios-extra.html`); a `/productos`, el cuestionario, «Míralo funcionando», garantía, «Cómo pagas», preguntas frecuentes y «Recomiéndanos» (`partials/productos-extra.html`).
+  - Pruebas nuevas: extras, buscador y Luci, redirecciones y sitemap.
+- **Fase 6: documentación** (este commit). `PRODUCT.md` con la sección «Arquitectura del sitio: Servicios y Productos» y la oferta al día; `README.md` nuevo (estructura, comandos, build, cómo agregar un servicio o producto, menú, páginas estáticas, redirecciones, despliegue y pruebas); `docs/design-system-fvaigroup.md` con la tarjeta corta, el menú desplegable, la plantilla de detalle, los listados y sus extras, los bloques del inicio y `.hex-legible`.
+- **Fase 7: revisión final.** (pendiente; se completa con su commit)
+
+---
 
 ## Fase 1: arreglos técnicos
 Enlaces internos sin `.html` y anclas rotas corregidas; textos de plazos unificados (un plazo por producto); buscador que ya no muestra «Ctrl K» suelto; `alt` descriptivo en imágenes; etiqueta correcta del correo del pie; mapa de Contacto sin URL cruda; CSP actualizada para Clarity.
