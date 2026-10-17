@@ -1,0 +1,2336 @@
+{
+  "lineas": {
+    "hex": {
+      "forma": "⬡",
+      "clase": "linea-hex",
+      "leyenda": "Empresas e instituciones",
+      "trato": "usted"
+    },
+    "tri": {
+      "forma": "▲",
+      "clase": "linea-tri",
+      "leyenda": "Negocios pequeños",
+      "trato": "tú"
+    }
+  },
+  "tipos": {
+    "servicio": {
+      "titulo": "Servicios",
+      "ruta": "/servicios",
+      "archivo": "servicios.html",
+      "meta_titulo": "Servicios para empresas: diagnóstico, implementación, formación y asesoría | F&V AI Group",
+      "meta_descripcion": "Servicios de F&V AI Group para empresas e instituciones: diagnóstico financiero, implementación y automatización a la medida, formación ejecutiva y asesoría financiera con IA.",
+      "intro": "El equipo de F&V trabaja con usted para ordenar sus números, automatizar y formar a su gente.",
+      "definicion": "Servicio: el equipo de F&V trabaja con usted, en su empresa o con su equipo.",
+      "otro_enlace": {
+        "texto": "¿Negocio pequeño? Mira los productos →",
+        "href": "/productos"
+      },
+      "categorias": [
+        {
+          "id": "diagnostico",
+          "nombre": "Diagnóstico y consultoría",
+          "intro": "Empiece por saber en qué se va la plata de su empresa."
+        },
+        {
+          "id": "implementacion",
+          "nombre": "Implementación y automatización",
+          "intro": "Tableros, reportes y sistemas hechos a la medida de su empresa. Se cotizan después del diagnóstico."
+        },
+        {
+          "id": "formacion",
+          "nombre": "Formación",
+          "intro": "Para usted y su equipo, con sus propios números y herramientas."
+        },
+        {
+          "id": "acompanamiento",
+          "nombre": "Acompañamiento y asesoría",
+          "intro": "Alguien de confianza para sus finanzas y para que lo implementado siga funcionando."
+        }
+      ]
+    },
+    "producto": {
+      "titulo": "Productos",
+      "ruta": "/productos",
+      "archivo": "productos.html",
+      "meta_titulo": "Productos con precio fijo: software, cursos, presencia y control | F&V AI Group",
+      "meta_descripcion": "Productos de F&V AI Group con precio claro en dólares: software (Club, Condominio, Gym), cursos y programas, plan de arranque, presencia web, control de caja y atención por WhatsApp.",
+      "intro": "Listos para usar, con el mismo precio y la misma entrega para todos.",
+      "definicion": "Producto: listo para usar, con el mismo precio y la misma entrega para todos.",
+      "categorias": [
+        {
+          "id": "software",
+          "nombre": "Software",
+          "intro": "Club, Condominio y Gym: cobro de cuotas, control y reportes para su organización."
+        },
+        {
+          "id": "cursos",
+          "nombre": "Cursos y programas",
+          "intro": "Con fechas y cupos limitados."
+        },
+        {
+          "id": "para-empezar",
+          "nombre": "Para empezar",
+          "intro": "Lo básico para que te encuentren, te compren y sepas cuánto ganas."
+        },
+        {
+          "id": "presencia",
+          "nombre": "Presencia y web",
+          "intro": "Que te encuentren en Google Maps, te escriban por WhatsApp y tengas tu web."
+        },
+        {
+          "id": "control",
+          "nombre": "Control y finanzas",
+          "intro": "Cuadra tu caja y mira tus números clave en una sola pantalla."
+        },
+        {
+          "id": "ventas",
+          "nombre": "Ventas y atención",
+          "intro": "Responde a tus clientes por WhatsApp sin estar pegado al teléfono."
+        }
+      ]
+    }
+  },
+  "leyenda": "⬡ Empresas e instituciones · ▲ Negocios pequeños",
+  "paginas_existentes_como_detalle": [
+    "/club",
+    "/condominio",
+    "/gym",
+    "/paginas-web",
+    "/curso-finanzas-ia",
+    "/ejecutivos#programa-ejecutivo"
+  ],
+  "items": [
+    {
+      "id": "diagnostico",
+      "tipo": "servicio",
+      "categoria": "diagnostico",
+      "linea": "hex",
+      "orden": 10,
+      "nombre": "Diagnóstico «¿En qué se va la plata de su empresa?»",
+      "frase": "Un día en su empresa para saber dónde se pierde el dinero.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$270",
+        "referencia": null,
+        "periodo": "pago único",
+        "nota": null
+      },
+      "plazo": "Un día presencial en su empresa",
+      "product": "diagnostico-270",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/diagnostico"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (⬡, $270)."
+      },
+      "contenido": {
+        "que_es": "Pasamos un día en su empresa revisando sus números y sus reportes con usted. Al final sabe dónde se pierde el dinero y tiene un plan de acción para los próximos 30 días. Es la puerta de entrada: el informe y el plan son suyos, contrate o no lo que sigue.",
+        "para_quien": [
+          "Dueños y directivos de empresas con estructura: transporte, distribuidoras, mayoristas, constructoras, clínicas y agroindustria. Usted conoce su negocio y sabe de números; lo que falta es verlos juntos y saber cuál pesa más.",
+          "Cuando la empresa vende, pero la plata no se ve en la cuenta al final del mes.",
+          "Cuando cada área le pasa un reporte distinto y no terminan de cuadrar.",
+          "Cuando no sabe con certeza qué producto, cliente o ruta le deja margen.",
+          "Cuando se entera tarde de que un costo subió o de que un cliente dejó de pagar.",
+          "Cuando no sabe qué conviene automatizar primero ni cuánto le va a costar: primero el diagnóstico, después la inversión."
+        ],
+        "incluye": [
+          "Un día presencial en su empresa. Vamos a su sede y trabajamos con usted y con quien lleva los números. Vemos cómo se vende, se compra, se cobra y se paga hoy.",
+          "Revisión de sus números y reportes. Ventas, costos, márgenes, caja y cuentas por cobrar, con los reportes que ya usa. Sirve igual si están en Excel, en un sistema o en papel.",
+          "Informe escrito de dónde se pierde el dinero. Cada fuga con su explicación: en qué parte de la operación ocurre y qué la causa, en lenguaje de negocio y sin tecnicismos.",
+          "Plan de acción de 30 días. Qué hacer primero, quién lo hace y cómo saber si funcionó. Lo puede ejecutar su equipo, con o sin nosotros."
+        ],
+        "pasos": [
+          {
+            "titulo": "Lo agendamos por WhatsApp",
+            "texto": "Elegimos juntos un día entre semana. Reserva la fecha con el 50 %."
+          },
+          {
+            "titulo": "Nos manda lo que ya tiene",
+            "texto": "Los reportes que usa hoy: ventas, costos, cuentas por cobrar, estados de cuenta. No hace falta ordenarlos antes."
+          },
+          {
+            "titulo": "Un día en su empresa",
+            "texto": "Revisamos los números con usted y vemos en la práctica cómo se mueve la plata: quién vende, quién cobra, quién compra y cómo se arma cada reporte."
+          },
+          {
+            "titulo": "Le entregamos el informe y el plan",
+            "texto": "Por escrito, y los repasamos juntos para que cada punto quede claro antes de decidir nada."
+          }
+        ],
+        "planes": [],
+        "plazo": "Un día presencial en una fecha entre semana que acordemos.",
+        "pago": "$270, pago único. Reserva con el 50 % para fijar la fecha. Se paga en bolívares a la tasa BCV del día, en dólares, por Pago Móvil o USDT. Si después contrata la implementación, los $270 se abonan al proyecto.",
+        "faq": [
+          {
+            "p": "¿Qué diferencia hay con la consulta gratis de 20 min?",
+            "r": "La consulta gratis es una llamada corta para conocernos y ver si podemos ayudarle. El Diagnóstico es un día completo en su empresa, con sus números, y termina en un informe escrito y un plan de 30 días."
+          },
+          {
+            "p": "¿Necesito tener un sistema o los números ordenados?",
+            "r": "No. Trabajamos con lo que tenga: un sistema, hojas de Excel o reportes en papel. Ordenar esa información es parte del trabajo."
+          },
+          {
+            "p": "¿Y si después no contrato nada más?",
+            "r": "El informe y el plan quedan con usted y su equipo los puede ejecutar por su cuenta. Si después contrata la implementación, los $270 se abonan al proyecto. No está obligado a contratar nada más."
+          },
+          {
+            "p": "¿Cuánto cuesta la implementación?",
+            "r": "Depende de lo que salga en el diagnóstico, por eso se cotiza a medida después de él. En cada servicio de implementación hay montos de referencia; el precio final se da después del diagnóstico."
+          },
+          {
+            "p": "¿Qué pasa después del diagnóstico?",
+            "r": "Recibe el informe escrito y el plan de acción de 30 días, y usted decide. Puede aplicarlo con su propio equipo, aprender a hacerlo usted mismo con la formación para dueños, contratar el asesor financiero mensual o pedirnos la implementación."
+          }
+        ],
+        "bloques": [
+          "despues-del-diagnostico",
+          "horario-atencion"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [],
+      "meta": {
+        "titulo": "Diagnóstico financiero para empresas: $270",
+        "descripcion": "Un día en su empresa para saber dónde se pierde el dinero, con informe escrito y plan de 30 días. $270; si implementa, se abonan al proyecto."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/tablero-gerencial"
+      },
+      "id": "tablero-gerencial",
+      "orden": 10,
+      "nombre": "Tablero Gerencial",
+      "frase": "Ventas, caja, cobranza y margen en un solo lugar, al día.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $600",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "2 semanas de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Tablero Gerencial (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Un tablero de rentabilidad con indicadores de ventas, caja, cobros y margen en un solo lugar, al día.",
+        "para_quien": [
+          "Cuando vende más que el año pasado, pero no sabe si está ganando más.",
+          "Cuando quiere revisar margen, costos y cobranza desde el teléfono, sin esperar el cierre del mes."
+        ],
+        "incluye": [
+          "Indicadores de ventas, caja, cobros y margen.",
+          "Su margen y sus costos, claros y al día.",
+          "Reportes de margen, costos y cobranza que puede revisar desde el teléfono."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "2 semanas de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "cuando-conviene-implementacion",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "reportes-whatsapp",
+        "conciliacion-automatica",
+        "sprint-automatizacion"
+      ],
+      "meta": {
+        "titulo": "Tablero Gerencial a medida para su empresa",
+        "descripcion": "Ventas, caja, cobranza y margen en un solo lugar, al día. Entrega en 2 semanas; se cotiza después del diagnóstico, desde $600."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/reportes-whatsapp"
+      },
+      "id": "reportes-whatsapp",
+      "orden": 20,
+      "nombre": "Reportes automáticos por WhatsApp",
+      "frase": "Ventas, caja, cobranza y margen en su WhatsApp, sin abrir ningún sistema.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": null,
+        "periodo": null,
+        "nota": "se cotiza después del diagnóstico"
+      },
+      "plazo": "Plazo según el diagnóstico",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa Reportes automáticos por WhatsApp (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Ventas, caja, cobranza y margen en su WhatsApp, con la frecuencia que usted defina, sin abrir ningún sistema.",
+        "para_quien": [
+          "Cuando usted decide rápido, pero los números le llegan tarde.",
+          "Cuando trabaja desde el teléfono y vive en WhatsApp."
+        ],
+        "incluye": [
+          "Reportes cortos diarios, semanales y mensuales, en su teléfono y a la hora que usted diga.",
+          "Sin abrir sistemas ni esperar a fin de mes."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "Plazo según el diagnóstico.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "cuando-conviene-implementacion",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "tablero-gerencial",
+        "conciliacion-automatica"
+      ],
+      "meta": {
+        "titulo": "Reportes automáticos por WhatsApp para su empresa",
+        "descripcion": "Ventas, caja, cobranza y margen en su WhatsApp, con la frecuencia que usted defina. Se cotiza después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/conciliacion-automatica"
+      },
+      "id": "conciliacion-automatica",
+      "orden": 30,
+      "nombre": "Conciliación Automática",
+      "frase": "Cruce diario de Pago Móvil, Zelle, USDT y banco contra ventas.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $900",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "3 semanas de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa la Conciliación Automática (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Cruce diario de Pago Móvil, Zelle, USDT y banco contra ventas, con reporte de diferencias.",
+        "para_quien": [
+          "Cuando cada área le pasa un reporte distinto y no terminan de cuadrar."
+        ],
+        "incluye": [
+          "Cruce diario de Pago Móvil, Zelle, USDT y banco contra ventas.",
+          "Reporte de diferencias."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "3 semanas de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "cuando-conviene-implementacion",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "tablero-gerencial",
+        "reportes-whatsapp",
+        "sprint-automatizacion"
+      ],
+      "meta": {
+        "titulo": "Conciliación Automática de pagos y ventas",
+        "descripcion": "Cruce diario de Pago Móvil, Zelle, USDT y banco contra ventas, con reporte de diferencias. Desde $900, se cotiza después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/web-corporativa-crm"
+      },
+      "id": "web-corporativa-crm",
+      "orden": 40,
+      "nombre": "Web Corporativa + CRM",
+      "frase": "Cada contacto de su web queda registrado y recibe respuesta automática.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $900",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "3 semanas de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa la Web Corporativa + CRM (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Cada contacto que llega por su web queda registrado en su CRM y recibe respuesta automática.",
+        "para_quien": [],
+        "incluye": [
+          "Cada contacto de la web entra a su CRM.",
+          "Respuesta automática a cada contacto."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "3 semanas de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "agente-ia",
+        "desarrollo-a-medida"
+      ],
+      "meta": {
+        "titulo": "Web Corporativa + CRM para su empresa",
+        "descripcion": "Cada contacto de su web queda registrado en su CRM y recibe respuesta automática. Desde $900, se cotiza después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/agente-ia"
+      },
+      "id": "agente-ia",
+      "orden": 50,
+      "nombre": "Agente de IA a medida",
+      "frase": "Un asistente para WhatsApp o su web que responde con la información de su empresa.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $1.000 + mensualidad",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "3 semanas de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Agente de IA a medida (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Un agente para WhatsApp o su web, entrenado con la información de su empresa. Son automatizaciones que ejecutan tareas puntuales, con supervisión humana.",
+        "para_quien": [],
+        "incluye": [
+          "Agente para WhatsApp o web.",
+          "Entrenado con la información de su empresa.",
+          "Con supervisión humana.",
+          "Mensualidad aparte, además del desarrollo."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "3 semanas de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "automatizacion-sin-esperar",
+          "independencia-tecnologica",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "web-corporativa-crm",
+        "sprint-automatizacion",
+        "ecosistema-automatizacion"
+      ],
+      "meta": {
+        "titulo": "Agente de IA a medida para WhatsApp o web",
+        "descripcion": "Un asistente que responde con la información de su empresa, con supervisión humana. Desde $1.000 + mensualidad; se cotiza después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/sprint-automatizacion"
+      },
+      "id": "sprint-automatizacion",
+      "orden": 60,
+      "nombre": "Sprint de Automatización",
+      "frase": "Un proceso de punta a punta automatizado, probado y documentado.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $800",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "2 a 3 semanas de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Sprint de Automatización (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Un proceso de su empresa automatizado de punta a punta con n8n e IA, probado y documentado, sin cambiar el sistema que ya tienen. Es integración de IA sobre flujos que ya existen, sin reconstruir lo que ya funciona.",
+        "para_quien": [
+          "Cuando paga por un sistema completo y solo usa una parte de lo que ofrece: no le vendemos otro sistema, le sacamos provecho al que ya tiene."
+        ],
+        "incluye": [
+          "Un proceso automatizado de punta a punta.",
+          "Probado y documentado.",
+          "Automatizamos justo la parte que su equipo usa todos los días, sin licencias nuevas y sin cambiar de plataforma."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "2 a 3 semanas de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "automatizacion-sin-esperar",
+          "independencia-tecnologica",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "ecosistema-automatizacion",
+        "conciliacion-automatica",
+        "agente-ia"
+      ],
+      "meta": {
+        "titulo": "Sprint de Automatización de un proceso",
+        "descripcion": "Un proceso de punta a punta automatizado, probado y documentado. Entrega en 2 a 3 semanas; desde $800, después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/odoo-community"
+      },
+      "id": "odoo-community",
+      "orden": 70,
+      "nombre": "Implementación Odoo Community",
+      "frase": "Configuración, migración de datos y capacitación, por fases.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $2.000",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "1 a 2 meses de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa la Implementación Odoo Community (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Odoo Community es una suite modular y flexible, para crecer módulo por módulo. La implementación se hace por fases.",
+        "para_quien": [],
+        "incluye": [
+          "Configuración.",
+          "Migración de datos.",
+          "Capacitación."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "1 a 2 meses de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "independencia-tecnologica",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "dynamics-365",
+        "ecosistema-automatizacion",
+        "desarrollo-a-medida"
+      ],
+      "meta": {
+        "titulo": "Implementación de Odoo Community por fases",
+        "descripcion": "Configuración, migración de datos y capacitación, por fases. Entrega en 1 a 2 meses; desde $2.000, después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/ecosistema-automatizacion"
+      },
+      "id": "ecosistema-automatizacion",
+      "orden": 80,
+      "nombre": "Ecosistema de Automatización",
+      "frase": "Tres o más procesos automatizados y un tablero, todo conectado.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $2.500",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "2 a 3 meses de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Ecosistema de Automatización (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Tres o más procesos automatizados, agentes de IA y un tablero, todo conectado. Se trabaja por fases.",
+        "para_quien": [
+          "Cuando cada área terminó armando su propio Excel paralelo al sistema oficial: conectamos lo que ya usa para que todas las áreas trabajen con los mismos números, al día."
+        ],
+        "incluye": [
+          "Tres o más procesos automatizados.",
+          "Agentes de IA.",
+          "Un tablero, todo conectado."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "2 a 3 meses de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "automatizacion-sin-esperar",
+          "independencia-tecnologica",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "sprint-automatizacion",
+        "odoo-community",
+        "agente-ia"
+      ],
+      "meta": {
+        "titulo": "Ecosistema de Automatización para su empresa",
+        "descripcion": "Tres o más procesos automatizados y un tablero, todo conectado. Entrega en 2 a 3 meses; desde $2.500, después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/dynamics-365"
+      },
+      "id": "dynamics-365",
+      "orden": 90,
+      "nombre": "Dynamics 365 Sales / Customer Service",
+      "frase": "Implementación de ventas y servicio al cliente, por fases.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $3.000 + licencias",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "2 a 3 meses de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa Dynamics 365 Sales / Customer Service (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "CRM de ventas y atención al cliente en el ecosistema Microsoft, implementado por fases.",
+        "para_quien": [],
+        "incluye": [
+          "Implementación de ventas y de servicio al cliente.",
+          "Por fases.",
+          "Licencias aparte, además de la implementación."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "2 a 3 meses de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "independencia-tecnologica",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "odoo-community",
+        "web-corporativa-crm",
+        "desarrollo-a-medida"
+      ],
+      "meta": {
+        "titulo": "Dynamics 365 Sales y Customer Service",
+        "descripcion": "CRM de ventas y atención al cliente en el ecosistema Microsoft, por fases. Desde $3.000 + licencias, después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "implementacion",
+      "linea": "hex",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/desarrollo-a-medida"
+      },
+      "id": "desarrollo-a-medida",
+      "orden": 100,
+      "nombre": "Desarrollo a medida",
+      "frase": "Portal de clientes, app interna o app de condominios.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": "desde $3.000",
+        "periodo": null,
+        "nota": "precio final después del diagnóstico"
+      },
+      "plazo": "2 a 3 meses de entrega",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Desarrollo a medida (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Desarrollo para cuando ningún estándar cubre el proceso tal como es: un portal de clientes, una app interna o una app de condominios.",
+        "para_quien": [],
+        "incluye": [
+          "Portal de clientes.",
+          "App interna.",
+          "App de condominios."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "2 a 3 meses de entrega.",
+        "pago": "",
+        "faq": [],
+        "bloques": [
+          "automatizacion-sin-esperar",
+          "independencia-tecnologica",
+          "cotizacion-a-medida",
+          "metodo-implementacion",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "odoo-community",
+        "dynamics-365",
+        "ecosistema-automatizacion"
+      ],
+      "meta": {
+        "titulo": "Desarrollo a medida: portal, app interna, condominios",
+        "descripcion": "Cuando ningún estándar cubre su proceso: portal de clientes, app interna o app de condominios. Desde $3.000, después del diagnóstico."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "formacion",
+      "linea": "hex",
+      "id": "formacion-ejecutiva",
+      "orden": 10,
+      "nombre": "Formación ejecutiva 1 a 1",
+      "frase": "IA aplicada a las finanzas y la gestión de su empresa, explicada para dueños.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$960",
+        "referencia": null,
+        "periodo": "pago único",
+        "nota": null
+      },
+      "plazo": "8 sesiones de 4 horas",
+      "product": "formacion-ejecutiva",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa la Formación ejecutiva 1 a 1 (⬡, $960)."
+      },
+      "contenido": {
+        "que_es": "IA aplicada a las finanzas y la gestión de su empresa, explicada para dueños: Claude, reportes, automatizaciones, y qué son MCP y las API sin tecnicismos. Solo usted y el instructor, con los temas de su empresa.",
+        "para_quien": [
+          "El dueño o el directivo que conoce su negocio de memoria y sabe de finanzas, pero no es técnico."
+        ],
+        "incluye": [
+          "8 sesiones de 4 horas.",
+          "Con sus propios números y reportes.",
+          "Claude, reportes y automatizaciones.",
+          "Qué son MCP y las API, sin tecnicismos."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "8 sesiones de 4 horas.",
+        "pago": "$960, el programa completo.",
+        "faq": [
+          {
+            "p": "¿Necesito saber de tecnología?",
+            "r": "No. Todo está pensado para dueños que conocen su negocio y sus finanzas, no los sistemas. Le explicamos cada herramienta con ejemplos de su empresa, paso a paso y sin palabras técnicas. Si usa WhatsApp en el teléfono, puede seguir el programa."
+          },
+          {
+            "p": "¿Mis datos quedan seguros?",
+            "r": "Usted decide qué información comparte, y la usamos solo para su caso. No vendemos, alquilamos ni compartimos su información con terceros. Y le enseñamos qué datos conviene cargar en una herramienta de IA, cuáles no, y cómo configurarla para cuidar su información."
+          }
+        ],
+        "bloques": [
+          "formacion-hex",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "formacion-equipo",
+        "masterclass-privada"
+      ],
+      "meta": {
+        "titulo": "Formación ejecutiva 1 a 1 en IA para dueños",
+        "descripcion": "IA aplicada a las finanzas y la gestión de su empresa, uno a uno. 8 sesiones de 4 horas por $960, con sus propios números."
+      },
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/formacion-ejecutiva"
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "formacion",
+      "linea": "hex",
+      "id": "formacion-equipo",
+      "orden": 20,
+      "nombre": "Formación para su equipo",
+      "frase": "Capacitación práctica de su equipo sobre sus propias herramientas y sistemas.",
+      "precio": {
+        "modo": "a-medida",
+        "texto": "a medida",
+        "referencia": null,
+        "periodo": null,
+        "nota": "se cotiza según el equipo y el temario"
+      },
+      "plazo": "En su sede, según el equipo",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa la Formación para su equipo (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Capacitación práctica de su equipo sobre sus propias herramientas y sistemas, en su sede. Se arma según cuántas personas son y qué necesitan aprender, después de conocer su operación.",
+        "para_quien": [
+          "Cuando quiere formar a su equipo en gestión empresarial e IA aplicada de forma estructurada, como complemento de la implementación o como formación independiente."
+        ],
+        "incluye": [
+          "Sesiones por rol.",
+          "Sobre las herramientas y los procesos que ya usa su empresa.",
+          "Formación práctica, a medida, sobre el sistema real de cada equipo."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "En su sede, según el equipo.",
+        "pago": "Se cotiza según el equipo y el temario.",
+        "faq": [],
+        "bloques": [
+          "formacion-hex",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "masterclass-privada",
+        "formacion-ejecutiva",
+        "finanzas-ia-sede"
+      ],
+      "meta": {
+        "titulo": "Formación a la medida de su equipo",
+        "descripcion": "Capacitación práctica de su equipo sobre sus propias herramientas y sistemas, en su sede. A medida, según el equipo y el temario."
+      },
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/formacion-equipo"
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "formacion",
+      "linea": "hex",
+      "id": "masterclass-privada",
+      "orden": 30,
+      "nombre": "Masterclass privada",
+      "frase": "IA aplicada al trabajo de su empresa, para hasta 8 personas.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$500 a $700",
+        "referencia": null,
+        "periodo": "por sesión",
+        "nota": null
+      },
+      "plazo": "3 horas por sesión, hasta 8 personas",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa la Masterclass privada (⬡, $500 a $700 por sesión). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "IA aplicada al trabajo de su empresa, para hasta 8 personas, en una sesión de 3 horas.",
+        "para_quien": [
+          "Cuando quiere formar a su equipo en gestión empresarial e IA aplicada de forma estructurada, como complemento de la formación para su equipo (a medida) o como formación independiente."
+        ],
+        "incluye": [
+          "Gestión empresarial: fundamentos aplicados a la operación real de una empresa.",
+          "Inteligencia artificial aplicada: casos prácticos sobre flujos de negocio concretos.",
+          "Formato presencial: grupos reducidos, con ejercicios sobre casos reales."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "3 horas por sesión, hasta 8 personas.",
+        "pago": "$500 a $700 por sesión.",
+        "faq": [],
+        "bloques": [
+          "formacion-hex",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "formacion-equipo",
+        "formacion-ejecutiva",
+        "finanzas-ia-sede"
+      ],
+      "meta": {
+        "titulo": "Masterclass privada de IA para su empresa",
+        "descripcion": "IA aplicada al trabajo de su empresa, hasta 8 personas, en 3 horas. De $500 a $700 por sesión."
+      },
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/masterclass-privada"
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "formacion",
+      "linea": "hex",
+      "id": "finanzas-ia-sede",
+      "orden": 40,
+      "nombre": "Finanzas con IA en su sede",
+      "frase": "El curso de conciliación de pagos con IA, en sus oficinas.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$600",
+        "referencia": null,
+        "periodo": "por grupo de hasta 6",
+        "nota": null
+      },
+      "plazo": "2 sesiones",
+      "wa": {
+        "mensaje": "Hola F&V, me interesa Finanzas con IA en su sede (⬡, $600 por grupo de hasta 6). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "El curso de conciliación de pagos con IA, en sus oficinas, para un grupo de hasta 6 personas.",
+        "para_quien": [],
+        "incluye": [
+          "2 sesiones.",
+          "En sus oficinas.",
+          "Para un grupo de hasta 6 personas."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "2 sesiones.",
+        "pago": "$600 por grupo de hasta 6.",
+        "faq": [],
+        "bloques": [
+          "formacion-hex",
+          "pago-hex"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "formacion-equipo",
+        "masterclass-privada",
+        "formacion-ejecutiva"
+      ],
+      "meta": {
+        "titulo": "Finanzas con IA en su sede",
+        "descripcion": "El curso de conciliación de pagos con IA en sus oficinas, en 2 sesiones para un grupo de hasta 6 personas. $600."
+      },
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/finanzas-ia-sede"
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "acompanamiento",
+      "linea": "hex",
+      "id": "asesor-financiero",
+      "orden": 10,
+      "nombre": "Asesor financiero con IA",
+      "frase": "Revisión mensual de sus indicadores, márgenes y alertas, con reportes cortos por WhatsApp.",
+      "precio": {
+        "modo": "desde",
+        "texto": "desde $120",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "Mensual",
+      "product": "asesor-financiero",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/asesor-financiero"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Asesor financiero con IA (⬡, $120 o $480 al mes). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Para sus finanzas y sus decisiones: revisamos sus indicadores, márgenes y alertas, y le enviamos reportes cortos por WhatsApp.",
+        "para_quien": [
+          "El dueño o el directivo que quiere revisar sus números y decidir con alguien cada mes."
+        ],
+        "incluye": [
+          "Revisión de sus indicadores y márgenes.",
+          "Aviso de las alertas.",
+          "Reportes cortos por WhatsApp."
+        ],
+        "pasos": [],
+        "planes": [
+          {
+            "id": "mensual",
+            "nombre": "Una reunión al mes",
+            "precio": "$120 al mes",
+            "detalle": "1 reunión de hasta 4 horas al mes",
+            "incluye": [],
+            "wa": "Hola F&V, me interesa el Asesor financiero con IA (⬡, $120 al mes)."
+          },
+          {
+            "id": "semanal",
+            "nombre": "Una reunión por semana",
+            "precio": "$480 al mes",
+            "detalle": "1 reunión semanal de hasta 4 horas",
+            "incluye": [],
+            "wa": "Hola F&V, me interesa el Asesor financiero con IA (⬡, $480 al mes)."
+          }
+        ],
+        "plazo": "Mensual.",
+        "pago": "El asesor financiero se paga mes a mes.",
+        "faq": [],
+        "bloques": [
+          "diferencia-soporte-asesoria",
+          "pago-mensual-hex",
+          "horario-atencion"
+        ],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "acompanamiento-estandar",
+        "acompanamiento-prioritario"
+      ],
+      "meta": {
+        "titulo": "Asesor financiero con IA: desde $120 al mes",
+        "descripcion": "Revisión mensual de indicadores, márgenes y alertas, con reportes cortos por WhatsApp. $120 al mes (1 reunión) o $480 al mes (semanal)."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "acompanamiento",
+      "linea": "hex",
+      "id": "acompanamiento-estandar",
+      "orden": 20,
+      "nombre": "Acompañamiento Estándar",
+      "frase": "Soporte técnico de lo ya implementado: 8 horas al mes, respuesta el mismo día.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$200",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "8 horas incluidas al mes",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/acompanamiento#estandar",
+        "pagina": "acompanamiento"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Acompañamiento Estándar (⬡, $200/mes). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Soporte técnico de lo ya implementado: 8 horas incluidas al mes, con respuesta el mismo día.",
+        "para_quien": [],
+        "incluye": [
+          "8 horas incluidas al mes.",
+          "Respuesta el mismo día."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "8 horas incluidas al mes",
+        "pago": "$200 al mes.",
+        "faq": [],
+        "bloques": [],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "acompanamiento-prioritario",
+        "director-ia",
+        "asesor-financiero"
+      ],
+      "meta": {
+        "titulo": "Acompañamiento Estándar: $200 al mes",
+        "descripcion": "Soporte técnico de lo ya implementado: 8 horas incluidas al mes, con respuesta el mismo día."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "acompanamiento",
+      "linea": "hex",
+      "id": "acompanamiento-prioritario",
+      "orden": 30,
+      "nombre": "Acompañamiento Prioritario",
+      "frase": "Soporte técnico de lo ya implementado: 18 horas al mes, respuesta en 4 horas.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$400",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "18 horas incluidas al mes",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/acompanamiento#prioritario",
+        "pagina": "acompanamiento"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Acompañamiento Prioritario (⬡, $400/mes). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Soporte técnico de lo ya implementado: 18 horas incluidas al mes, con respuesta en 4 horas.",
+        "para_quien": [],
+        "incluye": [
+          "18 horas incluidas al mes.",
+          "Respuesta en 4 horas."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "18 horas incluidas al mes",
+        "pago": "$400 al mes.",
+        "faq": [],
+        "bloques": [],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "acompanamiento-estandar",
+        "director-ia"
+      ],
+      "meta": {
+        "titulo": "Acompañamiento Prioritario: $400 al mes",
+        "descripcion": "Soporte técnico de lo ya implementado: 18 horas incluidas al mes, con respuesta en 4 horas."
+      }
+    },
+    {
+      "tipo": "servicio",
+      "categoria": "acompanamiento",
+      "linea": "hex",
+      "id": "director-ia",
+      "orden": 40,
+      "nombre": "Director de IA a tiempo parcial",
+      "frase": "Soporte técnico y rumbo de sus sistemas: 16 horas al mes y una reunión semanal.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$600",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "16 horas incluidas al mes",
+      "detalle": {
+        "modo": "generada",
+        "url": "/servicios/acompanamiento#director-ia",
+        "pagina": "acompanamiento"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Director de IA a tiempo parcial (⬡, $600/mes). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Soporte técnico y rumbo de sus sistemas, a tiempo parcial: 16 horas incluidas al mes, más una reunión semanal.",
+        "para_quien": [],
+        "incluye": [
+          "16 horas incluidas al mes.",
+          "Más una reunión semanal."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "16 horas incluidas al mes",
+        "pago": "$600 al mes.",
+        "faq": [],
+        "bloques": [],
+        "extra_html": ""
+      },
+      "relacionados": [
+        "acompanamiento-prioritario",
+        "acompanamiento-estandar"
+      ],
+      "meta": {
+        "titulo": "Director de IA a tiempo parcial: $600 al mes",
+        "descripcion": "Soporte técnico y rumbo de sus sistemas, a tiempo parcial: 16 horas incluidas al mes, más una reunión semanal."
+      }
+    },
+    {
+      "id": "club-hex",
+      "tipo": "producto",
+      "categoria": "software",
+      "linea": "hex",
+      "orden": 10,
+      "nombre": "Club",
+      "frase": "Cobro de cuotas, estado de cuenta, carnet digital y reportes para la junta directiva.",
+      "precio": {
+        "modo": "software",
+        "producto": "club"
+      },
+      "detalle": {
+        "modo": "existente",
+        "url": "/club"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Club (⬡, desde $190/mes). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Cada socio ve en su teléfono cuánto debe y reporta su pago en 30 segundos. Su administración aprueba con un clic y su junta ve la morosidad en tiempo real.",
+        "para_quien": [
+          "Clubes sociales e institucionales."
+        ],
+        "incluye": [
+          "Estado de cuenta en tiempo real, en $ y en Bs",
+          "Reporte de pago con la foto del comprobante",
+          "Carnet digital con código QR para la entrada",
+          "Grupo familiar y avisos del club en un solo lugar",
+          "Aprobación de pagos con un clic, cuotas del mes y recargos por mora",
+          "Recordatorios de cobro por correo y WhatsApp",
+          "Indicadores de cobranza y morosidad en tiempo real para la junta",
+          "Reportes en Excel y PDF, listos para la asamblea",
+          "App para los socios",
+          "Panel de administración",
+          "Recibos y avisos por correo",
+          "Reportes",
+          "Copias de seguridad diarias",
+          "Marca completa de la organización (logo y colores) y, opcional, su propio dominio",
+          "Capacitación presencial a la administración",
+          "Una reunión mensual para revisar cobranza y morosidad",
+          "Soporte prioritario con respuesta el mismo día"
+        ]
+      },
+      "relacionados": [
+        "condominio-hex",
+        "gym-hex"
+      ],
+      "meta": {
+        "titulo": "Club para organizaciones grandes: desde $190 al mes | F&V AI Group",
+        "descripcion": "Club, clubes sociales e institucionales. Cada socio ve en su teléfono cuánto debe y reporta su pago en 30 segundos. Su administración aprueba con un clic y su junta ve la morosidad en tiempo real."
+      }
+    },
+    {
+      "id": "condominio-hex",
+      "tipo": "producto",
+      "categoria": "software",
+      "linea": "hex",
+      "orden": 20,
+      "nombre": "Condominio",
+      "frase": "Recibos, alícuotas, transparencia de gastos y varios edificios en una sola pantalla.",
+      "precio": {
+        "modo": "software",
+        "producto": "condominio"
+      },
+      "detalle": {
+        "modo": "existente",
+        "url": "/condominio"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Condominio (⬡, desde $190/mes). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Cada propietario ve su recibo explicado, reporta su pago en 30 segundos y consulta los gastos del edificio. La junta o la administradora aprueba con un clic.",
+        "para_quien": [
+          "Administradoras y conjuntos grandes."
+        ],
+        "incluye": [
+          "Recibo explicado por alícuota",
+          "Gastos publicados con sus facturas",
+          "Reporte de pago con la foto del comprobante",
+          "Reporte de fallas con foto, reserva de áreas comunes, pase QR para invitados y votación en la asamblea",
+          "Aprobación de pagos con un clic, recibos del mes con alícuotas y fondo de reserva, cuotas especiales",
+          "Todos sus edificios en una pantalla, con la cobranza y la morosidad de cada uno",
+          "Cada junta ve solo su edificio",
+          "Reportes por edificio y consolidados",
+          "App para los unidades",
+          "Panel de administración",
+          "Recibos y avisos por correo",
+          "Reportes",
+          "Copias de seguridad diarias",
+          "Marca completa de la organización (logo y colores) y, opcional, su propio dominio",
+          "Capacitación presencial a la administración",
+          "Una reunión mensual para revisar cobranza y morosidad",
+          "Soporte prioritario con respuesta el mismo día"
+        ]
+      },
+      "relacionados": [
+        "club-hex",
+        "gym-hex"
+      ],
+      "meta": {
+        "titulo": "Condominio para organizaciones grandes: desde $190 al mes | F&V AI Group",
+        "descripcion": "Condominio, administradoras y conjuntos grandes. Cada propietario ve su recibo explicado, reporta su pago en 30 segundos y consulta los gastos del edificio. La junta o la administradora aprueba con un clic."
+      }
+    },
+    {
+      "id": "gym-hex",
+      "tipo": "producto",
+      "categoria": "software",
+      "linea": "hex",
+      "orden": 30,
+      "nombre": "Gym",
+      "frase": "Membresías, cobros, entrada con QR y reportes por sede.",
+      "precio": {
+        "modo": "software",
+        "producto": "gym"
+      },
+      "detalle": {
+        "modo": "existente",
+        "url": "/gym"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Gym (⬡, desde $190/mes). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Cada miembro ve su membresía y su próximo pago en el teléfono, entra con un código QR y reserva sus clases. Usted ve quién pagó, quién vino y cuánto entró.",
+        "para_quien": [
+          "Cadenas y gimnasios con varias sedes."
+        ],
+        "incluye": [
+          "Membresía y vencimiento a la vista",
+          "Reporte de pago con la foto del comprobante",
+          "Carnet con código QR para la entrada",
+          "Reserva de clases con cupo",
+          "Recepción: escanea el QR, verde si está al día y rojo si está vencido",
+          "Ingresos del mes, morosidad y membresías por vencer en tiempo real",
+          "Asistencia por día y hora",
+          "Todas sus sedes en una pantalla, con ingresos, miembros y asistencia por sede",
+          "App para los miembros",
+          "Panel de administración",
+          "Recibos y avisos por correo",
+          "Reportes",
+          "Copias de seguridad diarias",
+          "Marca completa de la organización (logo y colores) y, opcional, su propio dominio",
+          "Capacitación presencial a la administración",
+          "Una reunión mensual para revisar cobranza y morosidad",
+          "Soporte prioritario con respuesta el mismo día"
+        ]
+      },
+      "relacionados": [
+        "club-hex",
+        "condominio-hex"
+      ],
+      "meta": {
+        "titulo": "Gym para organizaciones grandes: desde $190 al mes | F&V AI Group",
+        "descripcion": "Gym, cadenas y gimnasios con varias sedes. Cada miembro ve su membresía y su próximo pago en el teléfono, entra con un código QR y reserva sus clases. Usted ve quién pagó, quién vino y cuánto entró."
+      }
+    },
+    {
+      "id": "club-tri",
+      "tipo": "producto",
+      "categoria": "software",
+      "linea": "tri",
+      "orden": 40,
+      "nombre": "Club",
+      "frase": "Cobra las cuotas de tus socios sin perseguir a nadie.",
+      "precio": {
+        "modo": "software",
+        "producto": "club"
+      },
+      "detalle": {
+        "modo": "existente",
+        "url": "/club"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Club (▲, desde $89,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Cobra las cuotas y lleva el estado de cuenta de tus socios sin perseguir a nadie.",
+        "para_quien": [
+          "Clubes pequeños y asociaciones."
+        ],
+        "incluye": [
+          "Estado de cuenta en tiempo real, en $ y en Bs",
+          "Reporte de pago con la foto del comprobante",
+          "Carnet digital con código QR para la entrada",
+          "Aprobación de pagos con un clic y recordatorios de cobro por correo y WhatsApp",
+          "App para los socios",
+          "Panel de administración",
+          "Recibos y avisos por correo",
+          "Reportes",
+          "Copias de seguridad diarias",
+          "La app completa con el logo de la organización",
+          "Soporte por WhatsApp"
+        ],
+        "bloques": [
+          "pago-tri"
+        ]
+      },
+      "relacionados": [
+        "condominio-tri",
+        "gym-tri"
+      ],
+      "meta": {
+        "titulo": "Club para organizaciones pequeñas: desde $89,99 al mes | F&V AI Group",
+        "descripcion": "Club, clubes pequeños y asociaciones. Cobra las cuotas y lleva el estado de cuenta de tus socios sin perseguir a nadie."
+      }
+    },
+    {
+      "id": "condominio-tri",
+      "tipo": "producto",
+      "categoria": "software",
+      "linea": "tri",
+      "orden": 50,
+      "nombre": "Condominio",
+      "frase": "Recibos claros y gastos a la vista de tus vecinos.",
+      "precio": {
+        "modo": "software",
+        "producto": "condominio"
+      },
+      "detalle": {
+        "modo": "existente",
+        "url": "/condominio"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Condominio (▲, desde $89,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Recibos claros, alícuotas y gastos a la vista de tus vecinos.",
+        "para_quien": [
+          "Un edificio."
+        ],
+        "incluye": [
+          "Recibo explicado por alícuota",
+          "Gastos publicados con sus facturas",
+          "Reporte de pago con la foto del comprobante",
+          "Aprobación de pagos con un clic y reportes de ingresos y egresos",
+          "App para los unidades",
+          "Panel de administración",
+          "Recibos y avisos por correo",
+          "Reportes",
+          "Copias de seguridad diarias",
+          "La app completa con el logo de la organización",
+          "Soporte por WhatsApp"
+        ],
+        "bloques": [
+          "pago-tri"
+        ]
+      },
+      "relacionados": [
+        "club-tri",
+        "gym-tri"
+      ],
+      "meta": {
+        "titulo": "Condominio para organizaciones pequeñas: desde $89,99 al mes | F&V AI Group",
+        "descripcion": "Condominio, un edificio. Recibos claros, alícuotas y gastos a la vista de tus vecinos."
+      }
+    },
+    {
+      "id": "gym-tri",
+      "tipo": "producto",
+      "categoria": "software",
+      "linea": "tri",
+      "orden": 60,
+      "nombre": "Gym",
+      "frase": "Membresías, cobros y entrada con código QR para tus miembros.",
+      "precio": {
+        "modo": "software",
+        "producto": "gym"
+      },
+      "detalle": {
+        "modo": "existente",
+        "url": "/gym"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Gym (▲, desde $89,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Membresías, cobros y entrada con código QR para tus miembros.",
+        "para_quien": [
+          "Un gimnasio."
+        ],
+        "incluye": [
+          "Membresía y vencimiento a la vista",
+          "Reporte de pago con la foto del comprobante",
+          "Carnet con código QR para la entrada",
+          "Reserva de clases con cupo",
+          "Ingresos del mes, morosidad y membresías por vencer en tiempo real",
+          "App para los miembros",
+          "Panel de administración",
+          "Recibos y avisos por correo",
+          "Reportes",
+          "Copias de seguridad diarias",
+          "La app completa con el logo de la organización",
+          "Soporte por WhatsApp"
+        ],
+        "bloques": [
+          "pago-tri"
+        ]
+      },
+      "relacionados": [
+        "club-tri",
+        "condominio-tri"
+      ],
+      "meta": {
+        "titulo": "Gym para organizaciones pequeñas: desde $89,99 al mes | F&V AI Group",
+        "descripcion": "Gym, un gimnasio. Membresías, cobros y entrada con código QR para tus miembros."
+      }
+    },
+    {
+      "id": "programa-ejecutivo",
+      "tipo": "producto",
+      "categoria": "cursos",
+      "linea": "hex",
+      "orden": 10,
+      "nombre": "Programa ejecutivo entre semana",
+      "frase": "Aprenda a ver sus números con IA y a recibir sus reportes por WhatsApp.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$270 individual o $180 por persona en grupo de 2 a 4",
+        "referencia": null,
+        "periodo": null,
+        "nota": null
+      },
+      "plazo": "10 horas en 2 días de 5 horas: martes y jueves en la mañana",
+      "detalle": {
+        "modo": "existente",
+        "url": "/ejecutivos#programa-ejecutivo"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, me interesa el Programa ejecutivo entre semana (⬡, $270 individual o $180 por persona en grupo). ¿Qué fechas tienen?"
+      },
+      "contenido": {
+        "que_es": "Aprenda a ver sus números con IA y a recibir sus reportes por WhatsApp. Martes y jueves en la mañana, en nuestra oficina de Torre Trébol, Valencia.",
+        "para_quien": [
+          "Dueños y directivos que no pueden los sábados: el programa es en privado o en un grupo pequeño, entre semana, en nuestra oficina de Torre Trébol, en Valencia, con estacionamiento gratuito."
+        ],
+        "incluye": [
+          "10 horas en 2 días de 5 horas: martes y jueves en la mañana",
+          "Torre Trébol, Av. La Rosario, Urb. Lomas del Este, Valencia, con estacionamiento gratuito",
+          "Privado o en grupo pequeño de hasta 4 personas",
+          "Refrigerio y diploma",
+          "$270 individual",
+          "$180 por persona en grupo de 2 a 4"
+        ],
+        "plazo": "10 horas en 2 días de 5 horas: martes y jueves en la mañana",
+        "pago": "Precios en dólares. Puede pagar en bolívares a la tasa BCV del día, en dólares, por Pago Móvil o en USDT. La fecha se reserva con el 50 %.",
+        "faq": [
+          {
+            "p": "¿Necesito saber de tecnología?",
+            "r": "No. Todo está pensado para dueños que conocen su negocio y sus finanzas, no los sistemas. Le explicamos cada herramienta con ejemplos de su empresa, paso a paso y sin palabras técnicas. Si usa WhatsApp en el teléfono, puede seguir el programa."
+          },
+          {
+            "p": "¿Puede venir mi socio o mi equipo?",
+            "r": "Sí. El programa ejecutivo admite grupos de 2 a 4 personas, a $180 por persona: puede venir con su socio, su gerente o su administradora. Si quiere capacitar a un equipo más grande en su sede, armamos una formación a la medida de su equipo."
+          }
+        ]
+      },
+      "relacionados": [
+        "curso-finanzas-ia",
+        "taller-plata-clara"
+      ],
+      "meta": {
+        "titulo": "Programa ejecutivo entre semana: $270 individual o $180 en grupo | F&V AI Group",
+        "descripcion": "Programa para dueños y directivos: 10 horas en 2 días de 5 horas, martes y jueves en la mañana, en Torre Trébol, Valencia. Privado o en grupo pequeño, con refrigerio y diploma."
+      }
+    },
+    {
+      "id": "curso-finanzas-ia",
+      "tipo": "producto",
+      "categoria": "cursos",
+      "linea": "tri",
+      "orden": 20,
+      "nombre": "Finanzas con IA",
+      "frase": "Ve tu dinero claro en varias tasas y pídele a la IA el trabajo pesado.",
+      "precio": {
+        "modo": "evento",
+        "evento": "curso"
+      },
+      "plazo": "3 sábados presenciales en Valencia",
+      "product": "finanzas-ia-grupal",
+      "detalle": {
+        "modo": "existente",
+        "url": "/curso-finanzas-ia"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero mi cupo en Finanzas con IA (▲, $299,99). ¿Cómo pago: en 3 cuotas o de contado?"
+      },
+      "contenido": {
+        "que_es": "Curso presencial de 3 sábados, para un grupo de máximo 6 personas. Aprendes a ver tu dinero claro cuando se mueve en bolívares, dólares y USDT, y a pedirle a la IA que haga el trabajo pesado: cuadrar cuentas, armar reportes y proyectar tu caja.",
+        "para_quien": [
+          "Dueños de negocio, administradores y profesionales que manejan plata en varias tasas y quieren dejar de hacer las cuentas a mano. No necesitas saber programar: solo llevar tu laptop."
+        ],
+        "incluye": [
+          "Tu sistema de control multitasas en Google Sheets",
+          "Prompts para finanzas",
+          "Cuadre de cuentas",
+          "Proyección de caja",
+          "«Cuánto puedes gastar sin quedarte corto»",
+          "Las 3 clases presenciales en Valencia",
+          "Certificado",
+          "Diagnóstico gratuito de automatización para tu empresa",
+          "Resumen y material de cada sesión"
+        ],
+        "pasos": [
+          {
+            "titulo": "Sábado 1: Tu dinero claro",
+            "texto": "Tu dinero claro en varias tasas y cómo pedirle cosas a la IA. Al terminar: tendrás tu sistema de control multitasas en Google Sheets y tus primeros prompts para finanzas."
+          },
+          {
+            "titulo": "Sábado 2: Cuentas al día",
+            "texto": "Cuadrar tus cuentas y armar reportes automáticos con IA y hojas de cálculo. Al terminar: tendrás tus cuentas cuadradas y tus reportes funcionando con datos reales."
+          },
+          {
+            "titulo": "Sábado 3: Decidir con números",
+            "texto": "Proyectar tu caja y decidir con números, más tu plan de 30 días. Al terminar: saldrás con tu proyección de caja y tu plan de 30 días."
+          }
+        ],
+        "pago": "En 3 cuotas, una por sábado. También puedes pagarlo todo de una vez, al mismo precio. Se paga en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo.",
+        "faq": [
+          {
+            "p": "¿Hay reembolso?",
+            "r": "Si cancelas hasta 5 días antes del primer sábado, te devolvemos el 100% de lo pagado. Pasada esa fecha no hay reembolso, pero puedes ceder tu cupo a otra persona avisándonos con anticipación."
+          },
+          {
+            "p": "¿Qué pasa si no se llena el grupo?",
+            "r": "El grupo es de 6 personas como máximo. Si no se alcanza el mínimo necesario para dictar la cohorte en la fecha anunciada, la reprogramamos o te devolvemos el 100% de lo pagado, a tu elección."
+          },
+          {
+            "p": "¿Emiten factura?",
+            "r": "Sí. Emitimos factura a nombre de la persona o empresa que la solicite al momento del pago."
+          }
+        ],
+        "bloques": [
+          "pago-tri"
+        ]
+      },
+      "relacionados": [
+        "programa-ejecutivo",
+        "taller-plata-clara"
+      ],
+      "meta": {
+        "titulo": "Finanzas con IA: curso presencial de 3 sábados en Valencia | F&V AI Group",
+        "descripcion": "Curso presencial en Valencia, en grupos de máximo 6 personas. Cuadra tus cuentas, arma reportes y proyecta tu caja con IA. Certificado incluido."
+      }
+    },
+    {
+      "id": "taller-plata-clara",
+      "tipo": "producto",
+      "categoria": "cursos",
+      "linea": "tri",
+      "orden": 30,
+      "nombre": "Taller «La plata de tu negocio clara»",
+      "frase": "Taller presencial de 3 horas en Valencia para ordenar la plata de tu negocio.",
+      "precio": {
+        "modo": "evento",
+        "evento": "taller"
+      },
+      "plazo": "3 horas presenciales en Valencia",
+      "detalle": {
+        "modo": "generada",
+        "url": "/productos/taller-plata-clara"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero un cupo en el taller «La plata de tu negocio clara» (▲, $24,99)."
+      },
+      "contenido": {
+        "que_es": "Taller presencial en Valencia, en un grupo de máximo 6 personas.",
+        "para_quien": [
+          "Ordenar la plata de tu negocio y usar la IA sin depender de nadie.",
+          "En un grupo de máximo 6 te atienden de verdad."
+        ],
+        "incluye": [
+          "3 horas presenciales en Valencia",
+          "Grupo de máximo 6 personas"
+        ],
+        "pasos": [
+          {
+            "titulo": "Cómo funciona",
+            "texto": "Reservas tu cupo por WhatsApp y vas el día del taller."
+          }
+        ],
+        "plazo": "3 horas presenciales en Valencia",
+        "faq": [
+          {
+            "p": "¿Atienden fuera de Valencia?",
+            "r": "Sí. Trabajamos por WhatsApp y Google Meet, así que puedes estar en cualquier parte. Solo los talleres y el curso son presenciales, en Valencia."
+          }
+        ],
+        "bloques": [
+          "pago-tri"
+        ]
+      },
+      "relacionados": [
+        "programa-ejecutivo",
+        "curso-finanzas-ia"
+      ],
+      "meta": {
+        "titulo": "Taller «La plata de tu negocio clara»: 3 horas en Valencia | F&V AI Group",
+        "descripcion": "Taller presencial de 3 horas en Valencia, en un grupo de máximo 6 personas, para ordenar la plata de tu negocio. Reserva tu cupo por WhatsApp."
+      }
+    },
+    {
+      "id": "plan-arranque",
+      "tipo": "producto",
+      "categoria": "para-empezar",
+      "linea": "tri",
+      "orden": 10,
+      "nombre": "Plan Arranque",
+      "frase": "Lo básico para que te encuentren, te compren por WhatsApp y sepas cuánto ganas.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$39,99",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": "Por separado, los dos productos suman $44,98 al mes"
+      },
+      "plazo": "Activo en 72 h",
+      "detalle": {
+        "modo": "generada",
+        "url": "/productos/plan-arranque"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero el Plan Arranque (▲, $39,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Lo básico para que te encuentren, te compren por WhatsApp y sepas cuánto ganas.",
+        "para_quien": [
+          "Es el punto de partida de casi cualquier negocio que hoy no tiene nada de esto montado."
+        ],
+        "incluye": [
+          "Presencia, tamaño Catálogo: Google Maps, WhatsApp Business y catálogo con tasa BCV. Por separado: $29,99",
+          "Caja Clara: cuadre diario y reporte semanal. Por separado: $14,99"
+        ],
+        "plazo": "Activo en 72 h",
+        "pago": "Por separado, los dos suman $44,98 al mes. Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado: $335,92 (30 % menos). Mes a mes no hay descuento.",
+        "bloques": [
+          "pago-tri"
+        ]
+      },
+      "relacionados": [],
+      "meta": {
+        "titulo": "Plan Arranque: Presencia Catálogo y Caja Clara por $39,99 al mes | F&V AI Group",
+        "descripcion": "Que te encuentren en Google Maps, te compren por WhatsApp y sepas cuánto ganas. $39,99 al mes, activo en 72 horas y sin permanencia."
+      }
+    },
+    {
+      "id": "mis-finanzas-claras",
+      "tipo": "producto",
+      "categoria": "para-empezar",
+      "linea": "tri",
+      "orden": 20,
+      "nombre": "Mis Finanzas Claras",
+      "frase": "Tu hoja personal de cuentas en Bs, $ y USDT, lista para copiar.",
+      "precio": {
+        "modo": "fijo",
+        "texto": "$4,99",
+        "referencia": null,
+        "periodo": "pago único",
+        "nota": null
+      },
+      "detalle": {
+        "modo": "generada",
+        "url": "/productos/mis-finanzas-claras"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Mis Finanzas Claras (▲, $4,99, pago único). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Tu hoja personal de cuentas en Bs, $ y USDT, lista para copiar.",
+        "pago": "Pago único de $4,99.",
+        "bloques": [
+          "pago-tri"
+        ]
+      },
+      "relacionados": [],
+      "meta": {
+        "titulo": "Mis Finanzas Claras: tu hoja de cuentas en Bs, $ y USDT por $4,99 | F&V AI Group",
+        "descripcion": "Hoja personal de cuentas en bolívares, dólares y USDT, lista para copiar. $4,99, pago único."
+      }
+    },
+    {
+      "id": "presencia",
+      "tipo": "producto",
+      "categoria": "presencia",
+      "linea": "tri",
+      "orden": 10,
+      "nombre": "Presencia",
+      "frase": "Tu negocio en Google Maps, WhatsApp Business y la web, siempre al día.",
+      "precio": {
+        "modo": "desde",
+        "texto": "desde $14,99",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "De 48 horas a 3 semanas, según el tamaño",
+      "product": "presencia-basico",
+      "detalle": {
+        "modo": "existente",
+        "url": "/paginas-web"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Presencia (▲, desde $14,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Tu negocio en Google Maps, WhatsApp Business y la web, siempre al día.",
+        "para_quien": [
+          "Que quien te busca te encuentre y te escriba en dos toques.",
+          "Si no apareces en Google Maps, ese cliente le compra a otro."
+        ],
+        "pasos": [
+          {
+            "titulo": "Cómo funciona",
+            "texto": "Nosotros lo montamos y lo mantenemos cada mes."
+          }
+        ],
+        "planes": [
+          {
+            "id": "basico",
+            "nombre": "Básico",
+            "precio": "$14,99 al mes",
+            "detalle": "Activo en 48 h. Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado: $125,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Ficha de Google Maps",
+              "WhatsApp Business con catálogo y respuestas rápidas",
+              "QR para el mostrador",
+              "Hasta 30 minutos de cambios al mes"
+            ],
+            "wa": "Hola F&V, quiero Presencia, tamaño Básico (▲, $14,99/mes). ¿Cómo pago?",
+            "product": "presencia-basico"
+          },
+          {
+            "id": "catalogo",
+            "nombre": "Catálogo",
+            "precio": "$29,99 al mes",
+            "detalle": "Activo en 72 h. Sin permanencia: cancelas cuando quieras. Ideal para: restaurantes, bodegones, tiendas y repuestos. Pagando 12 meses por adelantado: $251,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Todo lo del Básico",
+              "Página de catálogo con precios en $ y Bs que se actualizan solos con la tasa BCV",
+              "Pedidos por WhatsApp",
+              "Cambios de precios ilimitados"
+            ],
+            "wa": "Hola F&V, quiero Presencia, tamaño Catálogo (▲, $29,99/mes). ¿Cómo pago?",
+            "product": "presencia-catalogo"
+          },
+          {
+            "id": "web",
+            "nombre": "Web",
+            "precio": "$59,99 al mes",
+            "detalle": "Entrega en 2 semanas. Permanencia mínima: 12 meses. Dominio aparte (alrededor de US$12 al año). Ideal para: negocios y profesionales que quieren una web completa. Pagando 12 meses por adelantado: $503,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Todo lo del Catálogo",
+              "Web completa de hasta 5 secciones",
+              "Correo profesional y estadísticas"
+            ],
+            "wa": "Hola F&V, quiero Presencia, tamaño Web (▲, $59,99/mes). ¿Cómo pago?",
+            "product": "presencia-web"
+          },
+          {
+            "id": "tienda",
+            "nombre": "Tienda",
+            "precio": "$99,99 al mes",
+            "detalle": "Entrega en 3 semanas. Permanencia mínima: 12 meses. Dominio aparte (alrededor de US$12 al año). Ideal para: negocios que venden productos y quieren ordenar sus pedidos. Pagando 12 meses por adelantado: $839,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Todo lo de la Web",
+              "Carrito de compras",
+              "Pagos por Pago Móvil o Zelle",
+              "Pedidos por WhatsApp"
+            ],
+            "wa": "Hola F&V, quiero Presencia, tamaño Tienda (▲, $99,99/mes). ¿Cómo pago?",
+            "product": "presencia-tienda"
+          }
+        ],
+        "plazo": "Básico, 48 h. Catálogo, 72 h. Web, 2 semanas. Tienda, 3 semanas.",
+        "pago": "Pagando 12 meses por adelantado tienes 30 % menos. Mes a mes no hay descuento.",
+        "faq": [
+          {
+            "p": "¿El dominio está incluido?",
+            "r": "No. En el tamaño Web y en la Tienda el dominio se paga aparte, alrededor de US$12 al año según el dominio. Te ayudamos a comprarlo a tu nombre para que siempre sea tuyo."
+          },
+          {
+            "p": "¿Puedo editarla yo?",
+            "r": "Dime qué quieres cambiar y lo hacemos: la mantenemos cada mes como parte de tu plan. El Básico incluye hasta 30 minutos de cambios al mes y el Catálogo, cambios de precios ilimitados."
+          },
+          {
+            "p": "¿Cuánto tarda?",
+            "r": "Catálogo, 72 horas. Web, 2 semanas. Tienda, 3 semanas."
+          },
+          {
+            "p": "¿Qué necesito darles?",
+            "r": "Tu logo, fotos y textos. Si no tienes los textos, te ayudamos a escribirlos."
+          },
+          {
+            "p": "¿Hacen tiendas con pagos?",
+            "r": "Sí, el tamaño Tienda ($99,99/mes) recibe pedidos con carrito y se paga por Pago Móvil o Zelle. Los pedidos te llegan por WhatsApp."
+          }
+        ],
+        "bloques": [
+          "pago-tri",
+          "permanencia-tri"
+        ]
+      },
+      "relacionados": [],
+      "meta": {
+        "titulo": "Presencia: Google Maps, WhatsApp Business y web desde $14,99 al mes | F&V AI Group",
+        "descripcion": "Que te encuentren y te escriban: ficha de Google Maps, WhatsApp Business, catálogo, web y tienda. Cuatro tamaños desde $14,99 al mes."
+      }
+    },
+    {
+      "id": "caja-clara",
+      "tipo": "producto",
+      "categoria": "control",
+      "linea": "tri",
+      "orden": 10,
+      "nombre": "Caja Clara",
+      "frase": "Cuadre de caja en Bs, $, Pago Móvil y USDT, con tasa BCV automática.",
+      "precio": {
+        "modo": "desde",
+        "texto": "desde $14,99",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "Activo en 48 h o 72 h, según el tamaño",
+      "product": "caja-clara-caja",
+      "detalle": {
+        "modo": "generada",
+        "url": "/productos/caja-clara"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero Caja Clara (▲, desde $14,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Cuadre de caja en Bs, $, Pago Móvil y USDT, con tasa BCV automática.",
+        "para_quien": [
+          "Saber si ganas o pierdes, sin sacar cuentas a mano.",
+          "Con tres monedas y la tasa cambiando, si no lo anotas, no lo sabes."
+        ],
+        "pasos": [
+          {
+            "titulo": "Cómo funciona",
+            "texto": "Anotas lo que entra cada día y el sábado te llega el resumen por WhatsApp."
+          }
+        ],
+        "planes": [
+          {
+            "id": "caja",
+            "nombre": "Caja",
+            "precio": "$14,99 al mes",
+            "detalle": "Activo en 48 h. Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado: $125,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Cuadre diario",
+              "Reporte semanal",
+              "45 minutos de capacitación"
+            ],
+            "wa": "Hola F&V, quiero Caja Clara, tamaño Caja (▲, $14,99/mes). ¿Cómo pago?",
+            "product": "caja-clara-caja"
+          },
+          {
+            "id": "cobros",
+            "nombre": "Caja y cobros",
+            "precio": "$29,99 al mes",
+            "detalle": "Activo en 72 h. Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado: $251,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Todo lo de Caja",
+              "Cuentas por cobrar con alertas",
+              "Mensajes de cobro listos",
+              "Cotizador en $ y Bs con PDF"
+            ],
+            "wa": "Hola F&V, quiero Caja Clara, tamaño Caja y cobros (▲, $29,99/mes). ¿Cómo pago?",
+            "product": "caja-clara-cobros"
+          },
+          {
+            "id": "completa",
+            "nombre": "Administración completa",
+            "precio": "$39,99 al mes",
+            "detalle": "Activo en 72 h. Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado: $335,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Todo lo de Caja y cobros",
+              "Inventario: entradas, salidas y mínimos por producto"
+            ],
+            "wa": "Hola F&V, quiero Caja Clara, tamaño Administración completa (▲, $39,99/mes). ¿Cómo pago?",
+            "product": "caja-clara-completa"
+          }
+        ],
+        "plazo": "Caja, 48 h. Caja y cobros y Administración completa, 72 h.",
+        "pago": "Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado tienes 30 % menos. Mes a mes no hay descuento.",
+        "bloques": [
+          "pago-tri",
+          "permanencia-tri"
+        ]
+      },
+      "relacionados": [],
+      "meta": {
+        "titulo": "Caja Clara: cuadre de caja en Bs, $ y USDT desde $14,99 al mes | F&V AI Group",
+        "descripcion": "Cuadre diario y reporte semanal con tasa BCV automática. Tres tamaños desde $14,99 al mes, sin permanencia."
+      }
+    },
+    {
+      "id": "tablero-ejecutivo",
+      "tipo": "producto",
+      "categoria": "control",
+      "linea": "tri",
+      "orden": 20,
+      "nombre": "Tablero Ejecutivo",
+      "frase": "Un tablero con tus números clave: ventas, gastos, margen, cobros y lo más vendido.",
+      "precio": {
+        "modo": "desde",
+        "texto": "desde $79,99",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "Entrega en 1 o 2 semanas, según el tamaño",
+      "product": "tablero-ejecutivo-pyme",
+      "detalle": {
+        "modo": "generada",
+        "url": "/productos/tablero-ejecutivo"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero el Tablero Ejecutivo (▲, desde $79,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Un tablero con tus números clave: ventas, gastos, margen, cobros y lo más vendido.",
+        "para_quien": [
+          "Decidir con números, no a ojo.",
+          "Quien no ve sus números a tiempo se entera de los problemas tarde."
+        ],
+        "pasos": [
+          {
+            "titulo": "Cómo funciona",
+            "texto": "Conectamos tus hojas o sistema; se actualiza solo y lo ves desde el teléfono."
+          }
+        ],
+        "planes": [
+          {
+            "id": "pyme",
+            "nombre": "Pyme",
+            "precio": "$79,99 al mes",
+            "detalle": "Entrega en 1 semana. Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado: $671,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "1 fuente de datos",
+              "Hasta 8 indicadores",
+              "Reporte semanal por WhatsApp"
+            ],
+            "wa": "Hola F&V, quiero Tablero Ejecutivo, tamaño Pyme (▲, $79,99/mes). ¿Cómo pago?",
+            "product": "tablero-ejecutivo-pyme"
+          },
+          {
+            "id": "pro",
+            "nombre": "Pro",
+            "precio": "$149,99 al mes",
+            "detalle": "Entrega en 2 semanas. Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado: $1.259,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Hasta 3 fuentes de datos",
+              "Hasta 15 indicadores",
+              "Una reunión mensual de 30 minutos para leerlos juntos"
+            ],
+            "wa": "Hola F&V, quiero Tablero Ejecutivo, tamaño Pro (▲, $149,99/mes). ¿Cómo pago?",
+            "product": "tablero-ejecutivo-pro"
+          }
+        ],
+        "plazo": "Pyme, 1 semana. Pro, 2 semanas.",
+        "pago": "Sin permanencia: cancelas cuando quieras. Pagando 12 meses por adelantado tienes 30 % menos. Mes a mes no hay descuento.",
+        "bloques": [
+          "pago-tri",
+          "permanencia-tri"
+        ]
+      },
+      "relacionados": [],
+      "meta": {
+        "titulo": "Tablero Ejecutivo: tu negocio en una sola pantalla desde $79,99 al mes | F&V AI Group",
+        "descripcion": "Tus números clave (ventas, gastos, margen y cobros) en una sola pantalla, desde el teléfono. Dos tamaños desde $79,99 al mes."
+      }
+    },
+    {
+      "id": "asistente-ia",
+      "tipo": "producto",
+      "categoria": "ventas",
+      "linea": "tri",
+      "orden": 10,
+      "nombre": "Asistente IA de WhatsApp",
+      "frase": "Asistente que responde precios, horarios y ubicación, toma pedidos y te pasa lo difícil.",
+      "precio": {
+        "modo": "desde",
+        "texto": "desde $119,99",
+        "referencia": null,
+        "periodo": "al mes",
+        "nota": null
+      },
+      "plazo": "Disponible desde noviembre de 2026",
+      "product": "asistente-ia-whatsapp",
+      "detalle": {
+        "modo": "generada",
+        "url": "/productos/asistente-ia"
+      },
+      "wa": {
+        "mensaje": "Hola F&V, quiero el Asistente IA de WhatsApp (▲, desde $119,99/mes). ¿Cómo pago?"
+      },
+      "contenido": {
+        "que_es": "Asistente que responde precios, horarios y ubicación, toma pedidos y te pasa lo difícil. Disponible desde noviembre de 2026.",
+        "para_quien": [
+          "No perder ventas por contestar tarde.",
+          "El cliente que no recibe respuesta en minutos le escribe a otro."
+        ],
+        "pasos": [
+          {
+            "titulo": "Cómo funciona",
+            "texto": "Lo entrenamos con la información de tu negocio y lo conectamos a tu WhatsApp."
+          }
+        ],
+        "planes": [
+          {
+            "id": "whatsapp",
+            "nombre": "WhatsApp",
+            "precio": "$119,99 al mes",
+            "detalle": "Entrega en 5 a 7 días. Permanencia mínima: 6 meses. Pagando 12 meses por adelantado: $1.007,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Responde precios, horarios y ubicación",
+              "Toma pedidos o citas",
+              "Te pasa a ti lo que no puede resolver",
+              "Instalación incluida"
+            ],
+            "wa": "Hola F&V, quiero Asistente IA de WhatsApp, tamaño WhatsApp (▲, $119,99/mes). ¿Cómo pago?",
+            "product": "asistente-ia-whatsapp"
+          },
+          {
+            "id": "whatsapp-instagram",
+            "nombre": "WhatsApp + Instagram",
+            "precio": "$179,99 al mes",
+            "detalle": "Entrega en 5 a 7 días. Permanencia mínima: 6 meses. Pagando 12 meses por adelantado: $1.511,92 (30 % menos). Mes a mes no hay descuento.",
+            "incluye": [
+              "Todo lo del plan WhatsApp, también en Instagram",
+              "Agenda citas",
+              "Guarda los datos de cada cliente",
+              "Instalación incluida"
+            ],
+            "wa": "Hola F&V, quiero Asistente IA de WhatsApp, tamaño WhatsApp + Instagram (▲, $179,99/mes). ¿Cómo pago?",
+            "product": "asistente-ia-whatsapp-instagram"
+          }
+        ],
+        "plazo": "Disponible desde noviembre de 2026. Entrega en 5 a 7 días, con instalación incluida.",
+        "pago": "Permanencia mínima: 6 meses, porque la instalación va incluida. Pagando 12 meses por adelantado tienes 30 % menos. Mes a mes no hay descuento.",
+        "bloques": [
+          "pago-tri",
+          "permanencia-tri"
+        ]
+      },
+      "relacionados": [],
+      "meta": {
+        "titulo": "Asistente IA de WhatsApp: contesta por ti las 24 horas desde $119,99 al mes | F&V AI Group",
+        "descripcion": "Asistente que responde precios, horarios y ubicación, toma pedidos o citas y te pasa lo que no puede resolver. Disponible desde noviembre de 2026."
+      }
+    }
+  ],
+  "paginas_compartidas": [
+    {
+      "id": "acompanamiento",
+      "tipo": "servicio",
+      "categoria": "acompanamiento",
+      "linea": "hex",
+      "nombre": "Acompañamiento Continuo",
+      "frase": "Soporte técnico mensual de los sistemas y automatizaciones que ya tiene implementados.",
+      "miembros": [
+        "acompanamiento-estandar",
+        "acompanamiento-prioritario",
+        "director-ia"
+      ],
+      "wa": {
+        "mensaje": "Hola F&V, quiero información del Acompañamiento Continuo (⬡). ¿Podemos conversar?"
+      },
+      "contenido": {
+        "que_es": "Soporte técnico mensual de los sistemas y automatizaciones que ya tiene implementados: que sigan funcionando, que se ajusten cuando su operación cambie y que alguien responda cuando algo falle. Desde $200 al mes.",
+        "para_quien": [
+          "Para los sistemas, tableros y automatizaciones que ya están implementados en su empresa.",
+          "¿Todavía no tiene nada implementado? Empiece por el Diagnóstico «¿En qué se va la plata de su empresa?» ($270)."
+        ],
+        "incluye": [
+          "Canal directo. Para reportar fallas e incidencias, sin pasar por un centro de llamadas.",
+          "El mismo equipo. Quien implementó el sistema es quien lo sostiene después.",
+          "Ajustes cuando su operación cambia. Cambios de configuración, de reportes y de automatizaciones a medida que cambia la forma de trabajar.",
+          "Revisión periódica. Para que lo implementado no se quede atrás un año después del proyecto."
+        ],
+        "pasos": [],
+        "planes": [],
+        "plazo": "",
+        "pago": "",
+        "faq": [
+          {
+            "p": "¿Qué nivel me conviene?",
+            "r": "Cuéntenos qué sistemas o automatizaciones tiene funcionando y le decimos qué nivel de soporte le conviene."
+          }
+        ],
+        "bloques": [
+          "diferencia-soporte-asesoria",
+          "pago-mensual-hex",
+          "horario-atencion"
+        ],
+        "extra_html": ""
+      },
+      "meta": {
+        "titulo": "Acompañamiento Continuo: soporte técnico mensual",
+        "descripcion": "Soporte técnico mensual de lo ya implementado: Estándar $200, Prioritario $400 y Director de IA $600 al mes."
+      }
+    }
+  ],
+  "bloques": {
+    "metodo-implementacion": {
+      "titulo": "Cómo trabajamos",
+      "texto": "Un mismo equipo acompaña cada etapa, sin traspasos entre proveedores. Todo empieza por el Diagnóstico; lo demás se arma a la medida de su empresa.",
+      "pasos": [
+        {
+          "titulo": "Consulta gratis de 20 min",
+          "texto": "Una llamada corta, sin costo, para conocernos y ver si podemos ayudarle."
+        },
+        {
+          "titulo": "Diagnóstico «¿En qué se va la plata de su empresa?» ($270)",
+          "texto": "Un día presencial en su empresa: revisamos sus números y reportes, y le entregamos por escrito dónde se pierde el dinero y un plan de acción de 30 días. Si después contrata la implementación, los $270 se abonan al proyecto."
+        },
+        {
+          "titulo": "Evaluación de procesos (etapa a medida)",
+          "texto": "A medida, después del diagnóstico, cuando hace falta ver un área más a fondo: revisión técnica y financiera de los procesos y sistemas que señala el diagnóstico. Revisamos área por área los procesos que más le cuestan y calculamos cuánto costaría automatizarlos y cuánto le devolverían. No tiene precio propio."
+        },
+        {
+          "titulo": "Implementación a medida",
+          "texto": "Tableros de rentabilidad, reportes automáticos por WhatsApp, automatizaciones y sistemas, con el mismo equipo de punta a punta. Se cotiza después del diagnóstico: con lo que encontremos le enviamos una propuesta con alcance, tiempos y costo, antes de comprometer cualquier presupuesto de ejecución."
+        }
+      ],
+      "items": [
+        "El informe y el plan del diagnóstico son suyos, contrate o no lo que sigue.",
+        "Si después contrata la implementación, los $270 se abonan al proyecto."
+      ]
+    },
+    "pago-hex": {
+      "titulo": "Cómo se paga",
+      "texto": "Precios en dólares, pagaderos en bolívares a la tasa BCV del día, en dólares, por Pago Móvil o USDT. La fecha se reserva con el 50 %.",
+      "pasos": [],
+      "items": []
+    },
+    "pago-mensual-hex": {
+      "titulo": "Cómo se paga",
+      "texto": "Precios en dólares, pagaderos en bolívares a la tasa BCV del día, en dólares, por Pago Móvil o USDT.",
+      "pasos": [],
+      "items": []
+    },
+    "cuando-conviene-implementacion": {
+      "titulo": "¿Cuándo conviene esta etapa?",
+      "texto": "Cuando el diagnóstico ya mostró dónde se va la plata y toca ejecutar el plan, con un mismo equipo de punta a punta y sin traspasos a terceros a mitad de camino.",
+      "pasos": [],
+      "items": []
+    },
+    "cotizacion-a-medida": {
+      "titulo": "Cómo se cotiza",
+      "texto": "Toda implementación es a medida y se cotiza después del Diagnóstico ($270). Los montos «desde» son solo una referencia: precio final después del diagnóstico.",
+      "pasos": [],
+      "items": []
+    },
+    "independencia-tecnologica": {
+      "titulo": "Cómo elegimos su tecnología",
+      "texto": "Somos independientes de proveedor: evaluamos su operación primero, y solo después recomendamos la plataforma que se ajusta a ella, nunca la que más nos convenga vender.",
+      "pasos": [],
+      "items": [
+        "n8n: automatización de flujos.",
+        "Odoo Community: suite modular.",
+        "Dynamics 365 Sales/Customer Service: CRM de ventas y soporte.",
+        "Desarrollo a medida: cuando nada estándar encaja.",
+        "Integración de IA: sobre flujos existentes.",
+        "WhatsApp Business API: mensajería con clientes."
+      ]
+    },
+    "automatizacion-sin-esperar": {
+      "titulo": "Automatización que no espera un año",
+      "texto": "Un ERP tradicional puede tardar meses en mostrar resultados. Un flujo de automatización bien diseñado, con n8n, un agente de IA o una integración de WhatsApp Business, puede resolver un cuello de botella específico en mucho menos tiempo, sin comprometerse con un ecosistema completo.",
+      "pasos": [],
+      "items": [
+        "n8n y agentes de IA: flujos que conectan sus sistemas actuales y ejecutan tareas repetitivas sin reconstruir nada desde cero.",
+        "Claude / OpenAI API: modelos de lenguaje integrados a su operación para tareas puntuales: redacción, clasificación, análisis de datos.",
+        "MCP a medida: servidores Model Context Protocol que conectan un modelo de IA con sus herramientas internas de forma segura y controlada.",
+        "WhatsApp Business API: atención y automatización de conversaciones con clientes, sobre el canal que ya usan."
+      ]
+    },
+    "despues-del-diagnostico": {
+      "titulo": "Qué pasa después",
+      "texto": "El informe y el plan son suyos, contrate o no lo que sigue. Si quiere que nosotros lo ejecutemos, estas son las etapas.",
+      "pasos": [
+        {
+          "titulo": "Evaluación de procesos (a medida)",
+          "texto": "Después del diagnóstico, cuando hace falta ver un área más a fondo: cómo se trabaja de verdad en cada área, no en el organigrama; cuánto se usa de verdad el sistema que ya paga; qué tareas conviene automatizar y cuáles no."
+        },
+        {
+          "titulo": "Implementación (a medida)",
+          "texto": "Tableros de rentabilidad, reportes automáticos por WhatsApp y automatizaciones, con el mismo equipo de punta a punta. Se cotiza después del diagnóstico."
+        },
+        {
+          "titulo": "Cada mes, opcional: Asesor financiero con IA",
+          "texto": "Para seguir sus indicadores, márgenes y alertas cada mes: $120 al mes (una reunión mensual) o $480 al mes (una reunión semanal)."
+        }
+      ],
+      "items": [
+        "Si prefiere aprender a hacerlo usted: la formación para dueños y directivos enseña a usar la IA en sus finanzas y su gestión, entre semana y en la mañana."
+      ]
+    },
+    "diferencia-soporte-asesoria": {
+      "titulo": "¿Soporte técnico o asesoría financiera?",
+      "texto": "Son dos servicios distintos. El Asesor financiero cuida sus números; el Acompañamiento Continuo cuida que lo técnico siga funcionando.",
+      "pasos": [],
+      "items": [
+        "Acompañamiento Continuo (soporte técnico): para los sistemas, tableros y automatizaciones que ya están implementados: atender fallas, ajustar la configuración, cambiar reportes y darles mantenimiento. Estándar $200, Prioritario $400 y Director de IA $600 al mes.",
+        "Asesor financiero con IA (sus finanzas y decisiones): revisar sus números y decidir con alguien cada mes: indicadores, márgenes, alertas y reportes cortos por WhatsApp. $120 al mes (una reunión de hasta 4 horas al mes) o $480 al mes (una reunión semanal de hasta 4 horas)."
+      ]
+    },
+    "horario-atencion": {
+      "titulo": "Atención",
+      "texto": "Respondemos el mismo día de lunes a viernes, de 9:00 a. m. a 5:00 p. m. Fuera de ese horario le atiende Luci, nuestra asistente virtual, y le escribimos el siguiente día hábil.",
+      "pasos": [],
+      "items": []
+    },
+    "formacion-hex": {
+      "titulo": "Formación para su empresa",
+      "texto": "Para el dueño, los directivos y el equipo: en privado, en su oficina o en la nuestra, con sus propios números y procesos.",
+      "pasos": [],
+      "items": [
+        "Para dueños y directivos: formación 1 a 1, programa entre semana y masterclass privada para su gerencia.",
+        "Para su equipo: formación práctica, a medida, sobre el sistema real de cada equipo."
+      ]
+    },
+    "pago-tri": {
+      "titulo": "Cómo pagas",
+      "texto": "Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo.",
+      "items": [
+        "Mensual: pagas mes a mes, sin descuento.",
+        "30 % de descuento si pagas 12 meses por adelantado. Es el único descuento.",
+        "Los pagos únicos se pagan de contado o en 2 o 3 cuotas, siempre al mismo precio.",
+        "Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día."
+      ]
+    },
+    "permanencia-tri": {
+      "titulo": "¿Qué es la permanencia?",
+      "texto": "Es el tiempo mínimo que te comprometes a mantener el plan. Web y Tienda: 12 meses. Asistente IA de WhatsApp: 6 meses, porque la instalación va incluida. Los demás planes no tienen permanencia.",
+      "pasos": [],
+      "items": []
+    }
+  }
+}

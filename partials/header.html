@@ -1,0 +1,83 @@
+<header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex justify-between items-center h-[76px]">
+      <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
+        <img src="/assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
+      </a>
+
+      <nav class="menu-escritorio hidden lg:flex items-center gap-4 xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+        <a href="/" class="text-slate-400 hover:text-white transition-colors"{{AC_INICIO}}>Inicio</a>
+        <div class="menu-grupo" data-menu-item data-menu-grupo="servicios">
+          <div class="menu-fila">
+            <a href="{{RUTA_SERVICIOS}}" class="menu-enlace-principal"{{AC_SERVICIOS}}>{{TITULO_SERVICIOS}}</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="menu-servicios" aria-label="Abrir categorías de {{TITULO_SERVICIOS}}">
+              <svg class="menu-chevron-icono" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="menu-servicios" class="menu-panel">
+{{PANEL_SERVICIOS}}
+          </div>
+        </div>
+        <div class="menu-grupo" data-menu-item data-menu-grupo="productos">
+          <div class="menu-fila">
+            <a href="{{RUTA_PRODUCTOS}}" class="menu-enlace-principal"{{AC_PRODUCTOS}}>{{TITULO_PRODUCTOS}}</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="menu-productos" aria-label="Abrir categorías de {{TITULO_PRODUCTOS}}">
+              <svg class="menu-chevron-icono" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="menu-productos" class="menu-panel">
+{{PANEL_PRODUCTOS}}
+          </div>
+        </div>
+        <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors"{{AC_NOSOTROS}}>Nosotros</a>
+        <a href="/contacto" class="text-slate-400 hover:text-white transition-colors"{{AC_CONTACTO}}>Contacto</a>
+        <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
+        </button>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="{{WA_URL}}" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
+      </div>
+
+      <button id="menu-btn" type="button" class="lg:hidden text-slate-300 p-2.5 -mr-2.5" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
+    <div class="px-6 py-5 font-head text-sm">
+      <nav class="flex flex-col gap-1" aria-label="Menú móvil">
+        <a href="/" class="text-slate-300"{{AC_INICIO}}>Inicio</a>
+        <div class="movil-grupo" data-acordeon data-menu-grupo="servicios">
+          <div class="movil-fila">
+            <a href="{{RUTA_SERVICIOS}}" class="text-slate-300"{{AC_SERVICIOS}}>{{TITULO_SERVICIOS}}</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="movil-servicios" aria-label="Abrir categorías de {{TITULO_SERVICIOS}}">
+              <svg class="menu-chevron-icono" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="movil-servicios" class="movil-sub">
+{{MOVIL_SERVICIOS}}
+          </div>
+        </div>
+        <div class="movil-grupo" data-acordeon data-menu-grupo="productos">
+          <div class="movil-fila">
+            <a href="{{RUTA_PRODUCTOS}}" class="text-slate-300"{{AC_PRODUCTOS}}>{{TITULO_PRODUCTOS}}</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="movil-productos" aria-label="Abrir categorías de {{TITULO_PRODUCTOS}}">
+              <svg class="menu-chevron-icono" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="movil-productos" class="movil-sub">
+{{MOVIL_PRODUCTOS}}
+          </div>
+        </div>
+        <a href="/nosotros" class="text-slate-300"{{AC_NOSOTROS}}>Nosotros</a>
+        <a href="/contacto" class="text-slate-300"{{AC_CONTACTO}}>Contacto</a>
+        <a href="{{WA_URL}}" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-3 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
+      </nav>
+    </div>
+  </div>
+</header>

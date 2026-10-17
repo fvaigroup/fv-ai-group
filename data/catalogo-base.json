@@ -1,0 +1,43 @@
+{
+  "lineas": {
+    "hex": { "forma": "⬡", "clase": "linea-hex", "leyenda": "Empresas e instituciones", "trato": "usted" },
+    "tri": { "forma": "▲", "clase": "linea-tri", "leyenda": "Negocios pequeños", "trato": "tú" }
+  },
+  "tipos": {
+    "servicio": {
+      "titulo": "Servicios",
+      "ruta": "/servicios",
+      "archivo": "servicios.html",
+      "meta_titulo": "Servicios para empresas: diagnóstico, implementación, formación y asesoría | F&V AI Group",
+      "meta_descripcion": "Servicios de F&V AI Group para empresas e instituciones: diagnóstico financiero, implementación y automatización a la medida, formación ejecutiva y asesoría financiera con IA.",
+      "intro": "El equipo de F&V trabaja con usted para ordenar sus números, automatizar y formar a su gente.",
+      "definicion": "Servicio: el equipo de F&V trabaja con usted, en su empresa o con su equipo.",
+      "otro_enlace": { "texto": "¿Negocio pequeño? Mira los productos →", "href": "/productos" },
+      "categorias": [
+        { "id": "diagnostico", "nombre": "Diagnóstico y consultoría", "intro": "Empiece por saber en qué se va la plata de su empresa." },
+        { "id": "implementacion", "nombre": "Implementación y automatización", "intro": "Tableros, reportes y sistemas hechos a la medida de su empresa. Se cotizan después del diagnóstico." },
+        { "id": "formacion", "nombre": "Formación", "intro": "Para usted y su equipo, con sus propios números y herramientas." },
+        { "id": "acompanamiento", "nombre": "Acompañamiento y asesoría", "intro": "Alguien de confianza para sus finanzas y para que lo implementado siga funcionando." }
+      ]
+    },
+    "producto": {
+      "titulo": "Productos",
+      "ruta": "/productos",
+      "archivo": "productos.html",
+      "meta_titulo": "Productos con precio fijo: software, cursos, presencia y control | F&V AI Group",
+      "meta_descripcion": "Productos de F&V AI Group con precio claro en dólares: software (Club, Condominio, Gym), cursos y programas, plan de arranque, presencia web, control de caja y atención por WhatsApp.",
+      "intro": "Listos para usar, con el mismo precio y la misma entrega para todos.",
+      "definicion": "Producto: listo para usar, con el mismo precio y la misma entrega para todos.",
+      "categorias": [
+        { "id": "software", "nombre": "Software", "intro": "Club, Condominio y Gym: cobro de cuotas, control y reportes para su organización." },
+        { "id": "cursos", "nombre": "Cursos y programas", "intro": "Con fechas y cupos limitados." },
+        { "id": "para-empezar", "nombre": "Para empezar", "intro": "Lo básico para que te encuentren, te compren y sepas cuánto ganas." },
+        { "id": "presencia", "nombre": "Presencia y web", "intro": "Que te encuentren en Google Maps, te escriban por WhatsApp y tengas tu web." },
+        { "id": "control", "nombre": "Control y finanzas", "intro": "Cuadra tu caja y mira tus números clave en una sola pantalla." },
+        { "id": "ventas", "nombre": "Ventas y atención", "intro": "Responde a tus clientes por WhatsApp sin estar pegado al teléfono." }
+      ]
+    }
+  },
+  "leyenda": "⬡ Empresas e instituciones · ▲ Negocios pequeños",
+  "paginas_existentes_como_detalle": ["/club", "/condominio", "/gym", "/paginas-web", "/curso-finanzas-ia", "/ejecutivos#programa-ejecutivo"]
+}

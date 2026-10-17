@@ -470,3 +470,113 @@ html #page-load-bar { height: 2px; background: linear-gradient(90deg, #00FFFF, #
 
 /* ---- Movimiento reducido: los adornos que giran o flotan se quedan quietos ---- */
 @media (prefers-reduced-motion: reduce) { html .hex-spin, html .float, html .x-float { animation: none !important; } }
+
+/* Menú: desplegables */
+/* Encabezado compartido (partials/header.html + assets/menu.js). Servicios y Productos son un enlace + un botón (disclosure);
+   el panel es un contenedor propio, no role="menu". Estados activos: aria-current="page" (la página exacta) y
+   aria-current="true" (el padre de una página de detalle). Todo el movimiento se apaga con prefers-reduced-motion. */
+
+/* Escritorio: enlaces y botones del menú con área táctil de 44 px; el subrayado queda a 6 px del texto */
+html #site-header nav.menu-escritorio > a,
+html #site-header .menu-enlace-principal { display: inline-flex; align-items: center; min-height: 44px; position: relative; }
+html #site-header nav.menu-escritorio > a::after,
+html #site-header .menu-enlace-principal::after { bottom: 6px; }
+html #mobile-menu nav > a::after { content: none; } /* el subrayado que crece es solo del menú de escritorio */
+html #site-header #search-trigger { min-width: 44px; min-height: 44px; justify-content: center; }
+
+.menu-grupo { position: relative; }
+.menu-fila { display: flex; align-items: center; }
+.menu-enlace-principal { color: #94a3b8; transition: color var(--t-rapida, .18s) var(--ease-estado, ease); }
+.menu-enlace-principal::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px; background: currentColor;
+  transform: scaleX(0); transform-origin: 50% 50%; transition: transform var(--t-rapida, .18s) var(--ease-estado, ease), opacity var(--t-rapida, .18s) var(--ease-estado, ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .menu-enlace-principal:hover { color: #fff; }
+  .menu-enlace-principal:hover::after { transform: scaleX(1); }
+}
+.menu-grupo.is-open .menu-enlace-principal { color: #fff; }
+
+/* Estado activo: la página exacta (page) con subrayado lleno; el padre de un detalle (true) con subrayado atenuado */
+html #site-header nav.menu-escritorio [aria-current="page"], html #site-header nav.menu-escritorio [aria-current="true"] { color: #fff; }
+html #site-header nav.menu-escritorio [aria-current="page"]::after { transform: scaleX(1); opacity: 1; }
+html #site-header nav.menu-escritorio [aria-current="true"]::after { transform: scaleX(1); opacity: .5; }
+
+/* Botón con la flecha: 44 × 44 px */
+.menu-chevron {
+  display: inline-flex; align-items: center; justify-content: center; flex: none; min-width: 44px; min-height: 44px;
+  margin-left: -8px; padding: 0; border: 0; border-radius: 10px; background: transparent; color: #94a3b8; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; transition: color var(--t-rapida, .18s) var(--ease-estado, ease), background-color var(--t-rapida, .18s) var(--ease-estado, ease);
+}
+@media (hover: hover) and (pointer: fine) { .menu-chevron:hover { color: #fff; background: rgba(255, 255, 255, .06); } }
+.menu-grupo.is-open .menu-chevron, .movil-grupo.is-open .menu-chevron { color: #fff; }
+.menu-chevron-icono { transition: transform var(--t-rapida, .18s) var(--ease-estado, ease); }
+.menu-grupo.is-open .menu-chevron-icono, .movil-grupo.is-open .menu-chevron-icono { transform: rotate(180deg); }
+
+/* Panel del desplegable de escritorio */
+.menu-panel {
+  position: absolute; top: calc(100% + 12px); left: -12px; z-index: 60; min-width: 320px; padding: 8px;
+  background: rgba(0, 0, 0, .98); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, .1); border-radius: 14px; box-shadow: 0 18px 50px rgba(0, 0, 0, .6);
+  opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-4px);
+  transition: opacity .16s var(--ease-estado, ease), transform .16s var(--ease-estado, ease), visibility 0s linear .16s;
+}
+.menu-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; } /* puente: el puntero no pierde el hover al cruzar */
+.menu-grupo.is-open > .menu-panel {
+  opacity: 1; visibility: visible; pointer-events: auto; transform: none;
+  transition: opacity .16s var(--ease-estado, ease), transform .16s var(--ease-estado, ease);
+}
+.menu-lista { list-style: none; margin: 0; padding: 0; }
+.menu-enlace {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding: 10px 14px; border-radius: 10px;
+  color: #cbd5e1; font-size: 14px; line-height: 1.3; white-space: normal; text-decoration: none;
+  transition: background-color var(--t-rapida, .18s) var(--ease-estado, ease), color var(--t-rapida, .18s) var(--ease-estado, ease);
+}
+@media (hover: hover) and (pointer: fine) { .menu-enlace:hover { background: rgba(255, 255, 255, .07); color: #fff; } }
+.menu-enlace:active { background: rgba(255, 255, 255, .1); }
+.menu-todos {
+  display: flex; align-items: center; justify-content: space-between; min-height: 44px; margin-top: 6px; padding: 10px 14px;
+  border-top: 1px solid rgba(255, 255, 255, .08); border-radius: 0 0 10px 10px; color: #00FFFF; font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: background-color var(--t-rapida, .18s) var(--ease-estado, ease);
+}
+.menu-todos::after { content: '→'; margin-left: 12px; }
+@media (hover: hover) and (pointer: fine) { .menu-todos:hover { background: rgba(255, 255, 255, .05); } }
+.menu-formas { display: inline-flex; align-items: center; gap: 6px; flex: none; font-size: 15px; }
+.menu-formas .nav-forma::before { width: .8em; height: .8em; }
+
+/* Móvil: acordeón dentro del menú móvil (enlace + botón por grupo). La base del menú móvil (cerrado = 0 px) se repite aquí
+   para las páginas que no la traen en su <style> (por ejemplo la 404). */
+html #mobile-menu { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .25s var(--ease-out, ease), opacity .2s var(--ease-out, ease); }
+html #mobile-menu > div { overflow: hidden; min-height: 0; }
+html #mobile-menu.is-open { grid-template-rows: 1fr; opacity: 1; }
+@media (min-width: 1024px) { html #mobile-menu { display: none !important; } }
+html #mobile-menu:not(.is-open) {
+  visibility: hidden;
+  transition: grid-template-rows .25s var(--ease-out, ease), opacity .2s var(--ease-out, ease), visibility 0s linear .25s;
+}
+html #mobile-menu.is-open { visibility: visible; }
+html #mobile-menu.is-open > div { max-height: calc(100vh - 78px); max-height: calc(100dvh - 78px); overflow-y: auto; overscroll-behavior: contain; }
+.movil-fila { display: flex; align-items: center; }
+html #mobile-menu .movil-fila > a { flex: 1; }
+html #mobile-menu .movil-fila .menu-chevron { margin-left: 0; min-width: 48px; }
+.movil-sub {
+  display: grid; grid-template-rows: 0fr; visibility: hidden;
+  transition: grid-template-rows .22s var(--ease-estado, ease), visibility 0s linear .22s;
+}
+.movil-grupo.is-open > .movil-sub { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .22s var(--ease-estado, ease); }
+.movil-sub > ul { overflow: hidden; min-height: 0; list-style: none; margin: 0 0 0 .25rem; padding: 0 0 0 .75rem; border-left: 1px solid rgba(255, 255, 255, .1); }
+html #mobile-menu .movil-sub .movil-enlace {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding-top: .5rem; padding-bottom: .5rem;
+  color: #cbd5e1; font-size: 14px; line-height: 1.3;
+}
+html #mobile-menu .movil-sub .movil-todos { color: #00FFFF; font-weight: 600; }
+html #mobile-menu [aria-current="page"], html #mobile-menu [aria-current="true"] { color: #fff; }
+html #mobile-menu [aria-current="true"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: rgba(255, 255, 255, .5); }
+
+/* Pie: el subrayado del texto se activa al pasar sobre todo el enlace (el enlace mide 44 px; el subrayado, solo el texto) */
+@media (hover: hover) and (pointer: fine) { html footer a:hover > .link-underline { background-size: 100% 1.5px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-panel, .movil-sub, html #mobile-menu:not(.is-open), .menu-chevron-icono, .menu-enlace-principal::after { transition: none !important; }
+  .menu-panel { transform: none; }
+}

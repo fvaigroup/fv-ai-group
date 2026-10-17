@@ -329,45 +329,119 @@
 <div id="mouse-spotlight"></div>
 
 <!-- ============ HEADER ============ -->
+<!-- header:inicio activo="productos" hijo="si" wa="Hola F&V, tengo una consulta" -->
 <header id="site-header" class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex justify-between items-center h-[76px]">
       <a href="/" class="flex items-center gap-3 shrink-0 site-logo-link">
-        <img src="assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
+        <img src="/assets/logo-full-hex.webp" width="500" height="500" alt="F&V AI Group" class="h-11 w-auto">
         <span class="font-sans font-semibold tracking-wide text-white text-lg hidden sm:block lg:hidden xl:block whitespace-nowrap">F&V AI GROUP</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
+
+      <nav class="menu-escritorio hidden lg:flex items-center gap-4 xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-        <a href="/triangular" class="nav-forma nav-tri transition-colors" aria-current="page">Línea Triangular</a>
-        <a href="/hexagonal" class="nav-forma nav-hex transition-colors">Línea Hexagonal</a>
-        <a href="/software" class="text-slate-400 hover:text-white transition-colors">Software</a>
+        <div class="menu-grupo" data-menu-item data-menu-grupo="servicios">
+          <div class="menu-fila">
+            <a href="/servicios" class="menu-enlace-principal">Servicios</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="menu-servicios" aria-label="Abrir categorías de Servicios">
+              <svg class="menu-chevron-icono" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="menu-servicios" class="menu-panel">
+            <ul class="menu-lista">
+              <li><a href="/servicios#diagnostico" class="menu-enlace" data-menu-categoria="servicios/diagnostico"><span>Diagnóstico y consultoría</span></a></li>
+              <li><a href="/servicios#implementacion" class="menu-enlace" data-menu-categoria="servicios/implementacion"><span>Implementación y automatización</span></a></li>
+              <li><a href="/servicios#formacion" class="menu-enlace" data-menu-categoria="servicios/formacion"><span>Formación</span></a></li>
+              <li><a href="/servicios#acompanamiento" class="menu-enlace" data-menu-categoria="servicios/acompanamiento"><span>Acompañamiento y asesoría</span></a></li>
+            </ul>
+            <a href="/servicios" class="menu-todos" data-menu-categoria="servicios/todos">Ver todos los servicios</a>
+          </div>
+        </div>
+        <div class="menu-grupo" data-menu-item data-menu-grupo="productos">
+          <div class="menu-fila">
+            <a href="/productos" class="menu-enlace-principal" aria-current="true">Productos</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="menu-productos" aria-label="Abrir categorías de Productos">
+              <svg class="menu-chevron-icono" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="menu-productos" class="menu-panel">
+            <ul class="menu-lista">
+              <li><a href="/productos#software" class="menu-enlace" data-menu-categoria="productos/software"><span>Software</span><span class="menu-formas" role="img" aria-label="Empresas e instituciones y negocios pequeños"><span class="nav-forma nav-hex"></span><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#cursos" class="menu-enlace" data-menu-categoria="productos/cursos"><span>Cursos y programas</span><span class="menu-formas" role="img" aria-label="Empresas e instituciones y negocios pequeños"><span class="nav-forma nav-hex"></span><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#para-empezar" class="menu-enlace" data-menu-categoria="productos/para-empezar"><span>Para empezar</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#presencia" class="menu-enlace" data-menu-categoria="productos/presencia"><span>Presencia y web</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#control" class="menu-enlace" data-menu-categoria="productos/control"><span>Control y finanzas</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#ventas" class="menu-enlace" data-menu-categoria="productos/ventas"><span>Ventas y atención</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+            </ul>
+            <a href="/productos" class="menu-todos" data-menu-categoria="productos/todos">Ver todos los productos</a>
+          </div>
+        </div>
         <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0z"/></svg>
         </button>
       </nav>
+
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20L%C3%ADnea%20Triangular%20y%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
       </div>
-      <button id="menu-btn" type="button" class="lg:hidden text-slate-300" aria-label="Abrir menú" aria-expanded="false">
+
+      <button id="menu-btn" type="button" class="lg:hidden text-slate-300 p-2.5 -mr-2.5" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
+
   <div id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 backdrop-blur-md">
-    <div class="px-6 py-5 flex flex-col gap-4 font-head text-sm">
-      <a href="/" class="text-slate-300">Inicio</a>
-      <a href="/triangular" class="nav-forma nav-tri" aria-current="page">Línea Triangular</a>
-      <a href="/hexagonal" class="nav-forma nav-hex">Línea Hexagonal</a>
-      <a href="/software" class="text-slate-300">Software</a>
-      <a href="/nosotros" class="text-slate-300">Nosotros</a>
-      <a href="/contacto" class="text-slate-300">Contacto</a>
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20L%C3%ADnea%20Triangular%20y%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-2 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
+    <div class="px-6 py-5 font-head text-sm">
+      <nav class="flex flex-col gap-1" aria-label="Menú móvil">
+        <a href="/" class="text-slate-300">Inicio</a>
+        <div class="movil-grupo" data-acordeon data-menu-grupo="servicios">
+          <div class="movil-fila">
+            <a href="/servicios" class="text-slate-300">Servicios</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="movil-servicios" aria-label="Abrir categorías de Servicios">
+              <svg class="menu-chevron-icono" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="movil-servicios" class="movil-sub">
+            <ul>
+              <li><a href="/servicios#diagnostico" class="movil-enlace" data-menu-categoria="servicios/diagnostico"><span>Diagnóstico y consultoría</span></a></li>
+              <li><a href="/servicios#implementacion" class="movil-enlace" data-menu-categoria="servicios/implementacion"><span>Implementación y automatización</span></a></li>
+              <li><a href="/servicios#formacion" class="movil-enlace" data-menu-categoria="servicios/formacion"><span>Formación</span></a></li>
+              <li><a href="/servicios#acompanamiento" class="movil-enlace" data-menu-categoria="servicios/acompanamiento"><span>Acompañamiento y asesoría</span></a></li>
+              <li><a href="/servicios" class="movil-enlace movil-todos" data-menu-categoria="servicios/todos">Ver todos los servicios</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="movil-grupo" data-acordeon data-menu-grupo="productos">
+          <div class="movil-fila">
+            <a href="/productos" class="text-slate-300" aria-current="true">Productos</a>
+            <button type="button" class="menu-chevron" data-menu-toggle aria-expanded="false" aria-controls="movil-productos" aria-label="Abrir categorías de Productos">
+              <svg class="menu-chevron-icono" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="movil-productos" class="movil-sub">
+            <ul>
+              <li><a href="/productos#software" class="movil-enlace" data-menu-categoria="productos/software"><span>Software</span><span class="menu-formas" role="img" aria-label="Empresas e instituciones y negocios pequeños"><span class="nav-forma nav-hex"></span><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#cursos" class="movil-enlace" data-menu-categoria="productos/cursos"><span>Cursos y programas</span><span class="menu-formas" role="img" aria-label="Empresas e instituciones y negocios pequeños"><span class="nav-forma nav-hex"></span><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#para-empezar" class="movil-enlace" data-menu-categoria="productos/para-empezar"><span>Para empezar</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#presencia" class="movil-enlace" data-menu-categoria="productos/presencia"><span>Presencia y web</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#control" class="movil-enlace" data-menu-categoria="productos/control"><span>Control y finanzas</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos#ventas" class="movil-enlace" data-menu-categoria="productos/ventas"><span>Ventas y atención</span><span class="menu-formas" role="img" aria-label="Negocios pequeños"><span class="nav-forma nav-tri"></span></span></a></li>
+              <li><a href="/productos" class="movil-enlace movil-todos" data-menu-categoria="productos/todos">Ver todos los productos</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="/nosotros" class="text-slate-300">Nosotros</a>
+        <a href="/contacto" class="text-slate-300">Contacto</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-3 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
+      </nav>
     </div>
   </div>
 </header>
+<!-- header:fin -->
 <div id="scroll-progress"></div>
 
 <main class="linea-tri" id="main-content">
@@ -619,16 +693,17 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
+<!-- footer:inicio -->
 <footer class="bg-black border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-      <div class="lg:col-span-4">
-        <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-          <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8" loading="lazy" decoding="async">
+      <div class="lg:col-span-3">
+        <a href="/" class="inline-flex items-center gap-2.5 min-h-[44px] mb-3">
+          <img src="/assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="h-8 w-8" loading="lazy" decoding="async">
           <span class="font-sans font-semibold tracking-wide text-white text-lg">F&V AI GROUP</span>
         </a>
-        <p class="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios claros en dólares.</p>
-        <div class="flex items-center gap-3">
+        <p class="text-sm text-slate-400 leading-relaxed max-w-xs mb-6">Automatización, IA y páginas web para negocios y empresas de Venezuela, con precios claros en dólares.</p>
+        <div class="flex items-center gap-3 mb-8">
           <a href="https://wa.me/584244125386" target="_blank" rel="noopener" aria-label="WhatsApp: +58 424 412 5386" title="+58 424 412 5386" class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-fv-cyan/50 hover:bg-fv-cyan/10 transition-colors">
             <svg class="w-4 h-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg>
           </a>
@@ -639,67 +714,78 @@
             <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
         </div>
+        <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-3">Contacto</h3>
+        <ul class="text-sm text-slate-400">
+          <li><a href="mailto:contacto@fvaigroup.com" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">contacto@fvaigroup.com</span></a></li>
+          <li><a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">+58 424 412 5386</span></a></li>
+          <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">@fvaigroup</span></a></li>
+          <li class="pt-1 text-slate-400">Valencia, Carabobo, Venezuela</li>
+          <li class="text-slate-400">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
+          <li class="text-slate-400">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
+        </ul>
       </div>
 
-      <div data-pie-lineas class="lg:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div data-pie-columnas class="lg:col-span-9 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
         <div>
-          <h3 class="nav-forma nav-tri font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Triangular</h3>
-          <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="/triangular" class="link-underline hover:text-white transition-colors">Productos</a></li>
-            <li><a href="/paginas-web" class="link-underline hover:text-white transition-colors">Páginas web</a></li>
-            <li><a href="/cursos" class="link-underline hover:text-white transition-colors">Cursos y talleres</a></li>
-            <li><a href="/calculadora" class="link-underline hover:text-white transition-colors">Calculadora de precios</a></li>
+          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-3">Servicios</h3>
+          <ul class="text-sm text-slate-400">
+            <li><a href="/servicios#diagnostico" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Diagnóstico y consultoría</span></a></li>
+            <li><a href="/servicios#implementacion" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Implementación y automatización</span></a></li>
+            <li><a href="/servicios#formacion" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Formación</span></a></li>
+            <li><a href="/servicios#acompanamiento" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Acompañamiento y asesoría</span></a></li>
+            <li><a href="/ejecutivos" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Para dueños de empresa</span></a></li>
           </ul>
         </div>
         <div>
-          <h3 class="nav-forma nav-hex font-head text-xs font-semibold uppercase tracking-wider mb-4">Línea Hexagonal</h3>
-          <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="/contacto#agenda" class="link-underline hover:text-white transition-colors">Consulta gratis de 20 min</a></li>
-            <li><a href="/asesoria-estrategica" class="link-underline hover:text-white transition-colors">Diagnóstico</a></li>
-            <li><a href="/ejecutivos" class="link-underline hover:text-white transition-colors">Dueños y directivos</a></li>
-            <li><a href="/despliegue-ejecucion" class="link-underline hover:text-white transition-colors">Implementación</a></li>
-            <li><a href="/calculadora-roi" class="link-underline hover:text-white transition-colors">Calculadora de ROI</a></li>
+          <h3 class="font-head text-fv-orange text-xs font-semibold uppercase tracking-wider mb-3">Productos</h3>
+          <ul class="text-sm text-slate-400">
+            <li><a href="/productos#software" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Software</span></a></li>
+            <li><a href="/productos#cursos" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Cursos y programas</span></a></li>
+            <li><a href="/productos#para-empezar" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Para empezar</span></a></li>
+            <li><a href="/productos#presencia" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Presencia y web</span></a></li>
+            <li><a href="/productos#control" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Control y finanzas</span></a></li>
+            <li><a href="/productos#ventas" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Ventas y atención</span></a></li>
           </ul>
         </div>
         <div>
-          <h3 class="font-head text-xs font-semibold uppercase tracking-wider mb-4 text-fv-orange">Empresa</h3>
-          <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="/nosotros" class="link-underline hover:text-white transition-colors">Nosotros</a></li>
-            <li><a href="/casos" class="link-underline hover:text-white transition-colors">Casos</a></li>
-            <li><a href="/software" data-evento="pie_software" class="link-underline hover:text-white transition-colors">Software</a></li>
-            <li><a href="/club" data-evento="pie_club" class="link-underline hover:text-white transition-colors">Club</a></li>
-            <li><a href="/condominio" data-evento="pie_condominio" class="link-underline hover:text-white transition-colors">Condominio</a></li>
-            <li><a href="/gym" data-evento="pie_gym" class="link-underline hover:text-white transition-colors">Gym</a></li>
-            <li><a href="/contacto" class="link-underline hover:text-white transition-colors">Contacto</a></li>
-            <li><a href="/#faq" class="link-underline hover:text-white transition-colors">Preguntas frecuentes</a></li>
-            <li><a href="/privacidad" class="link-underline hover:text-white transition-colors">Privacidad</a></li>
-            <li><a href="/terminos" class="link-underline hover:text-white transition-colors">Términos</a></li>
+          <h3 class="font-head text-slate-200 text-xs font-semibold uppercase tracking-wider mb-3">Software</h3>
+          <ul class="text-sm text-slate-400">
+            <li><a href="/club" data-evento="pie_club" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">Club</span></a></li>
+            <li><a href="/condominio" data-evento="pie_condominio" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">Condominio</span></a></li>
+            <li><a href="/gym" data-evento="pie_gym" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">Gym</span></a></li>
           </ul>
         </div>
         <div>
-          <h3 class="font-head text-fv-cyan text-xs font-semibold uppercase tracking-wider mb-4">Contacto</h3>
-          <ul class="space-y-2.5 text-sm text-slate-500">
-            <li><a href="mailto:contacto@fvaigroup.com" class="link-underline hover:text-white transition-colors">contacto@fvaigroup.com</a></li>
-            <li><a href="https://wa.me/584244125386" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">+58 424 412 5386</a></li>
-            <li><a href="https://instagram.com/fvaigroup" target="_blank" rel="noopener" class="link-underline hover:text-white transition-colors">@fvaigroup</a></li>
-            <li class="pt-1 text-slate-600">Valencia, Carabobo, Venezuela</li>
-            <li class="text-slate-600">Lun–vie, 9:00 a.m.–5:00 p.m.</li>
-            <li class="text-slate-600">Respondemos el mismo día (lun–vie, 9:00 a 17:00)</li>
+          <h3 class="font-head text-slate-200 text-xs font-semibold uppercase tracking-wider mb-3">Empresa</h3>
+          <ul class="text-sm text-slate-400">
+            <li><a href="/nosotros" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">Nosotros</span></a></li>
+            <li><a href="/casos" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">Casos</span></a></li>
+            <li><a href="/contacto" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline">Contacto</span></a></li>
+            <li><a href="/#faq" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Preguntas frecuentes</span></a></li>
+            <li><a href="/contacto#agenda" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Consulta gratis de 20 min</span></a></li>
           </ul>
         </div>
-      
+        <div>
+          <h3 class="font-head text-slate-200 text-xs font-semibold uppercase tracking-wider mb-3">Herramientas</h3>
+          <ul class="text-sm text-slate-400">
+            <li><a href="/calculadora" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Calculadora de precios</span></a></li>
+            <li><a href="/calculadora-roi" class="inline-flex items-center min-h-[44px] hover:text-white transition-colors"><span class="link-underline !whitespace-normal">Calculadora de ROI</span></a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-slate-600 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
-      <div class="flex gap-6 text-sm text-slate-600">
+      <p class="text-slate-400 text-sm">&copy; 2026 F&V AI Group S.A. Todos los derechos reservados.</p>
+      <div class="flex gap-6 text-sm text-slate-400">
         <a href="/privacidad" class="link-underline hover:text-slate-300 transition-colors inline-flex items-center min-h-[44px]">Políticas de privacidad</a>
         <a href="/terminos" class="link-underline hover:text-slate-300 transition-colors inline-flex items-center min-h-[44px]">Términos y Condiciones</a>
       </div>
     </div>
   </div>
 </footer>
+<script src="/assets/menu.js" defer></script>
+<!-- footer:fin -->
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40">
@@ -738,24 +824,6 @@
 </button>
 
 <script>
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('icon-open');
-  const iconClose = document.getElementById('icon-close');
-  menuBtn.addEventListener('click', () => {
-    const isOpening = !mobileMenu.classList.contains('is-open');
-    mobileMenu.classList.toggle('is-open');
-    iconOpen.classList.toggle('hidden');
-    iconClose.classList.toggle('hidden');
-    menuBtn.setAttribute('aria-expanded', String(isOpening));
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('is-open');
-    iconOpen.classList.remove('hidden');
-    iconClose.classList.add('hidden');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }));
-
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
