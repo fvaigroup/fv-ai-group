@@ -29,7 +29,7 @@ Hay ocho páginas viejas que siguen en la raíz (`hexagonal`, `triangular`, `sof
 ```bash
 npm install                          # instala Tailwind CSS (la única dependencia)
 npm run build                        # node scripts/build-html.js && tailwindcss ... --minify
-npm test                             # corre las 15 pruebas, en orden
+npm test                             # corre las 16 pruebas, en orden
 node scripts/build-html.js           # solo el paso de HTML: reescribe lo generado
 node scripts/build-html.js --check   # no escribe; sale con código 1 si algo está desactualizado
 node scripts/validar-catalogo.js     # valida data/catalogo.json contra data/ESQUEMA.md
@@ -145,3 +145,4 @@ Después de publicar:
 | `enlaces.test.js` | Todos los `href` y `src` internos de las páginas vivas existen, con su ancla, o tienen una redirección. |
 | `redirecciones.test.js` | Las reglas de `vercel.json` (únicas, permanentes, sin cadenas) y las anclas viejas de `assets/anclas-viejas.js`. |
 | `sitemap.test.js` | `sitemap.xml` al día, todas las URLs existen, no falta ninguna página viva, y `robots.txt`. |
+| `meta.test.js` | Largo de títulos y descripciones, mensajes de WhatsApp que empiezan con «Hola F&V», áreas táctiles de 44 px en el encabezado y el pie, y contenedor común de las secciones de detalle. |

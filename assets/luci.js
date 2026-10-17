@@ -2,7 +2,7 @@
    No es un modelo de IA: busca palabras clave en la pregunta y responde con textos preparados por el equipo.
    Cada respuesta termina con un botón de acción (producto por WhatsApp, página del catálogo o /contacto#agenda).
    Estructura del sitio: «servicios» (a la medida, con el equipo de F&V; ⬡ empresas e instituciones, «usted») y
-   «productos» (precio fijo; sobre todo ▲ negocios pequeños, «tú»). Los nombres «Línea Hexagonal/Triangular» solo existen en el inicio:
+   «productos» (precio fijo; sobre todo ▲ negocios pequeños, «tú»). Los nombres de las dos líneas solo existen en el inicio:
    aquí se usa la forma (⬡, ▲) o «empresas e instituciones» / «negocios pequeños».
    Para cambiar un precio, un plazo o una respuesta, edita la lista RESPUESTAS de abajo (los precios salen de data/catalogo.json;
    tests/buscador-luci.test.js avisa si dejan de coincidir). Las fechas de talleres y cursos salen de assets/eventos.js (FV_EVENTOS),

@@ -158,10 +158,14 @@ function seccion(ctx, o) {
   ctx.fila++;
   const id = o.id ? ` id="${o.id}"` : '';
   const legible = ctx.hex ? ' hex-legible' : '';
+  // Todas las secciones usan el mismo contenedor (mismo borde izquierdo); el ancho de lectura se limita por dentro.
+  const interior = o.ancho && o.ancho !== 'max-w-6xl' ? `<div class="${o.ancho}">
+${sangrar(o.cuerpo, 2)}
+</div>` : o.cuerpo;
   return [
     `<section${id} class="det-seccion scroll-mt-28 py-12 lg:py-16 border-b border-white/5${alterno}${legible}" aria-labelledby="${o.labelledby}">`,
-    `  <div class="${o.ancho || 'max-w-6xl'} mx-auto px-5 sm:px-6 lg:px-8">`,
-    sangrar(o.cuerpo, 4),
+    '  <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">',
+    sangrar(interior, 4),
     '  </div>',
     '</section>',
   ].join('\n');

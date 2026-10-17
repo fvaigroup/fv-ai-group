@@ -1,7 +1,7 @@
-/* Planes de la Línea Triangular: pago adelantado y selector de tamaño.
+/* Planes ▲ (negocios pequeños): pago adelantado y selector de tamaño.
    Regla de precio: hay UN solo descuento, 30 % por pagar 12 meses por adelantado un plan mensual. Mes a mes, en cuotas o de contado
    (productos de pago único) no hay descuento.
-   anual(precio) = precio × 12 × 0,70, con 2 decimales (Línea Triangular). anualEntero(precio) = lo mismo redondeado al entero (Línea Hexagonal).
+   anual(precio) = precio × 12 × 0,70, con 2 decimales (▲). anualEntero(precio) = lo mismo redondeado al entero (⬡).
    Este archivo también lo usan las pruebas automáticas (Node). */
 (function (g) {
   'use strict';

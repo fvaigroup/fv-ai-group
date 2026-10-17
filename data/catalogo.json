@@ -18,8 +18,8 @@
       "titulo": "Servicios",
       "ruta": "/servicios",
       "archivo": "servicios.html",
-      "meta_titulo": "Servicios para empresas: diagnóstico, implementación, formación y asesoría | F&V AI Group",
-      "meta_descripcion": "Servicios de F&V AI Group para empresas e instituciones: diagnóstico financiero, implementación y automatización a la medida, formación ejecutiva y asesoría financiera con IA.",
+      "meta_titulo": "Servicios para empresas | F&V AI Group",
+      "meta_descripcion": "Diagnóstico financiero, implementación y automatización a la medida, formación ejecutiva y asesoría financiera con IA, para empresas e instituciones.",
       "intro": "El equipo de F&V trabaja con usted para ordenar sus números, automatizar y formar a su gente.",
       "definicion": "Servicio: el equipo de F&V trabaja con usted, en su empresa o con su equipo.",
       "otro_enlace": {
@@ -53,8 +53,8 @@
       "titulo": "Productos",
       "ruta": "/productos",
       "archivo": "productos.html",
-      "meta_titulo": "Productos con precio fijo: software, cursos, presencia y control | F&V AI Group",
-      "meta_descripcion": "Productos de F&V AI Group con precio claro en dólares: software (Club, Condominio, Gym), cursos y programas, plan de arranque, presencia web, control de caja y atención por WhatsApp.",
+      "meta_titulo": "Productos con precio fijo | F&V AI Group",
+      "meta_descripcion": "Software (Club, Condominio, Gym), cursos, plan de arranque, presencia web, control de caja y atención por WhatsApp, con precios claros en dólares.",
       "intro": "Listos para usar, con el mismo precio y la misma entrega para todos.",
       "definicion": "Producto: listo para usar, con el mismo precio y la misma entrega para todos.",
       "categorias": [
@@ -1687,7 +1687,7 @@
         "curso-finanzas-ia"
       ],
       "meta": {
-        "titulo": "Taller «La plata de tu negocio clara»: 3 horas en Valencia | F&V AI Group",
+        "titulo": "Taller «La plata de tu negocio clara» | F&V AI Group",
         "descripcion": "Taller presencial de 3 horas en Valencia, en un grupo de máximo 6 personas, para ordenar la plata de tu negocio. Reserva tu cupo por WhatsApp."
       }
     },
@@ -1731,7 +1731,7 @@
       },
       "relacionados": [],
       "meta": {
-        "titulo": "Plan Arranque: Presencia Catálogo y Caja Clara por $39,99 al mes | F&V AI Group",
+        "titulo": "Plan Arranque por $39,99 al mes | F&V AI Group",
         "descripcion": "Que te encuentren en Google Maps, te compren por WhatsApp y sepas cuánto ganas. $39,99 al mes, activo en 72 horas y sin permanencia."
       }
     },
@@ -1766,7 +1766,7 @@
       },
       "relacionados": [],
       "meta": {
-        "titulo": "Mis Finanzas Claras: tu hoja de cuentas en Bs, $ y USDT por $4,99 | F&V AI Group",
+        "titulo": "Mis Finanzas Claras por $4,99 | F&V AI Group",
         "descripcion": "Hoja personal de cuentas en bolívares, dólares y USDT, lista para copiar. $4,99, pago único."
       }
     },
@@ -1984,7 +1984,7 @@
       },
       "relacionados": [],
       "meta": {
-        "titulo": "Caja Clara: cuadre de caja en Bs, $ y USDT desde $14,99 al mes | F&V AI Group",
+        "titulo": "Caja Clara desde $14,99 al mes | F&V AI Group",
         "descripcion": "Cuadre diario y reporte semanal con tasa BCV automática. Tres tamaños desde $14,99 al mes, sin permanencia."
       }
     },
@@ -2061,7 +2061,7 @@
       },
       "relacionados": [],
       "meta": {
-        "titulo": "Tablero Ejecutivo: tu negocio en una sola pantalla desde $79,99 al mes | F&V AI Group",
+        "titulo": "Tablero Ejecutivo desde $79,99 al mes | F&V AI Group",
         "descripcion": "Tus números clave (ventas, gastos, margen y cobros) en una sola pantalla, desde el teléfono. Dos tamaños desde $79,99 al mes."
       }
     },
@@ -2140,7 +2140,7 @@
       },
       "relacionados": [],
       "meta": {
-        "titulo": "Asistente IA de WhatsApp: contesta por ti las 24 horas desde $119,99 al mes | F&V AI Group",
+        "titulo": "Asistente IA de WhatsApp desde $119,99 al mes | F&V AI Group",
         "descripcion": "Asistente que responde precios, horarios y ubicación, toma pedidos o citas y te pasa lo que no puede resolver. Disponible desde noviembre de 2026."
       }
     }

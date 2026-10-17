@@ -136,7 +136,7 @@
   datos['eventos.resumen'] = lista.length ? lista.map(function (e) { return e.nombre + ': ' + e.texto; }).join(' · ') : SIN_FECHAS;
 
   var mensajes = {
-    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» del ' + sinAnio(t.fecha), pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '»' },
+    taller: { ok: 'Hola F&V, quiero un cupo en el taller «' + t.nombre + '» del ' + sinAnio(t.fecha) + ' (▲, ' + usd(t.precio) + ')', pasado: 'Hola F&V, avísame cuando haya nueva fecha del taller «' + t.nombre + '» (▲)' },
     curso: { ok: proxima ? msgCurso(proxima, cur) : '', pasado: 'Hola F&V, avísame cuando haya nueva fecha de ' + cur.nombre },
     proximas: { ok: 'Hola F&V, quiero saber las próximas fechas de los cursos y talleres', pasado: 'Hola F&V, quiero saber las próximas fechas de los cursos y talleres' }
   };

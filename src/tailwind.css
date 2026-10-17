@@ -808,3 +808,6 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 .ini-razones p { margin: 0; font-size: 1.0625rem; line-height: 1.6; color: #cbd5e1; }
 .ini-faq summary { min-height: 44px; font-size: 1.0625rem; }
 .ini-faq details > p { font-size: 1.0625rem; }
+
+/* Luci: áreas táctiles de 44 px (el aviso de primera visita y el rótulo que abre el chat) */
+html .luci-hint-text, html #luci-hint-open { min-height: 44px; display: inline-flex; align-items: center; }
