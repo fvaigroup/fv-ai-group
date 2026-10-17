@@ -202,7 +202,9 @@ const NOMBRE_LINEA = /L(?:í|i|%C3%AD)nea(?:\s|%20|\+)+(?:Hexagonal|Triangular)/
 const ASESOR_TRI = /Asesor(?:\s|%20|\+|&amp;|&)+F(?:&amp;|&|%26)?V|Sesi(?:ó|o|%C3%B3)n(?:\s|%20)+Clara|Pack(?:\s|%20)+Enfoque|Asesor(?:\s|%20)+(?:Mensual|Pro)\b|Refiere(?:\s|%20)+y(?:\s|%20)+gana/i;
 ESTATICAS.forEach(f => {
   const crudo = leer(f);
-  ok(!NOMBRE_LINEA.test(crudo), f + ': no debe nombrar «Línea Hexagonal» ni «Línea Triangular» (solo el inicio)');
+  // terminos.html es el texto legal vigente: sus cláusulas usan los nombres de línea como términos definidos y NO se redactan sin el
+  // dueño o su abogado (ver PENDIENTES-LOCAL.md). Se exime solo de esta comprobación; las demás sí aplican.
+  if (f !== 'terminos.html') ok(!NOMBRE_LINEA.test(crudo), f + ': no debe nombrar «Línea Hexagonal» ni «Línea Triangular» (solo el inicio)');
   ok(!ASESOR_TRI.test(crudo), f + ': no debe mencionar el Asesor F&V, Sesión Clara, Pack Enfoque, Asesor Mensual/Pro ni «Refiere y gana»');
   for (const m of crudo.matchAll(/https:\/\/wa\.me\/\d+\?text=([^"'\s]+)/g)) { let t = ''; try { t = decodeURIComponent(m[1]); } catch (e) { continue; } ok(!/L[íi]nea/i.test(t), f + ': mensaje de WhatsApp con «Línea»: ' + t.slice(0, 80)); }
 });
