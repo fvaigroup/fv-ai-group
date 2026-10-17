@@ -18,7 +18,9 @@
 // Funciones reutilizables para las fases que generan páginas: renderHeader, renderFooter, insertar, listarPaginas, procesarPagina.
 //
 // Orden de trabajo del build:
-//   1) scripts/catalogo/generar.js genera las páginas del catálogo (hoy /servicios y /productos) EN MEMORIA, desde data/catalogo.json;
+//   1) scripts/catalogo/generar.js genera las páginas del catálogo EN MEMORIA, desde data/catalogo.json: /servicios, /productos y una página
+//      de detalle por ítem (servicios/<id>.html, productos/<id>.html). Las páginas de esas dos carpetas que lleven el aviso «generado por
+//      scripts/build-html.js» y ya no estén en el catálogo se BORRAN (con --check se reportan como desactualizadas);
 //   2) en cada página se rellenan las tarjetas de los marcadores
 //        <!-- tarjetas:inicio ids="diagnostico,asesor-financiero" cols="4" -->  ...  <!-- tarjetas:fin -->
 //      (cols = 2, 3 o 4 en escritorio; 1 en el teléfono y 2 en tablet; opcional nivel="3" = encabezado del nombre);
@@ -234,6 +236,25 @@ function procesarPagina(html, opciones) {
   return insertar(conTarjetas, { catalogo: cat, archivo: opciones.archivo });
 }
 
+// Aviso que llevan las páginas generadas (scripts/catalogo/listados.js)
+const AVISO_GENERADA = 'generado por scripts/build-html.js desde data/catalogo.json: no editar a mano';
+
+// Páginas generadas que quedaron en servicios/ o productos/ y ya no pertenecen al catálogo (relativas a la raíz, con /)
+function obsoletas(generadas) {
+  const out = [];
+  for (const d of ['servicios', 'productos']) {
+    const dir = path.join(RAIZ, d);
+    if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) continue;
+    for (const f of fs.readdirSync(dir).filter(x => /.html$/.test(x)).sort()) {
+      const rel = `${d}/${f}`;
+      if (Object.prototype.hasOwnProperty.call(generadas, rel)) continue;
+      const html = fs.readFileSync(path.join(RAIZ, rel), 'utf8');
+      if (html.includes(AVISO_GENERADA)) out.push(rel);
+    }
+  }
+  return out;
+}
+
 function listarPaginas() {
   const excluidas = new Set([...LEGACY, ...SALTAR]);
   const lista = fs.readdirSync(RAIZ).filter(f => /\.html$/.test(f) && !excluidas.has(f)).sort();
@@ -301,7 +322,12 @@ function main(argv) {
   const cat = cargarCatalogo();
   const cambiadas = [];
   const generadas = generarPaginas(cat);               // 1) páginas del catálogo, en memoria
-  const lista = Array.from(new Set([...listarPaginas(), ...Object.keys(generadas)])).sort();
+  const sobran = obsoletas(generadas);                 // generadas antes y que ya no están en el catálogo
+  const lista = Array.from(new Set([...listarPaginas(), ...Object.keys(generadas)])).filter(f => !sobran.includes(f)).sort();
+  for (const f of sobran) {
+    cambiadas.push(f + ' (obsoleta)');
+    if (!check) fs.unlinkSync(path.join(RAIZ, f));
+  }
   for (const archivo of lista) {
     const ruta = path.join(RAIZ, archivo);
     const actual = fs.existsSync(ruta) ? fs.readFileSync(ruta, 'utf8') : '';
@@ -311,7 +337,7 @@ function main(argv) {
     nuevo = procesarPagina(nuevo, { catalogo: cat, archivo });   // 2) tarjetas  3) encabezado y pie
     if (nuevo !== actual) {
       cambiadas.push(archivo);
-      if (!check) fs.writeFileSync(ruta, nuevo, 'utf8');
+      if (!check) { fs.mkdirSync(path.dirname(ruta), { recursive: true }); fs.writeFileSync(ruta, nuevo, 'utf8'); }
     }
   }
   const total = lista.length;
@@ -328,7 +354,7 @@ function main(argv) {
 }
 
 module.exports = {
-  RAIZ, LEGACY, SALTAR, ACTIVOS, PAGINAS,
+  RAIZ, LEGACY, SALTAR, ACTIVOS, PAGINAS, AVISO_GENERADA, obsoletas,
   cargarCatalogo, lineasDeCategoria, renderHeader, renderFooter, insertar, procesarPagina, tieneMarcadores, listarPaginas, leerAtributos,
 };
 

@@ -222,3 +222,7 @@ El cliente ideal de la Hexagonal son dueños y directivos de 40 a 65 años que l
 **/ejecutivos** agrega en su propio `<style>`: botones grandes `.btn-grande` de 56 px (texto de 18 px) y `.texto-linea` con un degradado fijo dorado a naranja (el animado cian, dorado y naranja se veía verdoso quieto). No lleva constelación, foco del mouse ni estela.
 
 **Nombres en lo Hexagonal:** la llamada gratuita de Cal.com se llama «Consulta gratis de 20 min» (en el pie, columna Línea Hexagonal, también); «Diagnóstico» es solo el de $270. En el menú, Contacto y lo Triangular sigue «Diagnóstico gratis».
+
+## Páginas de detalle de servicios y productos (clases `det-*`)
+
+Las páginas de `/servicios/<id>` y `/productos/<id>` las genera `scripts/catalogo/detalle.js` desde `data/catalogo.json`; no se editan a mano. Las clases `det-*` viven al final de `src/tailwind.css` (sección «Detalle de servicios y productos») y van dentro de la envolvente de la línea (`.linea-hex` o `.linea-tri`). Estructura: cabecera con panel de precio y WhatsApp, secciones opcionales (qué es, para quién, qué incluye, cómo funciona, planes o tamaños, plazo y pago, preguntas, relacionados) y cierre con WhatsApp y el panel de pago u horario. Una sección sin contenido real en el catálogo no se genera. Los títulos usan el trato de la línea (usted / tú) y la Hexagonal va primero en los relacionados.

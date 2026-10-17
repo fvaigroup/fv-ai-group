@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-html.js && tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --minify",
-    "test": "node tests/planes.test.js && node tests/precios.test.js && node tests/software.test.js && node tests/club.test.js && node tests/eventos.test.js && node tests/catalogo.test.js && node tests/listados.test.js && node tests/estructura.test.js && node tests/enlaces.test.js"
+    "test": "node tests/planes.test.js && node tests/precios.test.js && node tests/software.test.js && node tests/club.test.js && node tests/eventos.test.js && node tests/catalogo.test.js && node tests/listados.test.js && node tests/detalle.test.js && node tests/estructura.test.js && node tests/enlaces.test.js"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.0"

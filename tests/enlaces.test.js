@@ -12,13 +12,9 @@ let n = 0;
 let pendientesTolerados = 0;
 function ok(c, m) { n++; if (!c) { console.error('✗ ' + m); process.exitCode = 1; } }
 
-// PENDIENTES_FASE: rutas que se crean en las fases 2 y 3 (páginas /servicios y /productos y los detalles que genera el build
-// desde data/catalogo.json). Mientras el archivo no exista se toleran, con sus anclas. En cuanto exista, se comprueba con rigor.
-// Cuando termine la fase 3 esta lista debe quedar sin efecto (no tolera nada porque todo existe).
-const PENDIENTES_FASE = [
-  /^\/servicios\/[^#?]+$/,   // detalles /servicios/<x> (/servicios y sus anclas ya existen y se comprueban con rigor)
-  /^\/productos\/[^#?]+$/,   // detalles /productos/<x>
-];
+// PENDIENTES_FASE: rutas que aún no existen y se toleran. Ya está vacía: las páginas de /servicios, /productos y sus detalles
+// las genera el build desde data/catalogo.json y todas se comprueban con rigor (archivo y ancla).
+const PENDIENTES_FASE = [];
 
 // Rutas que sirve la plataforma (Vercel Analytics), no el repositorio
 const DE_PLATAFORMA = [/^\/_vercel\//];
@@ -126,4 +122,4 @@ for (const pagina of B.listarPaginas()) {
   });
 }
 
-console.log(`enlaces: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}; ${pendientesTolerados} enlaces a rutas de las fases 2 y 3 toleradas como pendientes`);
+console.log(`enlaces: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}${pendientesTolerados ? `; ${pendientesTolerados} enlaces a rutas pendientes toleradas` : ''}`);
