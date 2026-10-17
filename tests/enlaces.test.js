@@ -16,8 +16,8 @@ function ok(c, m) { n++; if (!c) { console.error('✗ ' + m); process.exitCode =
 // desde data/catalogo.json). Mientras el archivo no exista se toleran, con sus anclas. En cuanto exista, se comprueba con rigor.
 // Cuando termine la fase 3 esta lista debe quedar sin efecto (no tolera nada porque todo existe).
 const PENDIENTES_FASE = [
-  /^\/servicios(\/[^#?]*)?$/,
-  /^\/productos(\/[^#?]*)?$/,
+  /^\/servicios\/[^#?]+$/,   // detalles /servicios/<x> (/servicios y sus anclas ya existen y se comprueban con rigor)
+  /^\/productos\/[^#?]+$/,   // detalles /productos/<x>
 ];
 
 // Rutas que sirve la plataforma (Vercel Analytics), no el repositorio

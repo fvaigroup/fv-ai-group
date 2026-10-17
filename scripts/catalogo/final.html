@@ -1,0 +1,100 @@
+<!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
+<div id="luci-widget" class="fixed bottom-6 left-6 z-40">
+  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+    <img src="/assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8" loading="lazy" decoding="async">
+  </button>
+
+  <div id="luci-panel" class="absolute bottom-[72px] left-0 w-[340px] max-w-[88vw] max-h-[70vh] bg-fv-surface border border-fv-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+    <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40">
+      <div class="flex items-center gap-2.5">
+        <img src="/assets/logo-mark-hex.webp" width="500" height="500" alt="" aria-hidden="true" class="w-7 h-7" loading="lazy" decoding="async">
+        <div>
+          <p class="font-head text-white text-sm leading-none">Luci</p>
+          <p class="text-[11px] text-slate-500 leading-none mt-1">Asistente virtual · responde al instante</p>
+        </div>
+      </div>
+      <button id="luci-close" aria-label="Cerrar" class="text-slate-500 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div id="luci-messages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 text-sm"></div>
+    <div id="luci-quick" class="px-4 pb-3 flex flex-wrap gap-2"></div>
+
+    <form id="luci-form" class="flex items-center gap-2 p-3 border-t border-white/5">
+      <input id="luci-input" type="text" placeholder="Escribe tu pregunta..." autocomplete="off" class="flex-1 bg-black border border-fv-border rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-fv-cyan/50">
+      <button type="submit" aria-label="Enviar" class="w-9 h-9 rounded-lg bg-fv-orange text-black flex items-center justify-center shrink-0 hover:brightness-110 transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-br from-fv-cyan to-fv-orange text-black flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const scrollTopBtn = document.getElementById('scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      const show = window.scrollY > 500;
+      scrollTopBtn.classList.toggle('opacity-0', !show);
+      scrollTopBtn.classList.toggle('pointer-events-none', !show);
+      scrollTopBtn.classList.toggle('translate-y-3', !show);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // ---- Barra de progreso de scroll ----
+  (function () {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    function updateProgress() {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  })();
+
+  // ---- Barra de carga entre páginas (se anima al hacer clic en un link interno) ----
+  (function () {
+    const bar = document.getElementById('page-load-bar');
+    if (!bar) return;
+    const isInternalLink = (a) => {
+      if (!a.href || a.target === '_blank') return false;
+      try {
+        const url = new URL(a.href, window.location.href);
+        return url.origin === window.location.origin && !a.href.startsWith('mailto:') && !a.href.startsWith('tel:') && !a.hash;
+      } catch (e) { return false; }
+    };
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a || !isInternalLink(a)) return;
+      bar.style.opacity = '1';
+      requestAnimationFrame(() => { bar.style.width = '75%'; });
+      setTimeout(() => { bar.style.width = '92%'; }, 300);
+    });
+    window.addEventListener('pageshow', () => {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      bar.style.opacity = '1';
+      requestAnimationFrame(() => { bar.style.transition = ''; });
+    });
+  })();
+</script>
+<script defer src="/assets/eventos.js"></script>
+<script defer src="/assets/publicado.js"></script>
+<script defer src="/assets/estados.js"></script>
+<script defer src="/assets/luci.js"></script>
+<script defer src="/assets/medicion.js"></script>
+<script defer src="/assets/search.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>

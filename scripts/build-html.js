@@ -15,9 +15,19 @@
 //
 // Las categorías de los desplegables salen de data/catalogo.json (si existe) o de data/catalogo-base.json.
 // Determinista y con saltos de línea LF: sin fechas ni rutas de la máquina.
-// Funciones reutilizables para las fases que generan páginas: renderHeader, renderFooter, insertar, listarPaginas.
+// Funciones reutilizables para las fases que generan páginas: renderHeader, renderFooter, insertar, listarPaginas, procesarPagina.
+//
+// Orden de trabajo del build:
+//   1) scripts/catalogo/generar.js genera las páginas del catálogo (hoy /servicios y /productos) EN MEMORIA, desde data/catalogo.json;
+//   2) en cada página se rellenan las tarjetas de los marcadores
+//        <!-- tarjetas:inicio ids="diagnostico,asesor-financiero" cols="4" -->  ...  <!-- tarjetas:fin -->
+//      (cols = 2, 3 o 4 en escritorio; 1 en el teléfono y 2 en tablet; opcional nivel="3" = encabezado del nombre);
+//   3) se rellenan el encabezado y el pie compartidos.
+//   Las páginas generadas llevan un comentario «no editar a mano»: el build las reescribe.
 const fs = require('fs');
 const path = require('path');
+const { generarPaginas } = require('./catalogo/generar');
+const { reemplazarMarcadores } = require('./catalogo/tarjetas');
 
 const RAIZ = path.resolve(__dirname, '..');
 const PARCIALES = path.join(RAIZ, 'partials');
@@ -216,6 +226,14 @@ function insertar(html, opciones) {
     .replace(RE_FOOTER, () => `<!-- footer:inicio -->\n${renderFooter(cat)}\n<!-- footer:fin -->`);
 }
 
+// Una página completa: tarjetas de los marcadores + encabezado y pie. opciones: { catalogo, archivo }
+function procesarPagina(html, opciones) {
+  opciones = opciones || {};
+  const cat = opciones.catalogo || cargarCatalogo();
+  const conTarjetas = reemplazarMarcadores(html.replace(/\r\n/g, '\n'), cat, opciones.archivo);
+  return insertar(conTarjetas, { catalogo: cat, archivo: opciones.archivo });
+}
+
 function listarPaginas() {
   const excluidas = new Set([...LEGACY, ...SALTAR]);
   const lista = fs.readdirSync(RAIZ).filter(f => /\.html$/.test(f) && !excluidas.has(f)).sort();
@@ -282,18 +300,21 @@ function main(argv) {
   const migrar = argv.includes('--migrar');
   const cat = cargarCatalogo();
   const cambiadas = [];
-  for (const archivo of listarPaginas()) {
+  const generadas = generarPaginas(cat);               // 1) páginas del catálogo, en memoria
+  const lista = Array.from(new Set([...listarPaginas(), ...Object.keys(generadas)])).sort();
+  for (const archivo of lista) {
     const ruta = path.join(RAIZ, archivo);
-    const actual = fs.readFileSync(ruta, 'utf8');
-    let nuevo = actual.replace(/\r\n/g, '\n');
-    if (migrar) nuevo = migrarPagina(archivo, nuevo);
-    nuevo = insertar(nuevo, { catalogo: cat, archivo });
+    const actual = fs.existsSync(ruta) ? fs.readFileSync(ruta, 'utf8') : '';
+    const esGenerada = Object.prototype.hasOwnProperty.call(generadas, archivo);
+    let nuevo = esGenerada ? generadas[archivo] : actual.replace(/\r\n/g, '\n');
+    if (migrar && !esGenerada) nuevo = migrarPagina(archivo, nuevo);
+    nuevo = procesarPagina(nuevo, { catalogo: cat, archivo });   // 2) tarjetas  3) encabezado y pie
     if (nuevo !== actual) {
       cambiadas.push(archivo);
       if (!check) fs.writeFileSync(ruta, nuevo, 'utf8');
     }
   }
-  const total = listarPaginas().length;
+  const total = lista.length;
   if (check) {
     if (cambiadas.length) {
       console.error(`build-html: ${cambiadas.length} página(s) desactualizada(s): ${cambiadas.join(', ')}. Corra: node scripts/build-html.js`);
@@ -308,7 +329,7 @@ function main(argv) {
 
 module.exports = {
   RAIZ, LEGACY, SALTAR, ACTIVOS, PAGINAS,
-  cargarCatalogo, lineasDeCategoria, renderHeader, renderFooter, insertar, tieneMarcadores, listarPaginas, leerAtributos,
+  cargarCatalogo, lineasDeCategoria, renderHeader, renderFooter, insertar, procesarPagina, tieneMarcadores, listarPaginas, leerAtributos,
 };
 
 if (require.main === module) {

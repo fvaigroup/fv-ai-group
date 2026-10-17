@@ -79,16 +79,6 @@
       "permanent": true
     },
     {
-      "source": "/servicios",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/servicios.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/precios",
       "destination": "/",
       "permanent": true

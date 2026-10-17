@@ -1,11 +1,13 @@
 // Genera las imágenes para redes y los íconos de las páginas de producto.
-// Uso: node scripts/imagenes-redes.js [condominio|gym|instagram|ejecutivos ...]   (sin argumentos: todo)
+// Uso: node scripts/imagenes-redes.js [condominio|gym|instagram|ejecutivos|servicios-productos ...]   (sin argumentos: todo)
 //
 // - assets/<producto>/favicon-64.png y apple-touch-icon.png, a partir de favicon.svg y <producto>-emblema.svg
 // - assets/<producto>/og-<producto>.png (1200x630): toma la maqueta del hero de <producto>.html, así la
 //   imagen siempre coincide con la página.
 // - assets/social/ig-fvaigroup-1080x1350.png: los precios salen de PRECIOS_IG; actualícelos aquí si cambian.
 // - assets/ejecutivos/og-ejecutivos.png (1200x630): el titular de la portada de ejecutivos.html (cámbielo aquí si cambia allá).
+// - assets/og/servicios.png, productos.png, servicios-<categoria>.png y productos-<categoria>.png (1200x630):
+//   los textos salen de data/catalogo.json (tipos, categorias y lineas), no se duplican aquí.
 //
 // Requiere Playwright. Si no está en el proyecto, se usa el que instala `npm i -g @playwright/cli`.
 const fs = require('fs');
@@ -184,6 +186,83 @@ body{position:relative;overflow:hidden}
 <div class="pie"><div><b>Programa para dueños de empresa</b> · F&amp;V AI Group</div><span>FVAIGROUP.COM/EJECUTIVOS</span></div>`, css);
 }
 
+// ---------- Servicios y Productos (assets/og/) ----------
+// Los textos (título del tipo, intro, categorías y leyendas de las líneas) salen de data/catalogo.json.
+// Solo la forma (⬡ ▲) y el color distinguen las líneas: nunca el nombre «Línea …».
+const PAL_SP = {
+  hex: { trazo: ['#00FFFF', '#FF8C00'], halo1: 'rgba(0,204,255,.15)', halo2: 'rgba(255,140,0,.22)', pie: '#FF8C00', borde: 'rgba(0,255,255,.6)' },
+  tri: { trazo: ['#4ade80', '#a855f7'], halo1: 'rgba(168,85,247,.17)', halo2: 'rgba(74,222,128,.19)', pie: '#4ade80', borde: 'rgba(74,222,128,.6)' },
+  // marca madre: cian y naranja (productos) / mezcla de ambas líneas (software, cursos)
+  madre: { halo1: 'rgba(0,204,255,.15)', halo2: 'rgba(255,140,0,.22)', pie: '#FF8C00', borde: 'rgba(0,255,255,.6)' },
+  mezcla: { halo1: 'rgba(168,85,247,.17)', halo2: 'rgba(255,140,0,.20)', pie: '#FF8C00', borde: 'rgba(255,140,0,.6)' },
+};
+
+const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// Si el subtítulo es largo se queda con la primera oración (el sentido no cambia).
+const corto = t => (t.length > 90 && /\.\s/.test(t)) ? t.split(/(?<=\.)\s/)[0] : t;
+
+const degradado = (id, tr) => `<defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${tr[0]}"/><stop offset=".4" stop-color="${tr[0]}"/><stop offset=".6" stop-color="${tr[1]}"/><stop offset="1" stop-color="${tr[1]}"/></linearGradient></defs>`;
+const SVG_HEX = (id, w) => `<svg width="${w}" height="${w}" viewBox="0 0 100 100">${degradado(id, PAL_SP.hex.trazo)}<path d="M50 4 90 27v46L50 96 10 73V27z" fill="url(#${id})" fill-opacity=".10" stroke="url(#${id})" stroke-width="3.2" stroke-linejoin="round"/></svg>`;
+const SVG_TRI = (id, w) => `<svg width="${w}" height="${w}" viewBox="0 0 100 100">${degradado(id, PAL_SP.tri.trazo)}<path d="M50 10 92 86H8z" fill="url(#${id})" fill-opacity=".10" stroke="url(#${id})" stroke-width="3.2" stroke-linejoin="round"/></svg>`;
+const ICO_HEX = '<svg viewBox="0 0 24 24" width="20" height="20" fill="#00FFFF"><path d="M12 1.5 21.6 7v10L12 22.5 2.4 17V7z"/></svg>';
+const ICO_TRI = '<svg viewBox="0 0 24 24" width="20" height="20" fill="#4ade80"><path d="M12 3 22 20.5H2z"/></svg>';
+
+// d: { titulo, sub, ruta, pie, formas: ['hex'] | ['tri'] | ['hex','tri'], paleta }
+function htmlServiciosProductos(d, lineas) {
+  const fuentes = '<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">';
+  const p = PAL_SP[d.paleta];
+  const ambas = d.formas.length === 2;
+  const chip = d.formas.map(f => `<span class="ch">${f === 'hex' ? ICO_HEX : ICO_TRI}<span>${esc(lineas[f].leyenda)}</span></span>`).join('<span class="sep">·</span>');
+  const formas = ambas
+    ? `<div class="f f1">${SVG_HEX('gh', 240)}</div><div class="f f2">${SVG_TRI('gt', 200)}</div>`
+    : `<div class="f f0">${d.formas[0] === 'hex' ? SVG_HEX('gh', 300) : SVG_TRI('gt', 280)}</div>`;
+  const css = `
+html,body{width:1200px;height:630px;background:#000;font-family:'Geist',sans-serif;color:#fff}
+body{position:relative;overflow:hidden}
+.g1{position:absolute;left:-260px;top:-300px;width:820px;height:820px;background:radial-gradient(circle,${p.halo1},transparent 65%)}
+.g2{position:absolute;right:-300px;bottom:-360px;width:980px;height:980px;background:radial-gradient(circle,${p.halo2},transparent 65%)}
+.grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1.2px,transparent 1.3px);background-size:36px 36px;-webkit-mask-image:radial-gradient(ellipse at 30% 30%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 30% 30%,#000 0%,transparent 70%)}
+.top{position:absolute;left:72px;top:60px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:14px;font-family:'Space Grotesk';font-weight:700;font-size:26px;letter-spacing:.06em;white-space:nowrap}
+.brand img{width:52px;height:52px}
+.leyenda{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk';font-weight:600;font-size:19px;padding:9px 18px;border-radius:999px;border:1.5px solid ${p.borde};color:#fff;white-space:nowrap}
+.ch{display:flex;align-items:center;gap:8px}
+.sep{color:#94a3b8}
+.f{position:absolute;filter:drop-shadow(0 0 40px ${p.halo2})}
+.f0{right:84px;top:200px}
+.f1{right:190px;top:130px}.f2{right:76px;top:324px}
+.txt{position:absolute;left:72px;top:176px;width:${ambas ? 700 : 740}px}
+.h{font-weight:800;font-size:${d.titulo.length > 24 ? 60 : 66}px;line-height:1.06;letter-spacing:-.03em;text-wrap:balance}
+.sub{margin-top:24px;font-size:30px;line-height:1.35;font-weight:400;color:#cbd5e1;max-width:700px}
+.pie{position:absolute;left:72px;right:72px;bottom:52px;display:flex;align-items:center;justify-content:space-between;border-top:1.5px solid rgba(255,255,255,.12);padding-top:26px;font-family:'Space Grotesk';font-size:24px;color:#cbd5e1}
+.pie b{color:${p.pie};font-weight:600}
+.pie span{color:#94a3b8;letter-spacing:.06em;font-size:21px}`;
+  return pagina(`${fuentes}
+<div class="g1"></div><div class="g2"></div><div class="grid"></div>
+<div class="top"><div class="brand"><img src="${url('assets/logo-mark-hex.png')}" alt="">F&amp;V AI GROUP</div><div class="leyenda">${chip}</div></div>
+${formas}
+<div class="txt"><div class="h">${esc(d.titulo)}</div><div class="sub">${esc(d.sub)}</div></div>
+<div class="pie"><div><b>${esc(d.pie)}</b> · F&amp;V AI Group</div><span>${esc(d.ruta)}</span></div>`, css);
+}
+
+function pedidosServiciosProductos() {
+  const cat = JSON.parse(fs.readFileSync(path.join(RAIZ, 'data/catalogo.json'), 'utf8'));
+  const lista = [];
+  const ruta = (t, id) => `FVAIGROUP.COM${t.ruta}${id ? '#' + id : ''}`.toUpperCase();
+  const sv = cat.tipos.servicio, pr = cat.tipos.producto;
+  lista.push({ salida: 'assets/og/servicios.png', d: { titulo: 'Servicios para empresas', sub: corto(sv.intro), pie: sv.titulo, ruta: ruta(sv), formas: ['hex'], paleta: 'hex' } });
+  lista.push({ salida: 'assets/og/productos.png', d: { titulo: 'Productos con precio fijo', sub: corto(pr.intro), pie: pr.titulo, ruta: ruta(pr), formas: ['hex', 'tri'], paleta: 'madre' } });
+  for (const k of sv.categorias) {
+    lista.push({ salida: `assets/og/servicios-${k.id}.png`, d: { titulo: k.nombre, sub: corto(k.intro), pie: sv.titulo, ruta: ruta(sv, k.id), formas: ['hex'], paleta: 'hex' } });
+  }
+  for (const k of pr.categorias) {
+    const ls = new Set(cat.items.filter(i => i.tipo === 'producto' && i.categoria === k.id).map(i => i.linea));
+    const formas = ['hex', 'tri'].filter(f => ls.has(f));
+    lista.push({ salida: `assets/og/productos-${k.id}.png`, d: { titulo: k.nombre, sub: corto(k.intro), pie: pr.titulo, ruta: ruta(pr, k.id), formas, paleta: formas.length === 2 ? 'mezcla' : formas[0] } });
+  }
+  return { lista, lineas: cat.lineas };
+}
+
 (async () => {
   const pw = cargarPlaywright();
   const pedidos = process.argv.slice(2);
@@ -202,6 +281,13 @@ body{position:relative;overflow:hidden}
     if (quiere('ejecutivos')) {
       fs.mkdirSync(path.join(RAIZ, 'assets/ejecutivos'), { recursive: true });
       await captura(browser, { html: htmlEjecutivos(), ancho: 1200, alto: 630, salida: 'assets/ejecutivos/og-ejecutivos.png' });
+    }
+    if (quiere('servicios-productos')) {
+      fs.mkdirSync(path.join(RAIZ, 'assets/og'), { recursive: true });
+      const { lista, lineas } = pedidosServiciosProductos();
+      for (const { salida, d } of lista) {
+        await captura(browser, { html: htmlServiciosProductos(d, lineas), ancho: 1200, alto: 630, salida });
+      }
     }
   } finally { await browser.close(); }
 })();
