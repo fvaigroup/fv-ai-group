@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /data/
+Disallow: /partials/
 
 Sitemap: https://www.fvaigroup.com/sitemap.xml

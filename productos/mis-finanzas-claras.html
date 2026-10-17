@@ -408,7 +408,7 @@
         <p class="det-panel-texto">Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo.</p>
         <ul class="det-panel-lista">
           <li><svg class="det-icono" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>Mensual: pagas mes a mes, sin descuento.</span></li>
-          <li><svg class="det-icono" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>30 % de descuento si pagas 12 meses por adelantado. Es el único descuento.</span></li>
+          <li><svg class="det-icono" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>30 % de descuento si pagas 12 meses por adelantado.</span></li>
           <li><svg class="det-icono" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>Los pagos únicos se pagan de contado o en 2 o 3 cuotas, siempre al mismo precio.</span></li>
           <li><svg class="det-icono" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día.</span></li>
         </ul>
@@ -614,5 +614,14 @@
 <script defer src="/assets/medicion.js"></script>
 <script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
+
+<script>
+  // Anclas viejas de /hexagonal y /triangular: solo en /servicios y /productos y solo si la URL trae ancla (ver assets/anclas-viejas.js)
+  if (location.hash && /^\/(servicios|productos)(\.html)?\/?$/.test(location.pathname)) {
+    var anclasViejas = document.createElement('script');
+    anclasViejas.src = '/assets/anclas-viejas.js';
+    document.body.appendChild(anclasViejas);
+  }
+</script>
 </body>
 </html>

@@ -1001,7 +1001,7 @@
     function renderResult() {
       const onlyAudit = state.procesos.includes('auditoria');
       const recommendAudit = onlyAudit || state.procesos.length >= 2;
-      const waMsg = encodeURIComponent('Hola F&V, hice la calculadora de ROI y quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (Línea Hexagonal, $270).');
+      const waMsg = encodeURIComponent('Hola F&V, hice la calculadora de ROI y quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (⬡, $270).');
       const ctaButtons = `
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="https://wa.me/584244125386?text=${waMsg}" target="_blank" rel="noopener" data-product="diagnostico-270" data-cta="calculadora_roi_resultado" class="btn-primary btn-glow-on-hover inline-flex justify-center items-center min-h-[48px] px-8 py-4 font-head font-semibold rounded-lg">Agendar el Diagnóstico ($270)</a>
@@ -1013,7 +1013,7 @@
         resultWrap.innerHTML = `
           <div>
             <h2 class="font-sans text-2xl text-white font-semibold mb-2 uppercase">Le recomendamos empezar por aquí</h2>
-            <p class="text-slate-200 leading-relaxed mb-8">Sin un proceso definido todavía no hay una cifra que calcular, y eso es justo lo que resuelve nuestro <a href="/asesoria-estrategica" class="link-underline text-fv-cyan">Diagnóstico «¿En qué se va la plata de su empresa?»</a> ($270): un día en su empresa revisando sus números y reportes, con un informe escrito de dónde se pierde el dinero y un plan de acción de 30 días. Si después contrata la implementación, los $270 se abonan al proyecto.</p>
+            <p class="text-slate-200 leading-relaxed mb-8">Sin un proceso definido todavía no hay una cifra que calcular, y eso es justo lo que resuelve nuestro <a href="/servicios/diagnostico" class="link-underline text-fv-cyan">Diagnóstico «¿En qué se va la plata de su empresa?»</a> ($270): un día en su empresa revisando sus números y reportes, con un informe escrito de dónde se pierde el dinero y un plan de acción de 30 días. Si después contrata la implementación, los $270 se abonan al proyecto.</p>
             ${ctaButtons}
           </div>
         `;
@@ -1060,7 +1060,7 @@
 
           ${recommendAudit ? `
             <div class="roi-process-card mb-8" style="border-color: rgba(255,140,0,0.3);">
-              <p class="text-sm text-white"><span class="text-fv-orange font-head font-semibold">Con 2 o más procesos candidatos</span>, lo más eficiente suele ser empezar con el <a href="/asesoria-estrategica" class="link-underline text-fv-cyan">Diagnóstico ($270)</a>: así prioriza cuál automatizar primero en lugar de repartir presupuesto a la vez.</p>
+              <p class="text-sm text-white"><span class="text-fv-orange font-head font-semibold">Con 2 o más procesos candidatos</span>, lo más eficiente suele ser empezar con el <a href="/servicios/diagnostico" class="link-underline text-fv-cyan">Diagnóstico ($270)</a>: así prioriza cuál automatizar primero en lugar de repartir presupuesto a la vez.</p>
             </div>
           ` : ''}
 

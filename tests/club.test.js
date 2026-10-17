@@ -37,9 +37,9 @@ eq(Club.calcular(false, 600).cambioDeLinea, true);
 eq(Club.calcular(true, 6000).implementacion, undefined);
 // valores inválidos: el plan más chico
 eq(Club.calcular(true, 0).usuarios, 1); eq(Club.calcular(false, NaN).linea, 'tri');
-// el mensaje de WhatsApp nombra producto, línea, tamaño y número de socios
-ok(/Club \(mi club tiene 800 socios; Línea Hexagonal, hasta 1\.000 socios, \$250\/mes\)/.test(c.mensaje), c.mensaje);
-ok(/Línea Triangular, hasta 100 socios, \$89,99\/mes/.test(t.mensaje), t.mensaje);
+// el mensaje de WhatsApp nombra producto, forma (⬡ o ▲), tamaño y número de socios
+ok(/Club \(mi club tiene 800 socios; ⬡, hasta 1\.000 socios, \$250\/mes\)/.test(c.mensaje), c.mensaje);
+ok(/▲, hasta 100 socios, \$89,99\/mes/.test(t.mensaje), t.mensaje);
 ok(/más de 5\.000 socios/.test(Club.calcular(true, 6000).mensaje));
 
 // la página no escribe precios a mano ni usa los nombres viejos de los planes
@@ -48,6 +48,7 @@ const visible = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[
 ['Esencial', 'Plus', 'Max', 'Premium', 'Club Pro'].forEach(v => ok(!new RegExp('\\b' + v + '\\b').test(visible), '/club no debe mencionar «' + v + '»'));
 ok(/id="hexagonal"/.test(html) && /id="triangular"/.test(html), '/club debe tener las anclas #hexagonal y #triangular');
 ok(html.indexOf('id="hexagonal"') < html.indexOf('id="triangular"'), 'la Hexagonal va primero');
+ok(!/L(?:í|%C3%AD)nea(?:\s|%20)(?:Hexagonal|Triangular)/.test(html), '/club no nombra «Línea Hexagonal» ni «Línea Triangular»');
 ok(/Anual <span>\(30 % de descuento\)/.test(html), 'interruptor anual con 30 %');
 
 console.log('club: ' + n + ' comprobaciones correctas');

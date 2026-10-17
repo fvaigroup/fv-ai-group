@@ -1,7 +1,8 @@
 /* Precios de las apps de software de F&V (Club, Condominio y Gym): UNA sola tabla para las cuatro páginas
    (/software, /club, /condominio y /gym). Para cambiar un precio, edita SOLO las tablas HEX y TRI de abajo.
-   - ⬡ Línea Hexagonal (organizaciones institucionales o grandes): precios redondos (múltiplos de 10).
-   - ▲ Línea Triangular (organizaciones pequeñas): precios que terminan en ,99.
+   - ⬡ Empresas e instituciones (organizaciones institucionales o grandes): precios redondos (múltiplos de 10).
+   - ▲ Negocios pequeños (organizaciones pequeñas): precios que terminan en ,99.
+   En los textos y mensajes solo se usa la forma (⬡, ▲); los nombres de las líneas quedan solo en el inicio.
    Los tamaños se miden en usuarios: socios (Club), unidades (Condominio) o miembros (Gym).
    Descuento único: 30 % por pagar 12 meses por adelantado (mensual × 12 × 0,70). Hexagonal se redondea al entero; Triangular, a 2 decimales.
    Este archivo también lo usan las pruebas automáticas (Node): node tests/software.test.js */
@@ -11,7 +12,7 @@
   var HEX = [                                     // hasta N usuarios → USD al mes; por encima de 5.000, a medida
     { hasta: 500, mensual: 190 }, { hasta: 1000, mensual: 250 }, { hasta: 2500, mensual: 430 }, { hasta: 5000, mensual: 740 }
   ];
-  var TRI = [                                     // hasta 500 usuarios; por encima conviene la Línea Hexagonal
+  var TRI = [                                     // hasta 500 usuarios; por encima conviene ⬡
     { hasta: 100, mensual: 89.99 }, { hasta: 300, mensual: 119.99 }, { hasta: 500, mensual: 189.99 }
   ];
   var IMPLEMENTACION = {                          // pago único
@@ -74,9 +75,9 @@
       'Una reunión mensual con ' + p.directiva + ' para revisar cobranza y morosidad', 'Soporte prioritario con respuesta el mismo día', 'Comunicados con la imagen de la organización'];
     return ['La app completa con el logo de la organización', 'Soporte por WhatsApp'];
   }
-  /** Mensaje de WhatsApp: nombra el producto, la línea y el tamaño elegido (y el pago anual si corresponde). */
+  /** Mensaje de WhatsApp: nombra el producto, la forma (⬡ o ▲) y el tamaño elegido (y el pago anual si corresponde). */
   function mensaje(linea, prod, plan, ciclo) {
-    var p = PRODUCTOS[prod], lin = linea === 'hex' ? 'Línea Hexagonal' : 'Línea Triangular';
+    var p = PRODUCTOS[prod], lin = linea === 'hex' ? '⬡' : '▲';
     if (!plan) return 'Hola F&V, quiero ' + p.nombre + ' (' + lin + ', más de 5.000 ' + p.usuarios + '). ¿Podemos conversar?';
     var tam = 'hasta ' + miles(plan.hasta) + ' ' + p.usuarios;
     var precio = ciclo === 'anual' ? 'pago anual por adelantado, ' + fmtPrecio(linea, anual(linea, plan.mensual)) + ' (30 % menos)' : fmtPrecio(linea, plan.mensual) + '/mes';
@@ -111,8 +112,8 @@
       '<button type="button" class="swp-tab" aria-pressed="false" data-sw-ciclo="anual" data-evento="' + prod + '_' + linea + '_anual">Anual <span>(30 % de descuento)</span></button></div>';
     var todos = incluyeTodos(prod).concat(incluyeLinea(linea, prod)).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
     return toggle + '<div class="swp-grid" data-sw-linea="' + linea + '" data-sw-producto="' + prod + '" data-sw-ciclo-actual="mensual">' + cartas + ultimo + '</div>' +
-      '<div class="swp-incluye"><h4>Todos los planes ' + (hex ? 'Hexagonales' : 'Triangulares') + ' de ' + esc(p.nombre) + ' incluyen</h4><ul>' + todos + '</ul></div>' +
-      (hex ? '' : '<p class="swp-aviso">¿Más de 500 ' + p.usuarios + '? Es de la <a href="#hexagonal">Línea Hexagonal</a>.</p>');
+      '<div class="swp-incluye"><h4>Todos los planes de ' + esc(p.nombre) + ' para ' + (hex ? 'empresas e instituciones' : 'organizaciones pequeñas') + ' incluyen</h4><ul>' + todos + '</ul></div>' +
+      (hex ? '' : '<p class="swp-aviso">¿Más de 500 ' + p.usuarios + '? Mira los <a href="#hexagonal">planes para empresas e instituciones</a>.</p>');
   }
 
   /** Recomendación para una organización: con junta directiva y administración propia → Hexagonal; si no → Triangular.

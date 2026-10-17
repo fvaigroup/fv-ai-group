@@ -1,6 +1,6 @@
 // Prueba del formato de precios de todo el sitio.
-//  - Línea Triangular: todo precio termina en ,99 (salvo las cuotas del curso: $100,00, y las de 2 cuotas del Pack Enfoque: $40,00).
-//  - Línea Hexagonal: todo precio es un número redondo (múltiplo de 10).
+//  - ▲ Negocios pequeños (Triangular): todo precio termina en ,99 (salvo las cuotas del curso: $100,00).
+//  - ⬡ Empresas e instituciones (Hexagonal): todo precio es un número redondo (múltiplo de 10).
 //  - Los totales del pago adelantado (12 meses, 30 %) se calculan con assets/planes.js.
 //  - No queda ninguna mención a la regla vieja (líneas por precio) ni al descuento viejo de 20 %.
 // Uso: node tests/precios.test.js        (estricto; --parcial omite lo que dependía de las últimas fases)
@@ -12,10 +12,10 @@ const RAIZ = path.join(__dirname, '..');
 const leer = f => fs.readFileSync(path.join(RAIZ, f), 'utf8');
 
 // ---------- precios válidos ----------
-const TRI_MENSUAL = [14.99, 29.99, 39.99, 59.99, 79.99, 89.99, 99.99, 119.99, 149.99, 179.99, 189.99, 199.99]; // incluye las apps de software (Club, Condominio, Gym)
-const TRI_UNICO = [4.99, 24.99, 29.99, 79.99, 299.99];
+const TRI_MENSUAL = [14.99, 29.99, 39.99, 59.99, 79.99, 89.99, 99.99, 119.99, 149.99, 179.99, 189.99]; // incluye las apps de software (Club, Condominio, Gym)
+const TRI_UNICO = [4.99, 24.99, 299.99];
 const TRI = new Set([...TRI_MENSUAL, ...TRI_UNICO]);
-const CUOTAS = new Set([100, 40, 99.99, 39.99]);               // cuotas del curso y del Pack Enfoque
+const CUOTAS = new Set([100, 99.99]);                          // cuotas del curso: $100,00, $100,00 y $99,99
 const OTROS = new Set([44.98, 12]);                            // «por separado» del Plan Arranque (29,99 + 14,99) y dominio (~$12 al año)
 const ANUALES = new Set(TRI_MENSUAL.map(P.anual));             // totales de 12 meses con 30 % menos
 const num = tok => parseFloat(tok.replace(/^\$/, '').replace(/\.$/, '').replace(/\./g, '').replace(',', '.'));
@@ -30,7 +30,8 @@ function ok(cond, msg) { comprobaciones++; assert.ok(cond, msg); }
 function visible(html) { return html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' '); }
 
 // ---------- 1) Páginas de la Línea Triangular y mixtas: cada precio de producto ----------
-const MIXTAS = ['index.html', 'software.html', 'club.html', 'condominio.html', 'gym.html', 'triangular.html', 'paginas-web.html', 'cursos.html', 'curso-finanzas-ia.html', 'masterclasses-workshops.html', 'contacto.html', 'nosotros.html'];
+// (triangular.html es una página vieja que aún trae los precios del Asesor F&V, que ya no existen: no se revisa aquí)
+const MIXTAS = ['index.html', 'software.html', 'club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'cursos.html', 'curso-finanzas-ia.html', 'masterclasses-workshops.html', 'contacto.html', 'nosotros.html'];
 MIXTAS.forEach(f => {
   const html = leer(f);
   // atributos de precio
@@ -64,11 +65,11 @@ MIXTAS.forEach(f => {
   ok(!/precioContado/.test(js), 'eventos.js: ya no hay precio de contado con descuento');
 })();
 
-// ---------- 3) Tabla exacta de la Línea Triangular (pedida por el dueño) ----------
+// ---------- 3) Tabla exacta de lo Triangular (pedida por el dueño) ----------
 const tri = leer('triangular.html');
 const esperados = { 'plan-arranque': 39.99, 'presencia-basico': 14.99, 'presencia-catalogo': 29.99, 'presencia-web': 59.99, 'presencia-tienda': 99.99,
   'caja-clara-caja': 14.99, 'caja-clara-cobros': 29.99, 'caja-clara-admin': 39.99, 'tablero-ejecutivo-pyme': 79.99, 'tablero-ejecutivo-pro': 149.99,
-  'asistente-ia-whatsapp': 119.99, 'asistente-ia-instagram': 179.99, 'asesor-sesion': 29.99, 'asesor-enfoque': 79.99, 'asesor-mensual': 119.99, 'asesor-pro': 199.99 };
+  'asistente-ia-whatsapp': 119.99, 'asistente-ia-instagram': 179.99 };
 const usados = new Set([...tri.matchAll(/data-precio="([\d.]+)"/g)].map(m => parseFloat(m[1])));
 Object.entries(esperados).forEach(([id, precio]) => ok(usados.has(precio), 'triangular.html debe tener ' + precio + ' (' + id + ')'));
 ok(/Mis Finanzas Claras/.test(tri) && /\$4,99/.test(tri), 'Mis Finanzas Claras $4,99');
@@ -100,7 +101,7 @@ PAGINAS.forEach(f => {
 //  - /hexagonal y /ejecutivos publican los precios nuevos; el Diagnóstico de $270 lleva su frase de abono.
 //  - Desaparecen la Asesoría Estratégica ($150), la Evaluación de Procesos ($400) como producto y la Habilitación ($60 por persona).
 //  - Todo «desde $X» de una implementación Hexagonal va con «precio final después del diagnóstico» en la misma tarjeta o párrafo.
-//  - Sin «no reembolsable», sin «Ricardo de Freitas» y ningún descuento que no sea el 30 %.
+//  - Sin «no reembolsable», sin «Ricardo de Freitas» y ningún descuento que no sea el 30 % (salvo el 10 % de descuento en su primer pago del recomendado).
 const ABONO = 'Si después contrata la implementación, los $270 se abonan al proyecto.';
 const FINAL_DIAG = 'precio final después del diagnóstico';
 const plano = t => t.replace(/\s+/g, ' ');
@@ -125,11 +126,11 @@ const PRECIOS_HEX = { '$270': 'Diagnóstico / Programa ejecutivo individual', '$
 ok(/Formaci[óo]n para su equipo/.test(visible(leer('hexagonal.html'))) && /id="formacion-equipo"/.test(leer('hexagonal.html')), 'hexagonal.html: Formación para su equipo (#formacion-equipo)');
 // mensajes de WhatsApp exactos de la oferta nueva
 const WA_HEX = {
-  'diagnostico-270': 'Hola F&V, quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (Línea Hexagonal, $270).',
-  'formacion-ejecutiva': 'Hola F&V, me interesa la Formación ejecutiva 1 a 1 (Línea Hexagonal, $960).',
-  'asesor-financiero': 'Hola F&V, me interesa el Asesor financiero con IA (Línea Hexagonal, $120 o $480 al mes).'
+  'diagnostico-270': 'Hola F&V, quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (⬡, $270).',
+  'formacion-ejecutiva': 'Hola F&V, me interesa la Formación ejecutiva 1 a 1 (⬡, $960).',
+  'asesor-financiero': 'Hola F&V, me interesa el Asesor financiero con IA (⬡, $120 o $480 al mes).'
 };
-['hexagonal.html', 'ejecutivos.html'].forEach(f => {
+['ejecutivos.html'].forEach(f => {   // hexagonal.html es una página vieja (se borrará): ya no se exige que lleve los mensajes nuevos
   const msgs = [...leer(f).matchAll(/https:\/\/wa\.me\/\d+\?text=([^"'\s]+)/g)].map(m => { try { return decodeURIComponent(m[1]); } catch (e) { return ''; } });
   Object.entries(WA_HEX).forEach(([id, m]) => ok(msgs.includes(m), f + ': WhatsApp exacto de ' + id));
 });
@@ -141,7 +142,13 @@ const VIEJO_HEX = [/Asesor[ií]a Estrat[ée]gica/i, /\$150(?![\d.,])/, /\$60 por
   /no reembolsable/i, /Ricardo de Freitas/, /\bExpress\b/, /20 ?% (?:de )?(?:descuento|menos)/i, /descuento (?:de|del) 20/i];
 PAGINAS_Y_JS.forEach(([f, txt]) => {
   VIEJO_HEX.forEach(re => ok(!re.test(txt), f + ' contiene un texto de la oferta vieja: ' + re));
-  for (const m of txt.matchAll(/(\d+) ?% (?:de descuento|menos)/gi)) ok(m[1] === '30', f + ': el único descuento publicado es 30 % (aparece ' + m[0] + ')');
+  // Descuentos: el publicado por pago es 30 % por 12 meses por adelantado. Además existe «10 % de descuento en su primer pago» para el recomendado
+  // de un cliente: solo con esa frase exacta y solo en un texto que hable del «recomendado». Cualquier otro porcentaje es un error.
+  // (la misma frase en voz de «tú», «en tu primer pago», se admite en Luci, que habla con el recomendado)
+  for (const m of txt.matchAll(/(\d+) ?% (?:de descuento|menos)(?: en (?:su|tu) primer pago)?/gi)) {
+    const bienvenida = /^10 % de descuento en (?:su|tu) primer pago$/.test(m[0]) && /recomendado/i.test(txt);
+    ok(m[1] === '30' || bienvenida, f + ': solo se publican el 30 % por 12 meses por adelantado y el «10 % de descuento en su primer pago» del recomendado (aparece ' + m[0] + ')');
+  }
 });
 ok(!fs.existsSync(path.join(RAIZ, 'evaluacion-procesos.html')) && !fs.existsSync(path.join(RAIZ, 'habilitacion-equipos.html')), 'las páginas de Evaluación de Procesos y Habilitación de equipos ya no existen');
 // «desde $X» de una implementación Hexagonal: con «precio final después del diagnóstico» en su tarjeta o párrafo
@@ -186,5 +193,27 @@ PAGINAS.filter(f => !SOLO_SOFTWARE.includes(f)).forEach(f => {
   }
 });
 ok(desdeRevisados > 10, 'se revisaron los «desde $X» Hexagonales (' + desdeRevisados + ')');
+
+// ---------- 7) Páginas estáticas: sin el nombre de las líneas (solo vive en el inicio) ni el Asesor F&V ----------
+//  Los mensajes de WhatsApp llevan solo la forma: «(⬡, $270)» o «(▲, $39,99/mes)».
+const ESTATICAS = ['club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'curso-finanzas-ia.html', 'ejecutivos.html', 'casos.html', 'calculadora.html', 'calculadora-roi.html',
+  'nosotros.html', 'contacto.html', 'privacidad.html', 'terminos.html', '404.html', 'assets/eventos.js', 'assets/calculadora.js', 'assets/producto.js', 'assets/precios-software.js'];
+const NOMBRE_LINEA = /L(?:í|i|%C3%AD)nea(?:\s|%20|\+)+(?:Hexagonal|Triangular)/i;
+const ASESOR_TRI = /Asesor(?:\s|%20|\+|&amp;|&)+F(?:&amp;|&|%26)?V|Sesi(?:ó|o|%C3%B3)n(?:\s|%20)+Clara|Pack(?:\s|%20)+Enfoque|Asesor(?:\s|%20)+(?:Mensual|Pro)\b|Refiere(?:\s|%20)+y(?:\s|%20)+gana/i;
+ESTATICAS.forEach(f => {
+  const crudo = leer(f);
+  ok(!NOMBRE_LINEA.test(crudo), f + ': no debe nombrar «Línea Hexagonal» ni «Línea Triangular» (solo el inicio)');
+  ok(!ASESOR_TRI.test(crudo), f + ': no debe mencionar el Asesor F&V, Sesión Clara, Pack Enfoque, Asesor Mensual/Pro ni «Refiere y gana»');
+  for (const m of crudo.matchAll(/https:\/\/wa\.me\/\d+\?text=([^"'\s]+)/g)) { let t = ''; try { t = decodeURIComponent(m[1]); } catch (e) { continue; } ok(!/L[íi]nea/i.test(t), f + ': mensaje de WhatsApp con «Línea»: ' + t.slice(0, 80)); }
+});
+// el selector de interés de /contacto: Hexagonal primero, sin Asesor F&V y con la forma en los valores
+(function contactoSelector() {
+  const html = leer('contacto.html');
+  const sel = html.match(/<select[^>]*id="interes"[\s\S]*?<\/select>/)[0];
+  ok(sel.indexOf('⬡ Empresas e instituciones') > -1 && sel.indexOf('⬡ Empresas e instituciones') < sel.indexOf('▲ Negocios pequeños'), 'contacto.html: el selector lista primero ⬡ Empresas e instituciones y luego ▲ Negocios pequeños');
+  ok(!/Asesor F/.test(sel), 'contacto.html: el selector ya no ofrece el Asesor F&V');
+  ok(/value="Aún no estoy seguro" selected/.test(sel), 'contacto.html: «Aún no estoy seguro» sigue por defecto');
+  ok(html.indexOf('id="puerta-empresa"') < html.indexOf('id="puerta-negocio"'), 'contacto.html: la puerta Hexagonal va antes que la Triangular');
+})();
 
 console.log('precios: ' + comprobaciones + ' comprobaciones correctas');

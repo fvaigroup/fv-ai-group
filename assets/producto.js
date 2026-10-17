@@ -70,7 +70,7 @@
       n = Math.min(n, 100000);
       rango.value = Math.min(n, parseInt(rango.max, 10));
       var r = calcular(prod, junta(), n), hex = r.linea === 'hex';
-      var insignia = el('linea'); insignia.textContent = hex ? 'Línea Hexagonal' : 'Línea Triangular';
+      var insignia = el('linea'); insignia.textContent = hex ? 'Empresas e instituciones' : 'Negocios pequeños';
       insignia.className = insignia.className.replace(/\bnav-(hex|tri)\b/g, '').trim() + ' ' + (hex ? 'nav-hex' : 'nav-tri');
       var aviso = el('aviso');
       if (r.aMedida) {
@@ -85,7 +85,7 @@
         el('anual-total').textContent = 'Se paga ' + S.fmtPrecio(r.linea, r.anual) + ' al año por adelantado. Ahorra ' + S.fmtPrecio(r.linea, r.ahorro) + '.';
         el('porsocio').textContent = S.fmt(r.porUsuario) + ' al mes';
         el('impl').textContent = r.implementacion ? S.fmtPrecio(r.linea, r.implementacion.unico) + (r.implementacion.cuotas ? ' en ' + r.implementacion.cuotas + ' cuotas' : ' (pago único)') : 'A medida';
-        aviso.textContent = r.cambioDeLinea ? 'Con más de 500 ' + pr.usuarios + ' corresponde la Línea Hexagonal.' : ''; aviso.hidden = !r.cambioDeLinea;
+        aviso.textContent = r.cambioDeLinea ? 'Con más de 500 ' + pr.usuarios + ' corresponde el plan para empresas e instituciones.' : ''; aviso.hidden = !r.cambioDeLinea;
       }
       wa.setAttribute('href', 'https://wa.me/584244125386?text=' + encodeURIComponent(r.mensaje));
     }

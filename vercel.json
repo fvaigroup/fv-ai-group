@@ -54,18 +54,133 @@
   ],
   "redirects": [
     {
+      "source": "/hexagonal",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/hexagonal.html",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/triangular",
+      "destination": "/productos",
+      "permanent": true
+    },
+    {
+      "source": "/triangular.html",
+      "destination": "/productos",
+      "permanent": true
+    },
+    {
+      "source": "/software",
+      "destination": "/productos#software",
+      "permanent": true
+    },
+    {
+      "source": "/software.html",
+      "destination": "/productos#software",
+      "permanent": true
+    },
+    {
+      "source": "/cursos",
+      "destination": "/productos#cursos",
+      "permanent": true
+    },
+    {
+      "source": "/cursos.html",
+      "destination": "/productos#cursos",
+      "permanent": true
+    },
+    {
+      "source": "/asesoria-estrategica",
+      "destination": "/servicios/diagnostico",
+      "permanent": true
+    },
+    {
+      "source": "/asesoria-estrategica.html",
+      "destination": "/servicios/diagnostico",
+      "permanent": true
+    },
+    {
+      "source": "/diagnostico",
+      "destination": "/servicios/diagnostico",
+      "permanent": true
+    },
+    {
+      "source": "/diagnostico.html",
+      "destination": "/servicios/diagnostico",
+      "permanent": true
+    },
+    {
+      "source": "/evaluacion-procesos",
+      "destination": "/servicios/diagnostico",
+      "permanent": true
+    },
+    {
+      "source": "/evaluacion-procesos.html",
+      "destination": "/servicios/diagnostico",
+      "permanent": true
+    },
+    {
+      "source": "/habilitacion-equipos",
+      "destination": "/servicios/formacion-equipo",
+      "permanent": true
+    },
+    {
+      "source": "/habilitacion-equipos.html",
+      "destination": "/servicios/formacion-equipo",
+      "permanent": true
+    },
+    {
+      "source": "/despliegue-ejecucion",
+      "destination": "/servicios#implementacion",
+      "permanent": true
+    },
+    {
+      "source": "/despliegue-ejecucion.html",
+      "destination": "/servicios#implementacion",
+      "permanent": true
+    },
+    {
+      "source": "/masterclasses-workshops",
+      "destination": "/servicios#formacion",
+      "permanent": true
+    },
+    {
+      "source": "/masterclasses-workshops.html",
+      "destination": "/servicios#formacion",
+      "permanent": true
+    },
+    {
+      "source": "/acompanamiento-continuo",
+      "destination": "/servicios/acompanamiento",
+      "permanent": true
+    },
+    {
+      "source": "/acompanamiento-continuo.html",
+      "destination": "/servicios/acompanamiento",
+      "permanent": true
+    },
+    {
       "source": "/express",
-      "destination": "/triangular",
+      "destination": "/productos",
       "permanent": true
     },
     {
       "source": "/express.html",
-      "destination": "/triangular",
+      "destination": "/productos",
       "permanent": true
     },
     {
       "source": "/triangular-express",
-      "destination": "/triangular",
+      "destination": "/productos",
+      "permanent": true
+    },
+    {
+      "source": "/triangular-express.html",
+      "destination": "/productos",
       "permanent": true
     },
     {
@@ -86,31 +201,6 @@
     {
       "source": "/precios.html",
       "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/diagnostico",
-      "destination": "/asesoria-estrategica",
-      "permanent": true
-    },
-    {
-      "source": "/evaluacion-procesos",
-      "destination": "/asesoria-estrategica",
-      "permanent": true
-    },
-    {
-      "source": "/evaluacion-procesos.html",
-      "destination": "/asesoria-estrategica",
-      "permanent": true
-    },
-    {
-      "source": "/habilitacion-equipos",
-      "destination": "/hexagonal#formacion-equipo",
-      "permanent": true
-    },
-    {
-      "source": "/habilitacion-equipos.html",
-      "destination": "/hexagonal#formacion-equipo",
       "permanent": true
     }
   ]

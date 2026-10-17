@@ -1,6 +1,6 @@
 /* Talleres y cursos: fechas, horas, precios y cupos en UN solo lugar.
    >>> Para cambiar una fecha, un precio o los cupos libres, edita SOLO el bloque EVENTOS de abajo. <<<
-   Las páginas (Triangular, portada, Cursos, curso Finanzas con IA), Luci y el buscador leen estos datos; el HTML trae
+   Las páginas (Productos, portada, curso Finanzas con IA), Luci y el buscador leen estos datos; el HTML trae
    el mismo texto por defecto para quien no tiene JavaScript.
 
    Reglas de fechas (se comparan con la fecha de HOY en Venezuela, America/Caracas, del navegador):
@@ -78,7 +78,7 @@
     return 'Hola F&V, quiero reservar mi cupo en ' + cur.nombre + ' (' + ds + ' de ' + mes + '). ¿Cómo pago: en 3 cuotas o de contado?';
   }
 
-  // Los precios Triangulares terminan en ,99: siempre con coma decimal y 2 decimales
+  // Los precios de los productos ▲ terminan en ,99: siempre con coma decimal y 2 decimales
   function usd(n) { return '$' + n.toFixed(2).replace('.', ','); }
   var t = EVENTOS.taller, cur = EVENTOS.curso;
   var hoy = hoyISO();
@@ -130,8 +130,8 @@
 
   // lo que viene, en orden de fecha (para el resumen, Luci y el buscador)
   var lista = [];
-  if (tallerVigente) lista.push({ tipo: 'taller', id: 'taller', nombre: 'Taller «' + t.nombre + '»', fechaISO: t.fecha, inicioISO: t.fecha + 'T' + t.inicio + ':00-04:00', texto: sinAnio(t.fecha) + ', ' + t.hora, url: '/cursos#fechas' });
-  abiertas.forEach(function (c) { lista.push({ tipo: 'curso', id: c.id, nombre: cur.nombre, fechaISO: c.fechas[0], inicioISO: c.fechas[0] + 'T' + c.inicio + ':00-04:00', texto: fechasCurso(c).replace(/ de 20\d\d$/, '') + ', ' + c.hora, url: '/cursos#finanzas-con-ia' }); });
+  if (tallerVigente) lista.push({ tipo: 'taller', id: 'taller', nombre: 'Taller «' + t.nombre + '»', fechaISO: t.fecha, inicioISO: t.fecha + 'T' + t.inicio + ':00-04:00', texto: sinAnio(t.fecha) + ', ' + t.hora, url: '/productos/taller-plata-clara' });
+  abiertas.forEach(function (c) { lista.push({ tipo: 'curso', id: c.id, nombre: cur.nombre, fechaISO: c.fechas[0], inicioISO: c.fechas[0] + 'T' + c.inicio + ':00-04:00', texto: fechasCurso(c).replace(/ de 20\d\d$/, '') + ', ' + c.hora, url: '/curso-finanzas-ia' }); });
   lista.sort(function (a, b) { return a.fechaISO < b.fechaISO ? -1 : a.fechaISO > b.fechaISO ? 1 : 0; });
   datos['eventos.resumen'] = lista.length ? lista.map(function (e) { return e.nombre + ': ' + e.texto; }).join(' · ') : SIN_FECHAS;
 

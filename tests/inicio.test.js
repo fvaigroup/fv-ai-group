@@ -190,7 +190,11 @@ const rDif = respuestas[preguntas.indexOf('¿Cuál es la diferencia entre servic
 ok(rDif.includes('Servicio: el equipo de F&V trabaja con usted, en su empresa o con su equipo.') && rDif.includes('Producto: listo para usar, con el mismo precio y la misma entrega para todos.'), 'la diferencia usa las definiciones oficiales');
 const rPago = respuestas[preguntas.indexOf('¿Cómo pago?')] || '';
 ok(/bolívares a la tasa BCV del día/.test(rPago) && /dólares/.test(rPago) && /Pago Móvil/.test(rPago) && /USDT/.test(rPago) && /30 % por pagar 12 meses por adelantado/.test(rPago) && /50 %/.test(rPago), '«¿Cómo pago?» da las formas de pago, el 30 % por 12 meses y la reserva del 50 %');
-ok(!/10 ?%|20 ?% (?:de )?descuento/.test(respuestas.join(' ')), 'el único descuento publicado es 30 % (sin el 10 % de bienvenida)');
+// Descuentos en las preguntas generales: el 30 % por 12 meses por adelantado y, como máximo, la frase «10 % de descuento en su primer pago» (recomendado). El 20 % y cualquier otro quedan prohibidos.
+const descuentos = [...respuestas.join(' ').matchAll(/(\d+) ?% (?:de )?(?:descuento|menos)(?: en su primer pago)?/gi)];
+ok(descuentos.every(m => m[1] === '30' || m[0] === '10 % de descuento en su primer pago'), 'solo se publican el descuento de 30 % y la frase «10 % de descuento en su primer pago» (hay: ' + descuentos.map(m => m[0]).join(' | ') + ')');
+ok(!/20 ?% (?:de )?(?:descuento|menos)|descuento (?:de|del) 20/i.test(respuestas.join(' ')), 'sin el 20 % de descuento');
+ok(!/refiere y gana|único descuento|solo descuento/i.test(respuestas.join(' ')), 'las respuestas no dicen «refiere y gana» ni «único descuento»');
 const rLinea = respuestas[preguntas.indexOf('¿Qué línea es para mí?')] || '';
 ok(rLinea.includes('Menos de 20 personas: Triangular. Más de 20, varias sedes o junta directiva: Hexagonal.'), '«¿Qué línea es para mí?» da la regla del tamaño');
 ok(!pal('tú|tus|tu|puedes|pagas').test(respuestas.join(' ')), 'las respuestas generales no mezclan el «tú»');

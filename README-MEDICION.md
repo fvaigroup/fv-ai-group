@@ -16,7 +16,7 @@ Todo el seguimiento de clics vive en **un solo archivo**: [`assets/medicion.js`]
 
 ### 1. WhatsApp por producto: `whatsapp_click`
 Se envía en **todo** enlace a `wa.me`. Parámetros:
-- `product`: el producto que trajo al cliente. Sale del atributo `data-product` del botón o, si no lo tiene, del mensaje prellenado (por ejemplo, «Hola F&V, quiero el Plan Arranque (Línea Triangular, $39/mes)…» → `pack-arranque`).
+- `product`: el producto que trajo al cliente. Sale del atributo `data-product` del botón o, si no lo tiene, del mensaje prellenado (por ejemplo, «Hola F&V, quiero el Plan Arranque (▲, $39,99/mes)…» → `plan-arranque`).
 - `cta_location`: dónde estaba el botón (`hero`, `header`, `footer`, `menu_movil`, `luci`, o el nombre del bloque).
 - `page`: la página (`inicio`, `triangular`, `paginas-web`…).
 
@@ -43,7 +43,7 @@ Cada botón nuevo lleva `data-evento`. Los de la portada y las páginas de líne
 | `hexagonal_hero_whatsapp`, `hexagonal_detalle_<producto>` | Página /hexagonal |
 | `header_whatsapp` | Botón único del menú |
 
-`whatsapp_click` sigue llevando `product` (nombre del producto) y `cta_location`. El mensaje prellenado de cada producto incluye su línea, por ejemplo «Línea Triangular».
+`whatsapp_click` sigue llevando `product` (nombre del producto) y `cta_location`. El mensaje prellenado de cada producto lleva la forma de su línea entre paréntesis, por ejemplo «(▲, $39,99/mes)» o «(⬡, $270)»; los nombres «Línea Hexagonal» y «Línea Triangular» solo existen en el inicio.
 
 ### 7. Página de producto Club (`/club`)
 Todos los botones y enlaces de `/club` llevan `data-evento`; los de WhatsApp además `data-product` y `data-cta`, así que `whatsapp_click` dice qué producto y qué bloque trajo al cliente.
@@ -165,6 +165,38 @@ Cada botón nuevo lleva `data-evento`. Los de WhatsApp de producto usan `<ubicac
 | `portada_software`, `pie_software`, `contacto_software` | Enlaces a /software (franja de la portada, pie y Contacto) |
 | `software_hero_piloto`, `software_hero_ejemplo`, `software_tipo_club`, `software_tipo_condominio`, `software_cta_piloto` | Página /software; el WhatsApp del piloto trae el producto `software-piloto` |
 | `web_plan_catalogo`, `web_plan_web`, `web_plan_tienda` | Tamaños de Presencia en /paginas-web |
-| `cursos_a_asesor`, `avisame_curso_finanzas` | Sesión Clara y aviso de nueva fecha en /cursos |
+| `avisame_curso_finanzas` | Aviso de nueva fecha del curso de Finanzas con IA (el evento `cursos_a_asesor` dejó de existir: la asesoría de lo ▲ desapareció) |
 
 La prueba automática de los cálculos de pago adelantado está en `tests/planes.test.js` (`node tests/planes.test.js`).
+
+### 11. Catálogo único: servicios y productos (17 de octubre de 2026)
+El sitio tiene dos listados (`/servicios` y `/productos`) y una página de detalle por ítem (`/servicios/<id>`, `/productos/<id>`), todos generados desde `data/catalogo.json`. Esto es lo que se mide en ellos.
+
+| Evento | Qué es | Parámetros |
+|---|---|---|
+| `ver_detalle` | Clic en «Ver detalle» de una tarjeta (listados, inicio y páginas de detalle) | `item` (id del ítem del catálogo, por ejemplo `tablero-gerencial`), `linea` (`hex` o `tri`), `cta_location` (`tarjeta`), `page` |
+| `detalle_cruce` | «Ver …» hacia el producto o servicio equivalente de la otra línea | `item` (el ítem de destino), `cta_location`, `page` |
+| `detalle_nivel_atajo` | Atajo a un nivel dentro de una página compartida (por ejemplo los 3 niveles de Acompañamiento) | `item`, `cta_location`, `page` |
+| `menu_categoria` | Abrir un desplegable de Servicios o Productos del menú, o seguir uno de sus enlaces | `categoria` (`servicios`, `productos`, `servicios/diagnostico`, `productos/cursos`, `servicios/todos`…), `page` |
+| `detalle_whatsapp` | Botón de WhatsApp de una página de detalle | `product`, `cta_location` (el bloque: `data-cta`), `page` |
+| `detalle_consulta_gratis` | «Consulta gratis de 20 min» de una página de detalle (además sale `diagnostico_gratis`) | `cta_location`, `page` |
+| `detalle_faq_<n>` | Pregunta frecuente abierta en una página de detalle | `cta_location`, `page` |
+
+Cómo leerlo:
+- `ver_detalle` agrupado por `item` dice qué tarjetas despiertan interés; por `linea`, si interesa más lo `hex` (empresas e instituciones) o lo `tri` (negocios pequeños). Los parámetros `item` y `linea` salen de los atributos `data-item` y `data-linea` de la tarjeta; cualquier otro elemento con `data-evento` que los lleve los envía igual.
+- `menu_categoria` lo envía **solo** `assets/menu.js` (`assets/medicion.js` no lo toca), una vez al abrir el desplegable y una vez al seguir uno de sus enlaces; `categoria` es el grupo (`servicios` o `productos`) al abrir y `<grupo>/<categoría>` (o `<grupo>/todos`) al seguir un enlace. En el menú móvil pasa igual con el acordeón.
+- `detalle_whatsapp` es el nombre por defecto del evento de los botones de WhatsApp de los detalles. Todos llevan `data-product`, así que tanto este evento como `whatsapp_click` traen `product`.
+- **Los productos conservan sus ids**: el `product` de `whatsapp_click` es el mismo de antes (`diagnostico-270`, `formacion-ejecutiva`, `asesor-financiero`, `plan-arranque`, `caja-clara`…); se toma del campo `product` del ítem del catálogo y, si falta, de su `id`. Los informes de GA4 filtrados por esos valores siguen funcionando.
+- La asesoría de lo ▲ (cuatro productos, con sus valores de `product` y eventos) ya no existe: dejan de salir. La asesoría solo existe en lo ⬡ (`asesor-financiero`).
+- Las páginas viejas (`/hexagonal`, `/triangular`, `/software`, `/cursos`, `/asesoria-estrategica`, `/acompanamiento-continuo`, `/despliegue-ejecucion`, `/masterclasses-workshops`) redirigen (301) a las nuevas: los eventos `hexagonal_*`, `triangular_*`, `software_hex_*` y `software_tri_*` dejan de salir desde ellas, y su tráfico aparece como `page` = `servicios`, `productos` o el detalle. Para comparar con antes, sume `servicios` + `productos` + los detalles.
+
+Las redirecciones están en `vercel.json`; `assets/anclas-viejas.js` lleva un ancla vieja (`/hexagonal#web-corporativa-crm`) a su página nueva (`/servicios/web-corporativa-crm`). El `sitemap.xml` se genera con `node scripts/catalogo/sitemap.js` (también lo corre `npm run build`).
+
+#### Eventos de los bloques extra de `/servicios` y `/productos`
+Salen de `partials/servicios-extra.html` y `partials/productos-extra.html` (los nombres ya no llevan «hexagonal» ni «triangular»; los viejos `hexagonal_metodo_*` y `triangular_test` solo existían en las páginas viejas).
+
+| Evento | Dónde |
+|---|---|
+| `servicios_metodo_diagnostico`, `servicios_metodo_implementacion`, `servicios_metodo_formacion_equipo`, `servicios_metodo_ejecutivos`, `servicios_metodo_acompanamiento` | Enlaces de «Cómo trabajamos» en `/servicios` |
+| `productos_test_whatsapp`, `productos_test_detalle`, `productos_test_resultado` | Cuestionario «¿No sabes cuál elegir?» en `/productos` (botón de WhatsApp, enlace al detalle y resultado mostrado) |
+| `recomendar_whatsapp` | «Quiero recomendar a alguien» en `/productos` (`data-product=recomendados`, `data-cta=productos_recomendar`) |

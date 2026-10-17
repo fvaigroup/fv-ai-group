@@ -56,11 +56,14 @@ USUARIOS.forEach(u => {
 // ---------- costo por usuario con el plan lleno ----------
 eq(S.costoPorUsuario('hex', 500), 0.38); eq(S.costoPorUsuario('hex', 5000), 0.15); eq(S.costoPorUsuario('tri', 100), 0.9); eq(S.costoPorUsuario('tri', 500), 0.38);
 
-// ---------- mensajes de WhatsApp: producto, línea y tamaño ----------
-eq(S.mensaje('hex', 'club', S.planPara('hex', 500), 'mensual'), 'Hola F&V, quiero Club (Línea Hexagonal, hasta 500 socios, $190/mes). ¿Podemos conversar?');
-eq(S.mensaje('tri', 'gym', S.planPara('tri', 100), 'mensual'), 'Hola F&V, quiero Gym (Línea Triangular, hasta 100 miembros, $89,99/mes). ¿Cómo pago?');
+// ---------- mensajes de WhatsApp: producto, forma (⬡ o ▲) y tamaño; nunca el nombre de la línea ----------
+eq(S.mensaje('hex', 'club', S.planPara('hex', 500), 'mensual'), 'Hola F&V, quiero Club (⬡, hasta 500 socios, $190/mes). ¿Podemos conversar?');
+eq(S.mensaje('tri', 'gym', S.planPara('tri', 100), 'mensual'), 'Hola F&V, quiero Gym (▲, hasta 100 miembros, $89,99/mes). ¿Cómo pago?');
 ok(/pago anual por adelantado, \$1\.596 \(30 % menos\)/.test(S.mensaje('hex', 'condominio', S.planPara('hex', 500), 'anual')));
 ok(/más de 5\.000 unidades/.test(S.mensaje('hex', 'condominio', null)));
+ok(/^Hola F&V, quiero Condominio \(⬡, más de 5\.000 unidades\)/.test(S.mensaje('hex', 'condominio', null)), 'mensaje a medida con la forma');
+ok(!/L[íi]nea/.test(S.mensaje('tri', 'club', S.planPara('tri', 300), 'anual')), 'el mensaje no nombra la línea');
+ok(!/Línea (Hexagonal|Triangular)/.test(S.planesHTML('hex', 'club') + S.planesHTML('tri', 'gym')), 'los planes generados no nombran la línea');
 
 // ---------- las páginas leen la misma fuente ----------
 const FINAL = !process.argv.includes('--parcial');   // estricto por defecto: con --parcial se omiten las comprobaciones de las fases pendientes

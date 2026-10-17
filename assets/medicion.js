@@ -3,6 +3,9 @@
    - Todo enlace a WhatsApp envía "whatsapp_click" con el producto (data-product, o el nombre sacado del mensaje prellenado).
    - Los enlaces a /contacto#agenda y al calendario envían "diagnostico_gratis".
    - Si el elemento marcado con data-evento es un enlace a WhatsApp, su evento lleva también el producto.
+   - Si el elemento marcado lleva data-item y/o data-linea (tarjetas del catálogo: "ver_detalle", "detalle_cruce"...), su evento lleva
+     también item (id del ítem del catálogo) y linea (hex o tri).
+   - menu_categoria NO sale de aquí: lo envía assets/menu.js (una vez al abrir un desplegable y una vez al seguir uno de sus enlaces).
    - En /ejecutivos (página para dueños de empresa) todo clic a WhatsApp envía además "ejecutivos_whatsapp" con el producto.
    - Los mensajes de cupo del curso Finanzas con IA envían "reservo_curso".
    - La calculadora envía "generate_lead" y "calculadora_pdf_descargado" desde assets/calculadora.js. */
@@ -20,7 +23,7 @@
     return slug(m ? m[1] : t);
   }
   function ubicacion(el) {
-    return el.dataset.cta || (el.closest('#luci-panel') ? 'luci' : el.closest('#mobile-menu') ? 'menu_movil' : el.closest('header') ? 'header' : el.closest('footer') ? 'footer' : 'otro');
+    return el.dataset.cta || (el.closest('#luci-panel') ? 'luci' : el.closest('#mobile-menu') ? 'menu_movil' : el.closest('header') ? 'header' : el.closest('footer') ? 'footer' : el.closest('article[data-item]') ? 'tarjeta' : 'otro');
   }
   document.addEventListener('click', function (e) {
     if (typeof gtag !== 'function') return;
@@ -33,6 +36,8 @@
     if (marcado) {
       var datos = { cta_location: ubicacion(marcado), page: page };
       if (esWa && (marcado === a || marcado.contains(a))) datos.product = producto(a);
+      if (marcado.dataset.item) datos.item = marcado.dataset.item;
+      if (marcado.dataset.linea) datos.linea = marcado.dataset.linea;
       gtag('event', evento, datos);
     }
     if (!a) return;

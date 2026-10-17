@@ -1,0 +1,326 @@
+<!-- ============ ¿NO SABES CUÁL ELEGIR? (antes en triangular.html#elige) ============ -->
+<section id="elige" class="linea-tri py-14 lg:py-20 bg-fv-surface2/40 border-t border-white/5 scroll-mt-28" aria-labelledby="elige-title">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <p class="lst-bloque-cab"><span class="nav-forma nav-tri" aria-hidden="true"></span><span class="lst-bloque-nombre">Negocios pequeños</span></p>
+    <h2 id="elige-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance mb-4">¿No sabes <span class="texto-linea">cuál elegir?</span></h2>
+    <p class="text-slate-300 text-lg leading-relaxed mb-8">Contesta 3 preguntas y te decimos con qué empezar.</p>
+    <div id="quiz" class="x-card is-static p-6 sm:p-8" aria-live="polite">
+      <p id="quiz-step" class="font-head text-xs uppercase tracking-wider text-fv-triGreen mb-3"></p>
+      <h3 id="quiz-q" class="font-sans text-xl sm:text-2xl font-bold text-white mb-6">¿Tu negocio aparece en Google Maps?</h3>
+      <div id="quiz-options" class="flex flex-col sm:flex-row gap-3"></div>
+      <div id="quiz-result" class="hidden"></div>
+    </div>
+  </div>
+</section>
+<script>
+  // Test "¿No sabes cuál elegir?": hasta 3 preguntas -> un producto recomendado con su botón de WhatsApp (sin servidor)
+  (function () {
+    var root = document.getElementById('quiz');
+    if (!root) return;
+    var WA = 'https://wa.me/584244125386?text=';
+    var PROD = {
+      arranque: { id: 'plan-arranque', name: 'Plan Arranque', price: '$39,99 al mes', url: '/productos/plan-arranque', msg: 'Hola F&V, quiero el Plan Arranque (▲, $39,99/mes). ¿Cómo pago?', why: 'Todavía no te encuentran en Google Maps y no llevas la cuenta del día: el plan resuelve las dos cosas por una mensualidad.' },
+      presencia: { id: 'presencia-catalogo', name: 'Presencia, tamaño Catálogo', price: '$29,99 al mes', url: '/paginas-web', msg: 'Hola F&V, quiero Presencia, tamaño Catálogo (▲, $29,99/mes). ¿Cómo pago?', why: 'El primer paso es que te encuentren en Google Maps y te escriban por WhatsApp, con tu catálogo en $ y Bs.' },
+      caja: { id: 'caja-clara-caja', name: 'Caja Clara, tamaño Caja', price: '$14,99 al mes', url: '/productos/caja-clara', msg: 'Hola F&V, quiero Caja Clara, tamaño Caja (▲, $14,99/mes). ¿Cómo pago?', why: 'Ya te encuentran. Ahora toca saber cuánto ganas cada semana, sin sacar cuentas a mano.' },
+      mensajes: { id: 'asistente-ia-whatsapp', name: 'Asistente IA de WhatsApp', price: '$119,99 al mes', url: '/productos/asistente-ia', msg: 'Hola F&V, quiero Asistente IA de WhatsApp, tamaño WhatsApp (▲, $119,99/mes). ¿Cómo pago?', why: 'Si contestar tarde te cuesta ventas, el asistente responde por ti las 24 horas. Disponible desde noviembre de 2026; con permanencia mínima de 6 meses.' },
+      numeros: { id: 'tablero-ejecutivo-pyme', name: 'Tablero Ejecutivo, tamaño Pyme', price: '$79,99 al mes', url: '/productos/tablero-ejecutivo', msg: 'Hola F&V, quiero Tablero Ejecutivo, tamaño Pyme (▲, $79,99/mes). ¿Cómo pago?', why: 'Ya tienes lo básico. Ahora te toca ver tus números clave en una sola pantalla y decidir con ellos.' },
+      plata: { id: 'taller-plata-clara', name: 'Taller «La plata de tu negocio clara»', price: '$24,99 por persona', url: '/productos/taller-plata-clara', msg: 'Hola F&V, quiero un cupo en el taller «La plata de tu negocio clara» (▲, $24,99).', why: 'Tres horas presenciales en Valencia para ordenar la plata de tu negocio. Escríbenos y te decimos las próximas fechas.' }
+    };
+    var QS = [
+      { q: '¿Tu negocio aparece en Google Maps?', o: [['Sí', 'si'], ['No', 'no']] },
+      { q: '¿Sabes cuánto ganas cada semana?', o: [['Sí', 'si'], ['No', 'no']] },
+      { q: '¿Qué quieres mejorar ahora?', o: [['Contestar más rápido', 'mensajes'], ['Ver mis números', 'numeros'], ['Ordenar mi plata', 'plata']] }
+    ];
+    // devuelve el producto, o null si todavía falta la tercera pregunta
+    function pick(a) {
+      var maps = a[0] === 'si', sabe = a[1] === 'si';
+      if (a.length >= 2) {
+        if (!maps && !sabe) return PROD.arranque;
+        if (!maps) return PROD.presencia;
+        if (!sabe) return PROD.caja;
+      }
+      return a.length >= 3 ? PROD[a[2]] : null;
+    }
+    var ans = [], step = 0, calc = null;
+    function fade(el) { el.classList.remove('fade-in'); void el.offsetWidth; el.classList.add('fade-in'); }
+    var elStep = document.getElementById('quiz-step'), elQ = document.getElementById('quiz-q'), elO = document.getElementById('quiz-options'), elR = document.getElementById('quiz-result');
+    elQ.setAttribute('tabindex', '-1');
+    function calculando(p) { // "Calculando tu recomendación…" ~600 ms antes del resultado
+      elStep.classList.add('hidden'); elQ.classList.add('hidden'); elO.classList.add('hidden'); elR.classList.remove('hidden');
+      elR.setAttribute('aria-busy', 'true'); elR.innerHTML = '<p class="flex items-center gap-3 text-slate-300 py-6" role="status"><span class="spinner-sm" aria-hidden="true"></span>Calculando tu recomendación…</p>'; fade(elR);
+      clearTimeout(calc); calc = setTimeout(function () { elR.removeAttribute('aria-busy'); result(p); fade(elR); }, 600);
+    }
+    function render(enfocar) {
+      clearTimeout(calc); elR.removeAttribute('aria-busy'); [elStep, elQ, elO].forEach(fade);
+      elR.classList.add('hidden'); elR.innerHTML = '';
+      elQ.classList.remove('hidden'); elO.classList.remove('hidden'); elStep.classList.remove('hidden');
+      var s = QS[step];
+      elStep.textContent = 'Pregunta ' + (step + 1) + ' de ' + QS.length;
+      elQ.textContent = s.q;
+      elO.innerHTML = '';
+      s.o.forEach(function (op) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'flex-1 min-h-[52px] px-5 py-3 rounded-lg border border-fv-triPurple/40 text-white font-head font-medium hover:bg-fv-triPurple/10 hover:border-fv-triPurple/70 transition-colors';
+        b.textContent = op[0];
+        b.addEventListener('click', function () { ans.push(op[1]); step++; var p = pick(ans); p ? calculando(p) : render(true); });
+        elO.appendChild(b);
+      });
+      if (enfocar) elQ.focus({ preventScroll: true });
+    }
+    function result(p) {
+      elStep.classList.add('hidden'); elQ.classList.add('hidden'); elO.classList.add('hidden');
+      elR.classList.remove('hidden');
+      elR.innerHTML = '<p class="font-head text-xs uppercase tracking-wider text-fv-triGreen mb-3">Te recomendamos</p>' +
+        '<h3 id="quiz-resultado" tabindex="-1" class="font-sans text-3xl font-extrabold text-white mb-1">' + p.name + ' <span class="text-fv-triGreen">' + p.price + '</span></h3>' +
+        '<p class="text-slate-300 leading-relaxed mt-3 mb-6">' + p.why + '</p>' +
+        '<div class="flex flex-col sm:flex-row gap-3">' +
+        '<a href="' + WA + encodeURIComponent(p.msg) + '" target="_blank" rel="noopener" data-evento="productos_test_whatsapp" data-product="' + p.id + '" data-cta="productos_test" class="btn-tri flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold text-center">Lo quiero</a>' +
+        '<a href="' + p.url + '" data-evento="productos_test_detalle" data-cta="productos_test" class="flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head font-medium transition-colors">Ver qué incluye</a>' +
+        '<button type="button" id="quiz-reset" class="min-h-[48px] px-4 py-3 rounded-lg text-slate-300 hover:text-white font-head text-sm transition-colors">Empezar de nuevo</button></div>';
+      document.getElementById('quiz-reset').addEventListener('click', function () { ans = []; step = 0; render(true); });
+      document.getElementById('quiz-resultado').focus({ preventScroll: true });
+      if (typeof gtag === 'function') gtag('event', 'productos_test_resultado', { producto: p.id });
+    }
+    render(false);
+  })();
+</script>
+
+<!-- ============ MÍRALO FUNCIONANDO (antes en triangular.html) ============ -->
+<section id="funcionando" class="linea-tri py-14 lg:py-20 scroll-mt-28 border-t border-white/5" aria-labelledby="funcionando-title">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="lst-bloque-cab"><span class="nav-forma nav-tri" aria-hidden="true"></span><span class="lst-bloque-nombre">Negocios pequeños</span></p>
+      <h2 id="funcionando-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance mb-4">Míralo <span class="texto-linea">funcionando</span></h2>
+      <p class="text-slate-300 text-lg leading-relaxed">Tres ejemplos ilustrativos de lo que recibes.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-7 items-stretch">
+
+      <article class="x-card flex flex-col p-6 sm:p-7 min-w-0" aria-labelledby="f1-t">
+        <h3 id="f1-t" class="font-sans text-lg font-bold text-white mb-1">Presencia, tamaño Catálogo</h3>
+        <p class="text-sm text-slate-300 mb-6">Tus clientes ven tus precios en $ y Bs, y piden por WhatsApp.</p>
+        <div class="mx-auto w-full max-w-[270px] rounded-[2rem] border-2 border-white/15 bg-black p-2.5 shadow-[0_0_50px_rgba(168,85,247,0.18)]" role="img" aria-label="Vista ilustrativa de un catálogo en un teléfono">
+          <div class="rounded-[1.5rem] bg-fv-surface overflow-hidden">
+            <div class="mx-auto mt-2 h-1 w-12 rounded-full bg-white/15"></div>
+            <div class="px-4 pt-3 pb-3 border-b border-white/5">
+              <p class="font-head text-sm font-semibold text-white">Bodegón La Esquina</p>
+              <p class="text-[11px] text-slate-300">Catálogo de ejemplo</p>
+            </div>
+            <ul class="p-3 space-y-2">
+<li class="flex items-center justify-between gap-3 rounded-lg bg-white/[0.04] border border-white/5 px-3 py-2.5">
+              <span class="text-[13px] text-slate-200 leading-tight">Harina de maíz 1 kg</span>
+              <span class="text-right shrink-0"><span class="block font-head text-sm font-semibold text-white">$1,20</span><span class="hidden" data-bs-wrap><span class="block text-[10.5px] text-fv-triGreen" data-usd="1.20"></span></span></span>
+            </li>
+<li class="flex items-center justify-between gap-3 rounded-lg bg-white/[0.04] border border-white/5 px-3 py-2.5">
+              <span class="text-[13px] text-slate-200 leading-tight">Café molido 500 g</span>
+              <span class="text-right shrink-0"><span class="block font-head text-sm font-semibold text-white">$4,50</span><span class="hidden" data-bs-wrap><span class="block text-[10.5px] text-fv-triGreen" data-usd="4.50"></span></span></span>
+            </li>
+<li class="flex items-center justify-between gap-3 rounded-lg bg-white/[0.04] border border-white/5 px-3 py-2.5">
+              <span class="text-[13px] text-slate-200 leading-tight">Queso blanco 1 kg</span>
+              <span class="text-right shrink-0"><span class="block font-head text-sm font-semibold text-white">$6,00</span><span class="hidden" data-bs-wrap><span class="block text-[10.5px] text-fv-triGreen" data-usd="6.00"></span></span></span>
+            </li>
+<li class="flex items-center justify-between gap-3 rounded-lg bg-white/[0.04] border border-white/5 px-3 py-2.5">
+              <span class="text-[13px] text-slate-200 leading-tight">Refresco 2 L</span>
+              <span class="text-right shrink-0"><span class="block font-head text-sm font-semibold text-white">$2,00</span><span class="hidden" data-bs-wrap><span class="block text-[10.5px] text-fv-triGreen" data-usd="2.00"></span></span></span>
+            </li>
+            </ul>
+            <div class="px-3 pb-4 pt-1"><div class="flex items-center justify-center gap-2 rounded-lg bg-fv-triGreen text-black font-head text-[13px] font-semibold py-2.5">Pedir por WhatsApp</div></div>
+          </div>
+        </div>
+        <p class="hidden text-xs text-slate-300 mt-4 text-center" data-bs-wrap>Los precios en Bs de esta vista usan la tasa BCV de hoy.</p>
+        <div class="mt-auto pt-6">
+          <a href="/demo-catalogo" data-track="demo_catalogo_click" data-cta="productos_funcionando" class="flex items-center justify-center min-h-[48px] px-4 py-3 rounded-lg border border-fv-triPurple/50 text-white hover:bg-fv-triPurple/10 font-head font-medium transition-colors">Abrir demo en vivo</a>
+        </div>
+      </article>
+
+      <article class="x-card flex flex-col p-6 sm:p-7 min-w-0 lg:col-span-2 lg:order-3" aria-labelledby="f2-t">
+        <h3 id="f2-t" class="font-sans text-lg font-bold text-white mb-1">Caja Clara</h3>
+        <p class="text-sm text-slate-300 mb-6">Cada día anotas lo que entró y al final de la semana ves tu ganancia.</p>
+        <div class="rounded-xl border border-white/10 bg-black overflow-x-auto" tabindex="0" role="region" aria-label="Tabla de ejemplo, desplazable">
+          <table class="w-full min-w-[440px] lg:min-w-0 text-[13px] text-slate-300">
+            <caption class="sr-only">Cuadre semanal de ejemplo</caption>
+            <thead><tr class="bg-fv-triGreen/10 text-fv-triGreen font-head text-[11px] uppercase tracking-wide">
+              <th scope="col" class="text-left font-medium px-3 py-2.5">Día</th><th scope="col" class="text-right font-medium px-3 py-2.5">Efectivo ($)</th><th scope="col" class="text-right font-medium px-3 py-2.5">Pago Móvil (Bs)</th><th scope="col" class="text-right font-medium px-3 py-2.5">USDT</th><th scope="col" class="text-right font-medium px-3 py-2.5">Total del día ($)</th>
+            </tr></thead>
+            <tbody>
+<tr class="border-t border-white/5"><th scope="row" class="text-left font-normal text-slate-200 px-3 py-2.5 whitespace-nowrap">Lunes</th><td class="px-3 py-2.5 text-right tabular-nums">$45</td><td class="px-3 py-2.5 text-right tabular-nums">Bs 26.100</td><td class="px-3 py-2.5 text-right tabular-nums">$10</td><td class="px-3 py-2.5 text-right tabular-nums font-semibold text-white">$85</td></tr>
+<tr class="border-t border-white/5"><th scope="row" class="text-left font-normal text-slate-200 px-3 py-2.5 whitespace-nowrap">Martes</th><td class="px-3 py-2.5 text-right tabular-nums">$38</td><td class="px-3 py-2.5 text-right tabular-nums">Bs 17.400</td><td class="px-3 py-2.5 text-right tabular-nums">$5</td><td class="px-3 py-2.5 text-right tabular-nums font-semibold text-white">$63</td></tr>
+<tr class="border-t border-white/5"><th scope="row" class="text-left font-normal text-slate-200 px-3 py-2.5 whitespace-nowrap">Miércoles</th><td class="px-3 py-2.5 text-right tabular-nums">$52</td><td class="px-3 py-2.5 text-right tabular-nums">Bs 21.750</td><td class="px-3 py-2.5 text-right tabular-nums">$12</td><td class="px-3 py-2.5 text-right tabular-nums font-semibold text-white">$89</td></tr>
+<tr class="border-t border-white/5"><th scope="row" class="text-left font-normal text-slate-200 px-3 py-2.5 whitespace-nowrap">Jueves</th><td class="px-3 py-2.5 text-right tabular-nums">$41</td><td class="px-3 py-2.5 text-right tabular-nums">Bs 30.450</td><td class="px-3 py-2.5 text-right tabular-nums">$8</td><td class="px-3 py-2.5 text-right tabular-nums font-semibold text-white">$84</td></tr>
+<tr class="border-t border-white/5"><th scope="row" class="text-left font-normal text-slate-200 px-3 py-2.5 whitespace-nowrap">Viernes</th><td class="px-3 py-2.5 text-right tabular-nums">$66</td><td class="px-3 py-2.5 text-right tabular-nums">Bs 43.500</td><td class="px-3 py-2.5 text-right tabular-nums">$20</td><td class="px-3 py-2.5 text-right tabular-nums font-semibold text-white">$136</td></tr>
+<tr class="border-t border-white/5"><th scope="row" class="text-left font-normal text-slate-200 px-3 py-2.5 whitespace-nowrap">Sábado</th><td class="px-3 py-2.5 text-right tabular-nums">$79,99</td><td class="px-3 py-2.5 text-right tabular-nums">Bs 52.200</td><td class="px-3 py-2.5 text-right tabular-nums">$24,99</td><td class="px-3 py-2.5 text-right tabular-nums font-semibold text-white">$165</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <dl class="mt-3 rounded-xl border border-white/10 bg-black text-[13px] overflow-hidden">
+          <div class="flex items-center justify-between gap-4 px-3 py-2.5"><dt class="text-slate-300">Ventas de la semana</dt><dd class="tabular-nums text-white">$622</dd></div>
+          <div class="flex items-center justify-between gap-4 px-3 py-2.5 border-t border-white/5"><dt class="text-slate-300">Gastos de la semana</dt><dd class="tabular-nums text-white">-$410</dd></div>
+          <div class="flex items-center justify-between gap-4 px-3 py-3 bg-fv-triGreen/15 border-t border-white/5"><dt class="font-head font-semibold text-white">Ganancia de la semana</dt><dd class="tabular-nums font-head font-bold text-fv-triGreen">$212</dd></div>
+        </dl>
+        <p class="text-xs text-slate-300 mt-4">Vista ilustrativa con datos de ejemplo. Los Bs de Pago Móvil se pasan a dólares con una tasa de ejemplo de Bs 870 por $1.</p>
+      </article>
+
+      <article class="x-card flex flex-col p-6 sm:p-7 min-w-0" aria-labelledby="f3-t">
+        <h3 id="f3-t" class="font-sans text-lg font-bold text-white mb-1">Asistente IA de WhatsApp</h3>
+        <p class="text-sm text-slate-300 mb-6">Contesta al instante y pasa a una persona lo que no puede resolver.</p>
+        <div class="rounded-2xl border border-white/10 bg-[#0b141a] overflow-hidden" role="img" aria-label="Conversación de ejemplo entre un cliente y el asistente">
+          <div class="flex items-center gap-2.5 px-4 py-3 bg-[#1f2c34]"><span class="w-8 h-8 rounded-full bg-fv-triGreen/20 text-fv-triGreen flex items-center justify-center font-head text-xs font-bold">TM</span><div><p class="text-sm text-white leading-none">Taller Mecánico</p><p class="text-[11px] text-slate-300 leading-none mt-1">Asistente IA</p></div></div>
+          <div class="p-4 space-y-2.5 text-[13px] leading-snug">
+            <div data-exento="whatsapp" class="max-w-[85%] ml-auto rounded-xl rounded-tr-sm bg-[#005c4b] text-slate-100 px-3 py-2">Buenas, ¿cuánto cuesta el cambio de aceite?</div>
+            <div class="max-w-[88%] rounded-xl rounded-tl-sm bg-[#1f2c34] text-slate-100 px-3 py-2">¡Hola! El cambio de aceite cuesta $24,99 (en bolívares a la tasa BCV del día). ¿Quieres que te agende una cita?</div>
+            <div data-exento="whatsapp" class="max-w-[85%] ml-auto rounded-xl rounded-tr-sm bg-[#005c4b] text-slate-100 px-3 py-2">Sí, para mañana en la mañana</div>
+            <div class="max-w-[88%] rounded-xl rounded-tl-sm bg-[#1f2c34] text-slate-100 px-3 py-2">Listo, quedaste anotado para mañana a las 9:00 a.m.</div>
+            <div data-exento="whatsapp" class="max-w-[85%] ml-auto rounded-xl rounded-tr-sm bg-[#005c4b] text-slate-100 px-3 py-2">Tengo un reclamo con una garantía</div>
+            <div class="max-w-[88%] rounded-xl rounded-tl-sm bg-[#1f2c34] text-slate-100 px-3 py-2">Te paso con una persona del equipo para ayudarte mejor.</div>
+          </div>
+        </div>
+        <p class="text-xs text-slate-300 mt-4">Ejemplo ilustrativo · disponible desde noviembre de 2026</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+<script defer src="/assets/bcv.js"></script>
+
+<!-- ============ GARANTÍA ============ -->
+<section id="garantia" class="linea-tri py-14 lg:py-16 bg-fv-surface2/40 border-t border-white/5 scroll-mt-28" aria-labelledby="garantia-title">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="x-card is-static flex flex-col sm:flex-row gap-6 items-start p-6 sm:p-9">
+      <span class="w-14 h-14 rounded-xl border flex items-center justify-center shrink-0 text-fv-triGreen bg-fv-triGreen/10 border-fv-triGreen/30"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+      <div>
+        <p class="lst-bloque-cab"><span class="nav-forma nav-tri" aria-hidden="true"></span><span class="lst-bloque-nombre">Negocios pequeños</span></p>
+        <h2 id="garantia-title" class="font-sans text-2xl sm:text-3xl font-bold text-white mb-3">Garantía</h2>
+        <p class="text-slate-300 text-lg leading-relaxed">Si tu producto no queda como lo prometimos, lo corregimos sin costo. Si aun así no te sirve, te devolvemos tu dinero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO PAGAS (antes en triangular.html#como-pagas) ============ -->
+<section id="como-pagas" class="linea-tri py-14 lg:py-20 border-t border-white/5 scroll-mt-28" aria-labelledby="pagos-title">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <p class="lst-bloque-cab"><span class="nav-forma nav-tri" aria-hidden="true"></span><span class="lst-bloque-nombre">Negocios pequeños</span></p>
+    <h2 id="pagos-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance mb-8">Cómo <span class="texto-linea">pagas</span></h2>
+    <div class="x-card is-static p-6 sm:p-8">
+      <ul class="space-y-5">
+        <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M16.5 7.5c-.8-1-2.2-1.5-4.5-1.5-2.5 0-4 1-4 2.75S9.5 11.5 12 12s4 1.2 4 3.25S14.5 18 12 18c-2.3 0-3.8-.6-4.7-1.7"/></svg></span><p class="text-slate-300 text-lg leading-relaxed pt-1">Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo.</p></li>
+        <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><p class="text-slate-300 text-lg leading-relaxed pt-1"><strong class="text-white font-semibold">Mensual:</strong> pagas mes a mes, sin descuento.</p></li>
+        <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><p class="text-slate-300 text-lg leading-relaxed pt-1"><strong class="text-white font-semibold">30 % de descuento</strong> si pagas 12 meses por adelantado.</p></li>
+        <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9h9"/></svg></span><p class="text-slate-300 text-lg leading-relaxed pt-1">Los pagos únicos se pagan de contado o en 2 o 3 cuotas, siempre al mismo precio.</p></li>
+        <li class="flex gap-4"><span class="w-10 h-10 rounded-lg border border-fv-triGreen/30 bg-fv-triGreen/10 text-fv-triGreen flex items-center justify-center shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></svg></span><p class="text-slate-300 text-lg leading-relaxed pt-1">Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS FRECUENTES (antes en triangular.html) ============ -->
+<section id="preguntas" class="linea-tri py-14 lg:py-20 bg-fv-surface2/40 border-t border-white/5 scroll-mt-28" aria-labelledby="faq-title">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <p class="lst-bloque-cab"><span class="nav-forma nav-tri" aria-hidden="true"></span><span class="lst-bloque-nombre">Negocios pequeños</span></p>
+    <h2 id="faq-title" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance mb-8">Preguntas <span class="texto-linea">frecuentes</span></h2>
+    <div class="space-y-3">
+      <details class="group x-faq bg-fv-surface border border-fv-border rounded-xl px-5 sm:px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 min-h-[44px] py-4 cursor-pointer font-head text-white">
+          <span>¿Cómo pago?</span>
+          <svg class="chev w-4 h-4 text-fv-triGreen transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-base leading-relaxed pb-5">Los precios son en dólares. Puedes pagar en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Los planes mensuales se pagan mes a mes, sin descuento. Si pagas 12 meses por adelantado, tienes 30 % de descuento. Los pagos únicos se pagan de contado o en 2 o 3 cuotas, siempre al mismo precio.</p>
+      </details>
+
+      <details class="group x-faq bg-fv-surface border border-fv-border rounded-xl px-5 sm:px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 min-h-[44px] py-4 cursor-pointer font-head text-white">
+          <span>¿Puedo cancelar?</span>
+          <svg class="chev w-4 h-4 text-fv-triGreen transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-base leading-relaxed pb-5">Sí. Los planes mensuales los cancelas cuando quieras, salvo los que tienen permanencia mínima. Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día. Los meses que pagaste por adelantado no se reembolsan, salvo lo que cubre la Garantía.</p>
+      </details>
+
+      <details class="group x-faq bg-fv-surface border border-fv-border rounded-xl px-5 sm:px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 min-h-[44px] py-4 cursor-pointer font-head text-white">
+          <span>¿Qué es la permanencia?</span>
+          <svg class="chev w-4 h-4 text-fv-triGreen transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-base leading-relaxed pb-5">Es el tiempo mínimo que te comprometes a mantener el plan. Web y Tienda: 12 meses. Asistente IA de WhatsApp: 6 meses, porque la instalación va incluida. Los demás planes no tienen permanencia.</p>
+      </details>
+
+      <details class="group x-faq bg-fv-surface border border-fv-border rounded-xl px-5 sm:px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 min-h-[44px] py-4 cursor-pointer font-head text-white">
+          <span>¿Qué pasa si no me gusta?</span>
+          <svg class="chev w-4 h-4 text-fv-triGreen transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-base leading-relaxed pb-5">Aplica la Garantía: si tu producto no queda como lo prometimos, lo corregimos sin costo. Si aun así no te sirve, te devolvemos tu dinero.</p>
+      </details>
+
+      <details class="group x-faq bg-fv-surface border border-fv-border rounded-xl px-5 sm:px-6 py-1">
+        <summary class="flex items-center justify-between gap-4 min-h-[44px] py-4 cursor-pointer font-head text-white">
+          <span>¿Atienden fuera de Valencia?</span>
+          <svg class="chev w-4 h-4 text-fv-triGreen transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="text-slate-300 text-base leading-relaxed pb-5">Sí. Trabajamos por WhatsApp y Google Meet, así que puedes estar en cualquier parte. Solo los talleres y el curso son presenciales, en Valencia.</p>
+      </details>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "es-VE",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo pago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los precios son en dólares. Puedes pagar en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Los planes mensuales se pagan mes a mes, sin descuento. Si pagas 12 meses por adelantado, tienes 30 % de descuento. Los pagos únicos se pagan de contado o en 2 o 3 cuotas, siempre al mismo precio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo cancelar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Los planes mensuales los cancelas cuando quieras, salvo los que tienen permanencia mínima. Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día. Los meses que pagaste por adelantado no se reembolsan, salvo lo que cubre la Garantía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la permanencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es el tiempo mínimo que te comprometes a mantener el plan. Web y Tienda: 12 meses. Asistente IA de WhatsApp: 6 meses, porque la instalación va incluida. Los demás planes no tienen permanencia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si no me gusta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aplica la Garantía: si tu producto no queda como lo prometimos, lo corregimos sin costo. Si aun así no te sirve, te devolvemos tu dinero."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Atienden fuera de Valencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Trabajamos por WhatsApp y Google Meet, así que puedes estar en cualquier parte. Solo los talleres y el curso son presenciales, en Valencia."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ============ RECOMIÉNDANOS (el bloque de recomendados) ============ -->
+<section id="recomendados" class="linea-tri py-14 lg:py-20 border-t border-white/5 scroll-mt-28" aria-labelledby="recomendar-titulo">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="x-card is-featured is-static flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center p-6 sm:p-9">
+      <span class="w-12 h-12 rounded-xl border border-fv-triPurple/30 bg-fv-triPurple/10 text-fv-triPurple flex items-center justify-center shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M18 8v6M15 11h6"/></svg></span>
+      <div class="flex-1">
+        <h2 id="recomendar-titulo" class="font-sans text-2xl sm:text-3xl font-bold text-white mb-2">Recomiéndanos</h2>
+        <p class="text-slate-300 text-lg leading-relaxed">Tu recomendado recibe 10 % de descuento en su primer pago.</p>
+      </div>
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20recomendar%20a%20alguien%20(%E2%96%B2)." target="_blank" rel="noopener" data-evento="recomendar_whatsapp" data-product="recomendados" data-cta="productos_recomendar" class="btn-tri flex items-center justify-center gap-2.5 min-h-[48px] px-6 py-3 rounded-lg font-head font-semibold text-center w-full sm:w-auto shrink-0"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Quiero recomendar a alguien</span></a>
+    </div>
+  </div>
+</section>

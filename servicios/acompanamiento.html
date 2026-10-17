@@ -759,5 +759,14 @@
 <script defer src="/assets/medicion.js"></script>
 <script defer src="/assets/search.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
+
+<script>
+  // Anclas viejas de /hexagonal y /triangular: solo en /servicios y /productos y solo si la URL trae ancla (ver assets/anclas-viejas.js)
+  if (location.hash && /^\/(servicios|productos)(\.html)?\/?$/.test(location.pathname)) {
+    var anclasViejas = document.createElement('script');
+    anclasViejas.src = '/assets/anclas-viejas.js';
+    document.body.appendChild(anclasViejas);
+  }
+</script>
 </body>
 </html>

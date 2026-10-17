@@ -24,12 +24,14 @@
 //   2) en cada página se rellenan las tarjetas de los marcadores
 //        <!-- tarjetas:inicio ids="diagnostico,asesor-financiero" cols="4" -->  ...  <!-- tarjetas:fin -->
 //      (cols = 2, 3 o 4 en escritorio; 1 en el teléfono y 2 en tablet; opcional nivel="3" = encabezado del nombre);
-//   3) se rellenan el encabezado y el pie compartidos.
+//   3) se rellenan el encabezado y el pie compartidos;
+//   4) se genera sitemap.xml (scripts/catalogo/sitemap.js): catálogo + páginas estáticas vivas; con --check se compara.
 //   Las páginas generadas llevan un comentario «no editar a mano»: el build las reescribe.
 const fs = require('fs');
 const path = require('path');
 const { generarPaginas } = require('./catalogo/generar');
 const { reemplazarMarcadores } = require('./catalogo/tarjetas');
+const sitemap = require('./catalogo/sitemap');
 
 const RAIZ = path.resolve(__dirname, '..');
 const PARCIALES = path.join(RAIZ, 'partials');
@@ -340,6 +342,7 @@ function main(argv) {
       if (!check) { fs.mkdirSync(path.dirname(ruta), { recursive: true }); fs.writeFileSync(ruta, nuevo, 'utf8'); }
     }
   }
+  if (sitemap.sincronizar({ check, catalogo: cat })) cambiadas.push('sitemap.xml');   // 4) sitemap
   const total = lista.length;
   if (check) {
     if (cambiadas.length) {
