@@ -30,8 +30,7 @@ function ok(cond, msg) { comprobaciones++; assert.ok(cond, msg); }
 function visible(html) { return html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' '); }
 
 // ---------- 1) Páginas de la Línea Triangular y mixtas: cada precio de producto ----------
-// (triangular.html es una página vieja que aún trae los precios del Asesor F&V, que ya no existen: no se revisa aquí)
-const MIXTAS = ['index.html', 'software.html', 'club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'cursos.html', 'curso-finanzas-ia.html', 'masterclasses-workshops.html', 'contacto.html', 'nosotros.html'];
+const MIXTAS = ['index.html', 'club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'curso-finanzas-ia.html', 'contacto.html', 'nosotros.html'];
 MIXTAS.forEach(f => {
   const html = leer(f);
   // atributos de precio
@@ -66,20 +65,24 @@ MIXTAS.forEach(f => {
 })();
 
 // ---------- 3) Tabla exacta de lo Triangular (pedida por el dueño) ----------
-const tri = leer('triangular.html');
-const esperados = { 'plan-arranque': 39.99, 'presencia-basico': 14.99, 'presencia-catalogo': 29.99, 'presencia-web': 59.99, 'presencia-tienda': 99.99,
-  'caja-clara-caja': 14.99, 'caja-clara-cobros': 29.99, 'caja-clara-admin': 39.99, 'tablero-ejecutivo-pyme': 79.99, 'tablero-ejecutivo-pro': 149.99,
-  'asistente-ia-whatsapp': 119.99, 'asistente-ia-instagram': 179.99 };
-const usados = new Set([...tri.matchAll(/data-precio="([\d.]+)"/g)].map(m => parseFloat(m[1])));
-Object.entries(esperados).forEach(([id, precio]) => ok(usados.has(precio), 'triangular.html debe tener ' + precio + ' (' + id + ')'));
-ok(/Mis Finanzas Claras/.test(tri) && /\$4,99/.test(tri), 'Mis Finanzas Claras $4,99');
-ok(/\$24,99/.test(tri) && /\$299,99/.test(tri), 'Taller $24,99 y Finanzas con IA $299,99');
-ok(/\$100,00, \$100,00 y \$99,99/.test(tri), 'cuotas del curso $100,00 + $100,00 + $99,99');
+//  Los productos ▲ viven en sus páginas de detalle (productos/*.html) y en /paginas-web (Presencia) y /curso-finanzas-ia.
+const fmt = n => '$' + n.toFixed(2).replace('.', ',');
+const ESPERADOS = {
+  'productos/plan-arranque.html': [39.99], 'paginas-web.html': [14.99, 29.99, 59.99, 99.99],
+  'productos/caja-clara.html': [14.99, 29.99, 39.99], 'productos/tablero-ejecutivo.html': [79.99, 149.99],
+  'productos/asistente-ia.html': [119.99, 179.99], 'productos/mis-finanzas-claras.html': [4.99],
+  'productos/taller-plata-clara.html': [24.99], 'curso-finanzas-ia.html': [299.99]
+};
+Object.entries(ESPERADOS).forEach(([f, precios]) => { const txt = visible(leer(f)); precios.forEach(p => ok(txt.includes(fmt(p)), f + ' debe publicar ' + fmt(p))); });
+ok(/\$100,00, \$100,00 y \$99,99/.test(visible(leer('curso-finanzas-ia.html'))), 'cuotas del curso $100,00 + $100,00 + $99,99');
 
 // ---------- 4) Hexagonal: precios redondos ----------
-const hex = leer('hexagonal.html');
-for (const k of visible(hex).match(TOKEN) || []) ok(esHex(num(k)), 'hexagonal.html ' + k + ' debe ser múltiplo de 10');
-for (const m of hex.matchAll(/"price":\s*"([\d.]+)"/g)) ok(esHex(parseFloat(m[1])), 'hexagonal.html JSON-LD ' + m[1]);
+const PAGINAS_SERVICIOS = ['servicios.html'].concat(fs.readdirSync(path.join(RAIZ, 'servicios')).map(f => 'servicios/' + f));
+PAGINAS_SERVICIOS.forEach(f => {
+  const hex = leer(f);
+  for (const k of visible(hex).match(TOKEN) || []) ok(esHex(num(k)) || TRI.has(num(k)), f + ' ' + k + ' debe ser múltiplo de 10 (o un precio Triangular en ,99)');
+  for (const m of hex.matchAll(/"price":\s*"([\d.]+)"/g)) ok(esHex(parseFloat(m[1])), f + ' JSON-LD ' + m[1]);
+});
 
 // ---------- 5) Nada de la regla vieja ni del descuento viejo en el contenido visible ----------
 const PAGINAS = fs.readdirSync(RAIZ).filter(f => f.endsWith('.html') && f !== '404.html');
@@ -106,31 +109,35 @@ const ABONO = 'Si después contrata la implementación, los $270 se abonan al pr
 const FINAL_DIAG = 'precio final después del diagnóstico';
 const plano = t => t.replace(/\s+/g, ' ');
 // Páginas Hexagonales: todos los precios visibles y del JSON-LD son redondos (salvo una referencia a un producto Triangular, siempre en ,99)
-['ejecutivos.html', 'asesoria-estrategica.html', 'despliegue-ejecucion.html', 'acompanamiento-continuo.html', 'calculadora-roi.html'].forEach(f => {
+['ejecutivos.html', 'calculadora-roi.html'].concat(PAGINAS_SERVICIOS).forEach(f => {
   const html = leer(f);
   for (const k of visible(html).match(TOKEN) || []) ok(esHex(num(k)) || TRI.has(num(k)), f + ' ' + k + ' debe ser múltiplo de 10 (o un precio Triangular en ,99)');
   for (const m of html.matchAll(/"price":\s*"([\d.]+)"/g)) ok(esHex(parseFloat(m[1])), f + ' JSON-LD ' + m[1]);
 });
 // precios nuevos publicados
 const PRECIOS_HEX = { '$270': 'Diagnóstico / Programa ejecutivo individual', '$960': 'Formación ejecutiva 1 a 1', '$180': 'Programa ejecutivo por persona', '$120': 'Asesor financiero mensual', '$480': 'Asesor financiero semanal' };
-['hexagonal.html', 'ejecutivos.html'].forEach(f => {
+['ejecutivos.html'].forEach(f => {
   const txt = plano(visible(leer(f)));
   Object.entries(PRECIOS_HEX).forEach(([p, que]) => ok(new RegExp('\\' + p + '(?![\\d.,])').test(txt), f + ' debe publicar ' + p + ' (' + que + ')'));
   ok(/Formaci[óo]n ejecutiva 1 a 1/.test(txt) && /Programa ejecutivo/.test(txt) && /Asesor financiero con IA/.test(txt) && /Consulta gratis de 20 min/.test(txt), f + ': productos nuevos y «Consulta gratis de 20 min»');
 });
-['hexagonal.html', 'ejecutivos.html', 'asesoria-estrategica.html'].forEach(f => {
+['ejecutivos.html', 'servicios/diagnostico.html'].forEach(f => {
   const txt = plano(visible(leer(f)));
   ok(txt.includes('¿En qué se va la plata de su empresa?') && txt.includes(ABONO), f + ': Diagnóstico «¿En qué se va la plata de su empresa?» con la frase de abono');
   ok(/\$270/.test(txt), f + ': Diagnóstico de $270');
 });
-ok(/Formaci[óo]n para su equipo/.test(visible(leer('hexagonal.html'))) && /id="formacion-equipo"/.test(leer('hexagonal.html')), 'hexagonal.html: Formación para su equipo (#formacion-equipo)');
+ok(/Formaci[óo]n para su equipo/.test(visible(leer('servicios/formacion-equipo.html'))), 'servicios/formacion-equipo.html: Formación para su equipo');
+// cada servicio con precio fijo lo publica en su página de detalle
+[['servicios/diagnostico.html', '$270'], ['servicios/formacion-ejecutiva.html', '$960'], ['servicios/asesor-financiero.html', '$120'], ['servicios/asesor-financiero.html', '$480']].forEach(([f, p]) => {
+  ok(plano(visible(leer(f))).includes(p), f + ' debe publicar ' + p);
+});
 // mensajes de WhatsApp exactos de la oferta nueva
 const WA_HEX = {
   'diagnostico-270': 'Hola F&V, quiero agendar el Diagnóstico «¿En qué se va la plata de su empresa?» (⬡, $270).',
   'formacion-ejecutiva': 'Hola F&V, me interesa la Formación ejecutiva 1 a 1 (⬡, $960).',
   'asesor-financiero': 'Hola F&V, me interesa el Asesor financiero con IA (⬡, $120 o $480 al mes).'
 };
-['ejecutivos.html'].forEach(f => {   // hexagonal.html es una página vieja (se borrará): ya no se exige que lleve los mensajes nuevos
+['ejecutivos.html'].forEach(f => {
   const msgs = [...leer(f).matchAll(/https:\/\/wa\.me\/\d+\?text=([^"'\s]+)/g)].map(m => { try { return decodeURIComponent(m[1]); } catch (e) { return ''; } });
   Object.entries(WA_HEX).forEach(([id, m]) => ok(msgs.includes(m), f + ': WhatsApp exacto de ' + id));
 });
@@ -171,7 +178,7 @@ function contenedor(html, pos) {
   while ((t = reTag.exec(html))) { if (t[1]) { prof--; if (prof === 0) { fin = t.index; break; } } else prof++; }
   return plano(html.slice(el.ini, fin).replace(/<[^>]+>/g, ' '));
 }
-const SOLO_SOFTWARE = ['club.html', 'condominio.html', 'gym.html', 'software.html', 'triangular.html', 'paginas-web.html'];
+const SOLO_SOFTWARE = ['club.html', 'condominio.html', 'gym.html', 'paginas-web.html'];
 let desdeRevisados = 0;
 PAGINAS.filter(f => !SOLO_SOFTWARE.includes(f)).forEach(f => {
   const html = leer(f).replace(/<script(?![^>]*application\/ld\+json)[\s\S]*?<\/script>/g, s => ' '.repeat(s.length)).replace(/<style[\s\S]*?<\/style>/g, s => ' '.repeat(s.length));

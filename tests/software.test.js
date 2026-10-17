@@ -67,7 +67,7 @@ ok(!/Línea (Hexagonal|Triangular)/.test(S.planesHTML('hex', 'club') + S.planesH
 
 // ---------- las páginas leen la misma fuente ----------
 const FINAL = !process.argv.includes('--parcial');   // estricto por defecto: con --parcial se omiten las comprobaciones de las fases pendientes
-const PAGINAS = { software: null, club: 'club', condominio: 'condominio', gym: 'gym' };
+const PAGINAS = { club: 'club', condominio: 'condominio', gym: 'gym' };
 Object.entries(PAGINAS).forEach(([pag, prod]) => {
   const f = path.join(RAIZ, pag + '.html');
   if (!fs.existsSync(f)) { ok(!FINAL, pag + '.html debe existir'); return; }

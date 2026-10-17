@@ -46,19 +46,20 @@ for (const r of redirects) {
   const archivo = archivoDe(ruta);
   ok(!!archivo, `${r.source} -> ${r.destination}: el destino no existe como archivo`);
   if (!archivo) continue;
-  ok(!B.LEGACY.includes(archivo), `${r.source} -> ${r.destination}: el destino es una página legacy`);
   if (ancla) ok(idsDe(archivo).has(ancla), `${r.source} -> ${r.destination}: la página ${archivo} no tiene el id «${ancla}»`);
 }
 
 // ---------------------------------------------------------------- legacy y páginas vivas
-for (const f of B.LEGACY) {
-  const nombre = '/' + f.replace(/\.html$/, '');
-  ok(origenes.includes(nombre), `legacy ${f}: falta la redirección de ${nombre}`);
-  ok(origenes.includes(nombre + '.html'), `legacy ${f}: falta la redirección de ${nombre}.html`);
+// Las 8 páginas viejas ya no existen como archivo: sus URLs deben seguir redirigiendo (con y sin .html).
+const PAGINAS_VIEJAS = ['hexagonal', 'triangular', 'software', 'cursos', 'asesoria-estrategica', 'acompanamiento-continuo', 'despliegue-ejecucion', 'masterclasses-workshops'];
+for (const nombre of PAGINAS_VIEJAS.map(n => '/' + n)) {
+  ok(origenes.includes(nombre), `página vieja ${nombre}: falta la redirección`);
+  ok(origenes.includes(nombre + '.html'), `página vieja ${nombre}: falta la redirección de ${nombre}.html`);
+  ok(!fs.existsSync(path.join(RAIZ, nombre.slice(1) + '.html')), `${nombre}.html no debe volver a existir (la redirección lo taparía)`);
 }
 for (const o of origenes) {
   const archivo = archivoDe(o.replace(/\.html$/, ''));
-  ok(!archivo || B.LEGACY.includes(archivo), `${o}: la redirección tapa una página viva (${archivo})`);
+  ok(!archivo, `${o}: la redirección tapa una página viva (${archivo})`);
 }
 for (const p of ['/servicios', '/productos', '/servicios.html', '/productos.html']) {
   ok(!origenes.includes(p), `no debe haber redirección de ${p}`);
@@ -103,7 +104,7 @@ function correrAnclas(pagina, hash) {
 function destinoExiste(url, etiqueta) {
   const [ruta, ancla] = separar(url);
   const archivo = archivoDe(ruta);
-  ok(!!archivo && !B.LEGACY.includes(archivo), `${etiqueta}: ${url} no existe o es legacy`);
+  ok(!!archivo, `${etiqueta}: ${url} no existe`);
   if (archivo && ancla) ok(idsDe(archivo).has(ancla), `${etiqueta}: ${url} no tiene el id «${ancla}»`);
 }
 
@@ -148,17 +149,19 @@ for (const hash of ['asesor', 'asesor-sesion', 'asesor-enfoque', 'asesor-mensual
 // Un ancla desconocida no se toca
 { const r = correrAnclas('servicios', 'algo-que-no-existe'); ok(r.reemplazo === null && !r.hashLimpio, 'un ancla desconocida no se toca'); }
 
-// Cobertura: cada id de tarjeta de las páginas legacy llega a algún lado desde la página a la que hoy redirige
+// Cobertura: cada id de tarjeta de las páginas viejas llega a algún lado desde la página a la que hoy redirige
 const cat = cargarCatalogo();
 const idsCatalogo = new Set(cat.items.map(i => i.id));
 const EXTRA_VIEJOS = ['asesoria-estrategica', 'evaluacion-procesos', 'habilitacion-equipos', 'aprende', 'finanzas-ia-grupal', 'taller-chatgpt',
   'mensualidades', 'cat-aprende', 'cat-plata', 'cat-ventas', 'cat-sistemas', 'cat-mensual', 'asesor'];
+// Ids que tenían las tarjetas y secciones de /hexagonal y /triangular (congelados desde el historial de Git: esas páginas ya no existen).
+const IDS_VIEJOS = {"hexagonal":["diagnostico","asesoria-estrategica","evaluacion-procesos","cat-plata","tablero-gerencial","reportes-whatsapp","conciliacion-automatica","cat-ventas","web-corporativa-crm","agente-ia","cat-sistemas","sprint-automatizacion","odoo-community","ecosistema-automatizacion","dynamics-365","desarrollo-a-medida","cat-aprende","formacion-ejecutiva","programa-ejecutivo","formacion-equipo","habilitacion-equipos","masterclass-privada","finanzas-ia-sede","cat-mensual","mensualidades","asesor-financiero","acompanamiento-estandar","acompanamiento-prioritario","director-ia"],"triangular":["plan-arranque","presencia","caja-clara","tablero-ejecutivo","asistente-ia","asesor","aprende","taller-plata-clara","finanzas-ia-grupal","taller-chatgpt","mis-finanzas-claras"]};
 const COBERTURA = [['hexagonal', 'servicios'], ['triangular', 'productos']];
 let cubiertos = 0;
 for (const [legacy, nueva] of COBERTURA) {
   const idsNueva = idsDe(nueva + '.html');
   const desaparecen = new Set(['asesor']);
-  for (const id of idsDe(legacy + '.html')) {
+  for (const id of IDS_VIEJOS[legacy]) {
     if (!(idsCatalogo.has(id) || EXTRA_VIEJOS.includes(id))) continue;
     if (/^(club|condominio|gym)-/.test(id)) continue;
     const r = correrAnclas(nueva, id);

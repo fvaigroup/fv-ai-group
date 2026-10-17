@@ -87,7 +87,7 @@ Cada botón de WhatsApp lleva un mensaje ya escrito (`wa.mensaje` del catálogo)
 
 ### Redirecciones y páginas viejas
 
-El sitio anterior se organizaba por línea (`/hexagonal`, `/triangular`, `/software`, `/cursos`, `/asesoria-estrategica`, `/acompanamiento-continuo`, `/despliegue-ejecucion`, `/masterclasses-workshops`). Hoy esas URLs, y `/diagnostico`, `/evaluacion-procesos`, `/habilitacion-equipos`, `/express`, `/triangular-express`, `/soluciones` y `/precios`, redirigen con 301 a `/servicios`, `/productos` o su detalle (lista en `vercel.json`; las anclas viejas las lleva `assets/anclas-viejas.js`). Los ocho archivos viejos siguen en el repositorio, inalcanzables, hasta que el dueño apruebe borrarlos (el build y las pruebas los saltan: lista `LEGACY` en `scripts/build-html.js`).
+El sitio anterior se organizaba por línea (`/hexagonal`, `/triangular`, `/software`, `/cursos`, `/asesoria-estrategica`, `/acompanamiento-continuo`, `/despliegue-ejecucion`, `/masterclasses-workshops`). Hoy esas URLs, y `/diagnostico`, `/evaluacion-procesos`, `/habilitacion-equipos`, `/express`, `/triangular-express`, `/soluciones` y `/precios`, redirigen con 301 a `/servicios`, `/productos` o su detalle (lista en `vercel.json`; las anclas viejas las lleva `assets/anclas-viejas.js`). Los ocho archivos viejos se borraron el 17 de octubre de 2026 (siguen en el historial de Git); no deben volver a crearse con esos nombres, porque la redirección los taparía.
 
 ## Operating Context
 

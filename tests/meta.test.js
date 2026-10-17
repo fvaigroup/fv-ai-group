@@ -9,7 +9,7 @@ function ok(c, m) { n++; if (!c) { console.error('✗ ' + m); process.exitCode =
 const leer = f => fs.readFileSync(path.join(RAIZ, f), 'utf8');
 const dec = s => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"');
 
-const LEGACY = ['hexagonal', 'triangular', 'software', 'cursos', 'asesoria-estrategica', 'acompanamiento-continuo', 'despliegue-ejecucion', 'masterclasses-workshops', 'demo-catalogo'];
+const LEGACY = ['demo-catalogo']; // demostración con diseño propio
 const EXENTAS = ['404.html', 'privacidad.html', 'terminos.html']; // no se indexan o son texto legal
 const vivas = fs.readdirSync(RAIZ).filter(f => f.endsWith('.html')).concat(
   fs.readdirSync(path.join(RAIZ, 'servicios')).map(f => 'servicios/' + f),

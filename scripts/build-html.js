@@ -36,11 +36,9 @@ const sitemap = require('./catalogo/sitemap');
 const RAIZ = path.resolve(__dirname, '..');
 const PARCIALES = path.join(RAIZ, 'partials');
 
-// Páginas viejas (se eliminan más adelante, cuando el dueño lo apruebe) y demos con diseño propio: el build no las toca.
-const LEGACY = [
-  'hexagonal.html', 'triangular.html', 'software.html', 'cursos.html', 'asesoria-estrategica.html',
-  'acompanamiento-continuo.html', 'despliegue-ejecucion.html', 'masterclasses-workshops.html',
-];
+// Páginas viejas: ya no existen (sus URLs redirigen desde vercel.json). La lista se conserva vacía porque las pruebas la importan.
+// Demos con diseño propio: el build no las toca.
+const LEGACY = [];
 const SALTAR = ['demo-catalogo.html'];
 const ACTIVOS = ['inicio', 'servicios', 'productos', 'nosotros', 'contacto', 'ninguno'];
 const WA_NUMERO = '584244125386';

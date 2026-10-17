@@ -122,7 +122,7 @@ Variables que fija cada envolvente (en `src/tailwind.css`): `--acento-1`, `--ace
 - **CTA principal:** `.btn-tri`: fondo `fv-triGreen` lleno, texto negro, glow verde que vira a violeta en hover y `:active { scale(0.97) }`.
 - **Precios en bolívares en vivo:** los montos en Bs se calculan en el navegador con la tasa oficial del BCV (`https://ve.dolarapi.com/v1/dolares/oficial`, permitida en la CSP de `vercel.json`). Marcado: contenedor con clase `hidden` + `data-bs-wrap`, monto con `data-usd="35"`, tasa con `data-bcv-rate` (`assets/bcv.js`). Si la API no responde, los montos en Bs no aparecen y el texto sigue leyéndose bien. No usar el atributo `hidden` junto a clases de `display`: se usa la clase `hidden` y el script la quita.
 - **Botones de WhatsApp:** mensaje ya escrito (en el catálogo, `wa.mensaje`) y atributos `data-product` / `data-cta`, que `assets/medicion.js` envía a GA4 como `whatsapp_click`. Cualquier otro clic que se quiera medir lleva `data-evento="nombre"` (ver `README-MEDICION.md`).
-- **Selector de tamaño (`.tam-tab`) y pago adelantado:** pestañas con `role="tab"` y el cálculo de `assets/planes.js`. Hoy solo lo usan las páginas viejas; el contenido nuevo muestra los tamaños como `.det-plan` en el detalle (sección 9).
+- **Selector de tamaño (`.tam-tab`) y pago adelantado:** pestañas con `role="tab"` y el cálculo de `assets/planes.js`. Lo usaban las páginas viejas, ya borradas; el contenido nuevo muestra los tamaños como `.det-plan` en el detalle (sección 9).
 
 ---
 

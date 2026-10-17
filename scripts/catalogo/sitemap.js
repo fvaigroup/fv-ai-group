@@ -6,7 +6,7 @@
 // También lo corre scripts/build-html.js (con su --check incluido). Es determinista: sin fechas de la máquina.
 //   lastmod = fecha_actualizacion de data/catalogo-base.json (se cambia a mano cuando cambia el contenido del sitio).
 //   Prioridades: inicio 1.0 · /servicios y /productos 0.9 · detalles del catálogo 0.7 · el resto 0.6.
-// Quedan FUERA a propósito: las páginas viejas (LEGACY de build-html.js, que redirigen), 404, privacidad, términos y demo-catalogo.
+// Quedan FUERA a propósito: las páginas viejas (ya borradas; sus URLs redirigen desde vercel.json), 404, privacidad, términos y demo-catalogo.
 // Para publicar una página nueva (no del catálogo) agréguela a PAGINAS_ESTATICAS; tests/sitemap.test.js avisa si falta.
 const fs = require('fs');
 const path = require('path');

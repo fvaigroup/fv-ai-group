@@ -22,7 +22,7 @@ El sitio se organiza por **Servicios** (el equipo de F&V trabaja con el cliente)
 | `vercel.json` | Comando de construcción, cabeceras de seguridad y redirecciones 301. |
 | `sitemap.xml`, `robots.txt` | El sitemap también es generado. |
 
-Hay ocho páginas viejas que siguen en la raíz (`hexagonal`, `triangular`, `software`, `cursos`, `asesoria-estrategica`, `acompanamiento-continuo`, `despliegue-ejecucion`, `masterclasses-workshops`). Nadie llega a ellas porque `vercel.json` las redirige, y el build y las pruebas las saltan (lista `LEGACY` en `scripts/build-html.js`). Se borrarán cuando el dueño lo apruebe. `demo-catalogo.html` es una demostración con diseño propio que el build tampoco toca.
+Las ocho páginas del sitio anterior (`hexagonal`, `triangular`, `software`, `cursos`, `asesoria-estrategica`, `acompanamiento-continuo`, `despliegue-ejecucion`, `masterclasses-workshops`) ya no existen como archivos: sus URLs redirigen con 301 desde `vercel.json` y `tests/redirecciones.test.js` exige que sigan haciéndolo. No vuelva a crear un archivo con esos nombres: la redirección lo taparía. `demo-catalogo.html` es una demostración con diseño propio que el build no toca.
 
 ## Comandos
 
