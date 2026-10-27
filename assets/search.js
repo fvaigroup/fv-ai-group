@@ -2,6 +2,8 @@
    El modal se construye la primera vez que se abre: con el buscador cerrado no hay texto suelto en la página.
    El índice sigue el catálogo (data/catalogo.json): /servicios y /productos, sus 10 categorías (con ancla), los 19 servicios y los
    15 productos, cada uno con la url de su página de detalle. Hexagonal (servicios, lo grande) va antes que Triangular cuando empatan.
+   Cada resultado se agrupa por línea y por tipo: ⬡ (servicios y productos para empresas e instituciones), ▲ (productos para negocios pequeños) y, al final, páginas.
+   Es ⬡ todo servicio (cat: 'Servicio' o bajo /servicios) y lo marcado con ln: 'hex'; el resto de productos es ▲. Las categorías (grupo: true) solo salen al escribir.
    En los textos solo se usa la forma de cada línea o «empresas e instituciones» / «negocios pequeños», nunca el nombre de la línea. */
 (function () {
   // Para añadir una página al buscador: una línea más en este arreglo.
@@ -35,14 +37,14 @@
     { title: 'Acompañamiento Prioritario', desc: 'Soporte técnico de lo ya implementado: 18 horas al mes, respuesta en 4 horas. $400 al mes.', url: '/servicios/acompanamiento#prioritario', cat: 'Servicio', kw: 'acompanamiento continuo soporte mantenimiento 400' },
     { title: 'Director de IA a tiempo parcial', desc: 'Soporte técnico y rumbo de sus sistemas: 16 horas al mes y una reunión semanal. $600 al mes.', url: '/servicios/acompanamiento#director-ia', cat: 'Servicio', kw: 'acompanamiento continuo soporte director de inteligencia artificial 600' },
     { title: 'Software', desc: 'Club, Condominio y Gym: cobro de cuotas, control y reportes para su organización.', url: '/productos#software', cat: 'Producto', grupo: true },
-    { title: 'Club para empresas e instituciones', desc: 'Cobro de cuotas, estado de cuenta, carnet digital y reportes para la junta directiva. Desde $190/mes.', url: '/club', cat: 'Producto', kw: 'club clubes cuotas socios junta directiva software app' },
-    { title: 'Condominio para empresas e instituciones', desc: 'Recibos, alícuotas, transparencia de gastos y varios edificios en una sola pantalla. Desde $190/mes.', url: '/condominio', cat: 'Producto', kw: 'condominio edificio alicuota recibos administradora junta software app' },
-    { title: 'Gym para empresas e instituciones', desc: 'Membresías, cobros, entrada con QR y reportes por sede. Desde $190/mes.', url: '/gym', cat: 'Producto', kw: 'gimnasio membresias qr cadena sedes software app' },
+    { ln: 'hex', title: 'Club para empresas e instituciones', desc: 'Cobro de cuotas, estado de cuenta, carnet digital y reportes para la junta directiva. Desde $190/mes.', url: '/club', cat: 'Producto', kw: 'club clubes cuotas socios junta directiva software app' },
+    { ln: 'hex', title: 'Condominio para empresas e instituciones', desc: 'Recibos, alícuotas, transparencia de gastos y varios edificios en una sola pantalla. Desde $190/mes.', url: '/condominio', cat: 'Producto', kw: 'condominio edificio alicuota recibos administradora junta software app' },
+    { ln: 'hex', title: 'Gym para empresas e instituciones', desc: 'Membresías, cobros, entrada con QR y reportes por sede. Desde $190/mes.', url: '/gym', cat: 'Producto', kw: 'gimnasio membresias qr cadena sedes software app' },
     { title: 'Club para negocios pequeños', desc: 'Cobra las cuotas de tus socios sin perseguir a nadie. Desde $89,99/mes.', url: '/club', cat: 'Producto', kw: 'club clubes cuotas socios software app' },
     { title: 'Condominio para negocios pequeños', desc: 'Recibos claros y gastos a la vista de tus vecinos. Desde $89,99/mes.', url: '/condominio', cat: 'Producto', kw: 'condominio edificio alicuota recibos software app' },
     { title: 'Gym para negocios pequeños', desc: 'Membresías, cobros y entrada con código QR para tus miembros. Desde $89,99/mes.', url: '/gym', cat: 'Producto', kw: 'gimnasio membresias qr software app' },
     { title: 'Cursos y programas', desc: 'Con fechas y cupos limitados.', url: '/productos#cursos', cat: 'Producto', grupo: true },
-    { title: 'Programa ejecutivo entre semana', desc: 'Aprenda a ver sus números con IA y a recibir sus reportes por WhatsApp. $270 individual o $180 por persona en grupo de 2 a 4.', url: '/ejecutivos#programa-ejecutivo', cat: 'Curso', kw: 'entre semana martes jueves ejecutivos directivos duenos torre trebol curso 270 180' },
+    { ln: 'hex', title: 'Programa ejecutivo entre semana', desc: 'Aprenda a ver sus números con IA y a recibir sus reportes por WhatsApp. $270 individual o $180 por persona en grupo de 2 a 4.', url: '/ejecutivos#programa-ejecutivo', cat: 'Curso', kw: 'entre semana martes jueves ejecutivos directivos duenos torre trebol curso 270 180' },
     { title: 'Finanzas con IA', desc: 'Ve tu dinero claro en varias tasas y pídele a la IA el trabajo pesado. ', url: '/curso-finanzas-ia', cat: 'Curso', ev: 'curso', kw: 'curso finanzas con ia sabados cohorte cupos certificado conciliacion' },
     { title: 'Taller «La plata de tu negocio clara»', desc: 'Taller presencial de 3 horas en Valencia para ordenar la plata de tu negocio. ', url: '/productos/taller-plata-clara', cat: 'Curso', ev: 'taller', kw: 'taller plata de tu negocio sabado cupos' },
     { title: 'Para empezar', desc: 'Lo básico para que te encuentren, te compren y sepas cuánto ganas.', url: '/productos#para-empezar', cat: 'Producto', grupo: true },
@@ -85,6 +87,16 @@
     '#search-empty{padding:28px 18px;text-align:center;color:#94a3b8;font-size:13px}' +
     '#search-hint-row{display:flex;gap:14px;padding:10px 18px;border-top:1px solid #1F232B;font-size:11px;color:#94a3b8;font-family:"Space Grotesk",sans-serif}' +
     '#search-hint-row kbd{background:rgba(255,255,255,.06);padding:1px 5px;border-radius:4px;border:1px solid rgba(255,255,255,.08)}' +
+    '.sr-grid{display:grid;grid-template-columns:1fr;gap:6px 14px}' +
+    '.sr-col{min-width:0}' +
+    '.sr-col-h{display:flex;align-items:center;gap:8px;margin:6px 4px 4px;padding:6px 8px 8px;font:600 12px "Space Grotesk",sans-serif;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid;border-image:var(--sr-grad) 1}' +
+    '.sr-hex{--sr-grad:linear-gradient(90deg,#00FFFF,#FF8C00);--sr-c:#00FFFF}.sr-tri{--sr-grad:linear-gradient(90deg,#4ade80,#a855f7);--sr-c:#4ade80}' +
+    '.sr-col-h{color:var(--sr-c)}.sr-col-h svg{flex-shrink:0}' +
+    '.sr-tri .search-result:hover,.sr-tri .search-result.is-active{background:rgba(74,222,128,.09)}' +
+    '.sr-hex .sr-tag,.sr-tri .sr-tag{display:none}' +
+    '.sr-sub{margin:10px 12px 2px;font:600 10.5px "Space Grotesk",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748b}' +
+    '.sr-pags{margin-top:6px;border-top:1px solid #1F232B}' +
+    '@media (min-width:820px){#search-panel{max-width:920px}.sr-grid:not(.sr-solo){grid-template-columns:1fr 1fr}}' +
     '@media (prefers-reduced-motion:reduce){#search-overlay,#search-panel{transition:none!important}}';
 
   var overlay, input, resultsEl, lastFocus, activeIndex = -1, currentResults = [];
@@ -123,18 +135,56 @@
     });
   }
 
+  var SVG_HEX = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><polygon points="12,2 21,7 21,17 12,22 3,17 3,7"/></svg>';
+  var SVG_TRI = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><polygon points="12,3 22,20 2,20"/></svg>';
+  var LINEAS = { hex: { nombre: 'Empresas e instituciones', svg: SVG_HEX }, tri: { nombre: 'Negocios pequeños', svg: SVG_TRI } };
+
+  // A qué columna y subsección va un resultado.
+  function lugar(r) {
+    if (r.grupo || r.cat === 'Pagina' || r.cat === 'Legal') return { col: 'pag', sub: 'Páginas' };
+    var servicio = r.url.indexOf('/servicios') === 0 || r.cat === 'Servicio'; // /ejecutivos es un servicio ⬡ aunque no cuelgue de /servicios
+    return { col: (servicio || r.ln === 'hex') ? 'hex' : 'tri', sub: servicio ? 'Servicios' : 'Productos' };
+  }
+
   function render(list) {
-    currentResults = list;
-    activeIndex = list.length ? 0 : -1;
+    var hayConsulta = !!norm(input.value);
+    if (!hayConsulta) list = list.filter(function (r) { return !r.grupo; });
     if (!list.length) {
+      currentResults = [];
+      activeIndex = -1;
       resultsEl.innerHTML = '<div id="search-empty">Sin resultados. <a href="https://wa.me/584244125386?text=' + encodeURIComponent('Hola F&V, busqué algo en el sitio y no lo encontré') + '" target="_blank" rel="noopener" class="link-underline text-fv-cyan">Escríbenos por WhatsApp</a> y te ayudamos directo.</div>';
       return;
     }
-    resultsEl.innerHTML = list.map(function (r, i) {
-      return '<a href="' + esc(r.url) + '" class="search-result' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '">' +
-        '<span class="sr-title">' + esc(r.title) + ' <span class="sr-tag cat-' + esc(r.cat) + '">' + esc(r.cat) + '</span></span>' +
-        '<span class="sr-desc">' + esc(r.desc) + '</span></a>';
-    }).join('');
+    var mejor = list.filter(function (r) { return !r.grupo; })[0] || list[0]; // el de mayor puntaje (una categoría solo si no hay otro): se abre con Enter
+    var g = { hex: { Servicios: [], Productos: [] }, tri: { Productos: [] }, pag: { 'Páginas': [] } };
+    list.forEach(function (r) { var l = lugar(r); g[l.col][l.sub].push(r); });
+    currentResults = [];
+    function items(arr) {
+      return arr.map(function (r) {
+        var i = currentResults.push(r) - 1;
+        return '<a href="' + esc(r.url) + '" class="search-result' + (r === mejor ? ' is-active' : '') + '" data-i="' + i + '">' +
+          '<span class="sr-title">' + esc(r.title) + ' <span class="sr-tag cat-' + esc(r.cat) + '">' + esc(r.cat) + '</span></span>' +
+          '<span class="sr-desc">' + esc(r.desc) + '</span></a>';
+      }).join('');
+    }
+    function columna(clave) {
+      var subs = g[clave], cuerpo = '', total = 0;
+      Object.keys(subs).forEach(function (n) {
+        if (!subs[n].length) return;
+        total += subs[n].length;
+        cuerpo += '<div class="sr-sub">' + n + '</div>' + items(subs[n]);
+      });
+      return total ? '<section class="sr-col sr-' + clave + '" aria-label="' + LINEAS[clave].nombre + '"><h3 class="sr-col-h">' + LINEAS[clave].svg + '<span>' + LINEAS[clave].nombre + '</span></h3>' + cuerpo + '</section>' : '';
+    }
+    var hex = columna('hex'), tri = columna('tri');
+    var html = (hex || tri) ? '<div class="sr-grid' + (hex && tri ? '' : ' sr-solo') + '">' + hex + tri + '</div>' : '';
+    if (g.pag['Páginas'].length) {
+      var nomPag = hayConsulta ? 'Páginas y categorías' : 'Páginas';
+      html += '<section class="sr-pags" aria-label="' + nomPag + '"><div class="sr-sub">' + nomPag + '</div>' + items(g.pag['Páginas']) + '</section>';
+    }
+    resultsEl.innerHTML = html;
+    activeIndex = currentResults.indexOf(mejor);
+    // con ↑ ↓ se recorre en el orden en que se ve: ⬡ servicios, ⬡ productos, ▲ productos, páginas
   }
 
   // Todas las palabras de la búsqueda deben aparecer. Puntaje: en el título 3 (al inicio) o 2, en las palabras clave 1,5, en la descripción 1.

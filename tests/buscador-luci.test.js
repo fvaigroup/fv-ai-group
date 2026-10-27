@@ -66,9 +66,10 @@ function cargarBuscador(ruta) {
       campo.value = q;
       campo.oyentes.input.forEach(f => f({}));
       const html = resultados.innerHTML, out = [];
-      const re = /<a href="([^"]*)" class="search-result[^"]*" data-i="\d+"><span class="sr-title">([\s\S]*?) <span class="sr-tag cat-(\w+)">[\s\S]*?<\/span><\/span><span class="sr-desc">([\s\S]*?)<\/span><\/a>/g;
+      const re = /<a href="([^"]*)" class="(search-result[^"]*)" data-i="\d+"><span class="sr-title">([\s\S]*?) <span class="sr-tag cat-(\w+)">[\s\S]*?<\/span><\/span><span class="sr-desc">([\s\S]*?)<\/span><\/a>/g;
       let m; const des = s => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
-      while ((m = re.exec(html))) out.push({ url: des(m[1]), title: des(m[2]), cat: m[3], desc: des(m[4]) });
+      while ((m = re.exec(html))) out.push({ url: des(m[1]), title: des(m[3]), cat: m[4], desc: des(m[5]), activo: /is-active/.test(m[2]) });
+      const a = out.findIndex(x => x.activo); if (a > 0) out.unshift(out.splice(a, 1)[0]); // primero, el que se abre con Enter
       return out;
     },
     html: () => resultados.innerHTML
@@ -81,7 +82,7 @@ ok(mIdx, 'se encuentra SEARCH_INDEX');
 const INDICE = vm.runInNewContext('[' + mIdx[1] + ']');
 const B = cargarBuscador('/');
 const TODOS = B.buscar('');
-ok(TODOS.length === INDICE.length, 'la búsqueda vacía muestra todo el índice');
+ok(TODOS.length === INDICE.filter(r => !r.grupo).length, 'la búsqueda vacía muestra todo el índice, sin las categorías (esas salen al escribir)');
 
 // existencia de las urls (archivo y ancla)
 function existe(url) {
@@ -158,7 +159,7 @@ Object.keys(CONSULTAS).forEach(q => {
   if (CONSULTAS[q]) ok(r[0].url === CONSULTAS[q], 'consulta «' + q + '»: primero ' + CONSULTAS[q] + ' (salió ' + r[0].url + ')');
   informe.push(q + ' -> ' + r.slice(0, 3).map(x => x.url).join(', '));
 });
-ok(B.buscar('precio').slice(0, 3).map(r => r.url).includes('/servicios') && B.buscar('precio').slice(0, 3).map(r => r.url).includes('/productos'), 'precio: primero /servicios y /productos');
+ok(B.buscar('precio').map(r => r.url).includes('/servicios') && B.buscar('precio').map(r => r.url).includes('/productos'), 'precio: salen /servicios y /productos (en la sección Páginas)');
 ok(B.buscar('curso').some(r => r.url === '/curso-finanzas-ia') && B.buscar('curso').some(r => r.url === '/ejecutivos#programa-ejecutivo'), 'curso: Finanzas con IA y Programa ejecutivo');
 ok(B.buscar('zzzzzz').length === 0 && /Sin resultados/.test(B.html()), 'sin resultados: aviso con WhatsApp');
 ok(B.buscar('PLAN  arranque')[0].url === '/productos/plan-arranque', 'mayúsculas y espacios dobles no importan');
