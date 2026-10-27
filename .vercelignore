@@ -1,5 +1,6 @@
 # Archivos internos que no deben publicarse en fvaigroup.com (no los necesita el build).
 PRODUCT.md
+CLAUDE.md
 docs/
 graphify-out/
 .claude/
