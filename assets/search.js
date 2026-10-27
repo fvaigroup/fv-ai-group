@@ -4,7 +4,7 @@
    15 productos, cada uno con la url de su página de detalle. Hexagonal (servicios, lo grande) va antes que Triangular cuando empatan.
    Cada resultado se agrupa por línea y por tipo: ⬡ (servicios y productos para empresas e instituciones), ▲ (productos para negocios pequeños) y, al final, páginas.
    Es ⬡ todo servicio (cat: 'Servicio' o bajo /servicios) y lo marcado con ln: 'hex'; el resto de productos es ▲. Las categorías (grupo: true) solo salen al escribir.
-   En los textos solo se usa la forma de cada línea o «empresas e instituciones» / «negocios pequeños», nunca el nombre de la línea. */
+   Las columnas llevan el nombre de la línea (Hexagonal, Triangular) por decisión del dueño (27 oct 2026); en los textos de cada resultado se sigue usando solo la forma o «empresas e instituciones» / «negocios pequeños». */
 (function () {
   // Para añadir una página al buscador: una línea más en este arreglo.
   var SEARCH_INDEX = [
@@ -95,6 +95,7 @@
     '.sr-tri .search-result:hover,.sr-tri .search-result.is-active{background:rgba(74,222,128,.09)}' +
     '.sr-hex .sr-tag,.sr-tri .sr-tag{display:none}' +
     '.sr-sub{margin:10px 12px 2px;font:600 10.5px "Space Grotesk",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748b}' +
+    '.sr-vacio{margin:2px 12px 6px;padding:8px 0;font-size:12.5px;color:#64748b;font-style:italic}' +
     '.sr-pags{margin-top:6px;border-top:1px solid #1F232B}' +
     '@media (min-width:820px){#search-panel{max-width:920px}.sr-grid:not(.sr-solo){grid-template-columns:1fr 1fr}}' +
     '@media (prefers-reduced-motion:reduce){#search-overlay,#search-panel{transition:none!important}}';
@@ -137,7 +138,7 @@
 
   var SVG_HEX = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><polygon points="12,2 21,7 21,17 12,22 3,17 3,7"/></svg>';
   var SVG_TRI = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><polygon points="12,3 22,20 2,20"/></svg>';
-  var LINEAS = { hex: { nombre: 'Empresas e instituciones', svg: SVG_HEX }, tri: { nombre: 'Negocios pequeños', svg: SVG_TRI } };
+  var LINEAS = { hex: { nombre: 'Hexagonal', svg: SVG_HEX }, tri: { nombre: 'Triangular', svg: SVG_TRI } };
 
   // A qué columna y subsección va un resultado.
   function lugar(r) {
@@ -156,7 +157,7 @@
       return;
     }
     var mejor = list.filter(function (r) { return !r.grupo; })[0] || list[0]; // el de mayor puntaje (una categoría solo si no hay otro): se abre con Enter
-    var g = { hex: { Servicios: [], Productos: [] }, tri: { Productos: [] }, pag: { 'Páginas': [] } };
+    var g = { hex: { Servicios: [], Productos: [] }, tri: { Servicios: [], Productos: [] }, pag: { 'Páginas': [] } };
     list.forEach(function (r) { var l = lugar(r); g[l.col][l.sub].push(r); });
     currentResults = [];
     function items(arr) {
@@ -170,7 +171,11 @@
     function columna(clave) {
       var subs = g[clave], cuerpo = '', total = 0;
       Object.keys(subs).forEach(function (n) {
-        if (!subs[n].length) return;
+        if (!subs[n].length) {
+          // sin búsqueda se ven las dos subsecciones; ▲ aún no tiene servicios y se dice sin inventar nada
+          if (!hayConsulta && clave === 'tri' && n === 'Servicios') cuerpo += '<div class="sr-sub">' + n + '</div><div class="sr-vacio">Por ahora, solo productos listos para usar.</div>';
+          return;
+        }
         total += subs[n].length;
         cuerpo += '<div class="sr-sub">' + n + '</div>' + items(subs[n]);
       });

@@ -16,7 +16,7 @@ Sitio estático de F&V AI Group (HTML + JS sin framework, build en Node + Tailwi
 
 ## Decisiones vigentes (no cambiar sin aprobación de Ricardo)
 - Dos líneas: ⬡ Hexagonal (empresas; cian/naranja, “usted”, precios múltiplos de 10) y ▲ Triangular (negocios pequeños; verde/morado, “tú”, precios en ,99). Marca madre: cian y naranja.
-- Menú por Servicios y Productos; Hexagonal siempre primero. Nombres “Línea Hexagonal/Triangular” solo en el inicio.
+- Menú por Servicios y Productos; Hexagonal siempre primero. Nombres “Línea Hexagonal/Triangular” solo en el inicio (excepción: encabezados de columna de la lupa, “Hexagonal” y “Triangular”).
 - Asesoría solo Hexagonal. “Express” eliminado por completo.
 - Único descuento: 30 % por pago anual adelantado (+10 % primer pago al recomendado). “Efectivo” = dólares. Cobro en USD a tasa BCV del día.
 - Software: Club, Condominio, Gym. El sitio debe decir que hacen páginas web (`/paginas-web`). Logos de clientes se quedan.
