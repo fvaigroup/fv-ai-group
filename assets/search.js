@@ -96,6 +96,8 @@
     '.sr-hex .sr-tag,.sr-tri .sr-tag{display:none}' +
     '.sr-sub{margin:10px 12px 2px;font:600 10.5px "Space Grotesk",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748b}' +
     '.sr-vacio{margin:2px 12px 6px;padding:8px 0;font-size:12.5px;color:#64748b;font-style:italic}' +
+    '.search-result.sr-ver{flex-direction:row;justify-content:space-between;align-items:center;gap:10px;margin:4px 8px 6px;padding:10px 14px;border:1px solid var(--sr-c);border-radius:10px;color:var(--sr-c);font:600 12.5px "Space Grotesk",sans-serif}' +
+    '.search-result.sr-ver:hover,.search-result.sr-ver.is-active{background:color-mix(in srgb,var(--sr-c) 14%,transparent)}' +
     '.sr-pags{margin-top:6px;border-top:1px solid #1F232B}' +
     '@media (min-width:820px){#search-panel{max-width:920px}.sr-grid:not(.sr-solo){grid-template-columns:1fr 1fr}}' +
     '@media (prefers-reduced-motion:reduce){#search-overlay,#search-panel{transition:none!important}}';
@@ -163,10 +165,17 @@
     function items(arr) {
       return arr.map(function (r) {
         var i = currentResults.push(r) - 1;
-        return '<a href="' + esc(r.url) + '" class="search-result' + (r === mejor ? ' is-active' : '') + '" data-i="' + i + '">' +
+        return '<a href="' + esc(r.url) + '" class="search-result' + (hayConsulta && r === mejor ? ' is-active' : '') + '" data-i="' + i + '">' +
           '<span class="sr-title">' + esc(r.title) + ' <span class="sr-tag cat-' + esc(r.cat) + '">' + esc(r.cat) + '</span></span>' +
           '<span class="sr-desc">' + esc(r.desc) + '</span></a>';
       }).join('');
+    }
+    // Botón al inicio de cada subsección (las listas son largas): lleva a la página con todo. Entra en el recorrido con ↑ ↓ y Enter como un resultado más.
+    function botonVer(clave, n) {
+      var etiqueta = 'Ver todos los ' + n.toLowerCase() + ' de la línea ' + LINEAS[clave].nombre;
+      var primero = !hayConsulta && !currentResults.length; // sin búsqueda arranca resaltado lo primero que se ve
+      var i = currentResults.push({ title: etiqueta, url: n === 'Servicios' ? '/servicios' : '/productos' }) - 1;
+      return '<a href="' + currentResults[i].url + '" class="search-result sr-ver' + (primero ? ' is-active' : '') + '" data-i="' + i + '"><span class="sr-ver-t">' + etiqueta + '</span><span aria-hidden="true">&rarr;</span></a>';
     }
     function columna(clave) {
       var subs = g[clave], cuerpo = '', total = 0;
@@ -177,7 +186,7 @@
           return;
         }
         total += subs[n].length;
-        cuerpo += '<div class="sr-sub">' + n + '</div>' + items(subs[n]);
+        cuerpo += '<div class="sr-sub">' + n + '</div>' + botonVer(clave, n) + items(subs[n]);
       });
       return total ? '<section class="sr-col sr-' + clave + '" aria-label="' + LINEAS[clave].nombre + '"><h3 class="sr-col-h">' + LINEAS[clave].svg + '<span>' + LINEAS[clave].nombre + '</span></h3>' + cuerpo + '</section>' : '';
     }
@@ -188,7 +197,7 @@
       html += '<section class="sr-pags" aria-label="' + nomPag + '"><div class="sr-sub">' + nomPag + '</div>' + items(g.pag['Páginas']) + '</section>';
     }
     resultsEl.innerHTML = html;
-    activeIndex = currentResults.indexOf(mejor);
+    activeIndex = hayConsulta ? currentResults.indexOf(mejor) : 0;
     // con ↑ ↓ se recorre en el orden en que se ve: ⬡ servicios, ⬡ productos, ▲ productos, páginas
   }
 
