@@ -110,6 +110,7 @@ items.forEach(it => {
   const suf = it.precio.modo === 'software' ? (it.linea === 'hex' ? ' para empresas e instituciones' : ' para negocios pequeños') : '';
   const r = INDICE.find(x => x.url === it.detalle.url && x.title === it.nombre + suf);
   ok(r, 'el catálogo «' + it.id + '» está en el buscador con su url ' + it.detalle.url);
+  ok(r.g === it.categoria, it.id + ': el grupo del buscador (g) es su categoría del catálogo (' + it.categoria + '), no «' + r.g + '»');
   ok(r.desc.indexOf(it.frase) === 0, it.id + ': la descripción parte de la frase del catálogo');
   const p = it.precio;
   const precios = p.modo === 'fijo' ? [p.texto] : p.modo === 'a-medida' ? (p.referencia ? [p.referencia.replace(/ \+.*/, '')] : []) : p.modo === 'desde' ? [p.texto.replace('desde ', '')]
@@ -255,6 +256,28 @@ const mensajes = items.map(i => i.wa.mensaje);
 // las páginas que cargan Luci y el buscador existen; los atajos por página son útiles
 ok(/QUICK_HEX/.test(leer('assets/luci.js')) && !/'\/(hexagonal|triangular|cursos)'/.test(leer('assets/luci.js')), 'los atajos por página usan las rutas nuevas');
 ok(!/PAGINA_HEX = .*(hexagonal|asesoria-estrategica|despliegue|masterclasses|acompanamiento-continuo)/.test(leer('assets/luci.js')), 'PAGINA_HEX sin rutas viejas');
+
+// ---------- Mapa del sitio de la lupa: líneas → Servicios / Productos → grupos que se abren y se cierran ----------
+B.buscar('');
+const mapa = B.html();
+const posCol = c => mapa.indexOf('<section class="sr-col sr-' + c + '"');
+ok(posCol('hex') !== -1 && posCol('hex') < posCol('tri') && posCol('tri') < posCol('pag'), 'tres columnas, en este orden: Hexagonal, Triangular y Páginas');
+const seccion = c => mapa.slice(posCol(c), c === 'hex' ? posCol('tri') : c === 'tri' ? posCol('pag') : mapa.length);
+const gruposDe = txt => [...txt.matchAll(/<span class="sr-gt">([^<]*)<\/span>/g)].map(m => m[1].replace(/&amp;/g, '&'));
+const hexTxt = seccion('hex'), triTxt = seccion('tri');
+ok(hexTxt.indexOf('>Servicios<') !== -1 && hexTxt.indexOf('>Servicios<') < hexTxt.indexOf('>Productos<'), 'en la Hexagonal: primero Servicios y luego Productos');
+ok(JSON.stringify(gruposDe(hexTxt)) === JSON.stringify(['Diagnóstico y consultoría', 'Implementación y automatización', 'Formación', 'Acompañamiento y asesoría', 'Software', 'Cursos y programas']), 'la Hexagonal agrupa por categoría, lo cercano junto: ' + gruposDe(hexTxt).join(' | '));
+ok(JSON.stringify(gruposDe(triTxt)) === JSON.stringify(['Software', 'Cursos y programas', 'Para empezar', 'Presencia y web', 'Control y finanzas', 'Ventas y atención']), 'la Triangular agrupa por categoría: ' + gruposDe(triTxt).join(' | '));
+ok(/Servicios<\/div><div class="sr-vacio">Por ahora, solo productos listos para usar\./.test(triTxt), 'la Triangular muestra Servicios con su aviso, sin inventar nada');
+const nGrupos = (mapa.match(/<details class="sr-g"/g) || []).length;
+ok(nGrupos === 12 && (mapa.match(/class="sr-chev"/g) || []).length === 12, 'doce grupos desplegables, cada uno con su flecha (hay ' + nGrupos + ')');
+ok(!/<details class="sr-g" open>/.test(mapa), 'al abrir la lupa todos los grupos están cerrados (menos densidad)');
+ok(/<button type="button" id="search-toggle-all">Expandir todo<\/button>/.test(leer('assets/search.js').replace(/'\s*\+\s*\n\s*'/g, '')), 'hay un botón «Expandir todo» para abrir o cerrar todos los grupos');
+B.buscar('tablero');
+const mapaQ = B.html();
+const gq = (mapaQ.match(/<details class="sr-g"/g) || []).length, gqAbiertos = (mapaQ.match(/<details class="sr-g" open>/g) || []).length;
+ok(gq > 0 && gq === gqAbiertos, 'al buscar, los grupos con coincidencias se abren solos y solo salen esos (' + gqAbiertos + ' de ' + gq + ')');
+B.buscar('');
 
 // ---------- Globo «¿Dudas?»: a los 5 s aparece, a los 20 s desaparece; abrir el chat lo oculta de inmediato ----------
 function cargarGlobo(sinCarga) {
