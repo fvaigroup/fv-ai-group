@@ -49,7 +49,7 @@ const portada = sec('inicio');
 ok((html.match(/<h1\b/g) || []).length === 1, 'un solo h1');
 const h1 = texto((portada.match(/<h1[\s\S]*?<\/h1>/) || [''])[0]);
 ok(h1 === 'Inteligencia de negocios', `h1 exacto (hay «${h1}»)`);
-ok(portada.includes('<span class="ini-h1-grad">de negocios</span>') && portada.includes('<span class="ini-h1-l1">Inteligencia</span>'), '«Inteligencia» en blanco y «de negocios» con el degradado naranja → cian, cada una en su línea');
+ok(portada.includes('<span class="ini-h1-grad">de negocios</span>') && portada.includes('<span class="ini-h1-l1">Inteligencia</span>'), '«Inteligencia» en blanco y «de negocios» con el degradado naranja → cian, en una sola línea');
 const ptxt = texto(portada);
 ok(ptxt.includes('Estrategia con inteligencia artificial para empresas'), 'subtítulo');
 ok(ptxt.includes('Aquí empieza el futuro de su empresa, con decisiones de primer nivel.'), 'descripción breve');
@@ -63,7 +63,7 @@ ok(/\.ini-hexgiro \{[^}]*animation: ini-giro 60s linear infinite/.test(cssTw) &&
 ok(/\.ini-hexgiro \{[^}]*z-index: 0/.test(cssTw) && cssTw.includes('.ini-portada #hex-canvas { z-index: 1; }'), 'capas: los puntos (z 1) quedan sobre el hexágono (z 0)');
 ok(/\.ini-hexgiro \{[^}]*width: min\(980px, 130vw\)[^}]*top: 54%/.test(cssTw) || /\.ini-hexgiro \{[^}]*top: 54%[^}]*width: min\(980px, 130vw\)/.test(cssTw), 'hexágono: top 54 % y min(980px, 130vw)');
 const reglaH1 = (cssTw.match(/\.ini-portada \.ini-h1 \{[^}]*\}/) || [''])[0];
-ok(reglaH1.includes('clamp(34px, 7.6vw, 96px)') && reglaH1.includes('text-transform: uppercase') && reglaH1.includes('font-weight: 800') && reglaH1.includes('line-height: 1.02') && reglaH1.includes('letter-spacing: -1.5px') && reglaH1.includes('max-width: 1100px'), 'título: mayúsculas, 800, clamp(34px, 7.6vw, 96px), interlineado 1,02, -1,5 px, 1100 px');
+ok(reglaH1.includes('clamp(18px, 5.9vw, 70px)') && reglaH1.includes('white-space: nowrap') && reglaH1.includes('text-transform: uppercase') && reglaH1.includes('font-weight: 800') && reglaH1.includes('line-height: 1.02') && reglaH1.includes('letter-spacing: -1.5px') && reglaH1.includes('max-width: 1100px'), 'título: mayúsculas, 800, clamp(20px, 5.4vw, 64px) en una sola línea, interlineado 1,02, -1,5 px, 1100 px');
 ok(/\.ini-portada \.hero-copy \{[^}]*gap: 28px/.test(cssTw), '28 px de separación entre los elementos del hero');
 const botones = [...portada.matchAll(/<a [^>]*class="[^"]*\bini-boton\b[^"]*"[^>]*>[\s\S]*?<\/a>/g)].map(m => m[0]);
 ok(botones.length === 1, `un solo botón en la portada (hay ${botones.length})`);
