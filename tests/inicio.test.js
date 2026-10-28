@@ -48,22 +48,31 @@ ok(/<!-- header:inicio activo="inicio"/.test(html) && /<!-- footer:inicio/.test(
 const portada = sec('inicio');
 ok((html.match(/<h1\b/g) || []).length === 1, 'un solo h1');
 const h1 = texto((portada.match(/<h1[\s\S]*?<\/h1>/) || [''])[0]);
-ok(h1 === 'Servicios a la medida para empresas. Productos listos para negocios pequeños.', `h1 exacto (hay «${h1}»)`);
-ok(texto(portada).includes('Precios claros en dólares, pagaderos en bolívares a la tasa BCV del día.'), 'subtítulo de una línea con los precios en dólares y la tasa BCV');
+ok(h1 === 'Bienvenido al futuro de tu empresa', `h1 exacto (hay «${h1}»)`);
+ok(portada.includes('<span class="ini-h1-grad">futuro de tu empresa</span>'), '«futuro de tu empresa» lleva el degradado naranja → cian');
+const ptxt = texto(portada);
+ok(ptxt.includes('Elegiste bien. Aquí la inteligencia artificial trabaja en tus números, en bolívares y en dólares, desde el primer día.'), 'subtítulo nuevo');
+ok(ptxt.includes('No te vendemos herramientas sueltas. Nos convertimos en el equipo de finanzas e IA que tu empresa todavía no tiene.'), 'texto de apoyo');
+ok(ptxt.includes('30 minutos, sin costo y con cupos por semana.'), 'nota bajo los botones');
+ok(!/Servicios a la medida para empresas|Productos listos para negocios|Precios claros en dólares, pagaderos/.test(ptxt), 'la portada ya no trae los textos anteriores');
+ok(/<img src="assets\/logo-hex-hex\.png" alt="" aria-hidden="true"[^>]*class="ini-hexgiro">/.test(portada) && fs.existsSync(path.join(RAIZ, 'assets/logo-hex-hex.png')), 'hexágono decorativo: alt vacío, aria-hidden y archivo existente');
+const cssTw = fs.readFileSync(path.join(RAIZ, 'src/tailwind.css'), 'utf8');
+ok(/\.ini-hexgiro \{[^}]*animation: ini-giro 60s linear infinite/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-hexgiro { animation: none'), 'el hexágono gira 60 s lineal y se detiene con prefers-reduced-motion');
+ok(/\.ini-hexgiro \{[^}]*z-index: 0/.test(cssTw) && cssTw.includes('.ini-portada #hex-canvas { z-index: 1; }'), 'capas: los puntos (z 1) quedan sobre el hexágono (z 0)');
 const botones = [...portada.matchAll(/<a [^>]*class="[^"]*\bini-boton\b[^"]*"[^>]*>[\s\S]*?<\/a>/g)].map(m => m[0]);
-ok(botones.length === 3, `tres botones en la portada (hay ${botones.length})`);
+ok(botones.length === 2, `dos botones en la portada (hay ${botones.length})`);
 const bt = i => texto(botones[i] || '');
 const href = i => ((botones[i] || '').match(/href="([^"]*)"/) || [, ''])[1];
-ok(bt(0) === 'Ver servicios' && href(0) === '/servicios', 'primer botón: «Ver servicios» → /servicios');
-ok(bt(1) === 'Ver productos' && href(1) === '/productos', 'segundo botón: «Ver productos» → /productos');
-ok(bt(2) === 'Escríbenos por WhatsApp' && /^https:\/\/wa\.me\/584244125386\?text=/.test(href(2)), 'tercer botón: «Escríbenos por WhatsApp» → wa.me');
-ok(decodeURIComponent(href(2).split('text=')[1]) === 'Hola F&V, tengo una consulta', 'el mensaje de WhatsApp de la portada es «Hola F&V, tengo una consulta»');
-ok(/data-cta="portada_hero"/.test(botones[2]) && /data-evento="portada_whatsapp"/.test(botones[2]), 'el botón de WhatsApp lleva data-cta y data-evento="portada_whatsapp"');
+ok(bt(0) === 'Agenda tu consulta gratis' && /^https:\/\/wa\.me\/584244125386\?text=/.test(href(0)), 'primer botón: «Agenda tu consulta gratis» → wa.me');
+ok(decodeURIComponent(href(0).split('text=')[1]) === 'Hola F&V, quiero agendar la consulta gratis de 30 minutos.', 'mensaje de WhatsApp prellenado de la portada');
+ok(/data-cta="portada_hero"/.test(botones[0]) && /data-evento="portada_whatsapp"/.test(botones[0]), 'el botón principal lleva data-cta y data-evento="portada_whatsapp"');
+ok(bt(1) === 'Conoce cómo trabajamos' && href(1) === '#camino', 'segundo botón: «Conoce cómo trabajamos» → #camino');
+ok(html.includes('id="camino"'), 'existe la sección #camino a la que baja el botón');
 ok(!/L[ií]nea (Hexagonal|Triangular)/.test(texto(portada)), 'la portada no nombra las líneas');
-ok(/#00FFFF|ini-h1-cian/.test(portada) && /ini-h1-naranja/.test(portada), 'la portada usa la marca madre (cian y naranja)');
+ok(portada.includes('ini-h1-grad') && /\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #FF8C00, #00FFFF\)/.test(cssTw), 'la portada usa la marca madre (degradado naranja → cian en el título)');
 
 // ------------------------------------------------------------ 2. dos líneas
-const orden = ['inicio', 'lineas', 'servicios-destacados', 'productos-destacados', 'duenos', 'como-trabajamos', 'diferencial', 'testimonios', 'proximas-fechas', 'faq', 'cta-final'];
+const orden = ['inicio', 'camino', 'venezuela', 'conversacion', 'lineas', 'servicios-destacados', 'productos-destacados', 'duenos', 'como-trabajamos', 'diferencial', 'testimonios', 'proximas-fechas', 'faq', 'cta-final'];
 ok(JSON.stringify(secciones.map(s => s.id)) === JSON.stringify(orden), `orden de secciones: ${orden.join(' → ')} (hay ${secciones.map(s => s.id).join(' → ')})`);
 
 const lineas = sec('lineas');

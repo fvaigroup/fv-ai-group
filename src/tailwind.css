@@ -760,6 +760,37 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 .ini-portada .ini-boton { display: inline-flex; align-items: center; justify-content: center; gap: .625rem; min-height: 52px; padding: .875rem 1.75rem; border-radius: .75rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.0625rem; line-height: 1.2; text-align: center; }
 .ini-portada .ini-logos-titulo { margin: 0 0 1.25rem; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; }
 
+/* Portada nueva: hexágono giratorio (solo CSS), título con degradado y secciones «Tu camino», banda y cierre.
+   Capas del hero, de abajo hacia arriba: resplandores, hexágono (z 0), puntos (z 1), texto (z 10). */
+.ini-portada .ini-hexgiro { position: absolute; left: 50%; top: 54%; width: min(980px, 130vw); height: min(980px, 130vw); object-fit: contain; opacity: .5; pointer-events: none; transform: translate(-50%, -50%); transform-origin: 50% 50%; animation: ini-giro 60s linear infinite; z-index: 0; will-change: transform; }
+.ini-portada #hex-canvas { z-index: 1; }
+@keyframes ini-giro { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ini-portada .ini-hexgiro { animation: none; will-change: auto; } }
+.ini-portada .ini-h1 { margin: 1.5rem 0 0; font-family: 'Geist', sans-serif; font-size: clamp(40px, 7vw, 86px); font-weight: 800; line-height: 1.04; letter-spacing: -.025em; color: #fff; text-wrap: balance; }
+.ini-portada .ini-h1-grad { background-image: linear-gradient(90deg, #FF8C00, #00FFFF); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.ini-portada .ini-sub { max-width: 42rem; color: #e2e8f0; }
+.ini-portada .ini-apoyo { max-width: 38rem; margin: 1rem auto 0; font-size: 1rem; line-height: 1.6; color: #94a3b8; }
+.ini-portada .ini-nota { margin: 1rem 0 0; font-family: 'Space Grotesk', sans-serif; font-size: .875rem; color: #94a3b8; }
+.ini-etq-naranja { margin: 0 0 .75rem; font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #FF8C00; }
+.ini-camino { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .ini-camino { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ini-camino { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ini-paso { display: flex; flex-direction: column; gap: .5rem; height: 100%; min-height: 44px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, .1); border-radius: 1rem; background: rgba(255, 255, 255, .03); text-decoration: none; transition: border-color .2s, background-color .2s, transform .2s cubic-bezier(.23, 1, .32, 1); }
+@media (hover: hover) and (pointer: fine) { .ini-paso:hover { border-color: rgba(255, 140, 0, .6); background: rgba(255, 140, 0, .05); transform: translateY(-2px); } }
+.ini-paso:focus-visible { outline: 2px solid #00FFFF; outline-offset: 3px; }
+.ini-paso-num { font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #FF8C00; }
+.ini-paso h3 { margin: 0; font-size: 1.25rem; font-weight: 600; line-height: 1.25; color: #fff; }
+.ini-paso p { margin: 0; font-size: 1rem; line-height: 1.6; color: #cbd5e1; }
+.ini-banda { padding: 2rem 1.5rem; border: 1px solid rgba(255, 255, 255, .12); border-radius: 1.25rem; background: linear-gradient(135deg, rgba(255, 140, 0, .13), rgba(0, 255, 255, .08)); }
+@media (min-width: 640px) { .ini-banda { padding: 3rem; } }
+.ini-banda-puntos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; margin: 2rem 0 0; }
+@media (min-width: 768px) { .ini-banda-puntos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ini-banda-puntos h3 { margin: 0 0 .375rem; font-size: 1.1875rem; font-weight: 600; color: #fff; }
+.ini-banda-puntos p { margin: 0; font-size: 1rem; line-height: 1.6; color: #e2e8f0; }
+.ini-conversa { text-align: center; }
+.ini-conversa p { max-width: 40rem; margin: 1rem auto 0; font-size: 1.125rem; line-height: 1.6; color: #cbd5e1; }
+.ini-conversa .ini-boton { margin-top: 2rem; display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: .875rem 1.75rem; border-radius: .75rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.0625rem; font-weight: 600; }
+
 .ini-linea { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; padding: 1.75rem; background: linear-gradient(180deg, rgba(var(--acento-1-rgb), .08), transparent 45%), #0D0E12; border-color: rgba(var(--acento-1-rgb), .4); }
 @media (min-width: 640px) { .ini-linea { padding: 2.25rem; } }
 .ini-linea-cab { display: flex; align-items: center; gap: .75rem; }

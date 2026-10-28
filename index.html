@@ -471,6 +471,8 @@
   .hero-copy > *:nth-child(2) { animation-delay: .16s; }
   .hero-copy > *:nth-child(3) { animation-delay: .28s; }
   .hero-copy > *:nth-child(4) { animation-delay: .40s; }
+  .hero-copy > *:nth-child(5) { animation-delay: .52s; }
+  .hero-copy > *:nth-child(6) { animation-delay: .64s; }
 
   .hero-visual-in { opacity: 0; animation: heroIn .7s var(--ease-out) .3s forwards; }
   @media (prefers-reduced-motion: reduce) {
@@ -729,7 +731,7 @@
       </nav>
 
       <div class="hidden lg:flex items-center gap-3">
-        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover inline-flex items-center min-h-[44px] font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por </span>WhatsApp</a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="header" data-evento="header_whatsapp" class="btn-primary btn-glow-on-hover inline-flex items-center min-h-[44px] font-head text-sm font-semibold px-5 py-2.5 rounded-lg whitespace-nowrap"><span class="hidden xl:inline">Escríbenos por&nbsp;</span>WhatsApp</a>
       </div>
 
       <button id="menu-btn" type="button" class="lg:hidden text-slate-300 p-2.5 -mr-2.5" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
@@ -797,19 +799,18 @@
   <canvas id="hex-canvas" class="opacity-70" aria-hidden="true"></canvas>
   <div class="absolute top-0 left-0 w-[560px] h-[560px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3 parallax-blob" data-speed="0.08" aria-hidden="true"></div>
   <div class="absolute bottom-0 right-0 w-[620px] h-[620px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4 parallax-blob" data-speed="-0.05" aria-hidden="true"></div>
+  <img src="assets/logo-hex-hex.png" alt="" aria-hidden="true" width="1024" height="1024" decoding="async" class="ini-hexgiro">
   <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 text-center">
     <div class="hero-copy">
       <p><span class="ini-kicker">F&amp;V AI Group · Valencia, Venezuela</span></p>
-      <h1 id="hero-title" class="font-sans text-[2.15rem] leading-[1.12] sm:text-5xl lg:text-[3.5rem] font-extrabold text-white tracking-tight text-balance mt-6">
-        <span class="block"><span class="ini-h1-cian">Servicios a la medida</span> para empresas.</span>
-        <span class="block mt-2 sm:mt-3"><span class="ini-h1-naranja">Productos listos</span> para negocios pequeños.</span>
-      </h1>
-      <p class="ini-sub">Precios claros en dólares, pagaderos en bolívares a la tasa BCV del día.</p>
+      <h1 id="hero-title" class="ini-h1">Bienvenido al <span class="ini-h1-grad">futuro de tu empresa</span></h1>
+      <p class="ini-sub">Elegiste bien. Aquí la inteligencia artificial trabaja en tus números, en bolívares y en dólares, desde el primer día.</p>
+      <p class="ini-apoyo">No te vendemos herramientas sueltas. Nos convertimos en el equipo de finanzas e IA que tu empresa todavía no tiene.</p>
       <div class="ini-botones">
-        <a href="/servicios" data-evento="portada_ver_servicios" data-cta="portada_hero" class="ini-boton btn-primary btn-glow-on-hover">Ver servicios</a>
-        <a href="/productos" data-evento="portada_ver_productos" data-cta="portada_hero" class="ini-boton btn-secondary estado-interactivo">Ver productos</a>
-        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="portada_hero" data-evento="portada_whatsapp" data-product="consulta-general" class="ini-boton btn-secondary estado-interactivo"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escríbenos por WhatsApp</span></a>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20agendar%20la%20consulta%20gratis%20de%2030%20minutos." target="_blank" rel="noopener" data-cta="portada_hero" data-evento="portada_whatsapp" data-product="consulta-general" class="ini-boton btn-primary btn-glow-on-hover">Agenda tu consulta gratis</a>
+        <a href="#camino" data-cta="portada_hero" data-evento="portada_como_trabajamos" class="ini-boton btn-secondary estado-interactivo">Conoce cómo trabajamos</a>
       </div>
+      <p class="ini-nota">30 minutos, sin costo y con cupos por semana.</p>
     </div>
   </div>
   <div class="relative z-10 mt-14 lg:mt-20">
@@ -850,6 +851,46 @@
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.webp" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
     </div>
   </div>
+  </div>
+</section>
+
+<!-- ============ 1B. TU CAMINO CON F&V ============ -->
+<section id="camino" class="relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="camino-titulo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="reveal max-w-3xl">
+      <p class="ini-etq-naranja">Tu camino con F&amp;V</p>
+      <h2 id="camino-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">De no saber en qué se va la plata a decidir con datos cada semana</h2>
+      <p class="mt-4 text-lg text-slate-300 leading-relaxed">Cuatro etapas. Empiezas donde estés y avanzas a tu ritmo.</p>
+    </div>
+    <ul class="ini-camino">
+      <li><a href="/servicios/diagnostico" class="ini-paso" data-evento="camino_diagnostico"><span class="ini-paso-num">01 · Ver</span><h3>Diagnóstico</h3><p>Descubre en qué se van el dinero y el tiempo de tu empresa, con un informe y un plan de 30 días.</p></a></li>
+      <li><a href="/servicios#implementacion" class="ini-paso" data-evento="camino_orden_financiero"><span class="ini-paso-num">02 · Arreglar</span><h3>Orden financiero</h3><p>Tablero, conciliación y reportes por WhatsApp para ver tu caja sin esperar al cierre del mes.</p></a></li>
+      <li><a href="/servicios/asesor-financiero" class="ini-paso" data-evento="camino_asesor"><span class="ini-paso-num">03 · Acompañar</span><h3>Asesor financiero con IA</h3><p>Una reunión mensual o semanal para decidir con datos y con una IA trabajando a tu lado.</p></a></li>
+      <li><a href="/productos#software" class="ini-paso" data-evento="camino_software"><span class="ini-paso-num">04 · Sostener</span><h3>Club, Condominio y Gym</h3><p>Cobranza y gestión que funcionan solas para clubes, condominios y gimnasios, con avisos por WhatsApp.</p></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 1C. BANDA: HACER NEGOCIOS EN VENEZUELA ============ -->
+<section id="venezuela" class="relative py-12 lg:py-16 border-t border-white/5" aria-labelledby="venezuela-titulo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="ini-banda reveal">
+      <h2 id="venezuela-titulo" class="font-sans text-2xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance max-w-3xl">Hacer negocios en Venezuela es difícil. Con IA bien aplicada, deja de ser una desventaja.</h2>
+      <div class="ini-banda-puntos">
+        <div><h3>Doble moneda, sin enredos</h3><p>Tus números en dólares y bolívares, con la tasa BCV de cada fecha.</p></div>
+        <div><h3>Por donde ya conversas</h3><p>Reportes, avisos y cobranza por WhatsApp, sin apps nuevas que aprender.</p></div>
+        <div><h3>Precios claros</h3><p>Publicamos lo que cuesta cada cosa. Sin sorpresas y sin letra chica.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1D. CIERRE: UNA CONVERSACIÓN DE 30 MINUTOS ============ -->
+<section id="conversacion" class="relative py-16 lg:py-24 border-t border-white/5" aria-labelledby="conversacion-titulo">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8 ini-conversa reveal">
+    <h2 id="conversacion-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Empieza con una conversación de 30 minutos</h2>
+    <p>Cuéntanos cómo funciona tu empresa hoy. Te decimos dónde la IA puede darte más ventaja, aunque no trabajes con nosotros.</p>
+    <a href="https://wa.me/584244125386" target="_blank" rel="noopener" data-cta="portada_cierre" data-evento="portada_cierre_whatsapp" class="ini-boton btn-primary btn-glow-on-hover">Escríbenos por WhatsApp</a>
   </div>
 </section>
 

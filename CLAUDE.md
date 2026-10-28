@@ -37,3 +37,4 @@ Sitio estático de F&V AI Group (HTML + JS sin framework, build en Node + Tailwi
 
 ## Cambios recientes
 - 2026-10-27: primera sesión, solo lectura. Informe en `brain/fvaigroup/tecnologia/informes/`. Se creó este archivo.
+- 2026-10-28: hero del inicio rediseñado (hexágono giratorio solo CSS, H1 «Bienvenido al futuro de tu empresa») y secciones #camino, #venezuela y #conversacion; arreglo del espacio en «Escríbenos por WhatsApp» de la barra. Lupa con columnas Hexagonal/Triangular y botones «Ver todos…» (27 oct). Pendiente: unificar «30 minutos» (Contacto dice 20, Cal.com 15) y decidir qué hacer con #cta-final y #como-trabajamos, que se parecen a las secciones nuevas.
