@@ -348,12 +348,8 @@
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
   .reveal.is-in { opacity: 1; transform: translateY(0); }
 
-  /* ---- Widget de Luci: por debajo de 1280 px se oculta hasta pasar el hero, para no tapar el CTA "Ver servicios" ---- */
+  /* ---- Widget de Luci: el avatar siempre está visible; solo sube cuando el footer entra en vista ---- */
   #luci-widget { transition: opacity .3s var(--ease-out), transform .3s var(--ease-out), bottom .3s var(--ease-out); }
-  @media (max-width: 1279px) {
-    #luci-widget { opacity: 0; pointer-events: none; transform: translateY(12px); }
-    #luci-widget.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-  }
 
   /* ---- Luci y "volver arriba": suben cuando el footer entra en vista, para no tapar el copyright ---- */
   #luci-widget.avoid-footer, #scroll-top.avoid-footer { bottom: 96px; }
@@ -506,41 +502,6 @@
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
   #luci-toggle { animation: luciPulse 3s ease-in-out infinite; transition: transform .1s var(--ease-out); }
   #luci-toggle:active { transform: scale(0.94); }
-
-  /* ---- Aviso de descubribilidad de Luci: aparece una sola vez, en la primera visita, junto al botón (reemplaza la dependencia del tooltip hover-only, invisible en táctil) ---- */
-  .luci-hint {
-    position: absolute;
-    bottom: calc(100% + 14px);
-    left: 0;
-    width: 220px;
-    max-width: 72vw;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    background: #0D0E12;
-    border: 1px solid rgba(0,255,255,0.35);
-    border-radius: 12px;
-    padding: 10px 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    opacity: 0;
-    transform: translateY(8px) scale(0.97);
-    pointer-events: none;
-    transition: opacity .3s var(--ease-out), transform .3s var(--ease-out);
-  }
-  .luci-hint.is-visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-  .luci-hint-text {
-    flex: 1; text-align: left; background: none; border: none; padding: 0;
-    color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; line-height: 1.4; cursor: pointer;
-  }
-  .luci-hint-dismiss {
-    flex-shrink: 0; background: none; border: none; color: #94a3b8; font-size: 18px; line-height: 1; cursor: pointer; padding: 0; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; margin: -12px -12px -12px 0;
-    transition: color .2s var(--ease-out);
-  }@media (hover: hover) and (pointer: fine) { .luci-hint-dismiss:hover { color: #fff; } }
-  /* mientras el aviso está visible, no dupliques con el tooltip hover-only */
-  #luci-widget:has(.luci-hint.is-visible) > span { opacity: 0 !important; }
-  @media (prefers-reduced-motion: reduce) {
-    .luci-hint, .luci-hint.is-visible { transition: opacity .2s ease; transform: none; }
-  }
 
   /* ---- Barra de progreso de scroll ---- */
   #scroll-progress {
@@ -795,22 +756,22 @@
 <main id="main-content">
 
 <!-- ============ 1. PORTADA (marca madre: cian y naranja) ============ -->
-<section id="inicio" class="ini-portada relative pt-32 pb-14 lg:pt-44 lg:pb-20 overflow-hidden" aria-labelledby="hero-title">
+<section id="inicio" class="ini-portada relative pb-14 lg:pb-20 overflow-hidden" aria-labelledby="hero-title">
   <canvas id="hex-canvas" class="opacity-70" aria-hidden="true"></canvas>
   <div class="absolute top-0 left-0 w-[560px] h-[560px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3 parallax-blob" data-speed="0.08" aria-hidden="true"></div>
   <div class="absolute bottom-0 right-0 w-[620px] h-[620px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4 parallax-blob" data-speed="-0.05" aria-hidden="true"></div>
-  <img src="assets/logo-hex-hex.png" alt="" aria-hidden="true" width="1024" height="1024" decoding="async" class="ini-hexgiro">
-  <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 text-center">
-    <div class="hero-copy">
-      <p><span class="ini-kicker">F&amp;V AI Group · Valencia, Venezuela</span></p>
-      <h1 id="hero-title" class="ini-h1">Bienvenido al <span class="ini-h1-grad">futuro de tu empresa</span></h1>
-      <p class="ini-sub">Elegiste bien. Aquí la inteligencia artificial trabaja en tus números, en bolívares y en dólares, desde el primer día.</p>
-      <p class="ini-apoyo">No te vendemos herramientas sueltas. Nos convertimos en el equipo de finanzas e IA que tu empresa todavía no tiene.</p>
-      <div class="ini-botones">
-        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20agendar%20la%20consulta%20gratis%20de%2030%20minutos." target="_blank" rel="noopener" data-cta="portada_hero" data-evento="portada_whatsapp" data-product="consulta-general" class="ini-boton btn-primary btn-glow-on-hover">Agenda tu consulta gratis</a>
-        <a href="#camino" data-cta="portada_hero" data-evento="portada_como_trabajamos" class="ini-boton btn-secondary estado-interactivo">Conoce cómo trabajamos</a>
+  <div class="ini-hero">
+    <img src="assets/logo-hex-hex.png" alt="" aria-hidden="true" width="1024" height="1024" decoding="async" class="ini-hexgiro">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="ini-h1">Bienvenido al <span class="ini-h1-grad">futuro de su empresa</span></h1>
+        <p class="ini-sub">Eligió bien. Aquí la inteligencia artificial trabaja en sus números, en bolívares y en dólares, desde el primer día.</p>
+        <div class="ini-botones">
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20agendar%20la%20consulta%20gratis%20de%2030%20minutos." target="_blank" rel="noopener" data-cta="portada_hero" data-evento="portada_whatsapp" data-product="consulta-general" class="ini-boton btn-primary btn-glow-on-hover">Agende su consulta gratis</a>
+          <a href="#camino" data-cta="portada_hero" data-evento="portada_como_trabajamos" class="ini-boton btn-secondary estado-interactivo">Conozca cómo trabajamos</a>
+        </div>
+        <p class="ini-nota">30 minutos, sin costo y con cupos por semana.</p>
       </div>
-      <p class="ini-nota">30 minutos, sin costo y con cupos por semana.</p>
     </div>
   </div>
   <div class="relative z-10 mt-14 lg:mt-20">
@@ -858,14 +819,14 @@
 <section id="camino" class="relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="camino-titulo">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <div class="reveal max-w-3xl">
-      <p class="ini-etq-naranja">Tu camino con F&amp;V</p>
+      <p class="ini-etq-naranja">Su camino con F&amp;V</p>
       <h2 id="camino-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">De no saber en qué se va la plata a decidir con datos cada semana</h2>
-      <p class="mt-4 text-lg text-slate-300 leading-relaxed">Cuatro etapas. Empiezas donde estés y avanzas a tu ritmo.</p>
+      <p class="mt-4 text-lg text-slate-300 leading-relaxed">Cuatro etapas. Empiece donde esté y avance a su ritmo.</p>
     </div>
     <ul class="ini-camino">
-      <li><a href="/servicios/diagnostico" class="ini-paso" data-evento="camino_diagnostico"><span class="ini-paso-num">01 · Ver</span><h3>Diagnóstico</h3><p>Descubre en qué se van el dinero y el tiempo de tu empresa, con un informe y un plan de 30 días.</p></a></li>
-      <li><a href="/servicios#implementacion" class="ini-paso" data-evento="camino_orden_financiero"><span class="ini-paso-num">02 · Arreglar</span><h3>Orden financiero</h3><p>Tablero, conciliación y reportes por WhatsApp para ver tu caja sin esperar al cierre del mes.</p></a></li>
-      <li><a href="/servicios/asesor-financiero" class="ini-paso" data-evento="camino_asesor"><span class="ini-paso-num">03 · Acompañar</span><h3>Asesor financiero con IA</h3><p>Una reunión mensual o semanal para decidir con datos y con una IA trabajando a tu lado.</p></a></li>
+      <li><a href="/servicios/diagnostico" class="ini-paso" data-evento="camino_diagnostico"><span class="ini-paso-num">01 · Ver</span><h3>Diagnóstico</h3><p>Descubra en qué se van el dinero y el tiempo de su empresa, con un informe y un plan de 30 días.</p></a></li>
+      <li><a href="/servicios#implementacion" class="ini-paso" data-evento="camino_orden_financiero"><span class="ini-paso-num">02 · Arreglar</span><h3>Orden financiero</h3><p>Tablero, conciliación y reportes por WhatsApp para ver su caja sin esperar al cierre del mes.</p></a></li>
+      <li><a href="/servicios/asesor-financiero" class="ini-paso" data-evento="camino_asesor"><span class="ini-paso-num">03 · Acompañar</span><h3>Asesor financiero con IA</h3><p>Una reunión mensual o semanal para decidir con datos y con una IA trabajando a su lado.</p></a></li>
       <li><a href="/productos#software" class="ini-paso" data-evento="camino_software"><span class="ini-paso-num">04 · Sostener</span><h3>Club, Condominio y Gym</h3><p>Cobranza y gestión que funcionan solas para clubes, condominios y gimnasios, con avisos por WhatsApp.</p></a></li>
     </ul>
   </div>
@@ -877,8 +838,8 @@
     <div class="ini-banda reveal">
       <h2 id="venezuela-titulo" class="font-sans text-2xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance max-w-3xl">Hacer negocios en Venezuela es difícil. Con IA bien aplicada, deja de ser una desventaja.</h2>
       <div class="ini-banda-puntos">
-        <div><h3>Doble moneda, sin enredos</h3><p>Tus números en dólares y bolívares, con la tasa BCV de cada fecha.</p></div>
-        <div><h3>Por donde ya conversas</h3><p>Reportes, avisos y cobranza por WhatsApp, sin apps nuevas que aprender.</p></div>
+        <div><h3>Doble moneda, sin enredos</h3><p>Sus números en dólares y bolívares, con la tasa BCV de cada fecha.</p></div>
+        <div><h3>Por donde ya conversa</h3><p>Reportes, avisos y cobranza por WhatsApp, sin apps nuevas que aprender.</p></div>
         <div><h3>Precios claros</h3><p>Publicamos lo que cuesta cada cosa. Sin sorpresas y sin letra chica.</p></div>
       </div>
     </div>
@@ -888,9 +849,9 @@
 <!-- ============ 1D. CIERRE: UNA CONVERSACIÓN DE 30 MINUTOS ============ -->
 <section id="conversacion" class="relative py-16 lg:py-24 border-t border-white/5" aria-labelledby="conversacion-titulo">
   <div class="max-w-5xl mx-auto px-6 lg:px-8 ini-conversa reveal">
-    <h2 id="conversacion-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Empieza con una conversación de 30 minutos</h2>
-    <p>Cuéntanos cómo funciona tu empresa hoy. Te decimos dónde la IA puede darte más ventaja, aunque no trabajes con nosotros.</p>
-    <a href="https://wa.me/584244125386" target="_blank" rel="noopener" data-cta="portada_cierre" data-evento="portada_cierre_whatsapp" class="ini-boton btn-primary btn-glow-on-hover">Escríbenos por WhatsApp</a>
+    <h2 id="conversacion-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Empiece con una conversación de 30 minutos</h2>
+    <p>Cuéntenos cómo funciona su empresa hoy. Le decimos dónde la IA puede darle más ventaja, aunque no trabaje con nosotros.</p>
+    <a href="https://wa.me/584244125386" target="_blank" rel="noopener" data-cta="portada_cierre" data-evento="portada_cierre_whatsapp" class="ini-boton btn-primary btn-glow-on-hover">Escríbanos por WhatsApp</a>
   </div>
 </section>
 
@@ -1284,7 +1245,7 @@
       <div class="absolute -top-24 -right-24 w-72 h-72 bg-fv-cyanMid/10 rounded-full blur-[100px]" aria-hidden="true"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-fv-orange/10 rounded-full blur-[100px]" aria-hidden="true"></div>
       <div class="relative z-10">
-        <h2 id="h-cierre" class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 tracking-tight text-balance">¿Por dónde empezar? <span class="shimmer-text">Escríbenos hoy</span></h2>
+        <h2 id="h-cierre" class="font-sans text-3xl sm:text-4xl font-semibold text-white mb-4 tracking-tight text-balance">¿Por dónde empezar? <span class="shimmer-text">Escríbanos hoy</span></h2>
         <p class="text-slate-300 max-w-xl mx-auto mb-8 leading-relaxed">Una conversación corta por WhatsApp basta para recomendar el paso justo. Respondemos el mismo día, de lunes a viernes, de 9:00 a 17:00.</p>
         <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20empezar%20esta%20semana.%20%C2%BFQu%C3%A9%20me%20recomiendan%3F" target="_blank" rel="noopener" data-cta="cierre" data-evento="cierre_whatsapp" class="btn-primary btn-grow inline-flex justify-center items-center gap-2 min-h-[52px] px-6 sm:px-10 py-4 font-head font-semibold text-base sm:text-lg rounded-lg"><svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h.01a7.94 7.94 0 007.94-7.94 7.87 7.87 0 00-2.4-5.64zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.66-2.43-.16-.25a6.6 6.6 0 01-1.02-3.52 6.62 6.62 0 016.63-6.62 6.58 6.58 0 014.68 1.95 6.58 6.58 0 011.94 4.68 6.62 6.62 0 01-6.62 6.6zm3.63-4.95c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.11.13-.23.14-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.24-.02-.34-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34-.12 0-.25-.01-.38-.01-.13 0-.35.05-.53.24-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.15 3.41 3.01.48.2.85.33 1.14.42.48.15.91.13 1.26.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.09-.18-.14-.38-.24z"/></svg><span>Escribir por WhatsApp</span></a>
         <p class="mt-8 font-head text-sm text-slate-300">Pago Móvil · USDT · Zinli · Efectivo</p>
@@ -1391,10 +1352,6 @@
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40 group">
-  <div id="luci-hint" class="luci-hint" role="status">
-    <button type="button" id="luci-hint-open" class="luci-hint-text">¿Dudas? Pregúntale a Luci (responde al instante)</button>
-    <button type="button" id="luci-hint-dismiss" aria-label="Cerrar aviso" class="luci-hint-dismiss">&times;</button>
-  </div>
   <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-7 h-7 md:w-8 md:h-8" loading="lazy" decoding="async">
   </button>
@@ -1544,55 +1501,7 @@
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  // ---- Luci en móvil: se revela solo tras pasar el hero, para no tapar el CTA "Ver servicios" ----
-  // ---- + aviso de descubribilidad de primer uso: aparece una sola vez cuando el widget se vuelve visible ----
   const luciWidget = document.getElementById('luci-widget');
-  if (luciWidget) {
-    const mobileQuery = window.matchMedia('(max-width: 1279px)');
-    const luciHint = document.getElementById('luci-hint');
-    const luciHintOpen = document.getElementById('luci-hint-open');
-    const luciHintDismiss = document.getElementById('luci-hint-dismiss');
-    const luciToggleBtn = document.getElementById('luci-toggle');
-    const LUCI_HINT_KEY = 'fv-luci-hint-seen';
-    let luciHintTimer = null;
-
-    function luciHintSeen() { try { return !!localStorage.getItem(LUCI_HINT_KEY); } catch (e) { return false; } }
-    function markLuciHintSeen() { try { localStorage.setItem(LUCI_HINT_KEY, '1'); } catch (e) {} }
-
-    function hideLuciHint() {
-      if (!luciHint) return;
-      luciHint.classList.remove('is-visible');
-      clearTimeout(luciHintTimer);
-    }
-
-    function showLuciHintOnce() {
-      if (!luciHint || luciHintSeen()) return;
-      markLuciHintSeen();
-      luciHint.classList.add('is-visible');
-      luciHintTimer = setTimeout(hideLuciHint, 6000);
-    }
-
-    if (luciHintOpen && luciToggleBtn) {
-      luciHintOpen.addEventListener('click', () => { hideLuciHint(); luciToggleBtn.click(); });
-    }
-    if (luciHintDismiss) luciHintDismiss.addEventListener('click', hideLuciHint);
-    if (luciToggleBtn) luciToggleBtn.addEventListener('click', hideLuciHint);
-
-    let luciHintArmed = false;
-    window.addEventListener('scroll', () => {
-      if (mobileQuery.matches) {
-        const wasVisible = luciWidget.classList.contains('is-visible');
-        const nowVisible = window.scrollY > 400;
-        luciWidget.classList.toggle('is-visible', nowVisible);
-      }
-      // el aviso espera a que el visitante pase el hero, en escritorio y móvil por igual,
-      // para no competir visualmente con los CTA del hero en pantallas de poca altura.
-      if (!luciHintArmed && window.scrollY > 400) {
-        luciHintArmed = true;
-        setTimeout(showLuciHintOnce, 1200);
-      }
-    });
-  }
 
   // ---- Luci y "volver arriba" suben cuando el footer entra en vista, para no tapar el copyright ----
   const siteFooter = document.querySelector('footer');

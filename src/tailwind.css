@@ -762,14 +762,16 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 
 /* Portada nueva: hexágono giratorio (solo CSS), título con degradado y secciones «Tu camino», banda y cierre.
    Capas del hero, de abajo hacia arriba: resplandores, hexágono (z 0), puntos (z 1), texto (z 10). */
+/* El hero ocupa toda la pantalla visible (menos la barra, 4.75rem) y centra su contenido: la franja de logos queda debajo del pliegue. */
+.ini-portada { padding-top: 4.75rem; }
+.ini-portada .ini-hero { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: calc(100vh - 4.75rem); min-height: calc(100svh - 4.75rem); padding: 2.5rem 0; }
 .ini-portada .ini-hexgiro { position: absolute; left: 50%; top: 54%; width: min(980px, 130vw); height: min(980px, 130vw); object-fit: contain; opacity: .5; pointer-events: none; transform: translate(-50%, -50%); transform-origin: 50% 50%; animation: ini-giro 60s linear infinite; z-index: 0; will-change: transform; }
 .ini-portada #hex-canvas { z-index: 1; }
 @keyframes ini-giro { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .ini-portada .ini-hexgiro { animation: none; will-change: auto; } }
-.ini-portada .ini-h1 { margin: 1.5rem 0 0; font-family: 'Geist', sans-serif; font-size: clamp(40px, 7vw, 86px); font-weight: 800; line-height: 1.04; letter-spacing: -.025em; color: #fff; text-wrap: balance; }
+.ini-portada .ini-h1 { margin: 0; font-family: 'Geist', sans-serif; font-size: clamp(40px, 7vw, 86px); font-weight: 800; line-height: 1.04; letter-spacing: -.025em; color: #fff; text-wrap: balance; }
 .ini-portada .ini-h1-grad { background-image: linear-gradient(90deg, #FF8C00, #00FFFF); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .ini-portada .ini-sub { max-width: 42rem; color: #e2e8f0; }
-.ini-portada .ini-apoyo { max-width: 38rem; margin: 1rem auto 0; font-size: 1rem; line-height: 1.6; color: #94a3b8; }
 .ini-portada .ini-nota { margin: 1rem 0 0; font-family: 'Space Grotesk', sans-serif; font-size: .875rem; color: #94a3b8; }
 .ini-etq-naranja { margin: 0 0 .75rem; font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #FF8C00; }
 .ini-camino { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
@@ -840,5 +842,3 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 .ini-faq summary { min-height: 44px; font-size: 1.0625rem; }
 .ini-faq details > p { font-size: 1.0625rem; }
 
-/* Luci: áreas táctiles de 44 px (el aviso de primera visita y el rótulo que abre el chat) */
-html .luci-hint-text, html #luci-hint-open { min-height: 44px; display: inline-flex; align-items: center; }

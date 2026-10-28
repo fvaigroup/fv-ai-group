@@ -38,8 +38,8 @@ function entorno(ruta, extra) {
     querySelectorAll() { return []; },
     addEventListener(t, f) { (this.oyentes[t] = this.oyentes[t] || []).push(f); }
   };
-  const ventana = { location: { pathname: ruta, href: '' }, FV_EVENTOS: extra && extra.eventos };
-  const ctx = { window: ventana, document: documento, location: ventana.location, navigator: { platform: 'Win32', userAgent: '' }, setTimeout: f => f(), console };
+  const ventana = { location: { pathname: ruta, href: '' }, FV_EVENTOS: extra && extra.eventos, oyentes: {}, addEventListener(t, f) { (this.oyentes[t] = this.oyentes[t] || []).push(f); } };
+  const ctx = { window: ventana, document: documento, location: ventana.location, navigator: { platform: 'Win32', userAgent: '' }, setTimeout: f => f(), clearTimeout: () => {}, console };
   ventana.window = ventana;
   return { ids, documento, ventana, ctx };
 }
@@ -255,6 +255,65 @@ const mensajes = items.map(i => i.wa.mensaje);
 // las páginas que cargan Luci y el buscador existen; los atajos por página son útiles
 ok(/QUICK_HEX/.test(leer('assets/luci.js')) && !/'\/(hexagonal|triangular|cursos)'/.test(leer('assets/luci.js')), 'los atajos por página usan las rutas nuevas');
 ok(!/PAGINA_HEX = .*(hexagonal|asesoria-estrategica|despliegue|masterclasses|acompanamiento-continuo)/.test(leer('assets/luci.js')), 'PAGINA_HEX sin rutas viejas');
+
+// ---------- Globo «¿Dudas?»: a los 5 s aparece, a los 20 s desaparece; abrir el chat lo oculta de inmediato ----------
+function cargarGlobo(sinCarga) {
+  const e = entorno('/', { eventos: EVENTOS });
+  ['luci-toggle', 'luci-panel', 'luci-close', 'luci-messages', 'luci-quick', 'luci-form', 'luci-input'].forEach(id => { e.ids[id] = nodo(id); });
+  e.ids['luci-toggle'].parentNode = nodo('p');
+  const cola = []; let ahora = 0;
+  e.ctx.setTimeout = (f, ms) => { const t = { f, en: ahora + ms, vivo: true }; cola.push(t); return t; };
+  e.ctx.clearTimeout = t => { if (t) t.vivo = false; };
+  vm.createContext(e.ctx);
+  vm.runInContext(leer('assets/luci.js'), e.ctx, { filename: 'luci.js' });
+  const toggle = e.ids['luci-toggle'];
+  const globo = toggle.parentNode.children.find(h => h.id === 'luci-pill');
+  const avanzar = ms => {
+    const meta = ahora + ms;
+    for (;;) {
+      const p = cola.filter(t => t.vivo && t.en <= meta).sort((a, b) => a.en - b.en)[0];
+      if (!p) break;
+      ahora = p.en; p.vivo = false; p.f();
+    }
+    ahora = meta;
+  };
+  const visible = () => globo.classList.contains('is-visible');
+  const cargar = () => (e.ventana.oyentes.load || []).forEach(f => f()); // la página termina de cargar: aquí arranca el reloj
+  if (!sinCarga) cargar();
+  return { cargar, e, toggle, globo, avanzar, visible, abrir: e.ventana.FV_LUCI.abrir, vivos: () => cola.filter(t => t.vivo).length };
+}
+const G = cargarGlobo();
+ok(G.globo && G.globo.textContent === '¿Dudas?', 'el globo dice solamente «¿Dudas?»');
+ok(G.globo.attrs['aria-hidden'] === 'true', 'el globo es decorativo (aria-hidden)');
+ok(/Pregúntale a Luci/.test(G.toggle.attrs['aria-label'] || '') && /responde al instante/.test(G.toggle.attrs['aria-label'] || ''), 'el botón de Luci conserva su aria-label completo');
+ok(!G.visible(), 'antes de los 5 s el globo no se ve (0 s)');
+G.avanzar(4999); ok(!G.visible(), 'a los 4,999 s el globo sigue oculto');
+G.avanzar(1); ok(G.visible(), 'a los 5 s el globo aparece');
+G.avanzar(14999); ok(G.visible(), 'a los 19,999 s el globo sigue visible');
+G.avanzar(1); ok(!G.visible(), 'a los 20 s (15 s después de aparecer) el globo desaparece');
+G.avanzar(60000); ok(!G.visible() && G.vivos() === 0, 'no vuelve a aparecer y no quedan temporizadores');
+const G2 = cargarGlobo();
+G2.avanzar(3000); G2.abrir(); G2.avanzar(30000);
+ok(!G2.visible(), 'si se abre el chat antes de los 5 s, el globo no llega a aparecer');
+const G3 = cargarGlobo();
+G3.avanzar(6000); ok(G3.visible(), 'el globo está visible a los 6 s');
+G3.abrir(); ok(!G3.visible(), 'al abrir el chat el globo se oculta de inmediato');
+G3.avanzar(30000); ok(!G3.visible() && G3.vivos() === 0, 'y no vuelve');
+const G5 = cargarGlobo(true);
+G5.avanzar(20000); ok(!G5.visible(), 'el reloj de 5 s no corre hasta que la página termina de cargar');
+G5.cargar(); G5.avanzar(4999); ok(!G5.visible(), 'a los 4,999 s de cargada la página sigue oculto');
+G5.avanzar(1); ok(G5.visible(), 'a los 5 s de cargada la página aparece');
+const G6 = cargarGlobo(true);
+G6.abrir(); G6.cargar(); G6.avanzar(30000);
+ok(!G6.visible() && G6.vivos() === 0, 'si se abre el chat antes de que termine de cargar, el globo no llega a aparecer');
+const G4 = cargarGlobo();
+G4.avanzar(6000);
+ok((G4.e.ventana.oyentes.pagehide || []).length === 1, 'hay limpieza de temporizadores al salir de la página (pagehide)');
+G4.e.ventana.oyentes.pagehide.forEach(f => f());
+ok(!G4.visible() && G4.vivos() === 0, 'pagehide cancela los temporizadores y oculta el globo');
+const css = leer('assets/luci.js');
+ok(/#luci-pill\{[^}]*opacity:0;visibility:hidden/.test(css) && /transition:opacity \.3s ease/.test(css) && /prefers-reduced-motion:reduce\)\{#luci-pill,#luci-pill\.is-visible\{transition:none\}/.test(css), 'el globo entra y sale con transición de opacidad, y sin animación con prefers-reduced-motion');
+ok(!/luci-hint/.test(leer('index.html')) && !/luci-hint/.test(css), 'ya no existe el aviso aparte de Luci (un solo globo)');
 
 console.log(n + ' comprobaciones correctas (buscador y Luci)');
 informe.forEach(l => console.log('  ' + l));

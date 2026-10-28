@@ -14,7 +14,8 @@
   var closeBtn = document.getElementById('luci-close'), messages = document.getElementById('luci-messages'),
       quick = document.getElementById('luci-quick'), form = document.getElementById('luci-form'), input = document.getElementById('luci-input');
   var WA = 'https://wa.me/584244125386?text=';
-  var TEXTO_BOTON = '¿Dudas? Pregúntale a Luci (responde al instante)';
+  var TEXTO_BOTON = '¿Dudas? Pregúntale a Luci (responde al instante)'; // etiqueta completa del botón (lectores de pantalla)
+  var TEXTO_GLOBO = '¿Dudas?'; // lo único que se ve en el globo
   var HORARIO = 'Respondemos el mismo día de lunes a viernes de 9:00 a 17:00. Fuera de ese horario te atiende Luci, nuestra asistente virtual, y te escribimos el siguiente día hábil.';
 
   function wa(m) { return WA + encodeURIComponent(m); }
@@ -129,7 +130,7 @@
 
   var css = document.createElement('style');
   css.textContent = '.luci-cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:8px 12px;border-radius:8px;font-family:"Space Grotesk",sans-serif;font-size:12.5px;font-weight:600;background:rgba(var(--acento-1-rgb),.12);border:1px solid rgba(var(--acento-1-rgb),.5);color:var(--acento-1);text-decoration:none;transition:background-color .18s cubic-bezier(.23,1,.32,1),transform .18s cubic-bezier(.23,1,.32,1)}.luci-cta:active{transform:scale(.97)}@media (hover:hover) and (pointer:fine){.luci-cta:hover{background:rgba(var(--acento-1-rgb),.22)}}' +
-    '.luci-wrap{max-width:85%}.luci-wrap .luci-bubble-bot{max-width:100%}#luci-pill{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);white-space:nowrap;display:none;background:#0D0E12;border:1px solid rgba(0,255,255,.35);color:#fff;font:600 12.5px "Space Grotesk",sans-serif;padding:9px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5);cursor:pointer}@media (min-width:768px){#luci-pill{display:block}}#luci-pill[hidden]{display:none!important}';
+    '.luci-wrap{max-width:85%}.luci-wrap .luci-bubble-bot{max-width:100%}#luci-pill{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);white-space:nowrap;background:#0D0E12;border:1px solid rgba(0,255,255,.35);color:#fff;font:600 12.5px "Space Grotesk",sans-serif;padding:9px 14px;min-height:44px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility 0s linear .3s}#luci-pill.is-visible{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .3s ease}@media (prefers-reduced-motion:reduce){#luci-pill,#luci-pill.is-visible{transition:none}}';
   document.head.appendChild(css);
 
   toggle.setAttribute('aria-label', TEXTO_BOTON); toggle.setAttribute('title', TEXTO_BOTON); toggle.setAttribute('aria-expanded', 'false');
@@ -137,13 +138,16 @@
   messages.setAttribute('role', 'log'); messages.setAttribute('aria-live', 'polite');
   input.setAttribute('placeholder', 'Escribe tu pregunta...'); input.setAttribute('aria-label', 'Escribe tu pregunta para Luci');
   var sub = panel.querySelector('p.text-\\[11px\\]'); if (sub) sub.textContent = 'Asistente virtual · responde al instante';
-  var hintOpen = document.getElementById('luci-hint-open'); if (hintOpen) hintOpen.textContent = TEXTO_BOTON;
-  var pill = null;
-  {
-    pill = document.createElement('button'); pill.type = 'button'; pill.id = 'luci-pill'; pill.textContent = TEXTO_BOTON; pill.setAttribute('tabindex', '-1'); pill.setAttribute('aria-hidden', 'true');
-    toggle.parentNode.appendChild(pill);
-    pill.addEventListener('click', function () { abrir(); });
-  }
+  // Globo «¿Dudas?» junto al avatar: aparece a los 5 s de cargar la página y se va 15 s después (a los 20 s). Si se abre el chat, se oculta de
+  // inmediato. Es decorativo (aria-hidden): el botón del avatar conserva su etiqueta completa. El avatar no se oculta nunca.
+  var pill = document.createElement('button'); pill.type = 'button'; pill.id = 'luci-pill'; pill.textContent = TEXTO_GLOBO; pill.setAttribute('tabindex', '-1'); pill.setAttribute('aria-hidden', 'true');
+  toggle.parentNode.appendChild(pill);
+  pill.addEventListener('click', function () { abrir(); });
+  var tMostrar = null, tOcultar = null, globoCerrado = false;
+  function ocultarGlobo() { globoCerrado = true; clearTimeout(tMostrar); clearTimeout(tOcultar); pill.classList.remove('is-visible'); }
+  function armarGlobo() { if (globoCerrado) return; tMostrar = setTimeout(function () { pill.classList.add('is-visible'); tOcultar = setTimeout(ocultarGlobo, 15000); }, 5000); }
+  if (document.readyState === 'complete') armarGlobo(); else window.addEventListener('load', armarGlobo); // el reloj arranca al terminar de cargar la página
+  window.addEventListener('pagehide', ocultarGlobo); // limpieza de los temporizadores al salir de la página
 
   function mensaje(texto, de, cta) {
     var box = document.createElement('div');
@@ -192,8 +196,7 @@
 
   var iniciado = false;
   function abrir() {
-    panel.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); if (pill) pill.hidden = true;
-    var h = document.getElementById('luci-hint'); if (h) h.classList.remove('is-visible');
+    panel.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); ocultarGlobo();
     if (!iniciado) {
       iniciado = true;
       mensaje('Hola, soy Luci, la asistente virtual de F&V. Respondo al instante, las 24 horas. ¿En qué te ayudo?', 'bot');
@@ -201,9 +204,8 @@
     }
     setTimeout(function () { input.focus(); }, 80);
   }
-  function cerrar() { panel.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); if (pill) pill.hidden = false; toggle.focus(); }
+  function cerrar() { panel.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); toggle.focus(); }
   toggle.addEventListener('click', function () { panel.classList.contains('is-open') ? cerrar() : abrir(); });
-  if (hintOpen) hintOpen.addEventListener('click', abrir);
   closeBtn.addEventListener('click', cerrar);
   panel.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
   form.addEventListener('submit', function (e) { e.preventDefault(); var v = input.value.trim(); if (!v) return; input.value = ''; preguntar(v); });
