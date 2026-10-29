@@ -75,7 +75,7 @@ ok(/ini-boton-pill/.test(botones[0]) && /btn-primary/.test(botones[0]) && /data-
 ok((html.match(/id="lineas"/g) || []).length === 1, 'existe exactamente un elemento con id="lineas"');
 ok(!/#camino/.test(html), 'ningún enlace apunta ya a #camino');
 ok(!/L[ií]nea (Hexagonal|Triangular)/.test(texto(portada)), 'la portada no nombra las líneas');
-ok(portada.includes('ini-h1-grad') && /.ini-h1-grad {[^}]*linear-gradient(90deg, #00FFFF, #FF8C00, #00FFFF)[^}]*animation: ini-grad/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-h1-grad { animation: none'), 'la portada usa la marca madre (degradado cian ↔ naranja en movimiento; quieto con prefers-reduced-motion)');
+ok(portada.includes('ini-h1-grad') && /\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #00FFFF, #FF8C00, #00FFFF\)[^}]*animation: ini-grad/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-h1-grad { animation: none'), 'la portada usa la marca madre (degradado cian ↔ naranja en movimiento; quieto con prefers-reduced-motion)');
 
 // ------------------------------------------------------------ 2. dos líneas
 const orden = ['inicio', 'camino', 'venezuela', 'conversacion', 'lineas', 'servicios-destacados', 'productos-destacados', 'duenos', 'como-trabajamos', 'diferencial', 'testimonios', 'proximas-fechas', 'faq', 'cta-final'];
