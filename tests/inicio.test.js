@@ -48,11 +48,11 @@ ok(/<!-- header:inicio activo="inicio"/.test(html) && /<!-- footer:inicio/.test(
 const portada = sec('inicio');
 ok((html.match(/<h1\b/g) || []).length === 1, 'un solo h1');
 const h1 = texto((portada.match(/<h1[\s\S]*?<\/h1>/) || [''])[0]);
-ok(h1 === 'Inteligencia de negocios', `h1 exacto (hay «${h1}»)`);
-ok(portada.includes('<span class="ini-h1-grad">de negocios</span>') && portada.includes('<span class="ini-h1-l1">Inteligencia</span>'), '«Inteligencia» en blanco y «de negocios» con el degradado naranja → cian, en una sola línea');
+ok(h1 === 'Aquí empieza el futuro de su empresa', `h1 exacto (hay «${h1}»)`);
+ok(portada.includes('<span class="ini-h1-grad">el futuro de su empresa</span>') && portada.includes('<span class="ini-h1-l1">Aquí empieza</span>'), '«Aquí empieza» en blanco y «el futuro de su empresa» con el degradado animado cian ↔ naranja');
 const ptxt = texto(portada);
-ok(ptxt.includes('Estrategia con inteligencia artificial para empresas'), 'subtítulo');
-ok(ptxt.includes('Aquí empieza el futuro de su empresa, con decisiones de primer nivel.'), 'descripción breve');
+ok(ptxt.includes('Bienvenido al círculo de las empresas que deciden con datos'), 'subtítulo');
+ok(ptxt.includes('El socio que usa la IA para analizar su negocio de punta a punta, anticipar lo que viene y ajustar el rumbo a tiempo, con decisiones respaldadas por sus propios datos, para que su empresa escale 10x con seguridad, control y orden'), 'descripción');
 ok(!/Bienvenido al futuro|Eligió bien|Agende su consulta|Conozca cómo trabajamos|30 minutos, sin costo|No te vendemos herramientas sueltas/.test(ptxt), 'la portada ya no trae los textos anteriores');
 ok(!/F&amp;V AI Group · Valencia|ini-kicker|ini-apoyo|ini-nota/.test(portada), 'sin pastilla, sin texto de apoyo y sin la nota de los 30 minutos');
 const cssTw = fs.readFileSync(path.join(RAIZ, 'src/tailwind.css'), 'utf8');
@@ -63,18 +63,19 @@ ok(/\.ini-hexgiro \{[^}]*animation: ini-giro 60s linear infinite/.test(cssTw) &&
 ok(/\.ini-hexgiro \{[^}]*z-index: 0/.test(cssTw) && cssTw.includes('.ini-portada #hex-canvas { z-index: 1; }'), 'capas: los puntos (z 1) quedan sobre el hexágono (z 0)');
 ok(/\.ini-hexgiro \{[^}]*width: min\(980px, 130vw\)[^}]*top: 54%/.test(cssTw) || /\.ini-hexgiro \{[^}]*top: 54%[^}]*width: min\(980px, 130vw\)/.test(cssTw), 'hexágono: top 54 % y min(980px, 130vw)');
 const reglaH1 = (cssTw.match(/\.ini-portada \.ini-h1 \{[^}]*\}/) || [''])[0];
-ok(reglaH1.includes('clamp(18px, 5.9vw, 70px)') && reglaH1.includes('white-space: nowrap') && reglaH1.includes('text-transform: uppercase') && reglaH1.includes('font-weight: 800') && reglaH1.includes('line-height: 1.02') && reglaH1.includes('letter-spacing: -1.5px') && reglaH1.includes('max-width: 1100px'), 'título: mayúsculas, 800, clamp(20px, 5.4vw, 64px) en una sola línea, interlineado 1,02, -1,5 px, 1100 px');
+ok(reglaH1.includes('clamp(26px, 7.08vw, 84px)') && reglaH1.includes("font-family: 'Anton'") && reglaH1.includes('text-transform: uppercase') && reglaH1.includes('font-weight: 400') && reglaH1.includes('max-width: 1100px'), 'título: Anton en mayúsculas, 20 % más grande que antes (clamp 26 px, 7,08 vw, 84 px: el máximo era 70 px)');
+ok(html.includes("font-family:'Anton'") && html.includes('https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8.woff2'), 'la fuente Anton está declarada y precargada en el inicio');
 ok(/\.ini-portada \.hero-copy \{[^}]*gap: 28px/.test(cssTw), '28 px de separación entre los elementos del hero');
 const botones = [...portada.matchAll(/<a [^>]*class="[^"]*\bini-boton\b[^"]*"[^>]*>[\s\S]*?<\/a>/g)].map(m => m[0]);
 ok(botones.length === 1, `un solo botón en la portada (hay ${botones.length})`);
 const bt = i => texto(botones[i] || '');
 const href = i => ((botones[i] || '').match(/href="([^"]*)"/) || [, ''])[1];
-ok(bt(0) === 'Cómo trabajamos' && href(0) === '/#lineas', 'botón: «Cómo trabajamos» → /#lineas');
+ok(bt(0) === 'Empezar' && href(0) === '/#lineas', 'botón: «Empezar» → /#lineas');
 ok(/ini-boton-pill/.test(botones[0]) && /btn-primary/.test(botones[0]) && /data-evento="portada_como_trabajamos"/.test(botones[0]), 'el botón es naranja (btn-primary), en forma de pastilla y con data-evento');
 ok((html.match(/id="lineas"/g) || []).length === 1, 'existe exactamente un elemento con id="lineas"');
 ok(!/#camino/.test(html), 'ningún enlace apunta ya a #camino');
 ok(!/L[ií]nea (Hexagonal|Triangular)/.test(texto(portada)), 'la portada no nombra las líneas');
-ok(portada.includes('ini-h1-grad') && /\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #FF8C00, #00FFFF\)/.test(cssTw), 'la portada usa la marca madre (degradado naranja → cian en el título)');
+ok(portada.includes('ini-h1-grad') && /.ini-h1-grad {[^}]*linear-gradient(90deg, #00FFFF, #FF8C00, #00FFFF)[^}]*animation: ini-grad/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-h1-grad { animation: none'), 'la portada usa la marca madre (degradado cian ↔ naranja en movimiento; quieto con prefers-reduced-motion)');
 
 // ------------------------------------------------------------ 2. dos líneas
 const orden = ['inicio', 'camino', 'venezuela', 'conversacion', 'lineas', 'servicios-destacados', 'productos-destacados', 'duenos', 'como-trabajamos', 'diferencial', 'testimonios', 'proximas-fechas', 'faq', 'cta-final'];
