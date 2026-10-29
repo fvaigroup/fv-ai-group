@@ -109,11 +109,6 @@
       "permanent": false
     },
     {
-      "source": "/curso-finanzas-ia",
-      "destination": "/",
-      "permanent": false
-    },
-    {
       "source": "/ejecutivos",
       "destination": "/",
       "permanent": false
@@ -146,16 +141,6 @@
     {
       "source": "/software.html",
       "destination": "/productos#software",
-      "permanent": true
-    },
-    {
-      "source": "/cursos",
-      "destination": "/productos#cursos",
-      "permanent": true
-    },
-    {
-      "source": "/cursos.html",
-      "destination": "/productos#cursos",
       "permanent": true
     },
     {
@@ -266,6 +251,16 @@
     {
       "source": "/precios.html",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/curso-finanzas-ia",
+      "destination": "/cursos/finanzas-ia",
+      "permanent": true
+    },
+    {
+      "source": "/curso-finanzas-ia.html",
+      "destination": "/cursos/finanzas-ia",
       "permanent": true
     }
   ]

@@ -26,7 +26,8 @@ const PAGINAS_ESTATICAS = [
   ['/calculadora', '0.6', 'monthly'],
   ['/calculadora-roi', '0.6', 'monthly'],
   ['/paginas-web', '0.6', 'monthly'],
-  ['/curso-finanzas-ia', '0.6', 'monthly'],
+  ['/cursos', '0.6', 'monthly'],
+  ['/cursos/finanzas-ia', '0.6', 'monthly'],
   ['/club', '0.6', 'monthly'],
   ['/condominio', '0.6', 'monthly'],
   ['/gym', '0.6', 'monthly'],
@@ -34,7 +35,7 @@ const PAGINAS_ESTATICAS = [
 const PRIORIDAD_DETALLE = '0.7';
 
 // Rutas ocultas temporalmente (29 oct 2026; vercel.json las redirige a /): no entran en el sitemap. Para volver a publicar una, quítela de aquí.
-const OCULTAS = /^\/(servicios|productos|club|condominio|gym|paginas-web|casos|calculadora|calculadora-roi|curso-finanzas-ia|ejecutivos)(\/|$)/;
+const OCULTAS = /^\/(servicios|productos|club|condominio|gym|paginas-web|casos|calculadora|calculadora-roi|ejecutivos)(\/|$)/;
 
 // Páginas que existen pero no se publican en el sitemap
 const EXCLUIDAS = ['404.html', 'privacidad.html', 'terminos.html', 'demo-catalogo.html'];

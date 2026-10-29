@@ -55,8 +55,8 @@
     'aprende': P + 'taller-plata-clara',
     'taller-plata-clara': P + 'taller-plata-clara',
     'presencia': '/paginas-web',          // solo si la página no tiene su propia categoría #presencia (ver arriba)
-    'finanzas-ia-grupal': '/curso-finanzas-ia',
-    'finanzas-con-ia': '/curso-finanzas-ia',
+    'finanzas-ia-grupal': '/cursos/finanzas-ia',
+    'finanzas-con-ia': '/cursos/finanzas-ia',
     'taller-chatgpt': '/productos#cursos',
     'fechas': '/productos#cursos',
     'formacion-empresas': '/servicios#formacion',

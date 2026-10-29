@@ -31,7 +31,7 @@ function archivoDe(ruta) {
 const separar = url => { const i = url.indexOf('#'); return i < 0 ? [url, ''] : [url.slice(0, i), url.slice(i + 1)]; };
 
 // ---------------------------------------------------------------- páginas ocultas
-const RUTAS_OCULTAS = ['/servicios', '/servicios/:path*', '/productos', '/productos/:path*', '/club', '/condominio', '/gym', '/paginas-web', '/casos', '/calculadora', '/calculadora-roi', '/curso-finanzas-ia', '/ejecutivos'];
+const RUTAS_OCULTAS = ['/servicios', '/servicios/:path*', '/productos', '/productos/:path*', '/club', '/condominio', '/gym', '/paginas-web', '/casos', '/calculadora', '/calculadora-roi', '/ejecutivos'];
 ok(JSON.stringify(ocultas.map(r => r.source)) === JSON.stringify(RUTAS_OCULTAS), 'las páginas ocultas son las acordadas');
 ocultas.forEach(r => ok(r.destination === '/' && r.permanent === false, `${r.source}: oculta con redirección temporal a /`));
 ok(redirects.length > 0, 'siguen las redirecciones permanentes');
@@ -59,7 +59,7 @@ for (const r of redirects) {
 
 // ---------------------------------------------------------------- legacy y páginas vivas
 // Las 8 páginas viejas ya no existen como archivo: sus URLs deben seguir redirigiendo (con y sin .html).
-const PAGINAS_VIEJAS = ['hexagonal', 'triangular', 'software', 'cursos', 'asesoria-estrategica', 'acompanamiento-continuo', 'despliegue-ejecucion', 'masterclasses-workshops'];
+const PAGINAS_VIEJAS = ['hexagonal', 'triangular', 'software', 'asesoria-estrategica', 'acompanamiento-continuo', 'despliegue-ejecucion', 'masterclasses-workshops'];
 for (const nombre of PAGINAS_VIEJAS.map(n => '/' + n)) {
   ok(origenes.includes(nombre), `página vieja ${nombre}: falta la redirección`);
   ok(origenes.includes(nombre + '.html'), `página vieja ${nombre}: falta la redirección de ${nombre}.html`);
@@ -74,7 +74,7 @@ for (const p of ['/servicios', '/productos', '/servicios.html', '/productos.html
 }
 // Alias que el dueño pidió conservar o crear
 const ESPERADAS = {
-  '/hexagonal': '/servicios', '/triangular': '/productos', '/software': '/productos#software', '/cursos': '/productos#cursos',
+  '/hexagonal': '/servicios', '/triangular': '/productos', '/software': '/productos#software',
   '/asesoria-estrategica': '/servicios/diagnostico', '/diagnostico': '/servicios/diagnostico', '/evaluacion-procesos': '/servicios/diagnostico',
   '/habilitacion-equipos': '/servicios/formacion-equipo', '/despliegue-ejecucion': '/servicios#implementacion',
   '/masterclasses-workshops': '/servicios#formacion', '/acompanamiento-continuo': '/servicios/acompanamiento',

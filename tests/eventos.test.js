@@ -3,7 +3,7 @@
 //  - El taller del sábado 17 de octubre de 2026 se ofrece hasta ese día y se oculta desde el 18.
 //  - Una cohorte se ofrece hasta el día de su primera clase; la de octubre (empezó el 10) ya no.
 //  - Sin ninguna fecha futura se muestra «Próximas fechas: escríbenos por WhatsApp».
-//  - El HTML por defecto de /curso-finanzas-ia (y de /cursos mientras exista) no anuncia la cohorte de octubre.
+//  - El HTML por defecto de /cursos/finanzas-ia (y de /cursos mientras exista) no anuncia la cohorte de octubre.
 // Uso: node tests/eventos.test.js
 const fs = require('fs');
 const path = require('path');
@@ -121,7 +121,7 @@ const texto = el => decodeURIComponent(el.getAttribute('href').split('?text=')[1
 })();
 
 // ---------- 5) HTML por defecto (sin JavaScript): no anuncia la cohorte de octubre ----------
-['cursos.html', 'curso-finanzas-ia.html'].filter(f => fs.existsSync(path.join(RAIZ, f))).forEach(f => {   // cursos.html es una página vieja que se borrará
+['cursos/finanzas-ia.html'].forEach(f => {
   const html = leer(f);
   for (const m of html.matchAll(/<[^>]*data-ev-show="oct:vigente"[^>]*>/g)) ok(/class="[^"]*\bhidden\b/.test(m[0]), f + ': lo de la cohorte de octubre va oculto por defecto: ' + m[0].slice(0, 80));
   for (const m of html.matchAll(/<[^>]*data-ev-show="(?:eventos|curso):sin-fechas"[^>]*>/g)) ok(/class="[^"]*\bhidden\b/.test(m[0]), f + ': el aviso «Próximas fechas» va oculto por defecto');

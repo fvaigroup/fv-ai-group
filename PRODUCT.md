@@ -42,7 +42,7 @@ La fuente única es `data/catalogo.json` (reglas en `data/ESQUEMA.md`). El id de
 | Servicios (19) | `/servicios` | Diagnóstico y consultoría (`diagnostico`) · Implementación y automatización (`implementacion`) · Formación (`formacion`) · Acompañamiento y asesoría (`acompanamiento`) |
 | Productos (15) | `/productos` | Software (`software`) · Cursos y programas (`cursos`) · Para empezar (`para-empezar`) · Presencia y web (`presencia`) · Control y finanzas (`control`) · Ventas y atención (`ventas`) |
 
-Cada ítem tiene una página de detalle: 23 las genera el build desde una plantilla común (`/servicios/<id>`, `/productos/<id>`; los 3 niveles de Acompañamiento comparten `/servicios/acompanamiento`) y las demás son páginas que ya existían y hacen de detalle de su ítem: `/club`, `/condominio`, `/gym` (cada una sirve a su versión ⬡ y a su versión ▲), `/paginas-web` (Presencia), `/curso-finanzas-ia` y `/ejecutivos#programa-ejecutivo`.
+Cada ítem tiene una página de detalle: 23 las genera el build desde una plantilla común (`/servicios/<id>`, `/productos/<id>`; los 3 niveles de Acompañamiento comparten `/servicios/acompanamiento`) y las demás son páginas que ya existían y hacen de detalle de su ítem: `/club`, `/condominio`, `/gym` (cada una sirve a su versión ⬡ y a su versión ▲), `/paginas-web` (Presencia), `/cursos/finanzas-ia` y `/ejecutivos#programa-ejecutivo`.
 
 ### Las dos líneas, por tipo de negocio
 
@@ -164,7 +164,7 @@ Notas de la oferta ⬡:
 | **Tablero Ejecutivo** (Pyme, Pro) | $79,99 · $149,99 al mes | `/productos/tablero-ejecutivo` |
 | **Asistente IA de WhatsApp** (WhatsApp; WhatsApp + Instagram) | $119,99 · $179,99 al mes | `/productos/asistente-ia` |
 | **Taller «La plata de tu negocio clara»** (3 horas presenciales en Valencia) | $24,99 | `/productos/taller-plata-clara` |
-| **Finanzas con IA** (curso de 3 sábados presenciales en Valencia) | $299,99 en $100,00 + $100,00 + $99,99 | `/curso-finanzas-ia` |
+| **Finanzas con IA** (curso de 3 sábados presenciales en Valencia) | $299,99 en $100,00 + $100,00 + $99,99 | `/cursos/finanzas-ia` |
 | **Club, Condominio y Gym** (organizaciones pequeñas) | desde $89,99/mes | `/club`, `/condominio`, `/gym` |
 
 Las fechas, cohortes y cupos de talleres y cursos salen de `assets/eventos.js` (se comparan con el día en Venezuela); cuando no queda ninguna fecha, las páginas dicen «Próximas fechas: escríbenos por WhatsApp».

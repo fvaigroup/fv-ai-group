@@ -9,6 +9,7 @@
 (function () {
   // Para añadir una página al buscador: una línea más en este arreglo.
   var SEARCH_INDEX = [
+    { title: 'Cursos', desc: 'Cursos presenciales en Valencia.', url: '/cursos', cat: 'Pagina', kw: 'cursos talleres clases formacion' },
     { title: 'Inicio', desc: 'Servicios para empresas e instituciones y productos para negocios pequeños.', url: '/', cat: 'Pagina' },
     { title: 'Servicios', desc: 'Servicio: el equipo de F&V trabaja con usted, en su empresa o con su equipo.', url: '/servicios', cat: 'Pagina', kw: 'precios cuanto cuesta tarifas catalogo a la medida empresas instituciones' },
     { title: 'Productos', desc: 'Producto: listo para usar, con el mismo precio y la misma entrega para todos.', url: '/productos', cat: 'Pagina', kw: 'precios cuanto cuesta tarifas catalogo precio fijo negocios pequenos emprendedores' },
@@ -46,7 +47,7 @@
     { g: 'software', title: 'Gym para negocios pequeños', desc: 'Membresías, cobros y entrada con código QR para tus miembros. Desde $89,99/mes.', url: '/gym', cat: 'Producto', kw: 'gimnasio membresias qr software app' },
     { title: 'Cursos y programas', desc: 'Con fechas y cupos limitados.', url: '/productos#cursos', cat: 'Producto', grupo: true },
     { g: 'cursos', ln: 'hex', title: 'Programa ejecutivo entre semana', desc: 'Aprenda a ver sus números con IA y a recibir sus reportes por WhatsApp. $270 individual o $180 por persona en grupo de 2 a 4.', url: '/ejecutivos#programa-ejecutivo', cat: 'Curso', kw: 'entre semana martes jueves ejecutivos directivos duenos torre trebol curso 270 180' },
-    { g: 'cursos', title: 'Finanzas con IA', desc: 'Ve tu dinero claro en varias tasas y pídele a la IA el trabajo pesado. ', url: '/curso-finanzas-ia', cat: 'Curso', ev: 'curso', kw: 'curso finanzas con ia sabados cohorte cupos certificado conciliacion' },
+    { g: 'cursos', title: 'Finanzas con IA', desc: 'Ve tu dinero claro en varias tasas y pídele a la IA el trabajo pesado. ', url: '/cursos/finanzas-ia', cat: 'Curso', ev: 'curso', kw: 'curso finanzas con ia sabados cohorte cupos certificado conciliacion' },
     { g: 'cursos', title: 'Taller «La plata de tu negocio clara»', desc: 'Taller presencial de 3 horas en Valencia para ordenar la plata de tu negocio. ', url: '/productos/taller-plata-clara', cat: 'Curso', ev: 'taller', kw: 'taller plata de tu negocio sabado cupos' },
     { title: 'Para empezar', desc: 'Lo básico para que te encuentren, te compren y sepas cuánto ganas.', url: '/productos#para-empezar', cat: 'Producto', grupo: true },
     { g: 'para-empezar', title: 'Plan Arranque', desc: 'Lo básico para que te encuentren, te compren por WhatsApp y sepas cuánto ganas. $39,99 al mes.', url: '/productos/plan-arranque', cat: 'Producto', kw: 'paquete pack presencia caja clara arranque' },
@@ -68,7 +69,7 @@
     { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: '/terminos', cat: 'Legal' }
   ];
   // Rutas ocultas temporalmente (29 oct 2026): no salen en el buscador. Para volver a mostrar una, quítela de esta lista.
-  var OCULTAS = /^\/(servicios|productos|club|condominio|gym|paginas-web|casos|calculadora|calculadora-roi|curso-finanzas-ia|ejecutivos)([\/#?]|$)/;
+  var OCULTAS = /^\/(servicios|productos|club|condominio|gym|paginas-web|casos|calculadora|calculadora-roi|ejecutivos)([\/#?]|$)/;
   SEARCH_INDEX = SEARCH_INDEX.filter(function (r) { return !OCULTAS.test(r.url); });
 
   var css = '' +

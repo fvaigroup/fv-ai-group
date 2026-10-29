@@ -30,7 +30,7 @@ function ok(cond, msg) { comprobaciones++; assert.ok(cond, msg); }
 function visible(html) { return html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' '); }
 
 // ---------- 1) Páginas de la Línea Triangular y mixtas: cada precio de producto ----------
-const MIXTAS = ['index.html', 'club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'curso-finanzas-ia.html', 'contacto.html', 'nosotros.html'];
+const MIXTAS = ['index.html', 'club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'cursos/finanzas-ia.html', 'contacto.html', 'nosotros.html'];
 MIXTAS.forEach(f => {
   const html = leer(f);
   // atributos de precio
@@ -65,16 +65,16 @@ MIXTAS.forEach(f => {
 })();
 
 // ---------- 3) Tabla exacta de lo Triangular (pedida por el dueño) ----------
-//  Los productos ▲ viven en sus páginas de detalle (productos/*.html) y en /paginas-web (Presencia) y /curso-finanzas-ia.
+//  Los productos ▲ viven en sus páginas de detalle (productos/*.html) y en /paginas-web (Presencia) y /cursos/finanzas-ia.
 const fmt = n => '$' + n.toFixed(2).replace('.', ',');
 const ESPERADOS = {
   'productos/plan-arranque.html': [39.99], 'paginas-web.html': [14.99, 29.99, 59.99, 99.99],
   'productos/caja-clara.html': [14.99, 29.99, 39.99], 'productos/tablero-ejecutivo.html': [79.99, 149.99],
   'productos/asistente-ia.html': [119.99, 179.99], 'productos/mis-finanzas-claras.html': [4.99],
-  'productos/taller-plata-clara.html': [24.99], 'curso-finanzas-ia.html': [299.99]
+  'productos/taller-plata-clara.html': [24.99], 'cursos/finanzas-ia.html': [299.99]
 };
 Object.entries(ESPERADOS).forEach(([f, precios]) => { const txt = visible(leer(f)); precios.forEach(p => ok(txt.includes(fmt(p)), f + ' debe publicar ' + fmt(p))); });
-ok(/\$100,00, \$100,00 y \$99,99/.test(visible(leer('curso-finanzas-ia.html'))), 'cuotas del curso $100,00 + $100,00 + $99,99');
+ok(/\$100,00, \$100,00 y \$99,99/.test(visible(leer('cursos/finanzas-ia.html'))), 'cuotas del curso $100,00 + $100,00 + $99,99');
 
 // ---------- 4) Hexagonal: precios redondos ----------
 const PAGINAS_SERVICIOS = ['servicios.html'].concat(fs.readdirSync(path.join(RAIZ, 'servicios')).map(f => 'servicios/' + f));
@@ -203,7 +203,7 @@ ok(desdeRevisados > 10, 'se revisaron los «desde $X» Hexagonales (' + desdeRev
 
 // ---------- 7) Páginas estáticas: sin el nombre de las líneas (solo vive en el inicio) ni el Asesor F&V ----------
 //  Los mensajes de WhatsApp llevan solo la forma: «(⬡, $270)» o «(▲, $39,99/mes)».
-const ESTATICAS = ['club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'curso-finanzas-ia.html', 'ejecutivos.html', 'casos.html', 'calculadora.html', 'calculadora-roi.html',
+const ESTATICAS = ['club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'cursos/finanzas-ia.html', 'ejecutivos.html', 'casos.html', 'calculadora.html', 'calculadora-roi.html',
   'nosotros.html', 'contacto.html', 'privacidad.html', 'terminos.html', '404.html', 'assets/eventos.js', 'assets/calculadora.js', 'assets/producto.js', 'assets/precios-software.js'];
 const NOMBRE_LINEA = /L(?:í|i|%C3%AD)nea(?:\s|%20|\+)+(?:Hexagonal|Triangular)/i;
 const ASESOR_TRI = /Asesor(?:\s|%20|\+|&amp;|&)+F(?:&amp;|&|%26)?V|Sesi(?:ó|o|%C3%B3)n(?:\s|%20)+Clara|Pack(?:\s|%20)+Enfoque|Asesor(?:\s|%20)+(?:Mensual|Pro)\b|Refiere(?:\s|%20)+y(?:\s|%20)+gana/i;

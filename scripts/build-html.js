@@ -52,7 +52,8 @@ const PAGINAS = {
   'condominio.html': { activo: 'productos', hijo: true },
   'gym.html': { activo: 'productos', hijo: true },
   'paginas-web.html': { activo: 'productos', hijo: true },
-  'curso-finanzas-ia.html': { activo: 'productos', hijo: true },
+  'cursos.html': { activo: 'ninguno' },
+  'cursos/finanzas-ia.html': { activo: 'ninguno' },
   'casos.html': { activo: 'nosotros', hijo: true },
   'calculadora.html': { activo: 'ninguno' },
   'calculadora-roi.html': { activo: 'ninguno' },
@@ -258,7 +259,7 @@ function obsoletas(generadas) {
 function listarPaginas() {
   const excluidas = new Set([...LEGACY, ...SALTAR]);
   const lista = fs.readdirSync(RAIZ).filter(f => /\.html$/.test(f) && !excluidas.has(f)).sort();
-  for (const d of ['servicios', 'productos']) {
+  for (const d of ['servicios', 'productos', 'cursos']) {
     const dir = path.join(RAIZ, d);
     if (fs.existsSync(dir) && fs.statSync(dir).isDirectory()) {
       fs.readdirSync(dir).filter(f => /\.html$/.test(f)).sort().forEach(f => lista.push(`${d}/${f}`));

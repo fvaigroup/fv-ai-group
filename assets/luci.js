@@ -68,7 +68,7 @@
         var cohortes = window.FV_EVENTOS && window.FV_EVENTOS.proximas ? window.FV_EVENTOS.proximas().filter(function (e) { return e.tipo === 'curso'; }) : [];
         s += cohortes.length ? 'Próximas cohortes: ' + cohortes.map(function (e) { return e.texto; }).join('; ') + '. ' : sinFechas() + '. ';
         return s + 'Cuesta ' + ev('curso.precio', '$299,99') + ' en 3 cuotas (' + ev('curso.cuotas', '$100,00, $100,00 y $99,99') + ', una por sábado). También está el taller «La plata de tu negocio clara» por ' + ev('taller.precio', '$24,99') + '. Si eres dueño o directivo y no puedes los sábados, mira el Programa ejecutivo entre semana.'; },
-      c: { l: 'Ver fechas y reservar', h: '/curso-finanzas-ia' } },
+      c: { l: 'Ver fechas y reservar', h: '/cursos/finanzas-ia' } },
     { k: ['descuento', 'descuentos', 'adelantado', 'por adelantado', '12 meses', 'pago anual', 'anual', 'promocion', 'oferta'], a: 'Tienes 30 % de descuento si pagas 12 meses por adelantado en los planes mensuales y en las apps de software (por ejemplo, el Plan Arranque pasa de $39,99 al mes a $335,92 por el año). Y si llegas recomendado por un cliente de F&V, tienes 10 % de descuento en tu primer pago.', c: VER_PROD },
     { k: ['pago', 'pagar', 'pagos', 'forma de pago', 'formas de pago', 'usdt', 'zinli', 'binance', 'efectivo', 'pago movil', 'transferencia', 'zelle', 'adelanto', 'cuotas', 'contado', 'anticipo'], a: 'Los precios son en dólares. Pagas en bolívares a la tasa BCV del día, o en USDT, Zinli o dólares en efectivo. Los planes mensuales se pagan mes a mes. Los pagos únicos se pagan de contado o en 2 o 3 cuotas, siempre al mismo precio. Si pagas 12 meses por adelantado tienes 30 % de descuento. Si no se paga la mensualidad, el servicio se pausa hasta ponerse al día. Para empresas e instituciones (⬡) se paga en bolívares a la tasa BCV del día, dólares, Pago Móvil o USDT, y los proyectos se reservan con el 50 %.', c: ESCRIBIR },
     { k: ['permanencia', 'cancelar', 'cancelo', 'cancelacion', 'pausa', 'pausan', 'contrato'], a: 'Los planes mensuales los cancelas cuando quieras, salvo los que tienen permanencia mínima: Presencia en los tamaños Web y Tienda (12 meses) y el Asistente IA de WhatsApp (6 meses). Si no pagas la mensualidad, el servicio se pausa hasta que te pongas al día.', c: VER_PROD },
@@ -121,7 +121,7 @@
     '/servicios': QUICK_HEX,
     '/ejecutivos': QUICK_HEX.slice(0, 3),
     '/paginas-web': ['¿Cuánto cuesta una web?', '¿Cuánto tarda?', '¿El dominio está incluido?', '¿Cómo pago?'],
-    '/curso-finanzas-ia': ['¿Cuándo empieza?', '¿Cuánto cuesta?', '¿Cómo reservo mi cupo?'],
+    '/cursos/finanzas-ia': ['¿Cuándo empieza?', '¿Cuánto cuesta?', '¿Cómo reservo mi cupo?'],
     '/calculadora': ['¿Cómo se calcula el margen?', '¿De dónde sale la tasa?', '¿Cómo pago?'],
     '/club': QUICK_SOFT, '/condominio': QUICK_SOFT, '/gym': QUICK_SOFT,
     '/contacto': ['¿Cómo agendo el diagnóstico?', '¿En cuánto tiempo responden?', '¿Dónde están?']

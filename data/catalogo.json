@@ -97,7 +97,7 @@
     "/condominio",
     "/gym",
     "/paginas-web",
-    "/curso-finanzas-ia",
+    "/cursos/finanzas-ia",
     "/ejecutivos#programa-ejecutivo"
   ],
   "items": [
@@ -1572,7 +1572,7 @@
       "product": "finanzas-ia-grupal",
       "detalle": {
         "modo": "existente",
-        "url": "/curso-finanzas-ia"
+        "url": "/cursos/finanzas-ia"
       },
       "wa": {
         "mensaje": "Hola F&V, quiero mi cupo en Finanzas con IA (▲, $299,99). ¿Cómo pago: en 3 cuotas o de contado?"
