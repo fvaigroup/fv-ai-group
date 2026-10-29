@@ -28,8 +28,9 @@ ok(lastmods.length === locs.length && lastmods.every(f => f === fecha), `todas l
 const prioridades = {};
 for (const m of actual.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>([^<]+)<\/priority>/g)) prioridades[m[1].replace(S.DOMINIO, '') || '/'] = m[2];
 ok(prioridades['/'] === '1.0', 'el inicio tiene prioridad 1.0');
-ok(prioridades['/servicios'] === '0.9' && prioridades['/productos'] === '0.9', '/servicios y /productos tienen prioridad 0.9');
-ok(prioridades['/servicios/diagnostico'] === '0.7' && prioridades['/productos/plan-arranque'] === '0.7', 'los detalles tienen prioridad 0.7');
+// Servicios, productos y sus detalles están ocultos (29 oct 2026): no deben salir en el sitemap
+ok(!('/servicios' in prioridades) && !('/productos' in prioridades), '/servicios y /productos no están en el sitemap (ocultos)');
+ok(!Object.keys(prioridades).some(r => S.OCULTAS.test(r)), 'ninguna ruta oculta está en el sitemap');
 
 const vercel = JSON.parse(leer('vercel.json'));
 const origenes = new Set((vercel.redirects || []).flatMap(r => [r.source, r.source.replace(/\.html$/, '')]));
@@ -53,6 +54,7 @@ for (const d of ['servicios', 'productos']) {
 }
 for (const f of vivas) {
   if (B.LEGACY.includes(f) || S.EXCLUIDAS.includes(f)) { ok(!archivosEnSitemap.has(f), `${f}: no debe estar en el sitemap`); continue; }
+  if (S.OCULTAS.test('/' + f.replace(/.html$/, ''))) { ok(!archivosEnSitemap.has(f), `${f}: está oculta y no debe estar en el sitemap`); continue; }
   ok(archivosEnSitemap.has(f), `${f}: es una página viva y falta en el sitemap (agréguela a PAGINAS_ESTATICAS en scripts/catalogo/sitemap.js)`);
 }
 ok(S.EXCLUIDAS.every(f => fs.existsSync(path.join(RAIZ, f))), 'las páginas excluidas existen (si se borra una, quítela de EXCLUIDAS)');

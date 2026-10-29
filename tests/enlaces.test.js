@@ -24,7 +24,8 @@ const GENERADOS = ['assets/css/tailwind.css'];
 
 const vercel = JSON.parse(fs.readFileSync(path.join(RAIZ, 'vercel.json'), 'utf8'));
 const redirecciones = new Map();
-for (const r of vercel.redirects || []) redirecciones.set(r.source.replace(/\/$/, '') || '/', r.destination);
+// Las redirecciones temporales (permanent: false) ocultan páginas a propósito (29 oct 2026); no cuentan como «tapar» una página viva
+for (const r of (vercel.redirects || []).filter(x => x.permanent !== false)) redirecciones.set(r.source.replace(/\/$/, '') || '/', r.destination);
 
 function archivoDe(ruta) {
   // ruta: absoluta y sin ancla ni consulta. Devuelve el archivo (relativo a la raíz) o null.

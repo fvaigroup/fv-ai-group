@@ -46,7 +46,8 @@ if (!fs.existsSync(archivo)) {
   const buscador = fs.readFileSync(path.join(RAIZ, 'assets/search.js'), 'utf8');
   for (const d of detalles) {
     const ruta = '/' + d.archivo.replace(/.html$/, '');
-    ok(mapa.includes(`<loc>https://www.fvaigroup.com${ruta}</loc>`), `${ruta}: está en sitemap.xml`);
+    // Ocultos desde el 29 oct 2026: fuera del sitemap (y filtrados en el buscador al cargar) hasta que se vuelvan a publicar
+    ok(!mapa.includes(`<loc>https://www.fvaigroup.com${ruta}</loc>`), `${ruta}: no está en sitemap.xml (oculta)`);
     ok(buscador.includes(`url: '${ruta}'`), `${ruta}: está en el buscador (assets/search.js)`);
   }
   console.log(`catalogo: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}`);

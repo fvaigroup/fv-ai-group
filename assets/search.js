@@ -67,6 +67,9 @@
     { title: 'Política de Privacidad', desc: 'Cómo protegemos tu información.', url: '/privacidad', cat: 'Legal' },
     { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: '/terminos', cat: 'Legal' }
   ];
+  // Rutas ocultas temporalmente (29 oct 2026): no salen en el buscador. Para volver a mostrar una, quítela de esta lista.
+  var OCULTAS = /^\/(servicios|productos|club|condominio|gym|paginas-web|casos|calculadora|calculadora-roi|curso-finanzas-ia|ejecutivos)([\/#?]|$)/;
+  SEARCH_INDEX = SEARCH_INDEX.filter(function (r) { return !OCULTAS.test(r.url); });
 
   var css = '' +
     '#search-overlay{position:fixed;left:0;right:0;bottom:0;top:77px;display:block;padding:0;z-index:200;background:rgba(0,0,0,.6);backdrop-filter:blur(3px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s cubic-bezier(.23,1,.32,1),visibility 0s linear .2s}' +

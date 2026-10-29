@@ -33,6 +33,9 @@ const PAGINAS_ESTATICAS = [
 ];
 const PRIORIDAD_DETALLE = '0.7';
 
+// Rutas ocultas temporalmente (29 oct 2026; vercel.json las redirige a /): no entran en el sitemap. Para volver a publicar una, quítela de aquí.
+const OCULTAS = /^\/(servicios|productos|club|condominio|gym|paginas-web|casos|calculadora|calculadora-roi|curso-finanzas-ia|ejecutivos)(\/|$)/;
+
 // Páginas que existen pero no se publican en el sitemap
 const EXCLUIDAS = ['404.html', 'privacidad.html', 'terminos.html', 'demo-catalogo.html'];
 
@@ -76,7 +79,7 @@ function entradas(catalogo) {
     if (estaticas.has(ruta)) continue;
     lista.push({ ruta, prioridad: PRIORIDAD_DETALLE, changefreq: 'monthly' });
   }
-  return lista;
+  return lista.filter(e => !OCULTAS.test(e.ruta));
 }
 
 function xml(catalogo) {
@@ -103,7 +106,7 @@ function sincronizar(opciones) {
   return true;
 }
 
-module.exports = { DOMINIO, PAGINAS_ESTATICAS, EXCLUIDAS, entradas, rutasDetalle, xml, sincronizar, fechaActualizacion };
+module.exports = { DOMINIO, PAGINAS_ESTATICAS, EXCLUIDAS, OCULTAS, entradas, rutasDetalle, xml, sincronizar, fechaActualizacion };
 
 if (require.main === module) {
   try {

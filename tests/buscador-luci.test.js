@@ -52,10 +52,11 @@ const EVENTOS = {
 };
 
 // ---------- buscador ----------
-function cargarBuscador(ruta) {
+// completo = true: carga el buscador sin el filtro de rutas ocultas (29 oct 2026), para seguir probando el contenido del catálogo
+function cargarBuscador(ruta, completo) {
   const e = entorno(ruta, { eventos: EVENTOS });
   vm.createContext(e.ctx);
-  vm.runInContext(leer('assets/search.js'), e.ctx, { filename: 'search.js' });
+  vm.runInContext(completo ? leer('assets/search.js').replace(/\n  SEARCH_INDEX = SEARCH_INDEX\.filter\([^\n]*\n/, '\n') : leer('assets/search.js'), e.ctx, { filename: 'search.js' });
   // abrir con Ctrl K: construye el modal; buscar = escribir en el campo
   const modal = nodo('overlay'); const campo = nodo('search-input'); const resultados = nodo('search-results');
   modal.querySelector = s => (s === '#search-input' ? campo : s === '#search-results' ? resultados : null);
@@ -80,9 +81,14 @@ const fuente = leer('assets/search.js');
 const mIdx = fuente.match(/var SEARCH_INDEX = \[([\s\S]*?)\n  \];/);
 ok(mIdx, 'se encuentra SEARCH_INDEX');
 const INDICE = vm.runInNewContext('[' + mIdx[1] + ']');
-const B = cargarBuscador('/');
+const B = cargarBuscador('/', true);
 const TODOS = B.buscar('');
-ok(TODOS.length === INDICE.filter(r => !r.grupo).length, 'la búsqueda vacía muestra todo el índice, sin las categorías (esas salen al escribir)');
+const VISIBLES = cargarBuscador('/').buscar('');
+// Rutas ocultas temporalmente (29 oct 2026): el buscador las filtra al cargar; INDICE conserva el catálogo completo para las demás comprobaciones
+const OCULTAS = vm.runInNewContext(fuente.match(/var OCULTAS = (\/.*\/);/)[1]);
+ok(VISIBLES.length === INDICE.filter(r => !r.grupo && !OCULTAS.test(r.url)).length, 'la búsqueda vacía muestra todo el índice visible, sin las categorías (esas salen al escribir)');
+ok(TODOS.length === INDICE.filter(r => !r.grupo).length, 'sin el filtro, la búsqueda vacía muestra todo el índice');
+ok(!VISIBLES.some(r => OCULTAS.test(r.url)), 'el buscador no muestra rutas ocultas');
 
 // existencia de las urls (archivo y ancla)
 function existe(url) {
@@ -139,7 +145,7 @@ INDICE.forEach(r => ok(!/\b(lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado
 const taller = TODOS.find(r => r.url === '/productos/taller-plata-clara'), curso = TODOS.find(r => r.url === '/curso-finanzas-ia');
 ok(/sábado 17 de octubre/.test(taller.desc) && /\$24,99 por persona/.test(taller.desc), 'taller: fecha y precio de FV_EVENTOS: ' + taller.desc);
 ok(/7, 14 y 21 de noviembre/.test(curso.desc) && /\$299,99 en 3 cuotas/.test(curso.desc), 'curso: fecha y precio de FV_EVENTOS: ' + curso.desc);
-const sinEv = entorno('/', {}); vm.createContext(sinEv.ctx); vm.runInContext(fuente, sinEv.ctx);
+const sinEv = entorno('/', {}); vm.createContext(sinEv.ctx); vm.runInContext(fuente.replace(/\n  SEARCH_INDEX = SEARCH_INDEX\.filter\([^\n]*\n/, '\n'), sinEv.ctx);
 // sin eventos.js el buscador sigue mostrando un texto honesto
 const sinEvB = (() => { const m = nodo('o'), c = nodo('i'), r = nodo('r'); m.querySelector = s => (s === '#search-input' ? c : s === '#search-results' ? r : null); sinEv.documento.createElement = t => (t === 'style' ? nodo('s') : m);
   sinEv.documento.oyentes.keydown.forEach(f => f({ ctrlKey: true, key: 'k', preventDefault() {} })); c.value = 'taller'; c.oyentes.input.forEach(f => f({})); return r.innerHTML; })();

@@ -16,7 +16,9 @@ let n = 0;
 function ok(c, m) { n++; if (!c) { console.error('✗ ' + m); process.exitCode = 1; } }
 
 const vercel = JSON.parse(fs.readFileSync(path.join(RAIZ, 'vercel.json'), 'utf8'));
-const redirects = vercel.redirects || [];
+// Páginas ocultas temporalmente (29 oct 2026): redirecciones 302 a «/» en vercel.json; las demás pruebas miran solo las permanentes
+const ocultas = (vercel.redirects || []).filter(r => r.permanent === false);
+const redirects = (vercel.redirects || []).filter(r => r.permanent !== false);
 const leer = rel => fs.readFileSync(path.join(RAIZ, rel), 'utf8');
 const idsDe = rel => new Set([...leer(rel).matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
 
@@ -27,6 +29,12 @@ function archivoDe(ruta) {
   return fs.existsSync(path.join(RAIZ, rel)) ? rel : null;
 }
 const separar = url => { const i = url.indexOf('#'); return i < 0 ? [url, ''] : [url.slice(0, i), url.slice(i + 1)]; };
+
+// ---------------------------------------------------------------- páginas ocultas
+const RUTAS_OCULTAS = ['/servicios', '/servicios/:path*', '/productos', '/productos/:path*', '/club', '/condominio', '/gym', '/paginas-web', '/casos', '/calculadora', '/calculadora-roi', '/curso-finanzas-ia', '/ejecutivos'];
+ok(JSON.stringify(ocultas.map(r => r.source)) === JSON.stringify(RUTAS_OCULTAS), 'las páginas ocultas son las acordadas');
+ocultas.forEach(r => ok(r.destination === '/' && r.permanent === false, `${r.source}: oculta con redirección temporal a /`));
+ok(redirects.length > 0, 'siguen las redirecciones permanentes');
 
 // ---------------------------------------------------------------- orígenes
 const origenes = redirects.map(r => r.source);

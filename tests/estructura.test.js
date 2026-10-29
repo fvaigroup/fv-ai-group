@@ -18,6 +18,7 @@ ok(!paginas.some(p => B.LEGACY.includes(p) || B.SALTAR.includes(p)), 'listarPagi
 
 const RE_H = /<!-- header:inicio([^>]*?)-->\n([\s\S]*?)\n<!-- header:fin -->/;
 const RE_F = /<!-- footer:inicio\s*-->\n([\s\S]*?)\n<!-- footer:fin -->/;
+const TIPOS_VISIBLES = [];
 const PROHIBIDO = /L[ií]nea (Hexagonal|Triangular)/;
 const categorias = tipo => cat.tipos[tipo].categorias.map(c => c.id);
 
@@ -55,12 +56,13 @@ for (const archivo of paginas) {
   const re = /<a href="([^"]*)" class="([^"]*)"[^>]*>([^<]+)<\/a>/g;
   let m;
   while ((m = re.exec(nav))) if (!/menu-enlace"|menu-todos/.test(m[2] + '"')) principales.push(m[3].trim());
-  ok(JSON.stringify(principales) === JSON.stringify(['Inicio', 'Servicios', 'Productos', 'Nosotros', 'Contacto']),
-    `${archivo}: la navegación principal es Inicio, Servicios, Productos, Nosotros, Contacto (hay ${principales.join(', ')})`);
+  ok(JSON.stringify(principales) === JSON.stringify(['Inicio', 'Nosotros', 'Contacto']),
+    `${archivo}: la navegación principal es Inicio, Nosotros, Contacto (Servicios y Productos ocultos desde el 29 oct 2026) (hay ${principales.join(', ')})`);
   ok(!principales.includes('Software'), `${archivo}: «Software» no va suelto en la navegación`);
 
   // Desplegables = categorías del catálogo, en orden (escritorio, móvil y pie)
-  for (const tipo of ['servicio', 'producto']) {
+  // Servicios y Productos están ocultos del menú y del pie (29 oct 2026): hay que volver a poner TIPOS_VISIBLES = ['servicio', 'producto'] al reconstruirlos
+  for (const tipo of TIPOS_VISIBLES) {
     const ruta = cat.tipos[tipo].ruta;
     const esperado = categorias(tipo).map(id => `${ruta}#${id}`);
     const panel = (cab.match(new RegExp(`<div id="menu-${ruta.slice(1)}" class="menu-panel">([\\s\\S]*?)\\n          </div>`)) || [])[1] || '';
@@ -73,7 +75,7 @@ for (const archivo of paginas) {
   }
 
   // Botones disclosure: enlace + botón con aria-expanded, aria-controls y aria-label
-  for (const tipo of ['servicio', 'producto']) {
+  for (const tipo of TIPOS_VISIBLES) {
     const t = cat.tipos[tipo];
     const id = t.ruta.slice(1);
     ok(cab.includes(`<a href="${t.ruta}" class="menu-enlace-principal"`), `${archivo}: ${t.titulo} es un enlace a ${t.ruta}`);
@@ -81,13 +83,14 @@ for (const archivo of paginas) {
     ok(!/role="menu"/.test(cab), `${archivo}: no usa role="menu"`);
   }
   // Servicios va antes que Productos y la forma hexagonal antes que la triangular
-  ok(nav.indexOf('menu-servicios') < nav.indexOf('menu-productos'), `${archivo}: Servicios va antes que Productos`);
+  if (TIPOS_VISIBLES.length === 2) ok(nav.indexOf('menu-servicios') < nav.indexOf('menu-productos'), `${archivo}: Servicios va antes que Productos`);
+  else ok(!/menu-servicios|menu-productos|movil-servicios|movil-productos/.test(cab), `${archivo}: el menú no trae Servicios ni Productos`);
   (cab.match(/<span class="menu-formas"[^>]*>(.*?)<\/span><\/span>/g) || []).forEach(f => ok(!/nav-tri[\s\S]*nav-hex/.test(f), `${archivo}: ⬡ antes que ▲ en las formas del menú`));
 
   // Estado activo
   const paginasActual = (cab.match(/<nav class="menu-escritorio[\s\S]*?<\/nav>/) || [''])[0].match(/aria-current="page"/g) || [];
   const hijos = (cab.match(/<nav class="menu-escritorio[\s\S]*?<\/nav>/) || [''])[0].match(/aria-current="true"/g) || [];
-  if (attrs.activo === 'ninguno') ok(paginasActual.length === 0 && hijos.length === 0, `${archivo}: activo="ninguno" no marca nada`);
+  if (attrs.activo === 'ninguno' || (!TIPOS_VISIBLES.length && /^(servicios|productos)$/.test(attrs.activo))) ok(paginasActual.length === 0 && hijos.length === 0, `${archivo}: activo="ninguno" no marca nada`);
   else if (attrs.hijo === 'si' || /^(servicios|productos)\//.test(archivo)) ok(hijos.length === 1 && paginasActual.length === 0, `${archivo}: el padre de un detalle lleva aria-current="true"`);
   else ok(paginasActual.length === 1 && hijos.length === 0, `${archivo}: la página activa lleva aria-current="page"`);
 

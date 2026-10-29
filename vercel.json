@@ -54,6 +54,71 @@
   ],
   "redirects": [
     {
+      "source": "/servicios",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/servicios/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/productos",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/productos/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/club",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/condominio",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/gym",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/paginas-web",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/casos",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/calculadora",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/calculadora-roi",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/curso-finanzas-ia",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/ejecutivos",
+      "destination": "/",
+      "permanent": false
+    },
+    {
       "source": "/hexagonal",
       "destination": "/servicios",
       "permanent": true
