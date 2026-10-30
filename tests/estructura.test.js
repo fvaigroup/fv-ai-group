@@ -56,8 +56,8 @@ for (const archivo of paginas) {
   const re = /<a href="([^"]*)" class="([^"]*)"[^>]*>([^<]+)<\/a>/g;
   let m;
   while ((m = re.exec(nav))) if (!/menu-enlace"|menu-todos/.test(m[2] + '"')) principales.push(m[3].trim());
-  ok(JSON.stringify(principales) === JSON.stringify(['Inicio', 'Nosotros', 'Contacto']),
-    `${archivo}: la navegación principal es Inicio, Nosotros, Contacto (Servicios y Productos ocultos desde el 29 oct 2026) (hay ${principales.join(', ')})`);
+  ok(JSON.stringify(principales) === JSON.stringify(['Inicio', 'Hexagonal', 'Triangular', 'Nosotros', 'Contacto']),
+    `${archivo}: la navegación principal es Inicio, Hexagonal, Triangular, Nosotros, Contacto (Servicios y Productos ocultos desde el 29 oct 2026) (hay ${principales.join(', ')})`);
   ok(!principales.includes('Software'), `${archivo}: «Software» no va suelto en la navegación`);
 
   // Desplegables = categorías del catálogo, en orden (escritorio, móvil y pie)

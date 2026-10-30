@@ -651,6 +651,8 @@
 
       <nav class="menu-escritorio hidden lg:flex items-center gap-4 xl:gap-6 font-head text-[13px] xl:text-sm whitespace-nowrap" aria-label="Principal">
         <a href="/" class="text-slate-400 hover:text-white transition-colors" aria-current="page">Inicio</a>
+        <a href="/#linea-hexagonal" class="text-slate-400 hover:text-white transition-colors">Hexagonal</a>
+        <a href="/#linea-triangular" class="text-slate-400 hover:text-white transition-colors">Triangular</a>
         <a href="/nosotros" class="text-slate-400 hover:text-white transition-colors">Nosotros</a>
         <a href="/contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
         <button id="search-trigger" type="button" aria-label="Buscar en el sitio (Ctrl K)" title="Buscar (Ctrl K)">
@@ -673,6 +675,8 @@
     <div class="px-6 py-5 font-head text-sm">
       <nav class="flex flex-col gap-1" aria-label="Menú móvil">
         <a href="/" class="text-slate-300" aria-current="page">Inicio</a>
+        <a href="/#linea-hexagonal" class="text-slate-300">Hexagonal</a>
+        <a href="/#linea-triangular" class="text-slate-300">Triangular</a>
         <a href="/nosotros" class="text-slate-300">Nosotros</a>
         <a href="/contacto" class="text-slate-300">Contacto</a>
         <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" data-cta="menu_movil" data-evento="header_whatsapp" class="btn-primary mt-3 text-center px-4 py-3 rounded-lg font-semibold">Escríbenos por WhatsApp</a>
@@ -792,7 +796,7 @@
       <h2 id="lineas-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Dos líneas, según su tipo de organización</h2>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-        <article class="ini-linea linea-hex hex-legible x-card is-static reveal" data-linea="hex" aria-labelledby="linea-hex-nombre">
+        <article class="ini-linea linea-hex hex-legible x-card is-static reveal scroll-mt-28" id="linea-hexagonal" data-linea="hex" aria-labelledby="linea-hex-nombre">
           <header class="ini-linea-cab">
             <span class="ini-forma nav-forma nav-hex" aria-hidden="true"></span>
             <h3 id="linea-hex-nombre" class="ini-linea-nombre">Línea Hexagonal</h3>
@@ -812,7 +816,7 @@
             <a href="/servicios" data-evento="portada_linea_hexagonal" data-cta="portada_lineas" class="ini-boton-linea btn-linea estado-interactivo">Ver servicios para empresas</a>
           </div>
         </article>
-        <article class="ini-linea linea-tri x-card is-static reveal" data-linea="tri" aria-labelledby="linea-tri-nombre">
+        <article class="ini-linea linea-tri x-card is-static reveal scroll-mt-28" id="linea-triangular" data-linea="tri" aria-labelledby="linea-tri-nombre">
           <header class="ini-linea-cab">
             <span class="ini-forma nav-forma nav-tri" aria-hidden="true"></span>
             <h3 id="linea-tri-nombre" class="ini-linea-nombre">Línea Triangular</h3>
