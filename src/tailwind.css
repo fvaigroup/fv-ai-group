@@ -783,7 +783,7 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 @media (prefers-reduced-motion: reduce) { .ini-portada .ini-hexmarca { animation: none; will-change: auto; } }
 @media (max-width: 1023px) { .ini-portada .ini-hexgiro { top: 68%; left: 62%; opacity: .26; } .ini-portada .ini-hexmarca { top: 68%; left: 62%; opacity: .28; } }
 @media (min-width: 1024px) { .ini-portada .ini-hexgiro { left: 71%; --ini-k: 1; } .ini-portada .ini-hexmarca { left: 71%; opacity: 1; } }
-.ini-portada .ini-boton-pill { min-height: 52px; padding: calc(.875rem - 3px) 33px; border-radius: 999px; font-size: 17px; font-weight: 700; color: #0b0d12; }
+.ini-portada .ini-boton-pill { min-height: 52px; padding: .875rem 36px; border-radius: 999px; font-size: 17px; font-weight: 700; color: #0b0d12; }
 .ini-etq-naranja { margin: 0 0 .75rem; font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #FF8C00; }
 .ini-camino { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
 @media (min-width: 640px) { .ini-camino { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -1018,17 +1018,23 @@ a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid 
    Se anima con la propiedad individual «translate» para no pisar el transform del hover/active del botón.
    Con prefers-reduced-motion no se anima nada. */
 @media (prefers-reduced-motion: no-preference) {
-  .ini-portada .ini-boton-pill { position: relative; animation: ini-entra .7s ease-out .8s both, ini-borde 3s linear 2.7s 3 both; }
-  .ini-portada .ini-boton-pill::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; pointer-events: none; box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); animation: ini-destello 1.2s ease-out 1.5s 1 forwards; }
+  .ini-portada .ini-boton-pill { position: relative; animation: ini-entra .7s ease-out .8s both; }
+  .ini-portada .ini-boton-pill::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); animation: ini-destello 1.2s ease-out 1.5s 1 forwards; }
 }
 @keyframes ini-entra { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
 @keyframes ini-destello { from { box-shadow: 0 0 0 0 rgba(0, 255, 255, .7); } to { box-shadow: 0 0 0 18px rgba(0, 255, 255, 0); } }
 
 
-/* ---- Prueba: borde de marca que gira en el botón del hero (sustituye a la luciérnaga) ----
-   Borde de 3 px con conic-gradient cian / blanco / naranja (blanco entre cian y naranja: sin verde). Gira 3 vueltas de 3 s desde que
-   termina el destello (~2,7 s) y se queda quieto y visible. Con prefers-reduced-motion no gira (el borde se queda fijo).
-   --cta-a también se declara en el botón: sin soporte de @property el borde queda fijo en 0deg y el botón nunca pierde su fondo. */
-@property --cta-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
-.ini-portada .ini-boton-pill { --cta-a: 0deg; border: 3px solid transparent; background: linear-gradient(#FF8C00, #FF8C00) padding-box, conic-gradient(from var(--cta-a), #00FFFF, #ffffff 8%, #FF8C00 25%, #00FFFF 50%, #ffffff 58%, #FF8C00 75%, #00FFFF) border-box; }
-@keyframes ini-borde { from { --cta-a: 0deg; } to { --cta-a: 360deg; } }
+
+/* ---- Prueba: destello que cruza el botón del hero (sustituye al borde que gira; el anillo cian de entrada se queda) ----
+   Una franja de luz cruza el botón de izquierda a derecha en el primer 40 % de un ciclo de 3,2 s (el resto queda quieta fuera del botón),
+   3 veces, empezando cuando termina el anillo (~2,7 s). El overflow:hidden va SOLO en .cta-shine (no en el botón) para no cortar el anillo.
+   El botón crea su propio contexto de apilamiento (isolation) y la franja va a z-index -1: queda sobre el fondo naranja y DEBAJO del texto.
+   Sin animación (reduced-motion) la franja no se muestra. */
+.cta-shine { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .ini-portada .ini-boton-pill { isolation: isolate; }
+  .ini-portada .ini-boton-pill .cta-shine { display: block; position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; z-index: -1; }
+  .ini-portada .ini-boton-pill .cta-shine::before { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .65) 50%, transparent 70%); transform: translateX(-120%); animation: ini-shine 3.2s ease-in-out 2.7s 3 both; }
+}
+@keyframes ini-shine { 0% { transform: translateX(-120%); } 40% { transform: translateX(120%); } 100% { transform: translateX(120%); } }
