@@ -39,7 +39,7 @@ ok(html.includes(`<meta property="og:title" content="${titulo.replace(/&/g, '&am
 ok(/<!-- header:inicio activo="inicio"/.test(html) && /<!-- footer:inicio/.test(html), 'conserva los marcadores de encabezado y pie');
 
 // ------------------------------------------------------------ orden de las secciones
-const ORDEN = ['inicio', 'lineas', 'diagnostico', 'como-trabajamos', 'caos-tablero', 'brecha', 'delta-app', 'faq', 'cierre'];
+const ORDEN = ['inicio', 'lineas', 'diagnostico', 'como-trabajamos', 'manifiesto', 'caos-tablero', 'brecha', 'delta-app', 'faq', 'cierre'];
 ok(JSON.stringify(secciones.map(s => s.id)) === JSON.stringify(ORDEN), `secciones en orden: ${ORDEN.join(' → ')} (hay: ${secciones.map(s => s.id).join(' → ')})`);
 ['camino', 'venezuela', 'conversacion', 'servicios-destacados', 'productos-destacados', 'duenos', 'diferencial', 'testimonios', 'proximas-fechas', 'cta-final'].forEach(id => ok(!new RegExp(`id="${id}"`).test(html), `no existe la sección vieja #${id}`));
 
@@ -118,6 +118,12 @@ const cierre = sec('cierre');
 ok(/Hablemos de su empresa/.test(cierre) && /Escribir por WhatsApp/.test(cierre) && /Agendar consulta gratis/.test(cierre) && /href="\/contacto#agenda"/.test(cierre), 'cierre: título, WhatsApp y consulta gratis');
 ok(decodeURIComponent((cierre.match(/wa\.me\/584244125386\?text=([^"]+)/) || [, ''])[1]) === 'Hola F&V, vengo de la página de inicio y quiero conversar.', 'cierre: mensaje de WhatsApp');
 ok(!/\bmin\b|minutos/i.test(texto(cierre)), 'el cierre no pone la duración de la consulta (TODO: unificar 20/15/30 minutos)');
+
+const manifiesto = sec('manifiesto');
+const frasesM = [...manifiesto.matchAll(/<p class="ini-frase" data-frase>([\s\S]*?)<\/p>/g)].map(m => texto(m[1]).replace(/\s+([.,;:])/g, '$1'));
+ok(JSON.stringify(frasesM) === JSON.stringify(['Decidir con datos no es solo para empresas grandes.', 'La inteligencia artificial es el cómo. Su empresa es el qué.', 'Nos quedamos después de la implementación.']), `manifiesto: las tres frases exactas (hay: ${frasesM.join(' | ')})`);
+ok((manifiesto.match(/<em class="ini-clave">/g) || []).length === 3 && !/<a\b|<button\b/.test(manifiesto), 'manifiesto: una palabra clave resaltada por frase y sin botón ni enlace');
+ok(/\.ini-clave|\.ini-frase em \{[^}]*linear-gradient\(90deg, #00FFFF, #FF8C00\)/.test(cssTw) && cssTw.includes('.ini-frase { opacity: 1; transform: none; transition: none; } }') && /min-height: 78svh/.test(cssTw), 'manifiesto: tipografía de títulos, palabra clave en cian/naranja, una frase por pantalla en celular y sin animación con prefers-reduced-motion');
 
 // ------------------------------------------------------------ JSON-LD
 const bloquesLd = [...html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)].map(m => m[1]);

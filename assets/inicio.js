@@ -132,4 +132,14 @@
       io.observe(caos);
     }
   }
+
+  /* ------------------------------------------------------------ manifiesto: cada frase aparece suave al entrar en pantalla */
+  var frases = [].slice.call(document.querySelectorAll('[data-frase]'));
+  if (frases.length) {
+    if (reducido || !('IntersectionObserver' in window)) { frases.forEach(function (f) { f.classList.add('is-in'); }); }
+    else {
+      var ioF = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); ioF.unobserve(e.target); } }); }, { threshold: 0.35 });
+      frases.forEach(function (f) { ioF.observe(f); });
+    }
+  }
 })();
