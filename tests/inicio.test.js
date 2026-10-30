@@ -39,7 +39,7 @@ ok(html.includes(`<meta property="og:title" content="${titulo.replace(/&/g, '&am
 ok(/<!-- header:inicio activo="inicio"/.test(html) && /<!-- footer:inicio/.test(html), 'conserva los marcadores de encabezado y pie');
 
 // ------------------------------------------------------------ orden de las secciones
-const ORDEN = ['inicio', 'lineas', 'diagnostico', 'como-trabajamos', 'caos-tablero', 'delta-app', 'faq', 'cierre'];
+const ORDEN = ['inicio', 'lineas', 'diagnostico', 'como-trabajamos', 'caos-tablero', 'brecha', 'delta-app', 'faq', 'cierre'];
 ok(JSON.stringify(secciones.map(s => s.id)) === JSON.stringify(ORDEN), `secciones en orden: ${ORDEN.join(' → ')} (hay: ${secciones.map(s => s.id).join(' → ')})`);
 ['camino', 'venezuela', 'conversacion', 'servicios-destacados', 'productos-destacados', 'duenos', 'diferencial', 'testimonios', 'proximas-fechas', 'cta-final'].forEach(id => ok(!new RegExp(`id="${id}"`).test(html), `no existe la sección vieja #${id}`));
 
@@ -137,7 +137,11 @@ if (ld) {
 
 // ------------------------------------------------------------ reglas del inicio
 const visible = texto(main);
-ok(!/\$|USD|Bs\.|%|\bdesde\b/i.test(visible), 'CERO precios en el texto visible: ni «$», «USD», «Bs.», «%» ni «desde»');
+// La calculadora de la brecha (#brecha) muestra montos del USUARIO, no precios de F&V: es la ÚNICA zona exenta de la regla de cero precios
+const mainSinExcepcion = main.replace(/<section\b[^>]*data-sin-precios-excepcion="brecha"[\s\S]*?<\/section>/, '');
+const visiblePrecios = texto(mainSinExcepcion);
+ok(mainSinExcepcion.length < main.length && (main.match(/data-sin-precios-excepcion=/g) || []).length === 1, 'solo hay una zona exenta de la regla de precios: #brecha');
+ok(!/\$|USD|Bs\.|%|\bdesde\b/i.test(visiblePrecios), 'CERO precios en el texto visible (fuera de #brecha): ni «$», «USD», «Bs.», «%» ni «desde»');
 ok(!/\bExpress\b/i.test(texto(html)), '«Express» no existe');
 ok(!/10x|garantizad|testimonio|casos? de éxito/i.test(visible), 'sin «10x», «garantizado», testimonios ni casos inventados');
 ok(!/Zelle|Pago M[oó]vil|PayPal|Binance|USDT|transferencia|tarjeta|efectivo/i.test(visible), 'no se muestran métodos de pago');
@@ -148,7 +152,7 @@ const cabecera = (html.match(/<!-- header:inicio[^>]*-->[\s\S]*?<!-- header:fin 
 const pie = (html.match(/<!-- footer:inicio\s*-->[\s\S]*?<!-- footer:fin -->/) || [''])[0];
 ok(cabecera.length > 1000 && pie.length > 1000, 'encabezado y pie presentes');
 ok(!/L[ií]nea (Hexagonal|Triangular)/.test(texto(cabecera)) && !/L[ií]nea (Hexagonal|Triangular)/.test(texto(pie)), '«Línea Hexagonal/Triangular» no aparece en el encabezado ni en el pie');
-ok(!/bcv\.js/.test(html), 'el inicio no carga assets/bcv.js (no muestra bolívares)');
+ok(/<script defer src="\/assets\/bcv\.js"><\/script>/.test(html) && !/data-bcv-chip|data-usd=/.test(html), 'bcv.js se carga solo para la calculadora: el inicio no muestra montos en bolívares de F&V');
 
 // ------------------------------------------------------------ encabezados y accesibilidad básica
 const encabezados = [...main.matchAll(/<h([1-6])\b/g)].map(m => +m[1]);

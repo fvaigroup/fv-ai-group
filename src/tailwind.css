@@ -967,3 +967,21 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 @media (min-width: 640px) { .ini-cierre-botones { flex-direction: row; justify-content: center; } }
 .ini-cierre .ini-boton-pill { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: .875rem 36px; border-radius: 999px; font-family: 'Space Grotesk', sans-serif; font-size: 1.0625rem; font-weight: 700; text-decoration: none; }
 .ini-cierre .btn-primary.ini-boton-pill { color: #0b0d12; }
+
+/* ---- A. Calculadora de la brecha ---- */
+.ini-brecha-form { display: grid; gap: 1.25rem; }
+.ini-brecha-form[hidden], .ini-brecha-res[hidden] { display: none; }
+.ini-campo label { display: block; margin-bottom: .375rem; font-size: 1rem; font-weight: 600; color: #fff; }
+.ini-campo input { display: block; width: 100%; min-height: 52px; padding: .75rem 1rem; border: 1px solid rgba(255, 255, 255, .25); border-radius: .75rem; background: #0b0d12; color: #fff; font-size: 1.125rem; }
+.ini-campo input:focus-visible { outline: 2px solid #00FFFF; outline-offset: 2px; }
+.ini-campo input[aria-invalid="true"] { border-color: #f87171; }
+.ini-campo-ayuda { margin: .375rem 0 0; font-size: .875rem; color: #94a3b8; }
+.ini-campo-ayuda:empty { display: none; }
+.ini-err { margin: .375rem 0 0; font-size: .9375rem; color: #fca5a5; }
+.ini-err:empty { display: none; }
+.ini-calcular { justify-self: start; min-height: 52px; padding: .875rem 2.25rem; border-radius: 999px; font-family: 'Space Grotesk', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #0b0d12; cursor: pointer; }
+.ini-brecha-res { margin-top: 1.5rem; padding: 1.5rem; border: 1px solid rgba(255, 140, 0, .6); border-radius: 1rem; background: rgba(255, 140, 0, .08); }
+.ini-brecha-grande { margin: 0 0 .75rem; font-size: clamp(1.5rem, 4.4vw, 2.25rem); font-weight: 700; line-height: 1.2; color: #fff; text-wrap: balance; }
+.ini-brecha-detalle { margin: 0 0 1.25rem; font-size: 1.0625rem; line-height: 1.5; color: #cbd5e1; }
+.ini-brecha-res .ini-wa { clip-path: none; }
+.ini-nota-chica { margin: 1.25rem 0 0; font-size: .875rem; color: #94a3b8; }

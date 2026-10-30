@@ -825,6 +825,40 @@
   </div>
 </section>
 
+<!-- ============ A. CALCULADORA DE LA BRECHA (muestra montos del usuario, no precios de F&V) ============ -->
+<section id="brecha" class="ini-brecha relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" data-sin-precios-excepcion="brecha" aria-labelledby="brecha-titulo">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <p class="ini-etq-naranja">LA PLATA QUE SE PIERDE ESPERANDO</p>
+    <h2 id="brecha-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">¿Cuánto se le va entre que cobra y cambia?</h2>
+    <p class="ini-ayuda-lineas">Si cobra en bolívares hoy y compra dólares días después, la diferencia de tasa se come parte de su ganancia. Calcúlelo con sus números.</p>
+    <div class="ini-quiz-caja" data-brecha>
+      <p class="ini-quiz-sinjs" data-brecha-sinjs>Escríbanos por WhatsApp y le ayudamos a calcularlo con sus números.
+        <a class="ini-wa btn-primary btn-glow-on-hover" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20calcular%20cu%C3%A1nto%20pierdo%20entre%20que%20cobro%20y%20cambio." target="_blank" rel="noopener" data-evento="inicio_brecha_whatsapp_general" data-cta="inicio_brecha">Escribir por WhatsApp</a></p>
+      <form class="ini-brecha-form" data-brecha-form novalidate hidden>
+        <div class="ini-campo">
+          <label for="brecha-monto">Monto que cobró en bolívares</label>
+          <input id="brecha-monto" name="monto" type="text" inputmode="decimal" autocomplete="off" aria-describedby="brecha-monto-err">
+          <p id="brecha-monto-err" class="ini-err" role="alert"></p>
+        </div>
+        <div class="ini-campo">
+          <label for="brecha-t1">Tasa del día en que cobró (bolívares por dólar)</label>
+          <input id="brecha-t1" name="t1" type="text" inputmode="decimal" autocomplete="off" aria-describedby="brecha-t1-bcv brecha-t1-err">
+          <p id="brecha-t1-bcv" class="ini-campo-ayuda" data-brecha-bcv></p>
+          <p id="brecha-t1-err" class="ini-err" role="alert"></p>
+        </div>
+        <div class="ini-campo">
+          <label for="brecha-t2">Tasa del día en que compró los dólares (bolívares por dólar)</label>
+          <input id="brecha-t2" name="t2" type="text" inputmode="decimal" autocomplete="off" aria-describedby="brecha-t2-err">
+          <p id="brecha-t2-err" class="ini-err" role="alert"></p>
+        </div>
+        <button type="submit" class="ini-calcular btn-primary btn-glow-on-hover" data-evento="inicio_brecha_calcular_boton">Calcular</button>
+      </form>
+      <div class="ini-brecha-res" data-brecha-res aria-live="polite" hidden></div>
+      <p class="ini-nota-chica">Cálculo ilustrativo con las tasas que usted ingresó. No es asesoría financiera.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 7. FRANJA DELTA APP ============ -->
 <section id="delta-app" class="ini-delta relative py-10 lg:py-12 border-t border-white/5" aria-labelledby="delta-titulo">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 ini-delta-fila">
@@ -1271,6 +1305,8 @@
 
 </script>
 <script defer src="/assets/inicio.js"></script>
+<script defer src="/assets/bcv.js"></script>
+<script defer src="/assets/brecha.js"></script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/publicado.js"></script>
 <script defer src="/assets/estados.js"></script>
