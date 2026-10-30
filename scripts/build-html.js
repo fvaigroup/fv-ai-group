@@ -54,6 +54,7 @@ const PAGINAS = {
   'paginas-web.html': { activo: 'productos', hijo: true },
   'hexagonal.html': { activo: 'hexagonal' },
   'triangular.html': { activo: 'triangular' },
+  'delta-app.html': { activo: 'ninguno' },
   'cursos.html': { activo: 'ninguno' },
   'cursos/finanzas-ia.html': { activo: 'ninguno' },
   'casos.html': { activo: 'nosotros', hijo: true },

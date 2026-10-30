@@ -105,6 +105,44 @@
       "sameAs": [
         "https://instagram.com/fvaigroup"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.fvaigroup.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de la línea y de lo que necesite. Escríbanos por WhatsApp y le damos el precio exacto el mismo día hábil."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué moneda se paga?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trabajamos en dólares a la tasa BCV del día."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo pagar por mes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Muchos de nuestros servicios y productos se pagan por mes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa después del primer contacto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Conversamos su caso, le decimos qué línea le corresponde y por dónde conviene empezar. Sin compromiso."
+          }
+        }
+      ]
     }
   ]
 }
@@ -181,6 +219,8 @@
   @media (max-width: 767px) {
     /* En móvil el footer se apila y es más alto, así que necesitan subir más */
     #luci-widget.avoid-footer, #scroll-top.avoid-footer { bottom: 150px; }
+    /* En el celular, mientras se ve el pie, Luci se aparta: ahí tapaba el logo y los datos de contacto (30 oct 2026) */
+    #luci-widget.avoid-footer { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(1rem); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -522,17 +562,17 @@
     <img src="assets/logo-mark-hex.png" alt="" aria-hidden="true" width="500" height="500" decoding="async" class="ini-hexmarca">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full text-left">
       <div class="hero-copy">
-        <h1 id="hero-title" class="ini-h1"><span class="ini-h1-l1">Aquí empieza</span> <span class="ini-h1-grad">el futuro de su empresa</span></h1>
-        <p class="ini-sub">Bienvenido al círculo de las empresas que deciden con datos</p>
-        <p class="ini-desc">El socio que usa la IA para analizar su negocio de punta a punta, anticipar lo que viene y ajustar el rumbo a tiempo, con decisiones respaldadas por sus propios datos, para que su empresa escale 10x con seguridad, control y orden</p>
+        <p class="ini-antetitulo">INTELIGENCIA DE NEGOCIOS</p>
+        <h1 id="hero-title" class="ini-h1">Estrategia con <span class="ini-h1-grad">inteligencia artificial</span> para empresas</h1>
+        <p class="ini-sub">Aquí empieza el futuro de su empresa, con decisiones de primer nivel.</p>
         <div class="ini-botones">
-          <a href="/contacto#agenda" data-cta="portada_hero" data-evento="portada_como_trabajamos" class="ini-boton ini-boton-pill btn-primary btn-glow-on-hover">Empezar</a>
+          <a href="#lineas" data-cta="portada_hero" data-evento="portada_como_trabajamos" class="ini-boton ini-boton-pill btn-primary btn-glow-on-hover">Cómo trabajamos</a>
         </div>
       </div>
     </div>
   </div>
   <div class="relative z-10 mt-14 lg:mt-20">
-    <p class="ini-logos-titulo px-6">Empresas que confían en nosotros</p>
+    <p class="ini-logos-titulo px-6">Marcas con las que hemos trabajado</p>
     <div class="marquee">
     <div class="marquee-track">
       <div class="border-0 bg-white rounded-xl p-1.5 flex items-center justify-center" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-licorway.jpeg" width="368" height="264" class="h-full w-full object-contain rounded-md" alt="Logo de Licorway" loading="lazy" decoding="async"></div>
@@ -569,6 +609,266 @@
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.webp" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
     </div>
   </div>
+  </div>
+</section>
+
+
+<!-- ============ 3. LAS DOS LÍNEAS ============ -->
+<section id="lineas" class="ini-lineas relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="lineas-titulo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-10 lg:mb-12">
+      <p class="ini-etq-naranja">DOS LÍNEAS · UNA FORMA DE TRABAJAR</p>
+      <h2 id="lineas-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Elija el camino que le corresponde</h2>
+      <p class="ini-ayuda-lineas">Más de 20 personas, varias sedes o junta directiva: Línea Hexagonal. Si usted decide solo en su negocio: Línea Triangular.</p>
+    </div>
+    <div class="ini-figuras">
+      <article id="fig-hex" class="ini-fig linea-hex hex-legible" data-linea="hex" data-nombre-linea="LÍNEA HEXAGONAL" data-para="Empresas e instituciones" aria-labelledby="fig-hex-t">
+        <header class="ini-fig-cab">
+          <span class="ini-forma nav-forma nav-hex" aria-hidden="true"></span>
+          <div>
+            <h3 id="fig-hex-t" class="ini-fig-titulo">LÍNEA HEXAGONAL</h3>
+            <p class="ini-fig-para">Empresas e instituciones</p>
+          </div>
+        </header>
+        <svg class="ini-svg ini-svg-hex" viewBox="0 0 400 360" role="group" aria-label="Hexágono con los seis servicios de la Línea Hexagonal">
+          <defs>
+            <linearGradient id="grad-hex" gradientUnits="userSpaceOnUse" x1="50" y1="50" x2="350" y2="310"><stop offset="0" stop-color="#00FFFF"/><stop offset="1" stop-color="#FF8C00"/></linearGradient>
+          </defs>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-hex" aria-label="Diagnóstico financiero" data-lado="0">
+            <line class="hit" x1="275" y1="50" x2="350" y2="180"/>
+            <line class="vis" x1="275" y1="50" x2="350" y2="180" stroke="url(#grad-hex)"/>
+            <g class="num" aria-hidden="true"><circle cx="312.5" cy="115" r="15"/><text x="312.5" y="115">1</text></g>
+          </g>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-hex" aria-label="Orden financiero" data-lado="1">
+            <line class="hit" x1="350" y1="180" x2="275" y2="310"/>
+            <line class="vis" x1="350" y1="180" x2="275" y2="310" stroke="url(#grad-hex)"/>
+            <g class="num" aria-hidden="true"><circle cx="312.5" cy="245" r="15"/><text x="312.5" y="245">2</text></g>
+          </g>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-hex" aria-label="Asesor financiero con IA" data-lado="2">
+            <line class="hit" x1="275" y1="310" x2="125" y2="310"/>
+            <line class="vis" x1="275" y1="310" x2="125" y2="310" stroke="url(#grad-hex)"/>
+            <g class="num" aria-hidden="true"><circle cx="200" cy="310" r="15"/><text x="200" y="310">3</text></g>
+          </g>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-hex" aria-label="Formación en su sede" data-lado="3">
+            <line class="hit" x1="125" y1="310" x2="50" y2="180"/>
+            <line class="vis" x1="125" y1="310" x2="50" y2="180" stroke="url(#grad-hex)"/>
+            <g class="num" aria-hidden="true"><circle cx="87.5" cy="245" r="15"/><text x="87.5" y="245">4</text></g>
+          </g>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-hex" aria-label="Delta App" data-lado="4">
+            <line class="hit" x1="50" y1="180" x2="125" y2="50"/>
+            <line class="vis" x1="50" y1="180" x2="125" y2="50" stroke="url(#grad-hex)"/>
+            <g class="num" aria-hidden="true"><circle cx="87.5" cy="115" r="15"/><text x="87.5" y="115">5</text></g>
+          </g>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-hex" aria-label="A la medida" data-lado="5">
+            <line class="hit" x1="125" y1="50" x2="275" y2="50"/>
+            <line class="vis" x1="125" y1="50" x2="275" y2="50" stroke="url(#grad-hex)"/>
+            <g class="num" aria-hidden="true"><circle cx="200" cy="50" r="15"/><text x="200" y="50">6</text></g>
+          </g>
+        </svg>
+        <p class="ini-fig-aviso" data-aviso>Toque un lado para ver cada servicio</p>
+        <div id="tarj-hex" class="ini-tarjeta" data-tarjeta aria-live="polite" hidden></div>
+        <ul class="ini-lados" aria-label="Servicios de la Línea Hexagonal">
+            <li class="ini-lado" data-lado="0">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-hex"><span class="ini-lado-n" aria-hidden="true">1</span><span>Diagnóstico financiero</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">¿En qué se va la plata de su empresa? Un día en su empresa, informe y plan de 30 días.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20Diagn%C3%B3stico%20financiero%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_hex_diagnostico" data-cta="inicio_lineas" data-product="diagnostico" data-linea="hex">Escribir por WhatsApp</a>
+              </div>
+            </li>
+            <li class="ini-lado" data-lado="1">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-hex"><span class="ini-lado-n" aria-hidden="true">2</span><span>Orden financiero</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">Tablero, conciliación y reportes por WhatsApp para ver sus números a tiempo.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20Orden%20financiero%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_hex_orden" data-cta="inicio_lineas" data-product="orden" data-linea="hex">Escribir por WhatsApp</a>
+              </div>
+            </li>
+            <li class="ini-lado" data-lado="2">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-hex"><span class="ini-lado-n" aria-hidden="true">3</span><span>Asesor financiero con IA</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">Una reunión mensual o semanal para decidir con sus propios datos.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20Asesor%20financiero%20con%20IA%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_hex_asesor" data-cta="inicio_lineas" data-product="asesor" data-linea="hex">Escribir por WhatsApp</a>
+              </div>
+            </li>
+            <li class="ini-lado" data-lado="3">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-hex"><span class="ini-lado-n" aria-hidden="true">4</span><span>Formación en su sede</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">Programa ejecutivo y talleres para su equipo, entre semana.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20Formaci%C3%B3n%20en%20su%20sede%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_hex_formacion" data-cta="inicio_lineas" data-product="formacion" data-linea="hex">Escribir por WhatsApp</a>
+              </div>
+            </li>
+            <li class="ini-lado" data-lado="4">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-hex"><span class="ini-lado-n" aria-hidden="true">5</span><span>Delta App</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">Club, condominio o gimnasio en una sola plataforma.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20Delta%20App%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_hex_delta" data-cta="inicio_lineas" data-product="delta" data-linea="hex">Escribir por WhatsApp</a>
+              </div>
+            </li>
+            <li class="ini-lado" data-lado="5">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-hex"><span class="ini-lado-n" aria-hidden="true">6</span><span>A la medida</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">Agentes de IA, sistemas y automatizaciones para su operación.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20los%20proyectos%20a%20la%20medida%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_hex_medida" data-cta="inicio_lineas" data-product="medida" data-linea="hex">Escribir por WhatsApp</a>
+              </div>
+            </li>
+        </ul>
+        <a href="/hexagonal" class="ini-ver ini-ver-hex" data-evento="inicio_ver_hexagonal">Ver la Línea Hexagonal</a>
+      </article>
+      <article id="fig-tri" class="ini-fig linea-tri" data-linea="tri" data-nombre-linea="LÍNEA TRIANGULAR" data-para="Negocios pequeños" aria-labelledby="fig-tri-t">
+        <header class="ini-fig-cab">
+          <span class="ini-forma nav-forma nav-tri" aria-hidden="true"></span>
+          <div>
+            <h3 id="fig-tri-t" class="ini-fig-titulo">LÍNEA TRIANGULAR</h3>
+            <p class="ini-fig-para">Negocios pequeños</p>
+          </div>
+        </header>
+        <svg class="ini-svg ini-svg-tri" viewBox="0 0 400 340" role="group" aria-label="Triángulo con los tres productos de la Línea Triangular">
+          <defs>
+            <linearGradient id="grad-tri" gradientUnits="userSpaceOnUse" x1="50" y1="40" x2="350" y2="300"><stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#a855f7"/></linearGradient>
+          </defs>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-tri" aria-label="Taller de 3 horas" data-lado="0">
+            <line class="hit" x1="200" y1="40" x2="350" y2="300"/>
+            <line class="vis" x1="200" y1="40" x2="350" y2="300" stroke="url(#grad-tri)"/>
+            <g class="num" aria-hidden="true"><circle cx="275" cy="170" r="15"/><text x="275" y="170">1</text></g>
+          </g>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-tri" aria-label="Plan Arranque" data-lado="1">
+            <line class="hit" x1="350" y1="300" x2="50" y2="300"/>
+            <line class="vis" x1="350" y1="300" x2="50" y2="300" stroke="url(#grad-tri)"/>
+            <g class="num" aria-hidden="true"><circle cx="200" cy="300" r="15"/><text x="200" y="300">2</text></g>
+          </g>
+          <g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-tri" aria-label="Curso Finanzas con IA" data-lado="2">
+            <line class="hit" x1="50" y1="300" x2="200" y2="40"/>
+            <line class="vis" x1="50" y1="300" x2="200" y2="40" stroke="url(#grad-tri)"/>
+            <g class="num" aria-hidden="true"><circle cx="125" cy="170" r="15"/><text x="125" y="170">3</text></g>
+          </g>
+        </svg>
+        <p class="ini-fig-aviso" data-aviso>Toque un lado para ver cada producto</p>
+        <div id="tarj-tri" class="ini-tarjeta" data-tarjeta aria-live="polite" hidden></div>
+        <ul class="ini-lados" aria-label="Productos de la Línea Triangular">
+            <li class="ini-lado" data-lado="0">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-tri"><span class="ini-lado-n" aria-hidden="true">1</span><span>Taller de 3 horas</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">La plata de su negocio, clara: en una tarde sabe cuánto gana de verdad.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20Taller%20de%203%20horas%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_tri_taller" data-cta="inicio_lineas" data-product="taller" data-linea="tri">Escribir por WhatsApp</a>
+              </div>
+            </li>
+            <!-- REVISAR: Plan Arranque pausado en la propuesta de catálogo -->
+            <li class="ini-lado" data-lado="1">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-tri"><span class="ini-lado-n" aria-hidden="true">2</span><span>Plan Arranque</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">Presencia y caja ordenada para empezar con buen pie.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20Plan%20Arranque%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_tri_arranque" data-cta="inicio_lineas" data-product="arranque" data-linea="tri">Escribir por WhatsApp</a>
+              </div>
+            </li>
+            <li class="ini-lado" data-lado="2">
+              <button type="button" class="ini-lado-btn" aria-pressed="false" aria-controls="tarj-tri"><span class="ini-lado-n" aria-hidden="true">3</span><span>Curso Finanzas con IA</span></button>
+              <div class="ini-lado-det">
+                <p class="ini-lado-frase">Presencial, los sábados, grupos pequeños.</p>
+                <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vi%20el%20Curso%20Finanzas%20con%20IA%20en%20la%20web%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" data-evento="inicio_lado_tri_curso" data-cta="inicio_lineas" data-product="curso" data-linea="tri">Escribir por WhatsApp</a>
+              </div>
+            </li>
+        </ul>
+        <a href="/triangular" class="ini-ver ini-ver-tri" data-evento="inicio_ver_triangular">Ver la Línea Triangular</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO: activar cuando exista el archivo (video vertical de 20–30 s de los socios explicando las dos líneas). Quitar el atributo hidden y poner el <video>. -->
+<div id="video-socios" class="ini-video" hidden></div>
+
+<!-- ============ 4. DIAGNÓSTICO DE 60 SEGUNDOS ============ -->
+<section id="diagnostico" class="ini-quiz relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="quiz-titulo">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <h2 id="quiz-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">¿No sabe por dónde empezar? Responda 3 preguntas.</h2>
+    <div class="ini-quiz-caja" data-quiz>
+      <p class="ini-quiz-sinjs" data-quiz-sinjs>Escríbanos por WhatsApp y le decimos qué línea le corresponde y por dónde empezar.
+        <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20saber%20por%20d%C3%B3nde%20empezar." target="_blank" rel="noopener" data-evento="inicio_quiz_whatsapp_general" data-cta="inicio_quiz">Escribir por WhatsApp</a></p>
+      <div class="ini-quiz-ui" data-quiz-ui hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. CÓMO TRABAJAMOS ============ -->
+<section id="como-trabajamos" class="ini-como relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="como-titulo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <h2 id="como-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Cómo trabajamos</h2>
+    <ol class="ini-pasos-lista">
+      <li><span class="ini-paso-ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><h3>1. Diagnosticar</h3><p>Entendemos su negocio y sus números.</p></li>
+      <li><span class="ini-paso-ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V10M12 20V4M18 20v-7"/></svg></span><h3>2. Implementar</h3><p>Construimos el tablero, la automatización o el sistema que hace falta.</p></li>
+      <li><span class="ini-paso-ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span><h3>3. Acompañar</h3><p>Nos quedamos después de la implementación para que funcione.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 6. DEL CAOS AL TABLERO ============ -->
+<section id="caos-tablero" class="ini-caos relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="caos-titulo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <h2 id="caos-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Del caos al tablero</h2>
+    <div class="ini-caos-grid" data-caos>
+      <div class="ini-panel ini-antes">
+        <p class="ini-panel-etq">Antes</p>
+        <ul class="ini-caos-lista">
+          <li>Cuaderno</li><li>Excel con varias versiones</li><li>Chats de WhatsApp</li><li>Bolívares y dólares mezclados</li><li>Reportes que llegan tarde</li>
+        </ul>
+      </div>
+      <div class="ini-panel ini-despues">
+        <p class="ini-panel-etq">Después</p>
+        <ul class="ini-barras">
+          <li><span>Ventas</span><span class="ini-barra"><i style="--w:78%"></i></span></li>
+          <li><span>Gastos</span><span class="ini-barra"><i style="--w:46%"></i></span></li>
+          <li><span>Por cobrar</span><span class="ini-barra"><i style="--w:31%"></i></span></li>
+          <li><span>Margen</span><span class="ini-barra"><i style="--w:62%"></i></span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="ini-ficticio">Ejemplo ilustrativo con datos ficticios.</p>
+  </div>
+</section>
+
+<!-- ============ 7. FRANJA DELTA APP ============ -->
+<section id="delta-app" class="ini-delta relative py-10 lg:py-12 border-t border-white/5" aria-labelledby="delta-titulo">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 ini-delta-fila">
+    <div>
+      <h2 id="delta-titulo" class="font-sans text-2xl font-semibold text-white leading-tight">Delta App</h2>
+      <p class="ini-delta-texto">Software para clubes, condominios y gimnasios. Una sola plataforma, planes según su tamaño.</p>
+    </div>
+    <a href="/delta-app" class="btn-secondary inline-flex items-center justify-center min-h-[44px] px-6 py-3 font-head font-medium rounded-lg" data-evento="inicio_delta_app" data-cta="inicio_delta">Conocer Delta App</a>
+  </div>
+</section>
+
+<!-- ============ 8. PREGUNTAS FRECUENTES ============ -->
+<section id="faq" class="ini-faq relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="faq-titulo">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <h2 id="faq-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Preguntas frecuentes</h2>
+    <div class="ini-faq-lista">
+      <details>
+        <summary><span>¿Cuánto cuesta?</span></summary>
+        <p>Depende de la línea y de lo que necesite. Escríbanos por WhatsApp y le damos el precio exacto el mismo día hábil.</p>
+      </details>
+      <details>
+        <summary><span>¿En qué moneda se paga?</span></summary>
+        <p>Trabajamos en dólares a la tasa BCV del día.</p>
+      </details>
+      <details>
+        <summary><span>¿Puedo pagar por mes?</span></summary>
+        <p>Sí. Muchos de nuestros servicios y productos se pagan por mes.</p>
+      </details>
+      <details>
+        <summary><span>¿Qué pasa después del primer contacto?</span></summary>
+        <p>Conversamos su caso, le decimos qué línea le corresponde y por dónde conviene empezar. Sin compromiso.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. CIERRE ============ -->
+<section id="cierre" class="ini-cierre relative py-16 lg:py-24 border-t border-white/5" aria-labelledby="cierre-titulo">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <h2 id="cierre-titulo" class="font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Hablemos de su empresa</h2>
+    <div class="ini-cierre-botones">
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20inicio%20y%20quiero%20conversar." target="_blank" rel="noopener" class="ini-boton ini-boton-pill btn-primary btn-glow-on-hover" data-evento="inicio_cierre_whatsapp" data-cta="inicio_cierre">Escribir por WhatsApp</a>
+      <a href="/contacto#agenda" class="ini-boton ini-boton-pill btn-secondary" data-evento="inicio_cierre_agenda" data-cta="inicio_cierre">Agendar consulta gratis</a>
+    </div>
   </div>
 </section>
 
@@ -970,6 +1270,7 @@
   })();
 
 </script>
+<script defer src="/assets/inicio.js"></script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/publicado.js"></script>
 <script defer src="/assets/estados.js"></script>

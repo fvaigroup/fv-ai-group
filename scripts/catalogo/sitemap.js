@@ -28,6 +28,7 @@ const PAGINAS_ESTATICAS = [
   ['/paginas-web', '0.6', 'monthly'],
   ['/hexagonal', '0.8', 'monthly'],
   ['/triangular', '0.8', 'monthly'],
+  ['/delta-app', '0.7', 'monthly'],
   ['/cursos', '0.6', 'monthly'],
   ['/cursos/finanzas-ia', '0.6', 'monthly'],
   ['/club', '0.6', 'monthly'],

@@ -10,6 +10,7 @@
   // Para añadir una página al buscador: una línea más en este arreglo.
   var SEARCH_INDEX = [
     { title: 'Cursos', desc: 'Cursos presenciales en Valencia.', url: '/cursos', cat: 'Pagina', kw: 'cursos talleres clases formacion' },
+    { title: 'Delta App', desc: 'Software para clubes, condominios y gimnasios.', url: '/delta-app', cat: 'Pagina', kw: 'delta app club condominio gimnasio gym software plataforma' },
     { title: 'Inicio', desc: 'Servicios para empresas e instituciones y productos para negocios pequeños.', url: '/', cat: 'Pagina' },
     { title: 'Servicios', desc: 'Servicio: el equipo de F&V trabaja con usted, en su empresa o con su equipo.', url: '/servicios', cat: 'Pagina', kw: 'precios cuanto cuesta tarifas catalogo a la medida empresas instituciones' },
     { title: 'Productos', desc: 'Producto: listo para usar, con el mismo precio y la misma entrega para todos.', url: '/productos', cat: 'Pagina', kw: 'precios cuanto cuesta tarifas catalogo precio fijo negocios pequenos emprendedores' },
