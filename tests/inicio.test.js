@@ -136,6 +136,14 @@ ok(!/\.focus\(\)/.test(js.slice(js.indexOf('var AVISOS'))), 'Luci: el aviso no r
 ok(/\.ini-aviso-x \{[^}]*width: 44px; min-height: 44px/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-aviso { transition: none'), 'Luci: la X mide 44 px y no hay animación con prefers-reduced-motion');
 ok(!fs.readFileSync(path.join(RAIZ, 'assets/luci.js'), 'utf8').includes('ini-aviso'), 'assets/luci.js no se tocó para esto');
 
+// ------------------------------------------------------------ D. Linterna del cursor (solo escritorio)
+const lint = fs.readFileSync(path.join(RAIZ, 'assets/linterna.js'), 'utf8');
+ok(Buffer.byteLength(lint) < 2048, `assets/linterna.js pesa ${Buffer.byteLength(lint)} bytes (< 2 KB)`);
+ok(/matchMedia\('\(hover: hover\) and \(pointer: fine\)'\)\.matches && window\.innerWidth >= 1024/.test(js) && /!reducido/.test(js.slice(js.indexOf('Linterna del cursor'), js.indexOf('Linterna del cursor') + 400)) && js.includes("lin.src = '/assets/linterna.js'"), 'la linterna solo se carga con mouse, ancho >= 1024 px y sin prefers-reduced-motion');
+ok(!/linterna/.test(html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '')), 'el HTML del inicio no trae nada de la linterna (en celular ni se descarga)');
+ok(/#inicio, #manifiesto/.test(lint) && /requestAnimationFrame/.test(lint) && /visibilitychange/.test(lint) && /pointerleave/.test(lint) && /pointer-events/.test(cssTw.match(/\.ini-linterna \{[^}]*\}/)[0]), 'la linterna solo está en el hero y el manifiesto, va con requestAnimationFrame, se pausa con la pestaña oculta o al salir el cursor y no recibe clics');
+ok(/\.ini-linterna \{[^}]*z-index: 0[^}]*radial-gradient\(circle 280px at var\(--x, 50%\) var\(--y, 50%\), rgba\(255, 214, 102, \.10\), rgba\(0, 255, 255, \.05\)/.test(cssTw), 'la linterna es un radial-gradient cálido (amarillo/cian muy tenue) que se mueve con --x y --y y queda detrás del contenido');
+
 // ------------------------------------------------------------ JSON-LD
 const bloquesLd = [...html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)].map(m => m[1]);
 ok(bloquesLd.length === 1, 'un bloque JSON-LD');

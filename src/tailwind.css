@@ -1005,3 +1005,7 @@ a.ini-aviso-link { cursor: pointer; text-decoration: underline; text-decoration-
 a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid #fff; outline-offset: -2px; border-radius: .75rem; }
 .ini-aviso-x { flex: none; width: 44px; min-height: 44px; border: 0; border-radius: 0 1rem 1rem 0; background: transparent; color: #cbd5e1; font-size: 1.5rem; line-height: 1; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) { .ini-aviso { transition: none; transform: none; } }
+
+/* ---- D. Linterna del cursor (solo escritorio; la capa la crea assets/linterna.js y va detrás del contenido) ---- */
+.ini-linterna { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease; background: radial-gradient(circle 280px at var(--x, 50%) var(--y, 50%), rgba(255, 214, 102, .10), rgba(0, 255, 255, .05) 45%, transparent 70%); }
+.ini-linterna.is-on { opacity: 1; }

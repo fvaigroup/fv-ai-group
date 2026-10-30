@@ -8,6 +8,11 @@
   var WA = 'https://wa.me/584244125386?text=';
   var reducido = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* Linterna del cursor: solo con mouse, ancho >= 1024 px y sin prefers-reduced-motion. En celular y tablet ni siquiera se descarga. */
+  if (!reducido && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth >= 1024) {
+    var lin = document.createElement('script'); lin.src = '/assets/linterna.js'; lin.defer = true; document.head.appendChild(lin);
+  }
+
   function evento(nombre, datos) {
     if (typeof window.gtag === 'function') window.gtag('event', nombre, datos || {});
   }
