@@ -1018,7 +1018,7 @@ a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid 
    Se anima con la propiedad individual «translate» para no pisar el transform del hover/active del botón.
    Con prefers-reduced-motion no se anima nada. */
 @media (prefers-reduced-motion: no-preference) {
-  .ini-portada .ini-boton-pill { position: relative; animation: ini-entra .7s ease-out .8s both; }
+  .ini-portada .ini-boton-pill { position: relative; animation: ini-entra .7s ease-out .8s both, ini-pulso 2.4s ease-in-out 2.7s 3; }
   .ini-portada .ini-boton-pill::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); animation: ini-destello 1.2s ease-out 1.5s 1 forwards; }
 }
 @keyframes ini-entra { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
@@ -1026,15 +1026,9 @@ a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid 
 
 
 
-/* ---- Prueba: destello que cruza el botón del hero (sustituye al borde que gira; el anillo cian de entrada se queda) ----
-   Una franja de luz cruza el botón de izquierda a derecha en el primer 40 % de un ciclo de 3,2 s (el resto queda quieta fuera del botón),
-   3 veces, empezando cuando termina el anillo (~2,7 s). El overflow:hidden va SOLO en .cta-shine (no en el botón) para no cortar el anillo.
-   El botón crea su propio contexto de apilamiento (isolation) y la franja va a z-index -1: queda sobre el fondo naranja y DEBAJO del texto.
-   Sin animación (reduced-motion) la franja no se muestra. */
-.cta-shine { display: none; }
-@media (prefers-reduced-motion: no-preference) {
-  .ini-portada .ini-boton-pill { isolation: isolate; }
-  .ini-portada .ini-boton-pill .cta-shine { display: block; position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; z-index: -1; }
-  .ini-portada .ini-boton-pill .cta-shine::before { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .65) 50%, transparent 70%); transform: translateX(-120%); animation: ini-shine 3.2s ease-in-out 2.7s 3 both; }
-}
-@keyframes ini-shine { 0% { transform: translateX(-120%); } 40% { transform: translateX(120%); } 100% { transform: translateX(120%); } }
+
+/* ---- Prueba: pulso de luz en el botón del hero (sustituye al destello que cruza; el anillo cian de entrada se queda) ----
+   Un halo naranja «respira» en el propio botón (el ::after es del anillo cian): 3 ciclos de 2,4 s desde los ~2,7 s, máximo a los 3,9 s.
+   El botón en reposo no trae sombra (.btn-glow-on-hover la anula), así que 0 % y 100 % son «sin halo»; al terminar queda sin halo.
+   Solo existe dentro de prefers-reduced-motion: no-preference. */
+@keyframes ini-pulso { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 140, 0, 0); } 50% { box-shadow: 0 0 28px 6px rgba(255, 140, 0, .55); } }
