@@ -28,7 +28,7 @@
   function interes(nombre, precio, p, conversar) { return { l: 'Lo quiero por WhatsApp', h: wa('Hola F&V, me interesa ' + nombre + ' (⬡, ' + precio + ').' + (conversar ? ' ¿Podemos conversar?' : '')), wa: true, p: p }; }
   var VER_SERV = { l: 'Ver los servicios', h: '/servicios' };
   var VER_PROD = { l: 'Ver los productos', h: '/productos' };
-  var VER_AMBOS = { l: 'Ver servicios y productos', h: '/#lineas' };
+  var VER_AMBOS = { l: 'Ver las líneas', h: '/hexagonal' };
   var VER_SOFT = { l: 'Ver el software', h: '/productos#software' };
   var VER_IMPL = { l: 'Ver la implementación a medida', h: '/servicios#implementacion' };
   // En las páginas de servicios (⬡) la llamada gratuita se llama «Consulta gratis de 20 min» (para no confundirla con el Diagnóstico de $270).

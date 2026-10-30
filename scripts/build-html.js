@@ -8,7 +8,7 @@
 // Marcadores (en cada página):
 //   <!-- header:inicio activo="servicios" wa="Hola F&V, me interesa..." -->  ...  <!-- header:fin -->
 //   <!-- footer:inicio -->  ...  <!-- footer:fin -->
-//   activo  = inicio | servicios | productos | nosotros | contacto | ninguno   (obligatorio)
+//   activo  = inicio | hexagonal | triangular | servicios | productos | nosotros | contacto | ninguno   (obligatorio)
 //   hijo    = si   (opcional) la página es un detalle del grupo activo: el grupo lleva aria-current="true"
 //             y no "page". Las páginas de servicios/ y productos/ lo son siempre.
 //   wa      = mensaje de WhatsApp de esa página, en texto plano (el build lo codifica). Sin él: «Hola F&V, tengo una consulta».
@@ -40,7 +40,7 @@ const PARCIALES = path.join(RAIZ, 'partials');
 // Demos con diseño propio: el build no las toca.
 const LEGACY = [];
 const SALTAR = ['demo-catalogo.html'];
-const ACTIVOS = ['inicio', 'servicios', 'productos', 'nosotros', 'contacto', 'ninguno'];
+const ACTIVOS = ['inicio', 'hexagonal', 'triangular', 'servicios', 'productos', 'nosotros', 'contacto', 'ninguno'];
 const WA_NUMERO = '584244125386';
 const WA_DEFECTO = 'Hola F&V, tengo una consulta';
 
@@ -52,6 +52,8 @@ const PAGINAS = {
   'condominio.html': { activo: 'productos', hijo: true },
   'gym.html': { activo: 'productos', hijo: true },
   'paginas-web.html': { activo: 'productos', hijo: true },
+  'hexagonal.html': { activo: 'hexagonal' },
+  'triangular.html': { activo: 'triangular' },
   'cursos.html': { activo: 'ninguno' },
   'cursos/finanzas-ia.html': { activo: 'ninguno' },
   'casos.html': { activo: 'nosotros', hijo: true },
@@ -173,6 +175,8 @@ function renderHeader(opciones, catalogo) {
   return rellenar(leerParcial('header.html'), {
     WA_URL: `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(wa)}`,
     AC_INICIO: atributoActivo(op, 'inicio'),
+    AC_HEXAGONAL: atributoActivo(op, 'hexagonal'),
+    AC_TRIANGULAR: atributoActivo(op, 'triangular'),
     AC_SERVICIOS: atributoActivo(op, 'servicios'),
     AC_PRODUCTOS: atributoActivo(op, 'productos'),
     AC_NOSOTROS: atributoActivo(op, 'nosotros'),

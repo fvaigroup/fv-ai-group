@@ -133,7 +133,7 @@ items.forEach(it => ok(it.frase.split(/\s+/).length <= 15, it.id + ': frase de 1
 // prohibiciones (en el índice completo, ya con fechas de eventos aplicadas)
 const PROHIBIDO = [/L[ií]nea\s+(Hexagonal|Triangular)/i, /Asesor\s+F\s*&\s*V/i, /Sesi[oó]n Clara/i, /Pack Enfoque/i, /Asesor Mensual/i, /Asesor Pro/i, /Express/i,
   /Refiere y gana/i, /[uú]nico descuento/i, /Evaluaci[oó]n de procesos/i, /Habilitaci[oó]n de equipos/i, /\$150/,
-  /(^|["'(\s])\/(hexagonal|triangular|software|asesoria-estrategica|acompanamiento-continuo|despliegue-ejecucion|masterclasses-workshops)([#"'\s)]|$)/];
+  /(^|["'(\s])\/(software|asesoria-estrategica|acompanamiento-continuo|despliegue-ejecucion|masterclasses-workshops)([#"'\s)]|$)/];
 function sinProhibido(texto, donde) { PROHIBIDO.forEach(re => ok(!re.test(texto), donde + ' no debe contener ' + re + ': ' + (texto.match(re) || [''])[0])); }
 TODOS.forEach(r => sinProhibido(r.title + ' | ' + r.desc + ' | ' + r.url, 'buscador «' + r.title + '»'));
 // la fuente del índice no trae kw con nombres de páginas viejas
@@ -260,7 +260,7 @@ const mensajes = items.map(i => i.wa.mensaje);
   ok(mensajes.some(x => x.replace(/ ¿Podemos conversar\?| ¿Cómo pago\?/, '') === m.replace(/ ¿Podemos conversar\?| ¿Cómo pago\?/, '')), 'el mensaje de Luci «' + q + '» es el del catálogo: ' + m);
 });
 // las páginas que cargan Luci y el buscador existen; los atajos por página son útiles
-ok(/QUICK_HEX/.test(leer('assets/luci.js')) && !/'\/(hexagonal|triangular|cursos)'/.test(leer('assets/luci.js')), 'los atajos por página usan las rutas nuevas');
+ok(/QUICK_HEX/.test(leer('assets/luci.js')) && !/'\/(cursos)'/.test(leer('assets/luci.js')), 'los atajos por página usan las rutas nuevas');
 ok(!/PAGINA_HEX = .*(hexagonal|asesoria-estrategica|despliegue|masterclasses|acompanamiento-continuo)/.test(leer('assets/luci.js')), 'PAGINA_HEX sin rutas viejas');
 
 // ---------- Mapa del sitio de la lupa: líneas → Servicios / Productos → grupos que se abren y se cierran ----------

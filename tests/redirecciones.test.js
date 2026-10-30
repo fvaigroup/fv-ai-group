@@ -59,7 +59,7 @@ for (const r of redirects) {
 
 // ---------------------------------------------------------------- legacy y páginas vivas
 // Las 8 páginas viejas ya no existen como archivo: sus URLs deben seguir redirigiendo (con y sin .html).
-const PAGINAS_VIEJAS = ['hexagonal', 'triangular', 'software', 'asesoria-estrategica', 'acompanamiento-continuo', 'despliegue-ejecucion', 'masterclasses-workshops'];
+const PAGINAS_VIEJAS = ['software', 'asesoria-estrategica', 'acompanamiento-continuo', 'despliegue-ejecucion', 'masterclasses-workshops'];
 for (const nombre of PAGINAS_VIEJAS.map(n => '/' + n)) {
   ok(origenes.includes(nombre), `página vieja ${nombre}: falta la redirección`);
   ok(origenes.includes(nombre + '.html'), `página vieja ${nombre}: falta la redirección de ${nombre}.html`);
@@ -74,7 +74,7 @@ for (const p of ['/servicios', '/productos', '/servicios.html', '/productos.html
 }
 // Alias que el dueño pidió conservar o crear
 const ESPERADAS = {
-  '/hexagonal': '/servicios', '/triangular': '/productos', '/software': '/productos#software',
+  '/software': '/productos#software',
   '/asesoria-estrategica': '/servicios/diagnostico', '/diagnostico': '/servicios/diagnostico', '/evaluacion-procesos': '/servicios/diagnostico',
   '/habilitacion-equipos': '/servicios/formacion-equipo', '/despliegue-ejecucion': '/servicios#implementacion',
   '/masterclasses-workshops': '/servicios#formacion', '/acompanamiento-continuo': '/servicios/acompanamiento',

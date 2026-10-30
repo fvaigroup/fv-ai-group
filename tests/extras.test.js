@@ -290,13 +290,8 @@ if (extra.productos) {
 {
   const inicio = leer('index.html');
   ok(!/[uú]nico descuento|solo descuento/i.test(inicio), 'index.html: ninguna frase dice «único descuento» ni «un solo descuento»');
-  const resp = [...inicio.matchAll(/<summary[\s\S]*?<span>¿Cómo pago\?<\/span>[\s\S]*?<\/summary>\s*<p[^>]*>([\s\S]*?)<\/p>/g)].map(m => plano(m[1]));
-  ok(resp.length === 1 && /30 % por pagar 12 meses por adelantado/.test(resp[0]) && !/10 ?%/.test(resp[0]), 'index.html: «¿Cómo pago?» habla del 30 % por 12 meses y no menciona el 10 %');
-  const ldInicio = (inicio.match(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/) || [, ''])[1];
-  let faq = null;
-  try { faq = JSON.parse(ldInicio)['@graph'].find(x => x['@type'] === 'FAQPage'); } catch (err) { /* lo detecta la comprobación siguiente */ }
-  const q = faq && faq.mainEntity.find(x => x.name === '¿Cómo pago?');
-  ok(!!q && resp.length === 1 && q.acceptedAnswer.text === resp[0], 'index.html: la respuesta «¿Cómo pago?» del JSON-LD coincide con la de la página');
+  // El inicio ya no trae preguntas frecuentes (29 oct 2026): ni la sección ni el FAQPage del JSON-LD
+  ok(!/<summary/.test(inicio) && !/FAQPage/.test(inicio), 'index.html: sin preguntas frecuentes ni FAQPage');
 }
 ok(!/[uú]nico descuento|solo descuento/i.test(fs.readFileSync(path.join(RAIZ, 'data/catalogo.json'), 'utf8')), 'data/catalogo.json: ninguna frase dice «único descuento»');
 

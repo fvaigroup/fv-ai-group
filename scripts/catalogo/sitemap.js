@@ -26,6 +26,8 @@ const PAGINAS_ESTATICAS = [
   ['/calculadora', '0.6', 'monthly'],
   ['/calculadora-roi', '0.6', 'monthly'],
   ['/paginas-web', '0.6', 'monthly'],
+  ['/hexagonal', '0.8', 'monthly'],
+  ['/triangular', '0.8', 'monthly'],
   ['/cursos', '0.6', 'monthly'],
   ['/cursos/finanzas-ia', '0.6', 'monthly'],
   ['/club', '0.6', 'monthly'],

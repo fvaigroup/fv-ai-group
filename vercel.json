@@ -114,26 +114,6 @@
       "permanent": false
     },
     {
-      "source": "/hexagonal",
-      "destination": "/servicios",
-      "permanent": true
-    },
-    {
-      "source": "/hexagonal.html",
-      "destination": "/servicios",
-      "permanent": true
-    },
-    {
-      "source": "/triangular",
-      "destination": "/productos",
-      "permanent": true
-    },
-    {
-      "source": "/triangular.html",
-      "destination": "/productos",
-      "permanent": true
-    },
-    {
       "source": "/software",
       "destination": "/productos#software",
       "permanent": true
