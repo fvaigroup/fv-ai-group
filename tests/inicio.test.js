@@ -65,6 +65,11 @@ ok(/\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00, #FFF
 const reglaHero = (cssTw.match(/\.ini-portada \.ini-hero \{[^}]*\}/) || [''])[0];
 ok(reglaHero.includes('min-height: calc(100svh - 4.75rem)') && portada.indexOf('class="ini-hero"') < portada.indexOf('ini-logos-titulo'), 'el hero ocupa la pantalla visible y la franja de logos queda debajo del primer pantallazo');
 
+// efecto de entrada con destello del botón del hero (prueba): solo CSS, una vez, sin dejar el botón invisible si la animación no corre
+const bloqueDestello = (cssTw.match(/@media \(prefers-reduced-motion: no-preference\) \{\s*\.ini-portada \.ini-boton-pill[\s\S]*?\n\}/) || [''])[0];
+ok(/animation: ini-entra \.7s ease-out \.8s both/.test(bloqueDestello) && /animation: ini-destello 1\.2s ease-out 1\.5s 1 forwards/.test(bloqueDestello) && /::after \{[^}]*border-radius: inherit; pointer-events: none/.test(bloqueDestello), 'botón del hero: entra en 0,7 s tras 0,8 s y suelta un solo destello a los 1,5 s (una vez, sin repetir)');
+ok(/@keyframes ini-entra \{ from \{ opacity: 0; translate: 0 10px; \} to \{ opacity: 1; translate: 0 0; \} \}/.test(cssTw) && !/\.ini-portada \.ini-boton-pill \{[^}]*opacity: 0/.test(cssTw) && !/infinite/.test(bloqueDestello), 'botón del hero: la opacidad 0 solo está en los keyframes (si la animación falla, el botón se ve) y nada es infinito');
+
 // ------------------------------------------------------------ 2. franja de logos
 ok(/<p class="ini-logos-titulo[^"]*">Marcas con las que hemos trabajado<\/p>/.test(portada) && !/Empresas que confían/.test(html), 'franja de logos: «Marcas con las que hemos trabajado»');
 ok(fs.readdirSync(path.join(RAIZ, 'assets/clientes')).length > 0 && /assets\/clientes\/cliente-logo-/.test(portada), 'los logos de clientes siguen como estaban (assets/clientes/ no se toca)');

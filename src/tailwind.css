@@ -1012,3 +1012,14 @@ a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid 
 
 /* Barrita de los títulos de detalle en la línea Hexagonal: cian -> blanco -> naranja (sin verde en el medio) */
 .linea-hex .det-h2::before { background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); }
+
+/* ---- Prueba: entrada con destello en el botón del hero (solo CSS, una sola vez, nada infinito) ----
+   La opacidad 0 vive SOLO dentro de los keyframes: si la animación no corre (CSS o navegador sin soporte), el botón se ve.
+   Se anima con la propiedad individual «translate» para no pisar el transform del hover/active del botón.
+   Con prefers-reduced-motion no se anima nada. */
+@media (prefers-reduced-motion: no-preference) {
+  .ini-portada .ini-boton-pill { position: relative; animation: ini-entra .7s ease-out .8s both; }
+  .ini-portada .ini-boton-pill::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); animation: ini-destello 1.2s ease-out 1.5s 1 forwards; }
+}
+@keyframes ini-entra { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+@keyframes ini-destello { from { box-shadow: 0 0 0 0 rgba(0, 255, 255, .7); } to { box-shadow: 0 0 0 18px rgba(0, 255, 255, 0); } }
