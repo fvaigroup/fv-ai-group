@@ -1023,3 +1023,19 @@ a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid 
 }
 @keyframes ini-entra { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
 @keyframes ini-destello { from { box-shadow: 0 0 0 0 rgba(0, 255, 255, .7); } to { box-shadow: 0 0 0 18px rgba(0, 255, 255, 0); } }
+
+/* ---- Prueba: luciérnaga que orbita el botón del hero (se SUMA al destello de entrada; nada infinito) ----
+   Empieza cuando termina el destello (~2,7 s), entra con fundido de .3 s, da 2 vueltas de 4 s y se apaga con fundido.
+   Sin offset-path o con prefers-reduced-motion no aparece (oculta por defecto). Una vuelta más al volver a ver el hero: assets/inicio.js (clase .repite). */
+.cta-ff { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (offset-path: inset(0)) {
+    .ini-portada .ini-boton-pill .cta-ff { display: block; position: absolute; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: #e9fdff; box-shadow: 0 0 10px 4px rgba(0, 255, 255, .75), 0 0 22px 8px rgba(0, 255, 255, .25); pointer-events: none; opacity: 0; offset-path: inset(-12px -16px round 999px); offset-rotate: 0deg; animation: ini-orbita 4s linear 2.7s 2 both, ini-ff-vida 8s linear 2.7s 1 both; }
+    .ini-portada .ini-boton-pill .cta-ff.repite { animation: ini-orbita-1 4s linear 0s 1 both, ini-ff-vida-1 4s linear 0s 1 both; }
+  }
+}
+@supports not (offset-path: inset(0)) { .cta-ff { display: none; } }
+@keyframes ini-orbita { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes ini-orbita-1 { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes ini-ff-vida { 0% { opacity: 0; } 4% { opacity: 1; } 94% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes ini-ff-vida-1 { 0% { opacity: 0; } 8% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; } }

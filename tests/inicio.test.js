@@ -70,6 +70,14 @@ const bloqueDestello = (cssTw.match(/@media \(prefers-reduced-motion: no-prefere
 ok(/animation: ini-entra \.7s ease-out \.8s both/.test(bloqueDestello) && /animation: ini-destello 1\.2s ease-out 1\.5s 1 forwards/.test(bloqueDestello) && /::after \{[^}]*border-radius: inherit; pointer-events: none/.test(bloqueDestello), 'botón del hero: entra en 0,7 s tras 0,8 s y suelta un solo destello a los 1,5 s (una vez, sin repetir)');
 ok(/@keyframes ini-entra \{ from \{ opacity: 0; translate: 0 10px; \} to \{ opacity: 1; translate: 0 0; \} \}/.test(cssTw) && !/\.ini-portada \.ini-boton-pill \{[^}]*opacity: 0/.test(cssTw) && !/infinite/.test(bloqueDestello), 'botón del hero: la opacidad 0 solo está en los keyframes (si la animación falla, el botón se ve) y nada es infinito');
 
+// luciérnaga que orbita el botón del hero (prueba): se suma al destello, nada infinito, sin soporte o con reduced-motion no aparece
+ok(/class="ini-boton ini-boton-pill btn-primary btn-glow-on-hover">Cómo trabajamos<span class="cta-ff" aria-hidden="true"><\/span><\/a>/.test(portada), 'botón del hero: lleva <span class="cta-ff" aria-hidden="true"> y conserva su texto, enlace y data-evento');
+const bloqueFf = (cssTw.match(/\.cta-ff \{ display: none; \}[\s\S]*?@keyframes ini-ff-vida-1[^\n]*\n/) || [''])[0];
+ok(/width: 8px; height: 8px; border-radius: 50%; background: #e9fdff; box-shadow: 0 0 10px 4px rgba\(0, 255, 255, \.75\), 0 0 22px 8px rgba\(0, 255, 255, \.25\); pointer-events: none/.test(bloqueFf) && /offset-path: inset\(-12px -16px round 999px\)/.test(bloqueFf), 'luciérnaga: punto de 8 px #e9fdff con halo cian, pointer-events none y recorrido inset(-12px -16px round 999px)');
+ok(/animation: ini-orbita 4s linear 2\.7s 2 both, ini-ff-vida 8s linear 2\.7s 1 both/.test(bloqueFf) && !/infinite/.test(bloqueFf), 'luciérnaga: empieza a los 2,7 s, 2 vueltas de 4 s lineales, fundido de entrada y salida, nada infinito');
+ok(/@media \(prefers-reduced-motion: no-preference\) \{\s*@supports \(offset-path: inset\(0\)\)/.test(bloqueFf) && /@supports not \(offset-path: inset\(0\)\) \{ \.cta-ff \{ display: none; \} \}/.test(bloqueFf) && /^\.cta-ff \{ display: none; \}/.test(bloqueFf), 'luciérnaga: oculta por defecto; solo aparece con soporte de offset-path y sin prefers-reduced-motion');
+ok(/threshold: 0\.6/.test(js) && /repetida = true/.test(js) && /classList\.add\('repite'\)/.test(js), 'luciérnaga: una vuelta más como máximo por visita al volver a ver el hero (umbral 0,6)');
+
 // ------------------------------------------------------------ 2. franja de logos
 ok(/<p class="ini-logos-titulo[^"]*">Marcas con las que hemos trabajado<\/p>/.test(portada) && !/Empresas que confían/.test(html), 'franja de logos: «Marcas con las que hemos trabajado»');
 ok(fs.readdirSync(path.join(RAIZ, 'assets/clientes')).length > 0 && /assets\/clientes\/cliente-logo-/.test(portada), 'los logos de clientes siguen como estaban (assets/clientes/ no se toca)');

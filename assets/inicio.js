@@ -223,4 +223,20 @@
     if (pie) new IntersectionObserver(function (es) { pieVisible = es[0].isIntersecting; if (pieVisible) ocultar(); }).observe(pie);
     window.addEventListener('pagehide', function () { clearTimeout(tOculta); });
   }
+
+  /* ------------------------------------------------------------ luciérnaga del botón del hero: una vuelta más si el visitante baja y vuelve (máx. 1 por visita) */
+  var btnHero = document.querySelector('.ini-portada .ini-boton-pill');
+  var ff = btnHero && btnHero.querySelector('.cta-ff');
+  if (ff && !reducido && 'IntersectionObserver' in window) {
+    var salio = false, repetida = false, termino = false;
+    ff.addEventListener('animationend', function (e) { if (e.animationName === 'ini-ff-vida') termino = true; });
+    new IntersectionObserver(function (es) {
+      var ve = es[0].isIntersecting;
+      if (!ve) { salio = true; return; }
+      if (salio && termino && !repetida) {
+        repetida = true;
+        ff.classList.remove('repite'); void ff.offsetWidth; ff.classList.add('repite');
+      }
+    }, { threshold: 0.6 }).observe(btnHero);
+  }
 })();
