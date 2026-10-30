@@ -89,7 +89,7 @@
     '#search-results{padding:6px 0 0;overflow:visible}' +
     '.sr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px 36px;align-items:start}' +
     '.sr-col{min-width:0}' +
-    '.sr-hex{--sr-grad:linear-gradient(90deg,#00FFFF,#FF8C00);--sr-c:#00FFFF}.sr-tri{--sr-grad:linear-gradient(90deg,#4ade80,#a855f7);--sr-c:#4ade80}.sr-pag{--sr-grad:linear-gradient(90deg,#475569,#94a3b8);--sr-c:#94a3b8}' +
+    '.sr-hex{--sr-grad:linear-gradient(90deg,#00FFFF,#FFFFFF,#FF8C00);--sr-c:#00FFFF}.sr-tri{--sr-grad:linear-gradient(90deg,#4ade80,#a855f7);--sr-c:#4ade80}.sr-pag{--sr-grad:linear-gradient(90deg,#475569,#94a3b8);--sr-c:#94a3b8}' +
     '.sr-col-h{display:flex;align-items:center;gap:8px;margin:10px 0 6px;padding:6px 4px 10px;font:600 12px "Space Grotesk",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--sr-c);border-bottom:2px solid;border-image:var(--sr-grad) 1}' +
     '.sr-col-h svg{flex-shrink:0}' +
     '.sr-sub{margin:14px 4px 4px;font:600 10.5px "Space Grotesk",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#64748b}' +

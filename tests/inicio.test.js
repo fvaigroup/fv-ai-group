@@ -61,7 +61,7 @@ ok(/@media \(max-width: 1023px\) \{ \.ini-portada \.ini-hexgiro \{[^}]*opacity: 
 const reglaH1 = (cssTw.match(/\.ini-portada \.ini-h1 \{[^}]*\}/) || [''])[0];
 ok(reglaH1.includes("font-family: 'Anton'") && reglaH1.includes('text-transform: uppercase') && reglaH1.includes('font-weight: 400'), 'título en Anton y mayúsculas');
 ok(html.includes("font-family:'Anton'") && html.includes('https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8.woff2'), 'la fuente Anton está declarada y precargada en el inicio');
-ok(/\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #00FFFF, #FF8C00, #00FFFF\)[^}]*animation: ini-grad/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-h1-grad { animation: none'), 'degradado cian ↔ naranja en movimiento (quieto con prefers-reduced-motion)');
+ok(/\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00, #FFFFFF, #00FFFF\)[^}]*animation: ini-grad/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-h1-grad { animation: none'), 'degradado cian ↔ blanco ↔ naranja en movimiento, sin verde en el medio (quieto con prefers-reduced-motion)');
 const reglaHero = (cssTw.match(/\.ini-portada \.ini-hero \{[^}]*\}/) || [''])[0];
 ok(reglaHero.includes('min-height: calc(100svh - 4.75rem)') && portada.indexOf('class="ini-hero"') < portada.indexOf('ini-logos-titulo'), 'el hero ocupa la pantalla visible y la franja de logos queda debajo del primer pantallazo');
 
@@ -123,7 +123,7 @@ const manifiesto = sec('manifiesto');
 const frasesM = [...manifiesto.matchAll(/<p class="ini-frase" data-frase>([\s\S]*?)<\/p>/g)].map(m => texto(m[1]).replace(/\s+([.,;:])/g, '$1'));
 ok(JSON.stringify(frasesM) === JSON.stringify(['Decidir con datos no es solo para empresas grandes.', 'La inteligencia artificial es el cómo. Su empresa es el qué.', 'Nos quedamos después de la implementación.']), `manifiesto: las tres frases exactas (hay: ${frasesM.join(' | ')})`);
 ok((manifiesto.match(/<em class="ini-clave">/g) || []).length === 3 && !/<a\b|<button\b/.test(manifiesto), 'manifiesto: una palabra clave resaltada por frase y sin botón ni enlace');
-ok(/\.ini-clave|\.ini-frase em \{[^}]*linear-gradient\(90deg, #00FFFF, #FF8C00\)/.test(cssTw) && cssTw.includes('.ini-frase { opacity: 1; transform: none; transition: none; } }') && /min-height: 78svh/.test(cssTw), 'manifiesto: tipografía de títulos, palabra clave en cian/naranja, una frase por pantalla en celular y sin animación con prefers-reduced-motion');
+ok(/\.ini-clave|\.ini-frase em \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00\)/.test(cssTw) && cssTw.includes('.ini-frase { opacity: 1; transform: none; transition: none; } }') && /min-height: 78svh/.test(cssTw), 'manifiesto: tipografía de títulos, palabra clave en cian/naranja, una frase por pantalla en celular y sin animación con prefers-reduced-motion');
 
 // ------------------------------------------------------------ C. Luci con personalidad (avisos por sección)
 ok(/lineas: \{ texto: '¿No sabe cuál es la suya\? Le ayudo en 3 preguntas\.', href: '#diagnostico', evento: 'luci_lineas' \}/.test(js), 'Luci #lineas: mensaje y scroll a #diagnostico (luci_lineas)');
@@ -143,6 +143,9 @@ ok(/matchMedia\('\(hover: hover\) and \(pointer: fine\)'\)\.matches && window\.i
 ok(!/linterna/.test(html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '')), 'el HTML del inicio no trae nada de la linterna (en celular ni se descarga)');
 ok(/#inicio, #manifiesto/.test(lint) && /requestAnimationFrame/.test(lint) && /visibilitychange/.test(lint) && /pointerleave/.test(lint) && /pointer-events/.test(cssTw.match(/\.ini-linterna \{[^}]*\}/)[0]), 'la linterna solo está en el hero y el manifiesto, va con requestAnimationFrame, se pausa con la pestaña oculta o al salir el cursor y no recibe clics');
 ok(/\.ini-linterna \{[^}]*z-index: 0[^}]*radial-gradient\(circle 280px at var\(--x, 50%\) var\(--y, 50%\), rgba\(255, 214, 102, \.10\), rgba\(0, 255, 255, \.05\)/.test(cssTw), 'la linterna es un radial-gradient cálido (amarillo/cian muy tenue) que se mueve con --x y --y y queda detrás del contenido');
+
+// ------------------------------------------------------------ degradados cian <-> naranja con blanco en el medio (sin verde)
+ok(!/linear-gradient\([^)]*(?:#00FFFF|#0ff)\s*,\s*(?:#FF8C00|#ff8c00)[^)]*\)/i.test(cssTw) && !/linear-gradient\([^)]*(?:#00FFFF|#0ff)\s*,\s*(?:#FF8C00|#ff8c00)[^)]*\)/i.test(html), 'ningún degradado cian→naranja de dos paradas en el CSS ni en el inicio: todos llevan blanco en el medio');
 
 // ------------------------------------------------------------ JSON-LD
 const bloquesLd = [...html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)].map(m => m[1]);

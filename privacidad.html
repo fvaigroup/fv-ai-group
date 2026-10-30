@@ -60,7 +60,7 @@
   .btn-secondary { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background-color .2s var(--ease-out), border-color .2s var(--ease-out); }
   @media (hover: hover) and (pointer: fine) { .btn-secondary:hover { background-color: rgba(0,204,255,0.08); border-color: rgba(0,255,255,0.5); } }
   .btn-secondary:active { transform: scale(0.96); transition: transform .1s var(--ease-out); }
-  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
+  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
   @view-transition { navigation: auto; }
   .legal h2 { font-family: 'Space Grotesk', sans-serif; color: #fff; font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; }
   .legal p, .legal li { color: #94a3b8; line-height: 1.75; }
@@ -72,7 +72,7 @@
   /* ---- Barra de progreso de scroll ---- */
   #scroll-progress {
     position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
-    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00);
     z-index: 60; transition: width .08s linear;
     box-shadow: 0 0 8px rgba(0,255,255,0.5);
   }
@@ -102,7 +102,7 @@
   /* ---- Barra de carga entre páginas (navegación simulada) ---- */
   #page-load-bar {
     position: fixed; top: 0; left: 0; height: 3px; width: 0%;
-    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00);
     z-index: 100; box-shadow: 0 0 8px rgba(0,255,255,0.6);
     transition: width .4s ease-out, opacity .2s ease .3s;
   }

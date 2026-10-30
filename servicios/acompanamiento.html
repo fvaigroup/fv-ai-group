@@ -150,7 +150,7 @@
 
   @view-transition { navigation: auto; }
 
-  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
+  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
 
   .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
   .luci-typing { display: inline-flex; gap: 4px; background: #121319; border: 1px solid #1F232B; border-radius: 12px 12px 12px 4px; padding: 10px 14px; }
@@ -166,7 +166,7 @@
 
   #scroll-progress {
     position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
-    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00);
     z-index: 60; transition: width .08s linear;
   }
   #site-header a.site-logo-link { view-transition-name: site-logo; }
@@ -174,7 +174,7 @@
 
   #page-load-bar {
     position: fixed; top: 0; left: 0; height: 3px; width: 0%;
-    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00);
     z-index: 100;
     transition: width .4s ease-out, opacity .2s ease .3s;
   }
@@ -557,7 +557,7 @@
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40">
-  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-14 h-14 rounded-full bg-gradient-to-br from-fv-orange via-white to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
     <img src="/assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-8 h-8" loading="lazy" decoding="async">
   </button>
 
@@ -587,7 +587,7 @@
   </div>
 </div>
 
-<button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-br from-fv-cyan to-fv-orange text-black flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
+<button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-br from-fv-cyan via-white to-fv-orange text-black flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 

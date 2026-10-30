@@ -29,7 +29,7 @@
 
   @view-transition { navigation: auto; }
 
-  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
+  .link-underline { white-space: nowrap; text-decoration: none !important; background-image: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); background-size: 0% 1.5px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .25s var(--ease-out); }@media (hover: hover) and (pointer: fine) { .link-underline:hover { text-decoration: none !important; background-size: 100% 1.5px; } }
 
   .luci-bubble-bot { background: #121319; border: 1px solid #1F232B; color: #cbd5e1; border-radius: 12px 12px 12px 4px; padding: 8px 12px; max-width: 85%; }
   .luci-typing { display: inline-flex; gap: 4px; background: #121319; border: 1px solid #1F232B; border-radius: 12px 12px 12px 4px; padding: 10px 14px; }
@@ -45,7 +45,7 @@
 
   #scroll-progress {
     position: fixed; top: 76px; left: 0; height: 2px; width: 0%;
-    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00);
     z-index: 60; transition: width .08s linear;
   }
   #site-header a.site-logo-link { view-transition-name: site-logo; }
@@ -53,7 +53,7 @@
 
   #page-load-bar {
     position: fixed; top: 0; left: 0; height: 3px; width: 0%;
-    background: linear-gradient(90deg, #00FFFF, #FF8C00);
+    background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00);
     z-index: 100;
     transition: width .4s ease-out, opacity .2s ease .3s;
   }

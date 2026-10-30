@@ -134,7 +134,7 @@ body{position:relative}
 .loc{font-family:'Space Grotesk';font-weight:600;font-size:22px;letter-spacing:.2em;color:#00FFFF}
 .emb{position:absolute;right:40px;top:130px;width:400px;opacity:.95;filter:drop-shadow(0 0 60px rgba(0,255,255,.3))}
 .h{position:absolute;left:84px;top:500px;width:920px;font-family:'Space Grotesk';font-weight:700;font-size:104px;line-height:1.04;letter-spacing:-.035em}
-.h .c{background:linear-gradient(90deg,#00FFFF,#00CCFF 40%,#FF8C00);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;padding-right:8px}
+.h .c{background:linear-gradient(90deg,#00FFFF,#00CCFF 25%,#FFFFFF 50%,#FF8C00);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;padding-right:8px}
 .sub{position:absolute;left:84px;top:850px;width:880px;font-weight:300;font-size:38px;line-height:1.3;color:#cbd5e1}
 .sub b{font-weight:700;color:#fff}
 .chips{position:absolute;left:84px;top:1010px;display:flex;flex-direction:column;gap:18px}
