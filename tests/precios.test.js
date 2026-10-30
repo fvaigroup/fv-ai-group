@@ -89,7 +89,7 @@ const PAGINAS = fs.readdirSync(RAIZ).filter(f => f.endsWith('.html') && f !== '4
 // Fase 1: regla vieja por precio y descuento viejo. Con --final (Fase 8) se exige además que ya no se mezclen clubes con condominios.
 const FINAL = !process.argv.includes('--parcial');   // estricto por defecto: con --parcial se omiten las comprobaciones de las fases pendientes
 const PROHIBIDO = [/hasta \$299,99/i, /desde \$300(?![\d.,])/i, /de \$4,99 a \$299/i, /\$4,99 a \$299/i, /20 ?% de descuento/i, /\(20 ?% menos\)/i, /3, 6, 9 o 12 meses/i,
-  /\bExpress\b/, /\bDelta\b/];
+  /\bExpress\b/, /\bDelta\b(?! App)/];   // «Delta App» es el nombre del software desde el 30 oct 2026 (decisión de Ricardo)
 if (FINAL) PROHIBIDO.push(/clubes? y condominios?/i, /clubes? o condominios?/i, /Premium/);
 PAGINAS.forEach(f => {
   const txt = visible(leer(f));

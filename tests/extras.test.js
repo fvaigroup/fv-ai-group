@@ -290,8 +290,8 @@ if (extra.productos) {
 {
   const inicio = leer('index.html');
   ok(!/[uú]nico descuento|solo descuento/i.test(inicio), 'index.html: ninguna frase dice «único descuento» ni «un solo descuento»');
-  // El inicio ya no trae preguntas frecuentes (29 oct 2026): ni la sección ni el FAQPage del JSON-LD
-  ok(!/<summary/.test(inicio) && !/FAQPage/.test(inicio), 'index.html: sin preguntas frecuentes ni FAQPage');
+  // El inicio vuelve a tener preguntas frecuentes (30 oct 2026), sin montos ni descuentos: eso lo comprueba tests/inicio.test.js
+  ok(!/%|\$/.test((inicio.match(/<section id="faq"[\s\S]*?<\/section>/) || [''])[0]), 'index.html: las preguntas frecuentes no mencionan descuentos ni porcentajes');
 }
 ok(!/[uú]nico descuento|solo descuento/i.test(fs.readFileSync(path.join(RAIZ, 'data/catalogo.json'), 'utf8')), 'data/catalogo.json: ninguna frase dice «único descuento»');
 
