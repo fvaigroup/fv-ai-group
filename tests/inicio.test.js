@@ -125,6 +125,17 @@ ok(JSON.stringify(frasesM) === JSON.stringify(['Decidir con datos no es solo par
 ok((manifiesto.match(/<em class="ini-clave">/g) || []).length === 3 && !/<a\b|<button\b/.test(manifiesto), 'manifiesto: una palabra clave resaltada por frase y sin botón ni enlace');
 ok(/\.ini-clave|\.ini-frase em \{[^}]*linear-gradient\(90deg, #00FFFF, #FF8C00\)/.test(cssTw) && cssTw.includes('.ini-frase { opacity: 1; transform: none; transition: none; } }') && /min-height: 78svh/.test(cssTw), 'manifiesto: tipografía de títulos, palabra clave en cian/naranja, una frase por pantalla en celular y sin animación con prefers-reduced-motion');
 
+// ------------------------------------------------------------ C. Luci con personalidad (avisos por sección)
+ok(/lineas: \{ texto: '¿No sabe cuál es la suya\? Le ayudo en 3 preguntas\.', href: '#diagnostico', evento: 'luci_lineas' \}/.test(js), 'Luci #lineas: mensaje y scroll a #diagnostico (luci_lineas)');
+ok(/diagnostico: \{ texto: 'Son 3 preguntas\. Menos de un minuto\.', evento: 'luci_diagnostico' \}/.test(js), 'Luci #diagnostico: mensaje (luci_diagnostico)');
+ok(/brecha: \{ texto: 'Pruebe con lo que cobró esta semana\.', evento: 'luci_brecha' \}/.test(js), 'Luci #brecha: mensaje (luci_brecha)');
+ok(/faq: \{ texto: '¿Otra pregunta\? Escríbame por WhatsApp\.'/.test(js) && js.includes("'Hola F&V, tengo una pregunta que no está en la web.'") && /evento: 'luci_faq'/.test(js), 'Luci #faq: mensaje y WhatsApp con su texto (luci_faq)');
+ok(!/cierre:\s*\{/.test(js.slice(js.indexOf('var AVISOS'), js.indexOf('var MAX_AVISOS'))), 'Luci: el cierre no lleva mensaje');
+ok(/MAX_AVISOS = 3, ESPERA = 2000, DURACION = 6000/.test(js) && /aria-live', 'polite'/.test(js) && /ini-aviso-x/.test(js) && /apagado = true/.test(js), 'Luci: máximo 3, 2 s de espera, 6 s de duración, aria-live polite, X de cierre y no vuelve si se cierra');
+ok(!/\.focus\(\)/.test(js.slice(js.indexOf('var AVISOS'))), 'Luci: el aviso no roba el foco');
+ok(/\.ini-aviso-x \{[^}]*width: 44px; min-height: 44px/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-aviso { transition: none'), 'Luci: la X mide 44 px y no hay animación con prefers-reduced-motion');
+ok(!fs.readFileSync(path.join(RAIZ, 'assets/luci.js'), 'utf8').includes('ini-aviso'), 'assets/luci.js no se tocó para esto');
+
 // ------------------------------------------------------------ JSON-LD
 const bloquesLd = [...html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)].map(m => m[1]);
 ok(bloquesLd.length === 1, 'un bloque JSON-LD');

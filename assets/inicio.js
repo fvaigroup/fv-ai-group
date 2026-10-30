@@ -142,4 +142,80 @@
       frases.forEach(function (f) { ioF.observe(f); });
     }
   }
+
+  /* ------------------------------------------------------------ Luci con personalidad: un aviso según la sección que se está viendo
+     El globo «¿Dudas?» del primer pantallazo sigue siendo el de assets/luci.js (5 s después de cargar, se va a los 15 s).
+     Aquí solo se añaden los avisos por sección. Reglas: cada mensaje sale una sola vez por visita (memoria en variables, no en el navegador),
+     ~2 s después de llegar a la sección, dura ~6 s, máximo 3 en total, no roba el foco, se cierra con la X y, si se cierra, no vuelve. */
+  var AVISOS = {
+    lineas: { texto: '¿No sabe cuál es la suya? Le ayudo en 3 preguntas.', href: '#diagnostico', evento: 'luci_lineas' },
+    diagnostico: { texto: 'Son 3 preguntas. Menos de un minuto.', evento: 'luci_diagnostico' },
+    brecha: { texto: 'Pruebe con lo que cobró esta semana.', evento: 'luci_brecha' },
+    faq: { texto: '¿Otra pregunta? Escríbame por WhatsApp.', href: WA + encodeURIComponent('Hola F&V, tengo una pregunta que no está en la web.'), externo: true, evento: 'luci_faq' }
+    // El cierre no lleva mensaje.
+  };
+  var MAX_AVISOS = 3, ESPERA = 2000, DURACION = 6000;
+  var widgetLuci = document.getElementById('luci-widget');
+  if (widgetLuci && 'IntersectionObserver' in window) {
+    var aviso = document.createElement('div');
+    aviso.className = 'ini-aviso'; aviso.setAttribute('data-aviso-luci', '');
+    var cuerpo = document.createElement('div'); cuerpo.className = 'ini-aviso-cuerpo';
+    var vivo = document.createElement('span'); vivo.className = 'ini-aviso-texto'; vivo.setAttribute('aria-live', 'polite'); vivo.setAttribute('aria-atomic', 'true');
+    cuerpo.appendChild(vivo);
+    var equis = document.createElement('button'); equis.type = 'button'; equis.className = 'ini-aviso-x'; equis.setAttribute('aria-label', 'Cerrar aviso de Luci'); equis.textContent = '×'; equis.tabIndex = -1;
+    aviso.appendChild(cuerpo); aviso.appendChild(equis);
+    document.body.appendChild(aviso);
+
+    var vistos = {}, enPantalla = {}, esperas = {}, mostrados = 0, apagado = false, pieVisible = false, tOculta = null, abierto = false;
+
+    function ocultar() {
+      clearTimeout(tOculta); abierto = false;
+      aviso.classList.remove('is-visible'); vivo.textContent = ''; equis.tabIndex = -1;
+      var a = cuerpo.querySelector('a, [data-evento]'); if (a) a.tabIndex = -1;
+    }
+    function puede() {
+      var pastilla = document.getElementById('luci-pill');
+      var panel = document.getElementById('luci-panel');
+      return !apagado && !abierto && !pieVisible && mostrados < MAX_AVISOS
+        && !(pastilla && pastilla.classList.contains('is-visible'))
+        && !(panel && panel.classList.contains('is-open'))
+        && !widgetLuci.classList.contains('avoid-footer');
+    }
+    function mostrar(id) {
+      var m = AVISOS[id];
+      vistos[id] = true; mostrados++; abierto = true;
+      cuerpo.textContent = ''; vivo.textContent = '';
+      var el;
+      if (m.href) { el = document.createElement('a'); el.href = m.href; if (m.externo) { el.target = '_blank'; el.rel = 'noopener'; } }
+      else { el = document.createElement('span'); }
+      el.className = 'ini-aviso-link'; el.setAttribute('data-evento', m.evento); el.setAttribute('data-cta', 'luci_aviso');
+      el.appendChild(vivo); cuerpo.appendChild(el);
+      el.addEventListener('click', function () { ocultar(); });
+      vivo.textContent = m.texto;
+      equis.tabIndex = 0;
+      aviso.classList.add('is-visible');
+      clearTimeout(tOculta); tOculta = setTimeout(ocultar, DURACION);
+      evento('inicio_luci_aviso', { seccion: id });
+    }
+    equis.addEventListener('click', function () { apagado = true; ocultar(); });
+
+    var io2 = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var id = e.target.id;
+        enPantalla[id] = e.isIntersecting;
+        clearTimeout(esperas[id]);
+        if (e.isIntersecting && !vistos[id]) {
+          esperas[id] = setTimeout(function intentar() {
+            if (!enPantalla[id] || vistos[id] || apagado || mostrados >= MAX_AVISOS) return;
+            if (puede()) mostrar(id); else esperas[id] = setTimeout(intentar, 1000); // otro globo ocupa la pantalla: se reintenta mientras siga en la sección
+          }, ESPERA);
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 }); // la sección cruza la franja central de la pantalla = el visitante la está viendo
+    Object.keys(AVISOS).forEach(function (id) { var s = document.getElementById(id); if (s) io2.observe(s); });
+
+    var pie = document.querySelector('footer');
+    if (pie) new IntersectionObserver(function (es) { pieVisible = es[0].isIntersecting; if (pieVisible) ocultar(); }).observe(pie);
+    window.addEventListener('pagehide', function () { clearTimeout(tOculta); });
+  }
 })();
