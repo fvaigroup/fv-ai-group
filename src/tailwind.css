@@ -1042,3 +1042,28 @@ a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid 
 .tri-chip-link:active { transform: scale(.97); }
 .tri-beneficio { display: flex; align-items: flex-start; gap: .9rem; font-size: 1.05rem; line-height: 1.45; color: #e2e8f0; }
 .tri-check { flex: none; width: 1.55rem; height: 1.55rem; margin-top: .05rem; border-radius: 999px; background: rgba(74, 222, 128, .14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234ade80' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.2 4.2L19 7'/%3E%3C/svg%3E") center / 60% no-repeat; }
+
+/* ---- /triangular: tarjetas de productos (Delta App, Cont App, Dist App y Flet App) ----
+   Por defecto (teléfono, tableta, sin mouse) el detalle se ve siempre debajo de la frase. Con mouse y ancho >= 768 px el detalle sale como
+   tarjeta debajo al pasar el mouse o con el foco (Tab). Overflow solo en x: el detalle de la última fila no se corta hacia abajo. */
+.tri-productos { overflow-x: clip; }
+.tri-prods { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .tri-prods { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .tri-prods { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.tri-prod { position: relative; min-width: 0; }
+.tri-prod-link { display: flex; flex-direction: column; gap: .5rem; height: 100%; padding: 1.5rem; text-decoration: none; color: inherit; }
+.tri-prod-link:focus-visible { outline: 2px solid #4ade80; outline-offset: 3px; }
+.tri-prod-link:active { transform: scale(.98); transition: transform .1s cubic-bezier(.23, 1, .32, 1); }
+.tri-prod-nombre { margin: .25rem 0 0; font-size: 1.5rem; font-weight: 700; line-height: 1.2; color: #fff; }
+.tri-prod-frase { margin: 0; font-size: 1.0625rem; line-height: 1.5; color: #e2e8f0; }
+.tri-detalle { margin: .5rem 0 0; font-size: .9375rem; line-height: 1.55; color: #cbd5e1; }
+.tri-etq { align-self: flex-start; display: inline-flex; align-items: center; padding: .35rem .75rem; border-radius: 999px; border: 1px solid; font-family: 'Space Grotesk', sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1; }
+.tri-etq-activa { border-color: rgba(74, 222, 128, .7); background: rgba(74, 222, 128, .12); color: #4ade80; }
+.tri-etq-pronto { border-color: rgba(168, 85, 247, .6); background: rgba(168, 85, 247, .1); color: #d8b4fe; }
+.tri-volver { display: inline-flex; align-items: center; min-height: 44px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #4ade80; text-decoration: underline; text-underline-offset: 4px; }
+.tri-volver:focus-visible { outline: 2px solid #4ade80; outline-offset: 3px; border-radius: .25rem; }
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .tri-detalle { position: absolute; z-index: 30; top: calc(100% + 10px); left: 0; right: 0; margin: 0; padding: 1rem 1.125rem; border: 1px solid rgba(74, 222, 128, .55); border-radius: 1rem; background: #0D0E12; box-shadow: 0 16px 40px rgba(0, 0, 0, .6), 0 0 0 1px rgba(168, 85, 247, .15); opacity: 0; visibility: hidden; transform: translateY(-6px); pointer-events: none; transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s; }
+  .tri-prod-link:hover .tri-detalle, .tri-prod-link:focus-visible .tri-detalle { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+}
+@media (prefers-reduced-motion: reduce) { .tri-detalle { transition: none !important; transform: none !important; } }

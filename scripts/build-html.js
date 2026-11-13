@@ -55,6 +55,10 @@ const PAGINAS = {
   'hexagonal.html': { activo: 'hexagonal' },
   'triangular.html': { activo: 'triangular' },
   'delta-app.html': { activo: 'ninguno' },
+  'triangular/delta-app.html': { activo: 'triangular', hijo: true },
+  'triangular/cont-app.html': { activo: 'triangular', hijo: true },
+  'triangular/dist-app.html': { activo: 'triangular', hijo: true },
+  'triangular/flet-app.html': { activo: 'triangular', hijo: true },
   'cursos.html': { activo: 'ninguno' },
   'cursos/finanzas-ia.html': { activo: 'ninguno' },
   'casos.html': { activo: 'nosotros', hijo: true },
@@ -264,7 +268,7 @@ function obsoletas(generadas) {
 function listarPaginas() {
   const excluidas = new Set([...LEGACY, ...SALTAR]);
   const lista = fs.readdirSync(RAIZ).filter(f => /\.html$/.test(f) && !excluidas.has(f)).sort();
-  for (const d of ['servicios', 'productos', 'cursos']) {
+  for (const d of ['servicios', 'productos', 'cursos', 'triangular']) {
     const dir = path.join(RAIZ, d);
     if (fs.existsSync(dir) && fs.statSync(dir).isDirectory()) {
       fs.readdirSync(dir).filter(f => /\.html$/.test(f)).sort().forEach(f => lista.push(`${d}/${f}`));

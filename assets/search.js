@@ -11,6 +11,10 @@
   var SEARCH_INDEX = [
     { title: 'Cursos', desc: 'Cursos presenciales en Valencia.', url: '/cursos', cat: 'Pagina', kw: 'cursos talleres clases formacion' },
     { title: 'Delta App', desc: 'Software para clubes, condominios y gimnasios.', url: '/delta-app', cat: 'Pagina', kw: 'delta app club condominio gimnasio gym software plataforma' },
+    { title: 'Delta App', desc: 'Cobra tus mensualidades por ti.', url: '/triangular/delta-app', cat: 'Pagina', kw: 'delta app software triangular negocios pequenos' },
+    { title: 'Cont App', desc: 'Tu contabilidad sale sola.', url: '/triangular/cont-app', cat: 'Pagina', kw: 'cont app software triangular negocios pequenos' },
+    { title: 'Dist App', desc: 'Pedidos, almacenes y cobranza de tu distribuidora.', url: '/triangular/dist-app', cat: 'Pagina', kw: 'dist app software triangular negocios pequenos' },
+    { title: 'Flet App', desc: 'Cuánto te deja cada viaje.', url: '/triangular/flet-app', cat: 'Pagina', kw: 'flet app software triangular negocios pequenos' },
     { title: 'Inicio', desc: 'Servicios para empresas e instituciones y productos para negocios pequeños.', url: '/', cat: 'Pagina' },
     { title: 'Servicios', desc: 'Servicio: el equipo de F&V trabaja con usted, en su empresa o con su equipo.', url: '/servicios', cat: 'Pagina', kw: 'precios cuanto cuesta tarifas catalogo a la medida empresas instituciones' },
     { title: 'Productos', desc: 'Producto: listo para usar, con el mismo precio y la misma entrega para todos.', url: '/productos', cat: 'Pagina', kw: 'precios cuanto cuesta tarifas catalogo precio fijo negocios pequenos emprendedores' },
