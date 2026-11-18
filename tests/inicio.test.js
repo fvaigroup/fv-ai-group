@@ -61,7 +61,7 @@ ok(/@media \(max-width: 1023px\) \{ \.ini-portada \.ini-hexgiro \{[^}]*opacity: 
 const reglaH1 = (cssTw.match(/\.ini-portada \.ini-h1 \{[^}]*\}/) || [''])[0];
 ok(reglaH1.includes("font-family: 'Plus Jakarta Sans'") && reglaH1.includes('text-transform: uppercase') && reglaH1.includes('font-weight: 800'), 'título en Plus Jakarta Sans y mayúsculas');
 ok(html.includes("font-family:'Anton'") && html.includes('https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8.woff2'), 'la fuente Anton está declarada y precargada en el inicio');
-ok(/\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00, #FFFFFF, #00FFFF\)[^}]*animation: ini-grad/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-h1-grad { animation: none'), 'degradado cian ↔ blanco ↔ naranja en movimiento, sin verde en el medio (quieto con prefers-reduced-motion)');
+ok(/\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00, #FFFFFF, #00FFFF\)[^}]*animation: ini-grad/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-h1-grad, h2.ini-h2 .ini-h1-grad { animation: none'), 'degradado cian ↔ blanco ↔ naranja en movimiento, sin verde en el medio (quieto con prefers-reduced-motion)');
 const reglaHero = (cssTw.match(/\.ini-portada \.ini-hero \{[^}]*\}/) || [''])[0];
 ok(reglaHero.includes('min-height: calc(100svh - 4.75rem)') && portada.indexOf('class="ini-hero"') < portada.indexOf('ini-logos-titulo'), 'el hero ocupa la pantalla visible y la franja de logos queda debajo del primer pantallazo');
 
@@ -79,7 +79,7 @@ ok(fs.readdirSync(path.join(RAIZ, 'assets/clientes')).length > 0 && /assets\/cli
 const lineas = sec('lineas');
 const figs = [...lineas.matchAll(/<article id="fig-(hex|tri)"[\s\S]*?<\/article>/g)].map(m => ({ k: m[1], html: m[0] }));
 ok(figs.length === 2 && figs[0].k === 'hex' && figs[1].k === 'tri', 'dos figuras, la Hexagonal primero');
-ok(texto(lineas).includes('DOS LÍNEAS · UNA FORMA DE TRABAJAR') && /Elija el camino que le corresponde/.test(lineas) && texto(lineas).includes('Más de 20 personas, varias sedes o junta directiva: Línea Hexagonal. Si usted decide solo en su negocio: Línea Triangular.'), 'antetítulo, título y ayuda de la sección');
+ok(texto(lineas).includes('DOS LÍNEAS · UNA FORMA DE TRABAJAR') && /Elija el camino que le <span class="ini-h1-grad">corresponde</span>/.test(lineas) && texto(lineas).includes('Más de 20 personas, varias sedes o junta directiva: Línea Hexagonal. Si usted decide solo en su negocio: Línea Triangular.'), 'antetítulo, título y ayuda de la sección');
 const ESPERADOS = { hex: ['Diagnóstico financiero', 'Orden financiero', 'Asesor financiero con IA', 'Formación en su sede', 'Delta App', 'A la medida'], tri: ['Taller de 3 horas', 'Plan Arranque', 'Curso Finanzas con IA'] };
 figs.forEach(f => {
   const lados = [...f.html.matchAll(/<g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-\w+" aria-label="([^"]+)" data-lado="(\d)">/g)].map(m => m[1]);
