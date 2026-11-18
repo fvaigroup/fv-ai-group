@@ -992,7 +992,21 @@ h2.ini-h2 { font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-weight: 
 .ini-nota-chica { margin: 1.25rem 0 0; font-size: .875rem; color: #94a3b8; }
 
 /* ---- B. Manifiesto ---- */
-.ini-manifiesto { padding: 1rem 0; }
+.ini-manifiesto { padding: 1rem 0; overflow: clip; }
+/* Luciérnaga 3D del manifiesto (assets/fv-logo-3d/): capa a todo el alto de la sección con el logo pegado (sticky) al centro de la pantalla.
+   Celular: detrás del texto y tenue, como el hexágono del hero. Escritorio (>= 1024 px): a la derecha de las frases, a opacidad completa.
+   La sección usa overflow: clip (no hidden) porque hidden la vuelve contenedor de scroll y el sticky deja de funcionar. */
+.ini-manif-giro { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.ini-manif-giro-pegado { --fv-size: 230px; position: sticky; top: calc(50svh - var(--fv-size) * .44); display: flex; justify-content: center; opacity: .3; }
+.ini-manif-giro fv-logo-3d { display: block; width: var(--fv-size); aspect-ratio: 420 / 370; }
+.ini-manif-giro fv-logo-3d:not(:defined) img { display: block; width: 100%; height: auto; }
+.ini-js .ini-manif-giro fv-logo-3d { opacity: 0; transform: scale(.88); transition: opacity 1s cubic-bezier(.23, 1, .32, 1), transform 1s cubic-bezier(.23, 1, .32, 1); }
+.ini-js .ini-manif-giro.is-in fv-logo-3d { opacity: 1; transform: none; }
+@media (min-width: 1024px) {
+  .ini-manif-giro-pegado { --fv-size: clamp(240px, 24vw, 330px); justify-content: flex-end; padding-right: max(2rem, calc((100% - 72rem) / 2 + 2rem)); opacity: 1; }
+  .ini-manifiesto .ini-frase > span { max-width: calc(100% - clamp(240px, 24vw, 330px) - 2.5rem); }
+}
+@media (prefers-reduced-motion: reduce) { .ini-js .ini-manif-giro fv-logo-3d { opacity: 1; transform: none; transition: none; } }
 .ini-frase { display: flex; align-items: center; min-height: 78svh; margin: 0; font-family: 'Anton', 'Geist', sans-serif; font-size: clamp(2.5rem, 11vw, 6.5rem); font-weight: 400; line-height: 1.04; letter-spacing: .01em; text-transform: uppercase; color: #fff; text-wrap: balance; }
 @media (min-width: 1024px) { .ini-frase { min-height: 0; padding: 2.25rem 0; font-size: clamp(3.5rem, 6.4vw, 6.5rem); } }
 .ini-frase > span { display: block; }

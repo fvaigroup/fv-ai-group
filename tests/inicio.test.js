@@ -131,6 +131,15 @@ ok(JSON.stringify(frasesM) === JSON.stringify(['Decidir con datos no es solo par
 ok((manifiesto.match(/<em class="ini-clave">/g) || []).length === 3 && !/<a\b|<button\b/.test(manifiesto), 'manifiesto: una palabra clave resaltada por frase y sin botón ni enlace');
 ok(/\.ini-clave|\.ini-frase em \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00\)/.test(cssTw) && cssTw.includes('.ini-frase { opacity: 1; transform: none; transition: none; } }') && /min-height: 78svh/.test(cssTw), 'manifiesto: tipografía de títulos, palabra clave en cian/naranja, una frase por pantalla en celular y sin animación con prefers-reduced-motion');
 
+// luciérnaga 3D del manifiesto: gira 360° con el scroll, se carga al acercarse y no estorba al texto
+const logo3d = fs.readFileSync(path.join(RAIZ, 'assets/fv-logo-3d/fv-logo-3d.js'), 'utf8');
+ok(['face.webp', 'edge.webp', 'halo.webp'].every(f => fs.existsSync(path.join(RAIZ, 'assets/fv-logo-3d', f))), 'luciérnaga 3D: están cara, canto y halo en assets/fv-logo-3d/');
+ok(/<div class="ini-manif-giro" aria-hidden="true">/.test(manifiesto) && /<fv-logo-3d data-giro-manifiesto base="\/assets\/fv-logo-3d\/" scroll="#manifiesto" aria-hidden="true"><img src="\/assets\/fv-logo-3d\/face\.webp" alt=""[^>]*loading="lazy"/.test(manifiesto), 'luciérnaga 3D: en el manifiesto, decorativa, sigue el scroll de #manifiesto y sin JS queda la imagen fija');
+ok(!/fv-logo-3d\.js/.test(html) && /rootMargin: '600px 0px'/.test(js) && /\/assets\/fv-logo-3d\/fv-logo-3d\.js/.test(js), 'luciérnaga 3D: el script no está en el HTML; inicio.js lo descarga al acercarse a la sección');
+ok(/_progreso\(\)/.test(logo3d) && /-2 \* Math\.PI \* self\._progreso\(\)/.test(logo3d) && /IntersectionObserver/.test(logo3d) && /prefers-reduced-motion: reduce/.test(logo3d), 'luciérnaga 3D: una vuelta (360°) según el avance por la sección, solo dibuja en pantalla y respeta reduced-motion');
+ok(/\.ini-manifiesto \{ padding: 1rem 0; overflow: clip; \}/.test(cssTw) && !/id="manifiesto" class="[^"]*overflow-hidden/.test(html) && /\.ini-manif-giro-pegado \{[^}]*position: sticky/.test(cssTw), 'luciérnaga 3D: pegada (sticky) a mitad de pantalla; la sección usa overflow: clip para no romper el sticky');
+ok(/\.ini-js \.ini-manif-giro\.is-in fv-logo-3d \{ opacity: 1; transform: none; \}/.test(cssTw) && /prefers-reduced-motion: reduce\) \{ \.ini-js \.ini-manif-giro fv-logo-3d \{ opacity: 1/.test(cssTw), 'luciérnaga 3D: aparece con un fundido al entrar (visible de una vez con reduced-motion)');
+
 // ------------------------------------------------------------ C. Luci con personalidad (avisos por sección)
 ok(/lineas: \{ texto: '¿No sabe cuál es la suya\? Le ayudo en 3 preguntas\.', href: '#diagnostico', evento: 'luci_lineas' \}/.test(js), 'Luci #lineas: mensaje y scroll a #diagnostico (luci_lineas)');
 ok(/diagnostico: \{ texto: 'Son 3 preguntas\. Menos de un minuto\.', evento: 'luci_diagnostico' \}/.test(js), 'Luci #diagnostico: mensaje (luci_diagnostico)');

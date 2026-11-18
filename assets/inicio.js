@@ -148,6 +148,28 @@
     }
   }
 
+  /* ------------------------------------------------------------ manifiesto: luciérnaga 3D que gira 360° con el scroll
+     El script (assets/fv-logo-3d/fv-logo-3d.js) solo se descarga cuando la sección está a ~600 px de entrar en pantalla.
+     La luciérnaga aparece (fundido) al entrar; el giro lo calcula el componente según el avance por #manifiesto. */
+  var logoGiro = document.querySelector('[data-giro-manifiesto]');
+  if (logoGiro) {
+    var giro = logoGiro.closest('.ini-manif-giro') || logoGiro;
+    var secM = document.getElementById('manifiesto');
+    var cargarGiro = function () {
+      if (window.customElements && !customElements.get('fv-logo-3d') && !document.querySelector('script[data-fv-logo-3d]')) {
+        var s3 = document.createElement('script'); s3.src = '/assets/fv-logo-3d/fv-logo-3d.js'; s3.defer = true; s3.setAttribute('data-fv-logo-3d', '');
+        document.head.appendChild(s3);
+      }
+    };
+    if (!('IntersectionObserver' in window)) { cargarGiro(); giro.classList.add('is-in'); }
+    else {
+      var ioCarga = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { cargarGiro(); ioCarga.disconnect(); } }, { rootMargin: '600px 0px' });
+      ioCarga.observe(secM);
+      var ioVer = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { giro.classList.add('is-in'); ioVer.disconnect(); } }, { threshold: 0.2 });
+      ioVer.observe(logoGiro);
+    }
+  }
+
   /* ------------------------------------------------------------ Luci con personalidad: un aviso según la sección que se está viendo
      El globo «¿Dudas?» del primer pantallazo sigue siendo el de assets/luci.js (5 s después de cargar, se va a los 15 s).
      Aquí solo se añaden los avisos por sección. Reglas: cada mensaje sale una sola vez por visita (memoria en variables, no en el navegador),

@@ -807,7 +807,13 @@
 </section>
 
 <!-- ============ B. MANIFIESTO (una frase por pantalla en celular; sin botón ni enlace) ============ -->
-<section id="manifiesto" class="ini-manifiesto relative overflow-hidden border-t border-white/5" aria-label="Manifiesto">
+<section id="manifiesto" class="ini-manifiesto relative border-t border-white/5" aria-label="Manifiesto">
+  <!-- Luciérnaga en 3D: aparece al llegar y da una vuelta de 360° mientras se baja por la sección (assets/fv-logo-3d/; la carga assets/inicio.js al acercarse). Sin JS queda la imagen fija. -->
+  <div class="ini-manif-giro" aria-hidden="true">
+    <div class="ini-manif-giro-pegado">
+      <fv-logo-3d data-giro-manifiesto base="/assets/fv-logo-3d/" scroll="#manifiesto" aria-hidden="true"><img src="/assets/fv-logo-3d/face.webp" alt="" width="420" height="370" loading="lazy" decoding="async"></fv-logo-3d>
+    </div>
+  </div>
   <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
     <p class="ini-frase" data-frase><span>Decidir con <em class="ini-clave">datos</em> no es solo para empresas grandes.</span></p>
     <p class="ini-frase" data-frase><span>La inteligencia artificial es el cómo. Su empresa es el <em class="ini-clave">qué</em>.</span></p>
