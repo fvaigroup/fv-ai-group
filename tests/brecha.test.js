@@ -42,7 +42,7 @@ const RAIZ = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(RAIZ, 'index.html'), 'utf8').replace(/\r\n/g, '\n');
 const sec = (html.match(/<section id="brecha"[\s\S]*?<\/section>/) || [''])[0];
 ok(sec.includes('data-sin-precios-excepcion="brecha"'), 'la sección lleva data-sin-precios-excepcion="brecha"');
-['LA PLATA QUE SE PIERDE ESPERANDO', '¿Cuánto se le va entre que cobra y cambia?', 'Si cobra en bolívares hoy y compra dólares días después, la diferencia de tasa se come parte de su ganancia. Calcúlelo con sus números.', 'Monto que cobró en bolívares', 'Tasa del día en que cobró', 'Tasa del día en que compró los dólares', 'Cálculo ilustrativo con las tasas que usted ingresó. No es asesoría financiera.'].forEach(t => ok(sec.includes(t), `la sección trae «${t}»`));
+['LA PLATA QUE SE PIERDE ESPERANDO', '¿Cuánto se le va entre que cobra y cambia?', 'Si cobra en bolívares hoy y compra dólares días después, la diferencia de tasa se come parte de su ganancia. Calcúlelo con sus números.', 'Monto que cobró en bolívares', 'Tasa del día en que cobró', 'Tasa del día en que compró los dólares', 'Cálculo ilustrativo con las tasas que usted ingresó. No es asesoría financiera.'].forEach(t => ok(sec.replace(/<\/?span[^>]*>/g, '').includes(t), `la sección trae «${t}»`));
 ok((sec.match(/inputmode="decimal"/g) || []).length === 3, 'tres campos con teclado numérico (inputmode="decimal")');
 ok((sec.match(/<label for="brecha-(monto|t1|t2)">/g) || []).length === 3, 'cada campo tiene su label visible');
 ok(!/\$|Bs\./.test(sec), 'los textos fijos de la sección usan «dólares» y «bolívares» en palabras (sin «$» ni «Bs.»)');
