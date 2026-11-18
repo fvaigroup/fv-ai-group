@@ -785,7 +785,10 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 @media (max-width: 1023px) { .ini-portada .ini-hexgiro { top: 68%; left: 62%; opacity: .26; } .ini-portada .ini-hexmarca { top: 68%; left: 62%; opacity: .28; } }
 @media (min-width: 1024px) { .ini-portada .ini-hexgiro { left: 79%; width: 700px; height: 700px; --ini-k: 1; opacity: 1; } .ini-portada .ini-hexmarca { left: 79%; width: 230px; opacity: 1; } }
 .ini-portada .ini-boton-pill { min-height: 52px; padding: .875rem 36px; border-radius: 999px; font-size: 17px; font-weight: 700; color: #0b0d12; }
-.ini-etq-naranja { margin: 0 0 .75rem; font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #FF8C00; }
+.ini-etq-naranja { display: inline-flex; align-items: center; gap: .65rem; margin: 0 0 1rem; padding: .5rem 1rem; border: 1px solid rgba(0, 255, 255, .4); border-radius: 999px; background: rgba(0, 255, 255, .07); font-family: 'Space Grotesk', sans-serif; font-size: clamp(12px, 1.2vw, 14px); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #00FFFF; }
+.ini-etq-naranja::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; background: #00FFFF; box-shadow: 0 0 10px #00FFFF; }
+/* Títulos h2 del inicio con la tipografía del título del hero (Plus Jakarta Sans 800, mayúsculas) */
+h2.ini-h2 { font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-weight: 800; letter-spacing: -.02em; line-height: 1.12; text-transform: uppercase; }
 .ini-camino { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
 @media (min-width: 640px) { .ini-camino { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .ini-camino { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
