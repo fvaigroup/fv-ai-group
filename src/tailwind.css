@@ -782,7 +782,7 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 @keyframes ini-levita { from { translate: 0 -7px; } to { translate: 0 7px; } }
 @media (prefers-reduced-motion: reduce) { .ini-portada .ini-hexmarca { animation: none; will-change: auto; } }
 @media (max-width: 1023px) { .ini-portada .ini-hexgiro { top: 68%; left: 62%; opacity: .26; } .ini-portada .ini-hexmarca { top: 68%; left: 62%; opacity: .28; } }
-@media (min-width: 1024px) { .ini-portada .ini-hexgiro { left: 79%; width: 700px; height: 700px; --ini-k: 1; } .ini-portada .ini-hexmarca { left: 79%; width: 230px; opacity: 1; } }
+@media (min-width: 1024px) { .ini-portada .ini-hexgiro { left: 79%; width: 700px; height: 700px; --ini-k: 1; opacity: 1; } .ini-portada .ini-hexmarca { left: 79%; width: 230px; opacity: 1; } }
 .ini-portada .ini-boton-pill { min-height: 52px; padding: .875rem 36px; border-radius: 999px; font-size: 17px; font-weight: 700; color: #0b0d12; }
 .ini-etq-naranja { margin: 0 0 .75rem; font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #FF8C00; }
 .ini-camino { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
