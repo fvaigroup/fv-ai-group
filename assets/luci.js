@@ -131,6 +131,9 @@
   var css = document.createElement('style');
   css.textContent = '.luci-cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:8px 12px;border-radius:8px;font-family:"Space Grotesk",sans-serif;font-size:12.5px;font-weight:600;background:rgba(var(--acento-1-rgb),.12);border:1px solid rgba(var(--acento-1-rgb),.5);color:var(--acento-1);text-decoration:none;transition:background-color .18s cubic-bezier(.23,1,.32,1),transform .18s cubic-bezier(.23,1,.32,1)}.luci-cta:active{transform:scale(.97)}@media (hover:hover) and (pointer:fine){.luci-cta:hover{background:rgba(var(--acento-1-rgb),.22)}}' +
     '.luci-wrap{max-width:85%}.luci-wrap .luci-bubble-bot{max-width:100%}#luci-pill{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);white-space:nowrap;background:#0D0E12;border:1px solid rgba(0,255,255,.35);color:#fff;font:600 12.5px "Space Grotesk",sans-serif;padding:9px 14px;min-height:44px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility 0s linear .3s}#luci-pill.is-visible{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .3s ease}@media (prefers-reduced-motion:reduce){#luci-pill,#luci-pill.is-visible{transition:none}}';
+  css.textContent += '#luci-toggle{width:68px!important;height:68px!important;background:none!important;box-shadow:none!important;animation:none!important;border-radius:0!important}@media(min-width:768px){#luci-toggle{width:80px!important;height:80px!important}}#luci-toggle img{width:100%!important;height:100%!important;object-fit:contain}#luci-pill{left:0;top:auto;bottom:calc(100% + 4px);transform:none}';
+  // El icono es la luciérnaga en PNG (con fondo transparente)
+  var imgToggle = toggle.querySelector('img'); if (imgToggle) { imgToggle.src = '/assets/logo-mark-hex.png'; imgToggle.removeAttribute('loading'); }
   document.head.appendChild(css);
 
   toggle.setAttribute('aria-label', TEXTO_BOTON); toggle.setAttribute('title', TEXTO_BOTON); toggle.setAttribute('aria-expanded', 'false');
@@ -145,7 +148,8 @@
   pill.addEventListener('click', function () { abrir(); });
   var tMostrar = null, tOcultar = null, globoCerrado = false;
   function ocultarGlobo() { globoCerrado = true; clearTimeout(tMostrar); clearTimeout(tOcultar); pill.classList.remove('is-visible'); }
-  function armarGlobo() { return; /* globo «¿Dudas?» desactivado (17 nov 2026) */ if (globoCerrado) return; tMostrar = setTimeout(function () { pill.classList.add('is-visible'); tOcultar = setTimeout(ocultarGlobo, 15000); }, 5000); }
+  // Globo «¿Dudas?» ARRIBA del icono: sale en cuanto carga la página y se va a los 5 s (cambio del 17 nov 2026)
+  function armarGlobo() { if (globoCerrado) return; pill.classList.add('is-visible'); tOcultar = setTimeout(ocultarGlobo, 5000); }
   if (document.readyState === 'complete') armarGlobo(); else window.addEventListener('load', armarGlobo); // el reloj arranca al terminar de cargar la página
   window.addEventListener('pagehide', ocultarGlobo); // limpieza de los temporizadores al salir de la página
 
