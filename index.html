@@ -368,7 +368,7 @@
   }
   .luci-quick-btn:active { transform: scale(0.96); }
   @keyframes luciPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,140,0,0.45);} 50% { box-shadow: 0 0 0 10px rgba(255,140,0,0);} }
-  #luci-toggle { animation: luciPulse 3s ease-in-out infinite; transition: transform .1s var(--ease-out); }
+  #luci-toggle { transition: transform .1s var(--ease-out); }
   #luci-toggle:active { transform: scale(0.94); }
 
   /* ---- Barra de progreso de scroll ---- */
@@ -978,7 +978,7 @@
 
 <!-- ============ ASISTENTE LUCI (bot de preguntas frecuentes basado en reglas) ============ -->
 <div id="luci-widget" class="fixed bottom-6 left-6 z-40 group">
-  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange via-white to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
+  <button id="luci-toggle" aria-label="¿Dudas? Pregúntale a Luci (responde al instante)" class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-fv-orange via-white to-fv-cyanMid flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
     <img src="assets/logo-mark-hex.webp" width="500" height="500" alt="Luci" class="w-7 h-7 md:w-8 md:h-8" loading="lazy" decoding="async">
   </button>
 

@@ -65,18 +65,11 @@ ok(/\.ini-h1-grad \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00, #FFF
 const reglaHero = (cssTw.match(/\.ini-portada \.ini-hero \{[^}]*\}/) || [''])[0];
 ok(reglaHero.includes('min-height: calc(100svh - 4.75rem)') && portada.indexOf('class="ini-hero"') < portada.indexOf('ini-logos-titulo'), 'el hero ocupa la pantalla visible y la franja de logos queda debajo del primer pantallazo');
 
-// efecto de entrada con destello del botón del hero (prueba): solo CSS, una vez, sin dejar el botón invisible si la animación no corre
-const bloqueDestello = (cssTw.match(/@media \(prefers-reduced-motion: no-preference\) \{\s*\.ini-portada \.ini-boton-pill[\s\S]*?\n\}/) || [''])[0];
-ok(/animation: ini-entra \.7s ease-out \.8s both/.test(bloqueDestello) && /animation: ini-destello 1\.2s ease-out 1\.5s 1 forwards/.test(bloqueDestello) && /::after \{[^}]*border-radius: inherit; pointer-events: none/.test(bloqueDestello), 'botón del hero: entra en 0,7 s tras 0,8 s y suelta un solo destello a los 1,5 s (una vez, sin repetir)');
-ok(/@keyframes ini-entra \{ from \{ opacity: 0; translate: 0 10px; \} to \{ opacity: 1; translate: 0 0; \} \}/.test(cssTw) && !/\.ini-portada \.ini-boton-pill \{[^}]*opacity: 0/.test(cssTw) && !/infinite/.test(bloqueDestello), 'botón del hero: la opacidad 0 solo está en los keyframes (si la animación falla, el botón se ve) y nada es infinito');
-
-// pulso de luz en el botón del hero (prueba): sustituye al destello que cruza; el anillo cian de entrada se queda
-ok(/class="ini-boton ini-boton-pill btn-primary btn-glow-on-hover">Cómo trabajamos<\/a>/.test(portada) && !/cta-shine|cta-ff|ini-shine|ini-borde|ini-orbita|isolation: isolate/.test(html + cssTw + js), 'botón del hero: sin luciérnaga, sin borde que gira y sin destello que cruza; conserva texto, enlace y data-evento');
-ok(/@keyframes ini-pulso \{ 0%, 100% \{ box-shadow: 0 0 0 0 rgba\(255, 140, 0, 0\); \} 50% \{ box-shadow: 0 0 28px 6px rgba\(255, 140, 0, \.55\); \} \}/.test(cssTw), 'pulso: halo naranja que va de nada a 0 0 28px 6px y vuelve a nada');
-const bloquePulso = (cssTw.match(/@media \(prefers-reduced-motion: no-preference\) \{\s*\.ini-portada \.ini-boton-pill \{ position: relative;[\s\S]*?\n\}/) || [''])[0];
-ok(/animation: ini-entra \.7s ease-out \.8s both, ini-pulso 2\.4s ease-in-out 2\.7s 3; \}/.test(bloquePulso) && !/infinite/.test(bloquePulso), 'pulso: 3 ciclos de 2,4 s con ease-in-out desde los 2,7 s, sin fill-mode (al terminar queda sin halo) y nada infinito');
-ok(/::after \{ content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none/.test(bloquePulso) && /animation: ini-destello 1\.2s ease-out 1\.5s 1 forwards/.test(bloquePulso) && !/@keyframes ini-pulso[^\n]*::after/.test(cssTw), 'el anillo cian de entrada sigue en el ::after y el pulso va en el propio botón');
-ok(!/\.ini-portada \.ini-boton-pill \{[^}]*overflow/.test(cssTw) && /\.ini-portada \.ini-boton-pill \{ min-height: 52px; padding: \.875rem 36px; border-radius: 999px;/.test(cssTw), 'el botón no lleva overflow y conserva su tamaño y padding original');
+// CTA del hero sin animaciones (17 nov 2026): ni entrada, ni anillo cian, ni pulso; sigue visible y con su hover; corrido a la derecha para que Luci no lo tape
+ok(!/ini-entra|ini-destello|ini-pulso|ini-shine|ini-borde|ini-orbita|cta-shine|cta-ff/.test(cssTw + html + js), 'botón del hero: sin ninguna animación de entrada ni efecto (ni el anillo cian ni el pulso)');
+ok(/class="ini-boton ini-boton-pill btn-primary btn-glow-on-hover">Cómo trabajamos<\/a>/.test(portada) && /href="#lineas"/.test(portada) && /data-evento="portada_como_trabajamos"/.test(portada), 'botón del hero: conserva texto, enlace y data-evento');
+ok(/@media \(min-width: 1024px\) \{ \.ini-portada \.ini-botones \{ margin-left: 84px; \} \}/.test(cssTw), 'botón del hero: en escritorio se corre 84 px a la derecha para que el icono de Luci no lo tape');
+ok(!/luciPulse 3s/.test(html) && !/#luci-toggle[^\n]*hover:scale-105/.test(html) && !/id="luci-toggle"[^>]*hover:scale-105/.test(html), 'icono de Luci del inicio: sin pulso ni zoom');
 
 // ------------------------------------------------------------ 2. franja de logos
 ok(/<p class="ini-logos-titulo[^"]*">Marcas con las que hemos trabajado<\/p>/.test(portada) && !/Empresas que confían/.test(html), 'franja de logos: «Marcas con las que hemos trabajado»');

@@ -1013,25 +1013,8 @@ a.ini-aviso-link:focus-visible, .ini-aviso-x:focus-visible { outline: 2px solid 
 /* Barrita de los títulos de detalle en la línea Hexagonal: cian -> blanco -> naranja (sin verde en el medio) */
 .linea-hex .det-h2::before { background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); }
 
-/* ---- Prueba: entrada con destello en el botón del hero (solo CSS, una sola vez, nada infinito) ----
-   La opacidad 0 vive SOLO dentro de los keyframes: si la animación no corre (CSS o navegador sin soporte), el botón se ve.
-   Se anima con la propiedad individual «translate» para no pisar el transform del hover/active del botón.
-   Con prefers-reduced-motion no se anima nada. */
-@media (prefers-reduced-motion: no-preference) {
-  .ini-portada .ini-boton-pill { position: relative; animation: ini-entra .7s ease-out .8s both, ini-pulso 2.4s ease-in-out 2.7s 3; }
-  .ini-portada .ini-boton-pill::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); animation: ini-destello 1.2s ease-out 1.5s 1 forwards; }
-}
-@keyframes ini-entra { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
-@keyframes ini-destello { from { box-shadow: 0 0 0 0 rgba(0, 255, 255, .7); } to { box-shadow: 0 0 0 18px rgba(0, 255, 255, 0); } }
-
-
-
-
-/* ---- Prueba: pulso de luz en el botón del hero (sustituye al destello que cruza; el anillo cian de entrada se queda) ----
-   Un halo naranja «respira» en el propio botón (el ::after es del anillo cian): 3 ciclos de 2,4 s desde los ~2,7 s, máximo a los 3,9 s.
-   El botón en reposo no trae sombra (.btn-glow-on-hover la anula), así que 0 % y 100 % son «sin halo»; al terminar queda sin halo.
-   Solo existe dentro de prefers-reduced-motion: no-preference. */
-@keyframes ini-pulso { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 140, 0, 0); } 50% { box-shadow: 0 0 28px 6px rgba(255, 140, 0, .55); } }
+/* CTA del hero sin animaciones (quitadas el 17 nov 2026: entrada, anillo cian y pulso). En escritorio se corre a la derecha para que el icono de Luci no lo tape. */
+@media (min-width: 1024px) { .ini-portada .ini-botones { margin-left: 84px; } }
 
 /* ---- /triangular: sección Productos (Delta App). Verde y morado de la línea Triangular; mismos patrones que /club (beneficio + check). ---- */
 .tri-chip { display: inline-flex; align-items: center; min-height: 44px; padding: .6rem 1rem; border-radius: 999px; border: 1px solid rgba(74, 222, 128, .35); background: rgba(74, 222, 128, .06); font-family: 'Space Grotesk', sans-serif; font-size: .9375rem; font-weight: 600; color: #e2e8f0; }

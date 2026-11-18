@@ -145,7 +145,7 @@
   pill.addEventListener('click', function () { abrir(); });
   var tMostrar = null, tOcultar = null, globoCerrado = false;
   function ocultarGlobo() { globoCerrado = true; clearTimeout(tMostrar); clearTimeout(tOcultar); pill.classList.remove('is-visible'); }
-  function armarGlobo() { if (globoCerrado) return; tMostrar = setTimeout(function () { pill.classList.add('is-visible'); tOcultar = setTimeout(ocultarGlobo, 15000); }, 5000); }
+  function armarGlobo() { return; /* globo «¿Dudas?» desactivado (17 nov 2026) */ if (globoCerrado) return; tMostrar = setTimeout(function () { pill.classList.add('is-visible'); tOcultar = setTimeout(ocultarGlobo, 15000); }, 5000); }
   if (document.readyState === 'complete') armarGlobo(); else window.addEventListener('load', armarGlobo); // el reloj arranca al terminar de cargar la página
   window.addEventListener('pagehide', ocultarGlobo); // limpieza de los temporizadores al salir de la página
 
