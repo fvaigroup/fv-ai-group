@@ -79,7 +79,7 @@ ok(fs.readdirSync(path.join(RAIZ, 'assets/clientes')).length > 0 && /assets\/cli
 const lineas = sec('lineas');
 const figs = [...lineas.matchAll(/<article id="fig-(hex|tri)"[\s\S]*?<\/article>/g)].map(m => ({ k: m[1], html: m[0] }));
 ok(figs.length === 2 && figs[0].k === 'hex' && figs[1].k === 'tri', 'dos figuras, la Hexagonal primero');
-ok(texto(lineas).includes('DOS LÍNEAS · UNA FORMA DE TRABAJAR') && /Elija el camino que le <span class="ini-h1-grad">corresponde</span>/.test(lineas) && texto(lineas).includes('Más de 20 personas, varias sedes o junta directiva: Línea Hexagonal. Si usted decide solo en su negocio: Línea Triangular.'), 'antetítulo, título y ayuda de la sección');
+ok(texto(lineas).includes('DOS LÍNEAS · UNA FORMA DE TRABAJAR') && /Elija el camino que le <span class="ini-h1-grad">corresponde<\/span>/.test(lineas) && texto(lineas).includes('Más de 20 personas, varias sedes o junta directiva: Línea Hexagonal. Si usted decide solo en su negocio: Línea Triangular.'), 'antetítulo, título y ayuda de la sección');
 const ESPERADOS = { hex: ['Diagnóstico financiero', 'Orden financiero', 'Asesor financiero con IA', 'Formación en su sede', 'Delta App', 'A la medida'], tri: ['Taller de 3 horas', 'Plan Arranque', 'Curso Finanzas con IA'] };
 figs.forEach(f => {
   const lados = [...f.html.matchAll(/<g class="ini-lado-svg" role="button" tabindex="0" aria-pressed="false" aria-controls="tarj-\w+" aria-label="([^"]+)" data-lado="(\d)">/g)].map(m => m[1]);
