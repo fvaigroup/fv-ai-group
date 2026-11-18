@@ -121,7 +121,7 @@ const preguntas = [...faq.matchAll(/<summary><span>([^<]+)<\/span><\/summary>\s*
 ok(preguntas.length === 4 && /<details>/.test(faq), `FAQ: 4 preguntas en <details> (hay ${preguntas.length})`);
 ok(JSON.stringify(preguntas.map(p => p[0])) === JSON.stringify(['¿Cuánto cuesta?', '¿En qué moneda se paga?', '¿Puedo pagar por mes?', '¿Qué pasa después del primer contacto?']), 'FAQ: las 4 preguntas, en orden');
 const cierre = sec('cierre');
-ok(/Hablemos de su empresa/.test(cierre) && /Escribir por WhatsApp/.test(cierre) && /Agendar consulta gratis/.test(cierre) && /href="\/contacto#agenda"/.test(cierre), 'cierre: título, WhatsApp y consulta gratis');
+ok(/Hablemos de <span class="ini-h1-grad">su empresa<\/span>/.test(cierre) && /Escribir por WhatsApp/.test(cierre) && /Agendar consulta gratis/.test(cierre) && /href="\/contacto#agenda"/.test(cierre), 'cierre: título, WhatsApp y consulta gratis');
 ok(decodeURIComponent((cierre.match(/wa\.me\/584244125386\?text=([^"]+)/) || [, ''])[1]) === 'Hola F&V, vengo de la página de inicio y quiero conversar.', 'cierre: mensaje de WhatsApp');
 ok(!/\bmin\b|minutos/i.test(texto(cierre)), 'el cierre no pone la duración de la consulta (TODO: unificar 20/15/30 minutos)');
 
