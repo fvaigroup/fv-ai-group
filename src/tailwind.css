@@ -769,7 +769,7 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 @keyframes ini-giro { from { transform: translate(-50%, -50%) scale(var(--ini-k)) rotate(0deg); } to { transform: translate(-50%, -50%) scale(var(--ini-k)) rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .ini-portada .ini-hexgiro { animation: none; will-change: auto; } }
 .ini-portada .hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; text-align: left; }
-.ini-portada .ini-h1 { margin: 0; max-width: 780px; font-family: 'Anton', 'Geist', sans-serif; font-size: clamp(30px, 6.2vw, 76px); font-weight: 400; line-height: 1.06; letter-spacing: .01em; text-transform: uppercase; color: #fff; text-wrap: balance; }
+.ini-portada .ini-h1 { margin: 0; max-width: 760px; font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-size: clamp(26px, 4.2vw, 54px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; text-transform: uppercase; color: #fff; text-wrap: balance; }
 .ini-portada .ini-antetitulo { margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(13px, 1.3vw, 16px); font-weight: 600; letter-spacing: .22em; color: #00FFFF; }
 .ini-portada .ini-h1-grad { background-image: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00, #FFFFFF, #00FFFF); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; animation: ini-grad 5s linear infinite; }
 @keyframes ini-grad { from { background-position: 0% 0; } to { background-position: 200% 0; } }
@@ -782,7 +782,7 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
 @keyframes ini-levita { from { translate: 0 -7px; } to { translate: 0 7px; } }
 @media (prefers-reduced-motion: reduce) { .ini-portada .ini-hexmarca { animation: none; will-change: auto; } }
 @media (max-width: 1023px) { .ini-portada .ini-hexgiro { top: 68%; left: 62%; opacity: .26; } .ini-portada .ini-hexmarca { top: 68%; left: 62%; opacity: .28; } }
-@media (min-width: 1024px) { .ini-portada .ini-hexgiro { left: 71%; --ini-k: 1; } .ini-portada .ini-hexmarca { left: 71%; opacity: 1; } }
+@media (min-width: 1024px) { .ini-portada .ini-hexgiro { left: 79%; width: 700px; height: 700px; --ini-k: 1; } .ini-portada .ini-hexmarca { left: 79%; width: 230px; opacity: 1; } }
 .ini-portada .ini-boton-pill { min-height: 52px; padding: .875rem 36px; border-radius: 999px; font-size: 17px; font-weight: 700; color: #0b0d12; }
 .ini-etq-naranja { margin: 0 0 .75rem; font-family: 'Space Grotesk', sans-serif; font-size: .8125rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #FF8C00; }
 .ini-camino { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
