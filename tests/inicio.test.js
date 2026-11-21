@@ -208,4 +208,17 @@ ok(!salto, 'los encabezados bajan de a un nivel (h1 → h2 → h3)');
 ok(/min-height: 44px/.test((cssTw.match(/\.ini-lado-btn \{[^}]*\}/) || [''])[0]) && /min-height: 52px/.test((cssTw.match(/\.ini-opcion \{[^}]*\}/) || [''])[0]), 'áreas táctiles de al menos 44 px en la lista de lados y las opciones del diagnóstico');
 ok(/\.ini-lado-btn:focus-visible[^{]*\{[^}]*outline: 2px solid #fff/.test(cssTw) && /\.ini-lado-svg:focus-visible \.vis/.test(cssTw), 'foco visible en la lista, las opciones y los lados del SVG');
 
+
+// /triangular/cobranza (app Cobranza, línea Triangular): sin precios, dinámica por sector, con pasarelas de pago y la URL vieja redirigida
+const cob = fs.readFileSync(path.join(RAIZ, 'triangular/cobranza.html'), 'utf8');
+const cobMain = cob.slice(cob.indexOf('<main'), cob.indexOf('</main>'));
+const cobJs = fs.readFileSync(path.join(RAIZ, 'assets/cobranza.js'), 'utf8');
+ok(!fs.existsSync(path.join(RAIZ, 'triangular/delta-app.html')) && JSON.parse(fs.readFileSync(path.join(RAIZ, 'vercel.json'), 'utf8')).redirects.some(r => r.source === '/triangular/delta-app' && r.destination === '/triangular/cobranza' && r.permanent), 'cobranza: /triangular/delta-app redirige (301) a /triangular/cobranza');
+ok(!/\$\s?\d|\d\s?\$|USD\s?\d|Bs\.?\s?\d/.test(texto(cobMain)), 'cobranza: la página no muestra precios');
+ok(/class="linea-tri cob"/.test(cobMain) && /<span class="cob-marca cob-grad">Cobranza<\/span>/.test(cobMain) && /pasarelas de pago/i.test(texto(cobMain)), 'cobranza: línea Triangular, la app se llama Cobranza y habla de pasarelas de pago');
+['negocio', 'gimnasio', 'condominio', 'club', 'colegio'].forEach(k => ok(cobMain.includes(`data-cob-sector="${k}"`) && cobMain.includes(`data-cob-panel="${k}"`) && cobJs.includes(`${k}: {`), `cobranza: el sector «${k}» tiene botón, panel y textos`));
+ok((cobMain.match(/role="tabpanel"[^>]*tabindex="0"/g) || []).length === 5 && /ArrowRight/.test(cobJs), 'cobranza: pestañas accesibles con teclado y paneles enfocables');
+ok(/data-paralaje/.test(cobMain) && /cob-mesh/.test(cobMain) && /cob-vidrio/.test(cobMain) && /prefers-reduced-motion: reduce/.test(cobJs), 'cobranza: malla de degradados, vidrio y paralaje (sin paralaje con reduced-motion)');
+ok(/<script defer src="\/assets\/cobranza\.js"><\/script>/.test(cob) && /font-family:'Plus Jakarta Sans'/.test(cob), 'cobranza: carga su JS con defer y la fuente de los títulos');
+
 console.log(`inicio: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}`);

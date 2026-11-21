@@ -28,7 +28,7 @@ const PAGINAS_ESTATICAS = [
   ['/paginas-web', '0.6', 'monthly'],
   ['/hexagonal', '0.8', 'monthly'],
   ['/triangular', '0.8', 'monthly'],
-  ['/triangular/delta-app', '0.7', 'monthly'],
+  ['/triangular/cobranza', '0.7', 'monthly'],
   ['/triangular/cont-app', '0.7', 'monthly'],
   ['/triangular/dist-app', '0.7', 'monthly'],
   ['/triangular/flet-app', '0.7', 'monthly'],

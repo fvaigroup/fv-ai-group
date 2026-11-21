@@ -11,7 +11,7 @@
   var SEARCH_INDEX = [
     { title: 'Cursos', desc: 'Cursos presenciales en Valencia.', url: '/triangular/cursos', cat: 'Pagina', kw: 'cursos talleres clases formacion' },
     { title: 'Delta App', desc: 'Software para clubes, condominios y gimnasios.', url: '/delta-app', cat: 'Pagina', kw: 'delta app club condominio gimnasio gym software plataforma' },
-    { title: 'Delta App', desc: 'Cobra tus mensualidades por ti.', url: '/triangular/delta-app', cat: 'Pagina', kw: 'delta app software triangular negocios pequenos' },
+    { title: 'Cobranza', desc: 'Cobra cuotas, mensualidades y membresías de cualquier rubro, con pasarelas de pago.', url: '/triangular/cobranza', cat: 'Pagina', kw: 'cobranza cobrar cobros cuotas mensualidades membresias recurrente pasarela pago movil gimnasio gym condominio club colegio academia alquiler suscripcion triangular' },
     { title: 'Cont App', desc: 'Tu contabilidad sale sola.', url: '/triangular/cont-app', cat: 'Pagina', kw: 'cont app software triangular negocios pequenos' },
     { title: 'Dist App', desc: 'Pedidos, almacenes y cobranza de tu distribuidora.', url: '/triangular/dist-app', cat: 'Pagina', kw: 'dist app software triangular negocios pequenos' },
     { title: 'Flet App', desc: 'Cuánto te deja cada viaje.', url: '/triangular/flet-app', cat: 'Pagina', kw: 'flet app software triangular negocios pequenos' },

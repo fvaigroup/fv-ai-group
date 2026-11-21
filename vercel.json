@@ -234,6 +234,16 @@
       "permanent": true
     },
     {
+      "source": "/triangular/delta-app",
+      "destination": "/triangular/cobranza",
+      "permanent": true
+    },
+    {
+      "source": "/triangular/delta-app.html",
+      "destination": "/triangular/cobranza",
+      "permanent": true
+    },
+    {
       "source": "/cursos",
       "destination": "/triangular/cursos",
       "permanent": true

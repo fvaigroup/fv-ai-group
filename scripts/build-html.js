@@ -55,7 +55,7 @@ const PAGINAS = {
   'hexagonal.html': { activo: 'hexagonal' },
   'triangular.html': { activo: 'triangular' },
   'delta-app.html': { activo: 'ninguno' },
-  'triangular/delta-app.html': { activo: 'triangular', hijo: true },
+  'triangular/cobranza.html': { activo: 'triangular', hijo: true },
   'triangular/cont-app.html': { activo: 'triangular', hijo: true },
   'triangular/dist-app.html': { activo: 'triangular', hijo: true },
   'triangular/flet-app.html': { activo: 'triangular', hijo: true },
