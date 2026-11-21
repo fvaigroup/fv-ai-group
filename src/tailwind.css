@@ -1007,10 +1007,29 @@ h2.ini-h2 { font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-weight: 
   .ini-manifiesto .ini-frase > span { max-width: calc(100% - clamp(240px, 24vw, 330px) - 2.5rem); }
 }
 @media (prefers-reduced-motion: reduce) { .ini-js .ini-manif-giro fv-logo-3d { opacity: 1; transform: none; transition: none; } }
-.ini-frase { display: flex; align-items: center; min-height: 78svh; margin: 0; font-family: 'Anton', 'Geist', sans-serif; font-size: clamp(2.5rem, 11vw, 6.5rem); font-weight: 400; line-height: 1.04; letter-spacing: .01em; text-transform: uppercase; color: #fff; text-wrap: balance; }
-@media (min-width: 1024px) { .ini-frase { min-height: 0; padding: 2.25rem 0; font-size: clamp(3.5rem, 6.4vw, 6.5rem); } }
+.ini-frase { display: flex; align-items: center; min-height: 78svh; margin: 0; font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-size: clamp(1.75rem, 6vw, 3.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; text-transform: uppercase; color: #fff; text-wrap: balance; }
+@media (min-width: 1024px) { .ini-frase { min-height: 0; padding: 2.25rem 0; font-size: clamp(2rem, 4.2vw, 3.4rem); } }
 .ini-frase > span { display: block; }
 .ini-frase em { font-style: normal; background-image: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+/* Ventana de PowerShell del manifiesto: el texto se teclea al entrar en pantalla (assets/inicio.js) */
+.ini-ps { margin: 0 0 3rem; max-width: 640px; border: 1px solid rgba(0, 255, 255, .28); border-radius: 10px; overflow: hidden; background: #012456; box-shadow: 0 24px 60px rgba(0, 0, 0, .5), 0 0 40px rgba(0, 255, 255, .08); font-family: 'Cascadia Mono', Consolas, 'Courier New', monospace; }
+.ini-ps-barra { display: flex; align-items: center; gap: .6rem; padding: .45rem .7rem; background: #0B0F16; color: #C9D3E0; font: 500 12px/1 'Geist', system-ui, sans-serif; }
+.ini-ps-ico { color: #00FFFF; font-family: Consolas, monospace; font-weight: 700; }
+.ini-ps-tit { flex: 1; }
+.ini-ps-ctl { display: inline-flex; gap: 1rem; color: #8FA0B5; }
+.ini-ps-ctl i { font-style: normal; }
+.ini-ps-cuerpo { padding: .9rem 1rem 1.1rem; font-size: clamp(11px, 3vw, 14px); line-height: 1.65; color: #EEEDF0; }
+.ini-ps-cuerpo p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.ps-p { color: #EEEDF0; }
+.ps-c { color: #13D65A; }
+.ps-f { color: #F9F1A5; }
+.ps-a { color: #8CC8FF; }
+.ps-s { color: #FFB86B; }
+.ps-ok { color: #13D65A; }
+.ps-cur { display: inline-block; width: .6em; height: 1.1em; margin-left: 1px; vertical-align: text-bottom; background: #EEEDF0; animation: ps-parpadeo 1.05s steps(1) infinite; }
+@keyframes ps-parpadeo { 50% { opacity: 0; } }
+@media (min-width: 1024px) { .ini-ps { max-width: min(640px, calc(100% - clamp(240px, 24vw, 330px) - 2.5rem)); } }
+@media (prefers-reduced-motion: reduce) { .ps-cur { animation: none; } }
 .ini-js .ini-frase { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.23, 1, .32, 1), transform .8s cubic-bezier(.23, 1, .32, 1); }
 .ini-js .ini-frase.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .ini-js .ini-frase { opacity: 1; transform: none; transition: none; } }

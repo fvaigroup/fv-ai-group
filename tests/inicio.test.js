@@ -127,8 +127,11 @@ ok(!/\bmin\b|minutos/i.test(texto(cierre)), 'el cierre no pone la duración de l
 
 const manifiesto = sec('manifiesto');
 const frasesM = [...manifiesto.matchAll(/<p class="ini-frase" data-frase>([\s\S]*?)<\/p>/g)].map(m => texto(m[1]).replace(/\s+([.,;:])/g, '$1'));
-ok(JSON.stringify(frasesM) === JSON.stringify(['Decidir con datos no es solo para empresas grandes.', 'La inteligencia artificial es el cómo. Su empresa es el qué.', 'Nos quedamos después de la implementación.']), `manifiesto: las tres frases exactas (hay: ${frasesM.join(' | ')})`);
-ok((manifiesto.match(/<em class="ini-clave">/g) || []).length === 3 && !/<a\b|<button\b/.test(manifiesto), 'manifiesto: una palabra clave resaltada por frase y sin botón ni enlace');
+ok(JSON.stringify(frasesM) === JSON.stringify(['Decidir con datos no es solo para empresas grandes.']), `manifiesto: una sola frase de texto, la primera (hay: ${frasesM.join(' | ')})`);
+ok((manifiesto.match(/<em class="ini-clave">/g) || []).length === 1 && !/<a\b|<button\b/.test(manifiesto), 'manifiesto: una palabra clave resaltada y sin botón ni enlace');
+const ps = (manifiesto.match(/<figure class="ini-ps"[\s\S]*?<\/figure>/) || [''])[0];
+ok(texto(ps).includes('La inteligencia artificial es el cómo. Su empresa es el qué.') && /Windows PowerShell/.test(ps) && /Get-Cobranza/.test(ps) && !/Nos quedamos/.test(manifiesto), 'manifiesto: la segunda frase es una ventana de PowerShell con código de automatización y se quitó «Nos quedamos…»');
+ok(/\[data-ps\]/.test(js) && /createTreeWalker/.test(js) && /prefers-reduced-motion: reduce/.test(js.slice(js.indexOf('data-ps'), js.indexOf('data-ps') + 400)) && /\.ini-frase \{[^}]*Plus Jakarta Sans[^}]*font-weight: 800/.test(cssTw), 'manifiesto: el tecleo arranca al verse, respeta reduced-motion y la frase usa la tipografía del H1');
 ok(/\.ini-clave|\.ini-frase em \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00\)/.test(cssTw) && cssTw.includes('.ini-frase { opacity: 1; transform: none; transition: none; } }') && /min-height: 78svh/.test(cssTw), 'manifiesto: tipografía de títulos, palabra clave en cian/naranja, una frase por pantalla en celular y sin animación con prefers-reduced-motion');
 
 // luciérnaga 3D del manifiesto: gira 360° con el scroll, se carga al acercarse y no estorba al texto

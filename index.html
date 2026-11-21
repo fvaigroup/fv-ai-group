@@ -816,8 +816,21 @@
   </div>
   <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
     <p class="ini-frase" data-frase><span>Decidir con <em class="ini-clave">datos</em> no es solo para empresas grandes.</span></p>
-    <p class="ini-frase" data-frase><span>La inteligencia artificial es el cómo. Su empresa es el <em class="ini-clave">qué</em>.</span></p>
-    <p class="ini-frase" data-frase><span>Nos <em class="ini-clave">quedamos</em> después de la implementación.</span></p>
+    <figure class="ini-ps" data-ps aria-label="Ventana de PowerShell ejecutando una automatización de empresa">
+      <p class="sr-only">La inteligencia artificial es el cómo. Su empresa es el qué.</p>
+      <div class="ini-ps-barra" aria-hidden="true"><span class="ini-ps-ico">&gt;_</span><span class="ini-ps-tit">Windows PowerShell</span><span class="ini-ps-ctl"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div>
+      <div class="ini-ps-cuerpo" aria-hidden="true">
+        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-c"># La inteligencia artificial es el cómo. Su empresa es el qué.</span></p>
+        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Import-Module</span> <span class="ps-a">FV.Automatizacion</span></p>
+        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Get-Cobranza</span> <span class="ps-a">-Estado</span> <span class="ps-s">Pendiente</span> | <span class="ps-f">Conciliar-Pagos</span> <span class="ps-a">-Tasa</span> <span class="ps-s">BCV</span></p>
+        <p class="ps-l ps-ok">✔ 128 pagos conciliados con la tasa del día</p>
+        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Send-Recordatorio</span> <span class="ps-a">-Canal</span> <span class="ps-s">WhatsApp</span> <span class="ps-a">-A</span> <span class="ps-s">Clientes-Con-Mora</span></p>
+        <p class="ps-l ps-ok">✔ 14 recordatorios enviados</p>
+        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Update-Tablero</span> <span class="ps-a">-Destino</span> <span class="ps-s">Gerencia</span></p>
+        <p class="ps-l ps-ok">✔ Tablero actualizado. Su empresa decide con datos.</p>
+        <p class="ps-fin"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-cur"></span></p>
+      </div>
+    </figure>
   </div>
 </section>
 

@@ -148,6 +148,39 @@
     }
   }
 
+  /* ------------------------------------------------------------ manifiesto: ventana de PowerShell que se teclea sola
+     Sin JS, o con prefers-reduced-motion, queda todo el texto a la vista. */
+  var ps = document.querySelector('[data-ps]');
+  if (ps && 'IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    var psLineas = [].slice.call(ps.querySelectorAll('.ps-l')).map(function (el) {
+      var nodos = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;
+      while ((n = w.nextNode())) nodos.push({ n: n, t: n.nodeValue });
+      return { el: el, nodos: nodos, cmd: el.classList.contains('ps-cmd') };
+    });
+    var psFin = ps.querySelector('.ps-fin'), psCur = ps.querySelector('.ps-cur');
+    psLineas.forEach(function (l) { l.el.style.visibility = 'hidden'; l.nodos.forEach(function (x) { if (!x.n.parentNode.classList.contains('ps-p')) x.n.nodeValue = ''; }); });
+    psFin.style.visibility = 'hidden';
+    var psTeclea = function (i) {
+      if (i >= psLineas.length) { psFin.style.visibility = 'visible'; return; }
+      var l = psLineas[i], tipo = l.nodos.filter(function (x) { return !x.n.parentNode.classList.contains('ps-p'); });
+      l.el.style.visibility = 'visible';
+      l.el.appendChild(psCur);
+      var total = tipo.reduce(function (a, x) { return a + x.t.length; }, 0), k = 0;
+      var paso = function () {
+        k = l.cmd ? k + 1 : total;
+        var resto = k;
+        tipo.forEach(function (x) { var c = Math.min(resto, x.t.length); x.n.nodeValue = x.t.slice(0, c); resto -= c; });
+        if (k < total) setTimeout(paso, 22 + Math.random() * 34);
+        else setTimeout(function () { psTeclea(i + 1); }, l.cmd ? 380 : 160);
+      };
+      setTimeout(paso, i === 0 ? 300 : 120);
+    };
+    var ioPs = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { ioPs.disconnect(); psFin.appendChild(psCur); psTeclea(0); }
+    }, { threshold: 0.4 });
+    ioPs.observe(ps);
+  }
+
   /* ------------------------------------------------------------ manifiesto: luciérnaga 3D que gira 360° con el scroll
      El script (assets/fv-logo-3d/fv-logo-3d.js) solo se descarga cuando la sección está a ~600 px de entrar en pantalla.
      La luciérnaga aparece (fundido) al entrar; el giro lo calcula el componente según el avance por #manifiesto. */
