@@ -234,13 +234,33 @@
       "permanent": true
     },
     {
+      "source": "/cursos",
+      "destination": "/triangular/cursos",
+      "permanent": true
+    },
+    {
+      "source": "/cursos.html",
+      "destination": "/triangular/cursos",
+      "permanent": true
+    },
+    {
+      "source": "/cursos/finanzas-ia",
+      "destination": "/triangular/cursos/finanzas-con-ia",
+      "permanent": true
+    },
+    {
+      "source": "/cursos/finanzas-ia.html",
+      "destination": "/triangular/cursos/finanzas-con-ia",
+      "permanent": true
+    },
+    {
       "source": "/curso-finanzas-ia",
-      "destination": "/cursos/finanzas-ia",
+      "destination": "/triangular/cursos/finanzas-con-ia",
       "permanent": true
     },
     {
       "source": "/curso-finanzas-ia.html",
-      "destination": "/cursos/finanzas-ia",
+      "destination": "/triangular/cursos/finanzas-con-ia",
       "permanent": true
     }
   ]

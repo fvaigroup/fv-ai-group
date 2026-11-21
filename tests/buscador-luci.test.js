@@ -142,7 +142,7 @@ INDICE.forEach(r => sinProhibido((r.kw || '') + ' ' + r.url, 'kw de «' + r.titl
 // fechas: nada escrito a mano en el índice; vienen de FV_EVENTOS
 INDICE.forEach(r => ok(!/\b(lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)\b.*\d|\b\d{1,2} de (enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\b|202\d-\d\d/i.test(r.desc) || r.url === '/ejecutivos' || r.url.indexOf('programa-ejecutivo') !== -1,
   'sin fechas escritas a mano en «' + r.title + '»'));
-const taller = TODOS.find(r => r.url === '/productos/taller-plata-clara'), curso = TODOS.find(r => r.url === '/cursos/finanzas-ia');
+const taller = TODOS.find(r => r.url === '/productos/taller-plata-clara'), curso = TODOS.find(r => r.url === '/triangular/cursos/finanzas-con-ia');
 ok(/sábado 17 de octubre/.test(taller.desc) && /\$24,99 por persona/.test(taller.desc), 'taller: fecha y precio de FV_EVENTOS: ' + taller.desc);
 ok(/7, 14 y 21 de noviembre/.test(curso.desc) && /\$299,99 en 3 cuotas/.test(curso.desc), 'curso: fecha y precio de FV_EVENTOS: ' + curso.desc);
 const sinEv = entorno('/', {}); vm.createContext(sinEv.ctx); vm.runInContext(fuente.replace(/\n  SEARCH_INDEX = SEARCH_INDEX\.filter\([^\n]*\n/, '\n'), sinEv.ctx);
@@ -167,7 +167,7 @@ Object.keys(CONSULTAS).forEach(q => {
   informe.push(q + ' -> ' + r.slice(0, 3).map(x => x.url).join(', '));
 });
 ok(B.buscar('precio').map(r => r.url).includes('/servicios') && B.buscar('precio').map(r => r.url).includes('/productos'), 'precio: salen /servicios y /productos (en la sección Páginas)');
-ok(B.buscar('curso').some(r => r.url === '/cursos/finanzas-ia') && B.buscar('curso').some(r => r.url === '/ejecutivos#programa-ejecutivo'), 'curso: Finanzas con IA y Programa ejecutivo');
+ok(B.buscar('curso').some(r => r.url === '/triangular/cursos/finanzas-con-ia') && B.buscar('curso').some(r => r.url === '/ejecutivos#programa-ejecutivo'), 'curso: Finanzas con IA y Programa ejecutivo');
 ok(B.buscar('zzzzzz').length === 0 && /Sin resultados/.test(B.html()), 'sin resultados: aviso con WhatsApp');
 ok(B.buscar('PLAN  arranque')[0].url === '/productos/plan-arranque', 'mayúsculas y espacios dobles no importan');
 
@@ -225,7 +225,7 @@ const P = [
   ['¿Cuánto cuesta el tablero ejecutivo?', 'wa', /\$79,99.*\$149,99/],
   ['¿Cuánto cuesta el asistente de WhatsApp?', 'wa', /\$119,99.*\$179,99/],
   ['¿Cuándo es el próximo taller?', 'wa', /\$24,99/],
-  ['¿Cuánto cuesta el curso de Finanzas con IA?', '/cursos/finanzas-ia', /\$299,99/],
+  ['¿Cuánto cuesta el curso de Finanzas con IA?', '/triangular/cursos/finanzas-con-ia', /\$299,99/],
   ['¿Cuánto cuesta una página web?', '/paginas-web', /\$14,99.*\$29,99.*\$59,99.*\$99,99/],
   ['¿Qué hace el tablero gerencial?', '/servicios#implementacion', /\$600/],
   ['¿Cuánto cuesta el soporte técnico?', '/servicios/acompanamiento', /\$200.*\$400.*\$600/],
