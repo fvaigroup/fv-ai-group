@@ -324,8 +324,8 @@
 
 <main id="main-content" class="linea-tri cob" data-cob>
 
-<!-- ============ HERO: Cobranza, con selector de sector (assets/cobranza.js cambia los textos y el teléfono de ejemplo) ============ -->
-<section class="cob-hero" aria-labelledby="cob-titulo">
+<!-- ============ HERO: Cobranza, con selector de sector (assets/cobranza.js cambia los textos; assets/cobranza-hero.js anima el teléfono de ejemplo, la tasa BCV, el giro 3D, el carnet QR y el título) ============ -->
+<section class="cob-hero" aria-labelledby="cob-titulo" data-cob-hero>
   <div class="cob-mesh" aria-hidden="true">
     <span class="cob-mancha cob-mancha-1" data-paralaje="0.18"></span>
     <span class="cob-mancha cob-mancha-2" data-paralaje="0.1"></span>
@@ -336,7 +336,7 @@
     <div>
       <p class="cob-etq">Software de cobranza recurrente</p>
       <h1 id="cob-titulo" class="cob-h1"><span class="cob-marca cob-grad">Cobranza</span><span class="cob-titular">Cobra <span data-k="cobro">lo que te deben cada mes</span> sin perseguir a nadie.</span></h1>
-      <p class="cob-lead" data-k="lead" aria-live="polite">Para cualquier negocio que cobre de forma recurrente: cuotas, mensualidades, membresías, alquileres o suscripciones. Cada cliente ve cuánto debe y paga en línea; tú ves en tiempo real quién está al día. Se adapta a tu sector.</p>
+      <p class="cob-lead" data-k="lead">Para cualquier negocio que cobre de forma recurrente: cuotas, mensualidades, membresías, alquileres o suscripciones. Cada cliente ve cuánto debe y paga en línea; tú ves en tiempo real quién está al día. Se adapta a tu sector.</p>
       <p class="cob-pregunta" id="cob-pregunta">¿Qué negocio tienes?</p>
       <ul class="cob-sectores" aria-labelledby="cob-pregunta">
         <li><button type="button" class="cob-sector" data-cob-sector="negocio" aria-pressed="true">Cualquier negocio</button></li>
@@ -352,18 +352,54 @@
       <p class="cob-nota">Respondemos el mismo día, de lunes a viernes de 9:00 a 17:00.</p>
     </div>
 
-    <div class="cob-escena" aria-hidden="true">
-      <div class="cob-tel cob-vidrio" data-paralaje="-0.06">
-        <div class="cob-tel-cab">
-          <span class="cob-ini" data-k="ini">TN</span>
-          <div><p class="cob-org" data-k="org">Tu Negocio</p><p class="cob-sub" data-k="linea">Cliente ficticio · plan mensual</p></div>
+    <div class="cob-escena" aria-hidden="true" data-cob-hero-escena>
+      <div class="cob-hero-paralaje" data-paralaje="-0.06">
+        <div class="cob-hero-tilt" data-cob-hero-tilt>
+          <div class="cob-hero-volteo" data-cob-hero-volteo>
+            <div class="cob-tel cob-vidrio cob-hero-cara" data-cob-hero-tel>
+              <div class="cob-tel-cab">
+                <span class="cob-ini" data-k="ini">TN</span>
+                <div><p class="cob-org" data-k="org">Tu Negocio</p><p class="cob-sub" data-k="linea">Cliente ficticio · plan mensual</p></div>
+              </div>
+              <p class="cob-estado cob-hero-estado" data-cob-hero-estado><span data-k="estado">Al día · próximo cobro programado</span><span class="cob-hero-pill" data-cob-hero-pill></span></p>
+              <p class="cob-fila"><span>Concepto</span><b data-k="concepto">Plan mensual</b></p>
+              <p class="cob-fila"><span data-cob-hero-tasa-l>Moneda</span><b data-cob-hero-tasa>Dólares o bolívares, tasa BCV</b></p>
+              <p class="cob-fila"><span>Aviso</span><b data-k="extra">Recordatorio enviado por WhatsApp</b></p>
+              <span class="cob-pagar cob-hero-pagar">Pagar ahora<span class="cob-hero-toque"></span></span>
+              <ul class="cob-metodos"><li>Pasarela en línea</li><li>Pago Móvil</li><li>Transferencia</li><li>Zelle</li><li>USDT</li><li>Efectivo</li></ul>
+
+              <div class="cob-hero-toast cob-hero-toast-a">
+                <span class="cob-hero-icono"><svg viewBox="0 0 24 24" width="16" height="16" focusable="false"><path fill="currentColor" d="M12 3C6.9 3 3 6.6 3 11c0 2.2 1 4.2 2.7 5.6L5 21l4.2-2.2c.9.2 1.8.3 2.8.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z"/></svg></span>
+                <span><b>Recordatorio enviado por WhatsApp</b><small data-cob-hero-recuerda>Plan mensual · vence hoy</small></span>
+              </div>
+              <div class="cob-hero-pantalla cob-hero-pasarela">
+                <p class="cob-hero-p-t">Pasarela de pago</p>
+                <p class="cob-hero-monto" data-cob-hero-monto></p>
+                <p class="cob-hero-monto-bs" data-cob-hero-monto-bs></p>
+                <p class="cob-hero-proc">Procesando pago…</p>
+                <span class="cob-hero-barra"><i></i></span>
+                <p class="cob-hero-p-s">Pago en línea · tasa BCV del día</p>
+              </div>
+              <div class="cob-hero-pantalla cob-hero-exito">
+                <span class="cob-hero-ok">✔</span>
+                <p class="cob-hero-ok-t">Pago recibido</p>
+                <p class="cob-hero-ok-s">Se registró y se concilió solo</p>
+                <span class="cob-hero-confeti" data-cob-hero-confeti></span>
+              </div>
+              <div class="cob-hero-toast cob-hero-toast-e">
+                <span class="cob-hero-icono"><svg viewBox="0 0 24 24" width="16" height="16" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg></span>
+                <span><b>Recibo enviado</b><small>por WhatsApp y correo</small></span>
+              </div>
+            </div>
+            <div class="cob-hero-carnet cob-vidrio" data-cob-hero-carnet>
+              <p class="cob-hero-c-org" data-cob-hero-c-org>Club Ejemplo</p>
+              <p class="cob-hero-c-etq">Carnet digital · entrada con QR</p>
+              <span class="cob-hero-qr" data-cob-hero-qr></span>
+              <p class="cob-hero-c-nom" data-cob-hero-c-nom>Socio ficticio · grupo familiar</p>
+              <p class="cob-hero-c-est" data-cob-hero-c-est>Cuota al día</p>
+            </div>
+          </div>
         </div>
-        <p class="cob-estado" data-k="estado">Al día · próximo cobro programado</p>
-        <p class="cob-fila"><span>Concepto</span><b data-k="concepto">Plan mensual</b></p>
-        <p class="cob-fila"><span>Moneda</span><b>Dólares o bolívares, tasa BCV</b></p>
-        <p class="cob-fila"><span>Aviso</span><b data-k="extra">Recordatorio enviado por WhatsApp</b></p>
-        <span class="cob-pagar">Pagar ahora</span>
-        <ul class="cob-metodos"><li>Pasarela en línea</li><li>Pago Móvil</li><li>Transferencia</li><li>Zelle</li><li>USDT</li><li>Efectivo</li></ul>
       </div>
       <p class="cob-flota cob-flota-1 cob-vidrio" data-paralaje="0.08">Pago recibido<small>se registró y se concilió solo</small></p>
       <p class="cob-flota cob-flota-2 cob-vidrio" data-paralaje="-0.12">Morosidad del mes<small>a la vista, en tiempo real</small></p>
@@ -372,15 +408,27 @@
   <p class="cob-caja cob-aviso-ej">Ejemplo ilustrativo con datos ficticios.</p>
 </section>
 
-<!-- ============ LO ESENCIAL ============ -->
+<!-- ============ LO ESENCIAL (cifras que cuentan al verse; assets/cobranza-panel.js) ============ -->
 <section class="cob-sec cob-sec-alt" aria-labelledby="cob-esencial-t">
   <div class="cob-caja">
     <h2 id="cob-esencial-t" class="sr-only">Lo esencial de Cobranza</h2>
     <ul class="cob-grid cob-grid-4">
-      <li class="cob-tarjeta cob-vidrio" data-cob-ve><h3>Bs y USD</h3><p>Con la tasa BCV del día, automática.</p></li>
-      <li class="cob-tarjeta cob-vidrio" data-cob-ve><h3>Pasarelas de pago</h3><p>Tus <span data-k="personas">clientes</span> pagan en línea desde el recordatorio.</p></li>
-      <li class="cob-tarjeta cob-vidrio" data-cob-ve><h3>Recordatorios y recibos</h3><p>Por WhatsApp y por correo, sin que tengas que escribir.</p></li>
-      <li class="cob-tarjeta cob-vidrio" data-cob-ve><h3>Cualquier teléfono</h3><p>Sin descargar nada: se abre desde el navegador.</p></li>
+      <li class="cob-tarjeta cob-vidrio" data-cob-ve>
+        <p class="cob-panel-cifra"><span class="cob-panel-n cob-grad" data-panel-cuenta="2" data-panel-desde="0" aria-hidden="true">2</span><span class="cob-panel-u" aria-hidden="true">monedas</span><span class="sr-only">2 monedas</span></p>
+        <h3>Bs y USD</h3><p>Con la tasa BCV del día, automática.</p>
+      </li>
+      <li class="cob-tarjeta cob-vidrio" data-cob-ve>
+        <p class="cob-panel-cifra"><span class="cob-panel-n cob-grad" data-panel-cuenta="6" data-panel-desde="0" aria-hidden="true">6</span><span class="cob-panel-u" aria-hidden="true">métodos de pago</span><span class="sr-only">6 métodos de pago</span></p>
+        <h3>Pasarelas de pago</h3><p>Tus <span data-k="personas">clientes</span> pagan en línea desde el recordatorio, o por Pago Móvil, transferencia, Zelle, USDT o efectivo.</p>
+      </li>
+      <li class="cob-tarjeta cob-vidrio" data-cob-ve>
+        <p class="cob-panel-cifra"><span class="cob-panel-n cob-grad" data-panel-cuenta="2" data-panel-desde="0" aria-hidden="true">2</span><span class="cob-panel-u" aria-hidden="true">canales</span><span class="sr-only">2 canales</span></p>
+        <h3>Recordatorios y recibos</h3><p>Por WhatsApp y por correo, sin que tengas que escribir.</p>
+      </li>
+      <li class="cob-tarjeta cob-vidrio" data-cob-ve>
+        <p class="cob-panel-cifra"><span class="cob-panel-n cob-grad" data-panel-cuenta="0" data-panel-desde="9" aria-hidden="true">0</span><span class="cob-panel-u" aria-hidden="true">descargas</span><span class="sr-only">0 descargas</span></p>
+        <h3>Cualquier teléfono</h3><p>Sin descargar nada: se abre desde el navegador.</p>
+      </li>
     </ul>
   </div>
 </section>
@@ -399,17 +447,240 @@
   </div>
 </section>
 
-<!-- ============ CÓMO FUNCIONA ============ -->
-<section id="como-funciona" class="cob-sec cob-sec-alt" aria-labelledby="cob-como-t">
+<!-- ============ ANTES Y DESPUÉS: comparador que se arrastra (assets/cobranza-antes.js; sin JS se ven las dos capas una debajo de la otra) ============ -->
+<section id="antes-despues" class="cob-sec cob-sec-alt scroll-mt-28" aria-labelledby="cob-antes-t">
+  <div class="cob-mesh cob-mesh-suave" aria-hidden="true">
+    <span class="cob-mancha cob-mancha-1" data-paralaje="0.12"></span>
+    <span class="cob-mancha cob-mancha-3" data-paralaje="0.2"></span>
+  </div>
+  <div class="cob-caja">
+    <p class="cob-etq">Antes y después</p>
+    <h2 id="cob-antes-t" class="cob-h2">Arrastra y mira <span class="cob-grad">la diferencia.</span></h2>
+    <p class="cob-intro">Así se ve cobrarles a tus <span data-k="personas">clientes</span> a punta de WhatsApp y capturas, y así se ve el mismo mes con Cobranza.</p>
+    <p id="cob-antes-desc" class="sr-only">Comparación ilustrativa. Antes: mensajes de WhatsApp que preguntan «¿Ya pagaste?» y «¿A qué tasa?», capturas de Pago Móvil sueltas, una hoja de cálculo con errores y una nota que dice «¿quién debe?». Con Cobranza: un panel donde cada <span data-k="persona">cliente</span> aparece «Al día», los pagos por aprobar se aprueban con un clic y los totales del mes están a la vista.</p>
+
+    <div class="cob-antes-envoltura" data-cob-ve>
+      <div class="cob-antes-marco cob-vidrio" data-cob-antes>
+        <input type="range" class="cob-antes-rango" min="0" max="100" step="1" value="50" aria-label="Comparar antes y con Cobranza" aria-describedby="cob-antes-desc" aria-valuetext="Se ve 50 % de antes y 50 % con Cobranza" data-cob-antes-rango>
+
+        <!-- Capa de abajo: con Cobranza (panel ordenado) -->
+        <div class="cob-antes-capa cob-antes-despues" aria-hidden="true">
+          <p class="cob-antes-etq cob-antes-etq-d">Con Cobranza</p>
+          <div class="cob-antes-cab">
+            <span class="cob-antes-ini" data-k="ini">TN</span>
+            <div><p class="cob-antes-org" data-k="org">Tu Negocio</p><p class="cob-antes-sub">Panel de cobranza · este mes</p></div>
+          </div>
+          <ul class="cob-antes-totales">
+            <li><small>Cobrado</small><b>4.280 USD</b></li>
+            <li><small>Por cobrar</small><b>610 USD</b></li>
+            <li><small>Al día</small><b>46 de 50</b></li>
+          </ul>
+          <p class="cob-antes-tasa" data-cob-antes-tasa data-total="4280" hidden></p>
+          <div class="cob-antes-cuerpo">
+            <ul class="cob-antes-lista">
+              <li><span class="cob-antes-av" data-cob-antes-av="0">AP</span><span class="cob-antes-quien"><b data-cob-antes-fila="0">Ana P.</b><small data-k="concepto">Plan mensual</small></span><span class="cob-antes-pill">Al día</span></li>
+              <li><span class="cob-antes-av" data-cob-antes-av="1">JM</span><span class="cob-antes-quien"><b data-cob-antes-fila="1">José M.</b><small data-k="concepto">Plan mensual</small></span><span class="cob-antes-pill">Al día</span></li>
+              <li><span class="cob-antes-av" data-cob-antes-av="2">LR</span><span class="cob-antes-quien"><b data-cob-antes-fila="2">Luisa R.</b><small data-k="concepto">Plan mensual</small></span><span class="cob-antes-pill">Al día</span></li>
+              <li><span class="cob-antes-av" data-cob-antes-av="3">CT</span><span class="cob-antes-quien"><b data-cob-antes-fila="3">Carlos T.</b><small data-k="concepto">Plan mensual</small></span><span class="cob-antes-pill">Al día</span></li>
+            </ul>
+            <div class="cob-antes-aprobar">
+              <p class="cob-antes-aprobar-t">Pagos por aprobar: <b>2</b></p>
+              <div class="cob-antes-pago"><span><b>Pago Móvil</b><small>Ref. ••4821 · hoy</small></span><span class="cob-antes-btn">Aprobar</span></div>
+              <div class="cob-antes-pago"><span><b>Zelle</b><small>Ref. ••1937 · hoy</small></span><span class="cob-antes-btn">Aprobar</span></div>
+              <ul class="cob-antes-chips"><li>Recibo por WhatsApp y correo</li><li>Reporte en Excel y PDF</li><li data-k="extra">Recordatorio enviado por WhatsApp</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Capa de arriba: antes (caos), recortada con clip-path hasta la barra -->
+        <div class="cob-antes-capa cob-antes-caos" aria-hidden="true">
+          <p class="cob-antes-etq cob-antes-etq-a">Antes</p>
+          <div class="cob-antes-hoja">
+            <p class="cob-antes-hoja-cab" data-cob-antes-archivo>cobros_clientes_FINAL_v3.xlsx</p>
+            <div class="cob-antes-celdas">
+              <span class="cob-antes-th" data-k="Persona">Cliente</span><span class="cob-antes-th">Monto</span><span class="cob-antes-th">¿Pagó?</span>
+              <span data-cob-antes-fila="0">Ana P.</span><span>35</span><span class="cob-antes-rojo">¿?</span>
+              <span data-cob-antes-fila="1">José M.</span><span class="cob-antes-rojo">#¡REF!</span><span>sí</span>
+              <span data-cob-antes-fila="2">Luisa R.</span><span>35</span><span class="cob-antes-rojo">¿capture?</span>
+              <span data-cob-antes-fila="3">Carlos T.</span><span class="cob-antes-rojo">??</span><span class="cob-antes-rojo">debe 2</span>
+            </div>
+          </div>
+          <div class="cob-antes-chat">
+            <p class="cob-antes-chat-cab"><b>Cobros · <span data-k="personas">clientes</span></b><span class="cob-antes-sinleer">38</span></p>
+            <p class="cob-antes-burbuja cob-antes-sale">¿Ya pagaste?<small>9:12</small></p>
+            <p class="cob-antes-burbuja">Te mandé el capture<small>9:40</small></p>
+            <p class="cob-antes-burbuja">Yo pagué el martes, revisa<small>10:03</small></p>
+          </div>
+          <p class="cob-antes-burbuja cob-antes-suelta cob-antes-suelta-1">¿A qué tasa?<small>10:15</small></p>
+          <p class="cob-antes-burbuja cob-antes-suelta cob-antes-suelta-2">¿Cuánto es en bolívares?<small>10:16</small></p>
+          <div class="cob-antes-captura cob-antes-captura-1"><b>Pago Móvil</b><span class="cob-antes-ok">Operación exitosa</span><i></i><i></i><small>Ref. ••4821</small></div>
+          <div class="cob-antes-captura cob-antes-captura-2"><b>Pago Móvil</b><span class="cob-antes-ok">Operación exitosa</span><i></i><i></i><small>Ref. ••0377</small></div>
+          <div class="cob-antes-captura cob-antes-captura-3"><b>Pago Móvil</b><span class="cob-antes-ok">Operación exitosa</span><i></i><i></i><small>Ref. ¿?</small></div>
+          <p class="cob-antes-nota">¿quién debe?<small>revisar el chat</small></p>
+        </div>
+
+        <!-- Barra y perilla (decorativas: el control real es el input de arriba) -->
+        <div class="cob-antes-mango" aria-hidden="true">
+          <span class="cob-antes-linea"></span>
+          <span class="cob-antes-perilla"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        </div>
+      </div>
+      <p class="cob-antes-ayuda" data-cob-antes-ayuda hidden>Arrastra la barra, toca un lado o usa las flechas del teclado.</p>
+    </div>
+    <p class="cob-aviso-ej">Ejemplo ilustrativo con datos ficticios.</p>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA (pasos + chat de WhatsApp de ejemplo; lo anima assets/cobranza-chat.js. Sin JS o con reduced-motion se ve la conversación completa) ============ -->
+<section id="como-funciona" class="cob-sec" aria-labelledby="cob-como-t">
   <div class="cob-mesh cob-mesh-suave" aria-hidden="true"><span class="cob-mancha cob-mancha-2" data-paralaje="0.15"></span></div>
   <div class="cob-caja">
     <p class="cob-etq">Cómo funciona</p>
     <h2 id="cob-como-t" class="cob-h2">Tres pasos y tu negocio está cobrando.</h2>
-    <ol class="cob-grid cob-grid-3">
-      <li class="cob-tarjeta cob-vidrio" data-cob-ve><span class="cob-num">PASO 1</span><h3>Cargamos tus <span data-k="personas">clientes</span></h3><p>Desde tu Excel, con lo que paga cada uno y cuándo vence. Nosotros hacemos la carga: tú no tienes que digitar nada.</p></li>
-      <li class="cob-tarjeta cob-vidrio" data-cob-ve><span class="cob-num">PASO 2</span><h3>Cada <span data-k="persona">cliente</span> recibe su acceso</h3><p>Por correo y WhatsApp, sin descargar aplicaciones: entra desde el navegador de su teléfono.</p></li>
-      <li class="cob-tarjeta cob-vidrio" data-cob-ve><span class="cob-num">PASO 3</span><h3>Tú cobras, apruebas y controlas</h3><p>Cada pago llega a tu panel y cada cifra se actualiza al instante.</p></li>
-    </ol>
+    <div class="cob-chat-grid">
+      <ol class="cob-chat-pasos">
+        <li class="cob-tarjeta cob-vidrio" data-cob-ve><span class="cob-num">PASO 1</span><h3>Cargamos tus <span data-k="personas">clientes</span></h3><p>Desde tu Excel, con lo que paga cada uno y cuándo vence. Nosotros hacemos la carga: tú no tienes que digitar nada.</p></li>
+        <li class="cob-tarjeta cob-vidrio" data-cob-ve><span class="cob-num">PASO 2</span><h3>Cada <span data-k="persona">cliente</span> recibe su acceso</h3><p>Por correo y WhatsApp, sin descargar aplicaciones: entra desde el navegador de su teléfono.</p></li>
+        <li class="cob-tarjeta cob-vidrio" data-cob-ve><span class="cob-num">PASO 3</span><h3>Tú cobras, apruebas y controlas</h3><p>Cada pago llega a tu panel y cada cifra se actualiza al instante.</p></li>
+      </ol>
+
+      <div class="cob-chat-lado" data-cob-ve>
+        <p class="cob-chat-tit">Así lo vive tu <span data-k="persona">cliente</span></p>
+        <p class="sr-only">Ejemplo de conversación: Cobranza le recuerda por WhatsApp a tu <span data-k="persona">cliente</span> que su pago vence y le envía el enlace para pagar en línea. Cuando paga, le llega su recibo al instante.</p>
+        <div class="cob-chat-ventana cob-vidrio" aria-hidden="true" data-cob-chat>
+          <div class="cob-chat-cab">
+            <span class="cob-chat-av" data-k="ini">TN</span>
+            <div class="cob-chat-quien">
+              <p class="cob-chat-org" data-k="org">Tu Negocio</p>
+              <p class="cob-chat-linea" data-cob-chat-estado>en línea</p>
+            </div>
+          </div>
+          <div class="cob-chat-cuerpo">
+            <p class="cob-chat-dia">Hoy</p>
+
+            <div class="cob-chat-fila cob-chat-neg" data-cob-chat-fila="1">
+              <span class="cob-chat-esc"><i></i><i></i><i></i></span>
+              <div class="cob-chat-msg">
+                <p class="cob-chat-txt"><span data-cob-chat-t="m1">Hola María 👋 Tu plan mensual vence el viernes.</span> Paga aquí: <span class="cob-chat-enl" data-cob-chat-t="enl">cobranza.app/p/8F2K</span></p>
+                <span class="cob-chat-meta">9:00
+                  <svg class="cob-chat-ck cob-chat-leido" data-cob-chat-ck="1" viewBox="0 0 18 12" width="16" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M1 6.5l3.2 3.2L11 2.5"/><path d="M7.6 9.3l.4.4L16.8 2.5"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <div class="cob-chat-fila cob-chat-cli" data-cob-chat-fila="2">
+              <span class="cob-chat-esc"><i></i><i></i><i></i></span>
+              <div class="cob-chat-msg">
+                <p class="cob-chat-txt">Listo, ya pagué 🙌</p>
+                <span class="cob-chat-meta">9:02</span>
+              </div>
+            </div>
+
+            <div class="cob-chat-fila cob-chat-neg" data-cob-chat-fila="3">
+              <span class="cob-chat-esc"><i></i><i></i><i></i></span>
+              <div class="cob-chat-msg">
+                <p class="cob-chat-txt" data-cob-chat-t="m3">✔ Pago recibido. Aquí está tu recibo.</p>
+                <span class="cob-chat-recibo">
+                  <span class="cob-chat-doc">PDF</span>
+                  <span class="cob-chat-rtxt"><b>Recibo · <span data-k="concepto">Plan mensual</span></b><small>Pagado · Bs o USD, tasa BCV</small></span>
+                </span>
+                <span class="cob-chat-meta">9:02
+                  <svg class="cob-chat-ck cob-chat-leido" data-cob-chat-ck="3" viewBox="0 0 18 12" width="16" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M1 6.5l3.2 3.2L11 2.5"/><path d="M7.6 9.3l.4.4L16.8 2.5"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cob-aviso-ej">Ejemplo ilustrativo con datos ficticios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LÍNEA DE TIEMPO: así se cobra solo (celular/sin JS: lista; escritorio con JS: contenido fijo mientras bajas y teléfono con el hito activo) ============ -->
+<section id="linea-tiempo" class="cob-tiempo" aria-labelledby="cob-tiempo-t">
+  <div class="cob-caja">
+    <p class="cob-etq">Día por día</p>
+    <h2 id="cob-tiempo-t" class="cob-h2">Así se cobra solo, día por día.</h2>
+    <p class="cob-intro">Tú configuras el cobro una vez. Cobranza avisa, cobra, recarga la mora y entrega el recibo sin que escribas un mensaje.</p>
+  </div>
+
+  <div class="cob-tiempo-pista">
+    <div class="cob-tiempo-fijo">
+      <div class="cob-caja cob-tiempo-grid">
+
+        <div class="cob-tiempo-linea">
+          <span class="cob-tiempo-riel" aria-hidden="true"><i></i></span>
+          <ol class="cob-tiempo-lista">
+            <li class="cob-tiempo-hito" data-cob-ve>
+              <span class="cob-tiempo-punto" aria-hidden="true"></span>
+              <p class="cob-tiempo-cuando">3 días antes</p>
+              <h3>Recordatorio por WhatsApp</h3>
+              <p>Cada <span data-tiempo-k="persona">cliente</span> recibe un mensaje con lo que debe, cuándo vence y el enlace para pagar. Tú no escribes nada.</p>
+              <div class="cob-tiempo-tarjeta cob-vidrio" aria-hidden="true">
+                <p class="cob-tiempo-app">WhatsApp · <span data-tiempo-k="org">Tu Negocio</span></p>
+                <p class="cob-tiempo-burbuja" data-tiempo-msg>Hola. Te recordamos que tu plan mensual vence en 3 días. Puedes pagar desde este enlace, en Bs o USD.</p>
+                <span class="cob-tiempo-enlace">Pagar en línea</span>
+              </div>
+            </li>
+            <li class="cob-tiempo-hito" data-cob-ve>
+              <span class="cob-tiempo-punto" aria-hidden="true"></span>
+              <p class="cob-tiempo-cuando">El día del cobro</p>
+              <h3>Enlace de pago por la pasarela</h3>
+              <p>Paga en línea desde el enlace, en bolívares o dólares con la tasa BCV del día. También puede reportar Pago Móvil, transferencia, Zelle, USDT o efectivo.</p>
+              <div class="cob-tiempo-tarjeta cob-vidrio" aria-hidden="true">
+                <p class="cob-tiempo-app">Pasarela de pago</p>
+                <p class="cob-tiempo-tit">Pagar <span data-tiempo-k="cuota">tu plan mensual</span></p>
+                <p class="cob-fila"><span>Vence</span><b>Hoy</b></p>
+                <p class="cob-fila"><span>Moneda</span><b>Bs o USD</b></p>
+                <p class="cob-fila"><span>Tasa BCV</span><b data-tiempo-tasa>La del día</b></p>
+                <span class="cob-pagar">Pagar ahora</span>
+                <ul class="cob-metodos"><li>Pago Móvil</li><li>Transferencia</li><li>Zelle</li><li>USDT</li><li>Efectivo</li></ul>
+              </div>
+            </li>
+            <li class="cob-tiempo-hito cob-tiempo-hito-mora" data-cob-ve>
+              <span class="cob-tiempo-punto" aria-hidden="true"></span>
+              <p class="cob-tiempo-cuando">1 día después</p>
+              <h3>Aviso de mora y recargo</h3>
+              <p>Si no pagó, le llega el aviso y se aplica el recargo por mora que configuraste. Sin llamadas incómodas.</p>
+              <div class="cob-tiempo-tarjeta cob-vidrio" aria-hidden="true">
+                <p class="cob-tiempo-app cob-tiempo-app-mora">Aviso de mora</p>
+                <p class="cob-tiempo-tit"><span data-tiempo-k="Cuota">Tu plan mensual</span> venció ayer.</p>
+                <p class="cob-tiempo-txt">Se aplicó el recargo por mora. Puedes ponerte al día desde el mismo enlace.</p>
+                <span class="cob-tiempo-chip cob-tiempo-chip-mora">1 día de atraso</span>
+              </div>
+            </li>
+            <li class="cob-tiempo-hito cob-tiempo-hito-fin" data-cob-ve>
+              <span class="cob-tiempo-punto" aria-hidden="true"></span>
+              <p class="cob-tiempo-cuando">Pagado</p>
+              <h3>Pago conciliado y recibo enviado</h3>
+              <p>Apruebas el pago con un clic, queda conciliado y el recibo le llega por WhatsApp y correo.<span data-tiempo-k="extra"> Su cuenta queda al día en tu panel.</span></p>
+              <div class="cob-tiempo-tarjeta cob-vidrio" aria-hidden="true">
+                <span class="cob-tiempo-ok">&#10003;</span>
+                <p class="cob-tiempo-tit">Pago conciliado</p>
+                <p class="cob-tiempo-txt">Recibo enviado por WhatsApp y correo.</p>
+                <span class="cob-tiempo-chip" data-tiempo-k="corto">Cuenta al día</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Teléfono: solo en escritorio con JS (.is-fijo). El script copia aquí las tarjetas de cada hito. -->
+        <div class="cob-tiempo-escena" aria-hidden="true">
+          <span class="cob-tiempo-brillo"></span>
+          <div class="cob-tel cob-tiempo-tel cob-vidrio">
+            <div class="cob-tel-cab">
+              <span class="cob-ini" data-tiempo-k="ini">TN</span>
+              <div><p class="cob-org" data-tiempo-k="org">Tu Negocio</p><p class="cob-sub" data-tiempo-k="linea">Cliente ficticio · plan mensual</p></div>
+            </div>
+            <p class="cob-tiempo-dia" data-tiempo-dia>3 días antes</p>
+            <div class="cob-tiempo-pantalla"></div>
+          </div>
+        </div>
+
+        <p class="cob-aviso-ej cob-tiempo-nota">Ejemplo ilustrativo con datos ficticios.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -500,30 +771,104 @@
   </div>
 </section>
 
-<!-- ============ PASARELAS DE PAGO ============ -->
+<!-- ============ PASARELAS DE PAGO (consola de conciliación que se teclea y chip con la tasa BCV en vivo; JS: bloque «consola») ============ -->
 <section id="pasarelas" class="cob-sec cob-sec-alt" aria-labelledby="cob-pasarelas-t">
   <div class="cob-mesh cob-mesh-suave" aria-hidden="true"><span class="cob-mancha cob-mancha-1" data-paralaje="0.2"></span><span class="cob-mancha cob-mancha-3" data-paralaje="0.12"></span></div>
   <div class="cob-caja">
     <div class="cob-pasarela cob-vidrio" data-cob-ve>
-      <div>
+      <div class="cob-consola-izq">
         <p class="cob-etq">Pasarelas de pago</p>
         <h2 id="cob-pasarelas-t" class="cob-h2">Tus <span data-k="personas">clientes</span> pagan como quieran. Tú no cuadras nada.</h2>
         <p class="cob-intro" style="margin-bottom:0">Cobranza tiene pasarelas de pago: tus <span data-k="personas">clientes</span> pagan en línea desde el enlace del recordatorio y el pago queda registrado y conciliado solo, con la tasa BCV del día. Si pagan por Pago Móvil o transferencia, reportan el pago con la foto del comprobante y tú lo apruebas con un clic.</p>
+        <p class="cob-consola-chip" data-cob-consola-chip hidden><span class="cob-consola-punto" aria-hidden="true"></span><span data-cob-consola-chip-t>Tasa BCV del día</span></p>
+        <ul class="cob-metodos-g cob-consola-metodos">
+          <li class="cob-destacado">Pasarela en línea<small>Paga desde el recordatorio</small></li>
+          <li>Pago Móvil<small>Con comprobante</small></li>
+          <li>Transferencia<small>Bolívares o dólares</small></li>
+          <li>Zelle<small>En dólares</small></li>
+          <li>USDT<small>Registrado con su tasa</small></li>
+          <li>Efectivo<small>Lo registras en caja</small></li>
+        </ul>
       </div>
-      <ul class="cob-metodos-g">
-        <li class="cob-destacado">Pasarela en línea<small>Paga desde el recordatorio</small></li>
-        <li>Pago Móvil<small>Con comprobante</small></li>
-        <li>Transferencia<small>Bolívares o dólares</small></li>
-        <li>Zelle<small>En dólares</small></li>
-        <li>USDT<small>Registrado con su tasa</small></li>
-        <li>Efectivo<small>Lo registras en caja</small></li>
-      </ul>
+      <figure class="cob-consola" data-cob-consola>
+        <figcaption class="fv-sr-only">Ejemplo con datos ficticios: Cobranza concilia en un paso los pagos del día por Pago Móvil, Zelle, pasarela en línea y USDT, con la tasa BCV del día, y asigna cada pago al <span data-k="persona">cliente</span> que lo hizo.</figcaption>
+        <div class="cob-consola-win" aria-hidden="true">
+          <div class="cob-consola-barra"><span class="cob-consola-puntos"><i></i><i></i><i></i></span><span class="cob-consola-tit">cobranza — conciliación</span></div>
+          <div class="cob-consola-cuerpo" data-cob-consola-cuerpo>
+            <p class="cob-consola-l cob-consola-cmd"><span class="cob-consola-pr">&gt; </span><span class="cob-consola-tx">cobranza conciliar </span><span class="cob-consola-fl">--hoy</span></p>
+            <p class="cob-consola-l"><span class="cob-consola-mu">Tasa aplicada: </span><span class="cob-consola-va">tasa BCV del día</span></p>
+            <p class="cob-consola-l"><span class="cob-consola-ok">✔&#xFE0E; </span><span class="cob-consola-tx">Pago Móvil · </span><span class="cob-consola-va">en Bs, a la tasa del día</span><span class="cob-consola-mu"> → </span><span class="cob-consola-pe">Cliente 14</span></p>
+            <p class="cob-consola-l"><span class="cob-consola-ok">✔&#xFE0E; </span><span class="cob-consola-tx">Zelle · </span><span class="cob-consola-va">en dólares</span><span class="cob-consola-mu"> → </span><span class="cob-consola-pe">Cliente 27</span></p>
+            <p class="cob-consola-l"><span class="cob-consola-ok">✔&#xFE0E; </span><span class="cob-consola-tx">Pasarela en línea · </span><span class="cob-consola-va">pagado desde el recordatorio</span><span class="cob-consola-mu"> → </span><span class="cob-consola-pe">Cliente 31</span></p>
+            <p class="cob-consola-l"><span class="cob-consola-ok">✔&#xFE0E; </span><span class="cob-consola-tx">USDT · </span><span class="cob-consola-va">registrado con su tasa</span><span class="cob-consola-mu"> → </span><span class="cob-consola-pe">Cliente 45</span></p>
+            <p class="cob-consola-l cob-consola-res"><span class="cob-consola-mu">… </span><span class="cob-consola-tx">128 pagos conciliados · </span><span class="cob-consola-ok">0 diferencias</span></p>
+            <p class="cob-consola-l cob-consola-fin"><span class="cob-consola-pr">&gt; </span><span class="cob-consola-cur"></span></p>
+          </div>
+        </div>
+        <p class="cob-aviso-ej">Ejemplo ilustrativo con datos ficticios.</p>
+      </figure>
     </div>
   </div>
 </section>
 
+<!-- ============ DEL PAGO AL PANEL (diagrama animado; assets/cobranza-flujo.js mueve las partículas y suma el contador) ============ -->
+<section id="flujo" class="cob-sec scroll-mt-28" aria-labelledby="cob-flujo-t">
+  <div class="cob-mesh cob-mesh-suave" aria-hidden="true"><span class="cob-mancha cob-mancha-2" data-paralaje="0.14"></span></div>
+  <div class="cob-caja">
+    <p class="cob-etq">El camino del pago</p>
+    <h2 id="cob-flujo-t" class="cob-h2">Del bolsillo de tu <span data-k="persona">cliente</span> a tu panel, en segundos.</h2>
+    <p class="cob-intro">Tu <span data-k="persona">cliente</span> paga desde el enlace del recordatorio, la pasarela procesa el pago en Bs o USD con la tasa BCV del día y tú lo ves registrado y conciliado en tu panel.</p>
+    <p class="sr-only" id="cob-flujo-desc">Diagrama de ejemplo: los pagos de tus <span data-k="personas">clientes</span>, por Pago Móvil, transferencia, Zelle, USDT o pasarela en línea, avanzan hacia la pasarela de pago y llegan a tu cuenta y a tu panel, donde un contador suma los pagos recibidos hoy.</p>
+
+    <ol class="cob-flujo-escena" data-flujo-escena data-cob-ve>
+      <li class="cob-flujo-nodo cob-vidrio">
+        <span class="cob-flujo-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c.6-3.2 3-5 6-5s5.4 1.8 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16.5 14.6c2.3.2 4 1.7 4.5 4.4"/></svg>
+        </span>
+        <h3>Tus <span data-k="personas">clientes</span></h3>
+        <p>Pagan desde el enlace del recordatorio que les llega por WhatsApp o correo, en bolívares o en dólares.</p>
+      </li>
+      <li class="cob-flujo-tramo" aria-hidden="true">
+        <svg class="cob-flujo-svg" data-flujo-svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+          <g class="cob-flujo-estatico cob-flujo-h"><path d="M0 30 C45 30 55 46 100 46"/><path d="M0 50 L100 50"/><path d="M0 70 C45 70 55 54 100 54"/></g>
+          <g class="cob-flujo-estatico cob-flujo-v"><path d="M30 0 C30 45 46 55 46 100"/><path d="M50 0 L50 100"/><path d="M70 0 C70 45 54 55 54 100"/></g>
+        </svg>
+      </li>
+      <li class="cob-flujo-nodo cob-vidrio">
+        <span class="cob-flujo-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18"/><path d="M7 15h4"/></svg>
+          <span class="cob-flujo-halo" data-flujo-halo></span>
+        </span>
+        <h3>Pasarela de pago</h3>
+        <p>Procesa el pago en línea, en Bs o USD, con la tasa BCV del día.</p>
+      </li>
+      <li class="cob-flujo-tramo" aria-hidden="true">
+        <svg class="cob-flujo-svg" data-flujo-svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+          <g class="cob-flujo-estatico cob-flujo-h"><path d="M0 50 L100 50"/></g>
+          <g class="cob-flujo-estatico cob-flujo-v"><path d="M50 0 L50 100"/></g>
+        </svg>
+      </li>
+      <li class="cob-flujo-nodo cob-flujo-nodo-fin cob-vidrio">
+        <span class="cob-flujo-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 20V10"/><path d="M10 20V5"/><path d="M16 20v-7"/><path d="M21 20H3"/></svg>
+          <span class="cob-flujo-halo" data-flujo-halo></span>
+        </span>
+        <h3>Tu cuenta y tu panel</h3>
+        <p>El pago queda registrado y conciliado solo. Los de Pago Móvil o transferencia los apruebas con un clic.</p>
+        <div class="cob-flujo-contador" aria-hidden="true">
+          <span class="cob-flujo-cont-t">Pagos recibidos hoy</span>
+          <b class="cob-flujo-cifra" data-flujo-cifra>48</b>
+          <span class="cob-flujo-ult">Último: <span data-flujo-ultimo>Pago Móvil</span></span>
+          <span class="cob-flujo-mas" data-flujo-mas>+1</span>
+        </div>
+      </li>
+    </ol>
+    <p class="cob-aviso-ej">Ejemplo ilustrativo.</p>
+  </div>
+</section>
+
 <!-- ============ TRES MIRADAS ============ -->
-<section id="funciones" class="cob-sec" aria-labelledby="cob-funciones-t">
+<section id="funciones" class="cob-sec cob-sec-alt" aria-labelledby="cob-funciones-t">
   <div class="cob-caja">
     <p class="cob-etq">Lo que hace</p>
     <h2 id="cob-funciones-t" class="cob-h2">Una herramienta, tres miradas.</h2>
@@ -556,6 +901,84 @@
   </div>
 </section>
 
+<!-- ============ TU PANEL (va después de #funciones; el tablero se arma al verse y cambia según el sector) ============ -->
+<section id="panel" class="cob-sec scroll-mt-28" aria-labelledby="cob-panel-t">
+  <div class="cob-mesh cob-mesh-suave" aria-hidden="true"><span class="cob-mancha cob-mancha-2" data-paralaje="0.12"></span><span class="cob-mancha cob-mancha-3" data-paralaje="0.2"></span></div>
+  <div class="cob-caja cob-panel-grid">
+    <div class="cob-panel-texto">
+      <p class="cob-etq">Tu panel</p>
+      <h2 id="cob-panel-t" class="cob-h2">Tu panel, siempre al día.</h2>
+      <p class="cob-intro">Cada pago que apruebas actualiza las cifras al instante: cuánto cobraste, quién está al día, qué falta por aprobar y cómo va la morosidad.</p>
+      <ul class="cob-lista cob-panel-lista">
+        <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Aprueba o rechaza pagos con un clic.</li>
+        <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Cobranza y morosidad en tiempo real.</li>
+        <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Cuotas y recargos por mora, en Bs y en USD.</li>
+        <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Reportes en Excel y PDF.</li>
+      </ul>
+    </div>
+
+    <div class="cob-panel-marco">
+      <p class="sr-only" data-panel-resumen>Ejemplo de panel con datos ficticios: cobrado del mes, 12.480 dólares; clientes al día, 91 %; pagos por aprobar, 7; morosidad, 9 %, desde 31 % hace seis meses.</p>
+      <div class="cob-panel-tablero cob-vidrio" data-panel-tablero aria-hidden="true">
+        <div class="cob-panel-cab">
+          <span class="cob-ini" data-k="ini">TN</span>
+          <div class="cob-panel-cab-t"><p class="cob-org" data-k="org">Tu Negocio</p><p class="cob-sub">Panel de administración</p></div>
+          <span class="cob-panel-vivo"><span class="cob-panel-punto-vivo"></span>En tiempo real</span>
+        </div>
+
+        <div class="cob-panel-kpis">
+          <div class="cob-panel-kpi cob-panel-bloque" style="--d:.05">
+            <p class="cob-panel-etq">Cobrado del mes</p>
+            <p class="cob-panel-valor"><span data-panel-cobrado>12.480</span> <span class="cob-panel-mon">dólares</span></p>
+            <p class="cob-panel-pie">Bs y USD con la tasa BCV del día</p>
+          </div>
+          <div class="cob-panel-kpi cob-panel-bloque" style="--d:.15">
+            <p class="cob-panel-etq" data-panel-etq-aldia>Clientes al día</p>
+            <p class="cob-panel-valor"><span data-panel-aldia>91&nbsp;%</span></p>
+            <span class="cob-panel-prog"><i data-panel-prog style="--p:.91"></i></span>
+          </div>
+          <div class="cob-panel-kpi cob-panel-bloque" style="--d:.25">
+            <p class="cob-panel-etq">Pagos por aprobar</p>
+            <p class="cob-panel-valor"><span data-panel-aprobar>7</span></p>
+            <p class="cob-panel-pie"><span class="cob-panel-chip">Aprobar con un clic</span></p>
+          </div>
+        </div>
+
+        <div class="cob-panel-fila">
+          <div class="cob-panel-graf cob-panel-bloque" style="--d:.35">
+            <p class="cob-panel-graf-cab"><span class="cob-panel-etq">Cobrado por mes</span><span class="cob-panel-pie">Últimos 6 meses</span></p>
+            <ol class="cob-panel-barras">
+              <li style="--i:0"><span class="cob-panel-pista"><span class="cob-panel-barra" data-panel-barra style="--h:49%"></span></span><span class="cob-panel-mes" data-panel-mes>Jun</span></li>
+              <li style="--i:1"><span class="cob-panel-pista"><span class="cob-panel-barra" data-panel-barra style="--h:59%"></span></span><span class="cob-panel-mes" data-panel-mes>Jul</span></li>
+              <li style="--i:2"><span class="cob-panel-pista"><span class="cob-panel-barra" data-panel-barra style="--h:66%"></span></span><span class="cob-panel-mes" data-panel-mes>Ago</span></li>
+              <li style="--i:3"><span class="cob-panel-pista"><span class="cob-panel-barra" data-panel-barra style="--h:77%"></span></span><span class="cob-panel-mes" data-panel-mes>Sep</span></li>
+              <li style="--i:4"><span class="cob-panel-pista"><span class="cob-panel-barra" data-panel-barra style="--h:88%"></span></span><span class="cob-panel-mes" data-panel-mes>Oct</span></li>
+              <li style="--i:5" class="cob-panel-actual"><span class="cob-panel-pista"><span class="cob-panel-barra" data-panel-barra style="--h:100%"></span></span><span class="cob-panel-mes" data-panel-mes>Nov</span></li>
+            </ol>
+          </div>
+
+          <div class="cob-panel-mora cob-panel-bloque" style="--d:.45">
+            <p class="cob-panel-etq">Morosidad</p>
+            <p class="cob-panel-valor"><span data-panel-mora>9&nbsp;%</span> <span class="cob-panel-baja" data-panel-baja>&minus;22 puntos</span></p>
+            <p class="cob-panel-pie" data-panel-mora-ini>Hace 6 meses: 31&nbsp;%</p>
+            <svg class="cob-panel-spark" viewBox="0 0 120 40" focusable="false">
+              <defs>
+                <linearGradient id="cob-panel-sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a855f7"/><stop offset=".55" stop-color="#e9d5ff"/><stop offset="1" stop-color="#4ade80"/></linearGradient>
+                <linearGradient id="cob-panel-sa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ade80" stop-opacity=".22"/><stop offset="1" stop-color="#4ade80" stop-opacity="0"/></linearGradient>
+              </defs>
+              <path class="cob-panel-area" data-panel-area d="M4 11.2L26.4 15.2L48.8 19.2L71.2 22.4L93.6 26.4L116 28.8L116 40L4 40Z" fill="url(#cob-panel-sa)"/>
+              <path class="cob-panel-linea" data-panel-linea d="M4 11.2L26.4 15.2L48.8 19.2L71.2 22.4L93.6 26.4L116 28.8" pathLength="1" fill="none" stroke="url(#cob-panel-sg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="cob-panel-mov cob-panel-bloque" style="--d:.55"><span class="cob-panel-prompt">&gt;</span> <span data-panel-mov>Pago Móvil reportado · comprobante adjunto</span><span class="cob-panel-cursor"></span></p>
+      </div>
+      <p class="cob-aviso-ej">Ejemplo ilustrativo con datos ficticios.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ POR QUÉ COBRANZA ============ -->
 <section id="por-que" class="cob-sec cob-sec-alt" aria-labelledby="cob-porque-t">
   <div class="cob-caja">
@@ -572,8 +995,69 @@
   </div>
 </section>
 
+<!-- ============ CALCULADORA: ¿Cuántas horas pierdes cobrando? (assets/cobranza-calc.js) ============ -->
+<section id="calculadora" class="cob-sec cob-calc-sec scroll-mt-28" aria-labelledby="cob-calc-t" data-cob-calc>
+  <div class="cob-mesh cob-mesh-suave" aria-hidden="true"><span class="cob-mancha cob-mancha-2" data-paralaje="0.12"></span><span class="cob-mancha cob-mancha-3" data-paralaje="0.18"></span></div>
+  <div class="cob-caja">
+    <p class="cob-etq">Calculadora</p>
+    <h2 id="cob-calc-t" class="cob-h2">¿Cuántas horas pierdes <span class="cob-grad">cobrando</span>?</h2>
+    <p class="cob-intro">Calcula cuánto tiempo se te va cada mes en escribir, esperar y verificar pagos. Mueve las barras con tus números.</p>
+
+    <div class="cob-calc-grid">
+      <div class="cob-calc-form cob-vidrio" data-cob-ve role="group" aria-label="Datos para el cálculo">
+        <div class="cob-calc-campo">
+          <div class="cob-calc-fila">
+            <label for="cob-calc-p" class="cob-calc-label">¿A cuántos <span data-k="personas">clientes</span> les cobras al mes?</label>
+            <output for="cob-calc-p" class="cob-calc-valor" data-calc-out="p" aria-live="off">120</output>
+          </div>
+          <input type="range" id="cob-calc-p" class="cob-calc-rango" min="5" max="2000" step="5" value="120" aria-valuetext="120 clientes" data-calc-in="p" style="--cob-calc-pct:5.76%">
+          <div class="cob-calc-ext" aria-hidden="true"><span>5</span><span>2.000</span></div>
+        </div>
+        <div class="cob-calc-campo">
+          <div class="cob-calc-fila">
+            <label for="cob-calc-m" class="cob-calc-label">¿Cuántos minutos te toma cobrarle a cada uno?</label>
+            <output for="cob-calc-m" class="cob-calc-valor" data-calc-out="m" aria-live="off">8 min</output>
+          </div>
+          <p class="cob-calc-ayuda" id="cob-calc-m-ayuda">Escribir, esperar la respuesta y verificar el pago.</p>
+          <input type="range" id="cob-calc-m" class="cob-calc-rango" min="1" max="30" step="1" value="8" aria-valuetext="8 minutos" aria-describedby="cob-calc-m-ayuda" data-calc-in="m" style="--cob-calc-pct:24.14%">
+          <div class="cob-calc-ext" aria-hidden="true"><span>1 min</span><span>30 min</span></div>
+        </div>
+        <p class="cob-calc-nota">Cálculo aproximado: <span data-k="personas">clientes</span> × minutos ÷ 60. Con Cobranza suponemos unos 15 segundos por pago para revisarlo y aprobarlo con un clic.</p>
+      </div>
+
+      <div class="cob-calc-res cob-vidrio" data-cob-ve>
+        <p class="cob-calc-aprox">Cálculo aproximado</p>
+        <p class="sr-only" aria-live="polite" aria-atomic="true" data-calc="vivo"></p>
+        <div>
+          <p class="cob-calc-grande">
+            <span class="cob-calc-pre" data-calc="pre">Pierdes unas</span>
+            <span class="cob-calc-cifra"><span class="cob-calc-n cob-grad" data-calc="n" aria-hidden="true">16</span><span class="sr-only" data-calc="n-sr">16</span> <span data-calc="unidad">horas</span></span>
+            <span class="cob-calc-pre">al mes cobrando</span>
+          </p>
+          <p class="cob-calc-dias" data-calc="dias">Eso es como 2 días de trabajo de 8 horas.</p>
+          <p class="cob-calc-con">Con Cobranza solo apruebas pagos: <strong data-calc="con">unos 30 minutos al mes</strong>.</p>
+        </div>
+
+        <div class="cob-calc-barras" aria-hidden="true">
+          <div class="cob-calc-barra">
+            <div class="cob-calc-barra-cab"><span>Hoy</span><b data-calc="b-antes">16 h</b></div>
+            <div class="cob-calc-pista"><span class="cob-calc-fill cob-calc-fill-antes" data-calc="f-antes" style="--cob-calc-v:1"></span></div>
+          </div>
+          <div class="cob-calc-barra">
+            <div class="cob-calc-barra-cab"><span>Con Cobranza</span><b data-calc="b-con">30 min</b></div>
+            <div class="cob-calc-pista"><span class="cob-calc-fill cob-calc-fill-con" data-calc="f-con" style="--cob-calc-v:.031"></span></div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20us%C3%A9%20la%20calculadora%20de%20Cobranza%3A%20cobro%20a%20120%20clientes%20y%20pierdo%20unas%2016%20horas%20al%20mes.%20Quiero%20una%20demo." target="_blank" rel="noopener" class="cob-btn cob-calc-btn" data-calc="wa" data-evento="triangular_cobranza_calculadora_whatsapp" data-cta="cobranza_calculadora" data-product="cobranza">Quiero recuperar esas horas</a>
+        <p class="cob-calc-pie"><span data-calc="ej">Ejemplo con 120 <span data-k="personas">clientes</span> y 8 minutos cada uno. </span>Es una estimación, no una promesa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PREGUNTAS ============ -->
-<section id="preguntas" class="cob-sec" aria-labelledby="cob-faq-t">
+<section id="preguntas" class="cob-sec cob-sec-alt" aria-labelledby="cob-faq-t">
   <div class="cob-caja">
     <p class="cob-etq">Preguntas</p>
     <h2 id="cob-faq-t" class="cob-h2">Lo que suelen preguntar.</h2>
@@ -914,7 +1398,16 @@
     } else { load(); }
   })();
 </script>
+<script defer src="/assets/bcv.js"></script>
 <script defer src="/assets/cobranza.js"></script>
+<script defer src="/assets/cobranza-hero.js"></script>
+<script defer src="/assets/cobranza-panel.js"></script>
+<script defer src="/assets/cobranza-antes.js"></script>
+<script defer src="/assets/cobranza-chat.js"></script>
+<script defer src="/assets/cobranza-tiempo.js"></script>
+<script defer src="/assets/cobranza-consola.js"></script>
+<script defer src="/assets/cobranza-flujo.js"></script>
+<script defer src="/assets/cobranza-calc.js"></script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/estados.js"></script>
 <script defer src="/assets/luci.js"></script>

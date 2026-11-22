@@ -57,6 +57,7 @@
   var tabs = [].slice.call(raiz.querySelectorAll('[data-cob-tab]'));
   var paneles = [].slice.call(raiz.querySelectorAll('[data-cob-panel]'));
   var actual = 'negocio';
+  var oyentes = [];
 
   function poner(id, desdeTab) {
     var d = S[id];
@@ -81,6 +82,7 @@
       p.hidden = !si;
       if (si && cambio && !reducir) { p.classList.remove('is-in'); void p.offsetWidth; p.classList.add('is-in'); }
     });
+    if (cambio) oyentes.forEach(function (fn) { try { fn(id, d); } catch (e) {} });
     if (cambio && window.gtag) { try { gtag('event', 'cobranza_sector', { sector: id, desde: desdeTab ? 'pestanas' : 'hero' }); } catch (e) {} }
   }
 
@@ -100,6 +102,60 @@
     });
   });
   poner('negocio', false);
+
+  /* API común para las funciones de la página (los bloques de abajo, cada uno en su propia función):
+     COB.S                 textos de cada sector (negocio, gimnasio, condominio, club, colegio)
+     COB.sector()          id del sector elegido; COB.datos() sus textos
+     COB.alCambiar(fn)     fn(id, datos) cada vez que el visitante cambia de sector
+     COB.reducir           true con prefers-reduced-motion (mostrar el estado final, sin animar)
+     COB.alVer(el, fn, umbral)  fn() una sola vez cuando el elemento entra en pantalla (al instante si no hay IntersectionObserver)
+     COB.teclear(el, texto, ms, listo)  escribe el texto letra por letra (al instante con reduced-motion); devuelve una función para cancelar
+     COB.tasa(fn)          fn({ rate, fecha, live }) con la tasa BCV (assets/bcv.js) cuando la haya
+     COB.bs(n) / COB.num(n, dec)  formato venezolano: "Bs 1.234,56" / "1.234,56" */
+  var fmtCache = {};
+  function num(n, dec) {
+    dec = dec == null ? 2 : dec;
+    if (!fmtCache[dec]) fmtCache[dec] = new Intl.NumberFormat('es-VE', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    return fmtCache[dec].format(n);
+  }
+  window.COB = {
+    S: S,
+    raiz: raiz,
+    reducir: reducir,
+    sector: function () { return actual; },
+    datos: function () { return S[actual]; },
+    alCambiar: function (fn) { oyentes.push(fn); },
+    alVer: function (el, fn, umbral) {
+      if (!el) return;
+      if (!('IntersectionObserver' in window)) { fn(); return; }
+      var o = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { o.disconnect(); fn(); }
+      }, { threshold: umbral == null ? 0.3 : umbral });
+      o.observe(el);
+    },
+    teclear: function (el, texto, ms, listo) {
+      var vivo = true, i = 0;
+      if (reducir) { el.textContent = texto; if (listo) listo(); return function () {}; }
+      el.textContent = '';
+      (function paso() {
+        if (!vivo) return;
+        i++;
+        el.textContent = texto.slice(0, i);
+        if (i < texto.length) setTimeout(paso, (ms || 28) + Math.random() * 30);
+        else if (listo) listo();
+      })();
+      return function () { vivo = false; };
+    },
+    tasa: function (fn) {
+      var intentos = 0;
+      (function esperar() {
+        if (window.FV_BCV) { window.FV_BCV.onChange(function (st) { if (st && st.rate) fn({ rate: st.rate, fecha: st.fecha, live: st.live }); }); return; }
+        if (++intentos < 40) setTimeout(esperar, 250);
+      })();
+    },
+    num: num,
+    bs: function (n) { return 'Bs ' + num(n, 2); }
+  };
 
   // Aparición suave al entrar en pantalla
   var ves = [].slice.call(raiz.querySelectorAll('[data-cob-ve]'));

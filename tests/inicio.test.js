@@ -221,4 +221,15 @@ ok((cobMain.match(/role="tabpanel"[^>]*tabindex="0"/g) || []).length === 5 && /A
 ok(/data-paralaje/.test(cobMain) && /cob-mesh/.test(cobMain) && /cob-vidrio/.test(cobMain) && /prefers-reduced-motion: reduce/.test(cobJs), 'cobranza: malla de degradados, vidrio y paralaje (sin paralaje con reduced-motion)');
 ok(/<script defer src="\/assets\/cobranza\.js"><\/script>/.test(cob) && /font-family:'Plus Jakarta Sans'/.test(cob), 'cobranza: carga su JS con defer y la fuente de los títulos');
 
+// Funciones dinámicas de Cobranza: cada una en su sección, con su JS (después del núcleo) y sin animar con reduced-motion
+const cobFunciones = { hero: 'data-cob-hero', panel: 'id="panel"', antes: 'id="antes-despues"', chat: 'id="como-funciona"', tiempo: 'id="linea-tiempo"', consola: 'id="pasarelas"', flujo: 'id="flujo"', calc: 'id="calculadora"' };
+Object.entries(cobFunciones).forEach(([k, marca]) => {
+  const ruta = path.join(RAIZ, `assets/cobranza-${k}.js`);
+  const js = fs.existsSync(ruta) ? fs.readFileSync(ruta, 'utf8') : '';
+  ok(cobMain.includes(marca) && js && cob.indexOf(`src="/assets/cobranza-${k}.js"`) > cob.indexOf('src="/assets/cobranza.js"') && /COB\.reducir|prefers-reduced-motion/.test(js), `cobranza: la función «${k}» tiene su sección, su JS cargado tras el núcleo y respeta reduced-motion`);
+});
+ok(cob.indexOf('src="/assets/bcv.js"') > -1 && cob.indexOf('src="/assets/bcv.js"') < cob.indexOf('src="/assets/cobranza.js"') && /window\.COB\s*=/.test(cobJs), 'cobranza: bcv.js se carga antes del núcleo y el núcleo expone window.COB');
+ok(!/<section id="linea-tiempo"[^>]*class="[^"]*cob-sec\b/.test(cobMain), 'cobranza: la línea de tiempo no usa .cob-sec (su overflow hidden rompe el sticky)');
+ok(/Ejemplo ilustrativo/.test(texto(cobMain)) && (texto(cobMain).match(/Ejemplo ilustrativo/g) || []).length >= 6, 'cobranza: las maquetas con datos de ejemplo dicen «Ejemplo ilustrativo»');
+
 console.log(`inicio: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}`);
