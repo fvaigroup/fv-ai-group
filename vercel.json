@@ -89,11 +89,6 @@
       "permanent": false
     },
     {
-      "source": "/paginas-web",
-      "destination": "/",
-      "permanent": false
-    },
-    {
       "source": "/casos",
       "destination": "/",
       "permanent": false
@@ -231,6 +226,11 @@
     {
       "source": "/precios.html",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/paginas-web",
+      "destination": "/triangular/paginas-web",
       "permanent": true
     },
     {

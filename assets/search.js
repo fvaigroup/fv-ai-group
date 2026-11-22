@@ -58,7 +58,7 @@
     { g: 'para-empezar', title: 'Plan Arranque', desc: 'Lo básico para que te encuentren, te compren por WhatsApp y sepas cuánto ganas. $39,99 al mes.', url: '/productos/plan-arranque', cat: 'Producto', kw: 'paquete pack presencia caja clara arranque' },
     { g: 'para-empezar', title: 'Mis Finanzas Claras', desc: 'Tu hoja personal de cuentas en Bs, $ y USDT, lista para copiar. $4,99.', url: '/productos/mis-finanzas-claras', cat: 'Producto', kw: 'finanzas personales hoja de cuentas' },
     { title: 'Presencia y web', desc: 'Que te encuentren en Google Maps, te escriban por WhatsApp y tengas tu web.', url: '/productos#presencia', cat: 'Producto', grupo: true },
-    { g: 'presencia', title: 'Presencia', desc: 'Tu negocio en Google Maps, WhatsApp Business y la web, siempre al día. Desde $14,99 al mes.', url: '/paginas-web', cat: 'Producto', kw: 'google maps whatsapp business catalogo web tienda online pagina web paginas web dominio qr' },
+    { g: 'presencia', title: 'Presencia', desc: 'Tu negocio en Google Maps, WhatsApp Business y la web, siempre al día. Desde $14,99 al mes.', url: '/triangular/paginas-web', cat: 'Producto', kw: 'google maps whatsapp business catalogo web tienda online pagina web paginas web dominio qr' },
     { title: 'Control y finanzas', desc: 'Cuadra tu caja y mira tus números clave en una sola pantalla.', url: '/productos#control', cat: 'Producto', grupo: true },
     { g: 'control', title: 'Caja Clara', desc: 'Cuadre de caja en Bs, $, Pago Móvil y USDT, con tasa BCV automática. Desde $14,99 al mes.', url: '/productos/caja-clara', cat: 'Producto', kw: 'caja cuadre cobros cuentas por cobrar inventario cotizador tasa bcv' },
     { g: 'control', title: 'Tablero Ejecutivo', desc: 'Un tablero con tus números clave: ventas, gastos, margen, cobros y lo más vendido. Desde $79,99 al mes.', url: '/productos/tablero-ejecutivo', cat: 'Producto', kw: 'tablero dashboard indicadores numeros clave' },
@@ -74,7 +74,7 @@
     { title: 'Términos y Condiciones', desc: 'Condiciones de uso del sitio y contratación.', url: '/terminos', cat: 'Legal' }
   ];
   // Rutas ocultas temporalmente (29 oct 2026): no salen en el buscador. Para volver a mostrar una, quítela de esta lista.
-  var OCULTAS = /^\/(servicios|productos|club|condominio|gym|paginas-web|casos|calculadora|calculadora-roi|ejecutivos)([\/#?]|$)/;
+  var OCULTAS = /^\/(servicios|productos|club|condominio|gym|casos|calculadora|calculadora-roi|ejecutivos)([\/#?]|$)/;
   SEARCH_INDEX = SEARCH_INDEX.filter(function (r) { return !OCULTAS.test(r.url); });
 
   var css = '' +

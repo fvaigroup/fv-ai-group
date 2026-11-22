@@ -30,7 +30,7 @@ function ok(cond, msg) { comprobaciones++; assert.ok(cond, msg); }
 function visible(html) { return html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' '); }
 
 // ---------- 1) Páginas de la Línea Triangular y mixtas: cada precio de producto ----------
-const MIXTAS = ['index.html', 'club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'triangular/cursos/finanzas-con-ia.html', 'contacto.html', 'nosotros.html'];
+const MIXTAS = ['index.html', 'club.html', 'condominio.html', 'gym.html', 'triangular/paginas-web.html', 'triangular/cursos/finanzas-con-ia.html', 'contacto.html', 'nosotros.html'];
 MIXTAS.forEach(f => {
   const html = leer(f);
   // atributos de precio
@@ -68,7 +68,7 @@ MIXTAS.forEach(f => {
 //  Los productos ▲ viven en sus páginas de detalle (productos/*.html) y en /paginas-web (Presencia) y /triangular/cursos/finanzas-con-ia.
 const fmt = n => '$' + n.toFixed(2).replace('.', ',');
 const ESPERADOS = {
-  'productos/plan-arranque.html': [39.99], 'paginas-web.html': [14.99, 29.99, 59.99, 99.99],
+  'productos/plan-arranque.html': [39.99], 'triangular/paginas-web.html': [14.99, 29.99, 59.99, 99.99],
   'productos/caja-clara.html': [14.99, 29.99, 39.99], 'productos/tablero-ejecutivo.html': [79.99, 149.99],
   'productos/asistente-ia.html': [119.99, 179.99], 'productos/mis-finanzas-claras.html': [4.99],
   'productos/taller-plata-clara.html': [24.99], 'triangular/cursos/finanzas-con-ia.html': [299.99]
@@ -178,7 +178,7 @@ function contenedor(html, pos) {
   while ((t = reTag.exec(html))) { if (t[1]) { prof--; if (prof === 0) { fin = t.index; break; } } else prof++; }
   return plano(html.slice(el.ini, fin).replace(/<[^>]+>/g, ' '));
 }
-const SOLO_SOFTWARE = ['club.html', 'condominio.html', 'gym.html', 'paginas-web.html'];
+const SOLO_SOFTWARE = ['club.html', 'condominio.html', 'gym.html', 'triangular/paginas-web.html'];
 let desdeRevisados = 0;
 PAGINAS.filter(f => !SOLO_SOFTWARE.includes(f)).forEach(f => {
   const html = leer(f).replace(/<script(?![^>]*application\/ld\+json)[\s\S]*?<\/script>/g, s => ' '.repeat(s.length)).replace(/<style[\s\S]*?<\/style>/g, s => ' '.repeat(s.length));
@@ -203,7 +203,7 @@ ok(desdeRevisados > 10, 'se revisaron los «desde $X» Hexagonales (' + desdeRev
 
 // ---------- 7) Páginas estáticas: sin el nombre de las líneas (solo vive en el inicio) ni el Asesor F&V ----------
 //  Los mensajes de WhatsApp llevan solo la forma: «(⬡, $270)» o «(▲, $39,99/mes)».
-const ESTATICAS = ['club.html', 'condominio.html', 'gym.html', 'paginas-web.html', 'triangular/cursos/finanzas-con-ia.html', 'ejecutivos.html', 'casos.html', 'calculadora.html', 'calculadora-roi.html',
+const ESTATICAS = ['club.html', 'condominio.html', 'gym.html', 'triangular/paginas-web.html', 'triangular/cursos/finanzas-con-ia.html', 'ejecutivos.html', 'casos.html', 'calculadora.html', 'calculadora-roi.html',
   'nosotros.html', 'contacto.html', 'privacidad.html', 'terminos.html', '404.html', 'assets/eventos.js', 'assets/calculadora.js', 'assets/producto.js', 'assets/precios-software.js'];
 const NOMBRE_LINEA = /L(?:í|i|%C3%AD)nea(?:\s|%20|\+)+(?:Hexagonal|Triangular)/i;
 const ASESOR_TRI = /Asesor(?:\s|%20|\+|&amp;|&)+F(?:&amp;|&|%26)?V|Sesi(?:ó|o|%C3%B3)n(?:\s|%20)+Clara|Pack(?:\s|%20)+Enfoque|Asesor(?:\s|%20)+(?:Mensual|Pro)\b|Refiere(?:\s|%20)+y(?:\s|%20)+gana/i;

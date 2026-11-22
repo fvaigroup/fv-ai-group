@@ -54,7 +54,7 @@
     'mis-finanzas-claras': P + 'mis-finanzas-claras',
     'aprende': P + 'taller-plata-clara',
     'taller-plata-clara': P + 'taller-plata-clara',
-    'presencia': '/paginas-web',          // solo si la página no tiene su propia categoría #presencia (ver arriba)
+    'presencia': '/triangular/paginas-web',          // solo si la página no tiene su propia categoría #presencia (ver arriba)
     'finanzas-ia-grupal': '/triangular/cursos/finanzas-con-ia',
     'finanzas-con-ia': '/triangular/cursos/finanzas-con-ia',
     'taller-chatgpt': '/productos#cursos',

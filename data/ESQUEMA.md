@@ -52,7 +52,7 @@ Reglas (las comprueba `scripts/validar-catalogo.js`):
   - `evento`: `evento` (`curso` o `taller`); precio y fechas salen de `assets/eventos.js`.
 - `detalle.modo`:
   - `generada`: `url` es `/servicios/<pagina>` o `/productos/<pagina>`; el build crea la página. `pagina` (opcional) apunta a una `paginas_compartidas` y `ancla` al id dentro de ella.
-  - `existente`: `url` es una de `paginas_existentes_como_detalle` del archivo `catalogo-base.json` (`/club`, `/paginas-web`, `/ejecutivos#programa-ejecutivo`, ...).
+  - `existente`: `url` es una de `paginas_existentes_como_detalle` del archivo `catalogo-base.json` (`/club`, `/triangular/paginas-web`, `/ejecutivos#programa-ejecutivo`, ...).
 - `wa.mensaje`: empieza con «Hola F&V», nombra el producto y lleva la forma de la línea entre paréntesis: `(⬡, $270)` o `(▲, $39,99/mes)`. Nunca el nombre de la línea.
 - En ningún texto: «Línea Hexagonal», «Línea Triangular», «Express», «Asesor F&V», «Sesión Clara», «Pack Enfoque».
 - `relacionados`: de 2 a 3 ids de la misma categoría (Hexagonal primero).

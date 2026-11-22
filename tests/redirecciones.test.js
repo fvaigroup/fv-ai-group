@@ -31,7 +31,7 @@ function archivoDe(ruta) {
 const separar = url => { const i = url.indexOf('#'); return i < 0 ? [url, ''] : [url.slice(0, i), url.slice(i + 1)]; };
 
 // ---------------------------------------------------------------- páginas ocultas
-const RUTAS_OCULTAS = ['/servicios', '/servicios/:path*', '/productos', '/productos/:path*', '/club', '/condominio', '/gym', '/paginas-web', '/casos', '/calculadora', '/calculadora-roi', '/ejecutivos'];
+const RUTAS_OCULTAS = ['/servicios', '/servicios/:path*', '/productos', '/productos/:path*', '/club', '/condominio', '/gym', '/casos', '/calculadora', '/calculadora-roi', '/ejecutivos'];
 ok(JSON.stringify(ocultas.map(r => r.source)) === JSON.stringify(RUTAS_OCULTAS), 'las páginas ocultas son las acordadas');
 ocultas.forEach(r => ok(r.destination === '/' && r.permanent === false, `${r.source}: oculta con redirección temporal a /`));
 ok(redirects.length > 0, 'siguen las redirecciones permanentes');
@@ -122,7 +122,7 @@ const EJEMPLOS = {
     'web-corporativa-crm': '/servicios/web-corporativa-crm', 'formacion-equipo': '/servicios/formacion-equipo',
     'habilitacion-equipos': '/servicios/formacion-equipo', 'evaluacion-procesos': '/servicios/diagnostico',
     'asesoria-estrategica': '/servicios/diagnostico', 'programa-ejecutivo': '/ejecutivos#programa-ejecutivo',
-    'presencia': '/paginas-web', 'acompanamiento-estandar': '/servicios/acompanamiento#estandar',
+    'presencia': '/triangular/paginas-web', 'acompanamiento-estandar': '/servicios/acompanamiento#estandar',
     'acompanamiento-prioritario': '/servicios/acompanamiento#prioritario', 'director-ia': '/servicios/acompanamiento#director-ia',
   },
   'productos': {

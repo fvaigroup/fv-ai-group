@@ -51,7 +51,7 @@ const PAGINAS = {
   'club.html': { activo: 'productos', hijo: true },
   'condominio.html': { activo: 'productos', hijo: true },
   'gym.html': { activo: 'productos', hijo: true },
-  'paginas-web.html': { activo: 'productos', hijo: true },
+  'triangular/paginas-web.html': { activo: 'triangular', hijo: true },
   'hexagonal.html': { activo: 'hexagonal' },
   'triangular.html': { activo: 'triangular' },
   'delta-app.html': { activo: 'ninguno' },

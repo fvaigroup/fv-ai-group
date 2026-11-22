@@ -226,7 +226,7 @@ const P = [
   ['¿Cuánto cuesta el asistente de WhatsApp?', 'wa', /\$119,99.*\$179,99/],
   ['¿Cuándo es el próximo taller?', 'wa', /\$24,99/],
   ['¿Cuánto cuesta el curso de Finanzas con IA?', '/triangular/cursos/finanzas-con-ia', /\$299,99/],
-  ['¿Cuánto cuesta una página web?', '/paginas-web', /\$14,99.*\$29,99.*\$59,99.*\$99,99/],
+  ['¿Cuánto cuesta una página web?', '/triangular/paginas-web', /\$14,99.*\$29,99.*\$59,99.*\$99,99/],
   ['¿Qué hace el tablero gerencial?', '/servicios#implementacion', /\$600/],
   ['¿Cuánto cuesta el soporte técnico?', '/servicios/acompanamiento', /\$200.*\$400.*\$600/],
   ['¿Cómo pago?', 'wa', /30 % de descuento/],

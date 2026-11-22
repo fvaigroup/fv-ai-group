@@ -96,7 +96,7 @@
     "/club",
     "/condominio",
     "/gym",
-    "/paginas-web",
+    "/triangular/paginas-web",
     "/triangular/cursos/finanzas-con-ia",
     "/ejecutivos#programa-ejecutivo"
   ],
@@ -1789,7 +1789,7 @@
       "product": "presencia-basico",
       "detalle": {
         "modo": "existente",
-        "url": "/paginas-web"
+        "url": "/triangular/paginas-web"
       },
       "wa": {
         "mensaje": "Hola F&V, quiero Presencia (▲, desde $14,99/mes). ¿Cómo pago?"
