@@ -22,20 +22,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Delta Logística: cuánto te deja cada viaje | F&amp;V AI Group</title>
-<meta name="description" content="Delta Logística: órdenes de viaje, gastos con foto del recibo, ganancia por viaje y por camión en dólares y cobranza de tus fletes. Próximamente.">
+<meta name="description" content="Delta Logística: órdenes de viaje, app del chofer, gastos con foto del recibo y ganancia por viaje y por camión. Para todo tipo de flota, de la pick-up a la gandola.">
 <link rel="canonical" href="https://www.fvaigroup.com/triangular/delta/logistica">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="F&V AI Group">
 <meta property="og:locale" content="es_VE">
 <meta property="og:title" content="Delta Logística: cuánto te deja cada viaje | F&amp;V AI Group">
-<meta property="og:description" content="Delta Logística: órdenes de viaje, gastos con foto del recibo, ganancia por viaje y por camión en dólares y cobranza de tus fletes. Próximamente.">
+<meta property="og:description" content="Delta Logística: órdenes de viaje, app del chofer, gastos con foto del recibo y ganancia por viaje y por camión. Para todo tipo de flota, de la pick-up a la gandola.">
 <meta property="og:url" content="https://www.fvaigroup.com/triangular/delta/logistica">
 <meta property="og:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Delta Logística: cuánto te deja cada viaje | F&amp;V AI Group">
-<meta name="twitter:description" content="Delta Logística: órdenes de viaje, gastos con foto del recibo, ganancia por viaje y por camión en dólares y cobranza de tus fletes. Próximamente.">
+<meta name="twitter:description" content="Delta Logística: órdenes de viaje, app del chofer, gastos con foto del recibo y ganancia por viaje y por camión. Para todo tipo de flota, de la pick-up a la gandola.">
 <meta name="twitter:image" content="https://www.fvaigroup.com/assets/og-image.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
@@ -48,6 +48,8 @@
 @font-face{font-family:'Geist';font-style:normal;font-weight:300 800;font-display:block;src:url(https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
 @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:block;src:url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:block;src:url(https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUn9Qx_VIKg.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:block;src:url(https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUn9TR_V.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 </style>
 <style>
   :root {
@@ -320,31 +322,822 @@
 <div id="scroll-progress"></div>
 
 
-<main id="main-content" class="linea-tri">
+<main id="main-content" class="linea-tri log" data-log>
 
-<!-- ============ PRODUCTO ============ -->
-<section class="relative pt-40 pb-24 overflow-hidden border-b border-white/5">
-  <div class="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_65%)]"></div>
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-fv-triPurple/10 rounded-full blur-[140px] pointer-events-none translate-x-1/4 -translate-y-1/3" aria-hidden="true"></div>
-  <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
-    <p class="mb-5"><span class="ins ins-tri"><span>Delta</span></span> <span class="tri-etq tri-etq-pronto">Próximamente</span></p>
-    <h1 class="font-sans text-4xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight mb-5 text-balance">Delta Logística</h1>
-    <p class="text-xl sm:text-2xl text-slate-300 leading-relaxed max-w-2xl mb-12">Cuánto te deja cada viaje.</p>
+<!-- Siluetas de las seis flotas (las usa #flota y cualquier efecto con <use href="#log-sil-…">) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="log-sil-mini" viewBox="0 0 120 48"><path d="M6 37V27c0-1.5 1-2.6 2.5-3l9-2 7-9.5c.7-1 1.8-1.5 3-1.5H44c1.7 0 3 1.3 3 3v10h64c1.1 0 2 .9 2 2v11z"/><path fill="#05070B" opacity=".55" d="M28 14.5h14v8H22z"/><circle cx="24" cy="38" r="7"/><circle cx="94" cy="38" r="7"/><circle cx="24" cy="38" r="2.6" fill="#05070B"/><circle cx="94" cy="38" r="2.6" fill="#05070B"/></symbol>
+  <symbol id="log-sil-350" viewBox="0 0 120 48"><path d="M4 37V26c0-1.4.9-2.6 2.3-2.9L14 21l5-9c.6-1.2 1.8-2 3.2-2H32v27z"/><rect x="34" y="6" width="80" height="31" rx="2"/><path fill="#05070B" opacity=".55" d="M21 14h8v7H17z"/><circle cx="20" cy="38" r="7"/><circle cx="96" cy="38" r="7"/><circle cx="20" cy="38" r="2.6" fill="#05070B"/><circle cx="96" cy="38" r="2.6" fill="#05070B"/></symbol>
+  <symbol id="log-sil-npr" viewBox="0 0 120 48"><path d="M4 37V14c0-2.2 1.8-4 4-4h20c1.7 0 3 1.3 3 3v24z"/><rect x="33" y="5" width="82" height="32" rx="2"/><path fill="#05070B" opacity=".55" d="M7 14h18v9H7z"/><circle cx="18" cy="38" r="7"/><circle cx="96" cy="38" r="7"/><circle cx="18" cy="38" r="2.6" fill="#05070B"/><circle cx="96" cy="38" r="2.6" fill="#05070B"/></symbol>
+  <symbol id="log-sil-750" viewBox="0 0 120 48"><path d="M3 38V12c0-2.2 1.8-4 4-4h19c1.7 0 3 1.3 3 3v27z"/><rect x="31" y="3" width="86" height="35" rx="2"/><path fill="#05070B" opacity=".55" d="M6 12h18v10H6z"/><circle cx="16" cy="39" r="6.5"/><circle cx="86" cy="39" r="6.5"/><circle cx="101" cy="39" r="6.5"/><circle cx="16" cy="39" r="2.4" fill="#05070B"/><circle cx="86" cy="39" r="2.4" fill="#05070B"/><circle cx="101" cy="39" r="2.4" fill="#05070B"/></symbol>
+  <symbol id="log-sil-torpedo" viewBox="0 0 120 48"><path d="M2 38V26c0-1.3.9-2.5 2.2-2.8L11 21.5l4.5-9c.6-1.2 1.8-2 3.2-2H27v27.5z"/><rect x="29" y="33" width="89" height="5"/><path d="M30 8h3v25h-3zM50 8h3v25h-3zM70 8h3v25h-3zM90 8h3v25h-3zM114 8h3v25h-3zM30 8h87v3H30zM30 19h87v3H30z"/><path fill="#05070B" opacity=".55" d="M17 14h7v7H14z"/><circle cx="14" cy="39" r="6.5"/><circle cx="86" cy="39" r="6.5"/><circle cx="101" cy="39" r="6.5"/><circle cx="14" cy="39" r="2.4" fill="#05070B"/><circle cx="86" cy="39" r="2.4" fill="#05070B"/><circle cx="101" cy="39" r="2.4" fill="#05070B"/></symbol>
+  <symbol id="log-sil-gandola" viewBox="0 0 120 48"><path d="M2 38V20c0-2 1.6-3.6 3.6-3.6H20c1.3 0 2.4 1.1 2.4 2.4V38z"/><rect x="23" y="10" width="2" height="12"/><rect x="22" y="33" width="14" height="4"/><rect x="28" y="6" width="90" height="25" rx="1.5"/><rect x="40" y="31" width="2" height="7"/><path fill="#05070B" opacity=".55" d="M5 20h13v8H5z"/><circle cx="10" cy="40" r="5"/><circle cx="26" cy="40" r="5"/><circle cx="92" cy="40" r="5"/><circle cx="103" cy="40" r="5"/><circle cx="114" cy="40" r="5"/><circle cx="10" cy="40" r="1.9" fill="#05070B"/><circle cx="26" cy="40" r="1.9" fill="#05070B"/><circle cx="92" cy="40" r="1.9" fill="#05070B"/><circle cx="103" cy="40" r="1.9" fill="#05070B"/><circle cx="114" cy="40" r="1.9" fill="#05070B"/></symbol>
+</svg>
 
-    <h2 class="font-sans text-xl sm:text-2xl font-semibold text-white mb-6 tracking-tight">Qué hace</h2>
-    <ul class="space-y-4 mb-10">
-      <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Órdenes de viaje.</li>
-      <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Gastos con foto del recibo.</li>
-      <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Ganancia por viaje y por camión, en dólares.</li>
-      <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Pagos a fleteros.</li>
-      <li class="tri-beneficio"><span class="tri-check" aria-hidden="true"></span>Cobranza de tus fletes.</li>
+<!-- ============ HERO: Delta / Logística (efecto: assets/logistica-hero.js reemplaza lo que hay entre log:hero:inicio y log:hero:fin) ============ -->
+<section id="inicio-logistica" class="log-hero" aria-labelledby="log-titulo" data-log-hero>
+  <div class="log-mesh" aria-hidden="true">
+    <span class="log-mancha log-mancha-1" data-paralaje="0.18"></span>
+    <span class="log-mancha log-mancha-2" data-paralaje="0.1"></span>
+    <span class="log-mancha log-mancha-3" data-paralaje="0.26"></span>
+    <span class="log-velo"></span>
+  </div>
+  <div class="log-caja log-hero-grid">
+    <div>
+      <p class="log-hero-marcas"><span class="ins ins-tri"><span>Delta</span></span></p>
+      <h1 id="log-titulo" class="log-h1"><span class="log-marca log-grad">Logística</span><span class="log-titular">Cuánto te deja cada viaje.</span></h1>
+      <p class="log-lead">Órdenes de viaje, la app del chofer en el teléfono, gastos con foto del recibo y la ganancia de cada viaje, camión, cliente y ruta, en dólares. Para todo tipo de flota, de la pick-up a la gandola.</p>
+      <div class="log-botones">
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20saber%20de%20Delta%20Log%C3%ADstica" target="_blank" rel="noopener" class="log-btn" data-evento="delta_logistica_whatsapp" data-cta="logistica_hero" data-product="delta-logistica">Escríbenos por WhatsApp</a>
+        <a href="#precios" class="log-link" data-evento="delta_logistica_precios">Ver los planes y precios</a>
+      </div>
+      <p class="log-nota">Respondemos el mismo día, de lunes a viernes de 9:00 a 17:00.</p>
+    </div>
+
+    <div class="log-escena" data-log-hero-escena>
+      <div data-paralaje="-0.06">
+<!-- log:hero:inicio -->
+        <div class="log-hero-esc" data-log-hero-esc aria-hidden="true">
+          <div class="log-tel log-vidrio log-hero-tel" data-log-hero-tel>
+            <div class="log-tel-cab">
+              <span class="log-ini">DL</span>
+              <div><p class="log-org">App del chofer</p><p class="log-sub">En el teléfono, sin descargar nada</p></div>
+            </div>
+            <p class="log-fila"><span>Orden de viaje</span><b data-log-hero-ruta>Origen → destino</b></p>
+            <p class="log-fila"><span>Camión</span><b data-log-hero-cam>Asignado</b></p>
+            <p class="log-fila log-hero-sinjs"><span>En cada paso</span><b>Hora, foto y ubicación</b></p>
+            <ul class="log-pasos-btn log-hero-pasos">
+              <li class="log-hero-paso" data-log-hero-paso="sali">
+                <span class="log-paso-btn is-hecho">Salí</span>
+                <span class="log-hero-det">
+                  <span class="log-hero-txt"><b class="log-hero-hora" data-log-hero-hora></b><span class="log-hero-lug"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg><span data-log-hero-lug></span></span></span>
+                  <span class="log-hero-foto"><svg viewBox="0 0 40 40" focusable="false"><rect x="5" y="20" width="13" height="13" rx="1.5" fill="rgba(5,7,11,.55)" stroke="rgba(255,255,255,.55)"/><rect x="19" y="20" width="13" height="13" rx="1.5" fill="rgba(5,7,11,.55)" stroke="rgba(255,255,255,.55)"/><rect x="12" y="7" width="13" height="13" rx="1.5" fill="rgba(5,7,11,.55)" stroke="rgba(255,255,255,.55)"/><path d="M5 35h30" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/></svg></span>
+                </span>
+              </li>
+              <li class="log-hero-paso" data-log-hero-paso="entrega">
+                <span class="log-paso-btn">Entregué</span>
+                <span class="log-hero-det">
+                  <span class="log-hero-txt"><b class="log-hero-hora" data-log-hero-hora></b><span class="log-hero-lug"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg><span data-log-hero-lug></span></span></span>
+                </span>
+                <span class="log-hero-firma" data-log-hero-firma>
+                  <svg viewBox="0 0 200 46" preserveAspectRatio="none" focusable="false"><path pathLength="1" d="M10 33c6-14 12-24 16-22s-2 22 2 23 9-17 13-17-1 16 4 16 8-21 13-21 0 19 6 19 7-12 11-12 3 9 8 9 6-14 11-14 2 11 7 11 9-8 14-8M120 38h66"/></svg>
+                  <span class="log-hero-recibe">Recibe: <b data-log-hero-recibe></b></span>
+                </span>
+              </li>
+              <li class="log-hero-paso" data-log-hero-paso="llega">
+                <span class="log-paso-btn">Llegué</span>
+                <span class="log-hero-det">
+                  <span class="log-hero-txt"><b class="log-hero-hora" data-log-hero-hora></b><span class="log-hero-lug"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg><span data-log-hero-lug></span></span></span>
+                </span>
+              </li>
+            </ul>
+            <div class="log-hero-gasto" data-log-hero-gasto>
+              <span class="log-hero-recibo"><svg viewBox="0 0 28 36" focusable="false"><path d="M3 2h22v31l-3.7-2.4-3.6 2.4-3.7-2.4-3.7 2.4-3.6-2.4L3 33z" fill="#e9d5ff"/><path d="M7 9h14M7 14h10M7 19h12M7 25h7" stroke="#6b21a8" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="log-hero-gasto-t"><b data-log-hero-gasto-t></b><small>Gasto con foto del recibo</small></span>
+              <b class="log-hero-monto" data-log-hero-monto></b>
+            </div>
+          </div>
+          <div class="log-hero-via" data-paralaje="0.05">
+            <span class="log-hero-asfalto"><span class="log-hero-lineas"></span></span>
+            <span class="log-hero-camion" data-log-hero-camion>
+              <span class="log-hero-estela"><i></i><i></i><i></i></span>
+              <svg class="log-sil" viewBox="0 0 120 48" focusable="false"><use href="#log-sil-350"/></svg>
+            </span>
+          </div>
+        </div>
+<!-- log:hero:fin -->
+      </div>
+      <p class="log-aviso-ej">Ejemplo ilustrativo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LO ESENCIAL (cifras verdaderas que cuentan al verse; las cuenta el núcleo con [data-log-cuenta]) ============ -->
+<section id="esencial" class="log-sec log-sec-alt" aria-labelledby="log-esencial-t">
+  <div class="log-caja">
+    <h2 id="log-esencial-t" class="sr-only">Lo esencial de Logística</h2>
+    <ul class="log-grid log-grid-4">
+      <li class="log-tarjeta log-vidrio" data-log-ve>
+        <p class="log-cifra"><span class="log-cifra-n log-grad" data-log-cuenta="6" aria-hidden="true">6</span><span class="log-cifra-u" aria-hidden="true">tipos de flota</span><span class="sr-only">6 tipos de flota</span></p>
+        <p>De la pick-up a la gandola, y más.</p>
+      </li>
+      <li class="log-tarjeta log-vidrio" data-log-ve>
+        <p class="log-cifra"><span class="log-cifra-n log-grad" data-log-cuenta="42" aria-hidden="true">42</span><span class="log-cifra-u" aria-hidden="true">funciones</span><span class="sr-only">42 funciones</span></p>
+        <p>Del despacho a la cobranza del flete.</p>
+      </li>
+      <li class="log-tarjeta log-vidrio" data-log-ve>
+        <p class="log-cifra"><span class="log-cifra-n log-grad" data-log-cuenta="3" aria-hidden="true">3</span><span class="log-cifra-u" aria-hidden="true">planes</span><span class="sr-only">3 planes</span></p>
+        <p>Básico, Intermedio y Avanzado. Sin contrato.</p>
+      </li>
+      <li class="log-tarjeta log-vidrio" data-log-ve>
+        <p class="log-cifra"><span class="log-cifra-n log-grad" aria-hidden="true">∞</span><span class="log-cifra-u" aria-hidden="true">choferes</span><span class="sr-only">Choferes ilimitados</span></p>
+        <p>Choferes ilimitados en todos los planes.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FLOTA: selector accesible (radiogroup con flechas; el núcleo cambia LOG.flota() y avisa con LOG.alCambiar / evento «log:flota») ============ -->
+<section id="flota" class="log-sec scroll-mt-28" aria-labelledby="log-flota-t">
+  <div class="log-mesh log-mesh-suave" aria-hidden="true"><span class="log-mancha log-mancha-2" data-paralaje="0.14"></span></div>
+  <div class="log-caja">
+    <p class="log-etq">Tu flota</p>
+    <h2 id="log-flota-t" class="log-h2">Sirve para <span class="log-grad">todos los tipos de flota.</span></h2>
+    <p class="log-intro" id="log-flota-d">Cada camión con su placa, tipo, capacidad y año, si es propio o de un fletero, y su estado: activo, en taller o parado. Elige el tuyo.</p>
+    <ul class="log-flotas" data-log-flotas aria-label="Tipos de flota" aria-describedby="log-flota-d">
+      <li><button type="button" class="log-flota-btn" data-log-flota="mini"><svg class="log-sil" viewBox="0 0 120 48" aria-hidden="true" focusable="false"><use href="#log-sil-mini"/></svg><span>Mini Truck / <span class="whitespace-nowrap">Pick-up</span></span></button></li>
+      <li><button type="button" class="log-flota-btn" data-log-flota="350"><svg class="log-sil" viewBox="0 0 120 48" aria-hidden="true" focusable="false"><use href="#log-sil-350"/></svg><span>Camión 350</span></button></li>
+      <li><button type="button" class="log-flota-btn" data-log-flota="npr"><svg class="log-sil" viewBox="0 0 120 48" aria-hidden="true" focusable="false"><use href="#log-sil-npr"/></svg><span>NPR / Canter</span></button></li>
+      <li><button type="button" class="log-flota-btn" data-log-flota="750"><svg class="log-sil" viewBox="0 0 120 48" aria-hidden="true" focusable="false"><use href="#log-sil-750"/></svg><span>Camión 750 / 600</span></button></li>
+      <li><button type="button" class="log-flota-btn" data-log-flota="torpedo"><svg class="log-sil" viewBox="0 0 120 48" aria-hidden="true" focusable="false"><use href="#log-sil-torpedo"/></svg><span>Torpedo / <span class="whitespace-nowrap">12 Toneladas</span></span></button></li>
+      <li><button type="button" class="log-flota-btn" data-log-flota="gandola"><svg class="log-sil" viewBox="0 0 120 48" aria-hidden="true" focusable="false"><use href="#log-sil-gandola"/></svg><span>Gandola <span class="whitespace-nowrap">(Chuto + Remolque)</span></span></button></li>
+    </ul>
+    <p class="log-flota-mas">…y más: si se mueve con chofer y carga, entra en Logística.</p>
+    <div class="log-flota-escena log-vidrio" data-log-flota-escena aria-live="polite">
+      <svg class="log-sil" data-log-flota-sil viewBox="0 0 120 48" aria-hidden="true" focusable="false"><use href="#log-sil-350"/></svg>
+      <div>
+        <p class="log-flota-nombre" data-log-flota-nombre>Camión 350</p>
+        <p data-log-flota-texto>Registras cada unidad con su placa, tipo, capacidad y año; le asignas chofer y ayudante, y ves sus viajes y sus gastos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANTES Y DESPUÉS (efecto: assets/logistica-antes.js) ============ -->
+<section id="antes-despues" class="log-sec log-sec-alt scroll-mt-28" aria-labelledby="log-antes-t">
+  <div class="log-mesh log-mesh-suave" aria-hidden="true">
+    <span class="log-mancha log-mancha-1" data-paralaje="0.12"></span>
+    <span class="log-mancha log-mancha-3" data-paralaje="0.2"></span>
+  </div>
+  <div class="log-caja">
+    <p class="log-etq">Antes y después</p>
+    <h2 id="log-antes-t" class="log-h2">Se acaba el <span class="log-grad">«¿ya saliste?»</span> por WhatsApp.</h2>
+    <p class="log-intro">Así se lleva hoy una flota a punta de mensajes, fotos sueltas y recibos en papel, y así se ve el mismo viaje con Logística.</p>
+<!-- log:antes:inicio -->
+    <div class="log-dos" id="log-antes-desc" data-log-antes>
+      <div class="log-tarjeta log-vidrio" data-log-ve>
+        <p class="log-caja-t">Antes</p>
+        <ul class="log-lista log-mal">
+          <li>Preguntarle al chofer por WhatsApp si ya salió, si ya entregó, si ya llegó.</li>
+          <li>Las fotos de la carga y de la nota de entrega, perdidas en el chat.</li>
+          <li>Los gastos del viaje en recibos de papel que llegan días después, o no llegan.</li>
+          <li>No saber cuánto dejó de verdad cada viaje, cada camión ni cada cliente.</li>
+        </ul>
+      </div>
+      <div class="log-tarjeta log-vidrio" data-log-ve>
+        <p class="log-caja-t">Con Logística</p>
+        <ul class="log-lista log-bien">
+          <li>El chofer toca «Salí», «Entregué» y «Llegué»: queda la hora exacta de cada paso.</li>
+          <li>Las fotos quedan unidas al viaje sin que nadie las ordene.</li>
+          <li>Los gastos se cargan desde la vía, con foto del recibo y en el momento.</li>
+          <li>La ganancia de cada viaje: la tarifa menos combustible, peajes, viáticos y pago al fletero.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="log-antes-env" data-log-antes-env hidden>
+      <div class="log-antes-marco log-vidrio" data-log-antes-marco>
+        <input type="range" class="log-antes-rango" min="0" max="100" step="1" value="50" aria-label="Comparar antes y con Logística" aria-describedby="log-antes-desc" aria-valuetext="Se ve 50 % de antes y 50 % con Logística" data-log-antes-rango>
+
+        <!-- Capa de abajo: con Logística (tablero ordenado). Las cifras las escribe assets/logistica-antes.js -->
+        <div class="log-antes-capa log-antes-despues" aria-hidden="true">
+          <p class="log-antes-etq log-antes-etq-d">Con Logística</p>
+          <div class="log-antes-cab">
+            <span class="log-antes-ini">TT</span>
+            <div><p class="log-antes-org">Tu Transporte</p><p class="log-antes-sub">Tablero de viajes · <span data-log-antes-flota>Camión 350</span></p></div>
+          </div>
+          <ul class="log-antes-estados">
+            <li><small>Programado</small><b data-log-antes-m="c0"></b></li>
+            <li><small>En ruta</small><b data-log-antes-m="c1"></b></li>
+            <li><small>Entregado</small><b data-log-antes-m="c2"></b></li>
+            <li class="log-antes-cobrado"><small>Cobrado</small><b data-log-antes-m="c3"></b></li>
+          </ul>
+          <div class="log-antes-cuerpo">
+            <ul class="log-antes-viajes">
+              <li><span class="log-antes-silv" data-log-antes-sil></span><span class="log-antes-ruta"><b>Valencia → Caracas</b><small>Salí 6:42 · Entregué 10:15</small></span><span class="log-antes-pill log-antes-pill-ok">Entregado</span></li>
+              <li><span class="log-antes-silv" data-log-antes-sil></span><span class="log-antes-ruta"><b>Maracay → Barquisimeto</b><small>Salí 8:05 · foto de la carga</small></span><span class="log-antes-pill log-antes-pill-ruta">En ruta</span></li>
+              <li><span class="log-antes-silv" data-log-antes-sil></span><span class="log-antes-ruta"><b>Puerto Cabello → Valencia</b><small>Mañana 5:30</small></span><span class="log-antes-pill">Programado</span></li>
+            </ul>
+            <div class="log-antes-gan">
+              <p class="log-antes-gan-t">Valencia → Caracas</p>
+              <ul class="log-antes-gastos">
+                <li><span>Tarifa</span><b data-log-antes-m="tarifa"></b></li>
+                <li><span>Combustible <i class="log-antes-foto">foto</i></span><b data-log-antes-m="comb"></b></li>
+                <li><span>Peajes <i class="log-antes-foto">foto</i></span><b data-log-antes-m="peaje"></b></li>
+                <li><span>Viáticos <i class="log-antes-foto">foto</i></span><b data-log-antes-m="viat"></b></li>
+              </ul>
+              <p class="log-antes-res"><span>Ganancia del viaje</span><b data-log-antes-gan></b></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Capa de arriba: antes (caos), recortada con clip-path hasta la barra -->
+        <div class="log-antes-capa log-antes-caos" aria-hidden="true">
+          <p class="log-antes-etq log-antes-etq-a">Antes</p>
+          <div class="log-antes-chat">
+            <p class="log-antes-chat-cab"><b>Choferes</b><span class="log-antes-sinleer" data-log-antes-m="sinleer"></span></p>
+            <p class="log-antes-burbuja log-antes-sale">¿ya saliste?<small>6:15</small></p>
+            <p class="log-antes-burbuja">ya voy<small>7:02</small></p>
+            <p class="log-antes-burbuja log-antes-sale">¿dónde vas?<small>9:30</small></p>
+            <p class="log-antes-burbuja log-antes-sale">mándame la foto del recibo<small>11:48</small></p>
+            <p class="log-antes-burbuja log-antes-escribe"><span></span><span></span><span></span></p>
+          </div>
+          <div class="log-antes-cuaderno">
+            <p class="log-antes-cuad-t">Viajes de la semana</p>
+            <p>Valencia–Ccs <s data-log-antes-m="n1a"></s> <span data-log-antes-m="n1b"></span></p>
+            <p>gasoil <s data-log-antes-m="n2a"></s> <span data-log-antes-m="n2b"></span> ¿?</p>
+            <p>peaje <span data-log-antes-m="n3"></span></p>
+            <p>¿le pagué al fletero?</p>
+            <p class="log-antes-cuad-tot">queda: <s data-log-antes-m="n4a"></s> <span data-log-antes-m="n4b"></span></p>
+          </div>
+          <div class="log-antes-recibo log-antes-recibo-1"><b>PEAJE</b><i></i><span data-log-antes-m="r1"></span></div>
+          <div class="log-antes-recibo log-antes-recibo-2"><b>GASOIL</b><i></i><i></i><span data-log-antes-m="r2"></span></div>
+          <div class="log-antes-recibo log-antes-recibo-3"><b>COMIDA</b><i></i><span>ilegible</span></div>
+          <p class="log-antes-nota">¿cuánto dejó ese viaje?</p>
+        </div>
+
+        <!-- Barra y perilla (decorativas: el control real es el input de arriba) -->
+        <div class="log-antes-mango" aria-hidden="true">
+          <span class="log-antes-linea"></span>
+          <span class="log-antes-perilla"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        </div>
+      </div>
+      <p class="log-antes-ayuda">Arrastra la barra, toca un lado o usa las flechas del teclado.</p>
+    </div>
+<!-- log:antes:fin -->
+    <p class="log-aviso-ej">Ejemplo ilustrativo.</p>
+  </div>
+</section>
+
+<!-- ============ TABLERO DE VIAJES (efecto: assets/logistica-tablero.js) ============ -->
+<section id="tablero" class="log-sec scroll-mt-28" aria-labelledby="log-tablero-t">
+  <div class="log-mesh log-mesh-suave" aria-hidden="true"><span class="log-mancha log-mancha-2" data-paralaje="0.15"></span></div>
+  <div class="log-caja">
+    <p class="log-etq">Tablero de viajes</p>
+    <h2 id="log-tablero-t" class="log-h2">Todos tus viajes, <span class="log-grad">de un vistazo.</span></h2>
+    <p class="log-intro">Cada orden de viaje lleva origen, destino, cliente, carga, fecha, camión, chofer y tarifa, en dólares o en bolívares a la tasa BCV del día. En el tablero ves por columnas qué falta.</p>
+<!-- log:tablero:inicio -->
+    <ol class="log-cols" data-log-tablero>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">Programado</p><p>El viaje ya tiene camión, chofer y tarifa.</p></li>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">En ruta</p><p>El chofer tocó «Salí» y salió con la carga.</p></li>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">Entregado</p><p>Con la prueba de entrega: quién recibió, foto y firma.</p></li>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">Cobrado</p><p>El flete ya se le cobró al cliente.</p></li>
+    </ol>
+    <div class="log-tablero log-vidrio" data-log-tablero-maqueta aria-hidden="true" hidden></div>
+<!-- log:tablero:fin -->
+    <p class="log-aviso-ej">Ejemplo ilustrativo.</p>
+  </div>
+</section>
+
+<!-- ============ EL VIAJE, PASO A PASO (efecto: assets/logistica-viaje.js). SIN overflow hidden ni .log-sec: puede usar sticky ============ -->
+<section id="viaje" class="log-sec-libre log-sec-alt scroll-mt-28" aria-labelledby="log-viaje-t">
+  <div class="log-caja">
+    <p class="log-etq">App del chofer</p>
+    <h2 id="log-viaje-t" class="log-h2">El viaje, paso a paso, <span class="log-grad">desde el teléfono del chofer.</span></h2>
+    <p class="log-intro">En el teléfono, sin descargar nada. Cada chofer recibe una invitación y entra con Google o con un código por correo.</p>
+<!-- log:viaje:inicio -->
+    <div class="log-viaje" data-log-viaje>
+      <ol class="log-viaje-pasos">
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">1</span>
+            <div>
+              <p class="log-viaje-quien">Oficina <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span></p>
+              <h3>Orden de viaje</h3>
+              <p>Origen, destino, cliente, carga, fecha, camión, chofer y tarifa, en dólares o en bolívares a la tasa BCV del día.</p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>Nueva orden de viaje</span><em>Ejemplo ilustrativo</em></p>
+              <div class="log-viaje-ruta"><b>Valencia</b><i></i><b>Barquisimeto</b></div>
+              <p class="log-viaje-f"><span>Cliente</span><b>Comercial Ejemplo</b></p>
+              <p class="log-viaje-f"><span>Carga</span><b>Víveres en paletas</b></p>
+              <p class="log-viaje-f"><span>Camión</span><b data-viaje-flota>Camión 350</b></p>
+              <p class="log-viaje-f"><span>Chofer</span><b>José R.</b></p>
+              <p class="log-viaje-f log-viaje-f-dest"><span>Tarifa</span><b data-v="tarifa" data-cuenta></b></p>
+              <span class="log-viaje-sil" data-viaje-sil></span>
+            </div>
+          </div>
+        </li>
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">2</span>
+            <div>
+              <p class="log-viaje-quien">Oficina <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span></p>
+              <h3>Orden de despacho en PDF</h3>
+              <p>Una hoja con los datos del viaje y el logo de tu empresa, para el chofer. No reemplaza las guías oficiales de movilización.</p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>Orden de despacho</span><em>Ejemplo ilustrativo</em></p>
+              <div class="log-viaje-hoja">
+                <div class="log-viaje-hoja-cab"><b>Orden de despacho</b><span class="log-viaje-pdf">PDF</span></div>
+                <p class="log-viaje-f"><span>Ruta</span><b>Valencia → Barquisimeto</b></p>
+                <p class="log-viaje-f"><span>Camión</span><b data-viaje-flota>Camión 350</b></p>
+                <p class="log-viaje-f"><span>Chofer</span><b>José R.</b></p>
+                <i class="log-viaje-raya"></i><i class="log-viaje-raya log-viaje-raya-c"></i>
+              </div>
+              <p class="log-viaje-estado"><span class="log-viaje-e1">Enviando al chofer…</span><span class="log-viaje-e2">Enviada al teléfono del chofer</span></p>
+            </div>
+          </div>
+        </li>
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">3</span>
+            <div>
+              <p class="log-viaje-quien">Chofer <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span></p>
+              <h3>«Salí», con foto y ubicación</h3>
+              <p>Queda la hora exacta, la foto de la carga al salir y dónde estaba el camión. Se acaba el «¿ya saliste?» por WhatsApp.</p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>App del chofer</span><em>Ejemplo ilustrativo</em></p>
+              <div class="log-viaje-foto"><span class="log-viaje-sil" data-viaje-sil></span><small>Foto de la carga</small></div>
+              <p class="log-viaje-f"><span>Hora</span><b data-v="hora1"></b></p>
+              <p class="log-viaje-f"><span>Ubicación</span><b class="log-viaje-pin">Guardada</b></p>
+              <span class="log-viaje-btn log-viaje-pulsa">Salí</span>
+            </div>
+          </div>
+        </li>
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">4</span>
+            <div>
+              <p class="log-viaje-quien">Chofer y oficina <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span></p>
+              <h3>Gastos desde la vía</h3>
+              <p>Combustible, peajes, comida o reparaciones, con foto del recibo y en el momento.</p>
+              <p class="log-viaje-extra"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span> <span><b>Lectura del recibo con IA</b> <span class="log-tag">En desarrollo</span><span class="log-viaje-extra-d">El chofer toma la foto y la IA llena el monto, la fecha y el tipo de gasto. La IA propone y la oficina confirma.</span></span></p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>Nuevo gasto</span><em>Ejemplo ilustrativo</em></p>
+              <div class="log-viaje-recibo"><i></i><i></i><i></i><i class="log-viaje-raya-c"></i><i></i><span class="log-viaje-escan"></span></div>
+              <p class="log-viaje-ia">La IA propone</p>
+              <p class="log-viaje-f log-viaje-ia-f"><span>Tipo</span><b>Combustible</b></p>
+              <p class="log-viaje-f log-viaje-ia-f"><span>Fecha</span><b data-v="fecha"></b></p>
+              <p class="log-viaje-f log-viaje-ia-f"><span>Monto</span><b data-v="comb"></b></p>
+              <p class="log-viaje-estado"><span class="log-viaje-e1">Esperando a la oficina…</span><span class="log-viaje-e2">Confirmado por la oficina</span></p>
+            </div>
+          </div>
+        </li>
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">5</span>
+            <div>
+              <p class="log-viaje-quien">Chofer <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span></p>
+              <h3>«Entregué», con prueba de entrega</h3>
+              <p>Nombre de quien recibe, foto de la nota firmada y firma con el dedo en la pantalla.</p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>Prueba de entrega</span><em>Ejemplo ilustrativo</em></p>
+              <p class="log-viaje-f"><span>Recibe</span><b>María G.</b></p>
+              <p class="log-viaje-f"><span>Nota firmada</span><b class="log-viaje-ok">Foto adjunta</b></p>
+              <div class="log-viaje-firma">
+                <svg viewBox="0 0 220 70" focusable="false"><path pathLength="1" d="M10 50c14-30 22-38 28-26s-6 30 4 24 16-34 26-30-4 28 6 26 14-20 22-18 2 16 10 14 12-12 20-10 8 10 16 8 14-8 22-8 14 4 22 2"/></svg>
+                <small>Firma con el dedo</small>
+              </div>
+              <span class="log-viaje-btn log-viaje-pulsa">Entregué</span>
+            </div>
+          </div>
+        </li>
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">6</span>
+            <div>
+              <p class="log-viaje-quien">Chofer <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span></p>
+              <h3>«Llegué»</h3>
+              <p>El viaje se cierra con su hora y su ubicación, y en el tablero de viajes queda como entregado.</p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>App del chofer</span><em>Ejemplo ilustrativo</em></p>
+              <ul class="log-viaje-hitos">
+                <li><span>Salí</span><b data-v="hora1"></b></li>
+                <li><span>Entregué</span><b data-v="hora2"></b></li>
+                <li><span>Llegué</span><b data-v="hora3"></b></li>
+              </ul>
+              <p class="log-viaje-f"><span>Ubicación</span><b class="log-viaje-pin">Guardada</b></p>
+              <span class="log-viaje-btn log-viaje-pulsa">Llegué</span>
+              <p class="log-viaje-estado"><span class="log-viaje-e1">Cerrando el viaje…</span><span class="log-viaje-e2">Viaje cerrado · entregado</span></p>
+            </div>
+          </div>
+        </li>
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">7</span>
+            <div>
+              <p class="log-viaje-quien">Oficina <span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span></p>
+              <h3>Cobro del flete</h3>
+              <p>Qué se facturó, qué se cobró, qué falta por cobrar y qué está vencido, cliente por cliente. El estado de cuenta sale en PDF o enlace y se manda por WhatsApp con un clic.</p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>Cobranza de fletes</span><em>Ejemplo ilustrativo</em></p>
+              <p class="log-viaje-f"><span>Cliente</span><b>Comercial Ejemplo</b></p>
+              <p class="log-viaje-f"><span>Viaje</span><b>Valencia → Barquisimeto</b></p>
+              <p class="log-viaje-f log-viaje-f-dest"><span>Flete</span><b data-v="tarifa"></b></p>
+              <p class="log-viaje-f log-viaje-f-bs" data-viaje-bs hidden><span>En bolívares, tasa BCV del día</span><b data-v="bs"></b></p>
+              <p class="log-viaje-sello"><span class="log-viaje-e1">Por cobrar</span><span class="log-viaje-e2">Cobrado</span></p>
+              <p class="log-viaje-wa">Estado de cuenta enviado por WhatsApp</p>
+            </div>
+          </div>
+        </li>
+        <li class="log-viaje-paso">
+          <div class="log-viaje-txt log-vidrio" data-log-ve>
+            <span class="log-viaje-n" aria-hidden="true">8</span>
+            <div>
+              <p class="log-viaje-quien">Oficina <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span></p>
+              <h3>Ganancia del viaje</h3>
+              <p>La tarifa menos combustible, peajes, viáticos y pago al fletero. El número que casi ningún transportista tiene claro.</p>
+            </div>
+          </div>
+          <div class="log-viaje-pant" aria-hidden="true">
+            <div class="log-viaje-app">
+              <p class="log-viaje-app-cab"><span>Ganancia del viaje</span><em>Ejemplo ilustrativo</em></p>
+              <p class="log-viaje-f"><span>Tarifa</span><b data-v="tarifa"></b></p>
+              <p class="log-viaje-f log-viaje-resta"><span>Combustible</span><b data-v="comb" data-menos></b></p>
+              <p class="log-viaje-f log-viaje-resta"><span>Peajes</span><b data-v="peaje" data-menos></b></p>
+              <p class="log-viaje-f log-viaje-resta"><span>Viáticos</span><b data-v="viat" data-menos></b></p>
+              <p class="log-viaje-f log-viaje-resta"><span>Pago al fletero (camión propio)</span><b data-v="flet" data-menos></b></p>
+              <p class="log-viaje-gan"><span>Ganancia del viaje</span><b data-v="gan" data-cuenta></b></p>
+            </div>
+          </div>
+        </li>
+      </ol>
+      <div class="log-viaje-lado" aria-hidden="true">
+        <div class="log-viaje-tel log-vidrio">
+          <div class="log-viaje-tel-cab"><span class="log-ini">FV</span><div><p class="log-org">Delta Logística</p><p class="log-sub" data-viaje-paso-txt>Paso 1 de 8</p></div></div>
+          <div class="log-viaje-capas" data-viaje-capas></div>
+          <ol class="log-viaje-prog" data-viaje-prog><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+        </div>
+      </div>
+    </div>
+<!-- log:viaje:fin -->
+  </div>
+</section>
+
+<!-- ============ LA RUTA (efecto: assets/logistica-ruta.js) ============ -->
+<section id="ruta" class="log-sec scroll-mt-28" aria-labelledby="log-ruta-t">
+  <div class="log-mesh log-mesh-suave" aria-hidden="true"><span class="log-mancha log-mancha-1" data-paralaje="0.2"></span><span class="log-mancha log-mancha-3" data-paralaje="0.12"></span></div>
+  <div class="log-caja">
+    <p class="log-etq">La ruta</p>
+    <h2 id="log-ruta-t" class="log-h2">Dónde estaba el camión <span class="log-grad">en cada paso.</span></h2>
+    <p class="log-intro">Al tocar el botón se guarda dónde estaba el camión al salir, al entregar y al llegar. No es rastreo continuo. Y si no hay señal en la carretera, las fotos y los botones se guardan en el teléfono y se suben solos al volver la cobertura.</p>
+<!-- log:ruta:inicio -->
+    <ol class="log-cols" data-log-ruta>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">Salida</p><p>Hora, ubicación y foto de la carga.</p></li>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">Entrega</p><p>Hora, ubicación y nota de entrega firmada.</p></li>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">Llegada</p><p>Hora y ubicación al llegar.</p></li>
+      <li class="log-col log-vidrio" data-log-ve><p class="log-col-t">Para tu cliente <span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span></p><p>Un enlace de seguimiento con el estado del viaje, la hora de salida y la foto de la entrega.</p></li>
+    </ol>
+    <ul class="log-ruta-claves">
+      <li class="log-ruta-clave log-vidrio" data-log-ve>
+        <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span>
+        <div><h3 class="log-ruta-clave-t">Ubicación en cada paso, no rastreo continuo</h3><p>La ubicación se guarda solo cuando el chofer toca «Salí», «Entregué» o «Llegué». Entre un paso y otro, la app no sigue al camión.</p></div>
+      </li>
+      <li class="log-ruta-clave log-vidrio" data-log-ve>
+        <span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span>
+        <div><h3 class="log-ruta-clave-t">Funciona sin señal</h3><p>Si no hay cobertura en la carretera, las fotos y los botones se guardan en el teléfono y se suben solos al volver la señal.</p><span class="log-tag">En desarrollo</span></div>
+      </li>
+      <li class="log-ruta-clave log-vidrio" data-log-ve>
+        <span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span>
+        <div><h3 class="log-ruta-clave-t">¿Tu camión ya tiene GPS?</h3><p>Con el plan Avanzado se puede conectar el GPS que ya tiene el camión: la posición y los kilómetros reales del equipo de RSI Global u otro proveedor, dentro de Logística.</p><span class="log-nota-ext">Según tu proveedor de GPS.</span></div>
+      </li>
+    </ul>
+    <div class="log-ruta log-vidrio" data-log-ruta-maqueta aria-hidden="true" hidden></div>
+<!-- log:ruta:fin -->
+    <p class="log-aviso-ej">Ejemplo ilustrativo.</p>
+  </div>
+</section>
+
+<!-- ============ GANANCIA POR VIAJE (efecto: assets/logistica-ganancia.js; los montos de ejemplo solo los escribe el JS) ============ -->
+<section id="ganancia" class="log-sec log-sec-alt scroll-mt-28" aria-labelledby="log-ganancia-t">
+  <div class="log-mesh log-mesh-suave" aria-hidden="true"><span class="log-mancha log-mancha-2" data-paralaje="0.12"></span><span class="log-mancha log-mancha-3" data-paralaje="0.2"></span></div>
+  <div class="log-caja">
+    <p class="log-etq">Ganancia por viaje</p>
+    <h2 id="log-ganancia-t" class="log-h2">El número que casi ningún transportista <span class="log-grad">tiene claro.</span></h2>
+    <p class="log-intro">La tarifa menos combustible, peajes, viáticos y pago al fletero. Viaje por viaje, en dólares.</p>
+<!-- log:ganancia:inicio -->
+    <div class="log-ganancia" data-log-ganancia>
+      <ul class="log-formula log-ganancia-formula" aria-label="Ganancia del viaje: tarifa menos combustible, peajes, viáticos y pago al fletero" data-log-ve>
+        <li>Tarifa</li><li class="log-op" aria-hidden="true">−</li>
+        <li>Combustible</li><li class="log-op" aria-hidden="true">−</li>
+        <li>Peajes</li><li class="log-op" aria-hidden="true">−</li>
+        <li>Viáticos</li><li class="log-op" aria-hidden="true">−</li>
+        <li>Pago al fletero</li><li class="log-op" aria-hidden="true">=</li>
+        <li class="log-res">Ganancia del viaje</li>
+      </ul>
+      <div class="log-ganancia-app" data-log-ganancia-app hidden>
+        <div class="log-ganancia-izq">
+          <p class="log-ganancia-etq" id="log-ganancia-viajes-t">Elige un viaje de ejemplo</p>
+          <div class="log-ganancia-viajes" role="group" aria-labelledby="log-ganancia-viajes-t" data-log-ganancia-viajes></div>
+          <div class="log-ganancia-ficha log-vidrio" data-log-ganancia-ficha aria-hidden="true"></div>
+          <p class="log-ganancia-planes"><span class="log-ganancia-pl"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span> Ganancia por viaje</span> <span class="log-ganancia-pl"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span> Reporte de devaluación</span></p>
+        </div>
+        <figure class="log-ganancia-con" aria-hidden="true">
+          <div class="log-ganancia-win">
+            <div class="log-ganancia-barra"><span class="log-ganancia-puntos"><i></i><i></i><i></i></span><span class="log-ganancia-tit">logística — ganancia del viaje</span><em class="log-ganancia-ej">Ejemplo ilustrativo</em></div>
+            <div class="log-ganancia-cuerpo" data-log-ganancia-cuerpo></div>
+          </div>
+        </figure>
+        <p class="sr-only" aria-live="polite" data-log-ganancia-sr></p>
+      </div>
+    </div>
+<!-- log:ganancia:fin -->
+  </div>
+</section>
+
+<!-- ============ TU PANEL (efecto: assets/logistica-panel.js; los montos de ejemplo solo los escribe el JS) ============ -->
+<section id="panel" class="log-sec scroll-mt-28" aria-labelledby="log-panel-t">
+  <div class="log-mesh log-mesh-suave" aria-hidden="true"><span class="log-mancha log-mancha-2" data-paralaje="0.12"></span><span class="log-mancha log-mancha-1" data-paralaje="0.2"></span></div>
+  <div class="log-caja">
+    <p class="log-etq">Tu panel</p>
+    <h2 id="log-panel-t" class="log-h2">Qué camión deja más. <span class="log-grad">Qué ruta no conviene.</span></h2>
+    <p class="log-intro">Ganancia por camión, cliente y ruta, con un reporte mensual; qué se facturó, qué se cobró y qué está vencido, cliente por cliente; y aviso antes de que venzan los documentos o toque el mantenimiento.</p>
+<!-- log:panel:inicio -->
+    <ul class="log-grid log-grid-2" data-log-panel>
+      <li class="log-tarjeta log-vidrio" data-log-ve><h3 class="log-tarjeta-h"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span>Ganancia por camión, cliente y ruta</h3><p>Qué camión deja más, qué cliente paga mejor y qué ruta no conviene, con un reporte mensual.</p></li>
+      <li class="log-tarjeta log-vidrio" data-log-ve><h3 class="log-tarjeta-h"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span>Cobranza de fletes</h3><p>Facturado, cobrado, por cobrar y vencido, cliente por cliente.</p></li>
+      <li class="log-tarjeta log-vidrio" data-log-ve><h3 class="log-tarjeta-h">Costo por kilómetro y combustible</h3><p class="log-tarjeta-fn"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><span><b>Costo por kilómetro:</b> cuánto cuesta mover cada camión un kilómetro.</span></p><p class="log-tarjeta-fn"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><span><b>Control de combustible:</b> una alerta si uno gasta mucho más que los demás en la misma ruta. Es una estimación, no un sensor.</span></p></li>
+      <li class="log-tarjeta log-vidrio" data-log-ve><h3 class="log-tarjeta-h"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span>Avisos a tiempo</h3><p>Póliza RCV, revisión, permisos de carga, licencia y certificado médico del chofer; y el aceite, los filtros, los frenos o los cauchos según los kilómetros o la fecha.</p></li>
+    </ul>
+    <div class="log-panel log-vidrio" data-log-panel-maqueta hidden></div>
+<!-- log:panel:fin -->
+    <p class="log-aviso-ej">Ejemplo ilustrativo.</p>
+  </div>
+</section>
+
+<!-- ============ FUNCIONES: toda la lista, con el plan de cada una (B = Básico, I = Intermedio, A = Avanzado; cada plan incluye lo del anterior) ============ -->
+<section id="funciones" class="log-sec log-sec-alt scroll-mt-28" aria-labelledby="log-funciones-t">
+  <div class="log-caja">
+    <p class="log-etq">Todo lo que hace</p>
+    <h2 id="log-funciones-t" class="log-h2">Cada función, <span class="log-grad">con su plan.</span></h2>
+    <p class="log-leyenda" id="log-leyenda"><span><span class="log-plan" data-p="B" aria-hidden="true">B</span> = Básico</span> · <span><span class="log-plan" data-p="I" aria-hidden="true">I</span> = Intermedio</span> · <span><span class="log-plan" data-p="A" aria-hidden="true">A</span> = Avanzado.</span> Cada plan incluye lo del anterior.</p>
+<!-- log:planes:inicio -->
+    <div class="log-planes-ctl" data-log-planes></div>
+<!-- log:planes:fin -->
+    <div class="log-cats" data-log-funciones>
+
+      <div class="log-cat log-vidrio">
+        <h3 class="log-cat-t">Operación diaria</h3>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Registro de la flota</b><p>Cada camión con su placa, tipo, capacidad y año, si es propio o de un fletero, y su estado (activo, en taller o parado).</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Choferes y ayudantes</b><p>Datos, cédula, teléfono, licencia y camión asignado. Cada chofer recibe una invitación y entra con Google o con un código por correo.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Fleteros externos</b><p>Los camiones subcontratados, con su dueño, su tarifa y lo que se le debe, junto a la flota propia.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Órdenes de viaje</b><p>Origen, destino, cliente, carga, fecha, camión, chofer y tarifa, en dólares o en bolívares a la tasa BCV del día.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Tablero de viajes</b><p>Todos los viajes por columnas (programado, en ruta, entregado, cobrado), para ver de un vistazo qué falta.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Orden de despacho en PDF</b><p>Una hoja con los datos del viaje y el logo de la empresa, para el chofer. No reemplaza las guías oficiales de movilización.</p></div></li>
+        </ul>
+      </div>
+
+      <div class="log-cat log-vidrio">
+        <h3 class="log-cat-t">App del chofer</h3>
+        <p class="log-cat-sub">En el teléfono, sin descargar nada.</p>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Botones «Salí», «Entregué», «Llegué»</b><p>Queda la hora exacta de cada paso, y se acaba el «¿ya saliste?» por WhatsApp.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Foto en cada paso</b><p>La carga al salir y la nota de entrega firmada al llegar, unidas al viaje sin que nadie las ordene.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Ubicación en cada paso</b><p>Al tocar el botón se guarda dónde estaba el camión al salir, al entregar y al llegar. No es rastreo continuo.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Funciona sin señal</b><p>Si no hay cobertura en la carretera, las fotos y los botones se guardan en el teléfono y se suben solos al volver la señal.</p><span class="log-tag">En desarrollo</span></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Prueba de entrega</b><p>Nombre de quien recibe, foto de la nota firmada y firma con el dedo en la pantalla.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Gastos del viaje desde la vía</b><p>Combustible, peajes, comida o reparaciones, con foto del recibo y en el momento.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Lectura del recibo con IA</b><p>El chofer toma la foto y la IA llena el monto, la fecha y el tipo de gasto. La IA propone y la oficina confirma.</p><span class="log-tag">En desarrollo</span></div></li>
+        </ul>
+      </div>
+
+      <div class="log-cat log-vidrio">
+        <h3 class="log-cat-t">Dinero</h3>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Ganancia por viaje</b><p>La tarifa menos combustible, peajes, viáticos y pago al fletero. Es el número que casi ningún transportista tiene claro.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Ganancia por camión, cliente y ruta</b><p>Qué camión deja más, qué cliente paga mejor y qué ruta no conviene, con un reporte mensual.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Cobranza de fletes</b><p>Qué se facturó, qué se cobró, qué falta por cobrar y qué está vencido, cliente por cliente.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Estado de cuenta para el cliente</b><p>Un PDF o enlace con sus viajes y lo que debe, que se manda por WhatsApp con un clic.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Pagos a fleteros y choferes</b><p>Anticipos, viáticos y liquidación por viaje; cuánto se le pagó y cuánto se le debe a cada uno.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Tarifario por ruta y cliente</b><p>El precio guardado de cada ruta o cliente, y un precio sugerido según lo que realmente cuesta esa ruta.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Costo por kilómetro</b><p>Cuánto cuesta mover cada camión un kilómetro, con la foto del odómetro al salir y al llegar, o con el GPS si está conectado.</p></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Control de combustible</b><p>Litros cargados frente a kilómetros recorridos. Si un camión gasta mucho más que los demás en la misma ruta, salta una alerta. Es una estimación, no un sensor.</p></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Reporte de devaluación</b><p>Cuánto perdió la empresa por cobrar en bolívares días después del viaje.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Exportar a Excel para el contador</b><p>Viajes, gastos y cobros listos para el contador, sin pedírselos por WhatsApp.</p></div></li>
+        </ul>
+      </div>
+
+      <div class="log-cat log-vidrio">
+        <h3 class="log-cat-t">Mantenimiento y documentos</h3>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Mantenimiento por kilómetros o por fecha</b><p>La app avisa cuándo toca el aceite, los filtros, los frenos o los cauchos.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Historial de cada camión</b><p>Viajes, gastos, reparaciones y choferes de cada unidad, que sirve también para decidir si conviene venderla.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Vencimientos de documentos</b><p>Póliza RCV, revisión, permisos de carga, licencia y certificado médico del chofer, con aviso antes de que venzan.</p></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Control de cauchos</b><p>Cada caucho por posición, con sus kilómetros y cambios.</p><span class="log-tag">En desarrollo</span></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Inventario de repuestos</b><p>Repuestos en almacén, entradas, salidas y en qué camión se usaron.</p><span class="log-tag log-tag-luego">Después del lanzamiento</span></div></li>
+        </ul>
+      </div>
+
+      <div class="log-cat log-vidrio">
+        <h3 class="log-cat-t">Para los clientes del transportista</h3>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Enlace de seguimiento del viaje</b><p>Una página que el dueño comparte con su cliente, con el estado del viaje, la hora de salida y la foto de la entrega.</p></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Avisos automáticos por WhatsApp</b><p>«Su carga salió», «su carga fue entregada» con foto, sin que nadie los mande a mano.</p><span class="log-nota-ext">Sujeto a la aprobación de Meta (WhatsApp).</span></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Recordatorio de cobro por WhatsApp</b><p>Aviso automático al cliente cuando el flete está por vencer o ya venció.</p><span class="log-nota-ext">Sujeto a la aprobación de Meta (WhatsApp).</span></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Portal del cliente</b><p>El cliente del transportista entra a ver todos sus viajes, las fotos de entrega y su estado de cuenta.</p><span class="log-tag">En desarrollo</span></div></li>
+        </ul>
+      </div>
+
+      <div class="log-cat log-vidrio">
+        <h3 class="log-cat-t">GPS</h3>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Conexión con el GPS que ya tiene el camión</b><p>La posición y los kilómetros reales del equipo de RSI Global u otro proveedor, dentro de Logística.</p><span class="log-nota-ext">Según tu proveedor de GPS.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="log-cat log-vidrio">
+        <h3 class="log-cat-t">Equipo y control</h3>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="B"><span class="log-plan log-plan-txt" data-p="B" role="img" aria-label="Plan Básico: 1 usuario de oficina; Intermedio: 3; Avanzado: sin límite" title="Plan Básico: 1 · Intermedio: 3 · Avanzado: sin límite">B: 1 · I: 3 · A: sin límite</span><div><b class="log-fn-t">Varios usuarios con permisos</b><p>Dueño, despachador, administración y chofer, cada uno ve solo lo suyo. El chofer no ve cuánto cobra la empresa. Choferes ilimitados en todos los planes.</p></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Registro de quién hizo qué</b><p>Quién cambió una tarifa, borró un gasto o aprobó un pago, y cuándo.</p></div></li>
+          <li class="log-fn" data-plan="I"><span class="log-plan" data-p="I" role="img" aria-label="Plan Intermedio" title="Plan Intermedio">I</span><div><b class="log-fn-t">Logo de la empresa en los documentos</b><p>La orden de despacho y el estado de cuenta salen con la marca del transportista.</p></div></li>
+          <li class="log-fn" data-plan="A"><span class="log-plan" data-p="A" role="img" aria-label="Plan Avanzado" title="Plan Avanzado">A</span><div><b class="log-fn-t">Asistente: «pregúntale a tus números»</b><p>«¿Qué camión me dejó más en octubre?», y la IA responde con los datos de la empresa.</p><span class="log-tag">En desarrollo</span></div></li>
+        </ul>
+      </div>
+
+      <div class="log-cat log-vidrio" id="servicio">
+        <h3 class="log-cat-t">Servicio</h3>
+        <ul class="log-fns">
+          <li class="log-fn" data-plan="B"><span class="log-plan log-plan-txt" data-p="B" role="img" aria-label="Planes Intermedio y Avanzado: la hace F&amp;V; plan Básico: recibe una plantilla" title="I y A: la hace F&amp;V · B: plantilla">I y A: la hace F&amp;V · B: plantilla</span><div><b class="log-fn-t">Carga inicial de datos</b><p>Camiones, choferes y clientes cargados a partir de tu Excel.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Capacitación inicial</b><p>Una sesión con el dueño y un video corto para los choferes.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Soporte por WhatsApp</b><p>En horario laboral, con respuesta en menos de 24 horas.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Copias de seguridad diarias, y los datos son tuyos</b><p>Respaldo todos los días y exportación completa si decides irte.</p></div></li>
+          <li class="log-fn" data-plan="B"><span class="log-plan" data-p="B" role="img" aria-label="Plan Básico" title="Plan Básico">B</span><div><b class="log-fn-t">Sin contrato</b><p>Paga mes a mes o anual (12 meses por el precio de 10), y cancela cuando quieras.</p></div></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRECIOS (tabla exacta del dueño en escritorio; tarjetas por plan en celular; calculadora: assets/logistica-calc.js) ============ -->
+<section id="precios" class="log-sec log-sec-clip scroll-mt-28" aria-labelledby="log-precios-t">
+  <div class="log-mesh log-mesh-suave" aria-hidden="true"><span class="log-mancha log-mancha-1" data-paralaje="0.12"></span><span class="log-mancha log-mancha-2" data-paralaje="0.18"></span></div>
+  <div class="log-caja">
+    <p class="log-etq">Precios</p>
+    <h2 id="log-precios-t" class="log-h2">Precios de <span class="log-grad">Logística.</span></h2>
+    <p class="log-intro">Todos los precios están en dólares. Quien pague en bolívares paga a la tasa BCV del día.</p>
+
+    <div class="log-tabla-env log-vidrio">
+      <table class="log-tabla">
+        <caption class="sr-only">Planes de Logística: precio mensual, camiones incluidos, camión extra, pago anual, usuarios de oficina y choferes</caption>
+        <thead>
+          <tr><td></td><th scope="col">Básico</th><th scope="col">Intermedio</th><th scope="col">Avanzado</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Precio mensual</th><td><strong>$30</strong></td><td><strong>$90</strong></td><td><strong>$210</strong></td></tr>
+          <tr><th scope="row">Camiones incluidos</th><td>5</td><td>15</td><td>35</td></tr>
+          <tr><th scope="row">Camión extra (al mes)</th><td>$14</td><td>$6</td><td>$2</td></tr>
+          <tr><th scope="row">Pago anual (12 meses por el precio de 10)</th><td><strong>$300</strong> al año</td><td><strong>$900</strong> al año</td><td><strong>$2.100</strong> al año</td></tr>
+          <tr><th scope="row">Equivale al mes, pagando anual</th><td>$25</td><td>$75</td><td>$175</td></tr>
+          <tr><th scope="row">Usuarios de oficina*</th><td>1</td><td>3</td><td>Sin límite</td></tr>
+          <tr><th scope="row">Choferes</th><td>Ilimitados</td><td>Ilimitados</td><td>Ilimitados</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td></td>
+            <td><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Log%C3%ADstica%2C%20plan%20B%C3%A1sico" target="_blank" rel="noopener" class="log-btn-sec" data-evento="delta_logistica_plan_whatsapp" data-cta="logistica_tabla_basico" data-product="delta-logistica" data-plan-wa="B">Quiero el Básico</a></td>
+            <td><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Log%C3%ADstica%2C%20plan%20Intermedio" target="_blank" rel="noopener" class="log-btn-sec" data-evento="delta_logistica_plan_whatsapp" data-cta="logistica_tabla_intermedio" data-product="delta-logistica" data-plan-wa="I">Quiero el Intermedio</a></td>
+            <td><a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Log%C3%ADstica%2C%20plan%20Avanzado" target="_blank" rel="noopener" class="log-btn-sec" data-evento="delta_logistica_plan_whatsapp" data-cta="logistica_tabla_avanzado" data-product="delta-logistica" data-plan-wa="A">Quiero el Avanzado</a></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <ul class="log-tarjetas-precio">
+      <li class="log-precio-card log-vidrio" data-log-ve>
+        <h3 class="log-precio-nom">Básico</h3>
+        <p class="log-precio-n"><strong>$30</strong> al mes</p>
+        <dl class="log-precio-filas">
+          <div><dt>Camiones incluidos</dt><dd>5</dd></div>
+          <div><dt>Camión extra (al mes)</dt><dd>$14</dd></div>
+          <div><dt>Pago anual (12 meses por el precio de 10)</dt><dd>$300 al año</dd></div>
+          <div><dt>Equivale al mes, pagando anual</dt><dd>$25</dd></div>
+          <div><dt>Usuarios de oficina*</dt><dd>1</dd></div>
+          <div><dt>Choferes</dt><dd>Ilimitados</dd></div>
+        </dl>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Log%C3%ADstica%2C%20plan%20B%C3%A1sico" target="_blank" rel="noopener" class="log-btn-sec" data-evento="delta_logistica_plan_whatsapp" data-cta="logistica_tarjeta_basico" data-product="delta-logistica" data-plan-wa="B">Quiero el Básico</a>
+      </li>
+      <li class="log-precio-card log-vidrio" data-log-ve>
+        <h3 class="log-precio-nom">Intermedio</h3>
+        <p class="log-precio-n"><strong>$90</strong> al mes</p>
+        <dl class="log-precio-filas">
+          <div><dt>Camiones incluidos</dt><dd>15</dd></div>
+          <div><dt>Camión extra (al mes)</dt><dd>$6</dd></div>
+          <div><dt>Pago anual (12 meses por el precio de 10)</dt><dd>$900 al año</dd></div>
+          <div><dt>Equivale al mes, pagando anual</dt><dd>$75</dd></div>
+          <div><dt>Usuarios de oficina*</dt><dd>3</dd></div>
+          <div><dt>Choferes</dt><dd>Ilimitados</dd></div>
+        </dl>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Log%C3%ADstica%2C%20plan%20Intermedio" target="_blank" rel="noopener" class="log-btn-sec" data-evento="delta_logistica_plan_whatsapp" data-cta="logistica_tarjeta_intermedio" data-product="delta-logistica" data-plan-wa="I">Quiero el Intermedio</a>
+      </li>
+      <li class="log-precio-card log-vidrio" data-log-ve>
+        <h3 class="log-precio-nom">Avanzado</h3>
+        <p class="log-precio-n"><strong>$210</strong> al mes</p>
+        <dl class="log-precio-filas">
+          <div><dt>Camiones incluidos</dt><dd>35</dd></div>
+          <div><dt>Camión extra (al mes)</dt><dd>$2</dd></div>
+          <div><dt>Pago anual (12 meses por el precio de 10)</dt><dd>$2.100 al año</dd></div>
+          <div><dt>Equivale al mes, pagando anual</dt><dd>$175</dd></div>
+          <div><dt>Usuarios de oficina*</dt><dd>Sin límite</dd></div>
+          <div><dt>Choferes</dt><dd>Ilimitados</dd></div>
+        </dl>
+        <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20me%20interesa%20Log%C3%ADstica%2C%20plan%20Avanzado" target="_blank" rel="noopener" class="log-btn-sec" data-evento="delta_logistica_plan_whatsapp" data-cta="logistica_tarjeta_avanzado" data-product="delta-logistica" data-plan-wa="A">Quiero el Avanzado</a>
+      </li>
     </ul>
 
-    <p class="text-lg text-slate-300 mb-10"><span class="font-head text-sm uppercase tracking-wider text-slate-400">Para quién es</span><br>Para negocios de transporte y fletes.</p>
+    <p class="log-frase">¿Más de 9 camiones? El Intermedio te sale más rentable.</p>
+    <p class="log-asterisco">*Usuarios de oficina: dueño, despachador o administración. Los choferes no cuentan: son ilimitados en todos los planes.</p>
 
-    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20saber%20de%20Delta%20Log%C3%ADstica" target="_blank" rel="noopener" data-evento="delta_logistica_whatsapp" data-cta="triangular_producto" data-product="delta-logistica" class="btn-linea estado-interactivo inline-flex justify-center items-center min-h-[52px] px-7 py-3.5 font-head font-semibold rounded-xl">Avísame cuando esté listo</a>
-      <a href="/triangular/delta" data-evento="delta_logistica_volver" class="tri-volver">Ver todas las apps de Delta</a>
+    <div class="log-pago">
+      <div class="log-vidrio">
+        <p class="log-caja-t">Métodos de pago</p>
+        <ul class="log-metodos"><li>Pago Móvil</li><li>Transferencia</li><li>USDT</li></ul>
+      </div>
+      <div class="log-vidrio">
+        <p class="log-caja-t">Mes a mes o anual</p>
+        <p>Pago anual: 12 meses por el precio de 10. Sin contrato: cancelas cuando quieras. Quien pague en bolívares paga a la tasa BCV del día.</p>
+      </div>
+    </div>
+
+<!-- log:calc:inicio -->
+    <div class="log-calc" data-log-calc>
+      <h3 id="log-calc-t" class="log-calc-tit">¿Qué plan te conviene? <span class="log-grad">Calcúlalo con tus camiones.</span></h3>
+      <p class="log-calc-intro">Mueve la barra o escribe cuántos camiones tienes. Sumamos el precio del plan y los camiones extra al mes, con los precios de la tabla.</p>
+      <div class="log-calc-grid">
+        <div class="log-calc-form log-vidrio" role="group" aria-labelledby="log-calc-t">
+          <div class="log-calc-fila">
+            <label for="log-calc-rango" class="log-calc-label">¿Cuántos camiones tienes?</label>
+            <span class="log-calc-sil" data-calc-sil aria-hidden="true"></span>
+          </div>
+          <div class="log-calc-num">
+            <button type="button" class="log-calc-paso" data-calc-paso="-1" aria-label="Un camión menos" aria-controls="log-calc-n">−</button>
+            <label for="log-calc-n" class="sr-only">Número de camiones (de 1 a 60)</label>
+            <input type="number" id="log-calc-n" class="log-calc-input" inputmode="numeric" min="1" max="60" step="1" value="8" data-calc-in="n">
+            <button type="button" class="log-calc-paso" data-calc-paso="1" aria-label="Un camión más" aria-controls="log-calc-n">+</button>
+            <span class="log-calc-uni" data-calc="uni" aria-hidden="true">camiones</span>
+          </div>
+          <input type="range" id="log-calc-rango" class="log-calc-rango" min="1" max="60" step="1" value="8" aria-valuetext="8 camiones" data-calc-in="r" style="--log-calc-pct:11.86%">
+          <div class="log-calc-ext" aria-hidden="true"><span>1</span><span>60</span></div>
+          <div class="log-calc-flota" data-calc="flota" aria-hidden="true"></div>
+          <p class="log-calc-ley" data-calc="ley"></p>
+        </div>
+
+        <div class="log-calc-res log-vidrio">
+          <p class="sr-only" aria-live="polite" aria-atomic="true" data-calc="vivo"></p>
+          <p class="log-calc-etq">Te conviene</p>
+          <p class="log-calc-plan"><span class="log-calc-plan-n log-grad" data-calc="plan">Básico</span></p>
+          <p class="log-calc-total"><span data-calc="total" class="log-calc-total-n"></span> <span>al mes</span></p>
+          <p class="log-calc-por" data-calc="por"></p>
+
+          <ul class="log-calc-barras" aria-label="Costo mensual de cada plan">
+            <li class="log-calc-barra" data-calc-barra="B">
+              <div class="log-calc-barra-cab"><span>Básico <em class="log-calc-mejor">Recomendado</em></span><b data-calc-cifra="B"></b></div>
+              <div class="log-calc-pista" aria-hidden="true"><span class="log-calc-fill"></span></div>
+              <p class="log-calc-det" data-calc-det="B"></p>
+            </li>
+            <li class="log-calc-barra" data-calc-barra="I">
+              <div class="log-calc-barra-cab"><span>Intermedio <em class="log-calc-mejor">Recomendado</em></span><b data-calc-cifra="I"></b></div>
+              <div class="log-calc-pista" aria-hidden="true"><span class="log-calc-fill"></span></div>
+              <p class="log-calc-det" data-calc-det="I"></p>
+            </li>
+            <li class="log-calc-barra" data-calc-barra="A">
+              <div class="log-calc-barra-cab"><span>Avanzado <em class="log-calc-mejor">Recomendado</em></span><b data-calc-cifra="A"></b></div>
+              <div class="log-calc-pista" aria-hidden="true"><span class="log-calc-fill"></span></div>
+              <p class="log-calc-det" data-calc-det="A"></p>
+            </li>
+          </ul>
+
+          <p class="log-calc-frase" data-calc="frase">¿Más de 9 camiones? El Intermedio te sale más rentable.</p>
+          <p class="log-calc-anual" data-calc="anual"></p>
+          <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20saber%20de%20Delta%20Log%C3%ADstica" target="_blank" rel="noopener" class="log-btn log-calc-btn" data-calc="wa" data-plan-wa="B" data-evento="delta_logistica_calc_whatsapp" data-cta="logistica_calculadora" data-product="delta-logistica">Quiero el Básico</a>
+          <p class="log-calc-pie">Precio mensual del plan más los camiones extra, en dólares. Quien pague en bolívares paga a la tasa BCV del día.</p>
+        </div>
+      </div>
+    </div>
+<!-- log:calc:fin -->
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section id="cierre" class="log-hero" aria-labelledby="log-cierre-t" style="padding-top:6rem;padding-bottom:6rem">
+  <div class="log-mesh" aria-hidden="true"><span class="log-mancha log-mancha-1" data-paralaje="0.14"></span><span class="log-mancha log-mancha-2" data-paralaje="0.22"></span></div>
+  <div class="log-caja" style="text-align:center">
+    <h2 id="log-cierre-t" class="log-h2">Cuánto te deja cada viaje, <span class="log-grad">a la vista.</span></h2>
+    <p class="log-intro" style="margin-left:auto;margin-right:auto">Escríbenos por WhatsApp y te mostramos cómo se vería con tu flota.</p>
+    <div class="log-botones" style="justify-content:center;align-items:center">
+      <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20saber%20de%20Delta%20Log%C3%ADstica" target="_blank" rel="noopener" class="log-btn" data-evento="delta_logistica_whatsapp_cierre" data-cta="logistica_cierre" data-product="delta-logistica">Escríbenos por WhatsApp</a>
+      <a href="/triangular/delta" class="log-link" data-evento="delta_logistica_volver">Ver todas las apps de Delta</a>
     </div>
   </div>
 </section>
@@ -663,6 +1456,17 @@
     } else { load(); }
   })();
 </script>
+<script defer src="/assets/bcv.js"></script>
+<script defer src="/assets/logistica.js"></script>
+<script defer src="/assets/logistica-hero.js"></script>
+<script defer src="/assets/logistica-antes.js"></script>
+<script defer src="/assets/logistica-tablero.js"></script>
+<script defer src="/assets/logistica-viaje.js"></script>
+<script defer src="/assets/logistica-ganancia.js"></script>
+<script defer src="/assets/logistica-ruta.js"></script>
+<script defer src="/assets/logistica-panel.js"></script>
+<script defer src="/assets/logistica-planes.js"></script>
+<script defer src="/assets/logistica-calc.js"></script>
 <script defer src="/assets/eventos.js"></script>
 <script defer src="/assets/estados.js"></script>
 <script defer src="/assets/luci.js"></script>

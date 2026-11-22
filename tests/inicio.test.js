@@ -232,4 +232,39 @@ ok(cob.indexOf('src="/assets/bcv.js"') > -1 && cob.indexOf('src="/assets/bcv.js"
 ok(!/<section id="linea-tiempo"[^>]*class="[^"]*cob-sec\b/.test(cobMain), 'cobranza: la línea de tiempo no usa .cob-sec (su overflow hidden rompe el sticky)');
 ok(/Ejemplo ilustrativo/.test(texto(cobMain)) && (texto(cobMain).match(/Ejemplo ilustrativo/g) || []).length >= 6, 'cobranza: las maquetas con datos de ejemplo dicen «Ejemplo ilustrativo»');
 
+// /triangular/delta/logistica (app Delta Logística, línea Triangular): precios exactos del dueño, las 42 funciones con su plan,
+// seis tipos de flota, efectos con su JS después del núcleo y la URL vieja de Flet App redirigida
+const logHtml = unix(fs.readFileSync(path.join(RAIZ, 'triangular/delta/logistica.html'), 'utf8'));
+const logMain = logHtml.slice(logHtml.indexOf('<main'), logHtml.indexOf('</main>'));
+const logTxt = texto(logMain);
+const logJs = fs.readFileSync(path.join(RAIZ, 'assets/logistica.js'), 'utf8');
+const vercelRed = JSON.parse(fs.readFileSync(path.join(RAIZ, 'vercel.json'), 'utf8')).redirects;
+ok(/class="linea-tri log"/.test(logMain) && /<span class="log-marca log-grad">Logística<\/span>/.test(logMain) && /Cuánto te deja cada viaje\./.test(logTxt), 'logística: línea Triangular, H1 «Logística» y la frase «Cuánto te deja cada viaje.»');
+ok(!/próximamente|avísame|cuando esté list/i.test(texto(logHtml)) && !/pr%C3%B3ximamente|av%C3%ADsame/i.test(logHtml), 'logística: no dice «Próximamente» ni «avísame cuando esté listo» (tampoco en los mensajes de WhatsApp)');
+['$30', '$90', '$210', '$14', '$6', '$2', '$300', '$900', '$2.100', '$25', '$75', '$175'].forEach(p => ok(new RegExp('(?<![\\d.,$])' + p.replace(/[$.]/g, '\\$&') + '(?![\\d.,])').test(logTxt), `logística: la tabla muestra el precio ${p}`));
+ok(!/\d,99/.test(logTxt), 'logística: los precios no se pasan a ,99');
+ok(logTxt.includes('¿Más de 9 camiones? El Intermedio te sale más rentable.'), 'logística: la frase de los 9 camiones va junto a los precios');
+ok(logTxt.includes('*Usuarios de oficina: dueño, despachador o administración. Los choferes no cuentan: son ilimitados en todos los planes.'), 'logística: la nota del asterisco de usuarios de oficina');
+['Mini Truck / Pick-up', 'Camión 350', 'NPR / Canter', 'Camión 750 / 600', 'Torpedo / 12 Toneladas', 'Gandola (Chuto + Remolque)'].forEach(f => ok(logTxt.includes(f), `logística: el tipo de flota «${f}»`));
+ok(!/NRP/.test(logTxt), 'logística: «NPR / Canter», no la errata «NRP»');
+const logFns = [...logMain.matchAll(/<li class="log-fn" data-plan="([BIA])"/g)].map(m => m[1]);
+ok(logFns.length === 42 && logFns.filter(p => p === 'B').length === 20 && logFns.filter(p => p === 'I').length === 13 && logFns.filter(p => p === 'A').length === 9, `logística: 42 funciones con su plan (20 B, 13 I, 9 A); hay ${logFns.length}`);
+ok(/B: 1 · I: 3 · A: sin límite/.test(logTxt) && /I y A: la hace F&V · B: plantilla/.test(logTxt) && /Cada plan incluye lo del anterior\./.test(logTxt), 'logística: leyenda de planes y chips de usuarios y de carga inicial');
+ok(/Sujeto a la aprobación de Meta \(WhatsApp\)/.test(logTxt) && /Según tu proveedor de GPS/.test(logTxt) && /En desarrollo/.test(logTxt) && /Después del lanzamiento/.test(logTxt), 'logística: las notas «En desarrollo», «Después del lanzamiento», Meta y GPS');
+const logEfectos = ['hero', 'antes', 'tablero', 'viaje', 'ganancia', 'ruta', 'panel', 'planes', 'calc'];
+logEfectos.forEach(k => {
+  const ruta = path.join(RAIZ, `assets/logistica-${k}.js`);
+  const js = fs.existsSync(ruta) ? fs.readFileSync(ruta, 'utf8') : '';
+  ok(js && logHtml.includes(`<!-- log:${k}:inicio -->`) && logHtml.indexOf(`src="/assets/logistica-${k}.js"`) > logHtml.indexOf('src="/assets/logistica.js"') && /\b(?:LOG|L)\.reducir\b|prefers-reduced-motion/.test(js), `logística: el efecto «${k}» tiene su punto de montaje, su JS cargado tras el núcleo y respeta reduced-motion`);
+  ok(cssTw.includes(`/* ===== logistica:${k} ===== */`) && cssTw.includes(`/* ===== /logistica:${k} ===== */`), `logística: el CSS del efecto «${k}» va en su bloque`);
+});
+ok(logHtml.indexOf('src="/assets/bcv.js"') > -1 && logHtml.indexOf('src="/assets/bcv.js"') < logHtml.indexOf('src="/assets/logistica.js"') && /window\.LOG\s*=/.test(logJs), 'logística: bcv.js se carga antes del núcleo y el núcleo expone window.LOG');
+ok((logTxt.match(/Ejemplo ilustrativo/g) || []).length >= 7, 'logística: las maquetas con datos de ejemplo dicen «Ejemplo ilustrativo»');
+ok(/data-paralaje/.test(logMain) && /log-mesh/.test(logMain) && /log-vidrio/.test(logMain) && /prefers-reduced-motion: reduce/.test(logJs), 'logística: malla de degradados, vidrio y paralaje (sin paralaje con reduced-motion)');
+ok(!/<section id="viaje"[^>]*class="[^"]*\blog-sec(?![\w-])/.test(logMain), 'logística: #viaje no usa .log-sec (su overflow hidden rompe el sticky)');
+ok(/wa\.me\/584244125386\?text=Hola%20F%26V%2C%20quiero%20saber%20de%20Delta%20Log%C3%ADstica/.test(logMain) && ['B%C3%A1sico', 'Intermedio', 'Avanzado'].every(p => logMain.includes('me%20interesa%20Log%C3%ADstica%2C%20plan%20' + p)) && /href="\/triangular\/delta"/.test(logMain), 'logística: WhatsApp general y por plan, y enlace a todas las apps de Delta');
+ok(!fs.existsSync(path.join(RAIZ, 'triangular/flet-app.html')) && vercelRed.some(r => r.source === '/triangular/flet-app' && r.destination === '/triangular/delta/logistica' && r.permanent), 'logística: /triangular/flet-app redirige (301) a /triangular/delta/logistica');
+ok(/node tests\/logistica\.test\.js/.test(JSON.parse(fs.readFileSync(path.join(RAIZ, 'package.json'), 'utf8')).scripts.test), 'logística: la prueba de la calculadora corre en npm test');
+ok(fs.readdirSync(path.join(RAIZ, 'triangular/delta')).every(f => !/^_prueba/.test(f)), 'logística: no quedan páginas de prueba _prueba-*.html');
+
 console.log(`inicio: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}`);
