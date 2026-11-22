@@ -89,15 +89,19 @@ const PAGINAS = fs.readdirSync(RAIZ).filter(f => f.endsWith('.html') && f !== '4
 // Fase 1: regla vieja por precio y descuento viejo. Con --final (Fase 8) se exige además que ya no se mezclen clubes con condominios.
 const FINAL = !process.argv.includes('--parcial');   // estricto por defecto: con --parcial se omiten las comprobaciones de las fases pendientes
 const PROHIBIDO = [/hasta \$299,99/i, /desde \$300(?![\d.,])/i, /de \$4,99 a \$299/i, /\$4,99 a \$299/i, /20 ?% de descuento/i, /\(20 ?% menos\)/i, /3, 6, 9 o 12 meses/i,
-  /\bExpress\b/, /\bDelta\b(?! App| les cobra)/];   // «Delta App» es el nombre del software desde el 30 oct 2026 (decisión de Ricardo); «Delta les cobra…» es el texto aprobado de la tarjeta en /triangular
+  /\bExpress\b/];
+const DELTA_RE = /\bDelta\b(?! App| les cobra)/;   // «Delta» sola es la marca de las apps ▲ desde el 22 nov 2026: se permite en triangular.html y search.js
+//   // «Delta App» es el nombre del software desde el 30 oct 2026 (decisión de Ricardo); «Delta les cobra…» es el texto aprobado de la tarjeta en /triangular
 if (FINAL) PROHIBIDO.push(/clubes? y condominios?/i, /clubes? o condominios?/i, /Premium/);
 PAGINAS.forEach(f => {
   const txt = visible(leer(f));
   PROHIBIDO.forEach(re => ok(!re.test(txt), f + ' contiene un texto viejo: ' + re));
+  if (f !== 'triangular.html') ok(!DELTA_RE.test(txt), f + ' contiene un texto viejo: ' + DELTA_RE);
 });
 ['assets/luci.js', 'assets/search.js', 'assets/eventos.js'].forEach(f => {
   const js = leer(f);
   PROHIBIDO.forEach(re => ok(!re.test(js), f + ' contiene un texto viejo: ' + re));
+  if (f !== 'assets/search.js') ok(!DELTA_RE.test(js), f + ' contiene un texto viejo: ' + DELTA_RE);
 });
 
 // ---------- 6) Oferta Hexagonal nueva (17 de octubre de 2026) ----------

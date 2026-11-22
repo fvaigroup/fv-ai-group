@@ -234,6 +234,16 @@
       "permanent": true
     },
     {
+      "source": "/triangular/flet-app",
+      "destination": "/triangular/delta/logistica",
+      "permanent": true
+    },
+    {
+      "source": "/triangular/flet-app.html",
+      "destination": "/triangular/delta/logistica",
+      "permanent": true
+    },
+    {
       "source": "/triangular/delta-app",
       "destination": "/triangular/cobranza",
       "permanent": true
