@@ -59,13 +59,13 @@
     { g: 'para-empezar', title: 'Plan Arranque', desc: 'Lo básico para que te encuentren, te compren por WhatsApp y sepas cuánto ganas. $39,99 al mes.', url: '/productos/plan-arranque', cat: 'Producto', kw: 'paquete pack presencia caja clara arranque' },
     { g: 'para-empezar', title: 'Mis Finanzas Claras', desc: 'Tu hoja personal de cuentas en Bs, $ y USDT, lista para copiar. $4,99.', url: '/productos/mis-finanzas-claras', cat: 'Producto', kw: 'finanzas personales hoja de cuentas' },
     { title: 'Presencia y web', desc: 'Que te encuentren en Google Maps, te escriban por WhatsApp y tengas tu web.', url: '/productos#presencia', cat: 'Producto', grupo: true },
-    { g: 'presencia', title: 'Presencia', desc: 'Tu negocio en Google Maps, WhatsApp Business y la web, siempre al día. Desde $14,99 al mes.', url: '/triangular/paginas-web', cat: 'Producto', kw: 'google maps whatsapp business catalogo web tienda online pagina web paginas web dominio qr' },
+    { g: 'presencia', title: 'Páginas web', desc: 'Tu página web a la medida, con precios en $ y Bs y pedidos por WhatsApp. Plan mensual desde $10 al mes, o Página Propia con un solo pago.', url: '/triangular/paginas-web', cat: 'Producto', kw: 'pagina web paginas web sitio web pagina propia dominio alojamiento tienda online catalogo google maps whatsapp seo qr' },
     { title: 'Control y finanzas', desc: 'Cuadra tu caja y mira tus números clave en una sola pantalla.', url: '/productos#control', cat: 'Producto', grupo: true },
     { g: 'control', title: 'Caja Clara', desc: 'Cuadre de caja en Bs, $, Pago Móvil y USDT, con tasa BCV automática. Desde $14,99 al mes.', url: '/productos/caja-clara', cat: 'Producto', kw: 'caja cuadre cobros cuentas por cobrar inventario cotizador tasa bcv' },
     { g: 'control', title: 'Tablero Ejecutivo', desc: 'Un tablero con tus números clave: ventas, gastos, margen, cobros y lo más vendido. Desde $79,99 al mes.', url: '/productos/tablero-ejecutivo', cat: 'Producto', kw: 'tablero dashboard indicadores numeros clave' },
     { title: 'Ventas y atención', desc: 'Responde a tus clientes por WhatsApp sin estar pegado al teléfono.', url: '/productos#ventas', cat: 'Producto', grupo: true },
     { g: 'ventas', title: 'Asistente IA de WhatsApp', desc: 'Asistente que responde precios, horarios y ubicación, toma pedidos y te pasa lo difícil. Desde $119,99 al mes.', url: '/productos/asistente-ia', cat: 'Producto', kw: 'asistente chatbot whatsapp citas pedidos instagram automatico' },
-    { g: 'presencia', title: 'Demo: Catálogo con tasa BCV', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: '/demo-catalogo', cat: 'Producto', kw: 'presencia catalogo menu digital demo' },
+    { g: 'presencia', title: 'Demo: Catálogo con tasa BCV', desc: 'Prueba un catálogo funcionando con la tasa BCV del día.', url: '/demo-catalogo', cat: 'Producto', kw: 'catalogo menu digital demo pagina web' },
     { title: 'Nosotros', desc: 'Cómo trabajamos y por qué elegir a F&V.', url: '/nosotros', cat: 'Pagina' },
     { title: 'Contacto', desc: 'WhatsApp directo y diagnóstico gratis de 20 minutos.', url: '/contacto', cat: 'Pagina', kw: 'consulta gratis agendar cita llamada whatsapp telefono direccion mapa' },
     { title: 'Casos de clientes', desc: 'Qué hicimos y qué dijo el cliente. Pregunta por el precio de lanzamiento.', url: '/casos', cat: 'Pagina' },
@@ -76,6 +76,10 @@
   ];
   // Rutas ocultas temporalmente (29 oct 2026): no salen en el buscador. Para volver a mostrar una, quítela de esta lista.
   var OCULTAS = /^\/(servicios|productos|club|condominio|gym|casos|calculadora|calculadora-roi|ejecutivos)([\/#?]|$)/;
+  // Título de cada grupo, guardado antes del filtro: las filas de grupo cuelgan de /productos y /servicios (ocultas), y sin esto
+  // el encabezado mostraría el id («presencia», «cursos»). El grupo «presencia» hoy solo tiene Páginas web y su demo.
+  var TITULO_GRUPO = { presencia: 'Páginas web' };
+  SEARCH_INDEX.forEach(function (r) { if (r.grupo) { var id = r.url.split('#')[1]; if (!TITULO_GRUPO[id]) TITULO_GRUPO[id] = r.title; } });
   SEARCH_INDEX = SEARCH_INDEX.filter(function (r) { return !OCULTAS.test(r.url); });
 
   var css = '' +
@@ -232,7 +236,7 @@
     function grupo(tipo, id, g) {
       var fila = filaGrupo(tipo, id);
       var cat = fila ? '<a href="' + esc(fila.url) + '" class="sr-ver sr-cat"><span>Ver toda la categoría</span><span aria-hidden="true">&rarr;</span></a>' : '';
-      return '<details class="sr-g"' + (hayConsulta ? ' open' : '') + '><summary class="sr-gs"><span class="sr-gt">' + esc(fila ? fila.title : id) + '</span><span class="sr-gn">' + g.items.length + '</span><span class="sr-chev" aria-hidden="true"></span></summary>' +
+      return '<details class="sr-g"' + (hayConsulta ? ' open' : '') + '><summary class="sr-gs"><span class="sr-gt">' + esc(TITULO_GRUPO[id] || (fila ? fila.title : id)) + '</span><span class="sr-gn">' + g.items.length + '</span><span class="sr-chev" aria-hidden="true"></span></summary>' +
         '<div class="sr-gl">' + cat + items(g.items) + '</div></details>';
     }
     function columna(clave) {

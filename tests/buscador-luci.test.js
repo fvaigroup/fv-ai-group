@@ -112,7 +112,15 @@ const items = CAT.items;
 ok(items.filter(i => i.tipo === 'servicio').length === 19 && items.filter(i => i.tipo === 'producto').length === 15, '19 servicios y 15 productos');
 ['/ejecutivos', '/nosotros', '/contacto', '/casos', '/calculadora', '/calculadora-roi'].forEach(u => ok(urls.includes(u), 'está ' + u));
 const norm = t => String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-items.forEach(it => {
+// «presencia» (oculto, en data/catalogo.json) apunta a /triangular/paginas-web, que desde el 23 nov 2026 publica la oferta nueva
+// de páginas web con sus precios propios ($10/$30/$70 al mes o Página Propia): en el buscador se llama «Páginas web», no «Presencia».
+(function paginasWeb() {
+  const r = INDICE.find(x => x.url === '/triangular/paginas-web');
+  ok(r && r.title === 'Páginas web' && r.g === 'presencia', 'el buscador lista «Páginas web» en /triangular/paginas-web, en el grupo presencia');
+  ok(/desde \$10 al mes/.test(r.desc) && /Página Propia/.test(r.desc) && !/\$\d+,\d\d/.test(r.desc), 'Páginas web: «desde $10 al mes» y Página Propia, sin precios viejos en ,99');
+  ok(!INDICE.some(x => /^Presencia$/.test(x.title)), 'el buscador ya no tiene la entrada vieja «Presencia»');
+})();
+items.filter(it => it.id !== 'presencia').forEach(it => {
   const suf = it.precio.modo === 'software' ? (it.linea === 'hex' ? ' para empresas e instituciones' : ' para negocios pequeños') : '';
   const r = INDICE.find(x => x.url === it.detalle.url && x.title === it.nombre + suf);
   ok(r, 'el catálogo «' + it.id + '» está en el buscador con su url ' + it.detalle.url);
@@ -226,12 +234,15 @@ const P = [
   ['¿Cuánto cuesta el asistente de WhatsApp?', 'wa', /\$119,99.*\$179,99/],
   ['¿Cuándo es el próximo taller?', 'wa', /\$24,99/],
   ['¿Cuánto cuesta el curso de Finanzas con IA?', '/triangular/cursos/finanzas-con-ia', /\$299,99/],
-  ['¿Cuánto cuesta una página web?', '/triangular/paginas-web', /\$14,99.*\$29,99.*\$59,99.*\$99,99/],
+  ['¿Cuánto cuesta una página web?', '/triangular/paginas-web', /Básico \$10, Intermedio \$30 y Avanzado \$70 al mes.*\$20, \$60 o \$140.*12 meses por el precio de 10.*Página Propia.*\$100, \$300 o \$700, en dos partes/],
+  ['¿El dominio es mío?', '/triangular/paginas-web', /dominio se registra a nombre de tu negocio/],
+  ['¿Qué es Página Propia?', '/triangular/paginas-web', /un solo pago.*tu página, tu código y tu dominio quedan a tu nombre para siempre/],
+  ['¿Cuánto tarda?', '/hexagonal', /páginas web en 5, 10 o 20 días hábiles/],
   ['¿Qué hace el tablero gerencial?', '/servicios#implementacion', /\$600/],
   ['¿Cuánto cuesta el soporte técnico?', '/servicios/acompanamiento', /\$200.*\$400.*\$600/],
   ['¿Cómo pago?', 'wa', /30 % de descuento/],
   ['¿Qué servicios tienen?', '/servicios', /Diagnóstico.*Implementación.*Formación.*Acompañamiento/],
-  ['¿Qué productos tienen?', '/productos', /Software.*Cursos.*Para empezar.*Presencia.*Control.*Ventas/],
+  ['¿Qué productos tienen?', '/productos', /Software.*Cursos.*Para empezar.*Páginas web.*Control.*Ventas/],
   ['quiero hablar con un asesor', 'wa', /WhatsApp/]
 ];
 P.forEach(([q, destino, re]) => {
@@ -269,11 +280,12 @@ const mapa = B.html();
 const posCol = c => mapa.indexOf('<section class="sr-col sr-' + c + '"');
 ok(posCol('hex') !== -1 && posCol('hex') < posCol('tri') && posCol('tri') < posCol('pag'), 'tres columnas, en este orden: Hexagonal, Triangular y Páginas');
 const seccion = c => mapa.slice(posCol(c), c === 'hex' ? posCol('tri') : c === 'tri' ? posCol('pag') : mapa.length);
+// el grupo «presencia» se titula «Páginas web» (TITULO_GRUPO en assets/search.js): la oferta vieja de Presencia ya no existe
 const gruposDe = txt => [...txt.matchAll(/<span class="sr-gt">([^<]*)<\/span>/g)].map(m => m[1].replace(/&amp;/g, '&'));
 const hexTxt = seccion('hex'), triTxt = seccion('tri');
 ok(hexTxt.indexOf('>Servicios<') !== -1 && hexTxt.indexOf('>Servicios<') < hexTxt.indexOf('>Productos<'), 'en la Hexagonal: primero Servicios y luego Productos');
 ok(JSON.stringify(gruposDe(hexTxt)) === JSON.stringify(['Diagnóstico y consultoría', 'Implementación y automatización', 'Formación', 'Acompañamiento y asesoría', 'Software', 'Cursos y programas']), 'la Hexagonal agrupa por categoría, lo cercano junto: ' + gruposDe(hexTxt).join(' | '));
-ok(JSON.stringify(gruposDe(triTxt)) === JSON.stringify(['Software', 'Cursos y programas', 'Para empezar', 'Presencia y web', 'Control y finanzas', 'Ventas y atención']), 'la Triangular agrupa por categoría: ' + gruposDe(triTxt).join(' | '));
+ok(JSON.stringify(gruposDe(triTxt)) === JSON.stringify(['Software', 'Cursos y programas', 'Para empezar', 'Páginas web', 'Control y finanzas', 'Ventas y atención']), 'la Triangular agrupa por categoría: ' + gruposDe(triTxt).join(' | '));
 ok(/Servicios<\/div><div class="sr-vacio">Por ahora, solo productos listos para usar\./.test(triTxt), 'la Triangular muestra Servicios con su aviso, sin inventar nada');
 const nGrupos = (mapa.match(/<details class="sr-g"/g) || []).length;
 ok(nGrupos === 12 && (mapa.match(/class="sr-chev"/g) || []).length === 12, 'doce grupos desplegables, cada uno con su flecha (hay ' + nGrupos + ')');

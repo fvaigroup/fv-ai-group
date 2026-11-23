@@ -267,4 +267,67 @@ ok(!fs.existsSync(path.join(RAIZ, 'triangular/flet-app.html')) && vercelRed.some
 ok(/node tests\/logistica\.test\.js/.test(JSON.parse(fs.readFileSync(path.join(RAIZ, 'package.json'), 'utf8')).scripts.test), 'logística: la prueba de la calculadora corre en npm test');
 ok(fs.readdirSync(path.join(RAIZ, 'triangular/delta')).every(f => !/^_prueba/.test(f)), 'logística: no quedan páginas de prueba _prueba-*.html');
 
+// /triangular/paginas-web (rediseño del 23 nov 2026, línea Triangular): texto exacto del dueño, precios exactos (sin ,99),
+// las 90 funciones con su nivel, los 7 pasos, las 8 preguntas (también en el FAQPage) y los efectos con su JS después del núcleo
+const webHtml = unix(fs.readFileSync(path.join(RAIZ, 'triangular/paginas-web.html'), 'utf8'));
+const webMain = webHtml.slice(webHtml.indexOf('<main'), webHtml.indexOf('</main>'));
+const webTxt = texto(webMain);
+const webSec = id => { const i = webMain.search(new RegExp('<section id="' + id + '"')); return i < 0 ? '' : texto(webMain.slice(i, webMain.indexOf('</section>', i))); };
+const webJs = fs.readFileSync(path.join(RAIZ, 'assets/paginas-web.js'), 'utf8');
+ok(/<main id="main-content" class="linea-tri web" data-web>/.test(webHtml), 'páginas web: <main> de la línea Triangular con data-web');
+ok(/<h1[^>]*>Tu página web, <span class="web-grad">lista para vender\.<\/span><\/h1>/.test(webMain) && webTxt.includes('Tu página web, lista para vender.'), 'páginas web: título «Tu página web, lista para vender.»');
+ok(webTxt.includes('Diseño a la medida, precios en dólares y bolívares, pedidos por WhatsApp y todo lo que tu negocio necesita para que te encuentren en Google. Pagas al mes, o pagas una vez y es tuya para siempre.'), 'páginas web: subtítulo exacto');
+ok(/href="#planes"[^>]*>Ver planes</.test(webMain) && />Escríbenos por WhatsApp</.test(webMain), 'páginas web: botones «Ver planes» y «Escríbenos por WhatsApp»');
+['inicio-web', 'formas', 'planes', 'propia', 'conviene', 'funciones', 'adicionales', 'proceso', 'preguntas', 'cierre'].forEach(id => ok(new RegExp('<section id="' + id + '"').test(webMain), `páginas web: sección #${id}`));
+const precioEn = (txt, p) => new RegExp('(?<![\\d.,$])' + p.replace(/[$.]/g, '\\$&') + '(?![\\d.,])').test(txt);
+[['formas', ['Un pago bajo cada mes', 'Un solo pago, en dos partes', 'F&V se encarga de todo: alojamiento, dominio, cambios y seguridad', 'Tu página, tu código y tu dominio son tuyos para siempre']],
+ ['planes', ['$10', '$30', '$70', '$20', '$60', '$140', '$100', '$300', '$700', '12 meses por el precio de 10, sin instalación', '5 días hábiles', '10 días hábiles', '20 días hábiles', 'Hasta 4 horas']],
+ ['propia', ['$100', '$300', '$700', '$50', '$150', '$350', '$5 al mes', '$15 al mes', '$35 al mes', 'Dominio .com', 'Base de datos (tienda, reservas o área de clientes)', 'Asistente de IA', 'Estos servicios se pagan con tarjeta internacional, a tu nombre.']],
+ ['adicionales', ['$10', '$9', '$8', '$5', '$2,14', '$0,71', '$100, pago único', 'El descuento del pago anual no aplica a los adicionales.']]
+].forEach(([id, claves]) => { const t = webSec(id); claves.forEach(c => ok(/^\$[\d.,]+$/.test(c) ? precioEn(t, c) : t.includes(c), `páginas web: #${id} muestra «${c}»`)); });
+ok(webSec('planes').includes('Pasa a ser dueño cuando quieras: si estás en un plan mensual y quieres quedarte con tu página, la compras por $100 (Básico), $300 (Intermedio) o $700 (Avanzado).'), 'páginas web: «Pasa a ser dueño cuando quieras» exacto');
+ok(webSec('conviene').includes('La Básica y la Intermedia salen más baratas que el plan mensual desde el mes 9. Si le sumas el mantenimiento, desde el mes 19 o 20.') && /Cálculo aproximado/.test(webSec('conviene')), 'páginas web: ¿Qué me conviene? con el texto del dueño y «Cálculo aproximado»');
+ok(!/\d,99/.test(webTxt) && !/\$(14,99|29,99|59,99|99,99)/.test(webHtml) && !/Presencia/.test(webHtml), 'páginas web: sin precios en ,99 ni la oferta vieja «Presencia» (tampoco en el JSON-LD)');
+const webFns = [...webMain.matchAll(/<li class="web-fn[^"]*" data-nivel="(todos|intermedio|avanzado)" data-fn="(\d+)"/g)];
+const porNivel = k => webFns.filter(m => m[1] === k).length;
+ok(webFns.length === 90 && porNivel('todos') === 58 && porNivel('intermedio') === 19 && porNivel('avanzado') === 13, `páginas web: 90 funciones con su nivel (58 todos, 19 intermedio, 13 avanzado); hay ${webFns.length} (${porNivel('todos')}/${porNivel('intermedio')}/${porNivel('avanzado')})`);
+ok(webFns.map(m => +m[2]).join() === Array.from({ length: 90 }, (_, i) => i + 1).join(), 'páginas web: las funciones van numeradas del 1 al 90, en orden');
+ok((webMain.match(/class="web-chip" data-chip="/g) || []).length >= 93, 'páginas web: cada función lleva su chip de nivel (más los 3 de la leyenda)');
+['Dirección, alojamiento y seguridad', 'Diseño', 'Contenido', 'Contacto y ventas', 'Google y visibilidad', 'Medición', 'Correo y presencia', 'Entrega y autonomía', 'Después de publicar'].forEach(c => ok(webSec('funciones').includes(c), `páginas web: categoría «${c}»`));
+ok(webTxt.includes('Próximamente: pago con tarjeta en línea, cuando haya una pasarela que funcione en Venezuela.'), 'páginas web: «Próximamente: pago con tarjeta en línea…» del dueño');
+const webPasos = [...webMain.matchAll(/<li class="web-paso[^"]*" data-web-paso="(\d)"/g)].map(m => m[1]).join('');
+ok(webPasos === '1234567' && ['Conversamos', 'Pagas para empezar:', 'Nos envías tus textos y fotos.', 'Te mostramos la maqueta', 'Construimos tu página', 'Publicamos', 'Te acompañamos:'].every(p => webSec('proceso').includes(p)), 'páginas web: los 7 pasos, en orden');
+ok(webSec('proceso').includes('Formas de pago: Pago Móvil, Transferencia o USDT. En bolívares, a la tasa BCV del día.'), 'páginas web: formas de pago exactas');
+const WEB_FAQ = [
+  ['¿El dominio es mío?', 'Sí, siempre se registra a nombre de tu negocio.'],
+  ['¿Hay contrato o permanencia?', 'No. En el plan mensual puedes cancelar cuando quieras.'],
+  ['¿Qué pasa si cancelo el plan mensual?', 'Tu dominio sigue siendo tuyo y la página deja de estar publicada. Si quieres quedarte con ella, la compras por el precio de Página Propia de tu nivel.'],
+  ['¿Cuánto tardan?', '5, 10 o 20 días hábiles según el plan, contados desde que nos envías tu contenido.'],
+  ['¿Puedo cambiar cosas después?', 'Sí. Cada plan incluye cambios al mes, y en el Avanzado tienes un panel para hacerlos tú mismo.'],
+  ['¿Me garantizan el primer lugar en Google?', 'Nadie puede garantizarlo. Lo que sí hacemos es dejar tu página preparada para Google, rápida y con SEO local, y medimos cómo te encuentran.'],
+  ['¿Qué es Página Propia?', 'Pagas una vez, en dos partes, y tu página, tu código y tu dominio quedan a tu nombre para siempre.'],
+  ['¿Tengo que pagar algo más en Página Propia?', 'Solo tu dominio desde el segundo año (unos $1 al mes). En la Avanzada, también la base de datos y la IA si las usas.']
+];
+const webFaqLd = (() => { for (const m of webHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { const j = JSON.parse(m[1]); if (j['@type'] === 'FAQPage') return j.mainEntity; } catch (e) { /* JSON inválido: falla abajo */ } } return []; })();
+ok((webMain.match(/<details class="web-faq\b/g) || []).length === 8 && webFaqLd.length === 8, 'páginas web: 8 preguntas (details.web-faq) y 8 en el FAQPage');
+WEB_FAQ.forEach(([q, a], i) => ok(webSec('preguntas').includes(q + ' ' + a) && webFaqLd[i] && webFaqLd[i].name === q && webFaqLd[i].acceptedAnswer.text === a, `páginas web: pregunta ${i + 1} exacta en la página y en el FAQPage («${q}»)`));
+ok(webSec('cierre').includes('Tu negocio merece una página que trabaje por ti.') && /Quiero mi página/.test(webSec('cierre')), 'páginas web: cierre «Tu negocio merece una página que trabaje por ti.» con «Quiero mi página»');
+const webWa = [...webHtml.matchAll(/https:\/\/wa\.me\/(\d+)\?text=([^"'\s]+)/g)].map(m => [m[1], decodeURIComponent(m[2])]);
+ok(webWa.length >= 8 && webWa.every(([num, t]) => num === '584244125386' && /^Hola F&V/.test(t) && !/\$|\d+,\d\d|USD|Bs/.test(t)), 'páginas web: los WhatsApp van al 584244125386, empiezan con «Hola F&V» y no llevan precios');
+ok(webWa.some(([, t]) => t === 'Hola F&V, quiero mi página web') && webWa.some(([, t]) => t === 'Hola F&V, me interesa el plan Básico mensual de página web') && webWa.some(([, t]) => t === 'Hola F&V, me interesa la Página Propia Intermedia'), 'páginas web: mensajes de WhatsApp del encargo (general, por plan y por Página Propia)');
+const webEfectos = ['hero', 'formas', 'funciones', 'conviene', 'proceso'];
+const posScript = s => webHtml.indexOf(`src="/assets/${s}.js"`);
+webEfectos.forEach(k => {
+  const ruta = path.join(RAIZ, `assets/paginas-web-${k}.js`);
+  const js = fs.existsSync(ruta) ? fs.readFileSync(ruta, 'utf8') : '';
+  ok(js.length > 500 && webHtml.includes(`<!-- web:${k}:inicio -->`) && webHtml.includes(`<!-- web:${k}:fin -->`) && posScript(`paginas-web-${k}`) > posScript('paginas-web') && /\bWEB\.reducir\b|\bW\.reducir\b|prefers-reduced-motion/.test(js), `páginas web: el efecto «${k}» tiene su punto de montaje, su JS (no un stub) cargado tras el núcleo y respeta reduced-motion`);
+  ok(cssTw.includes(`/* ===== paginas-web:${k} ===== */`) && cssTw.includes(`/* ===== /paginas-web:${k} ===== */`), `páginas web: el CSS del efecto «${k}» va en su bloque`);
+});
+ok(posScript('bcv') > -1 && posScript('bcv') < posScript('paginas-web') && /window\.WEB\s*=/.test(webJs), 'páginas web: bcv.js se carga antes del núcleo y el núcleo expone window.WEB');
+ok(webEfectos.every(k => new RegExp(`<script defer src="/assets/paginas-web-${k}\\.js"></script>`).test(webHtml)), 'páginas web: los 5 efectos se cargan con defer');
+ok(/class="web-mesh/.test(webMain) && /web-vidrio/.test(webMain) && /data-paralaje="/.test(webMain) && /prefers-reduced-motion/.test(cssTw.slice(cssTw.indexOf('/* ===== paginas-web:base ===== */'))) && /matchMedia\([^)]*prefers-reduced-motion/.test(webJs), 'páginas web: malla (web-mesh), vidrio (web-vidrio), paralaje y prefers-reduced-motion en CSS y JS');
+ok((webTxt.match(/Ejemplo ilustrativo/g) || []).length >= 1, 'páginas web: la maqueta del hero dice «Ejemplo ilustrativo»');
+ok(/node tests\/paginas-web\.test\.js/.test(JSON.parse(fs.readFileSync(path.join(RAIZ, 'package.json'), 'utf8')).scripts.test), 'páginas web: la prueba de la calculadora corre en npm test');
+ok(fs.readdirSync(path.join(RAIZ, 'triangular')).every(f => !/^_prueba/.test(f)), 'páginas web: no quedan páginas de prueba _prueba-*.html');
+
 console.log(`inicio: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}`);

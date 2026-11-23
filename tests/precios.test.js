@@ -65,10 +65,18 @@ MIXTAS.forEach(f => {
 })();
 
 // ---------- 3) Tabla exacta de lo Triangular (pedida por el dueño) ----------
-//  Los productos ▲ viven en sus páginas de detalle (productos/*.html) y en /paginas-web (Presencia) y /triangular/cursos/finanzas-con-ia.
+//  Los productos ▲ viven en sus páginas de detalle (productos/*.html) y en /triangular/cursos/finanzas-con-ia.
+//  /triangular/paginas-web tiene precios propios del encargo ($10, $30, $70…, sin ,99, decisión del dueño): se revisan aparte, debajo.
 const fmt = n => '$' + n.toFixed(2).replace('.', ',');
+(function paginasWeb() {
+  const crudo = leer('triangular/paginas-web.html'), txt = visible(crudo);
+  const cifras = new Set((txt.match(TOKEN) || []).map(num));
+  [10, 30, 70, 20, 60, 140, 100, 300, 700, 50, 150, 350, 5, 15, 35, 9, 8, 2.14, 0.71].forEach(p => ok(cifras.has(p), 'triangular/paginas-web.html debe publicar $' + String(p).replace('.', ',')));
+  [14.99, 29.99, 59.99, 99.99].forEach(p => ok(!crudo.includes(fmt(p)), 'triangular/paginas-web.html no debe publicar el precio viejo ' + fmt(p)));
+  ok(!/Presencia/.test(crudo), 'triangular/paginas-web.html no nombra la oferta vieja «Presencia»');
+})();
 const ESPERADOS = {
-  'productos/plan-arranque.html': [39.99], 'triangular/paginas-web.html': [14.99, 29.99, 59.99, 99.99],
+  'productos/plan-arranque.html': [39.99],
   'productos/caja-clara.html': [14.99, 29.99, 39.99], 'productos/tablero-ejecutivo.html': [79.99, 149.99],
   'productos/asistente-ia.html': [119.99, 179.99], 'productos/mis-finanzas-claras.html': [4.99],
   'productos/taller-plata-clara.html': [24.99], 'triangular/cursos/finanzas-con-ia.html': [299.99]
@@ -182,7 +190,7 @@ function contenedor(html, pos) {
   while ((t = reTag.exec(html))) { if (t[1]) { prof--; if (prof === 0) { fin = t.index; break; } } else prof++; }
   return plano(html.slice(el.ini, fin).replace(/<[^>]+>/g, ' '));
 }
-const SOLO_SOFTWARE = ['club.html', 'condominio.html', 'gym.html', 'triangular/paginas-web.html'];
+const SOLO_SOFTWARE = ['club.html', 'condominio.html', 'gym.html'];
 let desdeRevisados = 0;
 PAGINAS.filter(f => !SOLO_SOFTWARE.includes(f)).forEach(f => {
   const html = leer(f).replace(/<script(?![^>]*application\/ld\+json)[\s\S]*?<\/script>/g, s => ' '.repeat(s.length)).replace(/<style[\s\S]*?<\/style>/g, s => ' '.repeat(s.length));
