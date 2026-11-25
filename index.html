@@ -228,6 +228,8 @@
     /* En el celular, mientras se ve el pie, Luci se aparta: ahí tapaba el logo y los datos de contacto (30 oct 2026) */
     #luci-widget.avoid-footer { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(1rem); }
   }
+  /* En escritorio también se aparta mientras se ve el pie: subida 96 px tapaba el botón de WhatsApp del pie (24 nov 2026, revisión) */
+  #luci-widget.avoid-footer { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(1rem); }
 
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -559,13 +561,43 @@
 <main id="main-content">
 
 <!-- ============ 1. PORTADA (marca madre: cian y naranja) ============ -->
-<section id="inicio" class="ini-portada relative pb-14 lg:pb-20 overflow-hidden" aria-labelledby="hero-title">
+<section id="inicio" class="ini-portada ini-sec relative pb-14 lg:pb-20 overflow-hidden" aria-labelledby="hero-title" data-ini-pausa>
+  <div class="ini-mesh ini-mesh-intensa" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.16"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.08"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.24"></span><span class="ini-hexgrid"></span></div>
   <canvas id="hex-canvas" class="opacity-70" aria-hidden="true"></canvas>
-  <div class="absolute top-0 left-0 w-[560px] h-[560px] bg-fv-cyanMid/10 rounded-full blur-[130px] pointer-events-none -translate-x-1/3 -translate-y-1/3 parallax-blob" data-speed="0.08" aria-hidden="true"></div>
-  <div class="absolute bottom-0 right-0 w-[620px] h-[620px] bg-fv-orange/10 rounded-full blur-[150px] pointer-events-none translate-x-1/4 translate-y-1/4 parallax-blob" data-speed="-0.05" aria-hidden="true"></div>
   <div class="ini-hero">
-    <img src="assets/logo-hex-hex.png" alt="" aria-hidden="true" width="1024" height="1024" decoding="async" class="ini-hexgiro">
-    <img src="assets/logo-mark-hex.png" alt="" aria-hidden="true" width="500" height="500" decoding="async" class="ini-hexmarca">
+    <!-- Hexágono y luciérnaga: cada uno en su capa de paralaje (velocidades distintas = profundidad). En celular van arriba del texto. -->
+    <div class="ini-hexescena" aria-hidden="true">
+      <div class="ini-hexcapa" data-paralaje="0.05"><img src="assets/logo-hex-hex.png" alt="" aria-hidden="true" width="1024" height="1024" decoding="async" class="ini-hexgiro"></div>
+      <div class="ini-hexcapa" data-paralaje="0.11"><img src="assets/logo-mark-hex.webp" alt="" aria-hidden="true" width="500" height="500" decoding="async" class="ini-hexmarca"></div>
+    </div>
+    <div class="ini-montaje" data-ini-montaje="hero"><!-- ini:hero:inicio --><div class="ini-hr" aria-hidden="true">
+      <div class="ini-hr-capa" data-paralaje="0.05"><span class="ini-hr-barrido"></span></div>
+      <div class="ini-hr-capa" data-paralaje="0.11"><span class="ini-hr-halo"></span><span class="ini-hr-chispas"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+      <div class="ini-hr-cartas" data-paralaje="-0.06">
+        <div class="ini-hr-carta ini-vidrio ini-hr-tablero" style="--d: .2s">
+          <p class="ini-hr-rotulo">Ejemplo ilustrativo</p>
+          <p class="ini-hr-titulo">Tablero de su empresa</p>
+          <div class="ini-hr-barras"><span style="--h: .42"></span><span style="--h: .6"></span><span style="--h: .5"></span><span style="--h: .74"></span><span style="--h: .66"></span><span style="--h: .88"></span><span style="--h: .8"></span></div>
+          <p class="ini-hr-pie"><span class="ini-hr-punto"></span>Actualizado hoy</p>
+        </div>
+        <div class="ini-hr-carta ini-vidrio ini-hr-tasa" style="--d: .35s" data-hr-tasa hidden>
+          <p class="ini-hr-rotulo ini-hr-vivo"><span class="ini-hr-punto"></span>En vivo · BCV</p>
+          <p class="ini-hr-titulo">Tasa oficial del día</p>
+          <p class="ini-hr-cifra"><strong data-hr-tasa-valor></strong> <span>bolívares por dólar</span></p>
+          <p class="ini-hr-pie" data-hr-tasa-fecha></p>
+        </div>
+        <div class="ini-hr-carta ini-vidrio ini-hr-wa" style="--d: .5s">
+          <p class="ini-hr-rotulo">Ejemplo ilustrativo</p>
+          <div class="ini-hr-fila"><span class="ini-hr-icono"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg></span><p class="ini-hr-titulo">Recordatorio enviado por WhatsApp</p></div>
+          <p class="ini-hr-pie"><span class="ini-hr-checks">✓✓</span> Ahora</p>
+        </div>
+        <div class="ini-hr-carta ini-vidrio ini-hr-alerta" style="--d: .65s">
+          <p class="ini-hr-rotulo">Ejemplo ilustrativo</p>
+          <div class="ini-hr-fila"><span class="ini-hr-icono"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V9h2v4Z"/></svg></span><p class="ini-hr-titulo">Alerta de decisión</p></div>
+          <p class="ini-hr-texto">Un indicador clave cambió. Conviene revisarlo hoy.</p>
+        </div>
+      </div>
+    </div><!-- ini:hero:fin --></div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full text-left">
       <div class="hero-copy">
         <p class="ini-antetitulo">INTELIGENCIA DE NEGOCIOS</p>
@@ -577,7 +609,7 @@
       </div>
     </div>
   </div>
-  <div class="relative z-10 mt-14 lg:mt-20">
+  <div class="ini-marcas ini-vidrio ini-vidrio-banda relative z-10 mt-14 lg:mt-20">
     <p class="ini-logos-titulo px-6">Marcas con las que hemos trabajado</p>
     <div class="marquee">
     <div class="marquee-track">
@@ -615,12 +647,14 @@
       <div class="border-0 bg-black rounded-xl p-1.5 flex items-center justify-center overflow-hidden" style="width:150px;height:80px;"><img src="assets/clientes/cliente-logo-cvxrgxsgraphic.webp" width="2752" height="1536" class="h-full w-full object-cover rounded-md" style="transform: scale(1.28);" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
     </div>
   </div>
+    <div class="ini-montaje" data-ini-montaje="marcas"><!-- ini:marcas:inicio --><button type="button" class="ini-marcas-pausa" data-ini-marcas-pausa aria-label="Pausar el carrusel de marcas" hidden><span class="ini-marcas-pausa-ico" aria-hidden="true"></span><span class="ini-marcas-pausa-txt">Pausar</span></button><!-- ini:marcas:fin --></div>
   </div>
 </section>
 
 
 <!-- ============ 3. LAS DOS LÍNEAS ============ -->
-<section id="lineas" class="ini-lineas relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="lineas-titulo">
+<section id="lineas" class="ini-lineas ini-sec ini-sep relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="lineas-titulo">
+  <div class="ini-mesh" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.14"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.08"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.2"></span><span class="ini-hexgrid"></span></div>
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl mb-10 lg:mb-12">
       <p class="ini-etq-naranja ini-etq-dos">DOS LÍNEAS · UNA FORMA DE TRABAJAR</p>
@@ -628,7 +662,7 @@
       <p class="ini-ayuda-lineas">Más de 20 personas, varias sedes o junta directiva: Línea Hexagonal. Si usted decide solo en su negocio: Línea Triangular.</p>
     </div>
     <div class="ini-figuras">
-      <article id="fig-hex" class="ini-fig linea-hex hex-legible" data-linea="hex" data-nombre-linea="LÍNEA HEXAGONAL" data-para="Empresas e instituciones" aria-labelledby="fig-hex-t">
+      <article id="fig-hex" class="ini-fig ini-vidrio linea-hex hex-legible" data-ini-ve data-linea="hex" data-nombre-linea="LÍNEA HEXAGONAL" data-para="Empresas e instituciones" aria-labelledby="fig-hex-t">
         <header class="ini-fig-cab">
           <span class="ini-forma nav-forma nav-hex" aria-hidden="true"></span>
           <div>
@@ -719,7 +753,7 @@
         </ul>
         <a href="/hexagonal" class="ini-ver ini-ver-hex" data-evento="inicio_ver_hexagonal">Ver la Línea Hexagonal</a>
       </article>
-      <article id="fig-tri" class="ini-fig linea-tri" data-linea="tri" data-nombre-linea="LÍNEA TRIANGULAR" data-para="Negocios pequeños" aria-labelledby="fig-tri-t">
+      <article id="fig-tri" class="ini-fig ini-vidrio ini-vidrio-tri linea-tri" data-ini-ve data-linea="tri" data-nombre-linea="LÍNEA TRIANGULAR" data-para="Negocios pequeños" aria-labelledby="fig-tri-t">
         <header class="ini-fig-cab">
           <span class="ini-forma nav-forma nav-tri" aria-hidden="true"></span>
           <div>
@@ -776,6 +810,7 @@
         <a href="/triangular" class="ini-ver ini-ver-tri" data-evento="inicio_ver_triangular">Ver la Línea Triangular</a>
       </article>
     </div>
+    <div class="ini-montaje" data-ini-montaje="lineas"><!-- ini:lineas:inicio --><!-- ini:lineas:fin --></div>
   </div>
 </section>
 
@@ -783,10 +818,11 @@
 <div id="video-socios" class="ini-video" hidden></div>
 
 <!-- ============ 4. DIAGNÓSTICO DE 60 SEGUNDOS ============ -->
-<section id="diagnostico" class="ini-quiz relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="quiz-titulo">
+<section id="diagnostico" class="ini-quiz ini-sec ini-sep relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="quiz-titulo">
+  <div class="ini-mesh ini-mesh-suave" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.12"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.2"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.08"></span><span class="ini-hexgrid"></span></div>
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <h2 id="quiz-titulo" class="ini-h2 font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">¿No sabe por dónde empezar? <span class="ini-h1-grad">Responda 3 preguntas.</span></h2>
-    <div class="ini-quiz-caja" data-quiz>
+    <div class="ini-quiz-caja ini-vidrio" data-quiz data-ini-ve>
       <p class="ini-quiz-sinjs" data-quiz-sinjs>Escríbanos por WhatsApp y le decimos qué línea le corresponde y por dónde empezar.
         <a class="ini-wa btn-linea estado-interactivo" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20saber%20por%20d%C3%B3nde%20empezar." target="_blank" rel="noopener" data-evento="inicio_quiz_whatsapp_general" data-cta="inicio_quiz">Escribir por WhatsApp</a></p>
       <div class="ini-quiz-ui" data-quiz-ui hidden></div>
@@ -795,7 +831,8 @@
 </section>
 
 <!-- ============ 5. CÓMO TRABAJAMOS ============ -->
-<section id="como-trabajamos" class="ini-como relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="como-titulo">
+<section id="como-trabajamos" class="ini-como ini-sec ini-sep relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" aria-labelledby="como-titulo">
+  <div class="ini-mesh" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.1"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.18"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.26"></span><span class="ini-hexgrid"></span></div>
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <h2 id="como-titulo" class="ini-h2 font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Cómo <span class="ini-h1-grad">trabajamos</span></h2>
     <ol class="ini-pasos-lista">
@@ -803,11 +840,13 @@
       <li><span class="ini-paso-ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V10M12 20V4M18 20v-7"/></svg></span><h3>2. Implementar</h3><p>Construimos el tablero, la automatización o el sistema que hace falta.</p></li>
       <li><span class="ini-paso-ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span><h3>3. Acompañar</h3><p>Nos quedamos después de la implementación para que funcione.</p></li>
     </ol>
+    <div class="ini-montaje" data-ini-montaje="como"><!-- ini:como:inicio --><div class="ini-como-via" aria-hidden="true"><span class="ini-como-riel"></span><span class="ini-como-luz"></span><span class="ini-como-nodo"><svg viewBox="0 0 28 26" width="28" height="26" focusable="false"><path d="M7.5 1.5h13L27 13l-6.5 11.5h-13L1 13z"/><circle cx="14" cy="13" r="3.2"/></svg></span><span class="ini-como-nodo"><svg viewBox="0 0 28 26" width="28" height="26" focusable="false"><path d="M7.5 1.5h13L27 13l-6.5 11.5h-13L1 13z"/><circle cx="14" cy="13" r="3.2"/></svg></span><span class="ini-como-nodo"><svg viewBox="0 0 28 26" width="28" height="26" focusable="false"><path d="M7.5 1.5h13L27 13l-6.5 11.5h-13L1 13z"/><circle cx="14" cy="13" r="3.2"/></svg></span><span class="ini-como-luci"><img src="assets/logo-mark-hex.webp" alt="" width="500" height="500" loading="lazy" decoding="async"></span></div><!-- ini:como:fin --></div>
   </div>
 </section>
 
 <!-- ============ B. MANIFIESTO (una frase por pantalla en celular; sin botón ni enlace) ============ -->
-<section id="manifiesto" class="ini-manifiesto relative border-t border-white/5" aria-label="Manifiesto">
+<section id="manifiesto" class="ini-manifiesto ini-sec ini-sep relative border-t border-white/5" aria-label="Manifiesto">
+  <div class="ini-mesh ini-mesh-suave" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.08"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.16"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.22"></span><span class="ini-hexgrid"></span></div>
   <!-- Luciérnaga en 3D: aparece al llegar y da una vuelta de 360° mientras se baja por la sección (assets/fv-logo-3d/; la carga assets/inicio.js al acercarse). Sin JS queda la imagen fija. -->
   <div class="ini-manif-giro" aria-hidden="true">
     <div class="ini-manif-giro-pegado">
@@ -816,36 +855,38 @@
   </div>
   <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
     <p class="ini-frase" data-frase><span>Decidir con <em class="ini-clave">datos</em> no es solo para empresas grandes.</span></p>
-    <figure class="ini-ps" data-ps aria-label="Ventana de PowerShell ejecutando una automatización de empresa">
+    <figure class="ini-ps" data-ps aria-label="Consola de F&amp;V ejecutando una automatización de empresa (ejemplo ilustrativo)">
       <p class="sr-only">La inteligencia artificial es el cómo. Su empresa es el qué.</p>
-      <div class="ini-ps-barra" aria-hidden="true"><span class="ini-ps-ico">&gt;_</span><span class="ini-ps-tit">Windows PowerShell</span><span class="ini-ps-ctl"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div>
+      <div class="ini-ps-barra" aria-hidden="true"><span class="ini-ps-ico"></span><span class="ini-ps-tit">F&amp;V · automatización</span><span class="ini-ps-rotulo">Ejemplo ilustrativo</span><span class="ini-ps-ctl"><i></i><i></i><i></i></span></div>
       <div class="ini-ps-cuerpo" aria-hidden="true">
-        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-c"># La inteligencia artificial es el cómo. Su empresa es el qué.</span></p>
-        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Import-Module</span> <span class="ps-a">FV.Automatizacion</span></p>
-        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Get-Cobranza</span> <span class="ps-a">-Estado</span> <span class="ps-s">Pendiente</span> | <span class="ps-f">Conciliar-Pagos</span> <span class="ps-a">-Tasa</span> <span class="ps-s">BCV</span></p>
-        <p class="ps-l ps-ok">✔ 128 pagos conciliados con la tasa del día</p>
-        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Send-Recordatorio</span> <span class="ps-a">-Canal</span> <span class="ps-s">WhatsApp</span> <span class="ps-a">-A</span> <span class="ps-s">Clientes-Con-Mora</span></p>
-        <p class="ps-l ps-ok">✔ 14 recordatorios enviados</p>
-        <p class="ps-l ps-cmd"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-f">Update-Tablero</span> <span class="ps-a">-Destino</span> <span class="ps-s">Gerencia</span></p>
-        <p class="ps-l ps-ok">✔ Tablero actualizado. Su empresa decide con datos.</p>
-        <p class="ps-fin"><span class="ps-p">PS C:\FV&gt; </span><span class="ps-cur"></span></p>
+        <p class="ps-l ps-cmd"><span class="ps-p">fv&gt; </span><span class="ps-c"># La inteligencia artificial es el cómo. Su empresa es el qué.</span></p>
+        <p class="ps-l ps-cmd"><span class="ps-p">fv&gt; </span><span class="ps-f">Import-Module</span> <span class="ps-a">FV.Automatizacion</span></p>
+        <p class="ps-l ps-cmd"><span class="ps-p">fv&gt; </span><span class="ps-f">Get-Cobranza</span> <span class="ps-a">-Estado</span> <span class="ps-s">Pendiente</span> | <span class="ps-f">Conciliar-Pagos</span> <span class="ps-a">-Tasa</span> <span class="ps-s">BCV</span></p>
+        <p class="ps-l ps-ok"><span class="ps-v">✔</span> 128 pagos conciliados con la tasa del día</p>
+        <p class="ps-l ps-cmd"><span class="ps-p">fv&gt; </span><span class="ps-f">Send-Recordatorio</span> <span class="ps-a">-Canal</span> <span class="ps-s">WhatsApp</span> <span class="ps-a">-A</span> <span class="ps-s">Clientes-Con-Mora</span></p>
+        <p class="ps-l ps-ok"><span class="ps-v">✔</span> 14 recordatorios enviados</p>
+        <p class="ps-l ps-cmd"><span class="ps-p">fv&gt; </span><span class="ps-f">Update-Tablero</span> <span class="ps-a">-Destino</span> <span class="ps-s">Gerencia</span></p>
+        <p class="ps-l ps-ok"><span class="ps-v">✔</span> Tablero actualizado. Su empresa decide con datos.</p>
+        <p class="ps-fin"><span class="ps-p">fv&gt; </span><span class="ps-cur"></span></p>
       </div>
     </figure>
+    <div class="ini-montaje" data-ini-montaje="manifiesto"><!-- ini:manifiesto:inicio --><!-- ini:manifiesto:fin --></div>
   </div>
 </section>
 
 <!-- ============ 6. DEL CAOS AL TABLERO ============ -->
-<section id="caos-tablero" class="ini-caos relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="caos-titulo">
+<section id="caos-tablero" class="ini-caos ini-sec ini-sep relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="caos-titulo">
+  <div class="ini-mesh ini-mesh-suave" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.14"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.08"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.2"></span><span class="ini-hexgrid"></span></div>
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <h2 id="caos-titulo" class="ini-h2 font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Del caos <span class="ini-h1-grad">al tablero</span></h2>
     <div class="ini-caos-grid" data-caos>
-      <div class="ini-panel ini-antes">
+      <div class="ini-panel ini-antes ini-vidrio ini-vidrio-gris">
         <p class="ini-panel-etq">Antes</p>
         <ul class="ini-caos-lista">
           <li>Cuaderno</li><li>Excel con varias versiones</li><li>Chats de WhatsApp</li><li>Bolívares y dólares mezclados</li><li>Reportes que llegan tarde</li>
         </ul>
       </div>
-      <div class="ini-panel ini-despues">
+      <div class="ini-panel ini-despues ini-vidrio">
         <p class="ini-panel-etq">Después</p>
         <ul class="ini-barras">
           <li><span>Ventas</span><span class="ini-barra"><i style="--w:78%"></i></span></li>
@@ -855,17 +896,47 @@
         </ul>
       </div>
     </div>
+    <div class="ini-montaje" data-ini-montaje="caos"><!-- ini:caos:inicio --><div class="ini-caos-env" data-caos-env hidden>
+      <div class="ini-caos-marco ini-vidrio" data-caos-marco>
+        <!-- Capa de abajo: después (tablero de vidrio). Sin cifras: solo barras. Efecto: assets/inicio-caos.js -->
+        <div class="ini-caos-capa ini-caos-d" aria-hidden="true">
+          <p class="ini-caos-etq ini-caos-etq-d">Después</p>
+          <div class="ini-caos-tab">
+            <div class="ini-caos-tab-cab"><span class="ini-caos-hexico"></span><b>Tablero</b><span class="ini-caos-aldia">Al día</span></div>
+            <ul class="ini-caos-barras">
+              <li><span>Ventas</span><span class="ini-caos-barra"><i style="--w:.78"></i></span></li>
+              <li><span>Gastos</span><span class="ini-caos-barra"><i style="--w:.46"></i></span></li>
+              <li><span>Por cobrar</span><span class="ini-caos-barra"><i style="--w:.31"></i></span></li>
+              <li><span>Margen</span><span class="ini-caos-barra"><i style="--w:.62"></i></span></li>
+            </ul>
+            <svg class="ini-caos-curva" viewBox="0 0 300 70" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="ini-caos-g" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00FFFF"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FF8C00"/></linearGradient></defs><path class="ini-caos-area" d="M0 58 C30 54 50 44 80 46 S130 30 160 32 S220 14 250 18 S285 8 300 6 V70 H0 Z"/><path class="ini-caos-trazo" pathLength="1" d="M0 58 C30 54 50 44 80 46 S130 30 160 32 S220 14 250 18 S285 8 300 6"/></svg>
+          </div>
+        </div>
+        <!-- Capa de arriba: antes (el caos). Se recorta con clip-path según --caos-x -->
+        <div class="ini-caos-capa ini-caos-a" aria-hidden="true">
+          <p class="ini-caos-etq ini-caos-etq-a">Antes</p>
+          <div class="ini-caos-n ini-caos-cuaderno"><b>Cuaderno</b><s></s><i></i><i></i><s></s></div>
+          <div class="ini-caos-n ini-caos-chat"><b>Chats de WhatsApp</b><span class="ini-caos-punto"></span><i></i><i class="ini-caos-sale"></i><i></i></div>
+          <div class="ini-caos-n ini-caos-excel"><b>Excel con varias versiones</b><span class="ini-caos-celdas"></span><span class="ini-caos-pest"><em>v1</em><em>v2</em><em>v3</em></span></div>
+          <div class="ini-caos-n ini-caos-mezcla"><span class="ini-caos-monedas"><u></u><u></u></span><b>Bolívares y dólares mezclados</b></div>
+          <div class="ini-caos-n ini-caos-tarde"><span class="ini-caos-reloj"></span><b>Reportes que llegan tarde</b></div>
+        </div>
+        <div class="ini-caos-mango"><span class="ini-caos-linea" aria-hidden="true"></span><div class="ini-caos-perilla" role="slider" tabindex="0" aria-label="Comparar antes y después" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Se ve 50 de 100 del antes y 50 de 100 del después" data-caos-perilla><svg viewBox="0 0 52 52" aria-hidden="true" focusable="false"><defs><linearGradient id="ini-caos-gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00FFFF"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FF8C00"/></linearGradient></defs><path class="ini-caos-perilla-hex" d="M26 3 46 14.5v23L26 49 6 37.5v-23Z"/><path d="M20 19l-7 7 7 7M32 19l7 7-7 7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ini-caos-luz" aria-hidden="true"></span></div></div>
+      </div>
+      <p class="ini-caos-ayuda">Arrastre la barra o use las flechas del teclado para comparar.</p>
+    </div><!-- ini:caos:fin --></div>
     <p class="ini-ficticio">Ejemplo ilustrativo con datos ficticios.</p>
   </div>
 </section>
 
 <!-- ============ A. CALCULADORA DE LA BRECHA (muestra montos del usuario, no precios de F&V) ============ -->
-<section id="brecha" class="ini-brecha relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" data-sin-precios-excepcion="brecha" aria-labelledby="brecha-titulo">
+<section id="brecha" class="ini-brecha ini-sec ini-sep relative py-16 lg:py-24 border-t border-white/5 scroll-mt-28" data-sin-precios-excepcion="brecha" aria-labelledby="brecha-titulo">
+  <div class="ini-mesh" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.12"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.2"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.08"></span><span class="ini-hexgrid"></span></div>
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <p class="ini-etq-naranja">LA PLATA QUE SE PIERDE ESPERANDO</p>
     <h2 id="brecha-titulo" class="ini-h2 font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">¿Cuánto se le va entre <span class="ini-h1-grad">que cobra y cambia?</span></h2>
     <p class="ini-ayuda-lineas">Si cobra en bolívares hoy y compra dólares días después, la diferencia de tasa se come parte de su ganancia. Calcúlelo con sus números.</p>
-    <div class="ini-quiz-caja" data-brecha>
+    <div class="ini-quiz-caja ini-vidrio" data-brecha data-ini-ve>
       <p class="ini-quiz-sinjs" data-brecha-sinjs>Escríbanos por WhatsApp y le ayudamos a calcularlo con sus números.
         <a class="ini-wa btn-primary btn-glow-on-hover" href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20quiero%20calcular%20cu%C3%A1nto%20pierdo%20entre%20que%20cobro%20y%20cambio." target="_blank" rel="noopener" data-evento="inicio_brecha_whatsapp_general" data-cta="inicio_brecha">Escribir por WhatsApp</a></p>
       <form class="ini-brecha-form" data-brecha-form novalidate hidden>
@@ -888,27 +959,65 @@
         <button type="submit" class="ini-calcular btn-primary btn-glow-on-hover" data-evento="inicio_brecha_calcular_boton">Calcular</button>
       </form>
       <div class="ini-brecha-res" data-brecha-res aria-live="polite" hidden></div>
+      <div class="ini-montaje" data-ini-montaje="brecha"><!-- ini:brecha:inicio --><div class="ini-brecha-graf" data-brecha-graf data-ini-pausa hidden>
+          <figure class="ini-brecha-graf-fig">
+          <figcaption class="ini-brecha-graf-cab">
+            <span class="ini-brecha-graf-tit">Cómo crece la pérdida mientras espera</span>
+            <span class="ini-brecha-graf-etq">Cálculo aproximado</span>
+          </figcaption>
+          <div class="ini-brecha-graf-lienzo">
+            <span class="ini-brecha-graf-ymax" data-brecha-graf-ymax aria-hidden="true"></span>
+            <svg class="ini-brecha-graf-svg" viewBox="0 0 600 200" role="img" aria-labelledby="brecha-graf-desc" focusable="false">
+              <desc id="brecha-graf-desc" data-brecha-graf-desc>Gráfica de la pérdida según los días de espera.</desc>
+              <defs>
+                <linearGradient id="brecha-graf-linea" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00FFFF"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FF8C00"/></linearGradient>
+                <linearGradient id="brecha-graf-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8C00" stop-opacity=".34"/><stop offset="1" stop-color="#FF8C00" stop-opacity="0"/></linearGradient>
+                <radialGradient id="brecha-graf-luz"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".35" stop-color="#FFB347"/><stop offset="1" stop-color="#FF8C00" stop-opacity="0"/></radialGradient>
+              </defs>
+              <g class="ini-brecha-graf-rejilla" aria-hidden="true"><line x1="0" y1="20" x2="600" y2="20"/><line x1="0" y1="80" x2="600" y2="80"/><line x1="0" y1="140" x2="600" y2="140"/><line class="ini-brecha-graf-base" x1="0" y1="190" x2="600" y2="190"/></g>
+              <path class="ini-brecha-graf-relleno" data-brecha-graf-area d="" fill="url(#brecha-graf-area)"/>
+              <path class="ini-brecha-graf-trazo" data-brecha-graf-linea d="" pathLength="1" fill="none" stroke="url(#brecha-graf-linea)"/>
+              <path class="ini-brecha-graf-hex" d="M0,-9 L7.8,-4.5 L7.8,4.5 L0,9 L-7.8,4.5 L-7.8,-4.5 Z" transform="translate(10 190)"/>
+              <g class="ini-brecha-graf-punto" data-brecha-graf-punto transform="translate(590 20)"><circle class="ini-brecha-graf-halo" r="22" fill="url(#brecha-graf-luz)"/><circle r="5.5" fill="#FFFFFF"/></g>
+            </svg>
+          </div>
+          <div class="ini-brecha-graf-eje" aria-hidden="true"><span data-brecha-graf-x0>Día del cobro</span><span data-brecha-graf-x1>Día de la compra</span></div>
+          </figure>
+          <div class="ini-campo ini-brecha-dias">
+            <label for="brecha-dias">¿Cuántos días esperó para comprar los dólares? (opcional)</label>
+            <input id="brecha-dias" name="dias" type="text" inputmode="numeric" autocomplete="off" maxlength="3" aria-describedby="brecha-dias-nota">
+            <p id="brecha-dias-nota" class="ini-campo-ayuda" data-brecha-graf-nota>Supone que la tasa subió de forma pareja entre las dos fechas.</p>
+          </div>
+        </div><!-- ini:brecha:fin --></div>
       <p class="ini-nota-chica">Cálculo ilustrativo con las tasas que usted ingresó. No es asesoría financiera.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ 7. FRANJA DELTA APP ============ -->
-<section id="delta-app" class="ini-delta relative py-10 lg:py-12 border-t border-white/5" aria-labelledby="delta-titulo">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 ini-delta-fila">
-    <div>
-      <h2 id="delta-titulo" class="ini-h2 font-sans text-2xl font-semibold text-white leading-tight">Delta App</h2>
-      <p class="ini-delta-texto">Software para clubes, condominios y gimnasios. Una sola plataforma, planes según su tamaño.</p>
+<!-- ============ 7. FRANJA DELTA (familia de apps ▲; texto de /triangular/delta) ============ -->
+<section id="delta-app" class="ini-delta ini-sec ini-sep relative py-12 lg:py-16 border-t border-white/5 linea-tri" aria-labelledby="delta-titulo">
+  <div class="ini-mesh ini-mesh-tri ini-mesh-suave" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.1"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.18"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.06"></span><span class="ini-hexgrid"></span></div>
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="ini-delta-fila ini-vidrio ini-vidrio-tri" data-ini-ve>
+      <div class="ini-delta-marca">
+        <img src="assets/logo-full-tri.webp" alt="" aria-hidden="true" width="677" height="369" loading="lazy" decoding="async" class="ini-delta-logo">
+        <div>
+          <p class="ini-etq-tri">▲ Línea Triangular</p>
+          <h2 id="delta-titulo" class="ini-h2 font-sans text-2xl sm:text-3xl font-semibold text-white leading-tight"><span class="ini-grad-tri">Delta</span></h2>
+          <p class="ini-delta-texto">Delta es la familia de apps ▲ de F&amp;V AI Group: Cobranza, Cont App, Dist App y Delta Logística.</p>
+        </div>
+      </div>
+      <a href="/triangular/delta" class="ini-btn-tri" data-evento="inicio_delta_app" data-cta="inicio_delta">Conocer Delta</a>
     </div>
-    <a href="/delta-app" class="btn-secondary inline-flex items-center justify-center min-h-[44px] px-6 py-3 font-head font-medium rounded-lg" data-evento="inicio_delta_app" data-cta="inicio_delta">Conocer Delta App</a>
   </div>
 </section>
 
 <!-- ============ 8. PREGUNTAS FRECUENTES ============ -->
-<section id="faq" class="ini-faq relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="faq-titulo">
+<section id="faq" class="ini-faq ini-sec ini-sep relative py-16 lg:py-24 border-t border-white/5 bg-fv-surface2/40 scroll-mt-28" aria-labelledby="faq-titulo">
+  <div class="ini-mesh ini-mesh-suave" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.1"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.18"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.24"></span><span class="ini-hexgrid"></span></div>
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
     <h2 id="faq-titulo" class="ini-h2 font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Preguntas <span class="ini-h1-grad">frecuentes</span></h2>
-    <div class="ini-faq-lista">
+    <div class="ini-faq-lista" data-ini-ve>
       <details>
         <summary><span>¿Cuánto cuesta?</span></summary>
         <p>Depende de la línea y de lo que necesite. Escríbanos por WhatsApp y le damos el precio exacto el mismo día hábil.</p>
@@ -930,15 +1039,35 @@
 </section>
 
 <!-- ============ 9. CIERRE ============ -->
-<section id="cierre" class="ini-cierre relative py-16 lg:py-24 border-t border-white/5" aria-labelledby="cierre-titulo">
+<section id="cierre" class="ini-cierre ini-sec ini-sep relative py-16 lg:py-24 border-t border-white/5" aria-labelledby="cierre-titulo" data-ini-pausa>
+  <div class="ini-mesh ini-mesh-intensa" aria-hidden="true"><span class="ini-mancha ini-mancha-1" data-paralaje="0.14"></span><span class="ini-mancha ini-mancha-2" data-paralaje="0.22"></span><span class="ini-mancha ini-mancha-3" data-paralaje="0.1"></span><span class="ini-hexgrid"></span></div>
   <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <div class="ini-cierre-caja ini-vidrio" data-ini-ve>
     <h2 id="cierre-titulo" class="ini-h2 font-sans text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight text-balance">Hablemos de <span class="ini-h1-grad">su empresa</span></h2>
     <div class="ini-cierre-botones">
       <a href="https://wa.me/584244125386?text=Hola%20F%26V%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20inicio%20y%20quiero%20conversar." target="_blank" rel="noopener" class="ini-boton ini-boton-pill btn-primary btn-glow-on-hover" data-evento="inicio_cierre_whatsapp" data-cta="inicio_cierre">Escribir por WhatsApp</a>
       <a href="/contacto#agenda" class="ini-boton ini-boton-pill btn-secondary" data-evento="inicio_cierre_agenda" data-cta="inicio_cierre">Agendar consulta gratis</a>
     </div>
+    <div class="ini-montaje" data-ini-montaje="faqcierre"><!-- ini:faqcierre:inicio --><div class="ini-fc-sello" aria-hidden="true"><span class="ini-fc-halo"></span><img src="assets/logo-hex-hex-256.webp" alt="" aria-hidden="true" width="256" height="256" loading="lazy" decoding="async" class="ini-fc-aro"><img src="assets/logo-mark-hex.webp" alt="" aria-hidden="true" width="500" height="500" loading="lazy" decoding="async" class="ini-fc-luci"></div><!-- ini:faqcierre:fin --></div>
+    </div>
   </div>
 </section>
+
+<!-- Luciérnaga guía del recorrido (efecto «guia»; assets/inicio-guia.js) -->
+<div class="ini-montaje" data-ini-montaje="guia"><!-- ini:guia:inicio --><nav class="ini-guia" aria-label="Recorrido de la página" data-ini-guia>
+  <ol class="ini-guia-lista">
+    <li><a class="ini-guia-paso" href="#inicio" data-guia="inicio"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">Inicio</span></a></li>
+    <li><a class="ini-guia-paso" href="#lineas" data-guia="lineas"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">Elija el camino que le corresponde</span></a></li>
+    <li><a class="ini-guia-paso" href="#diagnostico" data-guia="diagnostico"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">¿No sabe por dónde empezar? Responda 3 preguntas.</span></a></li>
+    <li><a class="ini-guia-paso" href="#como-trabajamos" data-guia="como-trabajamos"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">Cómo trabajamos</span></a></li>
+    <li><a class="ini-guia-paso" href="#manifiesto" data-guia="manifiesto"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">Manifiesto</span></a></li>
+    <li><a class="ini-guia-paso" href="#caos-tablero" data-guia="caos-tablero"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">Del caos al tablero</span></a></li>
+    <li><a class="ini-guia-paso" href="#brecha" data-guia="brecha"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">¿Cuánto se le va entre que cobra y cambia?</span></a></li>
+    <li><a class="ini-guia-paso ini-guia-tri" href="#delta-app" data-guia="delta-app"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3.5 21,19.5 3,19.5"/></svg><span class="ini-guia-nombre">Delta</span></a></li>
+    <li><a class="ini-guia-paso" href="#faq" data-guia="faq"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">Preguntas frecuentes</span></a></li>
+    <li><a class="ini-guia-paso" href="#cierre" data-guia="cierre"><svg class="ini-guia-forma" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/></svg><span class="ini-guia-nombre">Hablemos de su empresa</span></a></li>
+  </ol>
+</nav><!-- ini:guia:fin --></div>
 
 </main>
 
@@ -1076,7 +1205,18 @@
       }));
     }
 
+    // el bucle se detiene fuera de pantalla y con la pestaña oculta (24 nov 2026, revisión): no compite con los efectos del inicio
+    let corriendo = false, enVista = true;
+    function seguir() {
+      if (reduceMotion || corriendo || !enVista || document.hidden) return;
+      corriendo = true;
+      requestAnimationFrame(tick);
+    }
+    if ('IntersectionObserver' in window) new IntersectionObserver((es) => { enVista = es[0].isIntersecting; seguir(); }).observe(canvas);
+    document.addEventListener('visibilitychange', seguir);
+
     function tick() {
+      corriendo = false;
       ctx.clearRect(0, 0, w, h);
       particles.forEach(p => {
         p.x += p.vx; p.y += p.vy;
@@ -1111,7 +1251,7 @@
         }
       }
 
-      if (!reduceMotion) requestAnimationFrame(tick);
+      seguir();
     }
 
     if (mouse) {
@@ -1214,9 +1354,11 @@
     let orangeX = -100, orangeY = -100;
     let active = false;
 
+    let corriendo = false; // el bucle corre solo mientras la estela alcanza al cursor; se retoma con el siguiente movimiento
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX; mouseY = e.clientY;
       if (!active) { active = true; cyanDot.style.opacity = '0.9'; orangeDot.style.opacity = '0.6'; }
+      if (!corriendo) { corriendo = true; requestAnimationFrame(animateTrail); }
     }, { passive: true });
 
     function lerp(a, b, n) { return a + (b - a) * n; }
@@ -1228,9 +1370,9 @@
       orangeY = lerp(orangeY, mouseY, 0.15);
       cyanDot.style.transform = `translate(${cyanX - 3.5}px, ${cyanY - 3.5}px)`;
       orangeDot.style.transform = `translate(${orangeX - 2.5}px, ${orangeY - 2.5}px)`;
+      if (Math.abs(orangeX - mouseX) < 0.2 && Math.abs(orangeY - mouseY) < 0.2 && Math.abs(cyanX - mouseX) < 0.2 && Math.abs(cyanY - mouseY) < 0.2) { corriendo = false; return; }
       requestAnimationFrame(animateTrail);
     }
-    requestAnimationFrame(animateTrail);
   })();
 
   // ---- FAQ con transición suave (height + opacity animados en vez del toggle nativo) ----
@@ -1251,6 +1393,12 @@
         panel.style.opacity = '0';
       }
 
+      let fin = null; // un solo listener de fin a la vez (un doble clic rápido ya no los acumula)
+      const alTerminar = (fn) => {
+        if (fin) panel.removeEventListener('transitionend', fin);
+        fin = function onEnd(ev) { if (ev.propertyName !== 'height') return; panel.removeEventListener('transitionend', onEnd); fin = null; fn(); };
+        panel.addEventListener('transitionend', fin);
+      };
       summary.addEventListener('click', (e) => {
         e.preventDefault();
         const isOpen = details.hasAttribute('open');
@@ -1267,11 +1415,7 @@
           panel.offsetHeight; // forzar reflow
           panel.style.height = '0px';
           panel.style.opacity = '0';
-          panel.addEventListener('transitionend', function onEnd(ev) {
-            if (ev.propertyName !== 'height') return;
-            details.removeAttribute('open');
-            panel.removeEventListener('transitionend', onEnd);
-          });
+          alTerminar(() => details.removeAttribute('open'));
         } else {
           details.setAttribute('open', '');
           const h = panel.scrollHeight;
@@ -1280,11 +1424,7 @@
           panel.offsetHeight;
           panel.style.height = h + 'px';
           panel.style.opacity = '1';
-          panel.addEventListener('transitionend', function onEnd(ev) {
-            if (ev.propertyName !== 'height') return;
-            panel.style.height = 'auto';
-            panel.removeEventListener('transitionend', onEnd);
-          });
+          alTerminar(() => { panel.style.height = 'auto'; });
         }
       });
     });
@@ -1339,6 +1479,16 @@
 
 </script>
 <script defer src="/assets/inicio.js"></script>
+<script defer src="/assets/inicio-efectos.js"></script>
+<script defer src="/assets/inicio-hero.js"></script>
+<script defer src="/assets/inicio-marcas.js"></script>
+<script defer src="/assets/inicio-lineas.js"></script>
+<script defer src="/assets/inicio-como.js"></script>
+<script defer src="/assets/inicio-manifiesto.js"></script>
+<script defer src="/assets/inicio-caos.js"></script>
+<script defer src="/assets/inicio-brecha.js"></script>
+<script defer src="/assets/inicio-faqcierre.js"></script>
+<script defer src="/assets/inicio-guia.js"></script>
 <script defer src="/assets/bcv.js"></script>
 <script defer src="/assets/brecha.js"></script>
 <script defer src="/assets/eventos.js"></script>

@@ -228,9 +228,17 @@
 
     var vistos = {}, enPantalla = {}, esperas = {}, mostrados = 0, apagado = false, pieVisible = false, tOculta = null, abierto = false;
 
+    var tVacia = null;
+    function vaciar() {
+      if (abierto) return;
+      if (parseFloat(getComputedStyle(aviso).opacity) > 0) { tVacia = setTimeout(vaciar, 150); return; } // el fundido aún no acaba
+      vivo.textContent = '';
+    }
     function ocultar() {
       clearTimeout(tOculta); abierto = false;
-      aviso.classList.remove('is-visible'); vivo.textContent = ''; equis.tabIndex = -1;
+      aviso.classList.remove('is-visible'); equis.tabIndex = -1;
+      // el texto se borra cuando el fundido (0,3 s) terminó de verdad: si se borrara ya, se vería una caja vacía con la X
+      clearTimeout(tVacia); tVacia = setTimeout(vaciar, 350);
       var a = cuerpo.querySelector('a, [data-evento]'); if (a) a.tabIndex = -1;
     }
     function puede() {
@@ -241,8 +249,23 @@
         && !(panel && panel.classList.contains('is-open'))
         && !widgetLuci.classList.contains('avoid-footer');
     }
+    // el globo (fijo abajo a la izquierda) no sale encima de algo que se usa o se mira en esa sección: figuras, enlaces, botones,
+    // campos o preguntas. Si lo taparía, se espera (se reintenta cada segundo mientras se siga en la sección).
+    var EVITAR = 'a[href], button, input, select, textarea, summary, svg, [role="slider"], .ini-fig, img';
+    function libre(id) {
+      var sec = document.getElementById(id); if (!sec) return true;
+      var vw = window.innerWidth, vh = window.innerHeight;
+      var g = { l: 24, r: 24 + Math.min(300, vw - 48), b: vh - 118, t: vh - 118 - 80 };
+      var els = sec.querySelectorAll(EVITAR);
+      for (var i = 0; i < els.length; i++) {
+        var r = els[i].getBoundingClientRect();
+        if (r.width && r.height && r.left < g.r && r.right > g.l && r.top < g.b && r.bottom > g.t) return false;
+      }
+      return true;
+    }
     function mostrar(id) {
       var m = AVISOS[id];
+      clearTimeout(tVacia);
       vistos[id] = true; mostrados++; abierto = true;
       cuerpo.textContent = ''; vivo.textContent = '';
       var el;
@@ -267,7 +290,7 @@
         if (e.isIntersecting && !vistos[id]) {
           esperas[id] = setTimeout(function intentar() {
             if (!enPantalla[id] || vistos[id] || apagado || mostrados >= MAX_AVISOS) return;
-            if (puede()) mostrar(id); else esperas[id] = setTimeout(intentar, 1000); // otro globo ocupa la pantalla: se reintenta mientras siga en la sección
+            if (puede() && libre(id)) mostrar(id); else esperas[id] = setTimeout(intentar, 1000); // otro globo ocupa la pantalla: se reintenta mientras siga en la sección
           }, ESPERA);
         }
       });

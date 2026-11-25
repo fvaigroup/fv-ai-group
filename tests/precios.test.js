@@ -104,7 +104,10 @@ if (FINAL) PROHIBIDO.push(/clubes? y condominios?/i, /clubes? o condominios?/i, 
 PAGINAS.forEach(f => {
   const txt = visible(leer(f));
   PROHIBIDO.forEach(re => ok(!re.test(txt), f + ' contiene un texto viejo: ' + re));
-  if (f !== 'triangular.html') ok(!DELTA_RE.test(txt), f + ' contiene un texto viejo: ' + DELTA_RE);
+  // index.html: la franja Delta del inicio (#delta-app) dice que Delta es la familia de apps ▲ (decisión de Ricardo, 24 nov 2026).
+  // Solo esa sección (y el paso de la luciérnaga guía que lleva a ella) queda exenta: en el resto del inicio «Delta» suelta sigue prohibida.
+  if (f === 'index.html') ok(!DELTA_RE.test(visible(leer(f).replace(/<section id="delta-app"[\s\S]*?<\/section>/, '').replace(/<a [^>]*href="#delta-app" data-guia="delta-app"[^>]*>[\s\S]*?<\/a>/, ''))), f + ' (fuera de #delta-app) contiene un texto viejo: ' + DELTA_RE);
+  else if (f !== 'triangular.html') ok(!DELTA_RE.test(txt), f + ' contiene un texto viejo: ' + DELTA_RE);
 });
 ['assets/luci.js', 'assets/search.js', 'assets/eventos.js'].forEach(f => {
   const js = leer(f);

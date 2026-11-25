@@ -56,8 +56,13 @@ ok(botones.length === 1, `un solo botón en el hero (hay ${botones.length})`);
 ok(texto(botones[0]) === 'Cómo trabajamos' && /href="#lineas"/.test(botones[0]) && /data-evento="portada_como_trabajamos"/.test(botones[0]), 'botón «Cómo trabajamos» → #lineas con data-evento');
 ok(/<img src="assets\/logo-hex-hex\.png" alt="" aria-hidden="true"[^>]*class="ini-hexgiro">/.test(portada) && fs.existsSync(path.join(RAIZ, 'assets/logo-hex-hex.png')), 'hexágono decorativo: alt vacío, aria-hidden y archivo existente');
 ok(/\.ini-hexgiro \{[^}]*animation: ini-giro 60s linear infinite/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-hexgiro { animation: none'), 'el hexágono gira 60 s lineal y se detiene con prefers-reduced-motion');
-ok(/<img src="assets\/logo-mark-hex\.png" alt="" aria-hidden="true"[^>]*class="ini-hexmarca">/.test(portada) && fs.existsSync(path.join(RAIZ, 'assets/logo-mark-hex.png')) && /\.ini-hexmarca \{[^}]*top: 54%[^}]*translate\(-50%, -54%\)/.test(cssTw) && /\.ini-hexmarca \{[^}]*animation: ini-levita/.test(cssTw) && !/\.ini-hexmarca \{[^}]*rotate/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-hexmarca { animation: none'), 'luciérnaga en el centro del hexágono: decorativa, no gira, levita y se detiene con prefers-reduced-motion');
-ok(/@media \(max-width: 1023px\) \{ \.ini-portada \.ini-hexgiro \{[^}]*opacity: \.26/.test(cssTw), 'en el celular el hexágono baja y se aclara para que el texto se lea');
+// 24 nov 2026 (revisión): la luciérnaga de la portada pasa de PNG (245 KB) a WebP (15 KB), la misma imagen que ya usan la guía y #lineas
+ok(/<img src="assets\/logo-mark-hex\.webp" alt="" aria-hidden="true"[^>]*class="ini-hexmarca">/.test(portada) && fs.existsSync(path.join(RAIZ, 'assets/logo-mark-hex.webp')) && /\.ini-hexmarca \{[^}]*top: 54%[^}]*translate\(-50%, -54%\)/.test(cssTw) && /\.ini-hexmarca \{[^}]*animation: ini-levita/.test(cssTw) && !/\.ini-hexmarca \{[^}]*rotate/.test(cssTw) && cssTw.includes('prefers-reduced-motion: reduce) { .ini-portada .ini-hexmarca { animation: none'), 'luciérnaga en el centro del hexágono: decorativa, no gira, levita y se detiene con prefers-reduced-motion');
+// 24 nov 2026 (rediseño del inicio): en el celular el hexágono ya NO va detrás del texto (antes: abajo y a opacidad .26). Va arriba, en su propio espacio
+// (.ini-hexescena en el flujo), a opacidad completa; así la luciérnaga no se monta sobre el botón y no sobra la franja negra de arriba.
+const hexCel = (cssTw.match(/@media \(max-width: 1023px\) \{\s*\.ini-portada \.ini-hero \{[\s\S]*?\n\}/) || [''])[0];
+ok(/\.ini-portada \.ini-hero \{[^}]*min-height: 0/.test(hexCel) && /\.ini-portada \.ini-hexescena \{[^}]*position: relative/.test(hexCel) && /\.ini-portada \.ini-hexgiro \{[^}]*opacity: 1/.test(hexCel), 'en el celular el hexágono y la luciérnaga van arriba del texto, en su propio espacio (no detrás del texto ni sobre el botón)');
+ok(portada.indexOf('class="ini-hexescena"') > -1 && portada.indexOf('class="ini-hexescena"') < portada.indexOf('<h1') && (portada.match(/class="ini-hexcapa" data-paralaje="[\d.]+"/g) || []).length === 2, 'hexágono y luciérnaga en su escena, antes del texto, cada uno en su capa de paralaje');
 const reglaH1 = (cssTw.match(/\.ini-portada \.ini-h1 \{[^}]*\}/) || [''])[0];
 ok(reglaH1.includes("font-family: 'Plus Jakarta Sans'") && reglaH1.includes('text-transform: uppercase') && reglaH1.includes('font-weight: 800'), 'título en Plus Jakarta Sans y mayúsculas');
 ok(html.includes("font-family:'Anton'") && html.includes('https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm3Kz-C8.woff2'), 'la fuente Anton está declarada y precargada en el inicio');
@@ -108,6 +113,19 @@ ok(/role', 'progressbar'/.test(js) && /\.focus\(/.test(js), 'el cuestionario tie
 ok(!/localStorage|sessionStorage|document\.cookie|fetch\(|XMLHttpRequest/.test(js), 'el JS no guarda datos ni llama a servidores');
 ok(Buffer.byteLength(js) < 25 * 1024, `assets/inicio.js pesa ${Buffer.byteLength(js)} bytes (< 25 KB)`);
 ok(/<script defer src="\/assets\/inicio\.js"><\/script>/.test(html), 'inicio.js se carga con defer');
+// Rediseño del 24 nov 2026: núcleo window.INI (assets/inicio-efectos.js) y un archivo por efecto (assets/inicio-<clave>.js), como en Cobranza, Logística y Páginas web
+const posIni = k => html.indexOf('<script defer src="/assets/' + k + '.js"></script>');
+const efectosIni = ['hero', 'marcas', 'lineas', 'como', 'manifiesto', 'caos', 'brecha', 'faqcierre', 'guia'];
+const nucleoIni = fs.readFileSync(path.join(RAIZ, 'assets/inicio-efectos.js'), 'utf8');
+ok(posIni('inicio-efectos') > posIni('inicio') && posIni('inicio') > -1 && /window\.INI\s*=/.test(nucleoIni) && /prefers-reduced-motion: reduce/.test(nucleoIni) && /IntersectionObserver/.test(nucleoIni), 'inicio: el núcleo inicio-efectos.js se carga con defer después de inicio.js, expone window.INI y respeta reduced-motion');
+ok(!/localStorage|sessionStorage|document\.cookie|fetch\(|XMLHttpRequest/.test(nucleoIni), 'inicio: el núcleo de efectos no guarda datos ni llama a servidores');
+efectosIni.forEach(k => ok(fs.existsSync(path.join(RAIZ, 'assets/inicio-' + k + '.js')) && posIni('inicio-' + k) > posIni('inicio-efectos') && html.includes('<!-- ini:' + k + ':inicio -->') && html.includes('<!-- ini:' + k + ':fin -->') && html.includes('data-ini-montaje="' + k + '"') && cssTw.includes('/* ===== inicio:' + k + ' ===== */') && cssTw.includes('/* ===== /inicio:' + k + ' ===== */'), `inicio: el efecto «${k}» tiene su JS (defer, tras el núcleo), su punto de montaje y su bloque CSS`));
+ok(cssTw.includes('/* ===== inicio:base ===== */') && /\.ini-mesh \{[^}]*z-index: -1[^}]*overflow: clip/.test(cssTw) && /\.ini-hexgrid \{/.test(cssTw) && /\.ini-vidrio, [^{]*\{[^}]*backdrop-filter: blur\(16px\)/.test(cssTw), 'inicio: sistema visual compartido (malla con rejilla hexagonal, vidrio) en el bloque inicio:base');
+ok(secciones.every(s => /class="[^"]*\bini-sec\b/.test(s.html) && /<div class="ini-mesh[^"]*" aria-hidden="true">/.test(s.html)), 'inicio: todas las secciones tienen su malla de degradados (ini-sec + ini-mesh)');
+ok(secciones.filter(s => s.id !== 'inicio').every(s => /class="[^"]*\bini-sep\b/.test(s.html)), 'inicio: separador hexagonal en todas las secciones después de la portada');
+ok((main.match(/data-paralaje="/g) || []).length >= 25 && (main.match(/ini-vidrio/g) || []).length >= 8, 'inicio: paralaje y vidrio en el recorrido');
+ok(/h2\.ini-h2 \{[^}]*text-transform: none/.test(cssTw) && !/h2\.ini-h2 \{[^}]*uppercase/.test(cssTw) && !/<h2[^>]*class="[^"]*\buppercase\b/.test(main), 'inicio: los h2 van en minúsculas (decisión del 24 nov 2026); solo el h1 sigue en mayúsculas');
+ok(/\.ini-fx \[data-ini-ve\] \{ opacity: 0/.test(cssTw) && /prefers-reduced-motion: reduce\) \{\s*\.ini-mancha, \.ini-hexgrid \{ animation: none; \}\s*\.ini-fx \[data-ini-ve\] \{ opacity: 1/.test(cssTw), 'inicio: apariciones solo con JS (html.ini-fx) y malla quieta y todo visible con prefers-reduced-motion');
 
 // ------------------------------------------------------------ 5 a 9. resto
 const como = sec('como-trabajamos');
@@ -115,7 +133,10 @@ ok(/Diagnosticar/.test(como) && /Implementar/.test(como) && /Acompañar/.test(co
 const caos = sec('caos-tablero');
 ok(/Ejemplo ilustrativo con datos ficticios\./.test(caos) && /Antes/.test(caos) && /Después/.test(caos), 'del caos al tablero: antes, después y el rótulo de datos ficticios');
 const delta = sec('delta-app');
-ok(texto(delta).includes('Software para clubes, condominios y gimnasios. Una sola plataforma, planes según su tamaño.') && /href="\/delta-app"/.test(delta) && fs.existsSync(path.join(RAIZ, 'delta-app.html')), 'franja Delta App con enlace a /delta-app (la página existe)');
+// 24 nov 2026 (decisión de Ricardo): la franja ya no habla de «Delta App» (clubes, condominios y gimnasios), que contradecía a Delta:
+// ahora dice que Delta es la familia de apps ▲ (texto de /triangular/delta) y lleva a /triangular/delta, con el logo ▲ y los colores verde/morado.
+ok(texto(delta).includes('Delta es la familia de apps ▲ de F&V AI Group: Cobranza, Cont App, Dist App y Delta Logística.') && /<a href="\/triangular\/delta" class="ini-btn-tri" data-evento="inicio_delta_app" data-cta="inicio_delta">Conocer Delta<\/a>/.test(delta) && fs.existsSync(path.join(RAIZ, 'triangular/delta.html')), 'franja Delta: familia de apps ▲, botón «Conocer Delta» → /triangular/delta (la página existe) con su data-evento y data-cta');
+ok(/class="[^"]*\blinea-tri\b/.test(delta) && /<img src="assets\/logo-full-tri\.webp" alt="" aria-hidden="true"[^>]*loading="lazy"/.test(delta) && /ini-mesh-tri/.test(delta) && /ini-vidrio-tri/.test(delta) && !/Software para clubes|href="\/delta-app"/.test(delta), 'franja Delta: línea Triangular (verde/morado), logo ▲ decorativo y sin el texto viejo de Delta App');
 const faq = sec('faq');
 const preguntas = [...faq.matchAll(/<summary><span>([^<]+)<\/span><\/summary>\s*<p>([^<]+)<\/p>/g)].map(m => [decodificar(m[1]), decodificar(m[2])]);
 ok(preguntas.length === 4 && /<details>/.test(faq), `FAQ: 4 preguntas en <details> (hay ${preguntas.length})`);
@@ -130,7 +151,10 @@ const frasesM = [...manifiesto.matchAll(/<p class="ini-frase" data-frase>([\s\S]
 ok(JSON.stringify(frasesM) === JSON.stringify(['Decidir con datos no es solo para empresas grandes.']), `manifiesto: una sola frase de texto, la primera (hay: ${frasesM.join(' | ')})`);
 ok((manifiesto.match(/<em class="ini-clave">/g) || []).length === 1 && !/<a\b|<button\b/.test(manifiesto), 'manifiesto: una palabra clave resaltada y sin botón ni enlace');
 const ps = (manifiesto.match(/<figure class="ini-ps"[\s\S]*?<\/figure>/) || [''])[0];
-ok(texto(ps).includes('La inteligencia artificial es el cómo. Su empresa es el qué.') && /Windows PowerShell/.test(ps) && /Get-Cobranza/.test(ps) && !/Nos quedamos/.test(manifiesto), 'manifiesto: la segunda frase es una ventana de PowerShell con código de automatización y se quitó «Nos quedamos…»');
+// 24 nov 2026 (rediseño del inicio): la ventana deja de imitar «Windows PowerShell» (azul de Windows, fuera de marca) y pasa a ser una consola de vidrio
+// en los colores de la marca, con los mismos comandos. Antes esta prueba EXIGÍA «Windows PowerShell»; ahora exige que no esté.
+ok(texto(ps).includes('La inteligencia artificial es el cómo. Su empresa es el qué.') && !/PowerShell/.test(ps) && /Get-Cobranza/.test(ps) && /Conciliar-Pagos/.test(ps) && /Update-Tablero/.test(ps) && !/Nos quedamos/.test(manifiesto), 'manifiesto: la segunda frase es una consola de marca (sin «Windows PowerShell») con el mismo código de automatización y se quitó «Nos quedamos…»');
+ok(!/#012456/i.test(cssTw) && /\.ini-ps \{[^}]*border-radius/.test(cssTw) && cssTw.includes('.ini-faq-lista > details, .ini-ps {'), 'manifiesto: la consola ya no usa el azul de Windows y lleva el vidrio de la marca');
 ok(/\[data-ps\]/.test(js) && /createTreeWalker/.test(js) && /prefers-reduced-motion: reduce/.test(js.slice(js.indexOf('data-ps'), js.indexOf('data-ps') + 400)) && /\.ini-frase \{[^}]*Plus Jakarta Sans[^}]*font-weight: 800/.test(cssTw), 'manifiesto: el tecleo arranca al verse, respeta reduced-motion y la frase usa la tipografía del H1');
 ok(/\.ini-clave|\.ini-frase em \{[^}]*linear-gradient\(90deg, #00FFFF, #FFFFFF, #FF8C00\)/.test(cssTw) && cssTw.includes('.ini-frase { opacity: 1; transform: none; transition: none; } }') && /min-height: 78svh/.test(cssTw), 'manifiesto: tipografía de títulos, palabra clave en cian/naranja, una frase por pantalla en celular y sin animación con prefers-reduced-motion');
 
@@ -329,5 +353,55 @@ ok(/class="web-mesh/.test(webMain) && /web-vidrio/.test(webMain) && /data-parala
 ok((webTxt.match(/Ejemplo ilustrativo/g) || []).length >= 1, 'páginas web: la maqueta del hero dice «Ejemplo ilustrativo»');
 ok(/node tests\/paginas-web\.test\.js/.test(JSON.parse(fs.readFileSync(path.join(RAIZ, 'package.json'), 'utf8')).scripts.test), 'páginas web: la prueba de la calculadora corre en npm test');
 ok(fs.readdirSync(path.join(RAIZ, 'triangular')).every(f => !/^_prueba/.test(f)), 'páginas web: no quedan páginas de prueba _prueba-*.html');
+
+// ------------------------------------------------------------ rediseño del inicio (24 nov 2026): integración de los 9 efectos
+// Cada efecto vive en assets/inicio-<clave>.js (defer, tras el núcleo window.INI), monta su HTML entre <!-- ini:<clave>:inicio/fin --> y
+// su CSS en /* ===== inicio:<clave> ===== */. Estas pruebas cuidan el orden de carga, la marca (degradados con blanco en medio),
+// la regla de cero precios (también en lo que escribe el JS), reduced-motion y que no queden páginas de prueba.
+const sinComentariosJs = s => s.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:\'"])\/\/[^\n]*/g, '$1');
+const efJs = Object.fromEntries(efectosIni.map(k => [k, fs.readFileSync(path.join(RAIZ, 'assets/inicio-' + k + '.js'), 'utf8')]));
+const bloqueCss = k => { const a = cssTw.indexOf('/* ===== inicio:' + k + ' ===== */'), b = cssTw.indexOf('/* ===== /inicio:' + k + ' ===== */'); return a > -1 && b > a ? cssTw.slice(a, b) : ''; };
+const montaje = k => (html.match(new RegExp('<!-- ini:' + k + ':inicio -->([\\s\\S]*?)<!-- ini:' + k + ':fin -->')) || [, ''])[1];
+const ordenScripts = ['inicio', 'inicio-efectos', ...efectosIni.map(k => 'inicio-' + k), 'bcv'].map(posIni);
+ok(ordenScripts.every((p, i) => p > -1 && (i === 0 || p > ordenScripts[i - 1])), 'rediseño: scripts con defer en orden inicio.js → inicio-efectos.js → los 9 efectos → bcv.js');
+efectosIni.forEach(k => {
+  const j = efJs[k], codigo = sinComentariosJs(j);
+  ok(j.length > 1500 && /window\.INI/.test(j) && /INI\.(reducido|reducir)\b|prefers-reduced-motion/.test(j), `rediseño: «${k}» es un efecto real (no un stub), usa window.INI y respeta reduced-motion`);
+  ok(!/localStorage|sessionStorage|document\.cookie|fetch\(|XMLHttpRequest|sendBeacon/.test(j), `rediseño: «${k}» no guarda datos ni llama a servidores`);
+  ok(bloqueCss(k).length > 800 && /prefers-reduced-motion/.test(bloqueCss(k)), `rediseño: el CSS de «${k}» está en su bloque y tiene su regla de prefers-reduced-motion`);
+  if (k !== 'brecha') ok(!/USD|Bs\.|\$\s?\d|(?<![A-Za-z])desde\s+\$|Express|10x/.test(codigo), `rediseño: «${k}» no escribe precios ni textos prohibidos desde el JS`);
+});
+['hero', 'marcas', 'como', 'caos', 'brecha', 'faqcierre', 'guia'].forEach(k => ok(montaje(k).trim().length > 100, `rediseño: el montaje «${k}» trae su HTML`));
+ok(montaje('lineas').trim() === '' && montaje('manifiesto').trim() === '', 'rediseño: los montajes «lineas» y «manifiesto» quedan vacíos (sus capas las crea el JS dentro de las figuras)');
+const VIDRIO_RE = /\bini-vidrio\b|\bini-pasos-lista\b|\bini-faq-lista\b|class="ini-ps"/;
+secciones.forEach(s => ok(/<div class="ini-mesh[^"]*" aria-hidden="true">/.test(s.html) && /data-paralaje="-?[\d.]+"/.test(s.html) && VIDRIO_RE.test(s.html), `rediseño: #${s.id} tiene malla, paralaje y vidrio`));
+const efCss = efectosIni.map(bloqueCss).join('\n') + bloqueCss('base');
+const dosParadas = /(?:linear|radial|conic)-gradient\([^;{}]*?(?:#00FFFF|#0ff\b|rgba?\(0,\s*255,\s*255[^)]*\))\s*(?:\d+%\s*)?,\s*(?:#FF8C00|rgba?\(255,\s*140,\s*0[^)]*\))/i;
+ok(!dosParadas.test(efCss) && !efectosIni.some(k => dosParadas.test(efJs[k])), 'rediseño: ningún degradado cian→naranja directo en el CSS ni en el JS de los efectos (blanco en medio)');
+const svgGrads = [...main.matchAll(/<(linear|radial)Gradient\b[^>]*>([\s\S]*?)<\/\1Gradient>/g)].map(m => [...m[2].matchAll(/stop-color="([^"]+)"/g)].map(x => x[1].toUpperCase()));
+ok(svgGrads.length >= 4 && svgGrads.every(c => !c.some((x, i) => x === '#00FFFF' && c[i + 1] === '#FF8C00')), 'rediseño: los degradados SVG del inicio no pasan de cian a naranja sin blanco');
+const heroMont = texto(montaje('hero'));
+ok((heroMont.match(/Ejemplo ilustrativo/g) || []).length >= 3 && !/\d/.test(heroMont), 'rediseño: las tarjetas del hero dicen «Ejemplo ilustrativo» y no traen cifras en el HTML (la tasa en vivo la escribe el JS)');
+ok(/data-hr-tasa hidden/.test(montaje('hero')) && /live/.test(efJs.hero), 'rediseño: la tarjeta de la tasa BCV queda oculta hasta que llegue la tasa en vivo');
+ok(/Ejemplo ilustrativo con datos ficticios\./.test(texto(caos)) && /role="slider"[^>]*tabindex="0"/.test(montaje('caos')) && /ArrowLeft|ArrowRight/.test(efJs.caos) && /data-caos-env hidden/.test(montaje('caos')), 'rediseño: comparador antes/después accesible por teclado, oculto sin JS y con el rótulo de datos ficticios');
+ok(/data-sin-precios-excepcion="brecha"/.test(sec('brecha')) && sec('brecha').includes('data-brecha-graf') && !/\$|Bs\.|%/.test(texto(montaje('brecha'))) && /FV_BRECHA/.test(efJs.brecha), 'rediseño: la mini gráfica de la brecha usa la fórmula de FV_BRECHA y su HTML no trae montos');
+ok(/href="#delta-app"[^>]*>[\s\S]*?<polygon points="12,3\.5 21,19\.5 3,19\.5"/.test(montaje('guia')) && (montaje('guia').match(/data-guia="/g) || []).length === secciones.length, 'rediseño: la guía tiene un paso por sección y la franja Delta va con el triángulo ▲');
+ok(/href="\/triangular\/delta"/.test(delta) && !/href="\/delta-app"/.test(main), 'rediseño: Delta lleva a /triangular/delta y el inicio ya no enlaza a /delta-app');
+ok(!/PowerShell/i.test(html) && !/#012456/i.test(html), 'rediseño: sin «PowerShell» ni el azul de Windows en el inicio');
+ok((html.match(/<p class="ps-l ps-ok"><span class="ps-v">✔<\/span> /g) || []).length === 3, 'rediseño: las 3 líneas ✔ de la consola llevan la marca en cian (.ps-v)');
+// 24 nov 2026 (revisión): la guía pasa de >= 1024 px a >= 1360 px (entre 1024 y 1360 pisaba el borde de las tarjetas) y solo se muestra con JS.
+ok(/\.ini-guia\.is-oculta \{[^}]*visibility: hidden/.test(cssTw) && /min-width: 1360px\) and \(min-height: 640px\) \{\s*html\.ini-fx \.ini-guia \{\s*display: block/.test(bloqueCss('guia')) && efJs.guia.includes("matchMedia('(min-width: 1360px) and (min-height: 640px)')"), 'rediseño: la guía solo se muestra con JS en escritorio ancho (>= 1360 px) y se esconde (portada y pie)');
+ok(!/getBoundingClientRect|offsetHeight|scrollHeight/.test(efJs.guia.slice(efJs.guia.indexOf('function actualizar'), efJs.guia.indexOf('function marcar'))), 'rediseño: la guía no mide el diseño en cada cuadro de scroll (usa las medidas en caché)');
+// 24 nov 2026 (revisión adversarial): arreglos de diseño, accesibilidad y rendimiento
+ok(/@media \(min-width: 1024px\) \{ \.ini-portada \.ini-h1, \.ini-portada \.ini-sub, \.ini-portada \.ini-desc \{ max-width: min\(760px, 58%\); \} \}/.test(cssTw) && /@media \(min-width: 1024px\) and \(max-width: 1279px\) \{ \.ini-portada \.ini-hexgiro \{ left: 84%; width: 560px/.test(cssTw), 'revisión: en escritorio el texto del hero no pasa del borde izquierdo del aro (58 %; entre 1024 y 1279 px el aro va al 84 % y mide 560 px)');
+ok(/@media \(max-width: 639px\) \{[^}]*\.ini-hr-cartas \{ display: none; \}/.test(cssTw) || /@media \(max-width: 639px\) \{ \.ini-hr-icono, \.ini-hr-cartas \{ display: none; \} \}/.test(cssTw), 'revisión: en el celular las tarjetas del hero no tapan el aro');
+ok(/\.ini-lin-fx \.ini-lado-svg:focus-visible \.vis, [^{]*\{ opacity: 1 !important; \}/.test(cssTw) && /addEventListener\('focusin'/.test(efJs.lineas), 'revisión: el lado de #lineas con foco de teclado siempre se ve y la entrada empieza al recibir el foco');
+ok(/@media \(max-width: 1023px\), \(pointer: coarse\) \{\s*\.ini-vidrio, [^{]*\{ -webkit-backdrop-filter: none; backdrop-filter: none; \}/.test(cssTw) && !/\.ini-mancha \{[^}]*will-change/.test(cssTw) && !/\.ini-lin-m \{[^}]*will-change/.test(cssTw), 'revisión: sin backdrop-filter en celular y táctil, y sin will-change permanente en las manchas de la malla');
+ok(/tVacia = setTimeout\(vaciar, 350\)/.test(js) && /function vaciar\(\)/.test(js) && /function libre\(id\)/.test(js) && /puede\(\) && libre\(id\)/.test(js), 'revisión: el aviso de Luci no se ve vacío al irse y no sale encima de figuras, enlaces, botones ni campos');
+ok(/<span class="ini-ps-rotulo">Ejemplo ilustrativo<\/span>/.test(manifiesto), 'revisión: la consola del manifiesto lleva el rótulo visible «Ejemplo ilustrativo»');
+ok(!/logo-mark-hex\.png/.test(main) && !/logo-mark-hex\.png/.test(efJs.como) && /assets\/logo-hex-hex-256\.webp/.test(main) && fs.existsSync(path.join(RAIZ, 'assets/logo-hex-hex-256.webp')), 'revisión: el inicio usa la luciérnaga en WebP y el sello del cierre un aro pequeño (256 px)');
+ok(/enVista = es\[0\]\.isIntersecting/.test(html) && /visibilitychange/.test(html) && /corriendo = false; return;/.test(html), 'revisión: las partículas del hero se detienen fuera de pantalla y la estela del cursor se detiene cuando alcanza al mouse');
+ok(fs.readdirSync(RAIZ).every(f => !/^_prueba-ini-.*\.html$/.test(f)), 'rediseño: no quedan páginas de prueba _prueba-ini-*.html en la raíz');
+ok(Buffer.byteLength(js) < 25 * 1024 && efectosIni.every(k => Buffer.byteLength(efJs[k]) < 16 * 1024), 'rediseño: inicio.js < 25 KB y cada efecto < 16 KB');
 
 console.log(`inicio: ${n} comprobaciones${process.exitCode ? ' (CON FALLAS)' : ' correctas'}`);

@@ -782,14 +782,30 @@ html .tarjeta:has(.tarjeta-boton:focus-visible) { border-color: var(--acento-1);
   transform: translate(-50%, -54%); opacity: .5; pointer-events: none; z-index: 0; animation: ini-levita 3.6s ease-in-out infinite alternate; will-change: translate; }
 @keyframes ini-levita { from { translate: 0 -7px; } to { translate: 0 7px; } }
 @media (prefers-reduced-motion: reduce) { .ini-portada .ini-hexmarca { animation: none; will-change: auto; } }
-@media (max-width: 1023px) { .ini-portada .ini-hexgiro { top: 68%; left: 62%; opacity: .26; } .ini-portada .ini-hexmarca { top: 68%; left: 62%; opacity: .28; } }
+/* Escena del hexágono (.ini-hexescena): en escritorio cubre todo el hero (los % de las imágenes se miden igual que antes);
+   cada imagen va en su capa (.ini-hexcapa) para que el paralaje (transform de la capa) no pise el giro ni la levitación de la imagen.
+   Celular y tablet (< 1024 px, 24 nov 2026): la escena va ARRIBA del texto, en su propio espacio, pequeña y a opacidad completa
+   (antes quedaba detrás del texto, la luciérnaga se montaba sobre el botón y sobraba una franja negra arriba). */
+.ini-portada .ini-hexescena { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.ini-portada .ini-hexcapa { position: absolute; inset: 0; }
+@media (max-width: 1023px) {
+  .ini-portada .ini-hero { min-height: 0; justify-content: flex-start; padding: .75rem 0 2.25rem; }
+  .ini-portada .ini-hexescena { position: relative; inset: auto; flex: none; width: 100%; height: clamp(150px, 42vw, 300px); }
+  .ini-portada .ini-hexgiro { top: 50%; left: 50%; width: clamp(150px, 42vw, 300px); height: clamp(150px, 42vw, 300px); --ini-k: 1.3; opacity: 1; }
+  .ini-portada .ini-hexmarca { top: 50%; left: 50%; width: clamp(64px, 19vw, 110px); opacity: 1; } /* 19vw: la luciérnaga se lee limpia dentro del aro */
+  .ini-portada .hero-copy { gap: 20px; } /* el botón queda por encima del globo «¿Dudas?» de Luci (abajo a la izquierda) en pantallas de 360 x 740 */
+}
 @media (min-width: 1024px) { .ini-portada .ini-hexgiro { left: 79%; width: 700px; height: 700px; --ini-k: 1; opacity: 1; } .ini-portada .ini-hexmarca { left: 79%; width: 230px; opacity: 1; } }
+/* 24 nov 2026 (revisión): el texto no pasa del borde izquierdo del aro. Entre 1024 y 1279 px la escena va más a la derecha (84 %) y el aro es menor (560 px). */
+@media (min-width: 1024px) { .ini-portada .ini-h1, .ini-portada .ini-sub, .ini-portada .ini-desc { max-width: min(760px, 58%); } }
+@media (min-width: 1024px) and (max-width: 1279px) { .ini-portada .ini-hexgiro { left: 84%; width: 560px; height: 560px; } .ini-portada .ini-hexmarca { left: 84%; width: 184px; } }
 .ini-portada .ini-boton-pill { min-height: 52px; padding: .875rem 36px; border-radius: 999px; font-size: 17px; font-weight: 700; color: #0b0d12; }
 .ini-etq-naranja { display: inline-flex; align-items: center; gap: .65rem; margin: 0 0 1rem; padding: .5rem 1rem; border: 1px solid rgba(0, 255, 255, .4); border-radius: 999px; background: rgba(0, 255, 255, .07); font-family: 'Space Grotesk', sans-serif; font-size: clamp(12px, 1.2vw, 14px); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #00FFFF; }
 .ini-etq-dos::after { content: ""; order: -1; flex: none; width: 8px; height: 8px; margin-right: -.3rem; border-radius: 50%; background: #00FFFF; box-shadow: 0 0 10px #00FFFF; }
 .ini-etq-naranja::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; background: #00FFFF; box-shadow: 0 0 10px #00FFFF; }
-/* Títulos h2 del inicio con la tipografía del título del hero (Plus Jakarta Sans 800, mayúsculas) */
-h2.ini-h2 { font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-weight: 800; letter-spacing: -.02em; line-height: 1.12; text-transform: uppercase; }
+/* Títulos h2 del inicio con la tipografía del título del hero (Plus Jakarta Sans 800). En minúsculas desde el 24 nov 2026 (decisión de Ricardo,
+   como en las páginas ▲): el texto se escribe tal cual en el HTML y la parte resaltada va en .ini-h1-grad (cian → blanco → naranja). Solo el H1 sigue en mayúsculas. */
+h2.ini-h2 { font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-weight: 800; letter-spacing: -.02em; line-height: 1.12; text-transform: none; }
 .ini-camino { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
 @media (min-width: 640px) { .ini-camino { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .ini-camino { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
@@ -952,10 +968,21 @@ h2.ini-h2 { font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-weight: 
 .ini-ficticio { margin: 1.25rem 0 0; font-size: .9375rem; font-style: italic; color: #94a3b8; }
 @media (prefers-reduced-motion: reduce) { .ini-js .ini-barra > i, .ini-caos-lista li, .ini-prog > i { transition: none; } .ini-js .ini-caos-grid:not(.is-in) .ini-barra > i { width: var(--w); } .ini-js .ini-caos-grid:not(.is-in) .ini-caos-lista li { opacity: 1; } }
 
-/* Franja Delta App */
-.ini-delta-fila { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+/* Franja Delta (24 nov 2026): Delta es la familia de apps ▲ (texto de /triangular/delta). Verde y morado de la línea Triangular, con el logo ▲. */
+.ini-delta-fila { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 1.5rem 1.25rem; }
+@media (min-width: 640px) { .ini-delta-fila { padding: 1.75rem 2rem; } }
 @media (min-width: 768px) { .ini-delta-fila { flex-direction: row; align-items: center; justify-content: space-between; } }
+.ini-delta-marca { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; min-width: 0; }
+@media (min-width: 640px) { .ini-delta-marca { flex-direction: row; align-items: center; gap: 1.25rem; } }
+.ini-delta-logo { flex: none; width: 104px; height: auto; filter: drop-shadow(0 0 14px rgba(168, 85, 247, .45)); }
+.ini-etq-tri { display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 .5rem; padding: .35rem .8rem; border-radius: 999px; border: 1px solid rgba(74, 222, 128, .45); background: rgba(74, 222, 128, .08); color: #bbf7d0; font: 600 .75rem/1 'Space Grotesk', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.ini-grad-tri { background-image: linear-gradient(90deg, #4ade80, #c4b5fd 55%, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
 .ini-delta-texto { margin: .375rem 0 0; max-width: 38rem; font-size: 1.0625rem; line-height: 1.55; color: #cbd5e1; }
+.ini-btn-tri { display: inline-flex; flex: none; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1.5rem; border-radius: 999px; border: 1px solid rgba(74, 222, 128, .55); background: linear-gradient(90deg, rgba(74, 222, 128, .14), rgba(168, 85, 247, .16)); color: #fff; font: 700 1rem/1.15 'Space Grotesk', sans-serif; text-align: center; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .2s cubic-bezier(.23, 1, .32, 1); }
+@media (hover: hover) and (pointer: fine) { .ini-btn-tri:hover { border-color: rgba(168, 85, 247, .85); box-shadow: 0 0 26px rgba(168, 85, 247, .3); transform: translateY(-2px); } }
+.ini-btn-tri:active { transform: scale(.97); }
+.ini-btn-tri:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .ini-btn-tri { transition: none; } }
 
 /* Preguntas frecuentes */
 .ini-faq-lista { display: grid; gap: .75rem; margin-top: 2rem; }
@@ -1011,22 +1038,26 @@ h2.ini-h2 { font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-weight: 
 @media (min-width: 1024px) { .ini-frase { min-height: 0; padding: 2.25rem 0; font-size: clamp(2rem, 4.2vw, 3.4rem); } }
 .ini-frase > span { display: block; }
 .ini-frase em { font-style: normal; background-image: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
-/* Ventana de PowerShell del manifiesto: el texto se teclea al entrar en pantalla (assets/inicio.js) */
-.ini-ps { margin: 0 0 3rem; max-width: 640px; border: 1px solid rgba(0, 255, 255, .28); border-radius: 10px; overflow: hidden; background: #012456; box-shadow: 0 24px 60px rgba(0, 0, 0, .5), 0 0 40px rgba(0, 255, 255, .08); font-family: 'Cascadia Mono', Consolas, 'Courier New', monospace; }
-.ini-ps-barra { display: flex; align-items: center; gap: .6rem; padding: .45rem .7rem; background: #0B0F16; color: #C9D3E0; font: 500 12px/1 'Geist', system-ui, sans-serif; }
-.ini-ps-ico { color: #00FFFF; font-family: Consolas, monospace; font-weight: 700; }
-.ini-ps-tit { flex: 1; }
-.ini-ps-ctl { display: inline-flex; gap: 1rem; color: #8FA0B5; }
-.ini-ps-ctl i { font-style: normal; }
-.ini-ps-cuerpo { padding: .9rem 1rem 1.1rem; font-size: clamp(11px, 3vw, 14px); line-height: 1.65; color: #EEEDF0; }
+/* Consola del manifiesto (24 nov 2026): vidrio de marca, sin «Windows PowerShell» ni el azul de Windows. El vidrio y el borde de luz salen de
+   .ini-vidrio (bloque inicio:base, que también se aplica a .ini-ps). El texto se teclea al entrar en pantalla (assets/inicio.js). */
+.ini-ps { margin: 0 0 3rem; max-width: 640px; border-radius: 1rem; overflow: hidden; font-family: 'Cascadia Mono', Consolas, 'Courier New', monospace; }
+.ini-ps-barra { display: flex; align-items: center; gap: .6rem; padding: .6rem .9rem; border-bottom: 1px solid rgba(255, 255, 255, .08); background: rgba(5, 7, 11, .45); color: #cbd5e1; font: 600 12px/1 'Space Grotesk', system-ui, sans-serif; letter-spacing: .06em; }
+.ini-ps-ico { display: inline-block; flex: none; width: 14px; height: 16px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: linear-gradient(160deg, #00FFFF, #FFFFFF 50%, #FF8C00); box-shadow: 0 0 12px rgba(0, 255, 255, .6); }
+.ini-ps-tit { flex: 1; min-width: 0; }
+.ini-ps-rotulo { flex: none; padding: .2rem .5rem; border: 1px solid rgba(255, 255, 255, .16); border-radius: 999px; color: #cbd5e1; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; } /* las cifras de la consola son de ejemplo, no resultados reales */
+.ini-ps-ctl { display: inline-flex; gap: .4rem; }
+.ini-ps-ctl i { width: .6rem; height: .6rem; border-radius: 50%; background: rgba(255, 255, 255, .22); }
+.ini-ps-ctl i:first-child { background: #00FFFF; }
+.ini-ps-ctl i:last-child { background: #FF8C00; }
+.ini-ps-cuerpo { padding: 1rem 1.1rem 1.2rem; font-size: clamp(11px, 3vw, 14px); line-height: 1.65; color: #e2e8f0; }
 .ini-ps-cuerpo p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
-.ps-p { color: #EEEDF0; }
-.ps-c { color: #13D65A; }
-.ps-f { color: #F9F1A5; }
-.ps-a { color: #8CC8FF; }
-.ps-s { color: #FFB86B; }
-.ps-ok { color: #13D65A; }
-.ps-cur { display: inline-block; width: .6em; height: 1.1em; margin-left: 1px; vertical-align: text-bottom; background: #EEEDF0; animation: ps-parpadeo 1.05s steps(1) infinite; }
+.ps-p { color: #FF8C00; }
+.ps-c { color: #94a3b8; font-style: italic; }
+.ps-f { color: #00FFFF; }
+.ps-a { color: #e2e8f0; }
+.ps-s { color: #FFC680; }
+.ps-ok { color: #7FFFFF; }
+.ps-cur { display: inline-block; width: .6em; height: 1.1em; margin-left: 1px; vertical-align: text-bottom; background: #00FFFF; box-shadow: 0 0 8px rgba(0, 255, 255, .7); animation: ps-parpadeo 1.05s steps(1) infinite; }
 @keyframes ps-parpadeo { 50% { opacity: 0; } }
 @media (min-width: 1024px) { .ini-ps { max-width: min(640px, calc(100% - clamp(240px, 24vw, 330px) - 2.5rem)); } }
 @media (prefers-reduced-motion: reduce) { .ps-cur { animation: none; } }
@@ -3682,3 +3713,733 @@ html:not(.log-js) .log-calc { display: none; }
   .web-proceso-bola, .web-proceso-ic, .web-proceso-num, .web-proceso-linea > .web-paso, .web-proceso-linea > .web-paso::before, .web-proceso-linea > .web-paso::after, .web-proceso-pago .web-metodos li { transition: none !important; }
 }
 /* ===== /paginas-web:proceso ===== */
+
+/* ===== inicio:base ===== */
+/* Inicio (index.html), rediseño del 24 nov 2026: sistema visual compartido de la línea Hexagonal / marca madre (cian #00FFFF, blanco, naranja #FF8C00).
+   Mismos patrones que .web-* / .log-* / .cob-* de las páginas ▲, con prefijo ini- y los colores de la marca:
+   - .ini-sec            sección con malla: crea su propio contexto (isolation) para que la malla (z-index -1) quede detrás del contenido
+   - .ini-mesh           malla de degradados (manchas cian / blanco / naranja que flotan lento). Variantes: .ini-mesh-suave, .ini-mesh-intensa, .ini-mesh-tri (verde/morado)
+                         La malla se recorta sola (overflow: clip): la sección NO necesita overflow hidden (así el sticky de dentro funciona).
+                         Fuera de pantalla se pausa (.is-pausa, lo pone assets/inicio-efectos.js). En secciones de más de 2 pantallas pasa a .ini-mesh-fija (sticky de 100vh).
+   - .ini-hexgrid        rejilla hexagonal sutil dentro de la malla (panal cian muy tenue, con brillo lento)
+   - .ini-vidrio         glassmorphism con borde de luz cian → blanco → naranja (::before). Variantes: .ini-vidrio-tri (verde/morado), .ini-vidrio-gris, .ini-vidrio-banda
+                         Las listas cuyo marcado no se puede tocar (pasos de #como-trabajamos, <details> de #faq y la consola .ini-ps) reciben el mismo vidrio por selector.
+                         En celular el desenfoque baja (8 px) para no cargar la GPU.
+   - .ini-sep            separador hexagonal en el borde superior de la sección (línea de luz + hexágono con la luz de la luciérnaga al centro)
+   - [data-paralaje="v"] capa que se desplaza a esa fracción del scroll respecto al centro de su sección (lo hace assets/inicio-efectos.js; nunca con reduced-motion)
+   - [data-ini-ve]       aparece suave al entrar en pantalla (solo con JS: html.ini-fx)
+   - [data-ini-pausa]    sus animaciones CSS se pausan fuera de pantalla (.is-pausa)
+   - .ini-montaje        punto de montaje de un efecto (data-ini-montaje="clave"); vacío no ocupa lugar
+   Sin JS se ve todo (la malla queda quieta o con su animación CSS). Con prefers-reduced-motion: sin flotación, sin paralaje y sin apariciones. */
+.ini-sec { position: relative; isolation: isolate; }
+.ini-mesh { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; overflow: clip; -webkit-mask-image: linear-gradient(180deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(180deg, transparent, #000 9%, #000 91%, transparent); }
+.ini-mancha { position: absolute; border-radius: 50%; filter: blur(64px); opacity: .5; } /* sin will-change permanente: la animación de translate ya va por el compositor */
+.ini-mancha-1 { width: 44vmax; height: 44vmax; left: -14%; top: -14%; background: radial-gradient(circle at 40% 40%, rgba(0, 255, 255, .42), rgba(0, 255, 255, 0) 65%); animation: ini-flota 20s ease-in-out infinite alternate; }
+.ini-mancha-2 { width: 48vmax; height: 48vmax; right: -18%; bottom: -16%; background: radial-gradient(circle at 60% 55%, rgba(255, 140, 0, .42), rgba(255, 140, 0, 0) 65%); animation: ini-flota 24s ease-in-out infinite alternate-reverse; }
+.ini-mancha-3 { width: 30vmax; height: 30vmax; left: 36%; top: 18%; background: radial-gradient(circle, rgba(255, 255, 255, .16), rgba(0, 255, 255, .07) 45%, rgba(0, 255, 255, 0) 70%); animation: ini-flota 28s ease-in-out infinite alternate; }
+.ini-mesh-suave .ini-mancha { opacity: .3; }
+.ini-mesh-intensa .ini-mancha { opacity: .72; }
+.ini-mesh-tri .ini-mancha-1 { background: radial-gradient(circle at 40% 40%, rgba(74, 222, 128, .45), rgba(74, 222, 128, 0) 65%); }
+.ini-mesh-tri .ini-mancha-2 { background: radial-gradient(circle at 60% 55%, rgba(168, 85, 247, .5), rgba(168, 85, 247, 0) 65%); }
+.ini-mesh-tri .ini-mancha-3 { background: radial-gradient(circle, rgba(196, 181, 253, .16), rgba(74, 222, 128, .06) 45%, rgba(168, 85, 247, 0) 70%); }
+.ini-hexgrid { position: absolute; inset: 0; opacity: .07; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='rgb(0,255,255)' fill-rule='evenodd' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/svg%3E"); background-size: 42px 73.5px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000, transparent 75%); animation: ini-panal 14s ease-in-out infinite alternate; }
+.ini-mesh-tri .ini-hexgrid { opacity: .05; }
+@keyframes ini-flota { from { translate: 0 0; } to { translate: 5% 7%; } }
+@keyframes ini-panal { from { opacity: .05; } to { opacity: .11; } }
+.ini-mesh.is-pausa .ini-mancha, .ini-mesh.is-pausa .ini-hexgrid { animation-play-state: paused; }
+/* secciones de más de 2 pantallas: la malla es un bloque sticky de 100vh que acompaña el scroll (clase y márgenes los pone assets/inicio-efectos.js) */
+.ini-mesh.ini-mesh-fija { position: sticky; inset: auto; top: 0; height: 100vh; -webkit-mask-image: none; mask-image: none; }
+@media (max-width: 767px) { .ini-mancha { filter: blur(44px); } }
+
+/* Vidrio con borde de luz */
+.ini-vidrio, .ini-pasos-lista > li, .ini-faq-lista > details, .ini-ps { position: relative; border: 1px solid rgba(255, 255, 255, .08); background: linear-gradient(145deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .025)), rgba(9, 11, 16, .55); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 20px 50px rgba(0, 0, 0, .35); -webkit-backdrop-filter: blur(16px) saturate(150%); backdrop-filter: blur(16px) saturate(150%); }
+.ini-vidrio::before, .ini-pasos-lista > li::before, .ini-faq-lista > details::before, .ini-ps::before { content: ""; position: absolute; inset: -1px; z-index: 0; padding: 1px; border-radius: inherit; background: linear-gradient(135deg, rgba(0, 255, 255, .55), rgba(255, 255, 255, .14) 38%, rgba(255, 255, 255, .05) 62%, rgba(255, 140, 0, .5)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); pointer-events: none; }
+.ini-ps::before { inset: 0; } /* .ini-ps recorta (overflow hidden): el borde de luz va por dentro */
+.ini-vidrio-tri::before { background: linear-gradient(135deg, rgba(74, 222, 128, .6), rgba(255, 255, 255, .12) 40%, rgba(255, 255, 255, .05) 60%, rgba(168, 85, 247, .6)); }
+.ini-vidrio-gris::before { background: linear-gradient(135deg, rgba(148, 163, 184, .4), rgba(148, 163, 184, .08) 50%, rgba(148, 163, 184, .3)); }
+.ini-vidrio-banda { border-left: 0; border-right: 0; border-radius: 0; }
+.ini-fig.ini-vidrio { background: linear-gradient(180deg, rgba(var(--acento-1-rgb), .09), transparent 45%), linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)), rgba(9, 11, 16, .55); }
+.ini-antes.ini-vidrio { border-style: dashed; border-color: rgba(148, 163, 184, .35); }
+.ini-despues.ini-vidrio { background: linear-gradient(135deg, rgba(0, 255, 255, .08), rgba(255, 255, 255, .05), rgba(255, 140, 0, .08)), rgba(9, 11, 16, .55); }
+.ini-delta-fila.ini-vidrio { border-radius: 1.25rem; background: linear-gradient(120deg, rgba(74, 222, 128, .09), rgba(255, 255, 255, .03) 50%, rgba(168, 85, 247, .11)), rgba(9, 11, 16, .55); }
+.ini-marcas { padding: 1.5rem 0 1.75rem; }
+.ini-marcas .ini-logos-titulo { position: relative; z-index: 1; }
+/* Celular: el hero es más bajo y la franja entra en la primera pantalla, justo donde está Luci (fija abajo a la izquierda): el título le deja libre esa esquina */
+@media (max-width: 767px) { .ini-marcas .ini-logos-titulo { padding-left: 104px; padding-right: .5rem; text-align: left; } }
+.ini-cierre-caja { padding: 2.5rem 1.25rem; border-radius: 1.5rem; }
+@media (min-width: 640px) { .ini-cierre-caja { padding: 3.5rem 2.5rem; } }
+/* Celular, tableta y pantallas táctiles: sin backdrop-filter (cada panel volvería a desenfocar la malla animada en cada cuadro) y con el fondo más opaco;
+   como la malla ya es oscura y desenfocada, el aspecto casi no cambia (24 nov 2026, revisión de rendimiento) */
+@media (max-width: 1023px), (pointer: coarse) {
+  .ini-vidrio, .ini-pasos-lista > li, .ini-faq-lista > details, .ini-ps, .ini-lineas .ini-tarjeta { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .ini-sec .ini-vidrio, .ini-sec .ini-pasos-lista > li, .ini-sec .ini-faq-lista > details, .ini-sec .ini-ps, .ini-sec.ini-lineas .ini-tarjeta, .ini-lineas .ini-tarjeta { background-color: rgba(9, 11, 16, .8); }
+}
+
+/* Separador hexagonal entre secciones */
+.ini-sep::before { content: ""; position: absolute; left: 50%; top: -.5px; z-index: 2; width: min(560px, 72%); height: 1px; transform: translateX(-50%); background: linear-gradient(90deg, rgba(0, 255, 255, 0), rgba(0, 255, 255, .5) 28%, rgba(255, 255, 255, .7) 50%, rgba(255, 140, 0, .5) 72%, rgba(255, 140, 0, 0)); pointer-events: none; }
+.ini-sep::after { content: ""; position: absolute; left: 50%; top: 0; z-index: 2; width: 24px; height: 26px; transform: translate(-50%, -50%); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 26'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='rgb(0,255,255)'/%3E%3Cstop offset='.5' stop-color='white'/%3E%3Cstop offset='1' stop-color='rgb(255,140,0)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M12 1.5 22 7.25v11.5L12 24.5 2 18.75V7.25z' fill='rgb(5,7,11)' stroke='url(%23g)' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='13' r='2.6' fill='rgb(255,140,0)'/%3E%3C/svg%3E") center / contain no-repeat; filter: drop-shadow(0 0 6px rgba(0, 255, 255, .5)); pointer-events: none; }
+.ini-manifiesto.ini-sep::after { transform: translate(-50%, 0); } /* el manifiesto recorta (overflow: clip): el hexágono va por dentro */
+
+/* Títulos de sección: blancos, en minúsculas; la parte resaltada en .ini-h1-grad (cian → blanco → naranja). Los de la franja ▲ usan .ini-grad-tri. */
+h2.ini-h2 { color: #fff; }
+
+/* Apariciones, pausa y puntos de montaje */
+.ini-fx [data-ini-ve] { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.23, 1, .32, 1), transform .7s cubic-bezier(.23, 1, .32, 1); }
+.ini-fx [data-ini-ve].is-in { opacity: 1; transform: none; }
+[data-ini-pausa].is-pausa, [data-ini-pausa].is-pausa * { animation-play-state: paused !important; }
+.ini-montaje:empty { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ini-mancha, .ini-hexgrid { animation: none; }
+  .ini-fx [data-ini-ve] { opacity: 1; transform: none; transition: none; }
+}
+/* ===== /inicio:base ===== */
+
+/* ===== inicio:hero ===== */
+/* ===== inicio:hero ===== */
+/* Portada del inicio (#inicio): el hexágono y la luciérnaga como protagonistas (assets/inicio-hero.js).
+   - .ini-hr             capa del efecto, encima de la escena del hexágono (.ini-hexescena) y debajo del texto. Variables: --cx/--cy (centro del hexágono),
+                         --R (diámetro visible del aro), --m (ancho de la luciérnaga), --esc (escala de las chispas).
+   - .ini-hr-capa        envoltorios con paralaje de scroll (data-paralaje, misma velocidad que el aro o la luciérnaga) y de puntero (style.translate, lo pone el JS).
+                         Se mezclan con la escena (mix-blend-mode): la luz solo se suma, nunca tapa. Sin z-index ni transform propio en .ini-hr (si no, la mezcla se aísla).
+   - .ini-hr-barrido     luz que recorre el aro (degradado cónico que gira; color-dodge: solo se ve sobre el aro)
+   - .ini-hr-halo        resplandor que respira detrás de la luciérnaga; .ini-hr-chispas: chispas de luz que suben de su abdomen
+   - .ini-hr-cartas      tarjetas de vidrio flotando alrededor (tablero, tasa BCV en vivo, aviso de WhatsApp, alerta). Rótulo «Ejemplo ilustrativo»; la tasa
+                         solo aparece si llegó en vivo (sin cifra no se muestra). Sin precios: las cifras las escribe el JS.
+   - Celular (< 1024 px): dos fichas a los lados del hexágono, dentro de su espacio (no tapan el texto ni el botón).
+   Sin JS se ven las tarjetas quietas. Con prefers-reduced-motion: sin chispas, sin barrido, sin flotación ni paralaje. */
+.ini-portada [data-ini-montaje="hero"] { position: absolute; inset: 0; pointer-events: none; }
+.ini-hr { position: absolute; inset: 0; pointer-events: none; --cx: 50%; --cy: 50%; --H: clamp(150px, 42vw, 300px); --R: calc(var(--H) * .92); --m: clamp(64px, 19vw, 110px); --esc: .45; }
+.ini-hr-capa { position: absolute; left: var(--cx); top: var(--cy); width: 0; height: 0; mix-blend-mode: screen; } /* anclada al centro del hexágono: la capa mezclada es pequeña */
+.ini-hr-capa:first-child { mix-blend-mode: color-dodge; }
+.ini-hr-barrido { position: absolute; left: 0; top: 0; width: var(--R); height: var(--R); border-radius: 50%; opacity: .55; transform: translate(-50%, -50%); background: conic-gradient(from 0deg, rgba(0, 255, 255, 0) 0deg, rgba(0, 255, 255, 0) 230deg, rgba(0, 255, 255, .55) 300deg, rgba(255, 255, 255, .95) 340deg, rgba(255, 140, 0, .6) 352deg, rgba(255, 140, 0, 0) 360deg); -webkit-mask-image: radial-gradient(closest-side, transparent 70%, #000 80%, #000 95%, transparent 100%); mask-image: radial-gradient(closest-side, transparent 70%, #000 80%, #000 95%, transparent 100%); animation: ini-hr-barre 9s linear infinite; }
+@keyframes ini-hr-barre { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+.ini-hr-halo { position: absolute; left: 0; top: 0; width: calc(var(--m) * 1.7); height: calc(var(--m) * 1.7); border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255, 255, 255, .28), rgba(0, 255, 255, .18) 32%, rgba(255, 255, 255, .1) 42%, rgba(255, 140, 0, .08) 52%, rgba(255, 140, 0, 0) 70%); animation: ini-hr-respira 3.6s ease-in-out infinite alternate; }
+@keyframes ini-hr-respira { from { opacity: .55; scale: .9; } to { opacity: 1; scale: 1.06; } }
+.ini-hr-chispas { position: absolute; left: 0; top: calc(var(--m) * .2); width: 0; height: 0; }
+.ini-hr-chispas i { position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: #fff; box-shadow: 0 0 6px 2px rgba(0, 255, 255, .8); opacity: 0; animation: ini-hr-chispa var(--t, 5s) cubic-bezier(.3, .6, .4, 1) var(--r, 0s) infinite; }
+.ini-hr-chispas i:nth-child(1) { --x: -70px; --y: -150px; --t: 5.2s; --r: .2s; }
+.ini-hr-chispas i:nth-child(2) { --x: 60px; --y: -170px; --t: 6s; --r: 1.3s; background: #ffd9a8; box-shadow: 0 0 6px 2px rgba(255, 140, 0, .8); }
+.ini-hr-chispas i:nth-child(3) { --x: -30px; --y: -210px; --t: 6.6s; --r: 2.4s; }
+.ini-hr-chispas i:nth-child(4) { --x: 110px; --y: -110px; --t: 5.6s; --r: 3.1s; width: 3px; height: 3px; }
+.ini-hr-chispas i:nth-child(5) { --x: -120px; --y: -90px; --t: 5.8s; --r: 4s; background: #ffd9a8; box-shadow: 0 0 6px 2px rgba(255, 140, 0, .8); }
+.ini-hr-chispas i:nth-child(6) { --x: 20px; --y: -240px; --t: 7s; --r: .9s; width: 3px; height: 3px; }
+.ini-hr-chispas i:nth-child(7) { --x: -10px; --y: 120px; --t: 6.2s; --r: 2s; width: 3px; height: 3px; }
+@keyframes ini-hr-chispa {
+  0% { opacity: 0; translate: 0 0; scale: .5; }
+  15% { opacity: 1; }
+  70% { opacity: .55; }
+  100% { opacity: 0; translate: calc(var(--x) * var(--esc)) calc(var(--y) * var(--esc)); scale: 1.1; }
+}
+
+/* Tarjetas de vidrio */
+.ini-hr-cartas { position: absolute; inset: 0; z-index: 2; }
+.ini-hr-carta { position: absolute; margin: 0; padding: .8rem .95rem .85rem; border-radius: 16px; font-family: 'Space Grotesk', sans-serif; color: #fff; text-align: left; animation: ini-hr-flota var(--f, 7s) ease-in-out infinite alternate; }
+.ini-hr-carta[hidden] { display: none; }
+.ini-hr-carta > * { position: relative; z-index: 1; }
+@keyframes ini-hr-flota { from { translate: 0 0; } to { translate: 0 var(--fa, -10px); } }
+.ini-hr-on .ini-hr-carta { opacity: 0; scale: .92; transition: opacity .8s cubic-bezier(.23, 1, .32, 1) var(--d, 0s), scale .8s cubic-bezier(.23, 1, .32, 1) var(--d, 0s); }
+.ini-hr-on.is-in .ini-hr-carta { opacity: 1; scale: 1; }
+.ini-hr-rotulo { display: flex; align-items: center; gap: .4rem; margin: 0 0 .3rem; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #94a3b8; }
+.ini-hr-titulo { margin: 0; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: #fff; }
+.ini-hr-texto { margin: .3rem 0 0; font-family: 'Plus Jakarta Sans', 'Geist', sans-serif; font-size: 12.5px; line-height: 1.4; color: #cbd5e1; }
+.ini-hr-pie { display: flex; align-items: center; gap: .4rem; margin: .5rem 0 0; font-size: 11px; color: #94a3b8; }
+.ini-hr-punto { flex: none; width: 6px; height: 6px; border-radius: 50%; background: #00FFFF; box-shadow: 0 0 8px #00FFFF; }
+.ini-hr-fila { display: flex; align-items: flex-start; gap: .55rem; }
+.ini-hr-icono { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; color: #00FFFF; background: rgba(0, 255, 255, .1); border: 1px solid rgba(0, 255, 255, .3); }
+.ini-hr-alerta .ini-hr-icono { color: #FF8C00; background: rgba(255, 140, 0, .1); border-color: rgba(255, 140, 0, .35); }
+.ini-hr-checks { color: #00FFFF; letter-spacing: -.15em; font-size: 12px; transition: color .4s ease; }
+.ini-hr-wa.is-nuevo { animation: ini-hr-aviso .7s cubic-bezier(.23, 1, .32, 1), ini-hr-flota var(--f, 7s) ease-in-out infinite alternate; }
+@keyframes ini-hr-aviso { 0% { scale: 1; } 35% { scale: 1.05; box-shadow: 0 0 0 1px rgba(0, 255, 255, .45), 0 0 30px rgba(0, 255, 255, .3); } 100% { scale: 1; } }
+.ini-hr-wa.is-nuevo .ini-hr-checks { color: #fff; }
+.ini-hr-barras { display: flex; align-items: flex-end; gap: 5px; height: 48px; margin-top: .6rem; }
+.ini-hr-barras span { flex: 1; height: 100%; border-radius: 3px 3px 1px 1px; background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(0, 255, 255, .8) 40%, rgba(0, 255, 255, .22)); transform-origin: 50% 100%; scale: 1 var(--h, .5); transition: scale .9s cubic-bezier(.23, 1, .32, 1); }
+.ini-hr-barras span:last-child { background: linear-gradient(180deg, #FFFFFF, rgba(255, 140, 0, .9) 40%, rgba(255, 140, 0, .25)); box-shadow: 0 0 14px rgba(255, 140, 0, .35); }
+.ini-hr-on:not(.is-in) .ini-hr-barras span { scale: 1 .04; }
+.ini-hr-barras span:nth-child(2) { transition-delay: .05s; } .ini-hr-barras span:nth-child(3) { transition-delay: .1s; } .ini-hr-barras span:nth-child(4) { transition-delay: .15s; }
+.ini-hr-barras span:nth-child(5) { transition-delay: .2s; } .ini-hr-barras span:nth-child(6) { transition-delay: .25s; } .ini-hr-barras span:nth-child(7) { transition-delay: .3s; }
+.ini-hr-vivo { color: #00FFFF; }
+.ini-hr-cifra { margin: .35rem 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .4rem; }
+.ini-hr-cifra strong { font-size: 24px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; background-image: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.ini-hr-cifra span { font-size: 11px; color: #94a3b8; }
+
+/* Celular y tableta: dos fichas a los lados del hexágono, dentro de su espacio arriba del texto */
+@media (max-width: 1023px) {
+  .ini-hr { inset: .75rem 0 auto; height: var(--H); }
+  .ini-hr-tablero, .ini-hr-texto, .ini-hr-tasa .ini-hr-titulo, .ini-hr-tasa .ini-hr-pie, .ini-hr-wa .ini-hr-pie { display: none; }
+  .ini-hr.con-tasa .ini-hr-alerta { display: none; }
+  .ini-hr-carta { --W: min(176px, calc(50% - var(--H) * .3 - 16px)); width: var(--W); padding: .55rem .65rem .6rem; border-radius: 12px; }
+  .ini-hr-wa { right: calc(50% + var(--H) * .3); top: 36%; }
+  .ini-hr-tasa, .ini-hr-alerta { left: calc(50% + var(--H) * .3); top: 3%; }
+  .ini-hr-rotulo { font-size: 10px; letter-spacing: .02em; text-transform: none; margin-bottom: .2rem; }
+  .ini-hr-titulo { font-size: 12px; line-height: 1.25; }
+  .ini-hr-cifra { margin-top: .1rem; }
+  .ini-hr-cifra strong { font-size: 17px; }
+  .ini-hr-cifra span { font-size: 10px; }
+  .ini-hr-carta { --f: 6s; --fa: -5px; }
+}
+/* Celular (< 640 px): no hay lugar a los lados del aro; sin tarjetas, para que el hexágono y la luciérnaga se lean limpios (24 nov 2026, revisión) */
+@media (max-width: 639px) { .ini-hr-icono, .ini-hr-cartas { display: none; } }
+
+/* Escritorio: el hexágono a la derecha (left 79 %, top 54 %, 700 px); las tarjetas flotan alrededor del aro */
+@media (min-width: 1024px) {
+  .ini-hr { --cx: 79%; --cy: 54%; --R: 500px; --m: 230px; --esc: 1; }
+  .ini-hr-carta { left: var(--cx); top: var(--cy); }
+  .ini-hr-tablero { width: 212px; margin: -312px 0 0 -24px; --f: 8s; }
+  .ini-hr-tasa { width: 188px; margin: -150px 0 0 -322px; --f: 6.5s; }
+  .ini-hr-wa { width: 214px; margin: 150px 0 0 -304px; --f: 7.5s; }
+  .ini-hr-alerta { width: 206px; margin: 188px 0 0 36px; --f: 6s; }
+}
+/* Pantallas medianas (1024-1279 px): el texto llega casi hasta el hexágono; solo dos tarjetas, el tablero arriba y, debajo a la izquierda,
+   la tasa en vivo (o el aviso de WhatsApp si la tasa no llegó) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .ini-hr { --cx: 84%; --R: 400px; --m: 184px; --esc: .8; }
+  .ini-hr-alerta, .ini-hr.con-tasa .ini-hr-wa { display: none; }
+  .ini-hr-tablero { margin: -262px 0 0 -110px; }
+  .ini-hr-tasa, .ini-hr-wa { margin: 118px 0 0 -230px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ini-hr-barrido, .ini-hr-chispas { display: none; }
+  .ini-hr-halo { animation: none; opacity: .8; }
+  .ini-hr-carta, .ini-hr-wa.is-nuevo { animation: none; }
+  .ini-hr-on .ini-hr-carta { opacity: 1; scale: 1; transition: none; }
+  .ini-hr-barras span { transition: none; }
+  .ini-hr-on:not(.is-in) .ini-hr-barras span { scale: 1 var(--h, .5); }
+}
+/* ===== /inicio:hero ===== */
+/* ===== /inicio:hero ===== */
+
+/* ===== inicio:marcas ===== */
+/* Franja «Marcas con las que hemos trabajado» (assets/inicio-marcas.js). Va dentro de la portada, en la banda .ini-marcas.ini-vidrio.
+   Logos en gris y a color al pasar o con foco; pausa con hover, foco o el botón (.is-detenida); bordes que se desvanecen (máscara);
+   hexágonos de separación (.ini-marcas-hex, los pone el JS). Con prefers-reduced-motion: lista quieta que envuelve, sin copias. */
+.ini-marcas .marquee { position: relative; z-index: 1; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); padding: .5rem 0; }
+/* Sin gap: cada elemento lleva su margen a la derecha, así la mitad de la pista mide justo un ciclo y translateX(-50%) no da saltos */
+.ini-marcas .marquee-track { gap: 0; align-items: center; }
+.ini-marcas .marquee-track > * { margin-right: 2.5rem; }
+.ini-marcas.ini-marcas-js .marquee-track > * { margin-right: 1.25rem; }
+.ini-marcas .marquee:hover .marquee-track, .ini-marcas:focus-within:not(.is-sigue) .marquee-track, .ini-marcas.is-detenida .marquee-track { animation-play-state: paused; }
+.ini-marcas .marquee-track > div { filter: grayscale(1) brightness(.9) contrast(1.05); opacity: .82; transition: filter .45s var(--ease-estado, ease), opacity .45s var(--ease-estado, ease), transform .45s var(--ease-estado, ease), box-shadow .45s var(--ease-estado, ease); }
+.ini-marcas:focus-within .marquee-track > div { filter: none; opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .ini-marcas .marquee-track > div:hover { filter: none; opacity: 1; transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(0, 255, 255, .35), 0 10px 28px rgba(0, 255, 255, .14), 0 4px 18px rgba(255, 140, 0, .12); }
+}
+@media (hover: none) { .ini-marcas .marquee-track > div { filter: grayscale(.45) brightness(.92); opacity: .9; } }
+.ini-marcas-hex { position: relative; flex: none; width: 10px; height: 11px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: linear-gradient(135deg, #00FFFF, #FFFFFF, #FF8C00); opacity: .55; }
+.ini-marcas-hex::after { content: ""; position: absolute; inset: 1.5px; clip-path: inherit; background: #07090d; }
+.ini-montaje[data-ini-montaje="marcas"] { position: relative; z-index: 1; display: flex; justify-content: center; margin-top: .75rem; }
+.ini-montaje[data-ini-montaje="marcas"]:has(> .ini-marcas-pausa[hidden]) { display: none; }
+.ini-marcas-pausa { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; min-width: 44px; padding: 0 1rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .12); background: rgba(9, 11, 16, .6); color: #cbd5e1; font: 500 .8125rem/1 'Space Grotesk', sans-serif; letter-spacing: .04em; cursor: pointer; transition: border-color .25s ease, color .25s ease, background-color .25s ease; }
+.ini-marcas-pausa[hidden] { display: none; }
+.ini-marcas-pausa:hover { border-color: rgba(0, 255, 255, .45); color: #fff; }
+.ini-marcas-pausa:focus-visible { outline: 2px solid #00FFFF; outline-offset: 3px; }
+.ini-marcas-pausa-ico { position: relative; width: 14px; height: 16px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: linear-gradient(135deg, #00FFFF, #FFFFFF, #FF8C00); }
+.ini-marcas-pausa-ico::after { content: ""; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; transform: translate(-50%, -50%); border-left: 2px solid #07090d; border-right: 2px solid #07090d; }
+.ini-marcas.is-detenida .ini-marcas-pausa-ico::after { width: 0; height: 0; border-right: 0; border-left: 5px solid #07090d; border-top: 3.5px solid transparent; border-bottom: 3.5px solid transparent; transform: translate(-35%, -50%); }
+@media (prefers-reduced-motion: reduce) {
+  .ini-marcas .marquee { -webkit-mask-image: none; mask-image: none; padding: .25rem 1rem; }
+  .ini-marcas .marquee-track, .ini-marcas.ini-marcas-js .marquee-track { width: auto; flex-wrap: wrap; justify-content: center; gap: .75rem; animation: none; transform: none; }
+  .ini-marcas .marquee-track > div:nth-of-type(n+9), .ini-marcas .marquee-track > .ini-marcas-hex { display: none; }
+  .ini-marcas .marquee-track > *, .ini-marcas.ini-marcas-js .marquee-track > * { margin-right: 0; }
+  .ini-marcas .marquee-track > div { flex: 0 1 calc((100% - 1.5rem) / 3); width: auto !important; max-width: 9rem; height: 4rem !important; transition: none; }
+  .ini-marcas .marquee-track > div:hover { transform: none; }
+  .ini-marcas-pausa { display: none; }
+}
+/* ===== /inicio:marcas ===== */
+
+/* ===== inicio:lineas ===== */
+/* ===== inicio:lineas ===== */
+/* #lineas (assets/inicio-lineas.js): malla propia por tarjeta, la Hexagonal más protagonista, lados que se encienden uno por uno,
+   la luciérnaga que recorre el hexágono y termina en su centro, y la tarjeta de detalle en vidrio con transición.
+   Las clases ini-lin-* las pone el JS; sin JS nada de esto aplica y la lista de respaldo se lee completa. */
+
+/* La Hexagonal manda: columna más ancha en escritorio, más luz y un hexágono más grande. La Triangular, un escalón más abajo. */
+@media (min-width: 1024px) {
+  .ini-lineas .ini-figuras { grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr); }
+  .ini-lineas .ini-fig.linea-tri { margin-top: 3rem; }
+  .ini-lineas .linea-hex .ini-svg { max-width: 480px; }
+}
+.ini-lineas .ini-fig.linea-hex { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 24px 70px rgba(0, 0, 0, .42), 0 0 64px rgba(0, 255, 255, .1), 0 0 130px rgba(255, 140, 0, .07); }
+.ini-lineas .ini-fig.linea-hex::before { background: linear-gradient(135deg, rgba(0, 255, 255, .85), rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .08) 62%, rgba(255, 140, 0, .8)); }
+.ini-lineas .ini-fig.linea-tri { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 20px 50px rgba(0, 0, 0, .35), 0 0 50px rgba(168, 85, 247, .07); }
+
+/* Malla propia de cada tarjeta (dentro del vidrio, detrás del contenido) */
+.ini-lin-malla { position: absolute; inset: 0; z-index: -1; overflow: hidden; overflow: clip; border-radius: inherit; pointer-events: none; }
+.ini-lin-capa { position: absolute; inset: 0; }
+.ini-lin-m { position: absolute; border-radius: 50%; filter: blur(46px); }
+.ini-lin-m1 { width: 70%; aspect-ratio: 1; left: -18%; top: -12%; background: radial-gradient(circle, rgba(0, 255, 255, .34), rgba(0, 255, 255, 0) 68%); animation: ini-flota 18s ease-in-out infinite alternate; }
+.ini-lin-m2 { width: 64%; aspect-ratio: 1; right: -16%; bottom: -10%; background: radial-gradient(circle, rgba(255, 140, 0, .3), rgba(255, 140, 0, 0) 68%); animation: ini-flota 22s ease-in-out infinite alternate-reverse; }
+.ini-lin-m3 { width: 52%; aspect-ratio: 1; left: 24%; top: 20%; background: radial-gradient(circle, rgba(255, 255, 255, .1), rgba(0, 255, 255, .05) 45%, rgba(0, 255, 255, 0) 70%); animation: ini-flota 26s ease-in-out infinite alternate; }
+.linea-tri .ini-lin-m1 { background: radial-gradient(circle, rgba(74, 222, 128, .26), rgba(74, 222, 128, 0) 68%); }
+.linea-tri .ini-lin-m2 { background: radial-gradient(circle, rgba(168, 85, 247, .3), rgba(168, 85, 247, 0) 68%); }
+.linea-tri .ini-lin-m3 { background: radial-gradient(circle, rgba(196, 181, 253, .1), rgba(74, 222, 128, .04) 45%, rgba(168, 85, 247, 0) 70%); }
+@media (max-width: 767px) { .ini-lin-m { filter: blur(34px); } }
+
+/* Lados que se encienden uno por uno: cada trazo dura un «paso» (--paso, lo pone el JS) y empieza cuando termina el anterior (--i) */
+.ini-lin-espera .ini-lado-svg .vis, .ini-lin-espera .ini-lado-svg .num { opacity: 0; }
+.ini-lin-on .ini-lado-svg .vis { stroke-dasharray: 1 1; animation: ini-lin-traza calc(var(--paso, .5s) * 1.6) linear calc(var(--i, 0) * var(--paso, .5s)) backwards; }
+.ini-lin-on .ini-lado-svg .num { transform-box: fill-box; transform-origin: center; animation: ini-lin-num .5s cubic-bezier(.34, 1.56, .64, 1) calc(var(--i, 0) * var(--paso, .5s) + var(--paso, .5s) * .45) backwards; }
+@keyframes ini-lin-traza {
+  0% { stroke-dashoffset: 1; opacity: 0; stroke-width: 13; filter: drop-shadow(0 0 8px rgba(var(--acento-1-rgb), .95)); }
+  1% { opacity: 1; }
+  62% { stroke-dashoffset: 0; opacity: 1; stroke-width: 13; filter: drop-shadow(0 0 8px rgba(var(--acento-1-rgb), .95)); }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes ini-lin-num { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+/* Hexágono: el trazo lo avanza el vuelo de la luciérnaga cuadro a cuadro (stroke-dashoffset en línea), así la luz va siempre en la punta */
+.ini-lin-js .ini-lado-svg .vis { stroke-dasharray: 1 1; }
+.ini-lin-js .ini-lado-svg:not(.ini-lin-ya) .vis, .ini-lin-js .ini-lado-svg:not(.ini-lin-ya) .num { opacity: 0; }
+.ini-lin-js .ini-lado-svg.ini-lin-traza .vis { opacity: 1; stroke-width: 13; filter: drop-shadow(0 0 8px rgba(var(--acento-1-rgb), .95)); }
+.ini-lin-js .ini-lado-svg.ini-lin-ya .num { transform-box: fill-box; transform-origin: center; animation: ini-lin-num .5s cubic-bezier(.34, 1.56, .64, 1) calc(var(--paso, .5s) * .45) backwards; }
+.ini-lin-js .ini-lado-svg.ini-lin-asienta .vis { animation: ini-lin-asienta calc(var(--paso, .5s) * 1.2) ease-out; }
+@keyframes ini-lin-asienta { from { opacity: 1; stroke-width: 13; filter: drop-shadow(0 0 8px rgba(var(--acento-1-rgb), .95)); } }
+/* El lado con foco de teclado o elegido siempre se ve, aunque su entrada no haya empezado o esté en curso (!important: gana también a la animación) */
+.ini-lin-fx .ini-lado-svg:focus-visible .vis, .ini-lin-fx .ini-lado-svg:focus-visible .num, .ini-lin-fx .ini-lado-svg.is-activo .vis, .ini-lin-fx .ini-lado-svg.is-activo .num { opacity: 1 !important; }
+
+/* La luciérnaga del hexágono: vuela por el perímetro y se queda en el centro, levitando (posición y giro los escribe el JS) */
+.ini-lin-luci { opacity: 0; pointer-events: none; transition: opacity .5s ease; }
+.ini-lin-luci-vuela, .ini-lin-luci-reposo, .ini-lin-luci-quieta { opacity: 1; }
+.ini-lin-luci-img { filter: drop-shadow(0 0 6px rgba(0, 255, 255, .55)); }
+.ini-lin-luci-halo { transform-box: fill-box; transform-origin: center; }
+.ini-lin-luci-vuela .ini-lin-luci-halo, .ini-lin-luci-reposo .ini-lin-luci-halo { animation: ini-lin-halo 2.4s ease-in-out infinite alternate; }
+.ini-lin-luci-reposo .ini-lin-luci-mov { animation: ini-lin-levita 3.6s ease-in-out infinite alternate; }
+@keyframes ini-lin-levita { from { transform: translateY(-5px); } to { transform: translateY(5px); } }
+@keyframes ini-lin-halo { from { opacity: .55; transform: scale(.9); } to { opacity: 1; transform: scale(1.08); } }
+.ini-lin-pausa .ini-lin-m, .ini-lin-pausa .ini-lin-luci-mov, .ini-lin-pausa .ini-lin-luci-halo { animation-play-state: paused; }
+
+/* Tarjeta de detalle en vidrio: entra suave, su contenido sube en cascada y un barrido de luz la recorre cada vez que cambia de lado */
+.ini-lineas .ini-tarjeta { position: relative; isolation: isolate; overflow: hidden; overflow: clip; border-color: rgba(var(--acento-1-rgb), .45); background: linear-gradient(145deg, rgba(var(--acento-1-rgb), .15), rgba(255, 255, 255, .04) 50%, rgba(var(--acento-2-rgb), .1)), rgba(9, 11, 16, .6); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 18px 40px rgba(0, 0, 0, .35), 0 0 32px rgba(var(--acento-1-rgb), .12); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+.ini-lineas .ini-tarjeta::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .16) 50%, transparent 65%); transform: translateX(-110%); pointer-events: none; }
+.ini-lineas .ini-tarjeta.ini-lin-brillo::after { animation: ini-lin-barre .9s cubic-bezier(.23, 1, .32, 1); }
+.ini-fx .ini-lineas .ini-tarjeta:not([hidden]) { animation: ini-lin-tarj .5s cubic-bezier(.23, 1, .32, 1) both; }
+.ini-fx .ini-lineas .ini-tarjeta > * { animation: ini-lin-hijo .45s cubic-bezier(.23, 1, .32, 1) backwards; }
+.ini-fx .ini-lineas .ini-tarjeta > :nth-child(2) { animation-delay: .05s; }
+.ini-fx .ini-lineas .ini-tarjeta > :nth-child(3) { animation-delay: .1s; }
+.ini-fx .ini-lineas .ini-tarjeta > :nth-child(4) { animation-delay: .15s; }
+@keyframes ini-lin-tarj { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes ini-lin-hijo { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes ini-lin-barre { from { transform: translateX(-110%); } to { transform: translateX(110%); } }
+/* viñeta con la forma de la línea antes de «LÍNEA HEXAGONAL · …» / «LÍNEA TRIANGULAR · …» */
+.ini-lineas .ini-tarj-linea::before { content: ""; display: inline-block; width: .8em; height: .9em; margin-right: .5em; vertical-align: -.1em; }
+.ini-lineas .linea-hex .ini-tarj-linea::before { clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: linear-gradient(135deg, #00FFFF, #FFFFFF, #FF8C00); }
+.ini-lineas .linea-tri .ini-tarj-linea::before { clip-path: polygon(50% 0, 100% 100%, 0 100%); background: linear-gradient(135deg, #4ade80, #a855f7); }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ini-lin-m, .ini-lin-luci-mov, .ini-lin-luci-halo, .ini-lin-on .ini-lado-svg .vis, .ini-lin-on .ini-lado-svg .num,
+  .ini-fx .ini-lineas .ini-tarjeta:not([hidden]), .ini-fx .ini-lineas .ini-tarjeta > *, .ini-lineas .ini-tarjeta.ini-lin-brillo::after,
+  .ini-lin-js .ini-lado-svg .num, .ini-lin-js .ini-lado-svg .vis { animation: none; }
+  .ini-lin-espera .ini-lado-svg .vis, .ini-lin-espera .ini-lado-svg .num { opacity: 1; }
+}
+/* ===== /inicio:lineas ===== */
+/* ===== /inicio:lineas ===== */
+
+/* ===== inicio:como ===== */
+/* Diagnóstico: cada pregunta entra suave (inicio.js la vuelve a pintar; la animación corre al insertarse). Solo con JS (html.ini-fx).
+   fill-mode backwards: al terminar no queda transform, así el :active de .ini-opcion sigue funcionando. */
+@keyframes ini-como-entra { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.ini-fx .ini-quiz-ui > .ini-prog-txt, .ini-fx .ini-quiz-ui > .ini-pregunta, .ini-fx .ini-opciones > .ini-opcion, .ini-fx .ini-quiz-ui > .ini-resultado { animation: ini-como-entra .5s cubic-bezier(.23, 1, .32, 1) backwards; }
+.ini-fx .ini-quiz-ui > .ini-pregunta { animation-delay: .04s; }
+.ini-fx .ini-opciones > .ini-opcion:nth-child(1) { animation-delay: .1s; }
+.ini-fx .ini-opciones > .ini-opcion:nth-child(2) { animation-delay: .16s; }
+.ini-fx .ini-opciones > .ini-opcion:nth-child(3) { animation-delay: .22s; }
+.ini-fx .ini-opciones > .ini-opcion:nth-child(4) { animation-delay: .28s; }
+.ini-prog > i { transition: width .5s cubic-bezier(.23, 1, .32, 1); }
+
+/* Resultado: figura de la línea recomendada que se dibuja (la agrega assets/inicio-como.js) */
+.ini-como-res { display: flow-root; }
+.ini-como-fig { position: relative; float: right; width: 112px; margin: -.25rem 0 .5rem 1rem; }
+@media (max-width: 399px) { .ini-como-fig { width: 84px; margin-left: .75rem; } }
+.ini-como-fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ini-como-fig-trazo { fill: none; stroke-width: 3.5; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: ini-como-traza 1.1s .15s cubic-bezier(.65, 0, .35, 1) forwards; }
+.ini-como-fig-hex .ini-como-fig-trazo { filter: drop-shadow(0 0 6px rgba(0, 255, 255, .55)); }
+.ini-como-fig-tri .ini-como-fig-trazo { filter: drop-shadow(0 0 6px rgba(168, 85, 247, .6)); }
+.ini-como-fig-fondo { opacity: 0; animation: ini-como-aparece .6s 1s ease-out forwards; }
+.ini-como-fig-hex .ini-como-fig-fondo { fill: rgba(0, 255, 255, .08); }
+.ini-como-fig-tri .ini-como-fig-fondo { fill: rgba(168, 85, 247, .12); }
+.ini-como-fig-punto { fill: #4ade80; filter: drop-shadow(0 0 6px rgba(74, 222, 128, .9)); opacity: 0; transform-box: fill-box; transform-origin: center; animation: ini-como-brota .6s 1.05s cubic-bezier(.34, 1.56, .64, 1) forwards; }
+.ini-como-fig-luci { position: absolute; left: 25%; top: 22%; width: 50%; height: auto; opacity: 0; filter: drop-shadow(0 0 10px rgba(0, 255, 255, .5)) drop-shadow(0 0 18px rgba(255, 140, 0, .3)); animation: ini-como-brota .7s .95s cubic-bezier(.34, 1.56, .64, 1) forwards; }
+@keyframes ini-como-traza { to { stroke-dashoffset: 0; } }
+@keyframes ini-como-aparece { to { opacity: 1; } }
+@keyframes ini-como-brota { from { opacity: 0; transform: scale(.55); } to { opacity: 1; transform: none; } }
+
+/* Cómo trabajamos: riel de los 3 pasos con la luciérnaga (solo con JS: .ini-como-on lo pone assets/inicio-como.js).
+   El riel y la lista comparten la misma celda de la rejilla; la lista abre relleno arriba (escritorio) o a la izquierda (celular). */
+.ini-como-via { display: none; }
+.ini-como-on > .max-w-6xl { display: grid; grid-template-columns: minmax(0, 1fr); }
+.ini-como-on .ini-pasos-lista, .ini-como-on [data-ini-montaje="como"] { grid-row: 2; grid-column: 1; }
+.ini-como-on [data-ini-montaje="como"] { position: relative; z-index: 1; margin-top: 2.5rem; pointer-events: none; }
+.ini-como-on .ini-como-via { display: block; position: absolute; inset: 0; }
+.ini-como-on .ini-pasos-lista { padding-left: 3.5rem; }
+@media (min-width: 768px) { .ini-como-on .ini-pasos-lista { padding-left: 0; padding-top: 4.25rem; } }
+.ini-como-riel, .ini-como-luz { position: absolute; display: block; border-radius: 999px; }
+.ini-como-riel { height: 2px; margin-top: -1px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .22) 0 6px, transparent 6px 12px); }
+.ini-como-luz { height: 2px; margin-top: -1px; transform-origin: left center; transform: scaleX(0); background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); box-shadow: 0 0 12px rgba(0, 255, 255, .45); }
+.ini-como-via.is-vertical .ini-como-riel, .ini-como-via.is-vertical .ini-como-luz { width: 2px; height: auto; margin: 0 0 0 -1px; }
+.ini-como-via.is-vertical .ini-como-riel { background: repeating-linear-gradient(180deg, rgba(255, 255, 255, .22) 0 6px, transparent 6px 12px); }
+.ini-como-via.is-vertical .ini-como-luz { transform-origin: center top; transform: scaleY(0); background: linear-gradient(180deg, #00FFFF, #FFFFFF, #FF8C00); }
+.ini-como-nodo { position: absolute; left: 0; top: 0; width: 28px; height: 26px; margin: -13px 0 0 -14px; }
+.ini-como-nodo svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ini-como-nodo path { fill: #0b0d12; stroke: rgba(255, 255, 255, .28); stroke-width: 1.5; transition: stroke .4s, filter .4s; }
+.ini-como-nodo circle { fill: rgba(255, 255, 255, .22); transition: fill .4s; }
+.ini-como-nodo.is-on path { stroke: #00FFFF; filter: drop-shadow(0 0 6px rgba(0, 255, 255, .8)); }
+.ini-como-nodo.is-on circle { fill: #FF8C00; }
+.ini-como-luz + .ini-como-nodo + .ini-como-nodo.is-on path { stroke: #FFFFFF; filter: drop-shadow(0 0 6px rgba(255, 255, 255, .7)); }
+.ini-como-luz + .ini-como-nodo + .ini-como-nodo + .ini-como-nodo.is-on path { stroke: #FF8C00; filter: drop-shadow(0 0 6px rgba(255, 140, 0, .85)); }
+.ini-como-luz + .ini-como-nodo + .ini-como-nodo + .ini-como-nodo.is-on circle { fill: #00FFFF; }
+.ini-como-luci { position: absolute; left: 0; top: 0; width: 40px; height: 40px; margin: -20px 0 0 -20px; will-change: transform; }
+.ini-como-luci::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .35), rgba(0, 255, 255, .22) 35%, rgba(255, 255, 255, .12) 45%, rgba(255, 140, 0, .1) 55%, rgba(255, 140, 0, 0) 70%); animation: ini-como-pulso 2.4s ease-in-out infinite alternate; }
+.ini-como-luci img { position: relative; display: block; width: 100%; height: 100%; filter: drop-shadow(0 0 6px rgba(0, 255, 255, .6)); }
+.ini-como-via.is-pausa .ini-como-luci::before { animation-play-state: paused; }
+@keyframes ini-como-pulso { from { opacity: .55; transform: scale(.85); } to { opacity: 1; transform: scale(1.1); } }
+/* pasos: ícono hexagonal y tarjeta que se enciende cuando la luciérnaga llega a su nodo */
+.ini-como-on .ini-paso-ico { border-radius: 0; clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%); transition: background .5s, color .5s; }
+.ini-como-on .ini-pasos-lista > li { transition: box-shadow .5s; }
+.ini-como-on .ini-pasos-lista > li.ini-como-activo { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 20px 50px rgba(0, 0, 0, .35), 0 0 42px rgba(0, 255, 255, .1); }
+.ini-como-on .ini-como-activo .ini-paso-ico { color: #fff; background: linear-gradient(135deg, rgba(0, 255, 255, .45), rgba(255, 255, 255, .25), rgba(255, 140, 0, .45)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ini-fx .ini-quiz-ui > .ini-prog-txt, .ini-fx .ini-quiz-ui > .ini-pregunta, .ini-fx .ini-opciones > .ini-opcion, .ini-fx .ini-quiz-ui > .ini-resultado { animation: none; }
+  .ini-como-fig-trazo, .ini-como-fig-fondo, .ini-como-fig-punto, .ini-como-fig-luci { animation: none; opacity: 1; stroke-dashoffset: 0; transform: none; }
+  .ini-como-luci::before { animation: none; }
+  .ini-prog > i { transition: none; }
+  .ini-como-nodo path, .ini-como-nodo circle, .ini-como-on .ini-paso-ico, .ini-como-on .ini-pasos-lista > li { transition: none; }
+}
+/* ===== /inicio:como ===== */
+
+/* ===== inicio:manifiesto ===== */
+/* ===== inicio:manifiesto ===== */
+/* Efecto del manifiesto (assets/inicio-manifiesto.js, 24 nov 2026). Las capas .ini-mf-* las crea el JS alrededor de <fv-logo-3d>:
+   .ini-mf-paralaje (paralaje de scroll) > .ini-mf-tilt (giro hacia el puntero) > halo que respira, aro hexagonal, luciérnaga y destellos.
+   Sin JS no existen. Fuera de pantalla: .ini-mf-quieto pausa todo. Con reduced-motion: quieto y sin destellos. */
+.ini-mf-paralaje { position: relative; display: block; }
+.ini-mf-tilt { position: relative; display: block; width: var(--fv-size); aspect-ratio: 420 / 370; will-change: transform; }
+.ini-mf-tilt fv-logo-3d { position: relative; z-index: 2; }
+.ini-mf-halo { position: absolute; inset: -38% -30%; z-index: 0; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(0, 255, 255, .26), rgba(255, 255, 255, .07) 48%, rgba(255, 140, 0, .14) 62%, rgba(255, 140, 0, 0) 100%); animation: ini-mf-respira 5.2s ease-in-out infinite alternate; will-change: transform, opacity; }
+.ini-mf-halo::after { content: ""; position: absolute; inset: 18%; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 255, 255, .45), rgba(0, 255, 255, .2) 50%, rgba(0, 255, 255, 0) 100%); opacity: 0; }
+.ini-mf-aro { position: absolute; inset: -12% -6%; z-index: 1; pointer-events: none; opacity: .5; animation: ini-mf-gira 48s linear infinite; will-change: transform; }
+.ini-mf-aro svg { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 6px rgba(0, 255, 255, .45)); }
+.ini-mf-chispas { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.ini-mf-chispa { position: absolute; display: block; border-radius: 50%; opacity: 0; animation: ini-mf-titila 4.4s ease-in-out infinite; will-change: transform, opacity; }
+.ini-mf-c { background: #00FFFF; box-shadow: 0 0 8px 2px rgba(0, 255, 255, .7); }
+.ini-mf-b { background: #FFFFFF; box-shadow: 0 0 8px 2px rgba(255, 255, 255, .6); }
+.ini-mf-n { background: #FF8C00; box-shadow: 0 0 8px 2px rgba(255, 140, 0, .7); }
+.ini-mf-tilt.ini-mf-listo .ini-mf-halo::after { animation: ini-mf-destello 1.6s ease-out 1; }
+@keyframes ini-mf-respira { from { transform: scale(.9); opacity: .55; } to { transform: scale(1.08); opacity: 1; } }
+@keyframes ini-mf-gira { to { transform: rotate(360deg); } }
+@keyframes ini-mf-titila { 0%, 100% { opacity: 0; transform: translateY(4px) scale(.4); } 45% { opacity: .95; transform: translateY(-6px) scale(1); } 70% { opacity: .3; } }
+@keyframes ini-mf-destello { 0% { opacity: 0; transform: scale(.7); } 30% { opacity: 1; } 100% { opacity: 0; transform: scale(1.25); } }
+/* consola: la ✔ en cian; cada línea se ilumina al aparecer y la consola destella al terminar */
+.ps-v { display: inline-block; color: #00FFFF; text-shadow: 0 0 10px rgba(0, 255, 255, .65); }
+.ini-ps-cuerpo .ps-l, .ini-ps-cuerpo .ps-fin { border-radius: 4px; }
+.ps-l.ini-mf-vista, .ps-fin.ini-mf-vista { animation: ini-mf-linea 1s ease-out 1; }
+.ps-ok.ini-mf-vista .ps-v { animation: ini-mf-ok .55s cubic-bezier(.34, 1.56, .64, 1) 1; }
+.ini-ps.ini-mf-listo { animation: ini-mf-consola 1.8s ease-out 1; }
+@keyframes ini-mf-linea { from { background-color: rgba(0, 255, 255, .11); box-shadow: inset 2px 0 0 #00FFFF; } to { background-color: rgba(0, 255, 255, 0); box-shadow: inset 2px 0 0 rgba(0, 255, 255, 0); } }
+@keyframes ini-mf-ok { from { transform: scale(.2) rotate(-25deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes ini-mf-consola { 0%, 100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 20px 50px rgba(0, 0, 0, .35); } 30% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 20px 50px rgba(0, 0, 0, .35), 0 0 42px rgba(0, 255, 255, .32), 0 0 90px rgba(255, 140, 0, .16); } }
+.ini-mf-quieto .ini-mf-halo, .ini-mf-quieto .ini-mf-aro, .ini-mf-quieto .ini-mf-chispa, .ini-mf-quieto .ps-cur { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .ini-mf-halo, .ini-mf-aro, .ps-l.ini-mf-vista, .ps-fin.ini-mf-vista, .ps-ok.ini-mf-vista .ps-v, .ini-ps.ini-mf-listo { animation: none; }
+  .ini-mf-halo { opacity: .8; }
+  .ini-mf-chispas { display: none; }
+  .ini-mf-tilt { transform: none !important; will-change: auto; }
+}
+/* ===== /inicio:manifiesto ===== */
+/* ===== /inicio:manifiesto ===== */
+
+/* ===== inicio:caos ===== */
+/* ===== inicio:caos ===== */
+/* #caos-tablero (assets/inicio-caos.js): comparador arrastrable «Antes» (caos gris, etiquetas que tiemblan) / «Después»
+   (tablero de vidrio cian/naranja, barras que crecen al entrar). Sin JS: [data-caos-env] sigue hidden y se ven las dos tarjetas
+   (.ini-caos-grid). Con el comparador activo, las tarjetas quedan solo para lectores de pantalla (.ini-caos-sr). */
+.ini-caos-sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+.ini-caos-env { margin-top: 2.5rem; }
+.ini-caos-env[hidden] { display: none; }
+.ini-caos-marco { position: relative; overflow: hidden; border-radius: 1.25rem; touch-action: pan-y; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; --caos-x: 50%; }
+.ini-caos-capa { position: relative; z-index: 1; min-height: 25rem; font-size: 13px; }
+@media (min-width: 640px) { .ini-caos-capa { min-height: 0; aspect-ratio: 16 / 9; font-size: 14px; } }
+@media (min-width: 1024px) { .ini-caos-capa { aspect-ratio: 16 / 8; font-size: 15px; } }
+.ini-caos-etq { position: absolute; top: 1rem; z-index: 2; margin: 0; padding: .4em .8em; border-radius: 999px; font: 700 .8rem/1 'Space Grotesk', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.ini-caos-etq-a { left: 1rem; color: #cbd5e1; background: rgba(13, 14, 18, .85); border: 1px dashed rgba(148, 163, 184, .5); }
+.ini-caos-etq-d { right: 1rem; color: #00FFFF; background: rgba(0, 255, 255, .08); border: 1px solid rgba(0, 255, 255, .4); }
+
+/* Después: tablero de vidrio */
+.ini-caos-d { display: flex; align-items: center; justify-content: flex-end; padding: 3.75rem 1rem 1.25rem; background: radial-gradient(60% 70% at 85% 20%, rgba(0, 255, 255, .14), transparent 70%), radial-gradient(50% 60% at 70% 95%, rgba(255, 140, 0, .12), transparent 70%); }
+@media (min-width: 640px) { .ini-caos-d { padding: 3.5rem 1.75rem 1.5rem; } }
+.ini-caos-tab { position: relative; display: flex; flex-direction: column; gap: 1em; width: min(100%, 30em); padding: 1.1em 1.2em 1em; border-radius: 1em; background: linear-gradient(145deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .02)), rgba(9, 11, 16, .62); border: 1px solid rgba(0, 255, 255, .28); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 18px 40px rgba(0, 0, 0, .4), 0 0 40px rgba(0, 255, 255, .08); }
+.ini-caos-tab-cab { display: flex; align-items: center; gap: .6em; color: #fff; font: 700 1.05em/1.2 'Space Grotesk', sans-serif; }
+.ini-caos-hexico { flex: none; width: 1.3em; height: 1.45em; background: linear-gradient(135deg, #00FFFF, #FFFFFF, #FF8C00); -webkit-clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+.ini-caos-aldia { margin-left: auto; display: inline-flex; align-items: center; gap: .4em; padding: .3em .65em; border-radius: 999px; background: rgba(0, 255, 255, .1); border: 1px solid rgba(0, 255, 255, .35); color: #a5f3fc; font: 600 .8em/1 'Space Grotesk', sans-serif; }
+.ini-caos-aldia::before { content: ""; width: .5em; height: .5em; border-radius: 50%; background: #FF8C00; box-shadow: 0 0 8px #FF8C00; }
+.ini-caos-barras { display: grid; gap: .75em; margin: 0; padding: 0; list-style: none; }
+.ini-caos-barras li { display: grid; grid-template-columns: 6.2em minmax(0, 1fr); align-items: center; gap: .7em; color: #e2e8f0; font-size: 1em; }
+.ini-caos-barra { display: block; height: .8em; border-radius: 999px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.ini-caos-barra > i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #00FFFF, #FFFFFF, #FF8C00); transform-origin: 0 50%; transform: scaleX(var(--w)); }
+.ini-caos-curva { display: block; width: 100%; height: 4.2em; overflow: visible; }
+.ini-caos-area { fill: rgba(0, 255, 255, .07); }
+.ini-caos-trazo { fill: none; stroke: url(#ini-caos-g); stroke-width: 2.5; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+/* Crecen al entrar (con JS y sin reduced-motion) */
+.ini-caos-listo:not(.is-in) .ini-caos-barra > i { transform: scaleX(0); }
+.ini-caos-listo:not(.is-in) .ini-caos-trazo { stroke-dashoffset: 1; }
+.ini-caos-listo:not(.is-in) .ini-caos-area { opacity: 0; }
+.ini-caos-listo .ini-caos-barra > i { transition: transform 1s cubic-bezier(.23, 1, .32, 1); }
+.ini-caos-listo .ini-caos-barras li:nth-child(2) i { transition-delay: .1s; }
+.ini-caos-listo .ini-caos-barras li:nth-child(3) i { transition-delay: .2s; }
+.ini-caos-listo .ini-caos-barras li:nth-child(4) i { transition-delay: .3s; }
+.ini-caos-listo .ini-caos-trazo { transition: stroke-dashoffset 1.4s cubic-bezier(.65, 0, .35, 1) .35s; }
+.ini-caos-listo .ini-caos-area { transition: opacity .8s ease .9s; }
+
+/* Antes: el caos (recortado según --caos-x) */
+.ini-caos-a { position: absolute; inset: 0; z-index: 1; min-height: 0; aspect-ratio: auto; overflow: hidden; background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .025) 0 1px, rgba(255, 255, 255, 0) 1px 28px), repeating-linear-gradient(90deg, rgba(255, 255, 255, .025) 0 1px, rgba(255, 255, 255, 0) 1px 28px), #0D0E12; -webkit-clip-path: inset(0 calc(100% - var(--caos-x)) 0 0); clip-path: inset(0 calc(100% - var(--caos-x)) 0 0); }
+.ini-caos-n { position: absolute; display: flex; flex-direction: column; gap: .45em; padding: .7em .8em; border-radius: .6em; color: #cbd5e1; box-shadow: 0 12px 26px rgba(0, 0, 0, .5); transform: rotate(var(--r, 0deg)); }
+.ini-caos-n b { font: 700 1em/1.2 'Space Grotesk', sans-serif; }
+.ini-caos-n i { display: block; height: .42em; border-radius: 999px; background: rgba(148, 163, 184, .35); }
+/* Cuaderno: papel rayado con renglones tachados */
+.ini-caos-cuaderno { left: 5%; top: 17%; width: 46%; --r: -4deg; padding-left: 1.9em; border-radius: .25em; background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0) 0 1.45em, rgba(59, 130, 246, .28) 1.45em calc(1.45em + 1px)), linear-gradient(90deg, rgba(0, 0, 0, 0) 1.3em, rgba(239, 68, 68, .55) 1.3em calc(1.3em + 1px), rgba(0, 0, 0, 0) calc(1.3em + 1px)), #f1f5f9; color: #1e293b; }
+.ini-caos-cuaderno b { color: #1e3a8a; font-family: 'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive; }
+.ini-caos-cuaderno i { width: 80%; background: rgba(30, 41, 59, .35); }
+.ini-caos-cuaderno s { position: relative; display: block; width: 70%; height: .42em; border-radius: 999px; background: rgba(30, 41, 59, .3); }
+.ini-caos-cuaderno s::after { content: ""; position: absolute; left: -6%; right: -6%; top: 50%; height: 2px; margin-top: -1px; background: #b91c1c; transform: rotate(-3deg); }
+/* Chats de WhatsApp */
+.ini-caos-chat { right: 4%; top: 13%; width: 42%; --r: 3deg; background: #141821; border: 1px solid rgba(255, 255, 255, .1); }
+.ini-caos-chat b { padding-right: 1.1em; color: #fff; }
+.ini-caos-punto { position: absolute; top: .65em; right: .65em; width: .7em; height: .7em; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px rgba(74, 222, 128, .7); }
+.ini-caos-chat i { width: 78%; height: 1.2em; border-radius: .7em .7em .7em .2em; background: #1f2430; }
+.ini-caos-chat i.ini-caos-sale { align-self: flex-end; width: 60%; border-radius: .7em .7em .2em .7em; background: #1d3b2a; }
+/* Excel con varias versiones */
+.ini-caos-excel { left: 10%; top: 49%; width: 50%; --r: 2.5deg; background: #12261b; border: 1px solid rgba(74, 222, 128, .3); color: #d1fae5; }
+.ini-caos-celdas { display: block; height: 3.2em; border-radius: .2em; background: repeating-linear-gradient(0deg, rgba(209, 250, 229, .18) 0 1px, rgba(0, 0, 0, 0) 1px 1.05em), repeating-linear-gradient(90deg, rgba(209, 250, 229, .18) 0 1px, rgba(0, 0, 0, 0) 1px 2.4em), rgba(255, 255, 255, .03); }
+.ini-caos-pest { display: flex; gap: .3em; }
+.ini-caos-pest em { padding: .2em .5em; border-radius: .25em; background: rgba(209, 250, 229, .1); color: #a7f3d0; font: normal 600 .8em/1 'Space Grotesk', sans-serif; }
+.ini-caos-pest em:last-child { color: #fca5a5; text-decoration: line-through; }
+/* Bolívares y dólares mezclados */
+.ini-caos-mezcla { right: 5%; top: 54%; width: 34%; --r: -5deg; flex-direction: row; align-items: center; gap: .6em; border-radius: .2em .2em .2em 1em; background: #fef3c7; color: #422006; }
+.ini-caos-monedas { position: relative; flex: none; width: 2.2em; height: 1.7em; }
+.ini-caos-monedas u { position: absolute; top: 0; left: 0; width: 1.6em; height: 1.6em; border: 2px solid #92400e; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fde68a, #d97706); }
+.ini-caos-monedas u + u { left: .7em; top: .15em; border-color: #14532d; background: radial-gradient(circle at 35% 30%, #bbf7d0, #15803d); }
+/* Reportes que llegan tarde */
+.ini-caos-tarde { left: 22%; bottom: 6%; width: 52%; --r: -1.5deg; flex-direction: row; align-items: center; gap: .6em; background: rgba(127, 29, 29, .35); border: 1px solid rgba(248, 113, 113, .45); color: #fecaca; }
+.ini-caos-reloj { position: relative; flex: none; width: 1.5em; height: 1.5em; border: 2px solid #f87171; border-radius: 50%; }
+.ini-caos-reloj::before, .ini-caos-reloj::after { content: ""; position: absolute; left: 50%; bottom: 50%; width: 2px; margin-left: -1px; background: #f87171; transform-origin: 50% 100%; }
+.ini-caos-reloj::before { height: .45em; }
+.ini-caos-reloj::after { height: .3em; transform: rotate(120deg); }
+@media (min-width: 640px) {
+  .ini-caos-cuaderno { left: 4%; top: 18%; width: 24%; }
+  .ini-caos-chat { left: 30%; right: auto; top: 12%; width: 22%; }
+  .ini-caos-excel { left: 6%; top: 55%; width: 27%; }
+  .ini-caos-mezcla { left: 35%; right: auto; top: 49%; width: 19%; }
+  .ini-caos-tarde { left: 13%; bottom: 7%; width: 30%; }
+}
+/* Tiemblan solo mientras se ven (JS: .ini-caos-vivo) */
+@keyframes ini-caos-tiembla { 0%, 100% { transform: rotate(var(--r, 0deg)) translate3d(0, 0, 0); } 25% { transform: rotate(calc(var(--r, 0deg) + .8deg)) translate3d(1px, -1px, 0); } 50% { transform: rotate(calc(var(--r, 0deg) - .6deg)) translate3d(-1px, 1px, 0); } 75% { transform: rotate(calc(var(--r, 0deg) + .4deg)) translate3d(1px, 1px, 0); } }
+@keyframes ini-caos-late { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.ini-caos-vivo .ini-caos-n { animation: ini-caos-tiembla 2.6s ease-in-out infinite; }
+.ini-caos-vivo .ini-caos-chat { animation-duration: 2.2s; animation-delay: -.6s; }
+.ini-caos-vivo .ini-caos-excel { animation-duration: 3s; animation-delay: -1.2s; }
+.ini-caos-vivo .ini-caos-mezcla { animation-duration: 2.4s; animation-delay: -.3s; }
+.ini-caos-vivo .ini-caos-tarde { animation-duration: 2.8s; animation-delay: -1.8s; }
+.ini-caos-vivo .ini-caos-punto { animation: ini-caos-late 1.6s ease-in-out infinite; }
+
+/* Barra divisoria y perilla hexagonal (role="slider") */
+.ini-caos-mango { position: absolute; inset: 0; z-index: 3; pointer-events: none; transform: translate3d(calc(var(--caos-x) - 50%), 0, 0); will-change: transform; }
+.ini-caos-linea { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: linear-gradient(180deg, #00FFFF, #FFFFFF 50%, #FF8C00); box-shadow: 0 0 14px rgba(0, 255, 255, .55); }
+.ini-caos-perilla { position: absolute; top: 50%; left: clamp(calc(50% + 30px - var(--caos-x)), 50%, calc(150% - 30px - var(--caos-x))); width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; outline: none; filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .55)) drop-shadow(0 0 14px rgba(0, 255, 255, .3)); transition: transform .2s cubic-bezier(.23, 1, .32, 1); }
+.ini-caos-perilla svg { display: block; width: 100%; height: 100%; }
+.ini-caos-perilla-hex { fill: #0D0E12; stroke: url(#ini-caos-gp); stroke-width: 2.5; }
+/* La luciérnaga: punto naranja que brilla en el vértice del hexágono */
+.ini-caos-luz { position: absolute; top: 1px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #FF8C00; box-shadow: 0 0 10px 2px rgba(255, 140, 0, .8); }
+.ini-caos-vivo .ini-caos-luz { animation: ini-caos-late 2.4s ease-in-out infinite; }
+.ini-caos-perilla:focus-visible { box-shadow: 0 0 0 3px #05070B, 0 0 0 5px #00FFFF; }
+.ini-caos-mango:focus-within .ini-caos-linea { width: 4px; margin-left: -2px; }
+.ini-caos-arrastra .ini-caos-perilla { transform: scale(1.1); }
+@media (hover: hover) and (pointer: fine) {
+  .ini-caos-listo { cursor: ew-resize; }
+  .ini-caos-listo:hover .ini-caos-perilla { transform: scale(1.06); }
+  .ini-caos-listo.ini-caos-arrastra .ini-caos-perilla { transform: scale(1.1); }
+}
+.ini-caos-ayuda { margin: 1rem 0 0; color: #cbd5e1; font-size: .9375rem; text-align: center; }
+.ini-caos .ini-ficticio { text-align: center; } /* misma alineación que la ayuda de arriba */
+
+@media (prefers-reduced-motion: reduce) {
+  .ini-caos-perilla, .ini-caos-listo .ini-caos-barra > i, .ini-caos-listo .ini-caos-trazo, .ini-caos-listo .ini-caos-area { transition: none; }
+  .ini-caos-listo:not(.is-in) .ini-caos-barra > i { transform: scaleX(var(--w)); }
+  .ini-caos-listo:not(.is-in) .ini-caos-trazo { stroke-dashoffset: 0; }
+  .ini-caos-listo:not(.is-in) .ini-caos-area { opacity: 1; }
+  .ini-caos-vivo .ini-caos-n, .ini-caos-vivo .ini-caos-punto, .ini-caos-vivo .ini-caos-luz { animation: none; }
+  .ini-caos-arrastra .ini-caos-perilla, .ini-caos-listo:hover .ini-caos-perilla { transform: none; }
+}
+/* ===== /inicio:caos ===== */
+/* ===== /inicio:caos ===== */
+
+/* ===== inicio:brecha ===== */
+/* Efecto «brecha» (assets/inicio-brecha.js): la cifra del resultado cuenta y una mini gráfica de vidrio dibuja la pérdida según los días de espera.
+   La caja ya es .ini-vidrio y la sección lleva su malla (bloque inicio:base). Trazo cian → blanco → naranja (con blanco en medio, como toda la marca),
+   hexágono cian en el día del cobro y una luz naranja (la luciérnaga) en el día de la compra.
+   Con prefers-reduced-motion: trazo completo, sin transiciones ni pulso. El pulso se pausa fuera de pantalla ([data-ini-pausa]). */
+.ini-brecha-graf[hidden] { display: none; }
+.ini-brecha-graf { margin-top: 1.25rem; }
+.ini-brecha-graf-fig { position: relative; margin: 0; padding: 1rem 1rem .75rem; border: 1px solid rgba(255, 255, 255, .1); border-radius: 1rem; background: linear-gradient(160deg, rgba(0, 255, 255, .06), rgba(255, 255, 255, .02) 45%, rgba(255, 140, 0, .07)), rgba(5, 6, 9, .55); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08); }
+@media (min-width: 640px) { .ini-brecha-graf-fig { padding: 1.25rem 1.5rem 1rem; } }
+.ini-brecha-graf-cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem .75rem; margin-bottom: .75rem; }
+.ini-brecha-graf-tit { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: #fff; }
+.ini-brecha-graf-etq { display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .65rem; border: 1px solid rgba(255, 140, 0, .45); border-radius: 999px; font-size: .8125rem; font-weight: 600; letter-spacing: .02em; color: #ffd8a8; background: rgba(255, 140, 0, .1); }
+.ini-brecha-graf-etq::before { content: ""; width: .55rem; height: .62rem; background: #00FFFF; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+.ini-brecha-graf-lienzo { position: relative; padding-top: 1.5rem; }
+.ini-brecha-graf-ymax { position: absolute; top: 0; right: 0; font-size: .875rem; font-weight: 700; color: #FF8C00; font-variant-numeric: tabular-nums; }
+.ini-brecha-graf-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ini-brecha-graf-rejilla line { stroke: rgba(255, 255, 255, .07); stroke-width: 1; stroke-dasharray: 3 6; }
+.ini-brecha-graf-rejilla .ini-brecha-graf-base { stroke: rgba(255, 255, 255, .22); stroke-dasharray: none; }
+.ini-brecha-graf-trazo { stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; filter: drop-shadow(0 0 6px rgba(255, 140, 0, .45)); }
+.ini-brecha-graf-relleno { opacity: 0; }
+.ini-brecha-graf-hex { fill: #05060a; stroke: #00FFFF; stroke-width: 2; filter: drop-shadow(0 0 5px rgba(0, 255, 255, .7)); }
+.ini-brecha-graf-punto { opacity: 0; }
+.ini-brecha-graf-halo { transform-box: fill-box; transform-origin: center; }
+.ini-brecha-graf.is-dibujado .ini-brecha-graf-trazo { stroke-dashoffset: 0; transition: stroke-dashoffset 1.3s cubic-bezier(.22, 1, .36, 1); }
+.ini-brecha-graf.is-dibujado .ini-brecha-graf-relleno { opacity: 1; transition: opacity .8s ease .5s; }
+.ini-brecha-graf.is-dibujado .ini-brecha-graf-punto { opacity: 1; transition: opacity .4s ease 1.1s; }
+.ini-brecha-graf.is-dibujado .ini-brecha-graf-halo { animation: ini-brecha-luz 2.4s ease-in-out 1.4s infinite; }
+@keyframes ini-brecha-luz { 0%, 100% { transform: scale(.8); opacity: .75; } 50% { transform: scale(1.15); opacity: 1; } }
+.ini-brecha-graf-eje { display: flex; justify-content: space-between; gap: 1rem; margin-top: .5rem; font-size: .8125rem; color: #94a3b8; }
+.ini-brecha-graf-eje span:first-child { color: #7ff; }
+.ini-brecha-graf-eje span:last-child { color: #ffc27a; text-align: right; }
+.ini-brecha-dias { margin-top: 1rem; }
+.ini-brecha-dias input { max-width: 10rem; }
+/* La cifra que cuenta (texto completo para lectores de pantalla en .fv-sr-only; esta copia es aria-hidden) */
+.ini-brecha-cifra, .ini-brecha-cifra-pct { font-variant-numeric: tabular-nums; }
+.ini-brecha-cifra { color: #FF8C00; text-shadow: 0 0 18px rgba(255, 140, 0, .45); }
+@media (prefers-reduced-motion: reduce) {
+  .ini-brecha-graf-trazo { stroke-dashoffset: 0; }
+  .ini-brecha-graf-relleno, .ini-brecha-graf-punto { opacity: 1; }
+  .ini-brecha-graf .ini-brecha-graf-trazo, .ini-brecha-graf .ini-brecha-graf-relleno, .ini-brecha-graf .ini-brecha-graf-punto { transition: none !important; }
+  .ini-brecha-graf .ini-brecha-graf-halo { animation: none !important; }
+}
+/* ===== /inicio:brecha ===== */
+
+/* ===== inicio:faqcierre ===== */
+/* #faq: acordeón de vidrio. Viñeta hexagonal que se enciende (luz naranja de la luciérnaga) al abrir; el + gira a ×.
+   La apertura suave la hace assets/inicio-faqcierre.js (Web Animations sobre el <p>); sin JS o con reduced-motion abre al instante. */
+.ini-faq-lista > details { transition: box-shadow .3s cubic-bezier(.23, 1, .32, 1), background-color .3s; }
+.ini-faq-lista > details[open] { background: linear-gradient(135deg, rgba(0, 255, 255, .06), rgba(255, 255, 255, .03) 50%, rgba(255, 140, 0, .06)), rgba(9, 11, 16, .6); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 0 0 1px rgba(0, 255, 255, .12), 0 20px 50px rgba(0, 0, 0, .4); }
+@media (hover: hover) and (pointer: fine) { .ini-faq-lista > details:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 0 0 1px rgba(0, 255, 255, .18), 0 0 26px rgba(0, 255, 255, .1), 0 20px 50px rgba(0, 0, 0, .35); } }
+.ini-faq-lista summary { position: relative; z-index: 1; justify-content: flex-start; gap: .875rem; }
+.ini-faq-lista summary > span { flex: 1 1 auto; min-width: 0; }
+.ini-faq-lista summary::before { content: ""; flex: none; width: 18px; height: 20px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 26'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='rgb(0,255,255)'/%3E%3Cstop offset='.5' stop-color='white'/%3E%3Cstop offset='1' stop-color='rgb(255,140,0)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M12 1.5 22 7.25v11.5L12 24.5 2 18.75V7.25z' fill='none' stroke='url(%23g)' stroke-width='1.8'/%3E%3Ccircle cx='12' cy='13' r='2.6' fill='rgb(100,116,139)'/%3E%3C/svg%3E") center / contain no-repeat; transition: filter .3s, transform .35s cubic-bezier(.23, 1, .32, 1); }
+.ini-faq-lista details[open] summary::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 26'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='rgb(0,255,255)'/%3E%3Cstop offset='.5' stop-color='white'/%3E%3Cstop offset='1' stop-color='rgb(255,140,0)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M12 1.5 22 7.25v11.5L12 24.5 2 18.75V7.25z' fill='rgba(255,140,0,.12)' stroke='url(%23g)' stroke-width='1.8'/%3E%3Ccircle cx='12' cy='13' r='3.4' fill='rgb(255,140,0)'/%3E%3C/svg%3E"); filter: drop-shadow(0 0 6px rgba(255, 140, 0, .7)); transform: rotate(30deg); }
+.ini-faq-lista summary::after, .ini-faq-lista details[open] summary::after { content: '+'; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid rgba(0, 255, 255, .4); font-size: 1.375rem; font-weight: 400; transition: rotate .35s cubic-bezier(.23, 1, .32, 1), color .25s, border-color .25s, background-color .25s; }
+.ini-faq-lista details[open] summary::after { rotate: 45deg; color: #FF8C00; border-color: rgba(255, 140, 0, .55); background-color: rgba(255, 140, 0, .1); }
+.ini-faq-lista details.is-cerrando summary::after { rotate: 0deg; color: #00FFFF; border-color: rgba(0, 255, 255, .4); background-color: transparent; }
+.ini-faq-lista details.is-cerrando summary::before { filter: none; transform: none; }
+.ini-faq-lista details > p { position: relative; z-index: 1; padding-left: calc(1.125rem + 18px + .875rem); }
+@media (max-width: 639px) { .ini-faq-lista details > p { padding-left: 1.125rem; } }
+
+/* #cierre: sello hexagonal (aro girando + luciérnaga levitando) montado sobre el borde superior de la caja de vidrio */
+.ini-cierre .ini-cierre-caja { margin-top: 3rem; padding-top: 4rem; }
+@media (min-width: 640px) { .ini-cierre .ini-cierre-caja { padding-top: 4.75rem; } }
+.ini-fc-sello { position: absolute; left: 50%; top: 0; z-index: 2; width: 96px; height: 96px; transform: translate(-50%, -50%); pointer-events: none; }
+.ini-fc-halo { position: absolute; inset: 6px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 140, 0, .38), rgba(255, 255, 255, .08) 38%, rgba(0, 255, 255, .14) 55%, rgba(5, 7, 11, 0) 72%), radial-gradient(circle, #05070b 0 46%, rgba(5, 7, 11, 0) 47%); animation: ini-fc-pulso 3.6s ease-in-out infinite alternate; }
+.ini-fc-aro { position: absolute; left: 50%; top: 50%; width: 170%; height: 170%; max-width: none; object-fit: contain; transform: translate(-50%, -50%); animation: ini-fc-giro 26s linear infinite; filter: drop-shadow(0 0 10px rgba(0, 255, 255, .35)); }
+.ini-fc-luci { position: absolute; left: 50%; top: 50%; width: 46px; height: auto; transform: translate(-50%, -54%); animation: ini-fc-levita 3.2s ease-in-out infinite alternate; filter: drop-shadow(0 0 8px rgba(255, 140, 0, .55)); }
+@keyframes ini-fc-giro { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes ini-fc-levita { from { translate: 0 -4px; } to { translate: 0 4px; } }
+@keyframes ini-fc-pulso { from { opacity: .7; scale: .94; } to { opacity: 1; scale: 1.06; } }
+
+/* Botones del cierre: brillo que sigue al puntero (.ini-fc-brillo) y barrido de luz en WhatsApp (.ini-fc-barrido). Las capas las agrega el JS. */
+.ini-fc-btn { position: relative; overflow: hidden; isolation: isolate; }
+.ini-fc-brillo, .ini-fc-barrido { position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; }
+.ini-fc-brillo { opacity: 0; background: radial-gradient(140px circle at var(--fc-x, 50%) var(--fc-y, 50%), rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 70%); transition: opacity .25s cubic-bezier(.23, 1, .32, 1); }
+.btn-secondary .ini-fc-brillo { background: radial-gradient(140px circle at var(--fc-x, 50%) var(--fc-y, 50%), rgba(0, 255, 255, .28), rgba(255, 255, 255, .14) 25%, rgba(255, 140, 0, .12) 45%, rgba(0, 255, 255, 0) 70%); }
+.ini-fc-btn.is-brillo .ini-fc-brillo { opacity: 1; }
+.ini-fc-barrido { background: linear-gradient(105deg, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, .6) 50%, rgba(255, 255, 255, 0) 65%) no-repeat; background-size: 250% 100%; background-position: 150% 0; animation: ini-fc-barre 6s cubic-bezier(.45, 0, .2, 1) 1.2s infinite; }
+@keyframes ini-fc-barre { 0% { background-position: 150% 0; } 22%, 100% { background-position: -50% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ini-faq-lista > details, .ini-faq-lista summary::before, .ini-faq-lista summary::after, .ini-faq-lista details[open] summary::after { transition: none; }
+  .ini-fc-halo, .ini-fc-aro, .ini-fc-luci, .ini-fc-barrido { animation: none; }
+  .ini-fc-barrido { display: none; }
+  .ini-fc-brillo { transition: none; }
+}
+/* ===== /inicio:faqcierre ===== */
+
+/* ===== inicio:guia ===== */
+/* Luciérnaga guía (assets/inicio-guia.js): columna de hexágonos en el margen derecho, solo con JS (html.ini-fx) y en >= 1360 px de ancho y 640 px de alto
+   (por debajo de 1360 px la columna de 44 px pisaría el borde derecho de las tarjetas; sin JS se superpondría a la portada). En el celular no se muestra. Queda bajo la barra (z 50), Luci y «volver arriba» (z 40) y el panel de la lupa (z 200). */
+.ini-guia { display: none; }
+@media (min-width: 1360px) and (min-height: 640px) {
+  html.ini-fx .ini-guia {
+    display: block; position: fixed; right: 0; top: 50%; z-index: 30;
+    transform: translateY(-50%);
+    transition: opacity .35s cubic-bezier(.23,1,.32,1), visibility 0s linear 0s;
+  }
+  .ini-guia.is-oculta { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s cubic-bezier(.23,1,.32,1), visibility 0s linear .35s; }
+  .ini-guia-lista { list-style: none; margin: 0; padding: 0; position: relative; z-index: 1; }
+  .ini-guia-lista > li { margin: 0; padding: 0; }
+  .ini-guia-paso {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border-radius: 12px; color: #fff; text-decoration: none;
+  }
+  .ini-guia-paso:focus { outline: none; }
+  .ini-guia-paso:focus-visible { outline: 2px solid #00FFFF; outline-offset: -6px; }
+  .ini-guia-forma {
+    width: 16px; height: 16px; overflow: visible;
+    transition: transform .3s cubic-bezier(.23,1,.32,1), filter .3s cubic-bezier(.23,1,.32,1);
+  }
+  .ini-guia-forma polygon {
+    fill: rgba(0,0,0,.72); stroke: rgba(255,255,255,.34); stroke-width: 2; stroke-linejoin: round;
+    transition: fill .3s ease, stroke .3s ease;
+  }
+  .ini-guia-paso:hover .ini-guia-forma, .ini-guia-paso:focus-visible .ini-guia-forma { transform: scale(1.25); }
+  .ini-guia-paso:hover .ini-guia-forma polygon, .ini-guia-paso:focus-visible .ini-guia-forma polygon { stroke: #fff; }
+  .ini-guia-paso.is-pasada .ini-guia-forma polygon { stroke: rgba(0,255,255,.75); fill: rgba(0,255,255,.12); }
+  .ini-guia-paso.is-actual .ini-guia-forma { transform: scale(1.4); filter: drop-shadow(0 0 5px rgba(0,255,255,.85)) drop-shadow(0 0 10px rgba(255,140,0,.45)); }
+  .ini-guia-paso.is-actual .ini-guia-forma polygon { stroke: #fff; fill: #00FFFF; }
+  /* la franja Delta es de la línea ▲: triángulo verde/morado */
+  .ini-guia-tri.is-pasada .ini-guia-forma polygon { stroke: rgba(74,222,128,.8); fill: rgba(168,85,247,.18); }
+  .ini-guia-tri.is-actual .ini-guia-forma { filter: drop-shadow(0 0 5px rgba(74,222,128,.85)) drop-shadow(0 0 10px rgba(168,85,247,.6)); }
+  .ini-guia-tri.is-actual .ini-guia-forma polygon { stroke: #fff; fill: #4ade80; }
+  .ini-guia-paso.is-llega .ini-guia-forma { animation: ini-guia-llega .6s cubic-bezier(.23,1,.32,1); }
+  @keyframes ini-guia-llega { 0% { transform: scale(1); } 45% { transform: scale(1.75); } 100% { transform: scale(1.4); } }
+  /* nombre de la sección: aparece al pasar el mouse o con el foco del teclado */
+  .ini-guia-nombre {
+    position: absolute; right: 46px; top: 50%; transform: translate(6px, -50%);
+    white-space: nowrap; padding: 6px 12px; border-radius: 999px;
+    font-size: 13px; line-height: 1.3; font-weight: 500; color: #fff;
+    background: rgba(8,10,12,.82); border: 1px solid rgba(255,255,255,.14);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    box-shadow: 0 6px 20px rgba(0,0,0,.45);
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s ease, transform .2s cubic-bezier(.23,1,.32,1);
+  }
+  .ini-guia-paso:hover .ini-guia-nombre, .ini-guia-paso:focus-visible .ini-guia-nombre { opacity: 1; transform: translate(0, -50%); }
+  .ini-guia-tri .ini-guia-nombre { border-color: rgba(74,222,128,.35); }
+  /* riel, luz y luciérnaga: los crea el JS (sin JS solo quedan los enlaces) */
+  .ini-guia-riel {
+    position: absolute; left: 50%; width: 1px; margin-left: -.5px; z-index: 0;
+    background: rgba(255,255,255,.12); pointer-events: none;
+  }
+  .ini-guia-luz {
+    position: absolute; inset: 0; transform-origin: top; transform: scaleY(0);
+    background: linear-gradient(180deg, #00FFFF, #FFFFFF, #FF8C00);
+    box-shadow: 0 0 6px rgba(0,255,255,.55);
+    will-change: transform;
+  }
+  .ini-guia-luci {
+    position: absolute; left: 50%; top: 0; width: 30px; height: 30px; z-index: 2;
+    transform: translate3d(-50%, -15px, 0); pointer-events: none; will-change: transform;
+  }
+  .ini-guia-luci img { display: block; width: 100%; height: 100%; filter: drop-shadow(0 0 4px rgba(255,140,0,.9)) drop-shadow(0 0 10px rgba(0,255,255,.35)); }
+  .ini-guia-luci::after {
+    content: ""; position: absolute; inset: -9px; border-radius: 50%; z-index: -1;
+    background: radial-gradient(circle, rgba(255,140,0,.38), rgba(255,255,255,.08) 45%, transparent 70%);
+    animation: ini-guia-brillo 2.6s ease-in-out infinite;
+  }
+  .ini-guia.is-oculta .ini-guia-luci::after { animation-play-state: paused; }
+  @keyframes ini-guia-brillo { 0%, 100% { opacity: .55; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.1); } }
+}
+[data-ini-guia-foco]:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ini-guia, .ini-guia-forma, .ini-guia-forma polygon, .ini-guia-nombre { transition: none; }
+  .ini-guia-luci::after, .ini-guia-paso.is-llega .ini-guia-forma { animation: none; }
+}
+/* ===== /inicio:guia ===== */
